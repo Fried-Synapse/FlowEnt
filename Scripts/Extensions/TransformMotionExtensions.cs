@@ -49,19 +49,12 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> OrientToPath(this MotionSet<Transform> motion)
+        public static MotionSet<Transform> MoveLocal(this MotionSet<Transform> motion, ISpline spline)
         {
-            Vector3? oldPosition = null;
             motion
-                .OnStart(() =>
-                {
-                    oldPosition = motion.Element.position;
-                })
                 .OnUpdate(t =>
                 {
-                    Vector3 relativePosition = motion.Element.position - oldPosition.Value;
-                    motion.Element.rotation = Quaternion.LookRotation(relativePosition);
-                    oldPosition = motion.Element.position;
+                    motion.Element.localPosition = spline.GetPoint(t);
                 });
 
             return motion;
@@ -163,6 +156,24 @@ namespace FlowEnt
             => motion.RotateTo(Quaternion.Euler(to));
 
         #endregion
+
+        public static MotionSet<Transform> OrientToPath(this MotionSet<Transform> motion)
+        {
+            Vector3? oldPosition = null;
+            motion
+                .OnStart(() =>
+                {
+                    oldPosition = motion.Element.position;
+                })
+                .OnUpdate(t =>
+                {
+                    Vector3 relativePosition = motion.Element.position - oldPosition.Value;
+                    motion.Element.rotation = Quaternion.LookRotation(relativePosition);
+                    oldPosition = motion.Element.position;
+                });
+
+            return motion;
+        }
 
     }
 }
