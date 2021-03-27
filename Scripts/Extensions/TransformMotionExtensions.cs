@@ -6,7 +6,7 @@ namespace FlowEnt
     {
         #region Move
 
-        public static MotionSet<Transform> MoveTo(this MotionSet<Transform> motion, Vector3 to)
+        public static Motion<Transform> MoveTo(this Motion<Transform> motion, Vector3 to)
         {
             Vector3? from = null;
             motion
@@ -22,7 +22,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> MoveLocalTo(this MotionSet<Transform> motion, Vector3 to)
+        public static Motion<Transform> MoveLocalTo(this Motion<Transform> motion, Vector3 to)
         {
             Vector3? from = null;
             motion
@@ -38,7 +38,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> Move(this MotionSet<Transform> motion, ISpline spline)
+        public static Motion<Transform> Move(this Motion<Transform> motion, ISpline spline)
         {
             motion
                 .OnUpdate(t =>
@@ -49,7 +49,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> MoveLocal(this MotionSet<Transform> motion, ISpline spline)
+        public static Motion<Transform> MoveLocal(this Motion<Transform> motion, ISpline spline)
         {
             motion
                 .OnUpdate(t =>
@@ -60,7 +60,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> Move(this MotionSet<Transform> motion, Vector3 value)
+        public static Motion<Transform> Move(this Motion<Transform> motion, Vector3 value)
         {
             Vector3? from = null;
             Vector3? to = null;
@@ -78,7 +78,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> MoveX(this MotionSet<Transform> motion, float x)
+        public static Motion<Transform> MoveX(this Motion<Transform> motion, float x)
         {
             Vector3? from = null;
             Vector3? to = null;
@@ -96,7 +96,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> MoveY(this MotionSet<Transform> motion, float y)
+        public static Motion<Transform> MoveY(this Motion<Transform> motion, float y)
         {
             Vector3? from = null;
             Vector3? to = null;
@@ -114,7 +114,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> MoveZ(this MotionSet<Transform> motion, float z)
+        public static Motion<Transform> MoveZ(this Motion<Transform> motion, float z)
         {
             Vector3? from = null;
             Vector3? to = null;
@@ -136,7 +136,7 @@ namespace FlowEnt
 
         #region Rotate
 
-        public static MotionSet<Transform> RotateTo(this MotionSet<Transform> motion, Quaternion to)
+        public static Motion<Transform> RotateTo(this Motion<Transform> motion, Quaternion to)
         {
             Quaternion from = Quaternion.identity;
             motion
@@ -152,12 +152,12 @@ namespace FlowEnt
             return motion;
         }
 
-        public static MotionSet<Transform> RotateTo(this MotionSet<Transform> motion, Vector3 to)
+        public static Motion<Transform> RotateTo(this Motion<Transform> motion, Vector3 to)
             => motion.RotateTo(Quaternion.Euler(to));
 
         #endregion
 
-        public static MotionSet<Transform> OrientToPath(this MotionSet<Transform> motion)
+        public static Motion<Transform> OrientToPath(this Motion<Transform> motion)
         {
             Vector3? oldPosition = null;
             motion

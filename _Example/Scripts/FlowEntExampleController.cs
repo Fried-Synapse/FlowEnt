@@ -53,33 +53,6 @@ public class FlowEntExampleController : MonoBehaviour
                         .MoveTo(new Vector3(2, 0, 0))
                     .Wrap()
             .Play(-2);
-
-        //Flow.Create()
-        //        .Enqueue()
-        //            .For(2f)
-        //            .OnComplete(() =>
-        //            {
-        //                flow.Pause();
-        //            })
-        //        .Enqueue()
-        //            .For(2f)
-        //            .OnComplete(() =>
-        //            {
-        //                flow.Resume();
-        //            })
-        //        .Enqueue()
-        //            .For(2f)
-        //            .OnComplete(() =>
-        //            {
-        //                flow.Pause();
-        //            })
-        //        .Enqueue()
-        //            .For(2f)
-        //            .OnComplete(() =>
-        //            {
-        //                flow.Resume();
-        //            })
-        //        .Play();
     }
 
     private void OnDrawGizmos()

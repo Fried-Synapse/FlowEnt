@@ -6,7 +6,7 @@ namespace FlowEnt
     {
         public Flow Flow { get; }
         public Thread Thread { get; }
-        public Motion Motion { get; }
+        public Tween Tween { get; }
 
         public FlowEntException(string message) : base(message)
         {
@@ -22,9 +22,9 @@ namespace FlowEnt
             Thread = thread;
         }
 
-        public FlowEntException(Motion motion, string message) : this(message)
+        public FlowEntException(Tween tween, string message) : this(message)
         {
-            Motion = motion;
+            Tween = tween;
         }
     }
 }

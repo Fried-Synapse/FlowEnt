@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace FlowEnt
 {
@@ -31,13 +30,13 @@ namespace FlowEnt
         #region Settings Properties
 
         private int LoopCount { get; set; }
-        private bool HasInfiniteMotionLoops
+        private bool HasInfiniteTweenLoops
         {
             get
             {
                 for (int i = 0; i < Threads.Count; i++)
                 {
-                    if (Threads[i].HasInfiniteMotionLoops)
+                    if (Threads[i].HasInfiniteTweenLoops)
                     {
                         return true;
                     }
@@ -60,7 +59,7 @@ namespace FlowEnt
         public static Flow Create()
             => new Flow();
 
-        public Motion Enqueue(float time)
+        public Tween Enqueue(float time)
             => QueueingThread.Enqueue(time);
 
         public Flow Concurrent()
@@ -108,7 +107,7 @@ namespace FlowEnt
                 throw new FlowEntException(this, "Flow needs at least one loop to play.");
             }
 
-            if (loopCount > 1 && HasInfiniteMotionLoops)
+            if (loopCount > 1 && HasInfiniteTweenLoops)
             {
                 throw new FlowEntException(this, "Flow contains an infinite loop and won't be able to loop.");
             }

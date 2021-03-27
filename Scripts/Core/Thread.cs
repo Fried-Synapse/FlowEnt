@@ -12,13 +12,13 @@ namespace FlowEnt
 
         public Flow Flow { get; }
         internal Action<float> OnComplete { get; set; }
-        internal bool HasInfiniteMotionLoops
+        internal bool HasInfiniteTweenLoops
         {
             get
             {
-                for (int i = 0; i < Motions.Count; i++)
+                for (int i = 0; i < Tweens.Count; i++)
                 {
-                    if (Motions[i].HasInfiniteLoop)
+                    if (Tweens[i].HasInfiniteLoop)
                     {
                         return true;
                     }
@@ -27,21 +27,21 @@ namespace FlowEnt
             }
         }
 
-        private List<Motion> Motions { get; } = new List<Motion>();
-        private Queue<Motion> PlayingMotions { get; set; }
+        private List<Tween> Tweens { get; } = new List<Tween>();
+        private Queue<Tween> PlayingTweens { get; set; }
 
-        private Motion PlayingMotion { get; set; }
+        private Tween PlayingTween { get; set; }
 
         #region Build
 
-        public Motion Enqueue(float time)
+        public Tween Enqueue(float time)
         {
             if (time <= 0)
             {
                 throw new ArgumentException($"{time} is not a valid time frame to enqueue a motion.");
             }
-            Motion motion = new Motion(this, time);
-            Motions.Add(motion);
+            Tween motion = new Tween(this, time);
+            Tweens.Add(motion);
             return motion;
         }
 
@@ -51,17 +51,17 @@ namespace FlowEnt
 
         internal void Init()
         {
-            PlayingMotions = new Queue<Motion>(Motions);
+            PlayingTweens = new Queue<Tween>(Tweens);
         }
 
         internal void Update(float deltaTime)
         {
-            if (PlayingMotion == null)
+            if (PlayingTween == null)
             {
-                if (PlayingMotions.Count > 0)
+                if (PlayingTweens.Count > 0)
                 {
-                    PlayingMotion = PlayingMotions.Dequeue();
-                    PlayingMotion.InitPlay();
+                    PlayingTween = PlayingTweens.Dequeue();
+                    PlayingTween.InitPlay();
                 }
                 else
                 {
@@ -70,20 +70,19 @@ namespace FlowEnt
                 }
             }
 
-            float remainingDeltaTime = PlayingMotion.Update(deltaTime);
+            float remainingDeltaTime = PlayingTween.Update(deltaTime);
             if (remainingDeltaTime > 0)
             {
-                PlayingMotion = null;
-                Update(deltaTime);
+                PlayingTween = null;
+                Update(remainingDeltaTime);
             }
-
         }
 
         internal void Reset()
         {
-            for (int i = 0; i < Motions.Count; i++)
+            for (int i = 0; i < Tweens.Count; i++)
             {
-                Motions[i].Reset();
+                Tweens[i].Reset();
             }
         }
 
