@@ -6,7 +6,10 @@ namespace FlowEnt
     {
         #region Move
 
-        public static Motion<Transform> MoveTo(this Motion<Transform> motion, Vector3 to)
+        public static MotionWrapper<Transform> MoveTo(this MotionWrapper<Transform> motion, Vector3 to)
+            => motion.Apply(new MoveToMotion(motion.Element, to));
+
+        public static MotionWrapper<Transform> MoveToOld(this MotionWrapper<Transform> motion, Vector3 to)
         {
             Vector3? from = null;
             motion
@@ -22,7 +25,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<Transform> MoveLocalTo(this Motion<Transform> motion, Vector3 to)
+        public static MotionWrapper<Transform> MoveLocalTo(this MotionWrapper<Transform> motion, Vector3 to)
         {
             Vector3? from = null;
             motion
@@ -38,7 +41,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<Transform> Move(this Motion<Transform> motion, ISpline spline)
+        public static MotionWrapper<Transform> Move(this MotionWrapper<Transform> motion, ISpline spline)
         {
             motion
                 .OnUpdate(t =>
@@ -49,7 +52,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<Transform> MoveLocal(this Motion<Transform> motion, ISpline spline)
+        public static MotionWrapper<Transform> MoveLocal(this MotionWrapper<Transform> motion, ISpline spline)
         {
             motion
                 .OnUpdate(t =>
@@ -60,7 +63,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<Transform> Move(this Motion<Transform> motion, Vector3 value)
+        public static MotionWrapper<Transform> Move(this MotionWrapper<Transform> motion, Vector3 value)
         {
             Vector3? from = null;
             Vector3? to = null;
@@ -78,7 +81,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<Transform> MoveX(this Motion<Transform> motion, float x)
+        public static MotionWrapper<Transform> MoveX(this MotionWrapper<Transform> motion, float x)
         {
             Vector3? from = null;
             Vector3? to = null;
@@ -96,7 +99,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<Transform> MoveY(this Motion<Transform> motion, float y)
+        public static MotionWrapper<Transform> MoveY(this MotionWrapper<Transform> motion, float y)
         {
             Vector3? from = null;
             Vector3? to = null;
@@ -114,7 +117,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<Transform> MoveZ(this Motion<Transform> motion, float z)
+        public static MotionWrapper<Transform> MoveZ(this MotionWrapper<Transform> motion, float z)
         {
             Vector3? from = null;
             Vector3? to = null;
@@ -136,7 +139,7 @@ namespace FlowEnt
 
         #region Rotate
 
-        public static Motion<Transform> RotateTo(this Motion<Transform> motion, Quaternion to)
+        public static MotionWrapper<Transform> RotateTo(this MotionWrapper<Transform> motion, Quaternion to)
         {
             Quaternion from = Quaternion.identity;
             motion
@@ -152,12 +155,12 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<Transform> RotateTo(this Motion<Transform> motion, Vector3 to)
+        public static MotionWrapper<Transform> RotateTo(this MotionWrapper<Transform> motion, Vector3 to)
             => motion.RotateTo(Quaternion.Euler(to));
 
         #endregion
 
-        public static Motion<Transform> OrientToPath(this Motion<Transform> motion)
+        public static MotionWrapper<Transform> OrientToPath(this MotionWrapper<Transform> motion)
         {
             Vector3? oldPosition = null;
             motion

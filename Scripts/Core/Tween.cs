@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FlowEnt
@@ -33,6 +34,7 @@ namespace FlowEnt
         protected LoopType LoopType { get; set; } = LoopType.Reset;
         protected int LoopCount { get; set; } = 1;
         protected IEasing Easing { get; set; }
+        protected List<IMotion> Motions { get; set; } = new List<IMotion>();
 
         #endregion
 
@@ -85,8 +87,14 @@ namespace FlowEnt
             return this;
         }
 
-        public Motion<T> For<T>(T element)
-            => new Motion<T>(this, element);
+        public MotionWrapper<T> For<T>(T element)
+            => new MotionWrapper<T>(this, element);
+
+        public Tween Apply(IMotion motion)
+        {
+            Motions.Add(motion);
+            return this;
+        }
 
         public Flow Concurrent()
             => Flow.Concurrent();
@@ -114,9 +122,13 @@ namespace FlowEnt
             OnStart();
         }
 
-        protected virtual void OnStart()
+        internal void OnStart()
         {
             OnStartCallback?.Invoke();
+            for (int i = 0; i < Motions.Count; i++)
+            {
+                Motions[i].OnStart();
+            }
         }
 
         internal float Update(float deltaTime)
@@ -152,11 +164,20 @@ namespace FlowEnt
 #if FlowEnt_Debug
             UnityEngine.Debug.Log($"{UnityEngine.Time.time, -12}:   {Id} - {currentLoopDelta / Time}");
 #endif
+
             OnUpdateCallback?.Invoke(t);
+            for (int i = 0; i < Motions.Count; i++)
+            {
+                Motions[i].OnUpdate(t);
+            }
 
             if (overdraft > 0)
             {
                 OnCompleteCallback?.Invoke();
+                for (int i = 0; i < Motions.Count; i++)
+                {
+                    Motions[i].OnComplete();
+                }
             }
             return overdraft;
         }

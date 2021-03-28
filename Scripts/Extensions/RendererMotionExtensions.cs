@@ -4,7 +4,7 @@ namespace FlowEnt
 {
     public static class RendererMotionExtensions
     {
-        public static Motion<TRenderer> Alpha<TRenderer>(this Motion<TRenderer> motion, float to)
+        public static MotionWrapper<TRenderer> Alpha<TRenderer>(this MotionWrapper<TRenderer> motion, float to)
             where TRenderer : Renderer
         {
             float? from = null;
@@ -24,7 +24,7 @@ namespace FlowEnt
             return motion;
         }
 
-        public static Motion<TRenderer> Alpha<TRenderer>(this Motion<TRenderer> motion, float from, float to)
+        public static MotionWrapper<TRenderer> Alpha<TRenderer>(this MotionWrapper<TRenderer> motion, float from, float to)
             where TRenderer : Renderer
         {
             Color color;
