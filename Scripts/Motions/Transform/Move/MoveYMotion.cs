@@ -1,27 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace FlowEnt
 {
-    public class MoveToMotion : AbstractMotion<Transform>
+    public class MoveYMotion : AbstractMotion<Transform>
     {
-        public MoveToMotion(Transform item, Vector3 to) : base(item)
+        public MoveYMotion(Transform item, float y) : base(item)
         {
-            To = to;
+            Y = y;
         }
 
-        public Vector3 To { get; }
+        public float Y { get; }
+        public Vector3? To { get; private set; }
         public Vector3? From { get; private set; }
 
         public override void OnStart()
         {
             From = Item.position;
+            To = From + new Vector3(0, Y, 0);
         }
 
         public override void OnUpdate(float t)
         {
-            Item.position = Vector3.LerpUnclamped(From.Value, To, t);
+            Item.position = Vector3.LerpUnclamped(From.Value, To.Value, t);
         }
 
         public override void OnComplete()

@@ -12,13 +12,13 @@ namespace FlowEnt
             motion
                 .OnStart(() =>
                 {
-                    from = motion.Element.material.color.a;
+                    from = motion.Item.material.color.a;
                 })
                 .OnUpdate(t =>
                 {
-                    color = motion.Element.material.color;
+                    color = motion.Item.material.color;
                     color.a = Mathf.Lerp(from.Value, to, t);
-                    motion.Element.material.color = color;
+                    motion.Item.material.color = color;
                 });
 
             return motion;
@@ -31,15 +31,15 @@ namespace FlowEnt
             motion
                 .OnStart(() =>
                 {
-                    color = motion.Element.material.color;
+                    color = motion.Item.material.color;
                     color.a = from;
-                    motion.Element.material.color = color;
+                    motion.Item.material.color = color;
                 })
                 .OnUpdate(t =>
                 {
-                    color = motion.Element.material.color;
+                    color = motion.Item.material.color;
                     color.a = Mathf.Lerp(from, to, t);
-                    motion.Element.material.color = color;
+                    motion.Item.material.color = color;
                 });
 
             return motion;

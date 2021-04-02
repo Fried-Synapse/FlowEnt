@@ -92,14 +92,9 @@ namespace FlowEnt
         /// <returns>The current flow.</returns>
         public Flow Play(int loopCount = 1)
         {
-            if (PlayState == PlayState.Playing)
+            if (PlayState != PlayState.Building)
             {
-                throw new FlowEntException(this, "Flow already playing.");
-            }
-
-            if (PlayState == PlayState.Finished)
-            {
-                throw new FlowEntException(this, "Flow already finished.");
+                throw new FlowEntException(this, "Flow already playing or has finished playing.");
             }
 
             if (loopCount == 0)
@@ -132,7 +127,7 @@ namespace FlowEnt
                 };
             }
 
-            Update(0);
+            //Update(0);
             FlowEntController.Instance.SubscribeToUpdate(Update);
             return this;
         }
