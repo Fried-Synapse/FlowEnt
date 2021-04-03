@@ -2,7 +2,7 @@ namespace FlowEnt
 {
     public enum PlayState
     {
-        Ready,
+        Building,
         Playing,
         Paused,
         Finished

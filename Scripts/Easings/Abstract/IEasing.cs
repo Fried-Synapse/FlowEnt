@@ -6,6 +6,9 @@ namespace FlowEnt
         public float GetValue(float t);
     }
 
+    /// <summary>
+    /// Easing list based on https://easings.net/.
+    /// </summary>
     public enum Easing
     {
         Linear,

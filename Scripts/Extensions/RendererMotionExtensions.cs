@@ -1,48 +1,24 @@
 using UnityEngine;
+using FlowEnt.Motions.RendererMotions;
 
 namespace FlowEnt
 {
     public static class RendererMotionExtensions
     {
-        public static Motion<TRenderer> Alpha<TRenderer>(this Motion<TRenderer> motion, float to)
+        public static MotionWrapper<TRenderer> Alpha<TRenderer>(this MotionWrapper<TRenderer> motion, float to)
             where TRenderer : Renderer
-        {
-            float? from = null;
-            Color color;
-            motion
-                .OnStart(() =>
-                {
-                    from = motion.Element.material.color.a;
-                })
-                .OnUpdate(t =>
-                {
-                    color = motion.Element.material.color;
-                    color.a = Mathf.Lerp(from.Value, to, t);
-                    motion.Element.material.color = color;
-                });
+            => motion.Apply(new AlphaMotion<TRenderer>(motion.Item, to));
 
-            return motion;
-        }
-
-        public static Motion<TRenderer> Alpha<TRenderer>(this Motion<TRenderer> motion, float from, float to)
+        public static MotionWrapper<TRenderer> Alpha<TRenderer>(this MotionWrapper<TRenderer> motion, float from, float to)
             where TRenderer : Renderer
-        {
-            Color color;
-            motion
-                .OnStart(() =>
-                {
-                    color = motion.Element.material.color;
-                    color.a = from;
-                    motion.Element.material.color = color;
-                })
-                .OnUpdate(t =>
-                {
-                    color = motion.Element.material.color;
-                    color.a = Mathf.Lerp(from, to, t);
-                    motion.Element.material.color = color;
-                });
+            => motion.Apply(new AlphaMotion<TRenderer>(motion.Item, from, to));
 
-            return motion;
-        }
+        public static MotionWrapper<TRenderer> Color<TRenderer>(this MotionWrapper<TRenderer> motion, Color to)
+            where TRenderer : Renderer
+            => motion.Apply(new ColorMotion<TRenderer>(motion.Item, to));
+
+        public static MotionWrapper<TRenderer> Color<TRenderer>(this MotionWrapper<TRenderer> motion, Color from, Color to)
+            where TRenderer : Renderer
+            => motion.Apply(new ColorMotion<TRenderer>(motion.Item, from, to));
     }
 }
