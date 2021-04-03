@@ -15,9 +15,9 @@ namespace FlowEnt
         public Flow Flow => Thread.Flow;
         public T Item { get; }
 
-        public MotionWrapper<T> Apply(IMotion callback)
+        public MotionWrapper<T> Apply(IMotion motion)
         {
-            Tween.Apply(callback);
+            Tween.Apply(motion);
             return this;
         }
 
@@ -41,8 +41,5 @@ namespace FlowEnt
 
         public MotionWrapper<TElement> For<TElement>(TElement element)
             => new MotionWrapper<TElement>(Tween, element);
-
-        public Flow Play()
-            => Tween.Play();
     }
 }

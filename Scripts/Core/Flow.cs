@@ -7,9 +7,14 @@ namespace FlowEnt
 {
     public class Flow : FlowEntObject
     {
-        private Flow()
+        private Flow(bool autoPlay)
         {
             Concurrent();
+            AutoPlay = autoPlay;
+            if (AutoPlay)
+            {
+                FlowEntController.Instance.SubscribeToUpdate(AutoPlayUpdate);
+            }
         }
 
         public PlayState PlayState { get; private set; }
@@ -29,6 +34,7 @@ namespace FlowEnt
 
         #region Settings Properties
 
+        private bool AutoPlay { get; }
         private int LoopCount { get; set; }
         private bool HasInfiniteTweenLoops
         {
@@ -57,7 +63,10 @@ namespace FlowEnt
         #region Build
 
         public static Flow Create()
-            => new Flow();
+            => new Flow(false);
+
+        public static Flow CreateAutoPlayable(int loopCount = 1)
+            => new Flow(true) { LoopCount = loopCount };
 
         public Tween Enqueue(float time)
             => QueueingThread.Enqueue(time);
@@ -69,13 +78,13 @@ namespace FlowEnt
             return this;
         }
 
-        public Flow OnStart(Action callback)
+        public Flow OnFlowStart(Action callback)
         {
             OnStartCallback += callback;
             return this;
         }
 
-        public Flow OnComplete(Action callback)
+        public Flow OnFlowComplete(Action callback)
         {
             OnCompleteCallback += callback;
             return this;
@@ -86,12 +95,17 @@ namespace FlowEnt
         #region Actions
 
         /// <summary>
-        /// Plays the whole flow with the number of specified loops.
+        /// Plays the flow with the number of specified loops.
         /// </summary>
         /// <param name="loopCount">The number of loops to be played. If number smaller than 0 it'll loop forever.</param>
         /// <returns>The current flow.</returns>
         public Flow Play(int loopCount = 1)
         {
+            if (AutoPlay)
+            {
+                throw new FlowEntException(this, "Flow was set to autoplay.");
+            }
+
             if (PlayState != PlayState.Building)
             {
                 throw new FlowEntException(this, "Flow already playing or has finished playing.");
@@ -107,31 +121,15 @@ namespace FlowEnt
                 throw new FlowEntException(this, "Flow contains an infinite loop and won't be able to loop.");
             }
 
-            PlayState = PlayState.Playing;
-            LoopCount = loopCount;
-            PlayingThreads = new List<Thread>(Threads);
-
-            OnStartCallback?.Invoke();
-            for (int i = 0; i < Threads.Count; i++)
-            {
-                Thread thread = Threads[i];
-                thread.Init();
-                thread.OnComplete += (overdraft) =>
-                {
-                    PlayingThreads.Remove(thread);
-
-                    if (PlayingThreads.Count == 0)
-                    {
-                        LoopFinished(overdraft);
-                    }
-                };
-            }
-
-            //Update(0);
-            FlowEntController.Instance.SubscribeToUpdate(Update);
+            InitPlay(loopCount);
             return this;
         }
 
+        /// <summary>
+        /// Plays the flow with the number of specified loops.
+        /// </summary>
+        /// <param name="loopCount">The number of loops to be played. If number smaller than 0 it'll loop forever.</param>
+        /// <returns>The current flow.</returns>
         public async Task<Flow> PlayAsync(int loopCount = 1)
         {
             Play(loopCount);
@@ -174,19 +172,46 @@ namespace FlowEnt
             return this;
         }
 
-        //TODO
-        //public async Task WaitAsync()
-        //{
-        //    while (PlayState != PlayState.Finished)
-        //    {
-        //        Debug.Log($"Wait: {PlayState}");
-        //        await Task.Delay((int)(Time.deltaTime * 1000));
-        //    }
-        //}
-
         #endregion
 
         #region Lifecycle
+
+        private Flow InitPlay(int loopCount, float autoPlayDeltaTime = 0)
+        {
+            PlayState = PlayState.Playing;
+            LoopCount = loopCount;
+            PlayingThreads = new List<Thread>(Threads);
+
+            OnStartCallback?.Invoke();
+            for (int i = 0; i < Threads.Count; i++)
+            {
+                Thread thread = Threads[i];
+                thread.Init();
+                thread.OnComplete += (overdraft) =>
+                {
+                    PlayingThreads.Remove(thread);
+
+                    if (PlayingThreads.Count == 0)
+                    {
+                        LoopFinished(overdraft);
+                    }
+                };
+            }
+
+            if (AutoPlay)
+            {
+                Update(autoPlayDeltaTime);
+            }
+
+            FlowEntController.Instance.SubscribeToUpdate(Update);
+            return this;
+        }
+
+        private void AutoPlayUpdate(float deltaTime)
+        {
+            FlowEntController.Instance.UnsubscribeFromUpdate(AutoPlayUpdate);
+            InitPlay(LoopCount, deltaTime);
+        }
 
         private void Update(float deltaTime)
         {
@@ -257,7 +282,7 @@ namespace FlowEnt
         public FlowAwaiter(Flow flow)
         {
             Flow = flow;
-            Flow.OnComplete(() => OnCompletedCallback.Invoke());
+            Flow.OnFlowComplete(() => OnCompletedCallback.Invoke());
         }
 
         public Flow Flow { get; }

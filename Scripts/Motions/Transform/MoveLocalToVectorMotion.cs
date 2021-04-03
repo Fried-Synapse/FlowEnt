@@ -1,16 +1,17 @@
 using UnityEngine;
 
-namespace FlowEnt
+namespace FlowEnt.Motions.TransformMotions
 {
-    public class MoveLocalToMotion : AbstractMotion<Transform>
+    public class MoveLocalToVectorMotion<TTransform> : AbstractMotion<TTransform>
+        where TTransform : Transform
     {
-        public MoveLocalToMotion(Transform item, Vector3 to) : base(item)
+        public MoveLocalToVectorMotion(TTransform item, Vector3 to) : base(item)
         {
             To = to;
         }
 
-        public Vector3 To { get; }
         public Vector3? From { get; private set; }
+        public Vector3 To { get; }
 
         public override void OnStart()
         {

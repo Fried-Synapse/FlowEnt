@@ -57,6 +57,11 @@ namespace FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Sets a predefined ease. You can check the easings list at https://easings.net/.
+        /// </summary>
+        /// <param name="easing">The easing type</param>
+        /// <returns></returns>
         public Tween SetEase(Easing easing)
         {
             Easing = EasingFactory.Create(easing);

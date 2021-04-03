@@ -1,10 +1,11 @@
 using UnityEngine;
 
-namespace FlowEnt
+namespace FlowEnt.Motions.TransformMotions
 {
-    public class MoveSplineMotion : AbstractMotion<Transform>
+    public class MoveToSplineMotion<TTransform> : AbstractMotion<TTransform>
+        where TTransform : Transform
     {
-        public MoveSplineMotion(Transform item, ISpline spline) : base(item)
+        public MoveToSplineMotion(TTransform item, ISpline spline) : base(item)
         {
             Spline = spline;
         }

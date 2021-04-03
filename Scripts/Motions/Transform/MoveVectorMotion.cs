@@ -1,22 +1,23 @@
 using UnityEngine;
 
-namespace FlowEnt
+namespace FlowEnt.Motions.TransformMotions
 {
-    public class MoveYMotion : AbstractMotion<Transform>
+    public class MoveVectorMotion<TTransform> : AbstractMotion<TTransform>
+        where TTransform : Transform
     {
-        public MoveYMotion(Transform item, float y) : base(item)
+        public MoveVectorMotion(TTransform item, Vector3 value) : base(item)
         {
-            Y = y;
+            Value = value;
         }
 
-        public float Y { get; }
-        public Vector3? To { get; private set; }
+        public Vector3 Value { get; }
         public Vector3? From { get; private set; }
+        public Vector3? To { get; private set; }
 
         public override void OnStart()
         {
             From = Item.position;
-            To = From + new Vector3(0, Y, 0);
+            To = From + Value;
         }
 
         public override void OnUpdate(float t)
