@@ -29,7 +29,7 @@ public class FlowEntExampleController : MonoBehaviour
 
         await Flow.Create().Enqueue(2).PlayAsync();
 
-        Objects[3].MoveZ(4f, 2f);
+        Objects[3].CreateFlowMotion(CameraJourneyLength).MoveZ(4f);
 
         ScaleFlow(Objects[4]);
 
@@ -40,7 +40,7 @@ public class FlowEntExampleController : MonoBehaviour
 
     private void BezierFlow(Transform transform)
     {
-        transform.MoveTo(new BezierSpline(SplinePoints), 5f)
+        transform.CreateFlowMotion(5f).MoveTo(new BezierSpline(SplinePoints))
             .OrientToPath()
             .OnComplete(() =>
             {
@@ -52,7 +52,7 @@ public class FlowEntExampleController : MonoBehaviour
     {
         await Flow.Create()
             .Enqueue(3f)
-            .SetEase(Easing.EaseInOutCubic)
+                .SetEase(Easing.EaseInOutCubic)
                 .For(CameraTransform)
                     .RotateX(-10f)
                 .Tween
@@ -63,7 +63,7 @@ public class FlowEntExampleController : MonoBehaviour
                 .Flow
             .PlayAsync();
 
-        CameraTransform.MoveX(CameraJourneyLength, CameraJourneyLength);
+        CameraTransform.CreateFlowMotion(CameraJourneyLength).MoveX(CameraJourneyLength);
     }
 
     private void ComplexFlow(Transform transform1, Transform transform2)
