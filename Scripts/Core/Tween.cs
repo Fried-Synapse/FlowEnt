@@ -38,10 +38,10 @@ namespace FlowEnt
 
         #endregion
 
-        #region Internal Properties
+        #region Internal Members
 
-        protected float PlayedTime { get; private set; }
-        protected float? TimeToPlay { get; private set; }
+        private float playedTime;
+        private float? timeToPlay;
 
         #endregion
 
@@ -118,7 +118,7 @@ namespace FlowEnt
         {
             if (LoopCount >= 0)
             {
-                TimeToPlay = Time * LoopCount;
+                timeToPlay = Time * LoopCount;
             }
             if (Easing == null)
             {
@@ -138,25 +138,25 @@ namespace FlowEnt
 
         internal float Update(float deltaTime)
         {
-            PlayedTime += deltaTime;
+            playedTime += deltaTime;
             float overdraft = -1;
 
-            if (TimeToPlay != null)
+            if (timeToPlay != null)
             {
-                if (PlayedTime > TimeToPlay)
+                if (playedTime > timeToPlay)
                 {
-                    overdraft = PlayedTime - TimeToPlay.Value;
-                    PlayedTime = TimeToPlay.Value;
+                    overdraft = playedTime - timeToPlay.Value;
+                    playedTime = timeToPlay.Value;
                 }
             }
 
-            float currentLoopDelta = PlayedTime == Time ? Time : PlayedTime % Time;
+            float currentLoopDelta = playedTime == Time ? Time : playedTime % Time;
             switch (LoopType)
             {
                 case LoopType.Reset:
                     break;
                 case LoopType.PingPong:
-                    if (((int)(PlayedTime / Time)) % 2 == 1)
+                    if (((int)(playedTime / Time)) % 2 == 1)
                     {
                         currentLoopDelta = Time - currentLoopDelta;
                     }
@@ -189,7 +189,7 @@ namespace FlowEnt
 
         internal void Reset()
         {
-            PlayedTime = 0;
+            playedTime = 0;
         }
 
         #endregion
