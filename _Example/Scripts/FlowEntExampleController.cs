@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using FlowEnt;
 using UnityEngine;
@@ -21,110 +22,23 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async void Start()
     {
-        BezierFlow(Objects[0]);
-
-        await CameraFlowAsync();
-
-        ComplexFlow(Objects[1], Objects[2]);
-
-        await Flow.Create().Enqueue(2).PlayAsync();
-
-        Objects[3].CreateFlowMotion(CameraJourneyLength).MoveZ(4f);
-
-        ScaleFlow(Objects[4]);
-
-        ColorFlow(Objects[5].GetComponent<MeshRenderer>());
+        Objects[0].transform.Tween(2f).Move(Vector3.one);
+        //BezierFlow(Objects[0]);
     }
 
     #region Flow
 
     private void BezierFlow(Transform transform)
     {
-        transform.CreateFlowMotion(5f).MoveTo(new BezierSpline(SplinePoints))
-            .OrientToPath()
+        transform
+            .Tween(5f)
+                .MoveTo(new BezierSpline(SplinePoints))
+                .OrientToPath()
+            .Tween
             .OnComplete(() =>
             {
                 transform.transform.rotation = Quaternion.identity;
             });
-    }
-
-    private async Task CameraFlowAsync()
-    {
-        await Flow.Create()
-            .Enqueue(3f)
-                .SetEase(Easing.EaseInOutCubic)
-                .For(CameraTransform)
-                    .RotateX(-10f)
-                .Tween
-            .Enqueue(2f)
-                .SetEase(Easing.EaseInOutCubic)
-                .For(CameraTransform)
-                    .RotateTo(new Vector3(0f, 10f, 0f))
-                .Flow
-            .PlayAsync();
-
-        CameraTransform.CreateFlowMotion(CameraJourneyLength).MoveX(CameraJourneyLength);
-    }
-
-    private void ComplexFlow(Transform transform1, Transform transform2)
-    {
-        Flow.Create()
-            .Enqueue(4f)
-                .SetEase(Easing.EaseInBounce)
-                .Loop(LoopType.PingPong, 2)
-                .For(transform1)
-                    .MoveAndRotateTo(new Vector3(2, 3, 0), new Vector3(0, 0, 90))
-                .For(transform1.GetComponent<MeshRenderer>())
-                    .Alpha(1f, 0f)
-                .Tween
-            .Concurrent()
-                .Enqueue(2f)
-                .Enqueue(5f)
-                    .For(transform2)
-                        .MoveY(5)
-                    .Tween
-                .Enqueue(3f)
-                    .For(transform2)
-                        .MoveY(-2)
-                    .Flow
-            .Play(-1);
-    }
-
-    private void ScaleFlow(Transform transform)
-    {
-        Flow.Create()
-            .Enqueue(2f)
-                .SetEase(Easing.EaseInElastic)
-                .For(transform)
-                    .Scale(Vector3.one * 3)
-                .Tween
-            .Enqueue(1.5f)
-                .SetEase(Easing.EaseInCubic)
-                .For(transform)
-                    .ScaleX(1 / 3f)
-                .Tween
-            .Enqueue(1.5f)
-                .SetEase(Easing.EaseInCubic)
-                .For(transform)
-                    .ScaleLocalTo(Vector3.one)
-                .Tween
-            .Play();
-    }
-
-    private void ColorFlow(MeshRenderer renderer)
-    {
-        Color color = renderer.material.color;
-        Flow.Create()
-            .Enqueue(2f)
-            .Enqueue(2f)
-                .For(renderer)
-                    .Color(Color.blue)
-                .Tween
-            .Enqueue(2f)
-                .For(renderer)
-                    .Color(Color.cyan, color)
-            .Flow
-            .Play();
     }
 
     #endregion

@@ -1,78 +1,168 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public class Tween : FlowEntObject
+    public class Tween : AbstractFlow, IUpdatable
     {
-        public Tween(Thread thread, float time)
+        private class AutoStartHelper : IUpdatable
         {
-            Thread = thread;
-            Time = time;
+            public AutoStartHelper(Action<float> callback)
+            {
+                Callback = callback;
+            }
+
+            public int UpdateIndex { get ; set ; }
+            private Action<float> Callback { get; set; }
+
+            public void Update(float deltaTime)
+            {
+                FlowEntController.Instance.UnsubscribeFromUpdate(this);
+                Callback.Invoke(deltaTime);
+            }
         }
 
-        #region Reference Properties
+        public Tween(float time = 1f, bool autoStart = false)
+        {
+            Time = time;
+            AutoStart = autoStart;
+            if (AutoStart)
+            {
+                FlowEntController.Instance.SubscribeToUpdate(new AutoStartHelper(AutoStartUpdate));
+            }
+        }
 
-        public Thread Thread { get; }
-        public Flow Flow => Thread.Flow;
-        internal bool HasInfiniteLoop => LoopCount < 0;
+        private Action OnStartCallback { get; set; }
+        private Action<float> OnUpdateCallback { get; set; }
+        private Action OnCompleteCallback { get; set; }
 
-        #endregion
-
-        #region Events
-
-        protected Action OnStartCallback { get; set; }
-        protected Action<float> OnUpdateCallback { get; set; }
-        protected Action OnCompleteCallback { get; set; }
-
-        #endregion
+        protected AbstractFlow Next { get; private set; }
 
         #region Settings Properties
 
+        public PlayState PlayState { get; private set; } = PlayState.Building;
+        protected bool AutoStart { get; }
         protected float Time { get; }
         protected LoopType LoopType { get; set; } = LoopType.Reset;
-        protected int LoopCount { get; set; } = 1;
+        protected int? LoopCount { get; set; } = 1;
         protected IEasing Easing { get; set; }
-        protected List<IMotion> Motions { get; set; } = new List<IMotion>();
+        protected IMotion[] Motions { get; set; } = new IMotion[0];
 
         #endregion
 
         #region Internal Members
 
-        private float playedTime;
-        private float? timeToPlay;
-
+        private int? remainingLoops;
+        private float remainingTime;
+        public int UpdateIndex { get; set; }
         #endregion
 
-        #region Build
+        #region Events
 
-        public Tween Enqueue(float time)
-            => Thread.Enqueue(time);
-
-        public Tween Loop(LoopType loopType = LoopType.Reset, int loopCount = 1)
+        private void AutoStartUpdate(float deltaTime)
         {
-            LoopType = loopType;
-            LoopCount = loopCount;
+            if (PlayState != PlayState.Building)
+            {
+                return;
+            }
+
+            Start();
+            Update(deltaTime);
+        }
+
+        public Tween Start()
+        {
+            remainingLoops = LoopCount;
+            remainingTime = Time;
+            if (Easing == null)
+            {
+                Easing = new LinearEasing();
+            }
+
+            FlowEntController.Instance.SubscribeToUpdate(this);
+            OnStartCallback?.Invoke();
+            for (int i = 0; i < Motions.Length; i++)
+            {
+                Motions[i].OnStart();
+            }
+            PlayState = PlayState.Playing;
             return this;
         }
 
         /// <summary>
-        /// Sets a predefined ease. You can check the easings list at https://easings.net/.
+        /// Plays the flow with the number of specified loops.
         /// </summary>
-        /// <param name="easing">The easing type</param>
-        /// <returns></returns>
-        public Tween SetEase(Easing easing)
+        /// <param name="loopCount">The number of loops to be played. If number smaller than 0 it'll loop forever.</param>
+        /// <returns>The current flow.</returns>
+        public async Task<Tween> StartAsync()
         {
-            Easing = EasingFactory.Create(easing);
+            Start();
+            await new AwaitableTween(this);
             return this;
         }
 
-        public Tween SetEase(IEasing easing)
+        public void Update(float deltaTime)
         {
-            Easing = easing;
-            return this;
+            remainingTime -= deltaTime;
+
+            float? overdraft = null;
+
+            if (remainingTime < 0)
+            {
+                overdraft = -remainingTime;
+                remainingTime = 0;
+            }
+
+            bool isForward = LoopType == LoopType.Reset || (LoopCount - remainingLoops) % 2 == 0;
+            float currentLoopTime = isForward ? Time - remainingTime : remainingTime;
+            float t = Easing.GetValue(currentLoopTime / Time);
+
+#if FlowEnt_Debug
+            UnityEngine.Debug.Log($"{UnityEngine.Time.time, -12}:   {Id} - {currentLoopDelta / Time}");
+#endif
+
+            OnUpdateCallback?.Invoke(t);
+            for (int i = 0; i < Motions.Length; i++)
+            {
+                Motions[i].OnUpdate(t);
+            }
+
+            if (overdraft != null)
+            {
+                CompleteLoop(overdraft.Value);
+            }
         }
+
+        private void CompleteLoop(float overdraft)
+        {
+            remainingTime = Time;
+            if (LoopCount == null)
+            {
+                Update(overdraft);
+                return;
+            }
+
+            remainingLoops--;
+            if (remainingLoops > 0)
+            {
+                Update(overdraft);
+                return;
+            }
+
+            FlowEntController.Instance.UnsubscribeFromUpdate(this);
+            OnCompleteCallback?.Invoke();
+            for (int i = 0; i < Motions.Length; i++)
+            {
+                Motions[i].OnComplete();
+            }
+            PlayState = PlayState.Finished;
+        }
+
+        #endregion
+
+        #region Setters
 
         public Tween OnStart(Action callback)
         {
@@ -92,106 +182,63 @@ namespace FlowEnt
             return this;
         }
 
-        public MotionWrapper<T> For<T>(T element)
-            => new MotionWrapper<T>(this, element);
-
         public Tween Apply(IMotion motion)
         {
-            Motions.Add(motion);
+            Motions = Motions.Append(motion).ToArray();
             return this;
         }
 
-        public Flow Concurrent()
-            => Flow.Concurrent();
-
-        public Flow Play(int loopCount = 1)
-            => Flow.Play(loopCount);
-
-        public async Task<Flow> PlayAsync(int loopCount = 1)
-            => await Flow.PlayAsync(loopCount);
-
-        #endregion
-
-        #region Lifecycle
-
-        internal void InitPlay()
+        public MotionWrapper<T> For<T>(T element)
         {
-            if (LoopCount >= 0)
-            {
-                timeToPlay = Time * LoopCount;
-            }
-            if (Easing == null)
-            {
-                Easing = new LinearEasing();
-            }
-            OnStart();
+            return new MotionWrapper<T>(this, element);
         }
 
-        internal void OnStart()
+        public Tween SetLoopType(LoopType loopType)
         {
-            OnStartCallback?.Invoke();
-            for (int i = 0; i < Motions.Count; i++)
-            {
-                Motions[i].OnStart();
-            }
+            LoopType = loopType;
+            return this;
         }
 
-        internal float Update(float deltaTime)
+        public Tween SetLoopCount(int loopCount)
         {
-            playedTime += deltaTime;
-            float overdraft = -1;
-
-            if (timeToPlay != null)
-            {
-                if (playedTime > timeToPlay)
-                {
-                    overdraft = playedTime - timeToPlay.Value;
-                    playedTime = timeToPlay.Value;
-                }
-            }
-
-            float currentLoopDelta = playedTime == Time ? Time : playedTime % Time;
-            switch (LoopType)
-            {
-                case LoopType.Reset:
-                    break;
-                case LoopType.PingPong:
-                    if (((int)(playedTime / Time)) % 2 == 1)
-                    {
-                        currentLoopDelta = Time - currentLoopDelta;
-                    }
-                    break;
-                default:
-                    throw new FlowEntException(this, "Unknown loop type.");
-            }
-            float t = Easing.GetValue(currentLoopDelta / Time);
-
-#if FlowEnt_Debug
-            UnityEngine.Debug.Log($"{UnityEngine.Time.time, -12}:   {Id} - {currentLoopDelta / Time}");
-#endif
-
-            OnUpdateCallback?.Invoke(t);
-            for (int i = 0; i < Motions.Count; i++)
-            {
-                Motions[i].OnUpdate(t);
-            }
-
-            if (overdraft > 0)
-            {
-                OnCompleteCallback?.Invoke();
-                for (int i = 0; i < Motions.Count; i++)
-                {
-                    Motions[i].OnComplete();
-                }
-            }
-            return overdraft;
-        }
-
-        internal void Reset()
-        {
-            playedTime = 0;
+            LoopCount = loopCount;
+            return this;
         }
 
         #endregion
+
+    }
+
+    internal class AwaitableTween
+    {
+        public AwaitableTween(Tween tween)
+        {
+            Tween = tween;
+        }
+
+        public Tween Tween { get; }
+        public TweenAwaiter GetAwaiter()
+            => new TweenAwaiter(Tween);
+    }
+
+    internal class TweenAwaiter : INotifyCompletion
+    {
+        public TweenAwaiter(Tween tween)
+        {
+            Tween = tween;
+            Tween.OnComplete(() => OnCompletedCallback.Invoke());
+        }
+
+        public Tween Tween { get; }
+        public bool IsCompleted => Tween.PlayState == PlayState.Finished;
+        private Action OnCompletedCallback { get; set; }
+
+        public Tween GetResult()
+            => Tween;
+
+        public void OnCompleted(Action continuation)
+        {
+            OnCompletedCallback = continuation;
+        }
     }
 }
