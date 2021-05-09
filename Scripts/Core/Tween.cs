@@ -5,50 +5,58 @@ using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public class Tween : AbstractFlow, IUpdatable
+    public sealed class Tween : AbstractAnimation
     {
-        private class AutoStartHelper : IUpdatable
+        private class AwaitableTween
         {
-            public AutoStartHelper(Action<float> callback)
+            public AwaitableTween(Tween tween)
             {
-                Callback = callback;
+                Tween = tween;
             }
 
-            public int UpdateIndex { get ; set ; }
-            private Action<float> Callback { get; set; }
+            public Tween Tween { get; }
+            public TweenAwaiter GetAwaiter()
+                => new TweenAwaiter(Tween);
+        }
 
-            public void Update(float deltaTime)
+        private class TweenAwaiter : INotifyCompletion
+        {
+            public TweenAwaiter(Tween tween)
             {
-                FlowEntController.Instance.UnsubscribeFromUpdate(this);
-                Callback.Invoke(deltaTime);
+                Tween = tween;
+                Tween.OnComplete(() => OnCompletedCallback.Invoke());
+            }
+
+            public Tween Tween { get; }
+            public bool IsCompleted => Tween.PlayState == PlayState.Finished;
+            private Action OnCompletedCallback { get; set; }
+
+            public Tween GetResult()
+                => Tween;
+
+            public void OnCompleted(Action continuation)
+            {
+                OnCompletedCallback = continuation;
             }
         }
 
-        public Tween(float time = 1f, bool autoStart = false)
+        public Tween(float time = 1f, bool autoStart = false) : base(autoStart)
         {
             Time = time;
-            AutoStart = autoStart;
-            if (AutoStart)
-            {
-                FlowEntController.Instance.SubscribeToUpdate(new AutoStartHelper(AutoStartUpdate));
-            }
         }
 
         private Action OnStartCallback { get; set; }
         private Action<float> OnUpdateCallback { get; set; }
         private Action OnCompleteCallback { get; set; }
 
-        protected AbstractFlow Next { get; private set; }
 
         #region Settings Properties
 
-        public PlayState PlayState { get; private set; } = PlayState.Building;
-        protected bool AutoStart { get; }
-        protected float Time { get; }
-        protected LoopType LoopType { get; set; } = LoopType.Reset;
-        protected int? LoopCount { get; set; } = 1;
-        protected IEasing Easing { get; set; }
-        protected IMotion[] Motions { get; set; } = new IMotion[0];
+        private float Time { get; }
+        private LoopType LoopType { get; set; } = LoopType.Reset;
+        private int? LoopCount { get; set; } = 1;
+        private IEasing Easing { get; set; }
+        private IMotion[] Motions { get; set; } = new IMotion[0];
 
         #endregion
 
@@ -56,12 +64,12 @@ namespace FlowEnt
 
         private int? remainingLoops;
         private float remainingTime;
-        public int UpdateIndex { get; set; }
+
         #endregion
 
         #region Events
 
-        private void AutoStartUpdate(float deltaTime)
+        protected override void OnAutoStart(float deltaTime)
         {
             if (PlayState != PlayState.Building)
             {
@@ -103,7 +111,7 @@ namespace FlowEnt
             return this;
         }
 
-        public void Update(float deltaTime)
+        public override void Update(float deltaTime)
         {
             remainingTime -= deltaTime;
 
@@ -199,7 +207,7 @@ namespace FlowEnt
             return this;
         }
 
-        public Tween SetLoopCount(int loopCount)
+        public Tween SetLoopCount(int? loopCount)
         {
             LoopCount = loopCount;
             return this;
@@ -209,36 +217,5 @@ namespace FlowEnt
 
     }
 
-    internal class AwaitableTween
-    {
-        public AwaitableTween(Tween tween)
-        {
-            Tween = tween;
-        }
-
-        public Tween Tween { get; }
-        public TweenAwaiter GetAwaiter()
-            => new TweenAwaiter(Tween);
-    }
-
-    internal class TweenAwaiter : INotifyCompletion
-    {
-        public TweenAwaiter(Tween tween)
-        {
-            Tween = tween;
-            Tween.OnComplete(() => OnCompletedCallback.Invoke());
-        }
-
-        public Tween Tween { get; }
-        public bool IsCompleted => Tween.PlayState == PlayState.Finished;
-        private Action OnCompletedCallback { get; set; }
-
-        public Tween GetResult()
-            => Tween;
-
-        public void OnCompleted(Action continuation)
-        {
-            OnCompletedCallback = continuation;
-        }
-    }
+    
 }

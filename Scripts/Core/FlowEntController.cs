@@ -11,7 +11,7 @@ namespace FlowEnt
 
     public class FlowEntController : MonoBehaviour
     {
-        private const int MaxArrayCapacity = 1000;
+        private const int MaxArrayCapacity = 1600;
 
         private static FlowEntController instance;
         private static object lockObject = new object();
