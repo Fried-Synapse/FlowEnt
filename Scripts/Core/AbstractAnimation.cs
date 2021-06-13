@@ -4,6 +4,7 @@ namespace FlowEnt
 {
     public abstract class AbstractAnimation : FlowEntObject, IUpdatable
     {
+
         private class AutoStartHelper : IUpdatable
         {
             public AutoStartHelper(Action<float> callback)
@@ -33,6 +34,7 @@ namespace FlowEnt
         #region Settings Properties
 
         protected bool AutoStart { get; }
+
         public PlayState PlayState { get; protected set; } = PlayState.Building;
 
         #endregion
