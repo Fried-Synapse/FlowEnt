@@ -10,12 +10,20 @@ namespace FlowEnt.Motions.TransformMotions
             To = to;
         }
 
+        public MoveToVectorMotion(TTransform item, Vector3 from, Vector3 to) : this(item, to)
+        {
+            From = from;
+        }
+
         public Vector3? From { get; private set; }
         public Vector3 To { get; }
 
         public override void OnStart()
         {
-            From = Item.position;
+            if (From == null)
+            {
+                From = Item.position;
+            }
         }
 
         public override void OnUpdate(float t)

@@ -19,6 +19,12 @@ namespace FlowEnt
 
             await Task.Delay(2);
 
+            //TweenTest();
+            //FlowTest();
+        }
+
+        private void TweenTest()
+        {
             const float testTime = 5f;
             const int testAmount = 128000;
             FlowEntController.Instance.SetMaxCapacity(testAmount);
@@ -29,6 +35,26 @@ namespace FlowEnt
             }
 
             new Tween(testTime, true)
+                .OnComplete(() =>
+                {
+                    testStarted = false;
+                    Debug.Log(framerateCount / testTime);
+                });
+        }
+
+        private void FlowTest()
+        {
+            const float testTime = 5f;
+            const int testAmount = 128000;
+            FlowEntController.Instance.SetMaxCapacity(testAmount);
+            testStarted = true;
+            for (int i = 0; i < testAmount - 1; i++)
+            {
+                new Flow(true).Queue(t => t.SetTime(testTime));
+            }
+
+            new Flow(true)
+                .Queue(t => t.SetTime(testTime))
                 .OnComplete(() =>
                 {
                     testStarted = false;

@@ -2,29 +2,35 @@ using UnityEngine;
 
 namespace FlowEnt.Motions.RendererMotions
 {
-    public class AlphaMotion<TRenderer> : AbstractMotion<TRenderer>
+    public class AlphaToMotion<TRenderer> : AbstractMotion<TRenderer>
         where TRenderer : Renderer
     {
-        public AlphaMotion(TRenderer item, float value) : base(item)
+        public AlphaToMotion(TRenderer item, float to) : base(item)
         {
-            Value = value;
+            To = to;
         }
 
-        public float Value { get; }
+        public AlphaToMotion(TRenderer item, float from, float to) : this(item, to)
+        {
+            From = from;
+        }
+
         public float? From { get; private set; }
-        public float? To { get; private set; }
+        public float To { get; }
         private Color color;
 
         public override void OnStart()
         {
-            From = Item.material.color.a;
-            To = From + Value;
+            if (From == null)
+            {
+                From = Item.material.color.a;
+            }
         }
 
         public override void OnUpdate(float t)
         {
             color = Item.material.color;
-            color.a = Mathf.Lerp(From.Value, To.Value, t);
+            color.a = Mathf.Lerp(From.Value, To, t);
             Item.material.color = color;
         }
 

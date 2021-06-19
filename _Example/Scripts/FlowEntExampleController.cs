@@ -21,19 +21,21 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async void Start()
     {
-        await Task.CompletedTask;
-
-
-        await BezierFlow(Objects[0]);
+        //await BezierFlow(Objects[0]);
 
         Objects[1].transform.Tween(2f).Move(Vector3.one).RotateY(180f);
 
-        await new Flow()
-            .Queue(t => t.SetTime(2).For(Objects[2]).MoveX(2))
-            .Queue(new TweenOptions() { Time = 2f }, t => t.For(Objects[2]).MoveX(2))
-            .At(1, new TweenOptions() { Time = 2f }, t => t.For(Objects[3]).MoveX(2))
+        await new Flow(new FlowOptions() { LoopCount = 2 })
+            .Queue(t => t
+                .SetTime(2)
+                .For(Objects[2])
+                    .MoveY(2)
+                .For(Objects[2].GetComponent<MeshRenderer>())
+                    .ColorTo(Color.black))
+            .Queue(new TweenOptions() { Time = 2f }, t => t.For(Objects[2]).MoveY(2))
+            .Queue(t => t.SetTime(1))
+            .At(1, new TweenOptions() { Time = 2f }, t => t.For(Objects[3]).MoveY(2))
             .StartAsync();
-
     }
 
     #region Flow

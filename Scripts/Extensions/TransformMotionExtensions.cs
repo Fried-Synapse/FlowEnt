@@ -27,6 +27,10 @@ namespace FlowEnt
             where TTransform : Transform
             => motionWrapper.Apply(new MoveToVectorMotion<TTransform>(motionWrapper.Item, to));
 
+        public static MotionWrapper<TTransform> MoveTo<TTransform>(this MotionWrapper<TTransform> motionWrapper, Vector3 from, Vector3 to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveToVectorMotion<TTransform>(motionWrapper.Item, from, to));
+
         public static MotionWrapper<TTransform> MoveLocalTo<TTransform>(this MotionWrapper<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalToVectorMotion<TTransform>(motionWrapper.Item, to));

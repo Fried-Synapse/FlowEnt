@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public class TweenOptions
+    public class TweenOptions : AbstractAnimationOptions
     {
-        public bool AutoStart { get; set; }
         public float Time { get; set; }
         public LoopType LoopType { get; set; } = LoopType.Reset;
         public int? LoopCount { get; set; } = 1;
@@ -169,7 +168,7 @@ namespace FlowEnt
             return this;
         }
 
-        public Tween OnComplete(Action callback)
+        public new Tween OnComplete(Action callback)
         {
             OnCompleteCallback += callback;
             return this;

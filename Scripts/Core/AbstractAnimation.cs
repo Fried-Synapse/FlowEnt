@@ -4,6 +4,11 @@ using System.Threading.Tasks;
 
 namespace FlowEnt
 {
+    public class AbstractAnimationOptions
+    {
+        public bool AutoStart { get; set; }
+    }
+
     public abstract class AbstractAnimation : AbstractUpdatable
     {
         private class AutoStartHelper : AbstractUpdatable
@@ -92,11 +97,19 @@ namespace FlowEnt
 
         public void Pause()
         {
+            if (!IsSubscribedToUpdate)
+            {
+                return;
+            }
             FlowEntController.Instance.UnsubscribeFromUpdate(this);
         }
 
         public void Play()
         {
+            if (!IsSubscribedToUpdate)
+            {
+                return;
+            }
             FlowEntController.Instance.SubscribeToUpdate(this);
         }
 
@@ -108,6 +121,11 @@ namespace FlowEnt
         #endregion
 
         #region Setters
+
+        public void OnComplete(Action callback)
+        {
+            OnCompleteCallback += callback;
+        }
 
         #endregion
     }

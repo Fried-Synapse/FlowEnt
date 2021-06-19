@@ -18,7 +18,14 @@ namespace FlowEnt
             array = new T[capacity];
         }
 
+        public FastList(T[] array)
+        {
+            this.array = array;
+            count = array.Length;
+        }
+
         private T[] array;
+
         private int count;
         public int Count => count;
 
@@ -41,6 +48,9 @@ namespace FlowEnt
             count++;
         }
 
+        public T Last()
+            => array[count - 1];
+
         public void Remove(T item)
             => RemoveAt(item.Index);
 
@@ -49,6 +59,12 @@ namespace FlowEnt
             T lastItem = array[count - 1];
             array[index] = lastItem;
             lastItem.Index = index;
+            RemoveLast();
+        }
+
+        public void RemoveLast()
+        {
+            array[count - 1] = default(T);
             count--;
         }
     }
