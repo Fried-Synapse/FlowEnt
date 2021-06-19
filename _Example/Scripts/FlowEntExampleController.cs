@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using FlowEnt;
 using UnityEngine;
@@ -22,15 +21,26 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async void Start()
     {
-        Objects[0].transform.Tween(2f).Move(Vector3.one);
-        //BezierFlow(Objects[0]);
+        await Task.CompletedTask;
+
+
+        await BezierFlow(Objects[0]);
+
+        Objects[1].transform.Tween(2f).Move(Vector3.one).RotateY(180f);
+
+        await new Flow()
+            .Queue(t => t.SetTime(2).For(Objects[2]).MoveX(2))
+            .Queue(new TweenOptions() { Time = 2f }, t => t.For(Objects[2]).MoveX(2))
+            .At(1, new TweenOptions() { Time = 2f }, t => t.For(Objects[3]).MoveX(2))
+            .StartAsync();
+
     }
 
     #region Flow
 
-    private void BezierFlow(Transform transform)
+    private async Task BezierFlow(Transform transform)
     {
-        transform
+        await transform
             .Tween(5f)
                 .MoveTo(new BezierSpline(SplinePoints))
                 .OrientToPath()
@@ -38,7 +48,7 @@ public class FlowEntExampleController : MonoBehaviour
             .OnComplete(() =>
             {
                 transform.transform.rotation = Quaternion.identity;
-            });
+            }).AsAsync();
     }
 
     #endregion

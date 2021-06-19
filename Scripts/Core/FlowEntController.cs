@@ -1,14 +1,7 @@
-using System;
 using UnityEngine;
 
 namespace FlowEnt
 {
-    public interface IUpdatable
-    {
-        public int UpdateIndex { get; set; }
-        public void Update(float deltaTime);
-    }
-
     public class FlowEntController : MonoBehaviour
     {
         private const int MaxArrayCapacity = 1600;
@@ -33,52 +26,46 @@ namespace FlowEnt
             }
         }
 
-        private IUpdatable[] onUpdateCallbacks = new IUpdatable[MaxArrayCapacity];
-        private int arraySize;
-        private int arraySizeOnPause;
+        private FastList<AbstractUpdatable> onUpdateCallbacks = new FastList<AbstractUpdatable>(MaxArrayCapacity);
 
-        public PlayState PlayState { get; private set; } = PlayState.Playing;
+        private PlayState playState = PlayState.Playing;
+        public PlayState PlayState { get => playState; }
 
         private void Update()
         {
-            for (int i = 0; i < arraySize; i++)
+            if (playState != PlayState.Playing)
             {
-                onUpdateCallbacks[i].Update(Time.deltaTime);
+                return;
+            }
+            for (int i = 0; i < onUpdateCallbacks.Count; i++)
+            {
+                onUpdateCallbacks[i].UpdateInternal(Time.deltaTime);
             }
         }
 
-        public void SubscribeToUpdate(IUpdatable updatable)
+        internal void SubscribeToUpdate(AbstractUpdatable updatable)
         {
-            onUpdateCallbacks[arraySize] = updatable;
-            updatable.UpdateIndex = arraySize;
-            arraySize++;
+            onUpdateCallbacks.Add(updatable);
         }
 
-        public void UnsubscribeFromUpdate(IUpdatable updatable)
+        internal void UnsubscribeFromUpdate(AbstractUpdatable updatable)
         {
-            int indexToRemove = updatable.UpdateIndex;
-            IUpdatable lastUpdatable = onUpdateCallbacks[arraySize - 1];
-            onUpdateCallbacks[indexToRemove] = lastUpdatable;
-            lastUpdatable.UpdateIndex = indexToRemove;
-            arraySize--;
+            onUpdateCallbacks.Remove(updatable);
         }
 
         public void Pause()
         {
-            arraySizeOnPause = arraySize;
-            arraySize = 0;
-            PlayState = PlayState.Paused;
+            playState = PlayState.Paused;
         }
 
         public void Resume()
         {
-            arraySize = arraySizeOnPause;
-            PlayState = PlayState.Playing;
+            playState = PlayState.Playing;
         }
 
         public void SetMaxCapacity(int capacity)
         {
-            onUpdateCallbacks = new IUpdatable[capacity];
+            onUpdateCallbacks = new FastList<AbstractUpdatable>(capacity);
         }
     }
 }

@@ -1,61 +1,34 @@
 using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace FlowEnt
 {
+    public class TweenOptions
+    {
+        public bool AutoStart { get; set; }
+        public float Time { get; set; }
+        public LoopType LoopType { get; set; } = LoopType.Reset;
+        public int? LoopCount { get; set; } = 1;
+        public IEasing Easing { get; set; }
+    }
+
     public sealed class Tween : AbstractAnimation
     {
-        private class AwaitableTween
+        public Tween(TweenOptions options) : base(options.AutoStart)
         {
-            public AwaitableTween(Tween tween)
-            {
-                Tween = tween;
-            }
-
-            public Tween Tween { get; }
-            public TweenAwaiter GetAwaiter()
-                => new TweenAwaiter(Tween);
+            Options = options;
         }
 
-        private class TweenAwaiter : INotifyCompletion
+        public Tween(float time = 1f, bool autoStart = false) : this(new TweenOptions() { Time = time, AutoStart = autoStart })
         {
-            public TweenAwaiter(Tween tween)
-            {
-                Tween = tween;
-                Tween.OnComplete(() => OnCompletedCallback.Invoke());
-            }
-
-            public Tween Tween { get; }
-            public bool IsCompleted => Tween.PlayState == PlayState.Finished;
-            private Action OnCompletedCallback { get; set; }
-
-            public Tween GetResult()
-                => Tween;
-
-            public void OnCompleted(Action continuation)
-            {
-                OnCompletedCallback = continuation;
-            }
         }
 
-        public Tween(float time = 1f, bool autoStart = false) : base(autoStart)
-        {
-            Time = time;
-        }
-
-        private Action OnStartCallback { get; set; }
         private Action<float> OnUpdateCallback { get; set; }
-        private Action OnCompleteCallback { get; set; }
-
 
         #region Settings Properties
 
-        private float Time { get; }
-        private LoopType LoopType { get; set; } = LoopType.Reset;
-        private int? LoopCount { get; set; } = 1;
-        private IEasing Easing { get; set; }
+        private TweenOptions Options { get; }
         private IMotion[] Motions { get; set; } = new IMotion[0];
 
         #endregion
@@ -67,7 +40,7 @@ namespace FlowEnt
 
         #endregion
 
-        #region Events
+        #region Lifecycle
 
         protected override void OnAutoStart(float deltaTime)
         {
@@ -77,41 +50,45 @@ namespace FlowEnt
             }
 
             Start();
-            Update(deltaTime);
+            UpdateInternal(deltaTime);
         }
 
         public Tween Start()
         {
-            remainingLoops = LoopCount;
-            remainingTime = Time;
-            if (Easing == null)
+            StartInternal();
+            return this;
+        }
+
+        public async Task<Tween> StartAsync()
+        {
+            StartInternal();
+            await new AwaitableAnimation(this);
+            return this;
+        }
+
+        internal override void StartInternal(bool subscribeToUpdate = true)
+        {
+            remainingLoops = Options.LoopCount;
+            remainingTime = Options.Time;
+            if (Options.Easing == null)
             {
-                Easing = new LinearEasing();
+                Options.Easing = new LinearEasing();
             }
 
-            FlowEntController.Instance.SubscribeToUpdate(this);
+            IsSubscribedToUpdate = subscribeToUpdate;
+            if (IsSubscribedToUpdate)
+            {
+                FlowEntController.Instance.SubscribeToUpdate(this);
+            }
             OnStartCallback?.Invoke();
             for (int i = 0; i < Motions.Length; i++)
             {
                 Motions[i].OnStart();
             }
             PlayState = PlayState.Playing;
-            return this;
         }
 
-        /// <summary>
-        /// Plays the flow with the number of specified loops.
-        /// </summary>
-        /// <param name="loopCount">The number of loops to be played. If number smaller than 0 it'll loop forever.</param>
-        /// <returns>The current flow.</returns>
-        public async Task<Tween> StartAsync()
-        {
-            Start();
-            await new AwaitableTween(this);
-            return this;
-        }
-
-        public override void Update(float deltaTime)
+        internal override float? UpdateInternal(float deltaTime)
         {
             remainingTime -= deltaTime;
 
@@ -123,9 +100,9 @@ namespace FlowEnt
                 remainingTime = 0;
             }
 
-            bool isForward = LoopType == LoopType.Reset || (LoopCount - remainingLoops) % 2 == 0;
-            float currentLoopTime = isForward ? Time - remainingTime : remainingTime;
-            float t = Easing.GetValue(currentLoopTime / Time);
+            bool isForward = Options.LoopType == LoopType.Reset || (Options.LoopCount - remainingLoops) % 2 == 0;
+            float currentLoopTime = isForward ? Options.Time - remainingTime : remainingTime;
+            float t = Options.Easing.GetValue(currentLoopTime / Options.Time);
 
 #if FlowEnt_Debug
             UnityEngine.Debug.Log($"{UnityEngine.Time.time, -12}:   {Id} - {currentLoopDelta / Time}");
@@ -139,38 +116,46 @@ namespace FlowEnt
 
             if (overdraft != null)
             {
-                CompleteLoop(overdraft.Value);
+                return CompleteLoop(overdraft.Value);
             }
+            return null;
         }
 
-        private void CompleteLoop(float overdraft)
+        private float? CompleteLoop(float overdraft)
         {
-            remainingTime = Time;
-            if (LoopCount == null)
+            remainingTime = Options.Time;
+            if (Options.LoopCount == null)
             {
-                Update(overdraft);
-                return;
+                UpdateInternal(overdraft);
+                return null;
             }
 
             remainingLoops--;
             if (remainingLoops > 0)
             {
-                Update(overdraft);
-                return;
+                UpdateInternal(overdraft);
+                return null;
             }
 
-            FlowEntController.Instance.UnsubscribeFromUpdate(this);
+            if (IsSubscribedToUpdate)
+            {
+                FlowEntController.Instance.UnsubscribeFromUpdate(this);
+            }
+
             OnCompleteCallback?.Invoke();
             for (int i = 0; i < Motions.Length; i++)
             {
                 Motions[i].OnComplete();
             }
             PlayState = PlayState.Finished;
+            return overdraft;
         }
 
         #endregion
 
         #region Setters
+
+        #region Events
 
         public Tween OnStart(Action callback)
         {
@@ -190,6 +175,10 @@ namespace FlowEnt
             return this;
         }
 
+        #endregion
+
+        #region Motions
+
         public Tween Apply(IMotion motion)
         {
             Motions = Motions.Append(motion).ToArray();
@@ -201,21 +190,33 @@ namespace FlowEnt
             return new MotionWrapper<T>(this, element);
         }
 
+        #endregion
+
+        #region Settings
+
+        public Tween SetTime(float time)
+        {
+            Options.Time = time;
+            return this;
+        }
+
         public Tween SetLoopType(LoopType loopType)
         {
-            LoopType = loopType;
+            Options.LoopType = loopType;
             return this;
         }
 
         public Tween SetLoopCount(int? loopCount)
         {
-            LoopCount = loopCount;
+            Options.LoopCount = loopCount;
             return this;
         }
 
         #endregion
 
+        #endregion
+
     }
 
-    
+
 }

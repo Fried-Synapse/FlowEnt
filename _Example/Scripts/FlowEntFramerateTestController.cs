@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -8,31 +6,13 @@ namespace FlowEnt
     public class FlowEntFramerateTestController : MonoBehaviour
     {
         [SerializeField]
-        private bool runTest;
-
-        [SerializeField]
         private Transform framerateAnchor;
 
         private int framerateCount;
         private bool testStarted;
 
-        private void Update()
-        {
-            if (!testStarted)
-            {
-                return;
-            }
-
-            framerateCount++;
-        }
-
         private async void Start()
         {
-            if (!runTest)
-            {
-                return;
-            }
-
             Transform framerateAnchorInstance = Instantiate(framerateAnchor);
             framerateAnchorInstance.parent = transform;
             framerateAnchorInstance.position = Vector3.zero;
@@ -45,17 +25,25 @@ namespace FlowEnt
             testStarted = true;
             for (int i = 0; i < testAmount - 1; i++)
             {
-                new Tween(testTime)
-                    .Start();
+                new Tween(testTime, true);
             }
 
-            new Tween(testTime)
+            new Tween(testTime, true)
                 .OnComplete(() =>
                 {
                     testStarted = false;
                     Debug.Log(framerateCount / testTime);
-                })
-                .Start();
+                });
+        }
+
+        private void Update()
+        {
+            if (!testStarted)
+            {
+                return;
+            }
+
+            framerateCount++;
         }
     }
 }

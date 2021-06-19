@@ -1,24 +1,58 @@
 using System;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public abstract class AbstractAnimation : FlowEntObject, IUpdatable
+    public abstract class AbstractAnimation : AbstractUpdatable
     {
-
-        private class AutoStartHelper : IUpdatable
+        private class AutoStartHelper : AbstractUpdatable
         {
             public AutoStartHelper(Action<float> callback)
             {
                 Callback = callback;
             }
 
-            public int UpdateIndex { get; set; }
             private Action<float> Callback { get; set; }
 
-            public void Update(float deltaTime)
+            internal override float? UpdateInternal(float deltaTime)
             {
                 FlowEntController.Instance.UnsubscribeFromUpdate(this);
                 Callback.Invoke(deltaTime);
+                return null;
+            }
+        }
+
+        protected class AwaitableAnimation
+        {
+            public AwaitableAnimation(AbstractAnimation animation)
+            {
+                Animation = animation;
+            }
+
+            public AbstractAnimation Animation { get; }
+            public AnimationAwaiter GetAwaiter()
+                => new AnimationAwaiter(Animation);
+        }
+
+        protected class AnimationAwaiter : INotifyCompletion
+        {
+            public AnimationAwaiter(AbstractAnimation animation)
+            {
+                Animation = animation;
+                Animation.OnCompleteCallback += () => OnCompletedCallback.Invoke();
+            }
+
+            public AbstractAnimation Animation { get; }
+            public bool IsCompleted => Animation.PlayState == PlayState.Finished;
+            private Action OnCompletedCallback { get; set; }
+
+            public AbstractAnimation GetResult()
+                => Animation;
+
+            public void OnCompleted(Action continuation)
+            {
+                OnCompletedCallback = continuation;
             }
         }
 
@@ -31,9 +65,14 @@ namespace FlowEnt
             }
         }
 
+        protected Action OnStartCallback { get; set; }
+        protected Action OnCompleteCallback { get; set; }
+
         #region Settings Properties
 
-        protected bool AutoStart { get; }
+        private bool AutoStart { get; }
+
+        protected bool IsSubscribedToUpdate { get; set; }
 
         public PlayState PlayState { get; protected set; } = PlayState.Building;
 
@@ -41,14 +80,15 @@ namespace FlowEnt
 
         #region Flow Data
 
-        public AbstractAnimation Next { get; protected set; }
-        public int UpdateIndex { get; set; }
+        public Tween Next { get; protected set; }
 
         #endregion
 
+        #region Lifecycle
+
         protected abstract void OnAutoStart(float deltaTime);
 
-        public abstract void Update(float deltaTime);
+        internal abstract void StartInternal(bool subscribeToUpdate = true);
 
         public void Pause()
         {
@@ -59,5 +99,16 @@ namespace FlowEnt
         {
             FlowEntController.Instance.SubscribeToUpdate(this);
         }
+
+        public async Task AsAsync()
+        {
+            await new AwaitableAnimation(this);
+        }
+
+        #endregion
+
+        #region Setters
+
+        #endregion
     }
 }
