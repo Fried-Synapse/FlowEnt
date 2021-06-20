@@ -42,7 +42,8 @@ namespace FlowEnt
         private AnimationWrapper lastQueuedAnimationWrapper;
         private int animationsCount;
 
-        private FastList<AnimationWrapper> orderedTimeIndexedAnimationWrappers;
+        private AnimationWrapper[] orderedTimeIndexedAnimationWrappers;
+        private FastList<AnimationWrapper> runningOrderedTimeIndexedAnimationWrappers;
         private AnimationWrapper nextTimeIndexedAnimationWrapper;
 
         private FastList<AnimationWrapper> runningAnimaionWrappers;
@@ -80,9 +81,16 @@ namespace FlowEnt
         private void Init()
         {
             time = 0;
-            orderedTimeIndexedAnimationWrappers = new FastList<AnimationWrapper>(timeIndexedAnimationWrappers.OrderByDescending(w => w.TimeIndex).ToArray());
-            nextTimeIndexedAnimationWrapper = orderedTimeIndexedAnimationWrappers.Last();
-            orderedTimeIndexedAnimationWrappers.RemoveLast();
+
+            if (orderedTimeIndexedAnimationWrappers == null)
+            {
+                orderedTimeIndexedAnimationWrappers = timeIndexedAnimationWrappers.ToArray();
+                QuickSortByTimeIndex(orderedTimeIndexedAnimationWrappers, 0, orderedTimeIndexedAnimationWrappers.Length - 1);
+            }
+            runningOrderedTimeIndexedAnimationWrappers = new FastList<AnimationWrapper>(orderedTimeIndexedAnimationWrappers);
+
+            nextTimeIndexedAnimationWrapper = runningOrderedTimeIndexedAnimationWrappers.Last();
+            runningOrderedTimeIndexedAnimationWrappers.RemoveLast();
             runningAnimaionWrappers = new FastList<AnimationWrapper>(animationsCount);
         }
 
@@ -113,10 +121,10 @@ namespace FlowEnt
             {
                 nextTimeIndexedAnimationWrapper.Animation.StartInternal(false);
                 runningAnimaionWrappers.Add(nextTimeIndexedAnimationWrapper);
-                if (orderedTimeIndexedAnimationWrappers.Count > 0)
+                if (runningOrderedTimeIndexedAnimationWrappers.Count > 0)
                 {
-                    nextTimeIndexedAnimationWrapper = orderedTimeIndexedAnimationWrappers.Last();
-                    orderedTimeIndexedAnimationWrappers.RemoveLast();
+                    nextTimeIndexedAnimationWrapper = runningOrderedTimeIndexedAnimationWrappers.Last();
+                    runningOrderedTimeIndexedAnimationWrappers.RemoveLast();
                 }
                 else
                 {
@@ -261,6 +269,49 @@ namespace FlowEnt
 
         public Flow At<T>(float timeIndex, TweenOptions options, Func<Tween, MotionWrapper<T>> createTween)
             => At(timeIndex, createTween(new Tween(options)).Tween);
+
+        #endregion
+
+        #region Private
+
+        #region QuickSort TimeIndex
+
+        private void QuickSortByTimeIndex(AnimationWrapper[] arr, int start, int end)
+        {
+            int i;
+            if (start < end)
+            {
+                i = Partition(arr, start, end);
+
+                QuickSortByTimeIndex(arr, start, i - 1);
+                QuickSortByTimeIndex(arr, i + 1, end);
+            }
+        }
+
+        private int Partition(AnimationWrapper[] arr, int start, int end)
+        {
+            AnimationWrapper temp;
+            float p = arr[end].TimeIndex.Value;
+            int i = start - 1;
+
+            for (int j = start; j <= end - 1; j++)
+            {
+                if (arr[j].TimeIndex >= p)
+                {
+                    i++;
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+
+            temp = arr[i + 1];
+            arr[i + 1] = arr[end];
+            arr[end] = temp;
+            return i + 1;
+        }
+
+        #endregion
 
         #endregion
 

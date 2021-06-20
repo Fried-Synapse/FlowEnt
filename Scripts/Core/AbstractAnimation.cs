@@ -63,8 +63,7 @@ namespace FlowEnt
 
         public AbstractAnimation(bool autoStart = false)
         {
-            AutoStart = autoStart;
-            if (AutoStart)
+            if (autoStart)
             {
                 FlowEntController.Instance.SubscribeToUpdate(new AutoStartHelper(OnAutoStart));
             }
@@ -74,8 +73,6 @@ namespace FlowEnt
         protected Action OnCompleteCallback { get; set; }
 
         #region Settings Properties
-
-        private bool AutoStart { get; }
 
         protected bool IsSubscribedToUpdate { get; set; }
 

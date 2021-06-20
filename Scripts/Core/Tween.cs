@@ -6,10 +6,12 @@ namespace FlowEnt
 {
     public class TweenOptions : AbstractAnimationOptions
     {
-        public float Time { get; set; }
+        private static readonly IEasing LinearEasing = new LinearEasing();
+
+        public float Time { get; set; } = 1f;
         public LoopType LoopType { get; set; } = LoopType.Reset;
         public int? LoopCount { get; set; } = 1;
-        public IEasing Easing { get; set; }
+        public IEasing Easing { get; set; } = LinearEasing;
     }
 
     public sealed class Tween : AbstractAnimation
@@ -19,7 +21,7 @@ namespace FlowEnt
             Options = options;
         }
 
-        public Tween(float time = 1f, bool autoStart = false) : this(new TweenOptions() { Time = time, AutoStart = autoStart })
+        public Tween(bool autoStart = false) : this(new TweenOptions() { AutoStart = autoStart })
         {
         }
 
@@ -64,15 +66,11 @@ namespace FlowEnt
             await new AwaitableAnimation(this);
             return this;
         }
-
+       
         internal override void StartInternal(bool subscribeToUpdate = true)
         {
             remainingLoops = Options.LoopCount;
             remainingTime = Options.Time;
-            if (Options.Easing == null)
-            {
-                Options.Easing = new LinearEasing();
-            }
 
             IsSubscribedToUpdate = subscribeToUpdate;
             if (IsSubscribedToUpdate)

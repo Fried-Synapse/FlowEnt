@@ -4,7 +4,7 @@ namespace FlowEnt
 {
     public class FlowEntController : MonoBehaviour
     {
-        private const int MaxArrayCapacity = 1600;
+        private const int DefaultMaxArrayCapacity = 6400;
 
         private static FlowEntController instance;
         private static object lockObject = new object();
@@ -26,7 +26,10 @@ namespace FlowEnt
             }
         }
 
-        private FastList<AbstractUpdatable> onUpdateCallbacks = new FastList<AbstractUpdatable>(MaxArrayCapacity);
+        private ulong lastId;
+        public ulong GetId() => lastId++;
+
+        private FastList<AbstractUpdatable> onUpdateCallbacks = new FastList<AbstractUpdatable>(DefaultMaxArrayCapacity);
 
         private PlayState playState = PlayState.Playing;
         public PlayState PlayState { get => playState; }

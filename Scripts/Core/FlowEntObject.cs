@@ -1,14 +1,14 @@
-using System;
-
 namespace FlowEnt
 {
     public class FlowEntObject
     {
         public FlowEntObject()
         {
-            Id = Guid.NewGuid();
+            Id = lastId++;
         }
 
-        public Guid Id { get; set; }
+        private static ulong lastId;
+
+        public ulong Id { get; set; }
     }
 }
