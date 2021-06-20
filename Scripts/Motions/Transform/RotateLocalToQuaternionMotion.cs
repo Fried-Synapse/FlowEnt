@@ -10,12 +10,20 @@ namespace FlowEnt.Motions.TransformMotions
             To = to;
         }
 
+        public RotateLocalToQuaternionMotion(TTransform item, Quaternion from, Quaternion to) : this(item, to)
+        {
+            From = from;
+        }
+
         public Quaternion? From { get; private set; }
         public Quaternion To { get; }
 
         public override void OnStart()
         {
-            From = Item.localRotation;
+            if (From == null)
+            {
+                From = Item.localRotation;
+            }
         }
 
         public override void OnUpdate(float t)

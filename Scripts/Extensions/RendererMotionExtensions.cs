@@ -5,6 +5,8 @@ namespace FlowEnt
 {
     public static class RendererMotionExtensions
     {
+        #region Alpha
+
         public static MotionWrapper<TRenderer> Alpha<TRenderer>(this MotionWrapper<TRenderer> motion, float value)
             where TRenderer : Renderer
             => motion.Apply(new AlphaMotion<TRenderer>(motion.Item, value));
@@ -17,6 +19,10 @@ namespace FlowEnt
             where TRenderer : Renderer
             => motion.Apply(new AlphaToMotion<TRenderer>(motion.Item, from, to));
 
+        #endregion
+
+        #region Color
+
         public static MotionWrapper<TRenderer> Color<TRenderer>(this MotionWrapper<TRenderer> motion, Color value)
             where TRenderer : Renderer
             => motion.Apply(new ColorMotion<TRenderer>(motion.Item, value));
@@ -28,5 +34,8 @@ namespace FlowEnt
         public static MotionWrapper<TRenderer> ColorTo<TRenderer>(this MotionWrapper<TRenderer> motion, Color from, Color to)
             where TRenderer : Renderer
             => motion.Apply(new ColorToMotion<TRenderer>(motion.Item, from, to));
+
+        #endregion
+
     }
 }

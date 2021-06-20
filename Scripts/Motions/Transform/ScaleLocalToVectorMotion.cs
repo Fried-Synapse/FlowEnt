@@ -10,12 +10,20 @@ namespace FlowEnt.Motions.TransformMotions
             To = to;
         }
 
+        public ScaleLocalToVectorMotion(TTransform item, Vector3 from, Vector3 to) : this(item, to)
+        {
+            From = from;
+        }
+
         public Vector3? From { get; private set; }
         public Vector3 To { get; }
 
         public override void OnStart()
         {
-            From = Item.localScale;
+            if (From == null)
+            {
+                From = Item.localScale;
+            }
         }
 
         public override void OnUpdate(float t)
