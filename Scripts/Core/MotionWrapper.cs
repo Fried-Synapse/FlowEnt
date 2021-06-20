@@ -11,7 +11,6 @@ namespace FlowEnt
         }
 
         public Tween Tween { get; }
-        //public Flow Flow => Thread.Flow;
         public T Item { get; }
 
         public MotionWrapper<T> Apply(IMotion motion)

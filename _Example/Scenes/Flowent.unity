@@ -499,8 +499,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1055938218}
   - component: {fileID: 1055938219}
-  - component: {fileID: 1055938220}
-  - component: {fileID: 1055938221}
   m_Layer: 0
   m_Name: ExampleController
   m_TagString: Untagged
@@ -556,32 +554,6 @@ MonoBehaviour:
   - {x: 1, y: 5, z: 0}
   - {x: -2, y: 7, z: 0}
   - {x: 0, y: 8, z: 0}
---- !u!114 &1055938220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055938217}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c32d1096503224496b70aa2bc07c67e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  framerateAnchor: {fileID: 2790963635679519058, guid: 5982d5b3564484a66ad44561af8265da, type: 3}
---- !u!114 &1055938221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055938217}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc9c2fb8aa1e54edb99620098471e28e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  framerateAnchor: {fileID: 2790963635679519058, guid: 5982d5b3564484a66ad44561af8265da, type: 3}
 --- !u!1 &1285232695
 GameObject:
   m_ObjectHideFlags: 0
