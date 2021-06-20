@@ -1,38 +1,28 @@
 using UnityEngine;
 
-namespace FlowEnt
+namespace FlowEnt.Motions.RendererMotions
 {
     public class ColorMotion<TRenderer> : AbstractMotion<TRenderer>
         where TRenderer : Renderer
     {
-        public ColorMotion(TRenderer item, Color to) : base(item)
+        public ColorMotion(TRenderer item, Color value) : base(item)
         {
-            To = to;
+            Value = value;
         }
 
-        public ColorMotion(TRenderer item, Color from, Color to) : this(item, to)
-        {
-            From = from;
-        }
-
+        public Color Value { get; }
         public Color? From { get; private set; }
-        public Color To { get; }
+        public Color? To { get; private set; }
 
         public override void OnStart()
         {
-            if (From == null)
-            {
-                From = Item.material.color;
-            }
-            else
-            {
-                Item.material.color = From.Value;
-            }
+            From = Item.material.color;
+            To = From + Value;
         }
 
         public override void OnUpdate(float t)
         {
-            Item.material.color = Color.Lerp(From.Value, To, t);
+            Item.material.color = Color.Lerp(From.Value, To.Value, t);
         }
 
         public override void OnComplete()

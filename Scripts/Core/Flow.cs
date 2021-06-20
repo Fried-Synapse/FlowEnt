@@ -1,300 +1,268 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public class Flow : FlowEntObject
+    public class FlowOptions : AbstractAnimationOptions
     {
-        private Flow(bool autoPlay)
+        public int? LoopCount { get; set; } = 1;
+    }
+
+    public sealed class Flow : AbstractAnimation
+    {
+        private class AnimationWrapper : AbstractFastListItem
         {
-            Concurrent();
-            AutoPlay = autoPlay;
-            if (AutoPlay)
+            public AnimationWrapper(Tween animation, float? startingTime = null)
             {
-                FlowEntController.Instance.SubscribeToUpdate(AutoPlayUpdate);
+                Animation = animation;
+                TimeIndex = startingTime;
             }
+
+            public Tween Animation { get; }
+            public float? TimeIndex { get; }
+            public AnimationWrapper Next { get; set; }
         }
 
-        public PlayState PlayState { get; private set; }
+        public Flow(FlowOptions options) : base(options.AutoStart)
+        {
+            Options = options;
+        }
 
-        #region Reference Properties
+        public Flow(bool autoStart = false) : this(new FlowOptions() { AutoStart = autoStart })
+        {
+        }
 
-        internal List<Thread> Threads { get; } = new List<Thread>();
+        private FlowOptions Options { get; set; }
+
+        #region Internal Members
+
+        private List<AnimationWrapper> timeIndexedAnimationWrappers = new List<AnimationWrapper>();
+        private AnimationWrapper lastQueuedAnimationWrapper;
+        private int animationsCount;
+
+        private FastList<AnimationWrapper> orderedTimeIndexedAnimationWrappers;
+        private AnimationWrapper nextTimeIndexedAnimationWrapper;
+
+        private FastList<AnimationWrapper> runningAnimaionWrappers;
+        private float time;
+        private int? remainingLoops;
 
         #endregion
 
         #region Events
 
-        private Action OnStartCallback { get; set; }
-        private Action OnCompleteCallback { get; set; }
-
-        #endregion
-
-        #region Settings Properties
-
-        private bool AutoPlay { get; }
-        private int LoopCount { get; set; }
-        private bool HasInfiniteTweenLoops
+        protected override void OnAutoStart(float deltaTime)
         {
-            get
+            if (PlayState != PlayState.Building)
             {
-                for (int i = 0; i < Threads.Count; i++)
-                {
-                    if (Threads[i].HasInfiniteTweenLoops)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                return;
             }
+
+            StartInternal();
+            UpdateInternal(deltaTime);
         }
 
-        #endregion
-
-        #region Internal Properties
-
-        private Thread QueueingThread { get; set; }
-        private List<Thread> PlayingThreads { get; set; }
-
-        #endregion
-
-        #region Build
-
-        public static Flow Create()
-            => new Flow(false);
-
-        public static Flow CreateAutoPlayable(int loopCount = 1)
-            => new Flow(true) { LoopCount = loopCount };
-
-        public Tween Enqueue(float time)
-            => QueueingThread.Enqueue(time);
-
-        public Flow Concurrent()
+        public Flow Start()
         {
-            QueueingThread = new Thread(this);
-            Threads.Add(QueueingThread);
+            StartInternal();
             return this;
         }
 
-        public Flow OnFlowStart(Action callback)
+        public async Task<Flow> StartAsync()
+        {
+            StartInternal();
+            await new AwaitableAnimation(this);
+            return this;
+        }
+
+        private void Init()
+        {
+            time = 0;
+            orderedTimeIndexedAnimationWrappers = new FastList<AnimationWrapper>(timeIndexedAnimationWrappers.OrderByDescending(w => w.TimeIndex).ToArray());
+            nextTimeIndexedAnimationWrapper = orderedTimeIndexedAnimationWrappers.Last();
+            orderedTimeIndexedAnimationWrappers.RemoveLast();
+            runningAnimaionWrappers = new FastList<AnimationWrapper>(animationsCount);
+        }
+
+        internal override void StartInternal(bool subscribeToUpdate = true)
+        {
+            remainingLoops = Options.LoopCount;
+
+            Init();
+
+            IsSubscribedToUpdate = subscribeToUpdate;
+            if (IsSubscribedToUpdate)
+            {
+                FlowEntController.Instance.SubscribeToUpdate(this);
+            }
+
+            OnStartCallback?.Invoke();
+
+            PlayState = PlayState.Playing;
+        }
+
+        internal override float? UpdateInternal(float deltaTime)
+        {
+            time += deltaTime;
+
+            #region TimeBased start
+
+            while (nextTimeIndexedAnimationWrapper != null && time > nextTimeIndexedAnimationWrapper.TimeIndex)
+            {
+                nextTimeIndexedAnimationWrapper.Animation.StartInternal(false);
+                runningAnimaionWrappers.Add(nextTimeIndexedAnimationWrapper);
+                if (orderedTimeIndexedAnimationWrappers.Count > 0)
+                {
+                    nextTimeIndexedAnimationWrapper = orderedTimeIndexedAnimationWrappers.Last();
+                    orderedTimeIndexedAnimationWrappers.RemoveLast();
+                }
+                else
+                {
+                    nextTimeIndexedAnimationWrapper = null;
+                }
+            }
+
+            #endregion
+
+            #region Updating animations
+
+            for (int i = 0; i < runningAnimaionWrappers.Count; i++)
+            {
+                bool isUpdated = false;
+                float runningDeltaTime = deltaTime;
+                AnimationWrapper animationWrapper = runningAnimaionWrappers[i];
+                do
+                {
+                    float? overdraft = animationWrapper.Animation.UpdateInternal(runningDeltaTime);
+                    if (overdraft != null)
+                    {
+                        animationWrapper = runningAnimaionWrappers[i].Next;
+                        if (animationWrapper != null)
+                        {
+                            runningAnimaionWrappers[i] = animationWrapper;
+                            animationWrapper.Animation.StartInternal(false);
+                            runningDeltaTime = overdraft.Value;
+                        }
+                        else
+                        {
+                            runningAnimaionWrappers.RemoveAt(i);
+                            if (runningAnimaionWrappers.Count == 0 && nextTimeIndexedAnimationWrapper == null)
+                            {
+                                return CompleteLoop(overdraft.Value);
+                            }
+                            i--;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        isUpdated = true;
+                    }
+                }
+                while (!isUpdated);
+            }
+
+            #endregion
+
+            return null;
+        }
+
+        private float? CompleteLoop(float overdraft)
+        {
+            remainingLoops--;
+            if (remainingLoops > 0)
+            {
+                Init();
+                UpdateInternal(overdraft);
+                return null;
+            }
+
+            if (IsSubscribedToUpdate)
+            {
+                FlowEntController.Instance.UnsubscribeFromUpdate(this);
+            }
+
+            OnCompleteCallback?.Invoke();
+
+            PlayState = PlayState.Finished;
+            return overdraft;
+        }
+
+        #endregion
+
+        #region Setters
+
+        public Flow OnStart(Action callback)
         {
             OnStartCallback += callback;
             return this;
         }
 
-        public Flow OnFlowComplete(Action callback)
+        public new Flow OnComplete(Action callback)
         {
             OnCompleteCallback += callback;
             return this;
         }
 
-        #endregion
-
-        #region Actions
-
-        /// <summary>
-        /// Plays the flow with the number of specified loops.
-        /// </summary>
-        /// <param name="loopCount">The number of loops to be played. If number smaller than 0 it'll loop forever.</param>
-        /// <returns>The current flow.</returns>
-        public Flow Play(int loopCount = 1)
+        public Flow Queue(Tween animation)
         {
-            if (AutoPlay)
+            if (lastQueuedAnimationWrapper == null)
             {
-                throw new FlowEntException(this, "Flow was set to autoplay.");
-            }
-
-            if (PlayState != PlayState.Building)
-            {
-                throw new FlowEntException(this, "Flow already playing or has finished playing.");
-            }
-
-            if (loopCount == 0)
-            {
-                throw new FlowEntException(this, "Flow needs at least one loop to play.");
-            }
-
-            if (loopCount > 1 && HasInfiniteTweenLoops)
-            {
-                throw new FlowEntException(this, "Flow contains an infinite loop and won't be able to loop.");
-            }
-
-            InitPlay(loopCount);
-            return this;
-        }
-
-        /// <summary>
-        /// Plays the flow with the number of specified loops.
-        /// </summary>
-        /// <param name="loopCount">The number of loops to be played. If number smaller than 0 it'll loop forever.</param>
-        /// <returns>The current flow.</returns>
-        public async Task<Flow> PlayAsync(int loopCount = 1)
-        {
-            Play(loopCount);
-            await new AwaitableFlow(this);
-            return this;
-        }
-
-        public Flow Pause()
-        {
-            if (PlayState != PlayState.Playing)
-            {
-                throw new FlowEntException(this, "Only playing flows can be paused.");
-            }
-
-            PlayState = PlayState.Paused;
-            FlowEntController.Instance.UnsubscribeFromUpdate(Update);
-            return this;
-        }
-
-        public Flow Resume()
-        {
-            if (PlayState != PlayState.Paused)
-            {
-                throw new FlowEntException(this, "Only paused flows can be resumed.");
-            }
-
-            PlayState = PlayState.Playing;
-            FlowEntController.Instance.SubscribeToUpdate(Update);
-            return this;
-        }
-
-        public Flow Stop()
-        {
-            if (PlayState == PlayState.Finished)
-            {
-                throw new FlowEntException(this, "Flow already finished.");
-            }
-
-            Finished();
-            return this;
-        }
-
-        #endregion
-
-        #region Lifecycle
-
-        private Flow InitPlay(int loopCount, float autoPlayDeltaTime = 0)
-        {
-            PlayState = PlayState.Playing;
-            LoopCount = loopCount;
-            PlayingThreads = new List<Thread>(Threads);
-
-            OnStartCallback?.Invoke();
-            for (int i = 0; i < Threads.Count; i++)
-            {
-                Thread thread = Threads[i];
-                thread.Init();
-                thread.OnComplete += (overdraft) =>
-                {
-                    PlayingThreads.Remove(thread);
-
-                    if (PlayingThreads.Count == 0)
-                    {
-                        LoopFinished(overdraft);
-                    }
-                };
-            }
-
-            if (AutoPlay)
-            {
-                Update(autoPlayDeltaTime);
-            }
-
-            FlowEntController.Instance.SubscribeToUpdate(Update);
-            return this;
-        }
-
-        private void AutoPlayUpdate(float deltaTime)
-        {
-            FlowEntController.Instance.UnsubscribeFromUpdate(AutoPlayUpdate);
-            InitPlay(LoopCount, deltaTime);
-        }
-
-        private void Update(float deltaTime)
-        {
-            for (int i = 0; i < PlayingThreads.Count; i++)
-            {
-                PlayingThreads[i].Update(deltaTime);
-            }
-        }
-
-        private void LoopFinished(float overdraft)
-        {
-            bool hasAnotherLoop;
-            if (LoopCount < 0)
-            {
-                hasAnotherLoop = true;
+                lastQueuedAnimationWrapper = new AnimationWrapper(animation, 0);
+                timeIndexedAnimationWrappers.Add(lastQueuedAnimationWrapper);
             }
             else
             {
-                LoopCount--;
-                hasAnotherLoop = LoopCount != 0;
+                AnimationWrapper animationWrapper = new AnimationWrapper(animation);
+                lastQueuedAnimationWrapper.Next = animationWrapper;
+                lastQueuedAnimationWrapper = animationWrapper;
             }
+            animationsCount++;
 
-            if (hasAnotherLoop)
-            {
-                ResetLoop();
-                Update(overdraft);
-            }
-            else
-            {
-                Finished();
-            }
+            return this;
         }
 
-        private void ResetLoop()
+        public Flow Queue(Func<Tween, Tween> createTween)
+            => Queue(createTween(new Tween()));
+
+        public Flow Queue<T>(Func<Tween, MotionWrapper<T>> createTween)
+            => Queue(createTween(new Tween()).Tween);
+
+        public Flow Queue(TweenOptions options, Func<Tween, Tween> createTween)
+            => Queue(createTween(new Tween(options)));
+
+        public Flow Queue<T>(TweenOptions options, Func<Tween, MotionWrapper<T>> createTween)
+            => Queue(createTween(new Tween(options)).Tween);
+
+        public Flow At(float timeIndex, Tween animation)
         {
-            PlayingThreads = new List<Thread>(Threads);
-            for (int i = 0; i < PlayingThreads.Count; i++)
+            if (timeIndex < 0)
             {
-                PlayingThreads[i].Reset();
-                PlayingThreads[i].Init();
+                throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
             }
+
+            lastQueuedAnimationWrapper = new AnimationWrapper(animation, timeIndex);
+            timeIndexedAnimationWrappers.Add(lastQueuedAnimationWrapper);
+            animationsCount++;
+
+            return this;
         }
 
-        private void Finished()
-        {
-            PlayState = PlayState.Finished;
-            OnCompleteCallback?.Invoke();
-            FlowEntController.Instance.UnsubscribeFromUpdate(Update);
-        }
+        public Flow At(float timeIndex, Func<Tween, Tween> createTween)
+            => At(timeIndex, createTween(new Tween()));
+
+        public Flow At<T>(float timeIndex, Func<Tween, MotionWrapper<T>> createTween)
+            => At(timeIndex, createTween(new Tween()).Tween);
+
+        public Flow At(float timeIndex, TweenOptions options, Func<Tween, Tween> createTween)
+            => At(timeIndex, createTween(new Tween(options)));
+
+        public Flow At<T>(float timeIndex, TweenOptions options, Func<Tween, MotionWrapper<T>> createTween)
+            => At(timeIndex, createTween(new Tween(options)).Tween);
 
         #endregion
-    }
 
-    internal class AwaitableFlow
-    {
-        public AwaitableFlow(Flow flow)
-        {
-            Flow = flow;
-        }
-
-        public Flow Flow { get; }
-        public FlowAwaiter GetAwaiter()
-            => new FlowAwaiter(Flow);
-    }
-
-    internal class FlowAwaiter : INotifyCompletion
-    {
-        public FlowAwaiter(Flow flow)
-        {
-            Flow = flow;
-            Flow.OnFlowComplete(() => OnCompletedCallback.Invoke());
-        }
-
-        public Flow Flow { get; }
-        public bool IsCompleted => Flow.PlayState == PlayState.Finished;
-        private Action OnCompletedCallback { get; set; }
-
-        public Flow GetResult()
-            => Flow;
-
-        public void OnCompleted(Action continuation)
-        {
-            OnCompletedCallback = continuation;
-        }
     }
 }

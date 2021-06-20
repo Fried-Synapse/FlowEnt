@@ -1,78 +1,160 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public class Tween : FlowEntObject
+    public class TweenOptions : AbstractAnimationOptions
     {
-        public Tween(Thread thread, float time)
+        public float Time { get; set; }
+        public LoopType LoopType { get; set; } = LoopType.Reset;
+        public int? LoopCount { get; set; } = 1;
+        public IEasing Easing { get; set; }
+    }
+
+    public sealed class Tween : AbstractAnimation
+    {
+        public Tween(TweenOptions options) : base(options.AutoStart)
         {
-            Thread = thread;
-            Time = time;
+            Options = options;
         }
 
-        #region Reference Properties
+        public Tween(float time = 1f, bool autoStart = false) : this(new TweenOptions() { Time = time, AutoStart = autoStart })
+        {
+        }
 
-        public Thread Thread { get; }
-        public Flow Flow => Thread.Flow;
-        internal bool HasInfiniteLoop => LoopCount < 0;
-
-        #endregion
-
-        #region Events
-
-        protected Action OnStartCallback { get; set; }
-        protected Action<float> OnUpdateCallback { get; set; }
-        protected Action OnCompleteCallback { get; set; }
-
-        #endregion
+        private Action<float> OnUpdateCallback { get; set; }
 
         #region Settings Properties
 
-        protected float Time { get; }
-        protected LoopType LoopType { get; set; } = LoopType.Reset;
-        protected int LoopCount { get; set; } = 1;
-        protected IEasing Easing { get; set; }
-        protected List<IMotion> Motions { get; set; } = new List<IMotion>();
+        private TweenOptions Options { get; }
+        private IMotion[] Motions { get; set; } = new IMotion[0];
 
         #endregion
 
         #region Internal Members
 
-        private float playedTime;
-        private float? timeToPlay;
+        private int? remainingLoops;
+        private float remainingTime;
 
         #endregion
 
-        #region Build
+        #region Lifecycle
 
-        public Tween Enqueue(float time)
-            => Thread.Enqueue(time);
-
-        public Tween Loop(LoopType loopType = LoopType.Reset, int loopCount = 1)
+        protected override void OnAutoStart(float deltaTime)
         {
-            LoopType = loopType;
-            LoopCount = loopCount;
+            if (PlayState != PlayState.Building)
+            {
+                return;
+            }
+
+            Start();
+            UpdateInternal(deltaTime);
+        }
+
+        public Tween Start()
+        {
+            StartInternal();
             return this;
         }
 
-        /// <summary>
-        /// Sets a predefined ease. You can check the easings list at https://easings.net/.
-        /// </summary>
-        /// <param name="easing">The easing type</param>
-        /// <returns></returns>
-        public Tween SetEase(Easing easing)
+        public async Task<Tween> StartAsync()
         {
-            Easing = EasingFactory.Create(easing);
+            StartInternal();
+            await new AwaitableAnimation(this);
             return this;
         }
 
-        public Tween SetEase(IEasing easing)
+        internal override void StartInternal(bool subscribeToUpdate = true)
         {
-            Easing = easing;
-            return this;
+            remainingLoops = Options.LoopCount;
+            remainingTime = Options.Time;
+            if (Options.Easing == null)
+            {
+                Options.Easing = new LinearEasing();
+            }
+
+            IsSubscribedToUpdate = subscribeToUpdate;
+            if (IsSubscribedToUpdate)
+            {
+                FlowEntController.Instance.SubscribeToUpdate(this);
+            }
+            OnStartCallback?.Invoke();
+            for (int i = 0; i < Motions.Length; i++)
+            {
+                Motions[i].OnStart();
+            }
+            PlayState = PlayState.Playing;
         }
+
+        internal override float? UpdateInternal(float deltaTime)
+        {
+            remainingTime -= deltaTime;
+
+            float? overdraft = null;
+
+            if (remainingTime < 0)
+            {
+                overdraft = -remainingTime;
+                remainingTime = 0;
+            }
+
+            bool isForward = Options.LoopType == LoopType.Reset || (Options.LoopCount - remainingLoops) % 2 == 0;
+            float currentLoopTime = isForward ? Options.Time - remainingTime : remainingTime;
+            float t = Options.Easing.GetValue(currentLoopTime / Options.Time);
+
+#if FlowEnt_Debug
+            UnityEngine.Debug.Log($"{UnityEngine.Time.time, -12}:   {Id} - {currentLoopDelta / Time}");
+#endif
+
+            OnUpdateCallback?.Invoke(t);
+            for (int i = 0; i < Motions.Length; i++)
+            {
+                Motions[i].OnUpdate(t);
+            }
+
+            if (overdraft != null)
+            {
+                return CompleteLoop(overdraft.Value);
+            }
+            return null;
+        }
+
+        private float? CompleteLoop(float overdraft)
+        {
+            remainingTime = Options.Time;
+            if (Options.LoopCount == null)
+            {
+                UpdateInternal(overdraft);
+                return null;
+            }
+
+            remainingLoops--;
+            if (remainingLoops > 0)
+            {
+                UpdateInternal(overdraft);
+                return null;
+            }
+
+            if (IsSubscribedToUpdate)
+            {
+                FlowEntController.Instance.UnsubscribeFromUpdate(this);
+            }
+
+            OnCompleteCallback?.Invoke();
+            for (int i = 0; i < Motions.Length; i++)
+            {
+                Motions[i].OnComplete();
+            }
+            PlayState = PlayState.Finished;
+            return overdraft;
+        }
+
+        #endregion
+
+        #region Setters
+
+        #region Events
 
         public Tween OnStart(Action callback)
         {
@@ -86,112 +168,54 @@ namespace FlowEnt
             return this;
         }
 
-        public Tween OnComplete(Action callback)
+        public new Tween OnComplete(Action callback)
         {
             OnCompleteCallback += callback;
             return this;
         }
 
-        public MotionWrapper<T> For<T>(T element)
-            => new MotionWrapper<T>(this, element);
+        #endregion
+
+        #region Motions
 
         public Tween Apply(IMotion motion)
         {
-            Motions.Add(motion);
+            Motions = Motions.Append(motion).ToArray();
             return this;
         }
 
-        public Flow Concurrent()
-            => Flow.Concurrent();
-
-        public Flow Play(int loopCount = 1)
-            => Flow.Play(loopCount);
-
-        public async Task<Flow> PlayAsync(int loopCount = 1)
-            => await Flow.PlayAsync(loopCount);
-
-        #endregion
-
-        #region Lifecycle
-
-        internal void InitPlay()
+        public MotionWrapper<T> For<T>(T element)
         {
-            if (LoopCount >= 0)
-            {
-                timeToPlay = Time * LoopCount;
-            }
-            if (Easing == null)
-            {
-                Easing = new LinearEasing();
-            }
-            OnStart();
-        }
-
-        internal void OnStart()
-        {
-            OnStartCallback?.Invoke();
-            for (int i = 0; i < Motions.Count; i++)
-            {
-                Motions[i].OnStart();
-            }
-        }
-
-        internal float Update(float deltaTime)
-        {
-            playedTime += deltaTime;
-            float overdraft = -1;
-
-            if (timeToPlay != null)
-            {
-                if (playedTime > timeToPlay)
-                {
-                    overdraft = playedTime - timeToPlay.Value;
-                    playedTime = timeToPlay.Value;
-                }
-            }
-
-            float currentLoopDelta = playedTime == Time ? Time : playedTime % Time;
-            switch (LoopType)
-            {
-                case LoopType.Reset:
-                    break;
-                case LoopType.PingPong:
-                    if (((int)(playedTime / Time)) % 2 == 1)
-                    {
-                        currentLoopDelta = Time - currentLoopDelta;
-                    }
-                    break;
-                default:
-                    throw new FlowEntException(this, "Unknown loop type.");
-            }
-            float t = Easing.GetValue(currentLoopDelta / Time);
-
-#if FlowEnt_Debug
-            UnityEngine.Debug.Log($"{UnityEngine.Time.time, -12}:   {Id} - {currentLoopDelta / Time}");
-#endif
-
-            OnUpdateCallback?.Invoke(t);
-            for (int i = 0; i < Motions.Count; i++)
-            {
-                Motions[i].OnUpdate(t);
-            }
-
-            if (overdraft > 0)
-            {
-                OnCompleteCallback?.Invoke();
-                for (int i = 0; i < Motions.Count; i++)
-                {
-                    Motions[i].OnComplete();
-                }
-            }
-            return overdraft;
-        }
-
-        internal void Reset()
-        {
-            playedTime = 0;
+            return new MotionWrapper<T>(this, element);
         }
 
         #endregion
+
+        #region Settings
+
+        public Tween SetTime(float time)
+        {
+            Options.Time = time;
+            return this;
+        }
+
+        public Tween SetLoopType(LoopType loopType)
+        {
+            Options.LoopType = loopType;
+            return this;
+        }
+
+        public Tween SetLoopCount(int? loopCount)
+        {
+            Options.LoopCount = loopCount;
+            return this;
+        }
+
+        #endregion
+
+        #endregion
+
     }
+
+
 }

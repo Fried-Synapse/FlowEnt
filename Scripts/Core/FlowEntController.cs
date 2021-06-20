@@ -1,10 +1,11 @@
-using System;
 using UnityEngine;
 
 namespace FlowEnt
 {
     public class FlowEntController : MonoBehaviour
     {
+        private const int MaxArrayCapacity = 1600;
+
         private static FlowEntController instance;
         private static object lockObject = new object();
 
@@ -25,32 +26,46 @@ namespace FlowEnt
             }
         }
 
-        private PlayState PlayState { get; set; } = PlayState.Playing;
+        private FastList<AbstractUpdatable> onUpdateCallbacks = new FastList<AbstractUpdatable>(MaxArrayCapacity);
 
-        private Action<float> OnUpdate { get; set; }
+        private PlayState playState = PlayState.Playing;
+        public PlayState PlayState { get => playState; }
 
         private void Update()
         {
-            if (PlayState == PlayState.Playing)
+            if (playState != PlayState.Playing)
             {
-                OnUpdate?.Invoke(Time.deltaTime);
+                return;
+            }
+            for (int i = 0; i < onUpdateCallbacks.Count; i++)
+            {
+                onUpdateCallbacks[i].UpdateInternal(Time.deltaTime);
             }
         }
 
-        public void SubscribeToUpdate(Action<float> onUpdate)
-            => OnUpdate += onUpdate;
+        internal void SubscribeToUpdate(AbstractUpdatable updatable)
+        {
+            onUpdateCallbacks.Add(updatable);
+        }
 
-        public void UnsubscribeFromUpdate(Action<float> onUpdate)
-            => OnUpdate -= onUpdate;
+        internal void UnsubscribeFromUpdate(AbstractUpdatable updatable)
+        {
+            onUpdateCallbacks.Remove(updatable);
+        }
 
         public void Pause()
         {
-            PlayState = PlayState.Paused;
+            playState = PlayState.Paused;
         }
 
         public void Resume()
         {
-            PlayState = PlayState.Playing;
+            playState = PlayState.Playing;
+        }
+
+        public void SetMaxCapacity(int capacity)
+        {
+            onUpdateCallbacks = new FastList<AbstractUpdatable>(capacity);
         }
     }
 }
