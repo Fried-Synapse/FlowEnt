@@ -2,7 +2,7 @@ using System;
 
 namespace FlowEnt
 {
-    public class EasingFactory
+    public static class EasingFactory
     {
         public static IEasing Create(Easing easing)
         {

@@ -1,20 +1,11 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace FlowEnt
 {
-    public class TweenOptions : AbstractAnimationOptions
-    {
-        private static readonly IEasing LinearEasing = new LinearEasing();
-
-        public float Time { get; set; } = 1f;
-        public LoopType LoopType { get; set; } = LoopType.Reset;
-        public int? LoopCount { get; set; } = 1;
-        public IEasing Easing { get; set; } = LinearEasing;
-    }
-
-    public sealed class Tween : AbstractAnimation
+    public sealed class Tween : AbstractAnimation, IFluentTweenOptionable<Tween>
     {
         public Tween(TweenOptions options) : base(options.AutoStart)
         {
@@ -25,11 +16,15 @@ namespace FlowEnt
         {
         }
 
+        public Tween(float time, bool autoStart = false) : this(new TweenOptions() { Time = time, AutoStart = autoStart })
+        {
+        }
+
         private Action<float> OnUpdateCallback { get; set; }
 
         #region Settings Properties
 
-        private TweenOptions Options { get; }
+        private TweenOptions Options { get; set; }
         private IMotion[] Motions { get; set; } = new IMotion[0];
 
         #endregion
@@ -66,7 +61,7 @@ namespace FlowEnt
             await new AwaitableAnimation(this);
             return this;
         }
-       
+
         internal override void StartInternal(bool subscribeToUpdate = true)
         {
             remainingLoops = Options.LoopCount;
@@ -189,11 +184,47 @@ namespace FlowEnt
 
         #endregion
 
-        #region Settings
+        #region Options
+
+        public Tween SetOptions(TweenOptions options)
+        {
+            Options = options;
+            return this;
+        }
+
+        public Tween SetOptions(Func<TweenOptions, TweenOptions> optionsBuilder)
+        {
+            Options = optionsBuilder(new TweenOptions());
+            return this;
+        }
+
+        public Tween SetAutoStart(bool autoStart)
+        {
+            Options.AutoStart = autoStart;
+            return this;
+        }
 
         public Tween SetTime(float time)
         {
             Options.Time = time;
+            return this;
+        }
+
+        public Tween SetEasing(IEasing easing)
+        {
+            Options.Easing = easing;
+            return this;
+        }
+
+        public Tween SetEasing(Easing easing)
+        {
+            Options.Easing = EasingFactory.Create(easing);
+            return this;
+        }
+
+        public Tween SetEasing(AnimationCurve animationCurve)
+        {
+            Options.Easing = new AnimationCurveEasing(animationCurve);
             return this;
         }
 

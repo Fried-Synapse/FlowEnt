@@ -6,10 +6,6 @@ namespace FlowEnt
 {
     public class BezierSpline : ISpline
     {
-        private List<Vector3> Points { get; set; } = new List<Vector3>();
-        private int SegmentCount { get; set; }
-        private float SegmentLenght { get; set; }
-
         /// <summary>
         /// Creates a Bezier Spline. This is a spline based on the Bezier Curve. 
         /// </summary>
@@ -56,6 +52,14 @@ namespace FlowEnt
             Init(points);
         }
 
+        private Vector3 startPoint;
+        private Vector3 startControl;
+        private Vector3 endControl;
+        private Vector3 endPoint;
+        private List<Vector3> Points { get; set; } = new List<Vector3>();
+        private int SegmentCount { get; set; }
+        private float SegmentLength { get; set; }
+
         private void Init(List<Vector3> points)
         {
             if (points.Count == 2)
@@ -69,16 +73,11 @@ namespace FlowEnt
             }
             Points = points;
             SegmentCount = Points.Count - 4;
-            SegmentLenght = 1f / SegmentCount;
+            SegmentLength = 1f / SegmentCount;
         }
 
         public Vector3 GetPoint(float t)
         {
-            Vector3 startPoint;
-            Vector3 startControl;
-            Vector3 endControl;
-            Vector3 endPoint;
-
             //if there are no segments we simply have a bezier case
             if (SegmentCount == 0)
             {
@@ -90,13 +89,14 @@ namespace FlowEnt
             //otherwise we have to lerp through the points and apply bezier for every segment
             else
             {
-                int segment = (int)(t / SegmentLenght);
+                int segment = (int)(t / SegmentLength);
+
                 if (segment >= SegmentCount)
                 {
                     segment = SegmentCount - 1;
                 }
 
-                float segmentT = (t - (SegmentLenght * segment)) / SegmentLenght;
+                float segmentT = (t - (SegmentLength * segment)) / SegmentLength;
 
                 startPoint = Vector3.Lerp(Points[segment], Points[segment + 1], segmentT);
                 startControl = Vector3.Lerp(Points[segment + 1], Points[segment + 2], segmentT);
@@ -106,7 +106,6 @@ namespace FlowEnt
 
             return GetPoint(t, startPoint, startControl, endControl, endPoint);
         }
-
 
         public static Vector3 GetPoint(float t, Vector3 startPoint, Vector3 startControl, Vector3 endControl, Vector3 endPoint)
         {
@@ -123,5 +122,13 @@ namespace FlowEnt
 
             return p;
         }
+
+
+#if UNITY_EDITOR
+        public void DrawGizmo(Color color = default, float width = 1f)
+        {
+            UnityEditor.Handles.DrawBezier(startPoint, endPoint, startControl, endControl, color, null, width);
+        }
+#endif
     }
 }

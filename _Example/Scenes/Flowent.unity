@@ -305,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -554,6 +554,48 @@ MonoBehaviour:
   - {x: 1, y: 5, z: 0}
   - {x: -2, y: 7, z: 0}
   - {x: 0, y: 8, z: 0}
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2322649
+      value: 0.72637284
+      inSlope: 2.4823465
+      outSlope: 2.4823465
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.29372755
+    - serializedVersion: 3
+      time: 0.62980217
+      value: 0.31033313
+      inSlope: 0.69432765
+      outSlope: 0.69432765
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4078775
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.98828125
+      value: 1.0048256
+      inSlope: -0.23036121
+      outSlope: -0.23036121
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.40565905
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1285232695
 GameObject:
   m_ObjectHideFlags: 0

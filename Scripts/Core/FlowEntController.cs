@@ -40,7 +40,7 @@ namespace FlowEnt
             {
                 return;
             }
-            for (int i = 0; i < onUpdateCallbacks.Count; i++)
+            for (int i = 0; i < onUpdateCallbacks.Count; ++i)
             {
                 onUpdateCallbacks[i].UpdateInternal(Time.deltaTime);
             }

@@ -19,38 +19,46 @@ public class FlowEntExampleController : MonoBehaviour
     private List<Vector3> splinePoints;
     private List<Vector3> SplinePoints => splinePoints;
 
+    [SerializeField]
+    private AnimationCurve animationCurve;
+    private AnimationCurve AnimationCurve => animationCurve;
+
     private async void Start()
     {
+        await Task.Delay(3000);
+
         //await BezierFlow(Objects[0]);
+        Objects[0].Tween(2)
+            .SetEasing(AnimationCurve)
+            .Move(Vector3.up)
+            .RotateY(180f);
 
-        Objects[1].transform.Tween(2f).Move(Vector3.one).RotateY(180f);
-
-        await new Flow(new FlowOptions() { LoopCount = 2 })
-            .Queue(t => t
-                .SetTime(2)
+        await new Flow(new FlowOptions() { LoopCount = 2, AutoStart = true })
+            .Queue(o => o.SetTime(2),
+                t => t
                 .For(Objects[2])
                     .MoveY(2)
                 .For(Objects[2].GetComponent<MeshRenderer>())
                     .ColorTo(Color.black))
-            .Queue(new TweenOptions() { Time = 2f }, t => t.For(Objects[2]).MoveY(2))
+            .Queue(t => t.SetTime(2f).For(Objects[2]).MoveY(2))
             .Queue(t => t.SetTime(1))
             .At(1, new TweenOptions() { Time = 2f }, t => t.For(Objects[3]).MoveY(2))
-            .StartAsync();
+            .Queue(t => t.SetOptions(o => o.SetTime(1)))
+            .AsAsync();
     }
 
     #region Flow
 
     private async Task BezierFlow(Transform transform)
     {
+        BezierSpline spline = new BezierSpline(SplinePoints);
         await transform
-            .Tween(5f)
-                .MoveTo(new BezierSpline(SplinePoints))
-                .OrientToPath()
+            .Tween(50f)
+                .MoveTo(spline)
+            .OrientToPath()
             .Tween
-            .OnComplete(() =>
-            {
-                transform.transform.rotation = Quaternion.identity;
-            }).AsAsync();
+            .OnComplete(() => transform.transform.rotation = Quaternion.identity)
+            .AsAsync();
     }
 
     #endregion

@@ -14,13 +14,13 @@ namespace FlowEnt
     {
         private class AnimationWrapper : AbstractFastListItem
         {
-            public AnimationWrapper(Tween animation, float? startingTime = null)
+            public AnimationWrapper(AbstractAnimation animation, float? startingTime = null)
             {
                 Animation = animation;
                 TimeIndex = startingTime;
             }
 
-            public Tween Animation { get; }
+            public AbstractAnimation Animation { get; }
             public float? TimeIndex { get; }
             public AnimationWrapper Next { get; set; }
         }
@@ -214,7 +214,7 @@ namespace FlowEnt
             return this;
         }
 
-        public Flow Queue(Tween animation)
+        public Flow Queue(AbstractAnimation animation)
         {
             if (lastQueuedAnimationWrapper == null)
             {
@@ -232,19 +232,23 @@ namespace FlowEnt
             return this;
         }
 
-        public Flow Queue(Func<Tween, Tween> createTween)
-            => Queue(createTween(new Tween()));
+        public Flow Queue(Func<Tween, Tween> tweenBuilder)
+            => Queue(tweenBuilder(new Tween(new TweenOptions())));
 
-        public Flow Queue<T>(Func<Tween, MotionWrapper<T>> createTween)
-            => Queue(createTween(new Tween()).Tween);
+        public Flow Queue(TweenOptions options, Func<Tween, Tween> tweenBuilder)
+            => Queue(tweenBuilder(new Tween(options)));
 
-        public Flow Queue(TweenOptions options, Func<Tween, Tween> createTween)
-            => Queue(createTween(new Tween(options)));
+        public Flow Queue(Func<TweenOptions, TweenOptions> optionsBuilder, Func<Tween, Tween> tweenBuilder)
+            => Queue(tweenBuilder(new Tween(optionsBuilder(new TweenOptions()))));
 
-        public Flow Queue<T>(TweenOptions options, Func<Tween, MotionWrapper<T>> createTween)
-            => Queue(createTween(new Tween(options)).Tween);
 
-        public Flow At(float timeIndex, Tween animation)
+        public Flow Queue(Func<Flow, Flow> flowBuilder)
+            => Queue(flowBuilder(new Flow()));
+
+        public Flow Queue(FlowOptions options, Func<Flow, Flow> flowBuilder)
+            => Queue(flowBuilder(new Flow(options)));
+
+        public Flow At(float timeIndex, AbstractAnimation animation)
         {
             if (timeIndex < 0)
             {
@@ -258,17 +262,21 @@ namespace FlowEnt
             return this;
         }
 
-        public Flow At(float timeIndex, Func<Tween, Tween> createTween)
-            => At(timeIndex, createTween(new Tween()));
+        public Flow At(float timeIndex, Func<Tween, Tween> tweenBuilder)
+            => At(timeIndex, tweenBuilder(new Tween(new TweenOptions())));
 
-        public Flow At<T>(float timeIndex, Func<Tween, MotionWrapper<T>> createTween)
-            => At(timeIndex, createTween(new Tween()).Tween);
+        public Flow At(float timeIndex, TweenOptions options, Func<Tween, Tween> tweenBuilder)
+            => At(timeIndex, tweenBuilder(new Tween(options)));
 
-        public Flow At(float timeIndex, TweenOptions options, Func<Tween, Tween> createTween)
-            => At(timeIndex, createTween(new Tween(options)));
+        public Flow At(float timeIndex, Func<TweenOptions, TweenOptions> optionsBuilder, Func<Tween, Tween> tweenBuilder)
+            => At(timeIndex, tweenBuilder(new Tween(optionsBuilder(new TweenOptions()))));
 
-        public Flow At<T>(float timeIndex, TweenOptions options, Func<Tween, MotionWrapper<T>> createTween)
-            => At(timeIndex, createTween(new Tween(options)).Tween);
+
+        public Flow At(float timeIndex, Func<Flow, Flow> flowBuilder)
+            => At(timeIndex, flowBuilder(new Flow()));
+
+        public Flow At(float timeIndex, FlowOptions options, Func<Flow, Flow> flowBuilder)
+            => At(timeIndex, flowBuilder(new Flow(options)));
 
         #endregion
 
