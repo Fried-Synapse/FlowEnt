@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FlowEnt
@@ -27,11 +28,27 @@ namespace FlowEnt
         }
 
         private ulong lastId;
-        public ulong GetId() => lastId++;
+        internal ulong GetId() => lastId++;
 
         private FastList<AbstractUpdatable> onUpdateCallbacks = new FastList<AbstractUpdatable>(DefaultMaxArrayCapacity);
 
+        private float timeScale = 1;
+
+        public float TimeScale
+        {
+            get { return timeScale; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Value cannot be less than 0");
+                }
+                timeScale = value;
+            }
+        }
+
         private PlayState playState = PlayState.Playing;
+
         public PlayState PlayState { get => playState; }
 
         private void Update()
@@ -42,7 +59,7 @@ namespace FlowEnt
             }
             for (int i = 0; i < onUpdateCallbacks.Count; ++i)
             {
-                onUpdateCallbacks[i].UpdateInternal(Time.deltaTime);
+                onUpdateCallbacks[i].UpdateInternal(Time.deltaTime * timeScale);
             }
         }
 

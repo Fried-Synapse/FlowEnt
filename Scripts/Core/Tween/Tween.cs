@@ -9,7 +9,7 @@ namespace FlowEnt
     {
         public Tween(TweenOptions options) : base(options.AutoStart)
         {
-            Options = options;
+            CopyOptions(options);
         }
 
         public Tween(bool autoStart = false) : this(new TweenOptions() { AutoStart = autoStart })
@@ -22,12 +22,18 @@ namespace FlowEnt
 
         private Action<float> OnUpdateCallback { get; set; }
 
-        #region Settings Properties
+        #region Options
 
-        private TweenOptions Options { get; set; }
-        private IMotion[] Motions { get; set; } = new IMotion[0];
+        private float time;
+        private LoopType loopType;
+        private int? loopCount;
+        private IEasing easing;
+        private float timeScale;
 
         #endregion
+
+        private IMotion[] motions = new IMotion[0];
+
 
         #region Internal Members
 
@@ -64,8 +70,8 @@ namespace FlowEnt
 
         internal override void StartInternal(bool subscribeToUpdate = true)
         {
-            remainingLoops = Options.LoopCount;
-            remainingTime = Options.Time;
+            remainingLoops = loopCount;
+            remainingTime = time;
 
             IsSubscribedToUpdate = subscribeToUpdate;
             if (IsSubscribedToUpdate)
@@ -73,16 +79,16 @@ namespace FlowEnt
                 FlowEntController.Instance.SubscribeToUpdate(this);
             }
             OnStartCallback?.Invoke();
-            for (int i = 0; i < Motions.Length; i++)
+            for (int i = 0; i < motions.Length; i++)
             {
-                Motions[i].OnStart();
+                motions[i].OnStart();
             }
             PlayState = PlayState.Playing;
         }
 
         internal override float? UpdateInternal(float deltaTime)
         {
-            remainingTime -= deltaTime;
+            remainingTime -= deltaTime * timeScale;
 
             float? overdraft = null;
 
@@ -92,18 +98,18 @@ namespace FlowEnt
                 remainingTime = 0;
             }
 
-            bool isForward = Options.LoopType == LoopType.Reset || (Options.LoopCount - remainingLoops) % 2 == 0;
-            float currentLoopTime = isForward ? Options.Time - remainingTime : remainingTime;
-            float t = Options.Easing.GetValue(currentLoopTime / Options.Time);
+            bool isForward = loopType == LoopType.Reset || (loopCount - remainingLoops) % 2 == 0;
+            float currentLoopTime = isForward ? time - remainingTime : remainingTime;
+            float t = easing.GetValue(currentLoopTime / time);
 
 #if FlowEnt_Debug
             UnityEngine.Debug.Log($"{UnityEngine.Time.time, -12}:   {Id} - {currentLoopDelta / Time}");
 #endif
 
             OnUpdateCallback?.Invoke(t);
-            for (int i = 0; i < Motions.Length; i++)
+            for (int i = 0; i < motions.Length; i++)
             {
-                Motions[i].OnUpdate(t);
+                motions[i].OnUpdate(t);
             }
 
             if (overdraft != null)
@@ -115,8 +121,8 @@ namespace FlowEnt
 
         private float? CompleteLoop(float overdraft)
         {
-            remainingTime = Options.Time;
-            if (Options.LoopCount == null)
+            remainingTime = time;
+            if (loopCount == null)
             {
                 UpdateInternal(overdraft);
                 return null;
@@ -135,9 +141,9 @@ namespace FlowEnt
             }
 
             OnCompleteCallback?.Invoke();
-            for (int i = 0; i < Motions.Length; i++)
+            for (int i = 0; i < motions.Length; i++)
             {
-                Motions[i].OnComplete();
+                motions[i].OnComplete();
             }
             PlayState = PlayState.Finished;
             return overdraft;
@@ -173,13 +179,13 @@ namespace FlowEnt
 
         public Tween Apply(IMotion motion)
         {
-            Motions = Motions.Append(motion).ToArray();
+            motions = motions.Append(motion).ToArray();
             return this;
         }
 
-        public MotionWrapper<T> For<T>(T element)
+        public TweenMotion<T> For<T>(T element)
         {
-            return new MotionWrapper<T>(this, element);
+            return new TweenMotion<T>(this, element);
         }
 
         #endregion
@@ -188,56 +194,65 @@ namespace FlowEnt
 
         public Tween SetOptions(TweenOptions options)
         {
-            Options = options;
+            CopyOptions(options);
             return this;
         }
 
         public Tween SetOptions(Func<TweenOptions, TweenOptions> optionsBuilder)
         {
-            Options = optionsBuilder(new TweenOptions());
-            return this;
-        }
-
-        public Tween SetAutoStart(bool autoStart)
-        {
-            Options.AutoStart = autoStart;
+            CopyOptions(optionsBuilder(new TweenOptions()));
             return this;
         }
 
         public Tween SetTime(float time)
         {
-            Options.Time = time;
+            this.time = time;
             return this;
         }
 
         public Tween SetEasing(IEasing easing)
         {
-            Options.Easing = easing;
+            this.easing = easing;
             return this;
         }
 
         public Tween SetEasing(Easing easing)
         {
-            Options.Easing = EasingFactory.Create(easing);
+            this.easing = EasingFactory.Create(easing);
             return this;
         }
 
         public Tween SetEasing(AnimationCurve animationCurve)
         {
-            Options.Easing = new AnimationCurveEasing(animationCurve);
+            this.easing = new AnimationCurveEasing(animationCurve);
             return this;
         }
 
         public Tween SetLoopType(LoopType loopType)
         {
-            Options.LoopType = loopType;
+            this.loopType = loopType;
             return this;
         }
 
         public Tween SetLoopCount(int? loopCount)
         {
-            Options.LoopCount = loopCount;
+            this.loopCount = loopCount;
             return this;
+        }
+
+        public Tween SetTimeScale(float timeScale)
+        {
+            this.timeScale = timeScale;
+            return this;
+        }
+
+        private void CopyOptions(TweenOptions options)
+        {
+            time = options.Time;
+            loopType = options.LoopType;
+            loopCount = options.LoopCount;
+            easing = options.Easing;
+            timeScale = options.TimeScale;
         }
 
         #endregion

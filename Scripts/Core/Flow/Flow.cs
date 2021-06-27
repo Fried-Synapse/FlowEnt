@@ -1,16 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public class FlowOptions : AbstractAnimationOptions
-    {
-        public int? LoopCount { get; set; } = 1;
-    }
-
-    public sealed class Flow : AbstractAnimation
+    public sealed class Flow : AbstractAnimation, IFluentFlowOptionable<Flow>
     {
         private class AnimationWrapper : AbstractFastListItem
         {
@@ -27,14 +21,19 @@ namespace FlowEnt
 
         public Flow(FlowOptions options) : base(options.AutoStart)
         {
-            Options = options;
+            CopyOptions(options);
         }
 
         public Flow(bool autoStart = false) : this(new FlowOptions() { AutoStart = autoStart })
         {
         }
 
-        private FlowOptions Options { get; set; }
+        #region Options
+
+        private int? loopCount;
+        private float timeScale;
+
+        #endregion
 
         #region Internal Members
 
@@ -96,7 +95,7 @@ namespace FlowEnt
 
         internal override void StartInternal(bool subscribeToUpdate = true)
         {
-            remainingLoops = Options.LoopCount;
+            remainingLoops = loopCount;
 
             Init();
 
@@ -113,7 +112,8 @@ namespace FlowEnt
 
         internal override float? UpdateInternal(float deltaTime)
         {
-            time += deltaTime;
+            float scaledDeltaTime = deltaTime * timeScale;
+            time += scaledDeltaTime;
 
             #region TimeBased start
 
@@ -139,7 +139,7 @@ namespace FlowEnt
             for (int i = 0; i < runningAnimaionWrappers.Count; i++)
             {
                 bool isUpdated = false;
-                float runningDeltaTime = deltaTime;
+                float runningDeltaTime = scaledDeltaTime;
                 AnimationWrapper animationWrapper = runningAnimaionWrappers[i];
                 do
                 {
@@ -277,6 +277,40 @@ namespace FlowEnt
 
         public Flow At(float timeIndex, FlowOptions options, Func<Flow, Flow> flowBuilder)
             => At(timeIndex, flowBuilder(new Flow(options)));
+
+        #endregion
+
+        #region Options
+
+        public Flow SetOptions(FlowOptions options)
+        {
+            CopyOptions(options);
+            return this;
+        }
+
+        public Flow SetOptions(Func<FlowOptions, FlowOptions> optionsBuilder)
+        {
+            CopyOptions(optionsBuilder(new FlowOptions()));
+            return this;
+        }
+
+        public Flow SetLoopCount(int? loopCount)
+        {
+            this.loopCount = loopCount;
+            return this;
+        }
+
+        public Flow SetTimeScale(float timeScale)
+        {
+            this.timeScale = timeScale;
+            return this;
+        }
+
+        private void CopyOptions(FlowOptions options)
+        {
+            loopCount = options.LoopCount;
+            timeScale = options.TimeScale;
+        }
 
         #endregion
 

@@ -7,6 +7,11 @@ namespace FlowEnt
     public class AbstractAnimationOptions
     {
         public bool AutoStart { get; set; }
+
+        public AbstractAnimationOptions(bool autoStart = false)
+        {
+            AutoStart = autoStart;
+        }
     }
 
     public abstract class AbstractAnimation : AbstractUpdatable

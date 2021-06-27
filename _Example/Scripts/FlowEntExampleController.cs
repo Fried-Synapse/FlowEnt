@@ -29,11 +29,12 @@ public class FlowEntExampleController : MonoBehaviour
 
         //await BezierFlow(Objects[0]);
         Objects[0].Tween(2)
-            .SetEasing(AnimationCurve)
+            .SetTimeScale(10)
             .Move(Vector3.up)
-            .RotateY(180f);
+            .RotateY(-170f);
 
         await new Flow(new FlowOptions() { LoopCount = 2, AutoStart = true })
+            .SetTimeScale(10)
             .Queue(o => o.SetTime(2),
                 t => t
                 .For(Objects[2])

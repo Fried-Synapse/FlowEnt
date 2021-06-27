@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FlowEnt
@@ -15,16 +16,36 @@ namespace FlowEnt
         T SetLoopType(LoopType loopType);
 
         T SetLoopCount(int? loopCount);
+
+        T SetTimeScale(float timeScale);
     }
 
     public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
     {
         private static readonly IEasing LinearEasing = new LinearEasing();
 
+        public TweenOptions(bool autoStart = false) : base(autoStart)
+        {
+        }
+
         public float Time { get; set; } = 1f;
         public LoopType LoopType { get; set; } = LoopType.Reset;
         public int? LoopCount { get; set; } = 1;
         public IEasing Easing { get; set; } = LinearEasing;
+
+        private float timeScale = 1;
+        public float TimeScale
+        {
+            get { return timeScale; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Value cannot be less than 0");
+                }
+                timeScale = value;
+            }
+        }
 
         public TweenOptions SetAutoStart(bool autoStart)
         {
@@ -65,6 +86,12 @@ namespace FlowEnt
         public TweenOptions SetLoopCount(int? loopCount)
         {
             LoopCount = loopCount;
+            return this;
+        }
+
+        public TweenOptions SetTimeScale(float timeScale)
+        {
+            TimeScale = timeScale;
             return this;
         }
     }
