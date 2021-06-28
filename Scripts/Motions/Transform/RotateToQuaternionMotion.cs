@@ -24,6 +24,10 @@ namespace FlowEnt.Motions.TransformMotions
             {
                 From = Item.rotation;
             }
+            else
+            {
+                Item.rotation = From.Value;
+            }
         }
 
         public override void OnUpdate(float t)

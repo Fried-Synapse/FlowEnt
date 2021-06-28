@@ -28,6 +28,9 @@ namespace FlowEnt
         {
         }
 
+        private Action OnStartCallback { get; set; }
+        private Action OnCompleteCallback { get; set; }
+
         #region Options
 
         private int? loopCount;
@@ -51,7 +54,7 @@ namespace FlowEnt
 
         #endregion
 
-        #region Events
+        #region Lifecycle
 
         protected override void OnAutoStart(float deltaTime)
         {
@@ -202,17 +205,28 @@ namespace FlowEnt
 
         #region Setters
 
+        #region Events
+
         public Flow OnStart(Action callback)
         {
             OnStartCallback += callback;
             return this;
         }
 
-        public new Flow OnComplete(Action callback)
+        public Flow OnComplete(Action callback)
         {
             OnCompleteCallback += callback;
             return this;
         }
+
+        protected override void OnCompleteInternal(Action callback)
+        {
+            OnCompleteCallback += callback;
+        }
+
+        #endregion
+
+        #region Threads
 
         public Flow Queue(AbstractAnimation animation)
         {
@@ -280,6 +294,8 @@ namespace FlowEnt
 
         #endregion
 
+        #endregion
+
         #region Options
 
         public Flow SetOptions(FlowOptions options)
@@ -302,6 +318,10 @@ namespace FlowEnt
 
         public Flow SetTimeScale(float timeScale)
         {
+            if (timeScale < 0)
+            {
+                throw new ArgumentException("Value cannot be less than 0");
+            }
             this.timeScale = timeScale;
             return this;
         }

@@ -50,7 +50,7 @@ namespace FlowEnt
             public AnimationAwaiter(AbstractAnimation animation)
             {
                 Animation = animation;
-                Animation.OnCompleteCallback += () => OnCompletedCallback.Invoke();
+                Animation.OnCompleteInternal(OnCompletedCallback);
             }
 
             public AbstractAnimation Animation { get; }
@@ -74,8 +74,7 @@ namespace FlowEnt
             }
         }
 
-        protected Action OnStartCallback { get; set; }
-        protected Action OnCompleteCallback { get; set; }
+        protected abstract void OnCompleteInternal(Action callback);
 
         #region Settings Properties
 
@@ -122,13 +121,5 @@ namespace FlowEnt
 
         #endregion
 
-        #region Setters
-
-        public void OnComplete(Action callback)
-        {
-            OnCompleteCallback += callback;
-        }
-
-        #endregion
     }
 }

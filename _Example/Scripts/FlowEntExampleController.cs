@@ -58,7 +58,7 @@ public class FlowEntExampleController : MonoBehaviour
                 .MoveTo(spline)
             .OrientToPath()
             .Tween
-            .OnComplete(() => transform.transform.rotation = Quaternion.identity)
+            .OnBeforeComplete(() => transform.transform.rotation = Quaternion.identity)
             .AsAsync();
     }
 

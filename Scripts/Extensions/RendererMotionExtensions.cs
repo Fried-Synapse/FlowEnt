@@ -36,6 +36,5 @@ namespace FlowEnt
             => motion.Apply(new ColorToMotion<TRenderer>(motion.Item, from, to));
 
         #endregion
-
     }
 }

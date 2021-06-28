@@ -25,6 +25,12 @@ namespace FlowEnt.Motions.RendererMotions
             {
                 From = Item.material.color.a;
             }
+            else
+            {
+                Color color = Item.material.color;
+                color.a = From.Value;
+                Item.material.color = color;
+            }
         }
 
         public override void OnUpdate(float t)

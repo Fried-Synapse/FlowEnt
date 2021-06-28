@@ -3,7 +3,9 @@ using UnityEngine;
 
 namespace FlowEnt
 {
-    public class TweenMotion<T> : IFluentTweenOptionable<TweenMotion<T>>
+    public class TweenMotion<T> :
+        IFluentTweenOptionable<TweenMotion<T>>,
+        IFluentTweenEventable<TweenMotion<T>>
     {
         public TweenMotion(Tween tween, T item)
         {
@@ -23,6 +25,46 @@ namespace FlowEnt
 
         public TweenMotion<TElement> For<TElement>(TElement element)
             => new TweenMotion<TElement>(Tween, element);
+
+        #region Events
+
+        public TweenMotion<T> OnBeforeStart(Action callback)
+        {
+            Tween.OnBeforeStart(callback);
+            return this;
+        }
+
+        public TweenMotion<T> OnAfterStart(Action callback)
+        {
+            Tween.OnAfterStart(callback);
+            return this;
+        }
+
+        public TweenMotion<T> OnBeforeUpdate(Action<float> callback)
+        {
+            Tween.OnBeforeUpdate(callback);
+            return this;
+        }
+
+        public TweenMotion<T> OnAfterUpdate(Action<float> callback)
+        {
+            Tween.OnAfterUpdate(callback);
+            return this;
+        }
+
+        public TweenMotion<T> OnBeforeComplete(Action callback)
+        {
+            Tween.OnBeforeComplete(callback);
+            return this;
+        }
+
+        public TweenMotion<T> OnAfterComplete(Action callback)
+        {
+            Tween.OnAfterComplete(callback);
+            return this;
+        }
+
+        #endregion
 
         #region Options
 

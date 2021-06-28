@@ -32,7 +32,6 @@ namespace FlowEnt
         public LoopType LoopType { get; set; } = LoopType.Reset;
         public int? LoopCount { get; set; } = 1;
         public IEasing Easing { get; set; } = LinearEasing;
-
         private float timeScale = 1;
         public float TimeScale
         {

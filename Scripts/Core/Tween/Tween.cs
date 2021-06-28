@@ -5,7 +5,24 @@ using UnityEngine;
 
 namespace FlowEnt
 {
-    public sealed class Tween : AbstractAnimation, IFluentTweenOptionable<Tween>
+    internal interface IFluentTweenEventable<T>
+    {
+        T OnBeforeStart(Action callback);
+
+        T OnAfterStart(Action callback);
+
+        T OnBeforeUpdate(Action<float> callback);
+
+        T OnAfterUpdate(Action<float> callback);
+
+        T OnBeforeComplete(Action callback);
+
+        T OnAfterComplete(Action callback);
+    }
+
+    public sealed class Tween : AbstractAnimation,
+        IFluentTweenOptionable<Tween>,
+        IFluentTweenEventable<Tween>
     {
         public Tween(TweenOptions options) : base(options.AutoStart)
         {
@@ -20,7 +37,12 @@ namespace FlowEnt
         {
         }
 
-        private Action<float> OnUpdateCallback { get; set; }
+        private Action OnBeforeStartCallback { get; set; }
+        private Action OnAfterStartCallback { get; set; }
+        private Action<float> OnBeforeUpdateCallback { get; set; }
+        private Action<float> OnAfterUpdateCallback { get; set; }
+        private Action OnBeforeCompleteCallback { get; set; }
+        private Action OnAfterCompleteCallback { get; set; }
 
         #region Options
 
@@ -78,11 +100,12 @@ namespace FlowEnt
             {
                 FlowEntController.Instance.SubscribeToUpdate(this);
             }
-            OnStartCallback?.Invoke();
+            OnBeforeStartCallback?.Invoke();
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnStart();
             }
+            OnAfterStartCallback?.Invoke();
             PlayState = PlayState.Playing;
         }
 
@@ -102,15 +125,12 @@ namespace FlowEnt
             float currentLoopTime = isForward ? time - remainingTime : remainingTime;
             float t = easing.GetValue(currentLoopTime / time);
 
-#if FlowEnt_Debug
-            UnityEngine.Debug.Log($"{UnityEngine.Time.time, -12}:   {Id} - {currentLoopDelta / Time}");
-#endif
-
-            OnUpdateCallback?.Invoke(t);
+            OnBeforeUpdateCallback?.Invoke(t);
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnUpdate(t);
             }
+            OnAfterUpdateCallback?.Invoke(t);
 
             if (overdraft != null)
             {
@@ -140,11 +160,12 @@ namespace FlowEnt
                 FlowEntController.Instance.UnsubscribeFromUpdate(this);
             }
 
-            OnCompleteCallback?.Invoke();
+            OnBeforeCompleteCallback?.Invoke();
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnComplete();
             }
+            OnAfterCompleteCallback?.Invoke();
             PlayState = PlayState.Finished;
             return overdraft;
         }
@@ -155,22 +176,45 @@ namespace FlowEnt
 
         #region Events
 
-        public Tween OnStart(Action callback)
+        public Tween OnBeforeStart(Action callback)
         {
-            OnStartCallback += callback;
+            OnBeforeStartCallback += callback;
             return this;
         }
 
-        public Tween OnUpdate(Action<float> callback)
+        public Tween OnAfterStart(Action callback)
         {
-            OnUpdateCallback += callback;
+            OnAfterStartCallback += callback;
             return this;
         }
 
-        public new Tween OnComplete(Action callback)
+        public Tween OnBeforeUpdate(Action<float> callback)
         {
-            OnCompleteCallback += callback;
+            OnBeforeUpdateCallback += callback;
             return this;
+        }
+
+        public Tween OnAfterUpdate(Action<float> callback)
+        {
+            OnAfterUpdateCallback += callback;
+            return this;
+        }
+
+        public Tween OnBeforeComplete(Action callback)
+        {
+            OnBeforeCompleteCallback += callback;
+            return this;
+        }
+
+        public Tween OnAfterComplete(Action callback)
+        {
+            OnAfterCompleteCallback += callback;
+            return this;
+        }
+
+        protected override void OnCompleteInternal(Action callback)
+        {
+            OnAfterCompleteCallback += callback;
         }
 
         #endregion
@@ -242,6 +286,10 @@ namespace FlowEnt
 
         public Tween SetTimeScale(float timeScale)
         {
+            if (timeScale < 0)
+            {
+                throw new ArgumentException("Value cannot be less than 0");
+            }
             this.timeScale = timeScale;
             return this;
         }
@@ -260,6 +308,4 @@ namespace FlowEnt
         #endregion
 
     }
-
-
 }

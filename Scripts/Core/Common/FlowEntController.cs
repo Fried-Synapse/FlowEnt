@@ -39,11 +39,7 @@ namespace FlowEnt
             get { return timeScale; }
             set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Value cannot be less than 0");
-                }
-                timeScale = value;
+
             }
         }
 
@@ -83,9 +79,22 @@ namespace FlowEnt
             playState = PlayState.Playing;
         }
 
+        #region Options
+
         public void SetMaxCapacity(int capacity)
         {
             onUpdateCallbacks = new FastList<AbstractUpdatable>(capacity);
         }
+
+        public void SetTimeScale(float timeScale)
+        {
+            if (timeScale < 0)
+            {
+                throw new ArgumentException("Value cannot be less than 0");
+            }
+            this.timeScale = timeScale;
+        }
+
+        #endregion
     }
 }
