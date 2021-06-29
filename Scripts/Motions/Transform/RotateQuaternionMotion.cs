@@ -11,18 +11,18 @@ namespace FlowEnt.Motions.TransformMotions
         }
 
         public Quaternion Value { get; }
-        public Vector3? From { get; private set; }
-        public Vector3? To { get; private set; }
+        public Quaternion? From { get; private set; }
+        public Quaternion? To { get; private set; }
 
         public override void OnStart()
         {
-            From = Item.rotation.eulerAngles;
-            To = Item.rotation.eulerAngles + Value.eulerAngles;
+            From = Item.rotation;
+            To = Item.rotation * Value;
         }
 
         public override void OnUpdate(float t)
         {
-            Item.rotation = Quaternion.Euler(Vector3.LerpUnclamped(From.Value, To.Value, t));
+            Item.rotation = Quaternion.LerpUnclamped(From.Value, To.Value, t);
         }
 
         public override void OnComplete()

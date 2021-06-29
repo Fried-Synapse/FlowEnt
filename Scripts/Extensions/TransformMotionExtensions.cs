@@ -71,19 +71,19 @@ namespace FlowEnt
 
         public static TweenMotion<TTransform> Rotate<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, Quaternion.Euler(value)));
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, value));
 
         public static TweenMotion<TTransform> RotateX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, Quaternion.Euler(new Vector3(x, 0, 0))));
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0, 0)));
 
         public static TweenMotion<TTransform> RotateY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, Quaternion.Euler(new Vector3(0, y, 0))));
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0, y, 0)));
 
         public static TweenMotion<TTransform> RotateZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, Quaternion.Euler(new Vector3(0, 0, z))));
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0, 0, z)));
 
         #endregion
 
@@ -99,11 +99,11 @@ namespace FlowEnt
 
         public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateToQuaternionMotion<TTransform>(motionWrapper.Item, Quaternion.Euler(to)));
+            => motionWrapper.Apply(new RotateToVectorMotion<TTransform>(motionWrapper.Item, to));
 
         public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateToQuaternionMotion<TTransform>(motionWrapper.Item, Quaternion.Euler(from), Quaternion.Euler(to)));
+            => motionWrapper.Apply(new RotateToVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
         public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion to)
             where TTransform : Transform
@@ -115,11 +115,11 @@ namespace FlowEnt
 
         public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToQuaternionMotion<TTransform>(motionWrapper.Item, Quaternion.Euler(to)));
+            => motionWrapper.Apply(new RotateLocalToVectorMotion<TTransform>(motionWrapper.Item, to));
 
         public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToQuaternionMotion<TTransform>(motionWrapper.Item, Quaternion.Euler(from), Quaternion.Euler(to)));
+            => motionWrapper.Apply(new RotateLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
         #endregion
 

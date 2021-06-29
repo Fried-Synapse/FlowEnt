@@ -1,16 +1,16 @@
 using UnityEngine;
 
-namespace FlowEnt.Motions.TransformMotions
+namespace FlowEnt
 {
-    public class MoveLocalToVectorMotion<TTransform> : AbstractMotion<TTransform>
+    public class RotateLocalToVectorMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform
     {
-        public MoveLocalToVectorMotion(TTransform item, Vector3 to) : base(item)
+        public RotateLocalToVectorMotion(TTransform item, Vector3 to) : base(item)
         {
             To = to;
         }
 
-        public MoveLocalToVectorMotion(TTransform item, Vector3 from, Vector3 to) : this(item, to)
+        public RotateLocalToVectorMotion(TTransform item, Vector3 from, Vector3 to) : this(item, to)
         {
             From = from;
             To = to;
@@ -23,17 +23,17 @@ namespace FlowEnt.Motions.TransformMotions
         {
             if (From == null)
             {
-                From = Item.localPosition;
+                From = Item.localRotation.eulerAngles;
             }
             else
             {
-                Item.localPosition = From.Value;
+                Item.localRotation = Quaternion.Euler(From.Value);
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.localPosition = Vector3.LerpUnclamped(From.Value, To, t);
+            Item.localRotation = Quaternion.Euler(Vector3.LerpUnclamped(From.Value, To, t));
         }
 
         public override void OnComplete()
