@@ -37,32 +37,32 @@ namespace FlowEnt
         {
             public AwaitableAnimation(AbstractAnimation animation)
             {
-                Animation = animation;
+                this.animation = animation;
             }
 
-            public AbstractAnimation Animation { get; }
+            private readonly AbstractAnimation animation;
             public AnimationAwaiter GetAwaiter()
-                => new AnimationAwaiter(Animation);
+                => new AnimationAwaiter(animation);
         }
 
         protected class AnimationAwaiter : INotifyCompletion
         {
             public AnimationAwaiter(AbstractAnimation animation)
             {
-                Animation = animation;
-                Animation.OnCompleteInternal(OnCompletedCallback);
+                this.animation = animation;
+                this.animation.OnCompleteInternal(() => onCompletedCallback());
             }
 
-            public AbstractAnimation Animation { get; }
-            public bool IsCompleted => Animation.PlayState == PlayState.Finished;
-            private Action OnCompletedCallback { get; set; }
+            private readonly AbstractAnimation animation;
+            public bool IsCompleted => animation.PlayState == PlayState.Finished;
+            private Action onCompletedCallback;
 
             public AbstractAnimation GetResult()
-                => Animation;
+                => animation;
 
             public void OnCompleted(Action continuation)
             {
-                OnCompletedCallback = continuation;
+                onCompletedCallback = continuation;
             }
         }
 

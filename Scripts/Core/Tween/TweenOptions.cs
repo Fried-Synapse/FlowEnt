@@ -22,14 +22,14 @@ namespace FlowEnt
 
     public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
     {
-        private static readonly IEasing LinearEasing = new LinearEasing();
+        internal static readonly IEasing LinearEasing = new LinearEasing();
 
         public TweenOptions(bool autoStart = false) : base(autoStart)
         {
         }
 
         public float Time { get; set; } = 1f;
-        public LoopType LoopType { get; set; } = LoopType.Reset;
+        public LoopType LoopType { get; set; }
         public int? LoopCount { get; set; } = 1;
         public IEasing Easing { get; set; } = LinearEasing;
         private float timeScale = 1;

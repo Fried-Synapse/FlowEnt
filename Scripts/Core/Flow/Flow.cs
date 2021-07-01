@@ -24,7 +24,7 @@ namespace FlowEnt
             CopyOptions(options);
         }
 
-        public Flow(bool autoStart = false) : this(new FlowOptions() { AutoStart = autoStart })
+        public Flow(bool autoStart = false) : base(autoStart)
         {
         }
 
@@ -33,8 +33,8 @@ namespace FlowEnt
 
         #region Options
 
-        private int? loopCount;
-        private float timeScale;
+        private int? loopCount = 1;
+        private float timeScale = 1;
 
         #endregion
 
@@ -249,18 +249,8 @@ namespace FlowEnt
         public Flow Queue(Func<Tween, Tween> tweenBuilder)
             => Queue(tweenBuilder(new Tween(new TweenOptions())));
 
-        public Flow Queue(TweenOptions options, Func<Tween, Tween> tweenBuilder)
-            => Queue(tweenBuilder(new Tween(options)));
-
-        public Flow Queue(Func<TweenOptions, TweenOptions> optionsBuilder, Func<Tween, Tween> tweenBuilder)
-            => Queue(tweenBuilder(new Tween(optionsBuilder(new TweenOptions()))));
-
-
         public Flow Queue(Func<Flow, Flow> flowBuilder)
             => Queue(flowBuilder(new Flow()));
-
-        public Flow Queue(FlowOptions options, Func<Flow, Flow> flowBuilder)
-            => Queue(flowBuilder(new Flow(options)));
 
         public Flow At(float timeIndex, AbstractAnimation animation)
         {
@@ -279,18 +269,8 @@ namespace FlowEnt
         public Flow At(float timeIndex, Func<Tween, Tween> tweenBuilder)
             => At(timeIndex, tweenBuilder(new Tween(new TweenOptions())));
 
-        public Flow At(float timeIndex, TweenOptions options, Func<Tween, Tween> tweenBuilder)
-            => At(timeIndex, tweenBuilder(new Tween(options)));
-
-        public Flow At(float timeIndex, Func<TweenOptions, TweenOptions> optionsBuilder, Func<Tween, Tween> tweenBuilder)
-            => At(timeIndex, tweenBuilder(new Tween(optionsBuilder(new TweenOptions()))));
-
-
         public Flow At(float timeIndex, Func<Flow, Flow> flowBuilder)
             => At(timeIndex, flowBuilder(new Flow()));
-
-        public Flow At(float timeIndex, FlowOptions options, Func<Flow, Flow> flowBuilder)
-            => At(timeIndex, flowBuilder(new Flow(options)));
 
         #endregion
 

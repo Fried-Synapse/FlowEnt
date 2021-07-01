@@ -29,12 +29,13 @@ namespace FlowEnt
             CopyOptions(options);
         }
 
-        public Tween(bool autoStart = false) : this(new TweenOptions() { AutoStart = autoStart })
+        public Tween(bool autoStart = false) : base(autoStart)
         {
         }
 
-        public Tween(float time, bool autoStart = false) : this(new TweenOptions() { Time = time, AutoStart = autoStart })
+        public Tween(float time, bool autoStart = false) : base(autoStart)
         {
+            this.time = time;
         }
 
         private Action OnBeforeStartCallback { get; set; }
@@ -46,11 +47,11 @@ namespace FlowEnt
 
         #region Options
 
-        private float time;
+        private float time = 1;
         private LoopType loopType;
-        private int? loopCount;
-        private IEasing easing;
-        private float timeScale;
+        private int? loopCount = 1;
+        private IEasing easing = TweenOptions.LinearEasing;
+        private float timeScale = 1f;
 
         #endregion
 

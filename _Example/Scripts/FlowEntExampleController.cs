@@ -35,15 +35,15 @@ public class FlowEntExampleController : MonoBehaviour
 
         await new Flow(new FlowOptions() { LoopCount = 2, AutoStart = true })
             .SetTimeScale(10)
-            .Queue(o => o.SetTime(2),
-                t => t
+            .Queue(t => t
+                .SetTime(2)
                 .For(Objects[2])
                     .MoveY(2)
                 .For(Objects[2].GetComponent<MeshRenderer>())
                     .ColorTo(Color.black))
-            .Queue(t => t.SetTime(2f).For(Objects[2]).MoveY(2))
+            .Queue(Objects[2].Tween(2f).MoveY(2))
             .Queue(t => t.SetTime(1))
-            .At(1, new TweenOptions() { Time = 2f }, t => t.For(Objects[3]).MoveY(2))
+            .At(1, Objects[2].Tween(3f).MoveY(2))
             .Queue(t => t.SetOptions(o => o.SetTime(1)))
             .AsAsync();
     }
