@@ -8,16 +8,14 @@ namespace FlowEnt
     internal interface IFluentTweenEventable<T>
     {
         T OnBeforeStart(Action callback);
-
         T OnAfterStart(Action callback);
 
         T OnBeforeUpdate(Action<float> callback);
-
         T OnAfterUpdate(Action<float> callback);
 
-        T OnBeforeComplete(Action callback);
+        T OnLoopComplete(Action callback);
 
-        T OnAfterComplete(Action callback);
+        T OnComplete(Action callback);
     }
 
     public sealed class Tween : AbstractAnimation,
@@ -38,12 +36,12 @@ namespace FlowEnt
             this.time = time;
         }
 
-        private Action OnBeforeStartCallback { get; set; }
-        private Action OnAfterStartCallback { get; set; }
-        private Action<float> OnBeforeUpdateCallback { get; set; }
-        private Action<float> OnAfterUpdateCallback { get; set; }
-        private Action OnBeforeCompleteCallback { get; set; }
-        private Action OnAfterCompleteCallback { get; set; }
+        private Action onBeforeStartCallback;
+        private Action onAfterStartCallback;
+        private Action<float> onBeforeUpdateCallback;
+        private Action<float> onAfterUpdateCallback;
+        private Action onLoopCompleteCallback;
+        private Action onCompleteCallback;
 
         #region Options
 
@@ -101,12 +99,12 @@ namespace FlowEnt
             {
                 FlowEntController.Instance.SubscribeToUpdate(this);
             }
-            OnBeforeStartCallback?.Invoke();
+            onBeforeStartCallback?.Invoke();
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnStart();
             }
-            OnAfterStartCallback?.Invoke();
+            onAfterStartCallback?.Invoke();
             PlayState = PlayState.Playing;
         }
 
@@ -126,12 +124,12 @@ namespace FlowEnt
             float currentLoopTime = isForward ? time - remainingTime : remainingTime;
             float t = easing.GetValue(currentLoopTime / time);
 
-            OnBeforeUpdateCallback?.Invoke(t);
+            onBeforeUpdateCallback?.Invoke(t);
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnUpdate(t);
             }
-            OnAfterUpdateCallback?.Invoke(t);
+            onAfterUpdateCallback?.Invoke(t);
 
             if (overdraft != null)
             {
@@ -145,6 +143,7 @@ namespace FlowEnt
             remainingTime = time;
             if (loopCount == null)
             {
+                onLoopCompleteCallback?.Invoke();
                 UpdateInternal(overdraft);
                 return null;
             }
@@ -152,6 +151,7 @@ namespace FlowEnt
             remainingLoops--;
             if (remainingLoops > 0)
             {
+                onLoopCompleteCallback?.Invoke();
                 UpdateInternal(overdraft);
                 return null;
             }
@@ -161,12 +161,11 @@ namespace FlowEnt
                 FlowEntController.Instance.UnsubscribeFromUpdate(this);
             }
 
-            OnBeforeCompleteCallback?.Invoke();
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnComplete();
             }
-            OnAfterCompleteCallback?.Invoke();
+            onCompleteCallback?.Invoke();
             PlayState = PlayState.Finished;
             return overdraft;
         }
@@ -179,43 +178,43 @@ namespace FlowEnt
 
         public Tween OnBeforeStart(Action callback)
         {
-            OnBeforeStartCallback += callback;
+            onBeforeStartCallback += callback;
             return this;
         }
 
         public Tween OnAfterStart(Action callback)
         {
-            OnAfterStartCallback += callback;
+            onAfterStartCallback += callback;
             return this;
         }
 
         public Tween OnBeforeUpdate(Action<float> callback)
         {
-            OnBeforeUpdateCallback += callback;
+            onBeforeUpdateCallback += callback;
             return this;
         }
 
         public Tween OnAfterUpdate(Action<float> callback)
         {
-            OnAfterUpdateCallback += callback;
+            onAfterUpdateCallback += callback;
             return this;
         }
 
-        public Tween OnBeforeComplete(Action callback)
+        public Tween OnLoopComplete(Action callback)
         {
-            OnBeforeCompleteCallback += callback;
+            onLoopCompleteCallback += callback;
             return this;
         }
 
-        public Tween OnAfterComplete(Action callback)
+        public Tween OnComplete(Action callback)
         {
-            OnAfterCompleteCallback += callback;
+            onCompleteCallback += callback;
             return this;
         }
 
         protected override void OnCompleteInternal(Action callback)
         {
-            OnAfterCompleteCallback += callback;
+            onCompleteCallback += callback;
         }
 
         #endregion

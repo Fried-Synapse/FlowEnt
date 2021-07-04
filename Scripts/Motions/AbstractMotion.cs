@@ -17,7 +17,7 @@ namespace FlowEnt
 
     public abstract class AbstractMotion<T> : IMotion
     {
-        public AbstractMotion(T item)
+        protected AbstractMotion(T item)
         {
             Item = item;
         }

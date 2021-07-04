@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FlowEnt.Motions.TransformMotions
 {
     public class RotateToVectorMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform

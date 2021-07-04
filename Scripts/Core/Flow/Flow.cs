@@ -28,8 +28,8 @@ namespace FlowEnt
         {
         }
 
-        private Action OnStartCallback { get; set; }
-        private Action OnCompleteCallback { get; set; }
+        private Action onStartCallback;
+        private Action onCompleteCallback;
 
         #region Options
 
@@ -108,7 +108,7 @@ namespace FlowEnt
                 FlowEntController.Instance.SubscribeToUpdate(this);
             }
 
-            OnStartCallback?.Invoke();
+            onStartCallback?.Invoke();
 
             PlayState = PlayState.Playing;
         }
@@ -195,7 +195,7 @@ namespace FlowEnt
                 FlowEntController.Instance.UnsubscribeFromUpdate(this);
             }
 
-            OnCompleteCallback?.Invoke();
+            onCompleteCallback?.Invoke();
 
             PlayState = PlayState.Finished;
             return overdraft;
@@ -209,19 +209,19 @@ namespace FlowEnt
 
         public Flow OnStart(Action callback)
         {
-            OnStartCallback += callback;
+            onStartCallback += callback;
             return this;
         }
 
         public Flow OnComplete(Action callback)
         {
-            OnCompleteCallback += callback;
+            onCompleteCallback += callback;
             return this;
         }
 
         protected override void OnCompleteInternal(Action callback)
         {
-            OnCompleteCallback += callback;
+            onCompleteCallback += callback;
         }
 
         #endregion

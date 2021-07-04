@@ -52,15 +52,15 @@ namespace FlowEnt
             return this;
         }
 
-        public TweenMotion<T> OnBeforeComplete(Action callback)
+        public TweenMotion<T> OnLoopComplete(Action callback)
         {
-            Tween.OnBeforeComplete(callback);
+            Tween.OnLoopComplete(callback);
             return this;
         }
 
-        public TweenMotion<T> OnAfterComplete(Action callback)
+        public TweenMotion<T> OnComplete(Action callback)
         {
-            Tween.OnAfterComplete(callback);
+            Tween.OnComplete(callback);
             return this;
         }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FlowEnt.Motions.TransformMotions
 {
     public class RotateVectorMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform
@@ -24,10 +24,6 @@ namespace FlowEnt
 
         public override void OnUpdate(float t)
         {
-            if (t > 0.9f)
-            {
-                var x = 1;
-            }
             Item.rotation = Quaternion.Euler(Vector3.LerpUnclamped(From.Value, To.Value, t));
         }
 

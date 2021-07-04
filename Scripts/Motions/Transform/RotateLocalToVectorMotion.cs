@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlowEnt
+namespace FlowEnt.Motions.TransformMotions
 {
     public class RotateLocalToVectorMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform
