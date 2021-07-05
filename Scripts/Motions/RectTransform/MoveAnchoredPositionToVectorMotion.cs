@@ -12,7 +12,6 @@ namespace FlowEnt.Motions.RectTransformMotions
         public MoveAnchoredPositionToVectorMotion(RectTransform item, Vector2 from, Vector2 to) : this(item, to)
         {
             From = from;
-            To = to;
         }
 
         public Vector2? From { get; private set; }

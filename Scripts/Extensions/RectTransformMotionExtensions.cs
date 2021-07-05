@@ -1,13 +1,12 @@
-using FlowEnt.Motions.RectTransformMotions;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FlowEnt.Motions.RectTransformMotions
 {
     public static class RectTransformMotionExtensions
     {
-        #region Move
+        #region MoveAnchoredPosition
 
-        #region Move
+        #region MoveAnchoredPosition
 
         public static TweenMotion<RectTransform> MoveAnchoredPosition(this TweenMotion<RectTransform> motionWrapper, Vector2 value)
             => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, value));
@@ -20,7 +19,7 @@ namespace FlowEnt
 
         #endregion
 
-        #region MoveTo
+        #region MoveAnchoredPositionTo
 
         public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
             => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, to));
@@ -30,10 +29,69 @@ namespace FlowEnt
 
         #endregion
 
-        #region Move Spline
+        #region MoveAnchoredPosition Spline
 
         public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> motionWrapper, ISpline spline)
             => motionWrapper.Apply(new MoveAnchoredPositionSplineMotion(motionWrapper.Item, spline));
+
+        #endregion
+
+        #endregion
+
+        #region MoveAnchorTo 
+
+        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> motionWrapper, Vector2 toMin, Vector2 toMax)
+            => motionWrapper.Apply(new MoveAnchorToMotion(motionWrapper.Item, toMin, toMax));
+
+        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> motionWrapper, Vector2 fromMin, Vector2 fromMax, Vector2 toMin, Vector2 toMax)
+            => motionWrapper.Apply(new MoveAnchorToMotion(motionWrapper.Item, fromMin, fromMax, toMin, toMax));
+
+        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> motionWrapper, AnchorPreset to)
+            => motionWrapper.Apply(new MoveAnchorToMotion(motionWrapper.Item, to));
+
+        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> motionWrapper, AnchorPreset from, AnchorPreset to)
+            => motionWrapper.Apply(new MoveAnchorToMotion(motionWrapper.Item, from, to));
+
+        #endregion
+
+        #region MoveAnchorTo 
+
+        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
+            => motionWrapper.Apply(new MovePivotToMotion(motionWrapper.Item, to));
+
+        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> motionWrapper, Vector2 from, Vector2 to)
+            => motionWrapper.Apply(new MovePivotToMotion(motionWrapper.Item, from, to));
+
+        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> motionWrapper, PivotPreset to)
+            => motionWrapper.Apply(new MovePivotToMotion(motionWrapper.Item, to));
+
+        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> motionWrapper, PivotPreset from, PivotPreset to)
+            => motionWrapper.Apply(new MovePivotToMotion(motionWrapper.Item, from, to));
+
+        #endregion
+
+        #region ScaleSizeDelta
+
+        #region ScaleSizeDelta
+
+        public static TweenMotion<RectTransform> ScaleSizeDelta(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
+            => motionWrapper.Apply(new ScaleSizeDeltaMotion(motionWrapper.Item, to));
+
+        public static TweenMotion<RectTransform> ScaleSizeDeltaX(this TweenMotion<RectTransform> motionWrapper, float x)
+            => motionWrapper.Apply(new ScaleSizeDeltaMotion(motionWrapper.Item, new Vector2(x, 1f)));
+
+        public static TweenMotion<RectTransform> ScaleSizeDeltaY(this TweenMotion<RectTransform> motionWrapper, float y)
+            => motionWrapper.Apply(new ScaleSizeDeltaMotion(motionWrapper.Item, new Vector2(1f, y)));
+
+        #endregion
+
+        #region ScaleSizeDeltaTo
+
+        public static TweenMotion<RectTransform> ScaleSizeDeltaTo(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
+            => motionWrapper.Apply(new ScaleSizeDeltaToMotion(motionWrapper.Item, to));
+
+        public static TweenMotion<RectTransform> ScaleSizeDeltaTo(this TweenMotion<RectTransform> motionWrapper, Vector2 from, Vector2 to)
+            => motionWrapper.Apply(new ScaleSizeDeltaToMotion(motionWrapper.Item, from, to));
 
         #endregion
 

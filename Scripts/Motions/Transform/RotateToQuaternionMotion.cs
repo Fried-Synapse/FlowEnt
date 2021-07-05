@@ -13,7 +13,6 @@ namespace FlowEnt.Motions.TransformMotions
         public RotateToQuaternionMotion(TTransform item, Quaternion from, Quaternion to) : this(item, to)
         {
             From = from;
-            To = to;
         }
 
         public Quaternion? From { get; private set; }

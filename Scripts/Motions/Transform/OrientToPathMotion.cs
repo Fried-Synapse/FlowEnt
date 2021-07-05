@@ -19,7 +19,6 @@ namespace FlowEnt.Motions.TransformMotions
         public override void OnUpdate(float t)
         {
             Vector3 relativePosition = Item.position - OldPosition.Value;
-            //Debug.Log(relativePosition.sqrMagnitude);
             Item.rotation = Quaternion.LookRotation(relativePosition);
             OldPosition = Item.position;
         }
