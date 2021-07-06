@@ -66,7 +66,7 @@ namespace FlowEnt
             }
         }
 
-        public AbstractAnimation(bool autoStart = false)
+        protected AbstractAnimation(bool autoStart = false)
         {
             if (autoStart)
             {
@@ -84,20 +84,33 @@ namespace FlowEnt
 
         #endregion
 
-        #region Flow Data
-
-        public Tween Next { get; protected set; }
-
-        #endregion
-
         #region Lifecycle
 
         protected abstract void OnAutoStart(float deltaTime);
 
         internal abstract void StartInternal(bool subscribeToUpdate = true);
 
+        public void Resume()
+        {
+            if (PlayState != PlayState.Paused)
+            {
+                return;
+            }
+            PlayState = PlayState.Playing;
+            if (!IsSubscribedToUpdate)
+            {
+                return;
+            }
+            FlowEntController.Instance.SubscribeToUpdate(this);
+        }
+
         public void Pause()
         {
+            if (PlayState != PlayState.Playing)
+            {
+                return;
+            }
+            PlayState = PlayState.Paused;
             if (!IsSubscribedToUpdate)
             {
                 return;
@@ -105,13 +118,18 @@ namespace FlowEnt
             FlowEntController.Instance.UnsubscribeFromUpdate(this);
         }
 
-        public void Play()
+        public void Stop()
         {
+            if (PlayState == PlayState.Finished)
+            {
+                return;
+            }
+            PlayState = PlayState.Finished;
             if (!IsSubscribedToUpdate)
             {
                 return;
             }
-            FlowEntController.Instance.SubscribeToUpdate(this);
+            FlowEntController.Instance.UnsubscribeFromUpdate(this);
         }
 
         public async Task AsAsync()

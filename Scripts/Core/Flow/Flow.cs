@@ -8,9 +8,10 @@ namespace FlowEnt
     {
         private class AnimationWrapper : AbstractFastListItem
         {
-            public AnimationWrapper(AbstractAnimation animation, float? startingTime = null)
+            public AnimationWrapper(AbstractAnimation animation, int index, float? startingTime = null)
             {
                 Animation = animation;
+                Index = index;
                 TimeIndex = startingTime;
             }
 
@@ -47,8 +48,9 @@ namespace FlowEnt
         private AnimationWrapper[] orderedTimeIndexedAnimationWrappers;
         private FastList<AnimationWrapper> runningOrderedTimeIndexedAnimationWrappers;
         private AnimationWrapper nextTimeIndexedAnimationWrapper;
+        private AnimationWrapper[] runningAnimationWrappers;
+        private int runningAnimationWrappersCount;
 
-        private FastList<AnimationWrapper> runningAnimaionWrappers;
         private float time;
         private int? remainingLoops;
 
@@ -69,31 +71,25 @@ namespace FlowEnt
 
         public Flow Start()
         {
+            if (PlayState != PlayState.Building)
+            {
+                throw new FlowEntException("Flow already started.");
+            }
+
             StartInternal();
             return this;
         }
 
         public async Task<Flow> StartAsync()
         {
+            if (PlayState != PlayState.Building)
+            {
+                throw new FlowEntException("Flow already started.");
+            }
+
             StartInternal();
             await new AwaitableAnimation(this);
             return this;
-        }
-
-        private void Init()
-        {
-            time = 0;
-
-            if (orderedTimeIndexedAnimationWrappers == null)
-            {
-                orderedTimeIndexedAnimationWrappers = timeIndexedAnimationWrappers.ToArray();
-                QuickSortByTimeIndex(orderedTimeIndexedAnimationWrappers, 0, orderedTimeIndexedAnimationWrappers.Length - 1);
-            }
-            runningOrderedTimeIndexedAnimationWrappers = new FastList<AnimationWrapper>(orderedTimeIndexedAnimationWrappers);
-
-            nextTimeIndexedAnimationWrapper = runningOrderedTimeIndexedAnimationWrappers.Last();
-            runningOrderedTimeIndexedAnimationWrappers.RemoveLast();
-            runningAnimaionWrappers = new FastList<AnimationWrapper>(animationsCount);
         }
 
         internal override void StartInternal(bool subscribeToUpdate = true)
@@ -113,6 +109,22 @@ namespace FlowEnt
             PlayState = PlayState.Playing;
         }
 
+        private void Init()
+        {
+            time = 0;
+
+            if (orderedTimeIndexedAnimationWrappers == null)
+            {
+                orderedTimeIndexedAnimationWrappers = timeIndexedAnimationWrappers.ToArray();
+                QuickSortByTimeIndex(orderedTimeIndexedAnimationWrappers, 0, orderedTimeIndexedAnimationWrappers.Length - 1);
+            }
+            runningOrderedTimeIndexedAnimationWrappers = new FastList<AnimationWrapper>(orderedTimeIndexedAnimationWrappers);
+
+            nextTimeIndexedAnimationWrapper = runningOrderedTimeIndexedAnimationWrappers.Last();
+            runningOrderedTimeIndexedAnimationWrappers.RemoveLast();
+            runningAnimationWrappers = new AnimationWrapper[animationsCount];
+        }
+
         internal override float? UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
@@ -123,7 +135,8 @@ namespace FlowEnt
             while (nextTimeIndexedAnimationWrapper != null && time > nextTimeIndexedAnimationWrapper.TimeIndex)
             {
                 nextTimeIndexedAnimationWrapper.Animation.StartInternal(false);
-                runningAnimaionWrappers.Add(nextTimeIndexedAnimationWrapper);
+                runningAnimationWrappers[nextTimeIndexedAnimationWrapper.Index] = nextTimeIndexedAnimationWrapper;
+                ++runningAnimationWrappersCount;
                 if (runningOrderedTimeIndexedAnimationWrappers.Count > 0)
                 {
                     nextTimeIndexedAnimationWrapper = runningOrderedTimeIndexedAnimationWrappers.Last();
@@ -139,27 +152,33 @@ namespace FlowEnt
 
             #region Updating animations
 
-            for (int i = 0; i < runningAnimaionWrappers.Count; i++)
+            for (int i = 0; i < runningAnimationWrappers.Length; i++)
             {
+                if (runningAnimationWrappers[i] == null)
+                {
+                    continue;
+                }
+
                 bool isUpdated = false;
                 float runningDeltaTime = scaledDeltaTime;
-                AnimationWrapper animationWrapper = runningAnimaionWrappers[i];
+                AnimationWrapper animationWrapper = runningAnimationWrappers[i];
                 do
                 {
                     float? overdraft = animationWrapper.Animation.UpdateInternal(runningDeltaTime);
                     if (overdraft != null)
                     {
-                        animationWrapper = runningAnimaionWrappers[i].Next;
+                        animationWrapper = runningAnimationWrappers[i].Next;
                         if (animationWrapper != null)
                         {
-                            runningAnimaionWrappers[i] = animationWrapper;
+                            runningAnimationWrappers[i] = animationWrapper;
                             animationWrapper.Animation.StartInternal(false);
                             runningDeltaTime = overdraft.Value;
                         }
                         else
                         {
-                            runningAnimaionWrappers.RemoveAt(i);
-                            if (runningAnimaionWrappers.Count == 0 && nextTimeIndexedAnimationWrapper == null)
+                            runningAnimationWrappers[i] = null;
+                            --runningAnimationWrappersCount;
+                            if (runningAnimationWrappersCount == 0 && nextTimeIndexedAnimationWrapper == null)
                             {
                                 return CompleteLoop(overdraft.Value);
                             }
@@ -232,12 +251,12 @@ namespace FlowEnt
         {
             if (lastQueuedAnimationWrapper == null)
             {
-                lastQueuedAnimationWrapper = new AnimationWrapper(animation, 0);
+                lastQueuedAnimationWrapper = new AnimationWrapper(animation, animationsCount, 0);
                 timeIndexedAnimationWrappers.Add(lastQueuedAnimationWrapper);
             }
             else
             {
-                AnimationWrapper animationWrapper = new AnimationWrapper(animation);
+                AnimationWrapper animationWrapper = new AnimationWrapper(animation, lastQueuedAnimationWrapper.Index);
                 lastQueuedAnimationWrapper.Next = animationWrapper;
                 lastQueuedAnimationWrapper = animationWrapper;
             }
@@ -259,7 +278,7 @@ namespace FlowEnt
                 throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
             }
 
-            lastQueuedAnimationWrapper = new AnimationWrapper(animation, timeIndex);
+            lastQueuedAnimationWrapper = new AnimationWrapper(animation, animationsCount, timeIndex);
             timeIndexedAnimationWrappers.Add(lastQueuedAnimationWrapper);
             animationsCount++;
 

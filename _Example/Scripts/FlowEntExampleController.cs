@@ -33,6 +33,16 @@ public class FlowEntExampleController : MonoBehaviour
             .Move(Vector3.up)
             .RotateY(180f);
 
+        new Flow()
+            .Queue(new Tween(1).OnAfterUpdate(t => Debug.Log($"1 {Time.time}")))
+            .Queue(new Tween(1).OnAfterUpdate(t => Debug.Log($"1 {Time.time}")))
+            .Queue(new Tween(1).OnAfterUpdate(t => Debug.Log($"1 {Time.time}")))
+            .Queue(new Tween(1).OnAfterUpdate(t => Debug.Log($"1 {Time.time}")))
+            .At(0, new Tween(2).OnAfterUpdate(t => Debug.Log($"2 {Time.time}")))
+            .Queue(new Tween(2).OnAfterUpdate(t => Debug.Log($"2 {Time.time}")))
+            .At(0, new Tween(4).OnAfterUpdate(t => Debug.Log($"3 {Time.time}")))
+            .Start();
+
         await new Flow(new FlowOptions() { LoopCount = 2, AutoStart = true })
             .SetTimeScale(10)
             .Queue(t => t

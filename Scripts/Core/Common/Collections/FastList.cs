@@ -64,7 +64,7 @@ namespace FlowEnt
 
         public void RemoveLast()
         {
-            array[count - 1] = default(T);
+            array[count - 1] = default;
             count--;
         }
     }

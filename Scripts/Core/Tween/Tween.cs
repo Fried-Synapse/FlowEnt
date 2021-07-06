@@ -78,12 +78,22 @@ namespace FlowEnt
 
         public Tween Start()
         {
+            if (PlayState != PlayState.Building)
+            {
+                throw new FlowEntException("Tween already started.");
+            }
+
             StartInternal();
             return this;
         }
 
         public async Task<Tween> StartAsync()
         {
+            if (PlayState != PlayState.Building)
+            {
+                throw new FlowEntException("Tween already started.");
+            }
+
             StartInternal();
             await new AwaitableAnimation(this);
             return this;
