@@ -10,9 +10,9 @@ namespace FlowEnt
 
     public abstract class AbstractMotion : IMotion
     {
-        public abstract void OnStart();
+        public virtual void OnStart() { }
         public abstract void OnUpdate(float t);
-        public abstract void OnComplete();
+        public virtual void OnComplete() { }
     }
 
     public abstract class AbstractMotion<T> : IMotion
@@ -24,8 +24,8 @@ namespace FlowEnt
 
         public T Item { get; }
 
-        public abstract void OnStart();
+        public virtual void OnStart() { }
         public abstract void OnUpdate(float t);
-        public abstract void OnComplete();
+        public virtual void OnComplete() { }
     }
 }

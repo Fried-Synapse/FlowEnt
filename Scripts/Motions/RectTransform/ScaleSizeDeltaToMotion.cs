@@ -33,9 +33,5 @@ namespace FlowEnt
         {
             Item.sizeDelta = Vector3.Lerp(From.Value, To, t);
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

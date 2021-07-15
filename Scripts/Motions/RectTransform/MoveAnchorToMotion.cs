@@ -55,9 +55,5 @@ namespace FlowEnt.Motions.RectTransformMotions
             Item.anchorMin = Vector2.LerpUnclamped(FromMin.Value, ToMin, t);
             Item.anchorMax = Vector2.LerpUnclamped(FromMax.Value, ToMax, t);
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

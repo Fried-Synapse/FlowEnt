@@ -11,17 +11,10 @@ namespace FlowEnt.Motions.RectTransformMotions
 
         public ISpline Spline { get; }
 
-        public override void OnStart()
-        {
-        }
-
         public override void OnUpdate(float t)
         {
             Item.anchoredPosition = Spline.GetPoint(t);
         }
 
-        public override void OnComplete()
-        {
-        }
     }
 }

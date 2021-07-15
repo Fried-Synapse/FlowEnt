@@ -249,6 +249,13 @@ namespace FlowEnt
 
         public Flow Queue(AbstractAnimation animation)
         {
+            if (animation.PlayState != PlayState.Building)
+            {
+                throw new FlowEntException("Cannot add animation that has already started.");
+            }
+
+            animation.CancelAutoStart();
+
             if (lastQueuedAnimationWrapper == null)
             {
                 lastQueuedAnimationWrapper = new AnimationWrapper(animation, animationsCount, 0);
@@ -277,6 +284,13 @@ namespace FlowEnt
             {
                 throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
             }
+
+            if (animation.PlayState != PlayState.Building)
+            {
+                throw new FlowEntException("Cannot add animation that has already started.");
+            }
+
+            animation.CancelAutoStart();
 
             lastQueuedAnimationWrapper = new AnimationWrapper(animation, animationsCount, timeIndex);
             timeIndexedAnimationWrappers.Add(lastQueuedAnimationWrapper);

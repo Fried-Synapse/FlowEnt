@@ -24,9 +24,5 @@ namespace FlowEnt.Motions.TransformMotions
         {
             Item.position = Vector3.LerpUnclamped(From.Value, To.Value, t);
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

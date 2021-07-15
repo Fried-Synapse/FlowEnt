@@ -39,9 +39,5 @@ namespace FlowEnt.Motions.RendererMotions
             color.a = Mathf.Lerp(From.Value, To, t);
             Item.material.color = color;
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

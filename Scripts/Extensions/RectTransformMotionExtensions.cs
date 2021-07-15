@@ -1,6 +1,7 @@
+using FlowEnt.Motions.RectTransformMotions;
 using UnityEngine;
 
-namespace FlowEnt.Motions.RectTransformMotions
+namespace FlowEnt
 {
     public static class RectTransformMotionExtensions
     {
@@ -24,8 +25,20 @@ namespace FlowEnt.Motions.RectTransformMotions
         public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
             => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, to));
 
+        public static TweenMotion<RectTransform> MoveAnchoredPositionXTo(this TweenMotion<RectTransform> motionWrapper, float to)
+            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, new Vector2(to, motionWrapper.Item.anchoredPosition.y)));
+
+        public static TweenMotion<RectTransform> MoveAnchoredPositionYTo(this TweenMotion<RectTransform> motionWrapper, float to)
+            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, new Vector2(motionWrapper.Item.anchoredPosition.x, to)));
+
         public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> motionWrapper, Vector2 from, Vector2 to)
             => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, from, to));
+
+        public static TweenMotion<RectTransform> MoveAnchoredPositionXTo(this TweenMotion<RectTransform> motionWrapper, float from, float to)
+            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, new Vector2(from, motionWrapper.Item.anchoredPosition.y), new Vector2(to, motionWrapper.Item.anchoredPosition.y)));
+
+        public static TweenMotion<RectTransform> MoveAnchoredPositionYTo(this TweenMotion<RectTransform> motionWrapper, float from, float to)
+            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, new Vector2(motionWrapper.Item.anchoredPosition.x, from), new Vector2(motionWrapper.Item.anchoredPosition.x, to)));
 
         #endregion
 

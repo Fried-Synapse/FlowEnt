@@ -70,9 +70,12 @@ namespace FlowEnt
         {
             if (autoStart)
             {
-                FlowEntController.Instance.SubscribeToUpdate(new AutoStartHelper(OnAutoStart));
+                AutoStartHelperInstance = new AutoStartHelper(OnAutoStart);
+                FlowEntController.Instance.SubscribeToUpdate(AutoStartHelperInstance);
             }
         }
+
+        private AutoStartHelper AutoStartHelperInstance { get; set; }
 
         protected abstract void OnCompleteInternal(Action callback);
 
@@ -87,6 +90,16 @@ namespace FlowEnt
         #region Lifecycle
 
         protected abstract void OnAutoStart(float deltaTime);
+
+        internal void CancelAutoStart()
+        {
+            if (AutoStartHelperInstance == null)
+            {
+                return;
+            }
+            FlowEntController.Instance.UnsubscribeFromUpdate(AutoStartHelperInstance);
+            AutoStartHelperInstance = null;
+        }
 
         internal abstract void StartInternal(bool subscribeToUpdate = true);
 

@@ -12,17 +12,9 @@ namespace FlowEnt.Motions.TransformMotions
 
         public ISpline Spline { get; }
 
-        public override void OnStart()
-        {
-        }
-
         public override void OnUpdate(float t)
         {
             Item.localPosition = Spline.GetPoint(t);
-        }
-
-        public override void OnComplete()
-        {
         }
     }
 }

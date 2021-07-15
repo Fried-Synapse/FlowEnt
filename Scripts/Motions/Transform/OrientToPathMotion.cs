@@ -22,9 +22,5 @@ namespace FlowEnt.Motions.TransformMotions
             Item.rotation = Quaternion.LookRotation(relativePosition);
             OldPosition = Item.position;
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

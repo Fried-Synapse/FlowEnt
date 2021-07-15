@@ -24,9 +24,5 @@ namespace FlowEnt.Motions.TransformMotions
         {
             Item.rotation = Quaternion.LerpUnclamped(From.Value, To.Value, t);
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

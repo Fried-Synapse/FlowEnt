@@ -26,9 +26,5 @@ namespace FlowEnt.Motions.TransformMotions
         {
             Item.rotation = Quaternion.Euler(Vector3.LerpUnclamped(From.Value, To.Value, t));
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

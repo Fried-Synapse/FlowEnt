@@ -34,9 +34,5 @@ namespace FlowEnt.Motions.TransformMotions
         {
             Item.localScale = Vector3.Lerp(From.Value, To, t);
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

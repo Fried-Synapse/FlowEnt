@@ -33,9 +33,5 @@ namespace FlowEnt.Motions.RectTransformMotions
         {
             Item.anchoredPosition = Vector2.LerpUnclamped(From.Value, To, t);
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

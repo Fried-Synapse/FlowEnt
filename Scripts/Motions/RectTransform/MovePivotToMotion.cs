@@ -43,9 +43,5 @@ namespace FlowEnt.Motions.RectTransformMotions
         {
             Item.pivot = Vector2.LerpUnclamped(From.Value, To, t);
         }
-
-        public override void OnComplete()
-        {
-        }
     }
 }

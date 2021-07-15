@@ -28,19 +28,13 @@ public class FlowEntExampleController : MonoBehaviour
         await Task.Delay(3000);
 
         //await BezierFlow(Objects[0]);
-        Objects[0].Tween(2)
-            .SetTimeScale(0.5f)
-            .Move(Vector3.up)
-            .RotateY(180f);
+        // Objects[0].Tween(2)
+        //     .SetTimeScale(0.5f)
+        //     .Move(Vector3.up)
+        //     .RotateY(180f);
 
         new Flow()
-            .Queue(new Tween(1).OnAfterUpdate(t => Debug.Log($"1 {Time.time}")))
-            .Queue(new Tween(1).OnAfterUpdate(t => Debug.Log($"1 {Time.time}")))
-            .Queue(new Tween(1).OnAfterUpdate(t => Debug.Log($"1 {Time.time}")))
-            .Queue(new Tween(1).OnAfterUpdate(t => Debug.Log($"1 {Time.time}")))
-            .At(0, new Tween(2).OnAfterUpdate(t => Debug.Log($"2 {Time.time}")))
-            .Queue(new Tween(2).OnAfterUpdate(t => Debug.Log($"2 {Time.time}")))
-            .At(0, new Tween(4).OnAfterUpdate(t => Debug.Log($"3 {Time.time}")))
+            .Queue(Objects[0].Tween(1).MoveY(10))
             .Start();
 
         await new Flow(new FlowOptions() { LoopCount = 2, AutoStart = true })
