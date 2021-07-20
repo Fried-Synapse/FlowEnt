@@ -5,8 +5,6 @@ namespace FlowEnt
 {
     public class FlowEntController : MonoBehaviour
     {
-        private const int DefaultMaxArrayCapacity = 6400;
-
         private static FlowEntController instance;
         private static object lockObject = new object();
 
@@ -30,7 +28,7 @@ namespace FlowEnt
         private ulong lastId;
         internal ulong GetId() => lastId++;
 
-        private FastList<AbstractUpdatable> onUpdateCallbacks = new FastList<AbstractUpdatable>(DefaultMaxArrayCapacity);
+        private FasterList onUpdateCallbacks = new FasterList();
 
         private float timeScale = 1;
 
@@ -39,7 +37,7 @@ namespace FlowEnt
             get { return timeScale; }
             set
             {
-
+                timeScale = value;
             }
         }
 
@@ -53,9 +51,13 @@ namespace FlowEnt
             {
                 return;
             }
-            for (int i = 0; i < onUpdateCallbacks.Count; ++i)
+
+            AbstractUpdatable index = onUpdateCallbacks.First.Next;
+
+            while (index != null)
             {
-                onUpdateCallbacks[i].UpdateInternal(Time.deltaTime * timeScale);
+                index.UpdateInternal(Time.deltaTime * timeScale);
+                index = index.Next;
             }
         }
 
@@ -83,7 +85,7 @@ namespace FlowEnt
 
         public void SetMaxCapacity(int capacity)
         {
-            onUpdateCallbacks = new FastList<AbstractUpdatable>(capacity);
+            //onUpdateCallbacks = new FastList<AbstractUpdatable>(capacity);
         }
 
         public void SetTimeScale(float timeScale)
