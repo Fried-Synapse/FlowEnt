@@ -72,7 +72,7 @@ namespace FlowEnt
                 return;
             }
 
-            Start();
+            StartInternal();
             UpdateInternal(deltaTime);
         }
 

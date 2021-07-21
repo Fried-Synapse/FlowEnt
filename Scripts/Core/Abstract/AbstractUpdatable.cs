@@ -6,14 +6,13 @@ namespace FlowEnt
     {
         protected AbstractUpdatable()
         {
-            //TODO check fastest approach
             Id = lastId;
             ++lastId;
         }
 
         private static ulong lastId;
 
-        public ulong Id { get; set; }
+        public ulong Id { get; }
 
         internal abstract float? UpdateInternal(float deltaTime);
     }

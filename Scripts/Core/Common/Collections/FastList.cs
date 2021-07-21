@@ -19,7 +19,6 @@ namespace FlowEnt
             last = Anchor;
         }
 
-        //TODO test public field
         public TAnchor Anchor { get; }
         private T last;
         internal void Add(T item)
