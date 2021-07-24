@@ -3,16 +3,6 @@ using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public class AbstractAnimationOptions
-    {
-        public bool AutoStart { get; set; }
-
-        public AbstractAnimationOptions(bool autoStart = false)
-        {
-            AutoStart = autoStart;
-        }
-    }
-
     public abstract class AbstractAnimation : AbstractUpdatable
     {
         protected AbstractAnimation(bool autoStart = false)
@@ -24,25 +14,73 @@ namespace FlowEnt
             }
         }
 
-        private protected AutoStartHelper AutoStartHelper { get; set; }
+        internal AutoStartHelper AutoStartHelper { get; private set; }
         internal abstract void OnCompletedInternal(Action callback);
+
+        #region Options
+
+        private protected int skipFrames;
+        private protected float delay = -1f;
+        private protected int? loopCount = 1;
+        private protected float timeScale = 1f;
+
+        #endregion
+
+        #region Events
+        private protected Action onStarted;
+        private protected Action onCompleted;
+
+        #endregion
 
         #region Settings Properties
 
         protected bool IsSubscribedToUpdate { get; set; }
 
-        public PlayState PlayState { get; protected set; } = PlayState.Building;
+        public PlayState PlayState { get; protected set; }
 
         #endregion
 
         #region Lifecycle
 
-        protected abstract void OnAutoStarted(float deltaTime);
+        private void OnAutoStarted(float deltaTime)
+        {
+            if (PlayState != PlayState.Building)
+            {
+                return;
+            }
+
+            StartInternal(true, deltaTime);
+        }
 
         internal void CancelAutoStart()
         {
             FlowEntController.Instance.UnsubscribeFromUpdate(AutoStartHelper);
             AutoStartHelper = null;
+        }
+
+        protected void StartSkipFrames(bool subscribeToUpdate)
+        {
+            //NOTE autostart already skips one frame, so we're skipping it
+            if (AutoStartHelper != null)
+            {
+                --skipFrames;
+            }
+            SkipFramesStartHelper skipFramesStartHelper = new SkipFramesStartHelper(skipFrames, (deltaTime) =>
+            {
+                skipFrames = 0;
+                StartInternal(subscribeToUpdate, deltaTime);
+            });
+            FlowEntController.Instance.SubscribeToUpdate(skipFramesStartHelper);
+        }
+
+        protected void StartDelay(bool subscribeToUpdate)
+        {
+            DelayedStartHelper delayedStartHelper = new DelayedStartHelper(delay, (deltaTime) =>
+            {
+                delay = -1f;
+                StartInternal(subscribeToUpdate, deltaTime);
+            });
+            FlowEntController.Instance.SubscribeToUpdate(delayedStartHelper);
         }
 
         internal abstract void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null);

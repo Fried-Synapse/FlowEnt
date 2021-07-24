@@ -30,18 +30,6 @@ namespace FlowEnt
         {
         }
 
-        private Action onStarted;
-        private Action onCompleted;
-
-        #region Options
-
-        public int skipFrames;
-        public float delay = -1f;
-        private int? loopCount = 1;
-        private float timeScale = 1;
-
-        #endregion
-
         #region Internal Members
 
         private List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>();
@@ -59,17 +47,6 @@ namespace FlowEnt
         #endregion
 
         #region Lifecycle
-
-        protected override void OnAutoStarted(float deltaTime)
-        {
-            if (PlayState != PlayState.Building)
-            {
-                return;
-            }
-
-            StartInternal();
-            UpdateInternal(deltaTime);
-        }
 
         public Flow Start()
         {
@@ -102,26 +79,6 @@ namespace FlowEnt
             return this;
         }
 
-        private void StartSkipFrames(bool subscribeToUpdate)
-        {
-            SkipFramesStartHelper skipFramesStartHelper = new SkipFramesStartHelper(skipFrames, (deltaTime) =>
-            {
-                skipFrames = 0;
-                StartInternal(subscribeToUpdate, deltaTime);
-            });
-            FlowEntController.Instance.SubscribeToUpdate(skipFramesStartHelper);
-        }
-
-        private void StartDelay(bool subscribeToUpdate)
-        {
-            DelayedStartHelper delayedStartHelper = new DelayedStartHelper(delay, (deltaTime) =>
-            {
-                delay = -1f;
-                StartInternal(subscribeToUpdate, deltaTime);
-            });
-            FlowEntController.Instance.SubscribeToUpdate(delayedStartHelper);
-        }
-
         internal override void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null)
         {
             if (skipFrames > 0)
@@ -149,6 +106,11 @@ namespace FlowEnt
             onStarted?.Invoke();
 
             PlayState = PlayState.Playing;
+
+            if (deltaTime != null)
+            {
+                UpdateInternal(deltaTime.Value);
+            }
         }
 
         private void Init()
@@ -296,7 +258,7 @@ namespace FlowEnt
                 throw new FlowEntException("Cannot add animation that has already started.");
             }
 
-            if (AutoStartHelper != null)
+            if (animation.AutoStartHelper != null)
             {
                 animation.CancelAutoStart();
             }
@@ -334,7 +296,7 @@ namespace FlowEnt
                 throw new FlowEntException("Cannot add animation that has already started.");
             }
 
-            if (AutoStartHelper != null)
+            if (animation.AutoStartHelper != null)
             {
                 animation.CancelAutoStart();
             }

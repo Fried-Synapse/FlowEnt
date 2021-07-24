@@ -37,21 +37,15 @@ namespace FlowEnt
         }
 
         private Action onStarting;
-        private Action onStarted;
         private Action<float> onUpdating;
         private Action<float> onUpdated;
         private Action onLoopCompleted;
-        private Action onCompleted;
 
         #region Options
 
-        public int skipFrames;
-        public float delay = -1f;
         private float time = 1;
         private LoopType loopType;
-        private int? loopCount = 1;
         private IEasing easing = TweenOptions.LinearEasing;
-        private float timeScale = 1f;
 
         #endregion
 
@@ -66,16 +60,6 @@ namespace FlowEnt
         #endregion
 
         #region Lifecycle
-
-        protected override void OnAutoStarted(float deltaTime)
-        {
-            if (PlayState != PlayState.Building)
-            {
-                return;
-            }
-
-            StartInternal(true, deltaTime);
-        }
 
         public Tween Start()
         {
@@ -108,44 +92,19 @@ namespace FlowEnt
             return this;
         }
 
-        private void StartSkipFrames(bool subscribeToUpdate)
-        {
-            //NOTE autostart already skips one frame, so we're skipping it
-            if (AutoStartHelper != null)
-            {
-                --skipFrames;
-            }
-            SkipFramesStartHelper skipFramesStartHelper = new SkipFramesStartHelper(skipFrames, (deltaTime) =>
-            {
-                skipFrames = 0;
-                StartInternal(subscribeToUpdate, deltaTime);
-            });
-            FlowEntController.Instance.SubscribeToUpdate(skipFramesStartHelper);
-        }
-
-        private void StartDelay(bool subscribeToUpdate)
-        {
-            DelayedStartHelper delayedStartHelper = new DelayedStartHelper(delay, (deltaTime) =>
-            {
-                delay = -1f;
-                StartInternal(subscribeToUpdate, deltaTime);
-            });
-            FlowEntController.Instance.SubscribeToUpdate(delayedStartHelper);
-        }
-
         internal override void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null)
         {
-            if (skipFrames > 0)
-            {
-                StartSkipFrames(subscribeToUpdate);
-                return;
-            }
+            // if (skipFrames > 0)
+            // {
+            //     StartSkipFrames(subscribeToUpdate);
+            //     return;
+            // }
 
-            if (delay > 0f)
-            {
-                StartDelay(subscribeToUpdate);
-                return;
-            }
+            // if (delay > 0f)
+            // {
+            //     StartDelay(subscribeToUpdate);
+            //     return;
+            // }
 
             remainingLoops = loopCount;
             remainingTime = time;
