@@ -94,17 +94,17 @@ namespace FlowEnt
 
         internal override void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null)
         {
-            // if (skipFrames > 0)
-            // {
-            //     StartSkipFrames(subscribeToUpdate);
-            //     return;
-            // }
+            if (skipFrames > 0)
+            {
+                StartSkipFrames(subscribeToUpdate);
+                return;
+            }
 
-            // if (delay > 0f)
-            // {
-            //     StartDelay(subscribeToUpdate);
-            //     return;
-            // }
+            if (delay > 0f)
+            {
+                StartDelay(subscribeToUpdate);
+                return;
+            }
 
             remainingLoops = loopCount;
             remainingTime = time;
