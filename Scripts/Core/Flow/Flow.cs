@@ -30,11 +30,13 @@ namespace FlowEnt
         {
         }
 
-        private Action onStartCallback;
-        private Action onCompleteCallback;
+        private Action onStarted;
+        private Action onCompleted;
 
         #region Options
 
+        public int skipFrames;
+        public float delay = -1f;
         private int? loopCount = 1;
         private float timeScale = 1;
 
@@ -58,7 +60,7 @@ namespace FlowEnt
 
         #region Lifecycle
 
-        protected override void OnAutoStart(float deltaTime)
+        protected override void OnAutoStarted(float deltaTime)
         {
             if (PlayState != PlayState.Building)
             {
@@ -76,6 +78,10 @@ namespace FlowEnt
                 throw new FlowEntException("Flow already started.");
             }
 
+            if (AutoStartHelper != null)
+            {
+                CancelAutoStart();
+            }
             StartInternal();
             return this;
         }
@@ -87,13 +93,49 @@ namespace FlowEnt
                 throw new FlowEntException("Flow already started.");
             }
 
+            if (AutoStartHelper != null)
+            {
+                CancelAutoStart();
+            }
             StartInternal();
             await new AwaitableAnimation(this);
             return this;
         }
 
-        internal override void StartInternal(bool subscribeToUpdate = true)
+        private void StartSkipFrames(bool subscribeToUpdate)
         {
+            SkipFramesStartHelper skipFramesStartHelper = new SkipFramesStartHelper(skipFrames, (deltaTime) =>
+            {
+                skipFrames = 0;
+                StartInternal(subscribeToUpdate, deltaTime);
+            });
+            FlowEntController.Instance.SubscribeToUpdate(skipFramesStartHelper);
+        }
+
+        private void StartDelay(bool subscribeToUpdate)
+        {
+            DelayedStartHelper delayedStartHelper = new DelayedStartHelper(delay, (deltaTime) =>
+            {
+                delay = -1f;
+                StartInternal(subscribeToUpdate, deltaTime);
+            });
+            FlowEntController.Instance.SubscribeToUpdate(delayedStartHelper);
+        }
+
+        internal override void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null)
+        {
+            if (skipFrames > 0)
+            {
+                StartSkipFrames(subscribeToUpdate);
+                return;
+            }
+
+            if (delay > 0f)
+            {
+                StartDelay(subscribeToUpdate);
+                return;
+            }
+
             remainingLoops = loopCount;
 
             Init();
@@ -104,7 +146,7 @@ namespace FlowEnt
                 FlowEntController.Instance.SubscribeToUpdate(this);
             }
 
-            onStartCallback?.Invoke();
+            onStarted?.Invoke();
 
             PlayState = PlayState.Playing;
         }
@@ -214,7 +256,7 @@ namespace FlowEnt
                 FlowEntController.Instance.UnsubscribeFromUpdate(this);
             }
 
-            onCompleteCallback?.Invoke();
+            onCompleted?.Invoke();
 
             PlayState = PlayState.Finished;
             return overdraft;
@@ -226,21 +268,21 @@ namespace FlowEnt
 
         #region Events
 
-        public Flow OnStart(Action callback)
+        public Flow OnStarted(Action callback)
         {
-            onStartCallback += callback;
+            onStarted += callback;
             return this;
         }
 
-        public Flow OnComplete(Action callback)
+        public Flow OnCompleted(Action callback)
         {
-            onCompleteCallback += callback;
+            onCompleted += callback;
             return this;
         }
 
-        protected override void OnCompleteInternal(Action callback)
+        internal override void OnCompletedInternal(Action callback)
         {
-            onCompleteCallback += callback;
+            onCompleted += callback;
         }
 
         #endregion
@@ -254,7 +296,10 @@ namespace FlowEnt
                 throw new FlowEntException("Cannot add animation that has already started.");
             }
 
-            animation.CancelAutoStart();
+            if (AutoStartHelper != null)
+            {
+                animation.CancelAutoStart();
+            }
 
             if (lastQueuedAnimationWrapper == null)
             {
@@ -289,7 +334,10 @@ namespace FlowEnt
                 throw new FlowEntException("Cannot add animation that has already started.");
             }
 
-            animation.CancelAutoStart();
+            if (AutoStartHelper != null)
+            {
+                animation.CancelAutoStart();
+            }
 
             lastQueuedAnimationWrapper = new AnimationWrapper(animation, animationWrappersQueue.Count, timeIndex);
             animationWrappersQueue.Add(lastQueuedAnimationWrapper);
@@ -318,6 +366,18 @@ namespace FlowEnt
         public Flow SetOptions(Func<FlowOptions, FlowOptions> optionsBuilder)
         {
             CopyOptions(optionsBuilder(new FlowOptions()));
+            return this;
+        }
+
+        public Flow SetSkipFrames(int frames)
+        {
+            this.skipFrames = frames;
+            return this;
+        }
+
+        public Flow SetDelay(float time)
+        {
+            this.delay = time;
             return this;
         }
 

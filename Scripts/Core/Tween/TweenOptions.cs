@@ -18,6 +18,10 @@ namespace FlowEnt
         T SetLoopCount(int? loopCount);
 
         T SetTimeScale(float timeScale);
+
+        T SetSkipFrames(int frames);
+
+        T SetDelay(float time);
     }
 
     public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
@@ -28,6 +32,8 @@ namespace FlowEnt
         {
         }
 
+        public int SkipFrames { get; set; }
+        public float Delay { get; set; } = -1f;
         public float Time { get; set; } = 1f;
         public LoopType LoopType { get; set; }
         public int? LoopCount { get; set; } = 1;
@@ -40,7 +46,7 @@ namespace FlowEnt
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Value cannot be less than 0");
+                    throw new ArgumentException("Value cannot be less than 0.");
                 }
                 timeScale = value;
             }
@@ -49,6 +55,18 @@ namespace FlowEnt
         public TweenOptions SetAutoStart(bool autoStart)
         {
             AutoStart = autoStart;
+            return this;
+        }
+
+        public TweenOptions SetSkipFrames(int frames)
+        {
+            SkipFrames = frames;
+            return this;
+        }
+
+        public TweenOptions SetDelay(float time)
+        {
+            Delay = time;
             return this;
         }
 

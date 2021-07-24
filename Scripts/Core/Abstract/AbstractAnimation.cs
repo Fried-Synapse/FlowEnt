@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace FlowEnt
@@ -16,68 +15,17 @@ namespace FlowEnt
 
     public abstract class AbstractAnimation : AbstractUpdatable
     {
-        private class AutoStartHelper : AbstractUpdatable
-        {
-            public AutoStartHelper(Action<float> callback)
-            {
-                Callback = callback;
-            }
-
-            private Action<float> Callback { get; set; }
-
-            internal override float? UpdateInternal(float deltaTime)
-            {
-                FlowEntController.Instance.UnsubscribeFromUpdate(this);
-                Callback.Invoke(deltaTime);
-                return null;
-            }
-        }
-
-        protected class AwaitableAnimation
-        {
-            public AwaitableAnimation(AbstractAnimation animation)
-            {
-                this.animation = animation;
-            }
-
-            private readonly AbstractAnimation animation;
-            public AnimationAwaiter GetAwaiter()
-                => new AnimationAwaiter(animation);
-        }
-
-        protected class AnimationAwaiter : INotifyCompletion
-        {
-            public AnimationAwaiter(AbstractAnimation animation)
-            {
-                this.animation = animation;
-                this.animation.OnCompleteInternal(() => onCompletedCallback());
-            }
-
-            private readonly AbstractAnimation animation;
-            public bool IsCompleted => animation.PlayState == PlayState.Finished;
-            private Action onCompletedCallback;
-
-            public AbstractAnimation GetResult()
-                => animation;
-
-            public void OnCompleted(Action continuation)
-            {
-                onCompletedCallback = continuation;
-            }
-        }
-
         protected AbstractAnimation(bool autoStart = false)
         {
             if (autoStart)
             {
-                AutoStartHelperInstance = new AutoStartHelper(OnAutoStart);
-                FlowEntController.Instance.SubscribeToUpdate(AutoStartHelperInstance);
+                AutoStartHelper = new AutoStartHelper(OnAutoStarted);
+                FlowEntController.Instance.SubscribeToUpdate(AutoStartHelper);
             }
         }
 
-        private AutoStartHelper AutoStartHelperInstance { get; set; }
-
-        protected abstract void OnCompleteInternal(Action callback);
+        private protected AutoStartHelper AutoStartHelper { get; set; }
+        internal abstract void OnCompletedInternal(Action callback);
 
         #region Settings Properties
 
@@ -89,19 +37,15 @@ namespace FlowEnt
 
         #region Lifecycle
 
-        protected abstract void OnAutoStart(float deltaTime);
+        protected abstract void OnAutoStarted(float deltaTime);
 
         internal void CancelAutoStart()
         {
-            if (AutoStartHelperInstance == null)
-            {
-                return;
-            }
-            FlowEntController.Instance.UnsubscribeFromUpdate(AutoStartHelperInstance);
-            AutoStartHelperInstance = null;
+            FlowEntController.Instance.UnsubscribeFromUpdate(AutoStartHelper);
+            AutoStartHelper = null;
         }
 
-        internal abstract void StartInternal(bool subscribeToUpdate = true);
+        internal abstract void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null);
 
         public void Resume()
         {

@@ -28,10 +28,10 @@ public class FlowEntExampleController : MonoBehaviour
         await Task.Delay(3000);
 
         new Flow()
-            .Queue(t => t.SetTime(1).OnAfterUpdate((t) => Debug.Log($"{1}")))
-            .Queue(t => t.SetTime(1).OnAfterUpdate((t) => Debug.Log($"{2}")))
-            .At(0, t => t.SetTime(1).OnAfterUpdate((t) => Debug.Log($"{3}")))
-            .At(5, t => t.SetTime(1).OnAfterUpdate((t) => Debug.Log($"{4}")))
+            .Queue(t => t.SetTime(1).OnUpdated((t) => Debug.Log($"{1}")))
+            .Queue(t => t.SetTime(1).OnUpdated((t) => Debug.Log($"{2}")))
+            .At(0, t => t.SetTime(1).OnUpdated((t) => Debug.Log($"{3}")))
+            .At(5, t => t.SetTime(1).OnUpdated((t) => Debug.Log($"{4}")))
             .Start();
 
         return;
@@ -71,7 +71,7 @@ public class FlowEntExampleController : MonoBehaviour
                 .MoveTo(spline)
             .OrientToPath()
             .Tween
-            .OnComplete(() => transform.transform.rotation = Quaternion.identity)
+            .OnCompleted(() => transform.transform.rotation = Quaternion.identity)
             .AsAsync();
     }
 

@@ -7,6 +7,10 @@ namespace FlowEnt
         T SetLoopCount(int? loopCount);
 
         T SetTimeScale(float timeScale);
+
+        T SetSkipFrames(int frames);
+
+        T SetDelay(float time);
     }
     public class FlowOptions : AbstractAnimationOptions, IFluentFlowOptionable<FlowOptions>
     {
@@ -14,6 +18,8 @@ namespace FlowEnt
         {
         }
 
+        public int SkipFrames { get; set; }
+        public float Delay { get; set; } = -1f;
         public int? LoopCount { get; set; } = 1;
         private float timeScale = 1;
 
@@ -31,6 +37,24 @@ namespace FlowEnt
         }
 
         #region Options
+
+        public FlowOptions SetAutoStart(bool autoStart)
+        {
+            AutoStart = autoStart;
+            return this;
+        }
+
+        public FlowOptions SetSkipFrames(int frames)
+        {
+            SkipFrames = frames;
+            return this;
+        }
+
+        public FlowOptions SetDelay(float time)
+        {
+            Delay = time;
+            return this;
+        }
 
         public FlowOptions SetLoopCount(int? loopCount)
         {
