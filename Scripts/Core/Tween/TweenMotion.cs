@@ -28,39 +28,39 @@ namespace FlowEnt
 
         #region Events
 
-        public TweenMotion<T> OnBeforeStart(Action callback)
+        public TweenMotion<T> OnStarting(Action callback)
         {
-            Tween.OnBeforeStart(callback);
+            Tween.OnStarting(callback);
             return this;
         }
 
-        public TweenMotion<T> OnAfterStart(Action callback)
+        public TweenMotion<T> OnStarted(Action callback)
         {
-            Tween.OnAfterStart(callback);
+            Tween.OnStarted(callback);
             return this;
         }
 
-        public TweenMotion<T> OnBeforeUpdate(Action<float> callback)
+        public TweenMotion<T> OnUpdating(Action<float> callback)
         {
-            Tween.OnBeforeUpdate(callback);
+            Tween.OnUpdating(callback);
             return this;
         }
 
-        public TweenMotion<T> OnAfterUpdate(Action<float> callback)
+        public TweenMotion<T> OnUpdated(Action<float> callback)
         {
-            Tween.OnAfterUpdate(callback);
+            Tween.OnUpdated(callback);
             return this;
         }
 
-        public TweenMotion<T> OnLoopComplete(Action callback)
+        public TweenMotion<T> OnLoopCompleted(Action callback)
         {
-            Tween.OnLoopComplete(callback);
+            Tween.OnLoopCompleted(callback);
             return this;
         }
 
-        public TweenMotion<T> OnComplete(Action callback)
+        public TweenMotion<T> OnCompleted(Action callback)
         {
-            Tween.OnComplete(callback);
+            Tween.OnCompleted(callback);
             return this;
         }
 
@@ -107,6 +107,18 @@ namespace FlowEnt
         public TweenMotion<T> SetTimeScale(float timeScale)
         {
             Tween.SetTimeScale(timeScale);
+            return this;
+        }
+
+        public TweenMotion<T> SetSkipFrames(int frames)
+        {
+            Tween.SetSkipFrames(frames);
+            return this;
+        }
+
+        public TweenMotion<T> SetDelay(float time)
+        {
+            Tween.SetDelay(time);
             return this;
         }
 

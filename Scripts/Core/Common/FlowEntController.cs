@@ -5,7 +5,13 @@ namespace FlowEnt
 {
     public class FlowEntController : MonoBehaviour
     {
-        private const int DefaultMaxArrayCapacity = 6400;
+        private class UpdatableAnchor : AbstractUpdatable
+        {
+            internal override float? UpdateInternal(float deltaTime)
+            {
+                throw new FlowEntException("this method should not be called");
+            }
+        }
 
         private static FlowEntController instance;
         private static object lockObject = new object();
@@ -27,10 +33,7 @@ namespace FlowEnt
             }
         }
 
-        private ulong lastId;
-        internal ulong GetId() => lastId++;
-
-        private FastList<AbstractUpdatable> onUpdateCallbacks = new FastList<AbstractUpdatable>(DefaultMaxArrayCapacity);
+        private FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
 
         private float timeScale = 1;
 
@@ -39,7 +42,7 @@ namespace FlowEnt
             get { return timeScale; }
             set
             {
-
+                timeScale = value;
             }
         }
 
@@ -53,20 +56,25 @@ namespace FlowEnt
             {
                 return;
             }
-            for (int i = 0; i < onUpdateCallbacks.Count; ++i)
+
+            float deltaTime = Time.deltaTime * timeScale;
+            AbstractUpdatable index = updatables.Anchor.next;
+
+            while (index != null)
             {
-                onUpdateCallbacks[i].UpdateInternal(Time.deltaTime * timeScale);
+                index.UpdateInternal(deltaTime);
+                index = index.next;
             }
         }
 
         internal void SubscribeToUpdate(AbstractUpdatable updatable)
         {
-            onUpdateCallbacks.Add(updatable);
+            updatables.Add(updatable);
         }
 
         internal void UnsubscribeFromUpdate(AbstractUpdatable updatable)
         {
-            onUpdateCallbacks.Remove(updatable);
+            updatables.Remove(updatable);
         }
 
         public void Pause()
@@ -80,11 +88,6 @@ namespace FlowEnt
         }
 
         #region Options
-
-        public void SetMaxCapacity(int capacity)
-        {
-            onUpdateCallbacks = new FastList<AbstractUpdatable>(capacity);
-        }
 
         public void SetTimeScale(float timeScale)
         {

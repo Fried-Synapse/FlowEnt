@@ -1,8 +1,18 @@
+using System;
+
 namespace FlowEnt
 {
-    public abstract class AbstractUpdatable : FlowEntObject, IFastListItem
+    public abstract class AbstractUpdatable : FastListItem<AbstractUpdatable>
     {
-        int IFastListItem.Index { get; set; }
+        protected AbstractUpdatable()
+        {
+            Id = lastId;
+            ++lastId;
+        }
+
+        private static ulong lastId;
+
+        public ulong Id { get; }
 
         internal abstract float? UpdateInternal(float deltaTime);
     }

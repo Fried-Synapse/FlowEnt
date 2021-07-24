@@ -1,107 +1,89 @@
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public class AbstractAnimationOptions
-    {
-        public bool AutoStart { get; set; }
-
-        public AbstractAnimationOptions(bool autoStart = false)
-        {
-            AutoStart = autoStart;
-        }
-    }
-
     public abstract class AbstractAnimation : AbstractUpdatable
     {
-        private class AutoStartHelper : AbstractUpdatable
-        {
-            public AutoStartHelper(Action<float> callback)
-            {
-                Callback = callback;
-            }
-
-            private Action<float> Callback { get; set; }
-
-            internal override float? UpdateInternal(float deltaTime)
-            {
-                FlowEntController.Instance.UnsubscribeFromUpdate(this);
-                Callback.Invoke(deltaTime);
-                return null;
-            }
-        }
-
-        protected class AwaitableAnimation
-        {
-            public AwaitableAnimation(AbstractAnimation animation)
-            {
-                this.animation = animation;
-            }
-
-            private readonly AbstractAnimation animation;
-            public AnimationAwaiter GetAwaiter()
-                => new AnimationAwaiter(animation);
-        }
-
-        protected class AnimationAwaiter : INotifyCompletion
-        {
-            public AnimationAwaiter(AbstractAnimation animation)
-            {
-                this.animation = animation;
-                this.animation.OnCompleteInternal(() => onCompletedCallback());
-            }
-
-            private readonly AbstractAnimation animation;
-            public bool IsCompleted => animation.PlayState == PlayState.Finished;
-            private Action onCompletedCallback;
-
-            public AbstractAnimation GetResult()
-                => animation;
-
-            public void OnCompleted(Action continuation)
-            {
-                onCompletedCallback = continuation;
-            }
-        }
-
         protected AbstractAnimation(bool autoStart = false)
         {
             if (autoStart)
             {
-                AutoStartHelperInstance = new AutoStartHelper(OnAutoStart);
-                FlowEntController.Instance.SubscribeToUpdate(AutoStartHelperInstance);
+                AutoStartHelper = new AutoStartHelper(OnAutoStarted);
+                FlowEntController.Instance.SubscribeToUpdate(AutoStartHelper);
             }
         }
 
-        private AutoStartHelper AutoStartHelperInstance { get; set; }
+        internal AutoStartHelper AutoStartHelper { get; private set; }
+        internal abstract void OnCompletedInternal(Action callback);
 
-        protected abstract void OnCompleteInternal(Action callback);
+        #region Options
+
+        private protected int skipFrames;
+        private protected float delay = -1f;
+        private protected int? loopCount = 1;
+        private protected float timeScale = 1f;
+
+        #endregion
+
+        #region Events
+        private protected Action onStarted;
+        private protected Action onCompleted;
+
+        #endregion
 
         #region Settings Properties
 
         protected bool IsSubscribedToUpdate { get; set; }
 
-        public PlayState PlayState { get; protected set; } = PlayState.Building;
+        public PlayState PlayState { get; protected set; }
 
         #endregion
 
         #region Lifecycle
 
-        protected abstract void OnAutoStart(float deltaTime);
-
-        internal void CancelAutoStart()
+        private void OnAutoStarted(float deltaTime)
         {
-            if (AutoStartHelperInstance == null)
+            if (PlayState != PlayState.Building)
             {
                 return;
             }
-            FlowEntController.Instance.UnsubscribeFromUpdate(AutoStartHelperInstance);
-            AutoStartHelperInstance = null;
+
+            StartInternal(true, deltaTime);
         }
 
-        internal abstract void StartInternal(bool subscribeToUpdate = true);
+        internal void CancelAutoStart()
+        {
+            FlowEntController.Instance.UnsubscribeFromUpdate(AutoStartHelper);
+            AutoStartHelper = null;
+        }
+
+        protected void StartSkipFrames(bool subscribeToUpdate)
+        {
+            //NOTE autostart already skips one frame, so we're skipping it
+            if (AutoStartHelper != null)
+            {
+                --skipFrames;
+            }
+            SkipFramesStartHelper skipFramesStartHelper = new SkipFramesStartHelper(skipFrames, (deltaTime) =>
+            {
+                skipFrames = 0;
+                StartInternal(subscribeToUpdate, deltaTime);
+            });
+            FlowEntController.Instance.SubscribeToUpdate(skipFramesStartHelper);
+        }
+
+        protected void StartDelay(bool subscribeToUpdate)
+        {
+            DelayedStartHelper delayedStartHelper = new DelayedStartHelper(delay, (deltaTime) =>
+            {
+                delay = -1f;
+                StartInternal(subscribeToUpdate, deltaTime);
+            });
+            FlowEntController.Instance.SubscribeToUpdate(delayedStartHelper);
+        }
+
+        internal abstract void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null);
 
         public void Resume()
         {

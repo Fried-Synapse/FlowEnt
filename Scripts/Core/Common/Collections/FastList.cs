@@ -1,71 +1,63 @@
 namespace FlowEnt
 {
-    internal interface IFastListItem
+    public class FastListItem<T>
+        where T : FastListItem<T>
     {
-        public int Index { get; set; }
+        //HACK I know these should be properties and not public fields, but heck this saves 20fps(from 80 to 100) for 128k tweens...
+        internal T previous;
+
+        internal T next;
     }
 
-    internal abstract class AbstractFastListItem : IFastListItem
+    internal class FastList<T, TAnchor>
+        where T : FastListItem<T>
+        where TAnchor : T, new()
     {
-        public int Index { get; set; }
-    }
-
-    internal class FastList<T>
-        where T : IFastListItem
-    {
-        public FastList(int capacity)
+        internal FastList()
         {
-            array = new T[capacity];
+            Anchor = new TAnchor();
+            last = Anchor;
         }
 
-        public FastList(T[] array)
+        public TAnchor Anchor { get; }
+        private T last;
+        internal void Add(T item)
         {
-            this.array = array;
-            count = array.Length;
-        }
-
-        private T[] array;
-
-        private int count;
-        public int Count => count;
-
-        public T this[int i]
-        {
-            get
+            item.previous = last;
+            //HACK it's faster to reset the next in here than on remove
+            if (item.next != null)
             {
-                return array[i];
+                item.next = null;
             }
-            set
+            last.next = item;
+            last = item;
+        }
+        internal void Remove(T item)
+        {
+            T previous = item.previous;
+            if (last == item)
             {
-                array[i] = value;
+                last = previous;
+            }
+
+            //HACK we're not removing the first item ever, so no need to check if the prev item is null.
+            item.previous.next = item.next;
+
+            if (item.next != null)
+            {
+                item.next.previous = previous;
             }
         }
 
-        public void Add(T item)
+        internal void Replace(T original, T replacement)
         {
-            array[count] = item;
-            item.Index = count;
-            count++;
-        }
-
-        public T Last()
-            => array[count - 1];
-
-        public void Remove(T item)
-            => RemoveAt(item.Index);
-
-        public void RemoveAt(int index)
-        {
-            T lastItem = array[count - 1];
-            array[index] = lastItem;
-            lastItem.Index = index;
-            RemoveLast();
-        }
-
-        public void RemoveLast()
-        {
-            array[count - 1] = default;
-            count--;
+            original.previous.next = replacement;
+            if (original.next != null)
+            {
+                original.next.previous = replacement;
+            }
+            replacement.next = original.next;
+            replacement.previous = original.previous;
         }
     }
 }

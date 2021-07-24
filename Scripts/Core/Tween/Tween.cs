@@ -7,15 +7,15 @@ namespace FlowEnt
 {
     internal interface IFluentTweenEventable<T>
     {
-        T OnBeforeStart(Action callback);
-        T OnAfterStart(Action callback);
+        T OnStarting(Action callback);
+        T OnStarted(Action callback);
 
-        T OnBeforeUpdate(Action<float> callback);
-        T OnAfterUpdate(Action<float> callback);
+        T OnUpdating(Action<float> callback);
+        T OnUpdated(Action<float> callback);
 
-        T OnLoopComplete(Action callback);
+        T OnLoopCompleted(Action callback);
 
-        T OnComplete(Action callback);
+        T OnCompleted(Action callback);
     }
 
     public sealed class Tween : AbstractAnimation,
@@ -36,20 +36,16 @@ namespace FlowEnt
             this.time = time;
         }
 
-        private Action onBeforeStartCallback;
-        private Action onAfterStartCallback;
-        private Action<float> onBeforeUpdateCallback;
-        private Action<float> onAfterUpdateCallback;
-        private Action onLoopCompleteCallback;
-        private Action onCompleteCallback;
+        private Action onStarting;
+        private Action<float> onUpdating;
+        private Action<float> onUpdated;
+        private Action onLoopCompleted;
 
         #region Options
 
         private float time = 1;
         private LoopType loopType;
-        private int? loopCount = 1;
         private IEasing easing = TweenOptions.LinearEasing;
-        private float timeScale = 1f;
 
         #endregion
 
@@ -65,17 +61,6 @@ namespace FlowEnt
 
         #region Lifecycle
 
-        protected override void OnAutoStart(float deltaTime)
-        {
-            if (PlayState != PlayState.Building)
-            {
-                return;
-            }
-
-            Start();
-            UpdateInternal(deltaTime);
-        }
-
         public Tween Start()
         {
             if (PlayState != PlayState.Building)
@@ -83,6 +68,10 @@ namespace FlowEnt
                 throw new FlowEntException("Tween already started.");
             }
 
+            if (AutoStartHelper != null)
+            {
+                CancelAutoStart();
+            }
             StartInternal();
             return this;
         }
@@ -94,28 +83,49 @@ namespace FlowEnt
                 throw new FlowEntException("Tween already started.");
             }
 
+            if (AutoStartHelper != null)
+            {
+                CancelAutoStart();
+            }
             StartInternal();
             await new AwaitableAnimation(this);
             return this;
         }
 
-        internal override void StartInternal(bool subscribeToUpdate = true)
+        internal override void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null)
         {
+            if (skipFrames > 0)
+            {
+                StartSkipFrames(subscribeToUpdate);
+                return;
+            }
+
+            if (delay > 0f)
+            {
+                StartDelay(subscribeToUpdate);
+                return;
+            }
+
             remainingLoops = loopCount;
             remainingTime = time;
 
-            IsSubscribedToUpdate = subscribeToUpdate;
-            if (IsSubscribedToUpdate)
+            if (subscribeToUpdate)
             {
                 FlowEntController.Instance.SubscribeToUpdate(this);
+                IsSubscribedToUpdate = subscribeToUpdate;
             }
-            onBeforeStartCallback?.Invoke();
+            onStarting?.Invoke();
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnStart();
             }
-            onAfterStartCallback?.Invoke();
+            onStarted?.Invoke();
             PlayState = PlayState.Playing;
+
+            if (deltaTime != null)
+            {
+                UpdateInternal(deltaTime.Value);
+            }
         }
 
         internal override float? UpdateInternal(float deltaTime)
@@ -134,12 +144,12 @@ namespace FlowEnt
             float currentLoopTime = isForward ? time - remainingTime : remainingTime;
             float t = easing.GetValue(currentLoopTime / time);
 
-            onBeforeUpdateCallback?.Invoke(t);
+            onUpdating?.Invoke(t);
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnUpdate(t);
             }
-            onAfterUpdateCallback?.Invoke(t);
+            onUpdated?.Invoke(t);
 
             if (overdraft != null)
             {
@@ -153,7 +163,7 @@ namespace FlowEnt
             remainingTime = time;
             if (loopCount == null)
             {
-                onLoopCompleteCallback?.Invoke();
+                onLoopCompleted?.Invoke();
                 UpdateInternal(overdraft);
                 return null;
             }
@@ -161,7 +171,7 @@ namespace FlowEnt
             remainingLoops--;
             if (remainingLoops > 0)
             {
-                onLoopCompleteCallback?.Invoke();
+                onLoopCompleted?.Invoke();
                 UpdateInternal(overdraft);
                 return null;
             }
@@ -175,7 +185,7 @@ namespace FlowEnt
             {
                 motions[i].OnComplete();
             }
-            onCompleteCallback?.Invoke();
+            onCompleted?.Invoke();
             PlayState = PlayState.Finished;
             return overdraft;
         }
@@ -186,45 +196,45 @@ namespace FlowEnt
 
         #region Events
 
-        public Tween OnBeforeStart(Action callback)
+        public Tween OnStarting(Action callback)
         {
-            onBeforeStartCallback += callback;
+            onStarting += callback;
             return this;
         }
 
-        public Tween OnAfterStart(Action callback)
+        public Tween OnStarted(Action callback)
         {
-            onAfterStartCallback += callback;
+            onStarted += callback;
             return this;
         }
 
-        public Tween OnBeforeUpdate(Action<float> callback)
+        public Tween OnUpdating(Action<float> callback)
         {
-            onBeforeUpdateCallback += callback;
+            onUpdating += callback;
             return this;
         }
 
-        public Tween OnAfterUpdate(Action<float> callback)
+        public Tween OnUpdated(Action<float> callback)
         {
-            onAfterUpdateCallback += callback;
+            onUpdated += callback;
             return this;
         }
 
-        public Tween OnLoopComplete(Action callback)
+        public Tween OnLoopCompleted(Action callback)
         {
-            onLoopCompleteCallback += callback;
+            onLoopCompleted += callback;
             return this;
         }
 
-        public Tween OnComplete(Action callback)
+        public Tween OnCompleted(Action callback)
         {
-            onCompleteCallback += callback;
+            onCompleted += callback;
             return this;
         }
 
-        protected override void OnCompleteInternal(Action callback)
+        internal override void OnCompletedInternal(Action callback)
         {
-            onCompleteCallback += callback;
+            onCompleted += callback;
         }
 
         #endregion
@@ -255,6 +265,19 @@ namespace FlowEnt
         public Tween SetOptions(Func<TweenOptions, TweenOptions> optionsBuilder)
         {
             CopyOptions(optionsBuilder(new TweenOptions()));
+            return this;
+        }
+
+        public Tween SetSkipFrames(int frames)
+        {
+
+            this.skipFrames = frames;
+            return this;
+        }
+
+        public Tween SetDelay(float time)
+        {
+            this.delay = time;
             return this;
         }
 
@@ -298,7 +321,7 @@ namespace FlowEnt
         {
             if (timeScale < 0)
             {
-                throw new ArgumentException("Value cannot be less than 0");
+                throw new ArgumentException("Value cannot be less than 0.");
             }
             this.timeScale = timeScale;
             return this;
@@ -306,6 +329,8 @@ namespace FlowEnt
 
         private void CopyOptions(TweenOptions options)
         {
+            skipFrames = options.SkipFrames;
+            delay = options.Delay;
             time = options.Time;
             loopType = options.LoopType;
             loopCount = options.LoopCount;
