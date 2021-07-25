@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 
 namespace FlowEnt
 {
-    public sealed class Flow : AbstractAnimation, IFluentFlowOptionable<Flow>
+    public sealed class Flow : AbstractAnimation,
+        IUpdateController,
+        IFluentFlowOptionable<Flow>
     {
         private class AnimationWrapper
         {
@@ -32,13 +34,14 @@ namespace FlowEnt
 
         #region Internal Members
 
-        private List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>();
+        private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
+        private readonly List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>();
         private AnimationWrapper lastQueuedAnimationWrapper;
 
         private AnimationWrapper[] animationWrappersOrderedByTimeIndexed;
         private int nextTimeIndexedAnimationWrapperIndex;
         private AnimationWrapper nextTimeIndexedAnimationWrapper;
-        private AnimationWrapper[] runningAnimationWrappers;
+        private readonly Dictionary<ulong, AnimationWrapper> runningAnimationWrappers = new Dictionary<ulong, AnimationWrapper>();
         private int runningAnimationWrappersCount;
 
         private float time;
@@ -46,16 +49,30 @@ namespace FlowEnt
 
         #endregion
 
+        #region IUpdateController
+
+        void IUpdateController.SubscribeToUpdate(AbstractUpdatable updatable)
+        {
+            updatables.Add(updatable);
+        }
+
+        void IUpdateController.UnsubscribeFromUpdate(AbstractUpdatable updatable)
+        {
+            updatables.Remove(updatable);
+        }
+
+        #endregion
+
         #region Lifecycle
 
         public Flow Start()
         {
-            if (PlayState != PlayState.Building)
+            if (playState != PlayState.Building)
             {
                 throw new FlowEntException("Flow already started.");
             }
 
-            if (AutoStartHelper != null)
+            if (autoStartHelper != null)
             {
                 CancelAutoStart();
             }
@@ -65,12 +82,12 @@ namespace FlowEnt
 
         public async Task<Flow> StartAsync()
         {
-            if (PlayState != PlayState.Building)
+            if (playState != PlayState.Building)
             {
                 throw new FlowEntException("Flow already started.");
             }
 
-            if (AutoStartHelper != null)
+            if (autoStartHelper != null)
             {
                 CancelAutoStart();
             }
@@ -79,17 +96,17 @@ namespace FlowEnt
             return this;
         }
 
-        internal override void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null)
+        internal override void StartInternal(float? deltaTime = null)
         {
             if (skipFrames > 0)
             {
-                StartSkipFrames(subscribeToUpdate);
+                StartSkipFrames();
                 return;
             }
 
             if (delay > 0f)
             {
-                StartDelay(subscribeToUpdate);
+                StartDelay();
                 return;
             }
 
@@ -97,15 +114,11 @@ namespace FlowEnt
 
             Init();
 
-            IsSubscribedToUpdate = subscribeToUpdate;
-            if (IsSubscribedToUpdate)
-            {
-                FlowEntController.Instance.SubscribeToUpdate(this);
-            }
+            updateController.SubscribeToUpdate(this);
 
             onStarted?.Invoke();
 
-            PlayState = PlayState.Playing;
+            playState = PlayState.Playing;
 
             if (deltaTime != null)
             {
@@ -125,12 +138,30 @@ namespace FlowEnt
 
             nextTimeIndexedAnimationWrapperIndex = 0;
             nextTimeIndexedAnimationWrapper = animationWrappersOrderedByTimeIndexed[nextTimeIndexedAnimationWrapperIndex++];
-
-            runningAnimationWrappers = new AnimationWrapper[animationWrappersQueue.Count];
         }
 
-        //TODO this can be done faster for sure...
-        internal override float? UpdateInternal(float deltaTime)
+        internal void CompleteAnimation(AbstractAnimation animation)
+        {
+            AnimationWrapper animationWrapper = runningAnimationWrappers[animation.Id];
+            runningAnimationWrappers.Remove(animation.Id);
+            AnimationWrapper nextAnimationWrapper = animationWrapper.next;
+            if (nextAnimationWrapper == null)
+            {
+                --runningAnimationWrappersCount;
+                if (runningAnimationWrappersCount == 0 && nextTimeIndexedAnimationWrapper == null)
+                {
+                    overdraft = animationWrapper.animation.OverDraft;
+                    CompleteLoop();
+                }
+                return;
+            }
+
+            runningAnimationWrappers.Add(nextAnimationWrapper.animation.Id, nextAnimationWrapper);
+            nextAnimationWrapper.animation.StartInternal();
+            nextAnimationWrapper.animation.UpdateInternal(animationWrapper.animation.OverDraft.Value);
+        }
+
+        internal override void UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
             time += scaledDeltaTime;
@@ -139,9 +170,10 @@ namespace FlowEnt
 
             while (nextTimeIndexedAnimationWrapper != null && time > nextTimeIndexedAnimationWrapper.timeIndex)
             {
-                nextTimeIndexedAnimationWrapper.animation.StartInternal(false);
-                runningAnimationWrappers[nextTimeIndexedAnimationWrapper.index] = nextTimeIndexedAnimationWrapper;
                 ++runningAnimationWrappersCount;
+                runningAnimationWrappers.Add(nextTimeIndexedAnimationWrapper.animation.Id, nextTimeIndexedAnimationWrapper);
+                nextTimeIndexedAnimationWrapper.animation.StartInternal();
+
                 if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
                 {
                     nextTimeIndexedAnimationWrapper = animationWrappersOrderedByTimeIndexed[nextTimeIndexedAnimationWrapperIndex++];
@@ -156,72 +188,37 @@ namespace FlowEnt
 
             #region Updating animations
 
-            for (int i = 0; i < runningAnimationWrappers.Length; i++)
-            {
-                if (runningAnimationWrappers[i] == null)
-                {
-                    continue;
-                }
+            AbstractUpdatable index = updatables.Anchor.next;
 
-                bool isUpdated = false;
-                float runningDeltaTime = scaledDeltaTime;
-                AnimationWrapper animationWrapper = runningAnimationWrappers[i];
-                do
-                {
-                    float? overdraft = animationWrapper.animation.UpdateInternal(runningDeltaTime);
-                    if (overdraft != null)
-                    {
-                        animationWrapper = runningAnimationWrappers[i].next;
-                        if (animationWrapper != null)
-                        {
-                            runningAnimationWrappers[i] = animationWrapper;
-                            animationWrapper.animation.StartInternal(false);
-                            runningDeltaTime = overdraft.Value;
-                        }
-                        else
-                        {
-                            runningAnimationWrappers[i] = null;
-                            --runningAnimationWrappersCount;
-                            if (runningAnimationWrappersCount == 0 && nextTimeIndexedAnimationWrapper == null)
-                            {
-                                return CompleteLoop(overdraft.Value);
-                            }
-                            i--;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        isUpdated = true;
-                    }
-                }
-                while (!isUpdated);
+            while (index != null)
+            {
+                index.UpdateInternal(scaledDeltaTime);
+                index = index.next;
             }
 
             #endregion
-
-            return null;
         }
 
-        private float? CompleteLoop(float overdraft)
+        private void CompleteLoop()
         {
             remainingLoops--;
             if (remainingLoops > 0)
             {
                 Init();
-                UpdateInternal(overdraft);
-                return null;
+                UpdateInternal(overdraft.Value);
+                return;
             }
 
-            if (IsSubscribedToUpdate)
-            {
-                FlowEntController.Instance.UnsubscribeFromUpdate(this);
-            }
+            updateController.UnsubscribeFromUpdate(this);
 
             onCompleted?.Invoke();
 
-            PlayState = PlayState.Finished;
-            return overdraft;
+            if (updateController is Flow parentFlow)
+            {
+                parentFlow.CompleteAnimation(this);
+            }
+
+            playState = PlayState.Finished;
         }
 
         #endregion
@@ -258,10 +255,11 @@ namespace FlowEnt
                 throw new FlowEntException("Cannot add animation that has already started.");
             }
 
-            if (animation.AutoStartHelper != null)
+            if (animation.HasAutoStart)
             {
                 animation.CancelAutoStart();
             }
+            animation.UpdateController = this;
 
             if (lastQueuedAnimationWrapper == null)
             {
@@ -296,10 +294,11 @@ namespace FlowEnt
                 throw new FlowEntException("Cannot add animation that has already started.");
             }
 
-            if (animation.AutoStartHelper != null)
+            if (animation.HasAutoStart)
             {
                 animation.CancelAutoStart();
             }
+            animation.UpdateController = this;
 
             lastQueuedAnimationWrapper = new AnimationWrapper(animation, animationWrappersQueue.Count, timeIndex);
             animationWrappersQueue.Add(lastQueuedAnimationWrapper);

@@ -3,27 +3,6 @@ using UnityEngine;
 
 namespace FlowEnt
 {
-    internal interface IFluentTweenOptionable<T>
-    {
-        T SetTime(float time);
-
-        T SetEasing(IEasing easing);
-
-        T SetEasing(Easing easing);
-
-        T SetEasing(AnimationCurve animationCurve);
-
-        T SetLoopType(LoopType loopType);
-
-        T SetLoopCount(int? loopCount);
-
-        T SetTimeScale(float timeScale);
-
-        T SetSkipFrames(int frames);
-
-        T SetDelay(float time);
-    }
-
     public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
     {
         internal static readonly IEasing LinearEasing = new LinearEasing();

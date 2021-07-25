@@ -4,24 +4,23 @@ namespace FlowEnt
 {
     internal class DelayedStartHelper : AbstractStartHelper
     {
-        public DelayedStartHelper(float time, Action<float> callback) : base(callback)
+        public DelayedStartHelper(IUpdateController updateController, float time, Action<float> callback) : base(updateController, callback)
         {
             this.time = time;
         }
 
         private float time;
 
-        internal override float? UpdateInternal(float deltaTime)
+        internal override void UpdateInternal(float deltaTime)
         {
             time -= deltaTime;
             if (time >= 0f)
             {
-                return null;
+                return;
             }
 
-            FlowEntController.Instance.UnsubscribeFromUpdate(this);
-            Callback.Invoke(-time);
-            return null;
+            updateController.UnsubscribeFromUpdate(this);
+            callback.Invoke(-time);
         }
     }
 }

@@ -9,12 +9,12 @@ namespace FlowEnt
         {
             if (autoStart)
             {
-                AutoStartHelper = new AutoStartHelper(OnAutoStarted);
-                FlowEntController.Instance.SubscribeToUpdate(AutoStartHelper);
+                autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
             }
         }
 
-        internal AutoStartHelper AutoStartHelper { get; private set; }
+        private protected AutoStartHelper autoStartHelper;
+        internal bool HasAutoStart => autoStartHelper != null;
         internal abstract void OnCompletedInternal(Action callback);
 
         #region Options
@@ -34,9 +34,10 @@ namespace FlowEnt
 
         #region Settings Properties
 
-        protected bool IsSubscribedToUpdate { get; set; }
-
-        public PlayState PlayState { get; protected set; }
+        private protected PlayState playState;
+        public PlayState PlayState => playState;
+        private protected float? overdraft;
+        public float? OverDraft => overdraft;
 
         #endregion
 
@@ -44,59 +45,54 @@ namespace FlowEnt
 
         private void OnAutoStarted(float deltaTime)
         {
-            if (PlayState != PlayState.Building)
+            if (playState != PlayState.Building)
             {
                 return;
             }
 
-            StartInternal(true, deltaTime);
+            StartInternal(deltaTime);
         }
 
         internal void CancelAutoStart()
         {
-            FlowEntController.Instance.UnsubscribeFromUpdate(AutoStartHelper);
-            AutoStartHelper = null;
+            updateController.UnsubscribeFromUpdate(autoStartHelper);
+            autoStartHelper = null;
         }
 
-        protected void StartSkipFrames(bool subscribeToUpdate)
+        private protected void StartSkipFrames()
         {
             //NOTE autostart already skips one frame, so we're skipping it
-            if (AutoStartHelper != null)
+            if (autoStartHelper != null)
             {
                 --skipFrames;
             }
-            SkipFramesStartHelper skipFramesStartHelper = new SkipFramesStartHelper(skipFrames, (deltaTime) =>
+            SkipFramesStartHelper skipFramesStartHelper = new SkipFramesStartHelper(updateController, skipFrames, (deltaTime) =>
             {
                 skipFrames = 0;
-                StartInternal(subscribeToUpdate, deltaTime);
+                StartInternal(deltaTime);
             });
-            FlowEntController.Instance.SubscribeToUpdate(skipFramesStartHelper);
         }
 
-        protected void StartDelay(bool subscribeToUpdate)
+        private protected void StartDelay()
         {
-            DelayedStartHelper delayedStartHelper = new DelayedStartHelper(delay, (deltaTime) =>
+            DelayedStartHelper delayedStartHelper = new DelayedStartHelper(updateController, delay, (deltaTime) =>
             {
                 delay = -1f;
-                StartInternal(subscribeToUpdate, deltaTime);
+                StartInternal(deltaTime);
             });
-            FlowEntController.Instance.SubscribeToUpdate(delayedStartHelper);
         }
 
-        internal abstract void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null);
+        internal abstract void StartInternal(float? deltaTime = null);
 
         public void Resume()
         {
-            if (PlayState != PlayState.Paused)
+            if (playState != PlayState.Paused)
             {
                 return;
             }
-            PlayState = PlayState.Playing;
-            if (!IsSubscribedToUpdate)
-            {
-                return;
-            }
-            FlowEntController.Instance.SubscribeToUpdate(this);
+            playState = PlayState.Playing;
+
+            updateController.SubscribeToUpdate(this);
         }
 
         public void Pause()
@@ -105,26 +101,20 @@ namespace FlowEnt
             {
                 return;
             }
-            PlayState = PlayState.Paused;
-            if (!IsSubscribedToUpdate)
-            {
-                return;
-            }
-            FlowEntController.Instance.UnsubscribeFromUpdate(this);
+            playState = PlayState.Paused;
+
+            updateController.UnsubscribeFromUpdate(this);
         }
 
         public void Stop()
         {
-            if (PlayState == PlayState.Finished)
+            if (playState == PlayState.Finished)
             {
                 return;
             }
-            PlayState = PlayState.Finished;
-            if (!IsSubscribedToUpdate)
-            {
-                return;
-            }
-            FlowEntController.Instance.UnsubscribeFromUpdate(this);
+            playState = PlayState.Finished;
+
+            updateController.UnsubscribeFromUpdate(this);
         }
 
         public async Task AsAsync()

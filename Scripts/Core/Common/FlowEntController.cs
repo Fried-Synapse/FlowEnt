@@ -3,16 +3,9 @@ using UnityEngine;
 
 namespace FlowEnt
 {
-    public class FlowEntController : MonoBehaviour
+    public class FlowEntController : MonoBehaviour,
+        IUpdateController
     {
-        private class UpdatableAnchor : AbstractUpdatable
-        {
-            internal override float? UpdateInternal(float deltaTime)
-            {
-                throw new FlowEntException("this method should not be called");
-            }
-        }
-
         private static FlowEntController instance;
         private static object lockObject = new object();
 
@@ -67,15 +60,21 @@ namespace FlowEnt
             }
         }
 
-        internal void SubscribeToUpdate(AbstractUpdatable updatable)
+        #region IUpdateController
+
+        void IUpdateController.SubscribeToUpdate(AbstractUpdatable updatable)
         {
             updatables.Add(updatable);
         }
 
-        internal void UnsubscribeFromUpdate(AbstractUpdatable updatable)
+        void IUpdateController.UnsubscribeFromUpdate(AbstractUpdatable updatable)
         {
             updatables.Remove(updatable);
         }
+
+        #endregion
+
+        #region Lifecycle
 
         public void Pause()
         {
@@ -86,6 +85,8 @@ namespace FlowEnt
         {
             playState = PlayState.Playing;
         }
+
+        #endregion
 
         #region Options
 

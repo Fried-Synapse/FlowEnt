@@ -5,19 +5,9 @@ using UnityEngine;
 
 namespace FlowEnt
 {
-    internal interface IFluentTweenEventable<T>
-    {
-        T OnStarting(Action callback);
-        T OnStarted(Action callback);
-
-        T OnUpdating(Action<float> callback);
-        T OnUpdated(Action<float> callback);
-
-        T OnLoopCompleted(Action callback);
-
-        T OnCompleted(Action callback);
-    }
-
+    /// <summary>
+    /// A tween is a simple interpolation from 0 to 1 which has several options and events attached.
+    /// </summary>
     public sealed class Tween : AbstractAnimation,
         IFluentTweenOptionable<Tween>,
         IFluentTweenEventable<Tween>
@@ -63,12 +53,12 @@ namespace FlowEnt
 
         public Tween Start()
         {
-            if (PlayState != PlayState.Building)
+            if (playState != PlayState.Building)
             {
                 throw new FlowEntException("Tween already started.");
             }
 
-            if (AutoStartHelper != null)
+            if (autoStartHelper != null)
             {
                 CancelAutoStart();
             }
@@ -78,12 +68,12 @@ namespace FlowEnt
 
         public async Task<Tween> StartAsync()
         {
-            if (PlayState != PlayState.Building)
+            if (playState != PlayState.Building)
             {
                 throw new FlowEntException("Tween already started.");
             }
 
-            if (AutoStartHelper != null)
+            if (autoStartHelper != null)
             {
                 CancelAutoStart();
             }
@@ -92,35 +82,32 @@ namespace FlowEnt
             return this;
         }
 
-        internal override void StartInternal(bool subscribeToUpdate = true, float? deltaTime = null)
+        internal override void StartInternal(float? deltaTime = null)
         {
             if (skipFrames > 0)
             {
-                StartSkipFrames(subscribeToUpdate);
+                StartSkipFrames();
                 return;
             }
 
             if (delay > 0f)
             {
-                StartDelay(subscribeToUpdate);
+                StartDelay();
                 return;
             }
 
             remainingLoops = loopCount;
             remainingTime = time;
 
-            if (subscribeToUpdate)
-            {
-                FlowEntController.Instance.SubscribeToUpdate(this);
-                IsSubscribedToUpdate = subscribeToUpdate;
-            }
+            updateController.SubscribeToUpdate(this);
+
             onStarting?.Invoke();
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnStart();
             }
             onStarted?.Invoke();
-            PlayState = PlayState.Playing;
+            playState = PlayState.Playing;
 
             if (deltaTime != null)
             {
@@ -128,11 +115,9 @@ namespace FlowEnt
             }
         }
 
-        internal override float? UpdateInternal(float deltaTime)
+        internal override void UpdateInternal(float deltaTime)
         {
             remainingTime -= deltaTime * timeScale;
-
-            float? overdraft = null;
 
             if (remainingTime < 0)
             {
@@ -153,41 +138,39 @@ namespace FlowEnt
 
             if (overdraft != null)
             {
-                return CompleteLoop(overdraft.Value);
+                CompleteLoop();
             }
-            return null;
         }
 
-        private float? CompleteLoop(float overdraft)
+        private void CompleteLoop()
         {
             remainingTime = time;
             if (loopCount == null)
             {
                 onLoopCompleted?.Invoke();
-                UpdateInternal(overdraft);
-                return null;
+                UpdateInternal(overdraft.Value);
             }
 
             remainingLoops--;
             if (remainingLoops > 0)
             {
                 onLoopCompleted?.Invoke();
-                UpdateInternal(overdraft);
-                return null;
+                UpdateInternal(overdraft.Value);
             }
 
-            if (IsSubscribedToUpdate)
-            {
-                FlowEntController.Instance.UnsubscribeFromUpdate(this);
-            }
+            updateController.UnsubscribeFromUpdate(this);
 
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnComplete();
             }
             onCompleted?.Invoke();
-            PlayState = PlayState.Finished;
-            return overdraft;
+
+            if (updateController is Flow parentFlow)
+            {
+                parentFlow.CompleteAnimation(this);
+            }
+            playState = PlayState.Finished;
         }
 
         #endregion

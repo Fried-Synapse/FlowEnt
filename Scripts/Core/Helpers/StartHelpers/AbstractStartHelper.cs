@@ -4,11 +4,12 @@ namespace FlowEnt
 {
     internal abstract class AbstractStartHelper : AbstractUpdatable
     {
-        protected AbstractStartHelper(Action<float> callback)
+        protected AbstractStartHelper(IUpdateController updateController, Action<float> callback) : base(updateController)
         {
-            Callback = callback;
+            this.updateController.SubscribeToUpdate(this);
+            this.callback = callback;
         }
 
-        protected Action<float> Callback { get; }
+        protected Action<float> callback;
     }
 }
