@@ -13,10 +13,10 @@ namespace FlowEnt
             => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, value));
 
         public static TweenMotion<RectTransform> MoveAnchoredPositionX(this TweenMotion<RectTransform> motionWrapper, float x)
-            => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, new Vector2(x, 0)));
+            => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, new Vector2(x, 0f)));
 
         public static TweenMotion<RectTransform> MoveAnchoredPositionY(this TweenMotion<RectTransform> motionWrapper, float y)
-            => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, new Vector2(0, y)));
+            => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, new Vector2(0f, y)));
 
         #endregion
 
