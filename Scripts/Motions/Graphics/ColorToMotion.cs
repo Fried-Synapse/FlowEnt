@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FlowEnt.Motions.GraphicMotions
+namespace FlowEnt.Motions.Graphics
 {
-    public class ColorToMotions : AbstractMotion<TGraphic> where TGraphic : Graphic
+    public class ColorToMotion<TGraphic> : AbstractMotion<TGraphic>
+        where TGraphic : Graphic
     {
         public ColorToMotion(TGraphic item, Color to) : base(item)
         {

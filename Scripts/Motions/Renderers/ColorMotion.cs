@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace FlowEnt.Motions.Graphics
+namespace FlowEnt.Motions.Renderers
 {
-    public class ColorMotion<TGraphic> : AbstractMotion<TGraphic>
-        where TGraphic : Graphic
+    public class ColorMotion<TRenderer> : AbstractMotion<TRenderer>
+        where TRenderer : Renderer
     {
-        public ColorMotion(TGraphic item, Color value) : base(item)
+        public ColorMotion(TRenderer item, Color value) : base(item)
         {
             Value = value;
         }
@@ -17,13 +16,13 @@ namespace FlowEnt.Motions.Graphics
 
         public override void OnStart()
         {
-            From = Item.color;
+            From = Item.material.color;
             To = From + Value;
         }
 
         public override void OnUpdate(float t)
         {
-            Item.color = Color.Lerp(From.Value, To.Value, t);
+            Item.material.color = Color.Lerp(From.Value, To.Value, t);
         }
     }
 }

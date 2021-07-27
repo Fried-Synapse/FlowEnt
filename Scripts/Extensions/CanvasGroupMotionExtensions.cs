@@ -1,4 +1,4 @@
-using FlowEnt.Motions.CanvasGroupMotions;
+using FlowEnt.Motions.CanvasGroups;
 using UnityEngine;
 
 namespace FlowEnt
