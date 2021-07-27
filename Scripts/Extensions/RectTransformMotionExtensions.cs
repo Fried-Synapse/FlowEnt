@@ -1,4 +1,4 @@
-using FlowEnt.Motions.RectTransformMotions;
+using FlowEnt.Motions.RectTransforms;
 using UnityEngine;
 
 namespace FlowEnt

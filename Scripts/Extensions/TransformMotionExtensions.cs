@@ -1,5 +1,5 @@
 using UnityEngine;
-using FlowEnt.Motions.TransformMotions;
+using FlowEnt.Motions.Transforms;
 
 namespace FlowEnt
 {

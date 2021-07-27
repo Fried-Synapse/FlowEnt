@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace FlowEnt.Motions.Graphics
+namespace FlowEnt.Motions.Renderers
 {
-    public class AlphaMotion<TGraphic> : AbstractMotion<TGraphic>
-        where TGraphic : Graphic
+    public class AlphaMotion<TRenderer> : AbstractMotion<TRenderer>
+        where TRenderer : Renderer
     {
-        public AlphaMotion(TGraphic item, float value) : base(item)
+        public AlphaMotion(TRenderer item, float value) : base(item)
         {
             Value = value;
         }
@@ -18,15 +17,15 @@ namespace FlowEnt.Motions.Graphics
 
         public override void OnStart()
         {
-            From = Item.color.a;
+            From = Item.material.color.a;
             To = From + Value;
         }
 
         public override void OnUpdate(float t)
         {
-            color = Item.color;
+            color = Item.material.color;
             color.a = Mathf.Lerp(From.Value, To.Value, t);
-            Item.color = color;
+            Item.material.color = color;
         }
     }
 }

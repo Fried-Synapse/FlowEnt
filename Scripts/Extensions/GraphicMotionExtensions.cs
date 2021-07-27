@@ -1,4 +1,4 @@
-using FlowEnt.Motions.GraphicMotions;
+using FlowEnt.Motions.Graphics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,19 +7,19 @@ namespace FlowEnt
     public static class GraphicMotionExtensions
     {
         #region Alpha
-            
+
         public static TweenMotion<TGraphic> Alpha<TGraphic>(this TweenMotion<TGraphic> motion, float value)
             where TGraphic : Graphic
-            => motion.Apply(new AlphaMotion(motion.Item, value));
+            => motion.Apply(new AlphaMotion<TGraphic>(motion.Item, value));
 
         public static TweenMotion<TGraphic> AlphaTo<TGraphic>(this TweenMotion<TGraphic> motion, float to)
             where TGraphic : Graphic
-            => motion.Apply(new AlphaToMotion(motion.Item, to));
+            => motion.Apply(new AlphaToMotion<TGraphic>(motion.Item, to));
 
 
         public static TweenMotion<TGraphic> AlphaTo<TGraphic>(this TweenMotion<TGraphic> motion, float from, float to)
             where TGraphic : Graphic
-            => motion.Apply(new AlphaToMotion(motion.Item, from, to));
+            => motion.Apply(new AlphaToMotion<TGraphic>(motion.Item, from, to));
 
         #endregion
 
