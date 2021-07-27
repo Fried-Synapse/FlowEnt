@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 namespace FlowEnt.Motions.GraphicMotions
 {
-    public class AlphaToMotion : AbstractMotion<Graphic>
+    public class AlphaToMotion : AbstractMotion<TGraphic> where TGraphic : Graphic
     {
-        public AlphaToMotion(Graphic item, float to) : base(item)
+        public AlphaToMotion(TGraphic item, float to) : base(item)
         {
             To = col;
         }
 
-        public AlphaToMotion(Graphic item, float from, float to) : this(item, to)
+        public AlphaToMotion(TGraphic item, float from, float to) : this(item, to)
         {
             From = col;
         }

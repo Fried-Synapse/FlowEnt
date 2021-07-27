@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 namespace FlowEnt.Motions.GraphicMotions
 {
-    public class ColorToMotions : AbstractMotion<Graphic>
+    public class ColorToMotions : AbstractMotion<TGraphic> where TGraphic : Graphic
     {
-        public ColorToMotion(Graphic item, Color to) : base(item)
+        public ColorToMotion(TGraphic item, Color to) : base(item)
         {
             To = to;
         }
 
-        public ColorToMotion(Graphic item, Color from, Color to) : this(item, to)
+        public ColorToMotion(TGraphic item, Color from, Color to) : this(item, to)
         {
             From = from;
         }

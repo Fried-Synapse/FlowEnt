@@ -25,15 +25,15 @@ namespace FlowEnt
         #region Color
 
         public static TweenMotion<TGraphic> Color<TGraphic>(this TweenMotion<TGraphic> motion, Color value)
-            where TGraphic : Renderer
+            where TGraphic : Graphic
             => motion.Apply(new ColorMotion<TGraphic>(motion.Item, value));
 
         public static TweenMotion<TGraphic> ColorTo<TGraphic>(this TweenMotion<TGraphic> motion, Color to)
-            where TGraphic : Renderer
+            where TGraphic : Graphic
             => motion.Apply(new ColorToMotion<TGraphic>(motion.Item, to));
 
         public static TweenMotion<TGraphic> ColorTo<TGraphic>(this TweenMotion<TGraphic> motion, Color from, Color to)
-            where TGraphic : Renderer
+            where TGraphic : Graphic
             => motion.Apply(new ColorToMotion<TGraphic>(motion.Item, from, to));
 
         #endregion

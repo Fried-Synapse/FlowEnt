@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 namespace FlowEnt.Motions.GraphicMotions
 {
-    public class AlphaMotion : AbstractMotion<Graphic>
+    public class AlphaMotion : AbstractMotion<TGraphic> where TGraphic : Graphic
     {
-        public AlphaMotion(Graphic item, float value) : base(item)
+        public AlphaMotion(TGraphic item, float value) : base(item)
         {
             Value = value;
         }
