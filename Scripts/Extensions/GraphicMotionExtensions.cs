@@ -7,6 +7,7 @@ namespace FlowEnt
     public static class GraphicMotionExtensions
     {
         #region Alpha
+            
         public static TweenMotion<TGraphic> Alpha<TGraphic>(this TweenMotion<TGraphic> motion, float value)
             where TGraphic : Graphic
             => motion.Apply(new AlphaMotion(motion.Item, value));
