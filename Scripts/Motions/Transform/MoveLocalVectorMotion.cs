@@ -16,7 +16,7 @@ namespace FlowEnt.Motions.TransformMotions
 
         public override void OnStart()
         {
-            From = Item.position;
+            From = Item.localPosition;
             To = From + Value;
         }
 
