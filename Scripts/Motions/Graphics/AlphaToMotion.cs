@@ -7,35 +7,36 @@ namespace FlowEnt.Motions.GraphicMotions
     {
         public AlphaToMotion(Graphic item, float to) : base(item)
         {
-            Color col = item.color;
-            col.a = to;
             To = col;
         }
 
         public AlphaToMotion(Graphic item, float from, float to) : this(item, to)
         {
-            Color col = item.color;
-            col.a = from;
             From = col;
         }
-        public Color? From { get; private set; }
-        public Color To { get; }
+        public float? From { get; private set; }
+        public float To { get; }
+        private Color color;
 
         public override void OnStart()
         {
             if (From == null)
             {
-                From = Item.color;
+                From = Item.color.a;
             }
             else
             {
-                Item.color = From.Value;
+                Color color = Item.color;
+                color.a = From.Value;
+                Item.color = color;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.color = Color.Lerp(From.Value, To, t);
+            color = Item.color;
+            color.a = Mathf.Lerp(From.Value, To, t);
+            Item.color = color;
         }
     }
 }
