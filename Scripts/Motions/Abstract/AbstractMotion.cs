@@ -1,13 +1,9 @@
 
 namespace FlowEnt
 {
-    public interface IMotion
-    {
-        public void OnStart();
-        public void OnUpdate(float t);
-        public void OnComplete();
-    }
-
+    /// <summary>
+    /// Abstract Motion that can be used to create a simple motion.
+    /// </summary>
     public abstract class AbstractMotion : IMotion
     {
         public virtual void OnStart() { }
@@ -15,6 +11,10 @@ namespace FlowEnt
         public virtual void OnComplete() { }
     }
 
+    /// <summary>
+    /// Generic Abstract Motion
+    /// </summary>
+    /// <typeparam name="T">Generic Type for the motion. There is a read only property of type <T> called item that can be used and it's required on the constructor.</typeparam>
     public abstract class AbstractMotion<T> : IMotion
     {
         protected AbstractMotion(T item)
