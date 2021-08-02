@@ -108,7 +108,7 @@ namespace FlowEnt
 
         public void Stop()
         {
-            if (playState == PlayState.Finished)
+            if (!(playState == PlayState.Playing || playState == PlayState.Paused))
             {
                 return;
             }

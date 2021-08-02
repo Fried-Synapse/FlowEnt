@@ -27,24 +27,12 @@ public class FlowEntExampleController : MonoBehaviour
     {
         await Task.Delay(3000);
 
-        new Flow()
-            .Queue(t => t.SetTime(1).OnUpdated((t) => Debug.Log($"{1}")))
-            .Queue(t => t.SetTime(1).OnUpdated((t) => Debug.Log($"{2}")))
-            .At(0, t => t.SetTime(1).OnUpdated((t) => Debug.Log($"{3}")))
-            .At(5, t => t.SetTime(1).OnUpdated((t) => Debug.Log($"{4}")))
-            .Start();
+        await BezierFlow(Objects[0]);
 
-        return;
-
-        //await BezierFlow(Objects[0]);
-        // Objects[0].Tween(2)
-        //     .SetTimeScale(0.5f)
-        //     .Move(Vector3.up)
-        //     .RotateY(180f);
-
-        new Flow()
-            .Queue(Objects[0].Tween(1).MoveY(10))
-            .Start();
+        Objects[1].Tween(2)
+            .SetTimeScale(0.5f)
+            .Move(Vector3.up)
+            .RotateY(180f);
 
         await new Flow(new FlowOptions() { LoopCount = 2, AutoStart = true })
             .SetTimeScale(10)
@@ -67,10 +55,9 @@ public class FlowEntExampleController : MonoBehaviour
     {
         BezierSpline spline = new BezierSpline(SplinePoints);
         await transform
-            .Tween(50f)
+            .Tween(5f)
                 .MoveTo(spline)
             .OrientToPath()
-            .Tween
             .OnCompleted(() => transform.transform.rotation = Quaternion.identity)
             .AsAsync();
     }
@@ -94,6 +81,7 @@ public class FlowEntExampleController : MonoBehaviour
         {
             Gizmos.DrawLine(SplinePoints[i], SplinePoints[i + 1]);
         }
+        new BezierSpline(SplinePoints).DrawGizmo(Color.green, 2f);
     }
 
     #endregion
