@@ -106,7 +106,7 @@ namespace FlowEnt
             updateController.UnsubscribeFromUpdate(this);
         }
 
-        public void Stop()
+        public void Stop(bool triggerOnCompleted = false)
         {
             if (playState == PlayState.Finished)
             {
@@ -115,6 +115,11 @@ namespace FlowEnt
             playState = PlayState.Finished;
 
             updateController.UnsubscribeFromUpdate(this);
+
+            if (triggerOnCompleted)
+            {
+                onCompleted?.Invoke();
+            }
         }
 
         public async Task AsAsync()

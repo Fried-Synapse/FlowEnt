@@ -164,12 +164,14 @@ namespace FlowEnt
             {
                 motions[i].OnComplete();
             }
+
             onCompleted?.Invoke();
 
             if (updateController is Flow parentFlow)
             {
                 parentFlow.CompleteAnimation(this);
             }
+
             playState = PlayState.Finished;
         }
 
