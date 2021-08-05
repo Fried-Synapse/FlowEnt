@@ -96,7 +96,7 @@ namespace FlowEnt
             return this;
         }
 
-        internal override void StartInternal(float? deltaTime = null)
+        internal override void StartInternal(float deltaTime = 0)
         {
             if (skipFrames > 0)
             {
@@ -120,10 +120,7 @@ namespace FlowEnt
 
             playState = PlayState.Playing;
 
-            if (deltaTime != null)
-            {
-                UpdateInternal(deltaTime.Value);
-            }
+            UpdateInternal(deltaTime);
         }
 
         private void Init()
@@ -157,14 +154,25 @@ namespace FlowEnt
             }
 
             runningAnimationWrappers.Add(nextAnimationWrapper.animation.Id, nextAnimationWrapper);
-            nextAnimationWrapper.animation.StartInternal();
-            nextAnimationWrapper.animation.UpdateInternal(animationWrapper.animation.OverDraft.Value);
+            nextAnimationWrapper.animation.StartInternal(animationWrapper.animation.OverDraft.Value);
         }
 
         internal override void UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
             time += scaledDeltaTime;
+
+            #region Updating animations
+
+            AbstractUpdatable index = updatables.Anchor.next;
+
+            while (index != null)
+            {
+                index.UpdateInternal(scaledDeltaTime);
+                index = index.next;
+            }
+
+            #endregion
 
             #region TimeBased start
 
@@ -182,18 +190,6 @@ namespace FlowEnt
                 {
                     nextTimeIndexedAnimationWrapper = null;
                 }
-            }
-
-            #endregion
-
-            #region Updating animations
-
-            AbstractUpdatable index = updatables.Anchor.next;
-
-            while (index != null)
-            {
-                index.UpdateInternal(scaledDeltaTime);
-                index = index.next;
             }
 
             #endregion

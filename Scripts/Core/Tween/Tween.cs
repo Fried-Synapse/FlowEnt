@@ -82,7 +82,7 @@ namespace FlowEnt
             return this;
         }
 
-        internal override void StartInternal(float? deltaTime = null)
+        internal override void StartInternal(float deltaTime = 0)
         {
             if (skipFrames > 0)
             {
@@ -109,10 +109,7 @@ namespace FlowEnt
             onStarted?.Invoke();
             playState = PlayState.Playing;
 
-            if (deltaTime != null)
-            {
-                UpdateInternal(deltaTime.Value);
-            }
+            UpdateInternal(deltaTime);
         }
 
         internal override void UpdateInternal(float deltaTime)

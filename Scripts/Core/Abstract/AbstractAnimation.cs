@@ -82,7 +82,7 @@ namespace FlowEnt
             });
         }
 
-        internal abstract void StartInternal(float? deltaTime = null);
+        internal abstract void StartInternal(float deltaTime = 0);
 
         public void Resume()
         {
