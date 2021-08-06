@@ -6,32 +6,30 @@ namespace FlowEnt.Motions.RectTransforms
     {
         public MoveAnchoredPositionToVectorMotion(RectTransform item, Vector2 to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public MoveAnchoredPositionToVectorMotion(RectTransform item, Vector2 from, Vector2 to) : this(item, to)
         {
-            From = from;
+            hasFrom = true;
+            this.from = from;
         }
 
-        public Vector2? From { get; private set; }
-        public Vector2 To { get; }
+        private readonly bool hasFrom;
+        private Vector2 from;
+        private readonly Vector2 to;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.anchoredPosition;
-            }
-            else
-            {
-                Item.anchoredPosition = From.Value;
+                from = item.anchoredPosition;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.anchoredPosition = Vector2.LerpUnclamped(From.Value, To, t);
+            item.anchoredPosition = Vector2.LerpUnclamped(from, to, t);
         }
     }
 }

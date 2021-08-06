@@ -8,25 +8,25 @@ namespace FlowEnt.Motions.Graphics
     {
         public AlphaMotion(TGraphic item, float value) : base(item)
         {
-            Value = value;
+            this.value = value;
         }
 
-        public float Value { get; }
-        public float? From { get; private set; }
-        public float? To { get; private set; }
+        private readonly float value;
+        private float from;
+        private float to;
         private Color color;
 
         public override void OnStart()
         {
-            From = Item.color.a;
-            To = From + Value;
+            from = item.color.a;
+            to = from + value;
         }
 
         public override void OnUpdate(float t)
         {
-            color = Item.color;
-            color.a = Mathf.Lerp(From.Value, To.Value, t);
-            Item.color = color;
+            color = item.color;
+            color.a = Mathf.Lerp(from, to, t);
+            item.color = color;
         }
     }
 }

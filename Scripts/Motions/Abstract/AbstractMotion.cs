@@ -19,10 +19,11 @@ namespace FlowEnt
     {
         protected AbstractMotion(T item)
         {
-            Item = item;
+            this.item = item;
         }
 
-        public T Item { get; }
+        protected readonly T item;
+        public T Item => item;
 
         public virtual void OnStart() { }
         public abstract void OnUpdate(float t);

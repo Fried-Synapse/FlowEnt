@@ -6,42 +6,40 @@ namespace FlowEnt.Motions.RectTransforms
     {
         public MovePivotToMotion(RectTransform item, Vector2 to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public MovePivotToMotion(RectTransform item, Vector2 from, Vector2 to) : this(item, to)
         {
-            From = from;
+            this.from = from;
         }
 
         public MovePivotToMotion(RectTransform item, PivotPreset to) : base(item)
         {
-            To = PivotPresetFactory.GetPivot(to);
+            this.to = PivotPresetFactory.GetPivot(to);
         }
 
         public MovePivotToMotion(RectTransform item, PivotPreset from, PivotPreset to) : this(item, to)
         {
-            From = PivotPresetFactory.GetPivot(from);
+            hasFrom = true;
+            this.from = PivotPresetFactory.GetPivot(from);
         }
 
-        public Vector2? From { get; private set; }
-        public Vector2 To { get; }
+        private readonly bool hasFrom;
+        private Vector2 from;
+        private readonly Vector2 to;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.pivot;
-            }
-            else
-            {
-                Item.pivot = From.Value;
+                from = item.pivot;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.pivot = Vector2.LerpUnclamped(From.Value, To, t);
+            item.pivot = Vector2.LerpUnclamped(from, to, t);
         }
     }
 }

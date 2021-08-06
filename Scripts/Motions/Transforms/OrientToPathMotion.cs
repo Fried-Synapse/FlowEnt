@@ -9,18 +9,18 @@ namespace FlowEnt.Motions.Transforms
         {
         }
 
-        private Vector3? OldPosition { get; set; }
+        private Vector3 oldPosition;
 
         public override void OnStart()
         {
-            OldPosition = Item.position;
+            oldPosition = item.position;
         }
 
         public override void OnUpdate(float t)
         {
-            Vector3 relativePosition = Item.position - OldPosition.Value;
-            Item.rotation = Quaternion.LookRotation(relativePosition);
-            OldPosition = Item.position;
+            Vector3 relativePosition = item.position - oldPosition;
+            item.rotation = Quaternion.LookRotation(relativePosition);
+            oldPosition = item.position;
         }
     }
 }

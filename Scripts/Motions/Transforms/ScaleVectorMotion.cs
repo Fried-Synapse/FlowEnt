@@ -7,22 +7,22 @@ namespace FlowEnt.Motions.Transforms
     {
         public ScaleVectorMotion(TTransform item, Vector3 value) : base(item)
         {
-            Value = value;
+            this.value = value;
         }
 
-        public Vector3 Value { get; }
-        public Vector3? From { get; private set; }
-        public Vector3? To { get; private set; }
+        private readonly Vector3 value;
+        private Vector3 from;
+        private Vector3 to;
 
         public override void OnStart()
         {
-            From = Item.localScale;
-            To = Vector3.Scale(From.Value, Value);
+            from = item.localScale;
+            to = Vector3.Scale(from, value);
         }
 
         public override void OnUpdate(float t)
         {
-            Item.localScale = Vector3.Lerp(From.Value, To.Value, t);
+            item.localScale = Vector3.Lerp(from, to, t);
         }
     }
 }
