@@ -11,6 +11,7 @@ namespace FlowEnt.Motions.RectTransforms
 
         public MovePivotToMotion(RectTransform item, Vector2 from, Vector2 to) : this(item, to)
         {
+            hasFrom = true;
             this.from = from;
         }
 

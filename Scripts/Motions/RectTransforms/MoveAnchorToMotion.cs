@@ -12,6 +12,7 @@ namespace FlowEnt.Motions.RectTransforms
 
         public MoveAnchorToMotion(RectTransform item, Vector2 fromMin, Vector2 fromMax, Vector2 toMin, Vector2 toMax) : this(item, toMin, toMax)
         {
+            hasFrom = true;
             this.fromMin = fromMin;
             this.fromMax = fromMax;
         }
