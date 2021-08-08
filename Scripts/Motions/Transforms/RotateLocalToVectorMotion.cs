@@ -7,32 +7,30 @@ namespace FlowEnt.Motions.Transforms
     {
         public RotateLocalToVectorMotion(TTransform item, Vector3 to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public RotateLocalToVectorMotion(TTransform item, Vector3 from, Vector3 to) : this(item, to)
         {
-            From = from;
+            hasFrom = true;
+            this.from = from;
         }
 
-        public Vector3? From { get; private set; }
-        public Vector3 To { get; }
+        private readonly bool hasFrom;
+        private Vector3 from;
+        private readonly Vector3 to;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.localRotation.eulerAngles;
-            }
-            else
-            {
-                Item.localRotation = Quaternion.Euler(From.Value);
+                from = item.localRotation.eulerAngles;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.localRotation = Quaternion.Euler(Vector3.LerpUnclamped(From.Value, To, t));
+            item.localRotation = Quaternion.Euler(Vector3.LerpUnclamped(from, to, t));
         }
     }
 }

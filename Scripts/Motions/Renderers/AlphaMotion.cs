@@ -7,25 +7,25 @@ namespace FlowEnt.Motions.Renderers
     {
         public AlphaMotion(TRenderer item, float value) : base(item)
         {
-            Value = value;
+            this.value = value;
         }
 
-        public float Value { get; }
-        public float? From { get; private set; }
-        public float? To { get; private set; }
+        private readonly float value;
+        private float from;
+        private float to;
         private Color color;
 
         public override void OnStart()
         {
-            From = Item.material.color.a;
-            To = From + Value;
+            from = item.material.color.a;
+            to = from + value;
         }
 
         public override void OnUpdate(float t)
         {
-            color = Item.material.color;
-            color.a = Mathf.Lerp(From.Value, To.Value, t);
-            Item.material.color = color;
+            color = item.material.color;
+            color.a = Mathf.Lerp(from, to, t);
+            item.material.color = color;
         }
     }
 }

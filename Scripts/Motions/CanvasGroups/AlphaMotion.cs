@@ -6,22 +6,23 @@ namespace FlowEnt.Motions.CanvasGroups
     {
         public AlphaMotion(CanvasGroup item, float value) : base(item)
         {
-            Value = value;
+            this.value = value;
         }
 
-        public float Value { get; }
-        public float? From { get; private set; }
-        public float? To { get; private set; }
+        private readonly float value;
+        private float from;
+        private float to;
+
 
         public override void OnStart()
         {
-            From = Item.alpha;
-            To = From + Value;
+            from = item.alpha;
+            to = from + value;
         }
 
         public override void OnUpdate(float t)
         {
-            Item.alpha = Mathf.Lerp(From.Value, To.Value, t);
+            item.alpha = Mathf.Lerp(from, to, t);
         }
     }
 }

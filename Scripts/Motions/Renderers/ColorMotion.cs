@@ -7,22 +7,22 @@ namespace FlowEnt.Motions.Renderers
     {
         public ColorMotion(TRenderer item, Color value) : base(item)
         {
-            Value = value;
+            this.value = value;
         }
 
-        public Color Value { get; }
-        public Color? From { get; private set; }
-        public Color? To { get; private set; }
+        private readonly Color value;
+        private Color from;
+        private Color to;
 
         public override void OnStart()
         {
-            From = Item.material.color;
-            To = From + Value;
+            from = item.material.color;
+            to = from + value;
         }
 
         public override void OnUpdate(float t)
         {
-            Item.material.color = Color.Lerp(From.Value, To.Value, t);
+            item.material.color = Color.Lerp(from, to, t);
         }
     }
 }

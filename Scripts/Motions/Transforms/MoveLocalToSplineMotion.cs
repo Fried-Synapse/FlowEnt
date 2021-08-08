@@ -7,14 +7,14 @@ namespace FlowEnt.Motions.Transforms
     {
         public MoveLocalToSplineMotion(TTransform item, ISpline spline) : base(item)
         {
-            Spline = spline;
+            this.spline = spline;
         }
 
-        public ISpline Spline { get; }
+        private ISpline spline;
 
         public override void OnUpdate(float t)
         {
-            Item.localPosition = Spline.GetPoint(t);
+            item.localPosition = spline.GetPoint(t);
         }
     }
 }

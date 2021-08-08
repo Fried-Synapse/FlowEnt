@@ -6,32 +6,30 @@ namespace FlowEnt
     {
         public ScaleSizeDeltaToMotion(RectTransform item, Vector2 to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public ScaleSizeDeltaToMotion(RectTransform item, Vector2 from, Vector2 to) : this(item, to)
         {
-            From = from;
+            hasFrom = true;
+            this.from = from;
         }
 
-        public Vector2? From { get; private set; }
-        public Vector2 To { get; }
+        private readonly bool hasFrom;
+        private Vector2 from;
+        private readonly Vector2 to;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.sizeDelta;
-            }
-            else
-            {
-                Item.sizeDelta = From.Value;
+                from = item.sizeDelta;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.sizeDelta = Vector3.Lerp(From.Value, To, t);
+            item.sizeDelta = Vector3.Lerp(from, to, t);
         }
     }
 }

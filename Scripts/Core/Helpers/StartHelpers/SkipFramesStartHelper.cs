@@ -20,7 +20,7 @@ namespace FlowEnt
             }
 
             updateController.UnsubscribeFromUpdate(this);
-            callback.Invoke(deltaTime);
+            callback.Invoke(0);
         }
     }
 }

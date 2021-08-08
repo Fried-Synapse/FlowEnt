@@ -6,14 +6,14 @@ namespace FlowEnt.Motions.RectTransforms
     {
         public MoveAnchoredPositionSplineMotion(RectTransform item, ISpline spline) : base(item)
         {
-            Spline = spline;
+            this.spline = spline;
         }
 
-        public ISpline Spline { get; }
+        private readonly ISpline spline;
 
         public override void OnUpdate(float t)
         {
-            Item.anchoredPosition = Spline.GetPoint(t);
+            item.anchoredPosition = spline.GetPoint(t);
         }
 
     }

@@ -96,7 +96,7 @@ namespace FlowEnt
             return this;
         }
 
-        internal override void StartInternal(float? deltaTime = null)
+        internal override void StartInternal(float deltaTime = 0)
         {
             if (skipFrames > 0)
             {
@@ -120,10 +120,7 @@ namespace FlowEnt
 
             playState = PlayState.Playing;
 
-            if (deltaTime != null)
-            {
-                UpdateInternal(deltaTime.Value);
-            }
+            UpdateInternal(deltaTime);
         }
 
         private void Init()
@@ -157,34 +154,13 @@ namespace FlowEnt
             }
 
             runningAnimationWrappers.Add(nextAnimationWrapper.animation.Id, nextAnimationWrapper);
-            nextAnimationWrapper.animation.StartInternal();
-            nextAnimationWrapper.animation.UpdateInternal(animationWrapper.animation.OverDraft.Value);
+            nextAnimationWrapper.animation.StartInternal(animationWrapper.animation.OverDraft.Value);
         }
 
         internal override void UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
             time += scaledDeltaTime;
-
-            #region TimeBased start
-
-            while (nextTimeIndexedAnimationWrapper != null && time > nextTimeIndexedAnimationWrapper.timeIndex)
-            {
-                ++runningAnimationWrappersCount;
-                runningAnimationWrappers.Add(nextTimeIndexedAnimationWrapper.animation.Id, nextTimeIndexedAnimationWrapper);
-                nextTimeIndexedAnimationWrapper.animation.StartInternal();
-
-                if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
-                {
-                    nextTimeIndexedAnimationWrapper = animationWrappersOrderedByTimeIndexed[nextTimeIndexedAnimationWrapperIndex++];
-                }
-                else
-                {
-                    nextTimeIndexedAnimationWrapper = null;
-                }
-            }
-
-            #endregion
 
             #region Updating animations
 
@@ -194,6 +170,26 @@ namespace FlowEnt
             {
                 index.UpdateInternal(scaledDeltaTime);
                 index = index.next;
+            }
+
+            #endregion
+
+            #region TimeBased start
+
+            while (nextTimeIndexedAnimationWrapper != null && time >= nextTimeIndexedAnimationWrapper.timeIndex)
+            {
+                ++runningAnimationWrappersCount;
+                runningAnimationWrappers.Add(nextTimeIndexedAnimationWrapper.animation.Id, nextTimeIndexedAnimationWrapper);
+                nextTimeIndexedAnimationWrapper.animation.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
+
+                if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
+                {
+                    nextTimeIndexedAnimationWrapper = animationWrappersOrderedByTimeIndexed[nextTimeIndexedAnimationWrapperIndex++];
+                }
+                else
+                {
+                    nextTimeIndexedAnimationWrapper = null;
+                }
             }
 
             #endregion

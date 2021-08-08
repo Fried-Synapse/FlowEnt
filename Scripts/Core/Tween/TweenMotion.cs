@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace FlowEnt
@@ -25,6 +26,18 @@ namespace FlowEnt
 
         public TweenMotion<TElement> For<TElement>(TElement element)
             => new TweenMotion<TElement>(Tween, element);
+
+        public Tween Start()
+        {
+            Tween.Start();
+            return Tween;
+        }
+
+        public async Task<Tween> StartAsync()
+        {
+            await Tween.StartAsync();
+            return Tween;
+        }
 
         #region Events
 

@@ -6,32 +6,30 @@ namespace FlowEnt.Motions.CanvasGroups
     {
         public AlphaToMotion(CanvasGroup item, float to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public AlphaToMotion(CanvasGroup item, float from, float to) : this(item, to)
         {
-            From = from;
+            hasFrom = true;
+            this.from = from;
         }
 
-        public float? From { get; private set; }
-        public float To { get; }
+        private readonly bool hasFrom;
+        private float from;
+        private readonly float to;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.alpha;
-            }
-            else
-            {
-                Item.alpha = From.Value;
+                from = item.alpha;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.alpha = Mathf.Lerp(From.Value, To, t);
+            item.alpha = Mathf.Lerp(from, to, t);
         }
     }
 }

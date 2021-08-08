@@ -7,37 +7,33 @@ namespace FlowEnt.Motions.Renderers
     {
         public AlphaToMotion(TRenderer item, float to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public AlphaToMotion(TRenderer item, float from, float to) : this(item, to)
         {
-            From = from;
+            hasFrom = true;
+            this.from = from;
         }
 
-        public float? From { get; private set; }
-        public float To { get; }
+        private readonly bool hasFrom;
+        private float from;
+        private readonly float to;
         private Color color;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.material.color.a;
-            }
-            else
-            {
-                Color color = Item.material.color;
-                color.a = From.Value;
-                Item.material.color = color;
+                from = item.material.color.a;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            color = Item.material.color;
-            color.a = Mathf.Lerp(From.Value, To, t);
-            Item.material.color = color;
+            color = item.material.color;
+            color.a = Mathf.Lerp(from, to, t);
+            item.material.color = color;
         }
     }
 }
