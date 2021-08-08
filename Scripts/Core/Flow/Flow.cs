@@ -176,11 +176,11 @@ namespace FlowEnt
 
             #region TimeBased start
 
-            while (nextTimeIndexedAnimationWrapper != null && time > nextTimeIndexedAnimationWrapper.timeIndex)
+            while (nextTimeIndexedAnimationWrapper != null && time >= nextTimeIndexedAnimationWrapper.timeIndex)
             {
                 ++runningAnimationWrappersCount;
                 runningAnimationWrappers.Add(nextTimeIndexedAnimationWrapper.animation.Id, nextTimeIndexedAnimationWrapper);
-                nextTimeIndexedAnimationWrapper.animation.StartInternal();
+                nextTimeIndexedAnimationWrapper.animation.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
 
                 if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
                 {
