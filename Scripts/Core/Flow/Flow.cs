@@ -386,7 +386,7 @@ namespace FlowEnt
 
             for (int j = start; j <= end - 1; j++)
             {
-                if (arr[j].timeIndex >= p)
+                if (arr[j].timeIndex < p)
                 {
                     i++;
                     temp = arr[i];
