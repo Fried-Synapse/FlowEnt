@@ -43,13 +43,12 @@ namespace FlowEnt
         #region Internal Members
 
         private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
-        private readonly List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>(1);
+        private readonly List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>(2);
         private AnimationWrapper lastQueuedAnimationWrapper;
-
         private AnimationWrapper[] animationWrappersOrderedByTimeIndexed;
         private int nextTimeIndexedAnimationWrapperIndex;
         private AnimationWrapper nextTimeIndexedAnimationWrapper;
-        private readonly Dictionary<ulong, AnimationWrapper> runningAnimationWrappers = new Dictionary<ulong, AnimationWrapper>();
+        private readonly Dictionary<ulong, AnimationWrapper> runningAnimationWrappers = new Dictionary<ulong, AnimationWrapper>(2);
         private int runningAnimationWrappersCount;
 
         private float time;
