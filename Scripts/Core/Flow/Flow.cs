@@ -17,8 +17,16 @@ namespace FlowEnt
                 this.timeIndex = timeIndex;
             }
 
+            public AnimationWrapper(Func<AbstractAnimation> animationCreation, int index, float? timeIndex = null)
+            {
+                this.animationCreation = animationCreation;
+                this.index = index;
+                this.timeIndex = timeIndex;
+            }
+
             public int index;
             public AbstractAnimation animation;
+            public Func<AbstractAnimation> animationCreation;
             public float? timeIndex;
             public AnimationWrapper next;
         }
@@ -35,7 +43,7 @@ namespace FlowEnt
         #region Internal Members
 
         private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
-        private readonly List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>();
+        private readonly List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>(1);
         private AnimationWrapper lastQueuedAnimationWrapper;
 
         private AnimationWrapper[] animationWrappersOrderedByTimeIndexed;
@@ -154,7 +162,8 @@ namespace FlowEnt
             }
 
             runningAnimationWrappers.Add(nextAnimationWrapper.animation.Id, nextAnimationWrapper);
-            nextAnimationWrapper.animation.StartInternal(animationWrapper.animation.OverDraft.Value);
+            animation = nextAnimationWrapper.animation ?? nextAnimationWrapper.animationCreation();
+            animation.StartInternal(animationWrapper.animation.OverDraft.Value);
         }
 
         internal override void UpdateInternal(float deltaTime)
@@ -164,7 +173,7 @@ namespace FlowEnt
 
             #region Updating animations
 
-            AbstractUpdatable index = updatables.Anchor.next;
+            AbstractUpdatable index = updatables.anchor.next;
 
             while (index != null)
             {
@@ -180,7 +189,8 @@ namespace FlowEnt
             {
                 ++runningAnimationWrappersCount;
                 runningAnimationWrappers.Add(nextTimeIndexedAnimationWrapper.animation.Id, nextTimeIndexedAnimationWrapper);
-                nextTimeIndexedAnimationWrapper.animation.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
+                AbstractAnimation animation = nextTimeIndexedAnimationWrapper.animation ?? nextTimeIndexedAnimationWrapper.animationCreation();
+                animation.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
 
                 if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
                 {
@@ -255,7 +265,7 @@ namespace FlowEnt
             {
                 animation.CancelAutoStart();
             }
-            animation.UpdateController = this;
+            animation.updateController = this;
 
             if (lastQueuedAnimationWrapper == null)
             {
@@ -294,7 +304,7 @@ namespace FlowEnt
             {
                 animation.CancelAutoStart();
             }
-            animation.UpdateController = this;
+            animation.updateController = this;
 
             lastQueuedAnimationWrapper = new AnimationWrapper(animation, animationWrappersQueue.Count, timeIndex);
             animationWrappersQueue.Add(lastQueuedAnimationWrapper);
@@ -368,14 +378,14 @@ namespace FlowEnt
 
         private void QuickSortByTimeIndex(AnimationWrapper[] arr, int start, int end)
         {
-            int i;
-            if (start < end)
+            if (start >= end)
             {
-                i = Partition(arr, start, end);
-
-                QuickSortByTimeIndex(arr, start, i - 1);
-                QuickSortByTimeIndex(arr, i + 1, end);
+                return;
             }
+
+            int i = Partition(arr, start, end);
+            QuickSortByTimeIndex(arr, start, i - 1);
+            QuickSortByTimeIndex(arr, i + 1, end);
         }
 
         private int Partition(AnimationWrapper[] arr, int start, int end)

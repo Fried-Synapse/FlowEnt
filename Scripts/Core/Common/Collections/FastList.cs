@@ -15,12 +15,12 @@ namespace FlowEnt
     {
         internal FastList()
         {
-            Anchor = new TAnchor();
-            last = Anchor;
+            last = anchor;
         }
 
-        public TAnchor Anchor { get; }
+        public readonly TAnchor anchor = new TAnchor();
         private T last;
+
         internal void Add(T item)
         {
             item.previous = last;
