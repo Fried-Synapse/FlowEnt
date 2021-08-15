@@ -1,111 +1,90 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace FlowEnt
 {
-    public class BezierSpline : ISpline
+    public class BezierSpline : AbstractSpline
     {
-        /// <summary>
-        /// Creates a Bezier Spline. This is a spline based on the Bezier Curve. 
-        /// </summary>
-        /// <param name="points">The sequence of points that will create the spline.</param
-        /// <remarks>
-        /// If 2 points are sent p0 will be startPoint and startControl, and p1 will be endControl and endPoint.
-        /// If 3 points are sent p0 will be startPoint, p1 will be startControl and endControl, and p2 will be endPoint.
-        /// If 4 points are sent p0 will be startPoint, p1 will be startControl, p2 will be endControl, and p3 will be endPoint.
-        /// If 5 or more points are sent it'll create a spline with a bezier movement between the points.
-        /// </remarks>
-        public BezierSpline(params Vector3[] points)
+        private const float twoThirds = 2f / 3f;
+        public BezierSpline(List<Vector3> points) : base(points)
         {
-            if (points == null)
-            {
-                throw new ArgumentException("Array cannot be null");
-            }
-            if (points.Length < 2)
-            {
-                throw new ArgumentException("Not enough points specified");
-            }
-            Init(new List<Vector3>(points));
         }
 
-        /// <summary>
-        /// Creates a Bezier Spline. This is a spline based on the Bezier Curve. 
-        /// </summary>
-        /// <param name="points">The sequence of points that will create the spline.</param
-        /// <remarks>
-        /// If 2 points are sent p0 will be startPoint and startControl, and p1 will be endControl and endPoint.
-        /// If 3 points are sent p0 will be startPoint, p1 will be startControl and endControl, and p2 will be endPoint.
-        /// If 4 points are sent p0 will be startPoint, p1 will be startControl, p2 will be endControl, and p3 will be endPoint.
-        /// If 5 or more points are sent it'll create a spline with a bezier movement between the points.
-        /// </remarks>
-        public BezierSpline(List<Vector3> points)
+        public BezierSpline(params Vector3[] points) : base(points)
         {
-            if (points == null)
-            {
-                throw new ArgumentException("List cannot be null");
-            }
-            if (points.Count < 2)
-            {
-                throw new ArgumentException("Not enough points specified");
-            }
-            Init(points);
         }
 
         private Vector3 startPoint;
         private Vector3 startControl;
         private Vector3 endControl;
         private Vector3 endPoint;
-        private List<Vector3> Points { get; set; } = new List<Vector3>();
-        private int SegmentCount { get; set; }
-        private float SegmentLength { get; set; }
+        private int segmentCount;
+        private float segmentLength;
 
-        private void Init(List<Vector3> points)
+        protected override void Init()
         {
-            if (points.Count == 2)
+            if (points.Length == 4)
             {
-                points.Add(points[1]);
-                points.Insert(0, points[0]);
+                return;
             }
-            if (points.Count == 3)
+            if (points.Length == 3)
             {
-                points.Insert(1, points[1]);
+                points = new Vector3[] { points[0], points[1], points[1], points[2] };
+                return;
             }
-            Points = points;
-            SegmentCount = Points.Count - 4;
-            SegmentLength = 1f / SegmentCount;
+            if (points.Length == 2)
+            {
+                points = new Vector3[] { points[0], points[0], points[1], points[1] };
+                return;
+            }
+
+            segmentCount = points.Length - 4;
+            segmentLength = 1f / segmentCount;
+
+            int count = points.Length;
+            Vector3[] pointsCache = new Vector3[count];
+            pointsCache[0] = points[0];
+            pointsCache[count - 1] = points[count - 1];
+            for (int i = 1; i < count - 1; i++)
+            {
+                pointsCache[i] = (points[i - 1] / 6f) + (points[i] * twoThirds) + (points[i + 1] / 6f);
+            }
+            points = pointsCache;
         }
 
-        public Vector3 GetPoint(float t)
+
+        public override Vector3 GetPoint(float t)
         {
             //if there are no segments we simply have a bezier case
-            if (SegmentCount == 0)
+            if (segmentCount == 0)
             {
-                startPoint = Points[0];
-                startControl = Points[1];
-                endControl = Points[2];
-                endPoint = Points[3];
+                startPoint = points[0];
+                startControl = points[1];
+                endControl = points[2];
+                endPoint = points[3];
             }
             //otherwise we have to lerp through the points and apply bezier for every segment
             else
             {
-                int segment = (int)(t / SegmentLength);
+                int segment = (int)(t / segmentLength);
 
-                if (segment >= SegmentCount)
+                if (segment >= segmentCount)
                 {
-                    segment = SegmentCount - 1;
+                    segment = segmentCount - 1;
                 }
 
-                float segmentT = (t - (SegmentLength * segment)) / SegmentLength;
+                float segmentT = (t - (segmentLength * segment)) / segmentLength;
 
-                startPoint = Vector3.Lerp(Points[segment], Points[segment + 1], segmentT);
-                startControl = Vector3.Lerp(Points[segment + 1], Points[segment + 2], segmentT);
-                endControl = Vector3.Lerp(Points[segment + 2], Points[segment + 3], segmentT);
-                endPoint = Vector3.Lerp(Points[segment + 3], Points[segment + 4], segmentT);
+                Debug.Log($"{t} - {segment}, {segmentT}");
+
+                startPoint = Vector3.Lerp(points[segment], points[segment + 1], segmentT);
+                startControl = Vector3.Lerp(points[segment + 1], points[segment + 2], segmentT);
+                endControl = Vector3.Lerp(points[segment + 2], points[segment + 3], segmentT);
+                endPoint = Vector3.Lerp(points[segment + 3], points[segment + 4], segmentT);
             }
-
             return GetPoint(t, startPoint, startControl, endControl, endPoint);
         }
+
 
         public static Vector3 GetPoint(float t, Vector3 startPoint, Vector3 startControl, Vector3 endControl, Vector3 endPoint)
         {
@@ -122,13 +101,5 @@ namespace FlowEnt
 
             return p;
         }
-
-
-#if UNITY_EDITOR
-        public void DrawGizmo(Color color = default, float width = 1f)
-        {
-            UnityEditor.Handles.DrawBezier(startPoint, endPoint, startControl, endControl, color, null, width);
-        }
-#endif
     }
 }
