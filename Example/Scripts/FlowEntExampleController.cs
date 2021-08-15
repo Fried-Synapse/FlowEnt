@@ -25,7 +25,7 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async void Start()
     {
-        await Task.Delay(3000);
+        await Task.Delay(1000);
 
         await BezierFlow(Objects[0]);
 

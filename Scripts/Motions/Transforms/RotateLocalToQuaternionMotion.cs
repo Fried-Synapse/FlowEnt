@@ -7,32 +7,30 @@ namespace FlowEnt.Motions.Transforms
     {
         public RotateLocalToQuaternionMotion(TTransform item, Quaternion to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public RotateLocalToQuaternionMotion(TTransform item, Quaternion from, Quaternion to) : this(item, to)
         {
-            From = from;
+            hasFrom = true;
+            this.from = from;
         }
 
-        public Quaternion? From { get; private set; }
-        public Quaternion To { get; }
+        private readonly bool hasFrom;
+        private Quaternion from;
+        private readonly Quaternion to;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.localRotation;
-            }
-            else
-            {
-                Item.localRotation = From.Value;
+                from = item.localRotation;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.localRotation = Quaternion.LerpUnclamped(From.Value, To, t);
+            item.localRotation = Quaternion.LerpUnclamped(from, to, t);
         }
     }
 }

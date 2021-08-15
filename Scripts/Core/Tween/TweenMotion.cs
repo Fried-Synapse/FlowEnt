@@ -32,6 +32,18 @@ namespace FlowEnt
             await Tween.AsAsync();
         }
 
+        public Tween Start()
+        {
+            Tween.Start();
+            return Tween;
+        }
+
+        public async Task<Tween> StartAsync()
+        {
+            await Tween.StartAsync();
+            return Tween;
+        }
+
         #region Events
 
         public TweenMotion<T> OnStarting(Action callback)

@@ -6,54 +6,51 @@ namespace FlowEnt.Motions.RectTransforms
     {
         public MoveAnchorToMotion(RectTransform item, Vector2 toMin, Vector2 toMax) : base(item)
         {
-            ToMin = toMin;
-            ToMax = toMax;
+            this.toMin = toMin;
+            this.toMax = toMax;
         }
 
         public MoveAnchorToMotion(RectTransform item, Vector2 fromMin, Vector2 fromMax, Vector2 toMin, Vector2 toMax) : this(item, toMin, toMax)
         {
-            FromMin = fromMin;
-            FromMax = fromMax;
+            hasFrom = true;
+            this.fromMin = fromMin;
+            this.fromMax = fromMax;
         }
 
         public MoveAnchorToMotion(RectTransform item, AnchorPreset to) : base(item)
         {
             AnchorPresetData toData = AnchorPresetFactory.GetAnchors(to);
-            ToMin = toData.Min;
-            ToMax = toData.Max;
+            toMin = toData.Min;
+            toMax = toData.Max;
         }
 
         public MoveAnchorToMotion(RectTransform item, AnchorPreset from, AnchorPreset to) : this(item, to)
         {
+            hasFrom = true;
             AnchorPresetData fromData = AnchorPresetFactory.GetAnchors(from);
-            FromMin = fromData.Min;
-            FromMax = fromData.Max;
+            fromMin = fromData.Min;
+            fromMax = fromData.Max;
         }
 
-        public Vector2? FromMin { get; private set; }
-        public Vector2? FromMax { get; private set; }
-        public Vector2 ToMin { get; }
-        public Vector2 ToMax { get; }
+        private readonly bool hasFrom;
+        private Vector2 fromMin;
+        private Vector2 fromMax;
+        private readonly Vector2 toMin;
+        private readonly Vector2 toMax;
 
         public override void OnStart()
         {
-            //if one is null, we good
-            if (FromMin == null)
+            if (!hasFrom)
             {
-                FromMin = Item.anchorMin;
-                FromMax = Item.anchorMax;
-            }
-            else
-            {
-                Item.anchorMin = FromMin.Value;
-                Item.anchorMax = FromMax.Value;
+                fromMin = item.anchorMin;
+                fromMax = item.anchorMax;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.anchorMin = Vector2.LerpUnclamped(FromMin.Value, ToMin, t);
-            Item.anchorMax = Vector2.LerpUnclamped(FromMax.Value, ToMax, t);
+            item.anchorMin = Vector2.LerpUnclamped(fromMin, toMin, t);
+            item.anchorMax = Vector2.LerpUnclamped(fromMax, toMax, t);
         }
     }
 }

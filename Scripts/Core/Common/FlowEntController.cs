@@ -51,7 +51,7 @@ namespace FlowEnt
             }
 
             float deltaTime = Time.deltaTime * timeScale;
-            AbstractUpdatable index = updatables.Anchor.next;
+            AbstractUpdatable index = updatables.anchor.next;
 
             while (index != null)
             {

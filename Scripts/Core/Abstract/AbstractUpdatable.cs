@@ -15,15 +15,14 @@ namespace FlowEnt
             this.updateController = updateController;
         }
 
+        private protected AbstractUpdatable(int thisIsAnEmptyConstructorForAnchor)
+        {
+        }
+
         private static ulong lastId;
         public ulong Id { get; }
 
-        private protected IUpdateController updateController;
-        internal IUpdateController UpdateController
-        {
-            get => updateController;
-            set => updateController = value;
-        }
+        internal IUpdateController updateController;
 
         internal abstract void UpdateInternal(float deltaTime);
     }

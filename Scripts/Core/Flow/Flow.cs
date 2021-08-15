@@ -17,8 +17,16 @@ namespace FlowEnt
                 this.timeIndex = timeIndex;
             }
 
+            public AnimationWrapper(Func<AbstractAnimation> animationCreation, int index, float? timeIndex = null)
+            {
+                this.animationCreation = animationCreation;
+                this.index = index;
+                this.timeIndex = timeIndex;
+            }
+
             public int index;
             public AbstractAnimation animation;
+            public Func<AbstractAnimation> animationCreation;
             public float? timeIndex;
             public AnimationWrapper next;
         }
@@ -35,13 +43,12 @@ namespace FlowEnt
         #region Internal Members
 
         private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
-        private readonly List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>();
+        private readonly List<AnimationWrapper> animationWrappersQueue = new List<AnimationWrapper>(2);
         private AnimationWrapper lastQueuedAnimationWrapper;
-
         private AnimationWrapper[] animationWrappersOrderedByTimeIndexed;
         private int nextTimeIndexedAnimationWrapperIndex;
         private AnimationWrapper nextTimeIndexedAnimationWrapper;
-        private readonly Dictionary<ulong, AnimationWrapper> runningAnimationWrappers = new Dictionary<ulong, AnimationWrapper>();
+        private readonly Dictionary<ulong, AnimationWrapper> runningAnimationWrappers = new Dictionary<ulong, AnimationWrapper>(2);
         private int runningAnimationWrappersCount;
 
         private float time;
@@ -96,7 +103,7 @@ namespace FlowEnt
             return this;
         }
 
-        internal override void StartInternal(float? deltaTime = null)
+        internal override void StartInternal(float deltaTime = 0)
         {
             if (skipFrames > 0)
             {
@@ -120,10 +127,7 @@ namespace FlowEnt
 
             playState = PlayState.Playing;
 
-            if (deltaTime != null)
-            {
-                UpdateInternal(deltaTime.Value);
-            }
+            UpdateInternal(deltaTime);
         }
 
         private void Init()
@@ -157,8 +161,8 @@ namespace FlowEnt
             }
 
             runningAnimationWrappers.Add(nextAnimationWrapper.animation.Id, nextAnimationWrapper);
-            nextAnimationWrapper.animation.StartInternal();
-            nextAnimationWrapper.animation.UpdateInternal(animationWrapper.animation.OverDraft.Value);
+            animation = nextAnimationWrapper.animation ?? nextAnimationWrapper.animationCreation();
+            animation.StartInternal(animationWrapper.animation.OverDraft.Value);
         }
 
         internal override void UpdateInternal(float deltaTime)
@@ -166,13 +170,26 @@ namespace FlowEnt
             float scaledDeltaTime = deltaTime * timeScale;
             time += scaledDeltaTime;
 
+            #region Updating animations
+
+            AbstractUpdatable index = updatables.anchor.next;
+
+            while (index != null)
+            {
+                index.UpdateInternal(scaledDeltaTime);
+                index = index.next;
+            }
+
+            #endregion
+
             #region TimeBased start
 
-            while (nextTimeIndexedAnimationWrapper != null && time > nextTimeIndexedAnimationWrapper.timeIndex)
+            while (nextTimeIndexedAnimationWrapper != null && time >= nextTimeIndexedAnimationWrapper.timeIndex)
             {
                 ++runningAnimationWrappersCount;
                 runningAnimationWrappers.Add(nextTimeIndexedAnimationWrapper.animation.Id, nextTimeIndexedAnimationWrapper);
-                nextTimeIndexedAnimationWrapper.animation.StartInternal();
+                AbstractAnimation animation = nextTimeIndexedAnimationWrapper.animation ?? nextTimeIndexedAnimationWrapper.animationCreation();
+                animation.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
 
                 if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
                 {
@@ -182,18 +199,6 @@ namespace FlowEnt
                 {
                     nextTimeIndexedAnimationWrapper = null;
                 }
-            }
-
-            #endregion
-
-            #region Updating animations
-
-            AbstractUpdatable index = updatables.Anchor.next;
-
-            while (index != null)
-            {
-                index.UpdateInternal(scaledDeltaTime);
-                index = index.next;
             }
 
             #endregion
@@ -259,7 +264,7 @@ namespace FlowEnt
             {
                 animation.CancelAutoStart();
             }
-            animation.UpdateController = this;
+            animation.updateController = this;
 
             if (lastQueuedAnimationWrapper == null)
             {
@@ -298,7 +303,7 @@ namespace FlowEnt
             {
                 animation.CancelAutoStart();
             }
-            animation.UpdateController = this;
+            animation.updateController = this;
 
             lastQueuedAnimationWrapper = new AnimationWrapper(animation, animationWrappersQueue.Count, timeIndex);
             animationWrappersQueue.Add(lastQueuedAnimationWrapper);
@@ -372,14 +377,14 @@ namespace FlowEnt
 
         private void QuickSortByTimeIndex(AnimationWrapper[] arr, int start, int end)
         {
-            int i;
-            if (start < end)
+            if (start >= end)
             {
-                i = Partition(arr, start, end);
-
-                QuickSortByTimeIndex(arr, start, i - 1);
-                QuickSortByTimeIndex(arr, i + 1, end);
+                return;
             }
+
+            int i = Partition(arr, start, end);
+            QuickSortByTimeIndex(arr, start, i - 1);
+            QuickSortByTimeIndex(arr, i + 1, end);
         }
 
         private int Partition(AnimationWrapper[] arr, int start, int end)
@@ -390,7 +395,7 @@ namespace FlowEnt
 
             for (int j = start; j <= end - 1; j++)
             {
-                if (arr[j].timeIndex >= p)
+                if (arr[j].timeIndex < p)
                 {
                     i++;
                     temp = arr[i];

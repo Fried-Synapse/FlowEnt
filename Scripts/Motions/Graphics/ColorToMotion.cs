@@ -8,32 +8,30 @@ namespace FlowEnt.Motions.Graphics
     {
         public ColorToMotion(TGraphic item, Color to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public ColorToMotion(TGraphic item, Color from, Color to) : this(item, to)
         {
-            From = from;
+            hasFrom = true;
+            this.from = from;
         }
 
-        public Color? From { get; private set; }
-        public Color To { get; }
+        private readonly bool hasFrom;
+        private Color from;
+        private readonly Color to;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.color;
-            }
-            else
-            {
-                Item.color = From.Value;
+                from = item.color;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.color = Color.Lerp(From.Value, To, t);
+            item.color = Color.Lerp(from, to, t);
         }
     }
 }

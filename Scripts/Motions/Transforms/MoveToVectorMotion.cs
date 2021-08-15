@@ -12,27 +12,25 @@ namespace FlowEnt.Motions.Transforms
 
         public MoveToVectorMotion(TTransform item, Vector3 from, Vector3 to) : this(item, to)
         {
-            From = from;
+            hasFrom = true;
+            this.from = from;
         }
 
-        public Vector3? From { get; private set; }
-        public Vector3 To { get; }
+        private readonly bool hasFrom;
+        private Vector3 from;
+        private readonly Vector3 To;
 
         public override void OnStart()
         {
-            if (From == null)
+            if (!hasFrom)
             {
-                From = Item.position;
-            }
-            else
-            {
-                Item.position = From.Value;
+                from = item.position;
             }
         }
 
         public override void OnUpdate(float t)
         {
-            Item.position = Vector3.LerpUnclamped(From.Value, To, t);
+            item.position = Vector3.LerpUnclamped(from, To, t);
         }
     }
 }
