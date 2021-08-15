@@ -12,6 +12,7 @@ namespace FlowEnt
 
         T SetDelay(float time);
     }
+
     public class FlowOptions : AbstractAnimationOptions, IFluentFlowOptionable<FlowOptions>
     {
         public FlowOptions(bool autoStart = false) : base(autoStart)

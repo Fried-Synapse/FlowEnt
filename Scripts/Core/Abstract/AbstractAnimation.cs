@@ -28,6 +28,7 @@ namespace FlowEnt
         #region Events
         private protected Action onStarted;
         private protected Action onCompleted;
+        private protected Action<int?> onLoopCompleted;
 
         #endregion
 
@@ -36,7 +37,7 @@ namespace FlowEnt
         private protected PlayState playState;
         public PlayState PlayState => playState;
         private protected float? overdraft;
-        public float? OverDraft => overdraft;
+        public float? OverDraft { get => overdraft; internal set => overdraft = value; }
 
         #endregion
 

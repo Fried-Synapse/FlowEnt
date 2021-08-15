@@ -11,7 +11,7 @@ namespace FlowEnt
         T OnUpdating(Action<float> callback);
         T OnUpdated(Action<float> callback);
 
-        T OnLoopCompleted(Action callback);
+        T OnLoopCompleted(Action<int?> callback);
 
         T OnCompleted(Action callback);
     }

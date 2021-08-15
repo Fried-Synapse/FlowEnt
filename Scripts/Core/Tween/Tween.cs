@@ -29,7 +29,6 @@ namespace FlowEnt
         private Action onStarting;
         private Action<float> onUpdating;
         private Action<float> onUpdated;
-        private Action onLoopCompleted;
 
         #region Options
 
@@ -142,17 +141,12 @@ namespace FlowEnt
         private void CompleteLoop()
         {
             remainingTime = time;
-            if (loopCount == null)
-            {
-                onLoopCompleted?.Invoke();
-                UpdateInternal(overdraft.Value);
-            }
-
             remainingLoops--;
-            if (remainingLoops > 0)
+            if (!(remainingLoops <= 0))
             {
-                onLoopCompleted?.Invoke();
+                onLoopCompleted?.Invoke(remainingLoops);
                 UpdateInternal(overdraft.Value);
+                return;
             }
 
             updateController.UnsubscribeFromUpdate(this);
@@ -202,7 +196,7 @@ namespace FlowEnt
             return this;
         }
 
-        public Tween OnLoopCompleted(Action callback)
+        public Tween OnLoopCompleted(Action<int?> callback)
         {
             onLoopCompleted += callback;
             return this;
@@ -290,6 +284,10 @@ namespace FlowEnt
 
         public Tween SetLoopCount(int? loopCount)
         {
+            if (loopCount <= 0)
+            {
+                throw new ArgumentException("Value cannot be less than 0. If you want to set an infinite loop set the value to null.");
+            }
             this.loopCount = loopCount;
             return this;
         }

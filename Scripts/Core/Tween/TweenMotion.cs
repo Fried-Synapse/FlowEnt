@@ -70,7 +70,7 @@ namespace FlowEnt
             return this;
         }
 
-        public TweenMotion<T> OnLoopCompleted(Action callback)
+        public TweenMotion<T> OnLoopCompleted(Action<int?> callback)
         {
             Tween.OnLoopCompleted(callback);
             return this;

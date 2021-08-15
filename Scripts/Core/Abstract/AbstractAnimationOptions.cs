@@ -4,6 +4,8 @@ namespace FlowEnt
 {
     public class AbstractAnimationOptions
     {
+        internal const string ErrorLoopCountNegative = "Value cannot be 0 or less. If you want to set an infinite loop set the value to null.";
+        internal const string ErrorTimeScaleNegative = "Value cannot be less than 0.";
         public bool AutoStart { get; set; }
 
         public AbstractAnimationOptions(bool autoStart = false)
@@ -13,7 +15,19 @@ namespace FlowEnt
 
         public int SkipFrames { get; set; }
         public float Delay { get; set; } = -1f;
-        public int? LoopCount { get; set; } = 1;
+        private int? loopCount = 1;
+        public int? LoopCount
+        {
+            get { return loopCount; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(ErrorLoopCountNegative);
+                }
+                loopCount = value;
+            }
+        }
         private float timeScale = 1;
 
         public float TimeScale
@@ -23,7 +37,7 @@ namespace FlowEnt
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Value cannot be less than 0");
+                    throw new ArgumentException(ErrorTimeScaleNegative);
                 }
                 timeScale = value;
             }
