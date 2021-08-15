@@ -15,7 +15,6 @@ namespace FlowEnt
 
         private protected AutoStartHelper autoStartHelper;
         internal bool HasAutoStart => autoStartHelper != null;
-        internal abstract void OnCompletedInternal(Action callback);
 
         #region Options
 
@@ -129,5 +128,9 @@ namespace FlowEnt
 
         #endregion
 
+        internal void OnCompletedInternal(Action callback)
+        {
+            onCompleted += callback;
+        }
     }
 }
