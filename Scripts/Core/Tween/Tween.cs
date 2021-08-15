@@ -214,11 +214,6 @@ namespace FlowEnt
             return this;
         }
 
-        internal override void OnCompletedInternal(Action callback)
-        {
-            onCompleted += callback;
-        }
-
         #endregion
 
         #region Motions

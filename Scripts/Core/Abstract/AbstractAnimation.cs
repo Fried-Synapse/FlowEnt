@@ -15,7 +15,6 @@ namespace FlowEnt
 
         private protected AutoStartHelper autoStartHelper;
         internal bool HasAutoStart => autoStartHelper != null;
-        internal abstract void OnCompletedInternal(Action callback);
 
         #region Options
 
@@ -108,7 +107,7 @@ namespace FlowEnt
 
         public void Stop(bool triggerOnCompleted = false)
         {
-            if (playState == PlayState.Finished)
+            if (!(playState == PlayState.Playing || playState == PlayState.Paused))
             {
                 return;
             }
@@ -129,5 +128,9 @@ namespace FlowEnt
 
         #endregion
 
+        internal void OnCompletedInternal(Action callback)
+        {
+            onCompleted += callback;
+        }
     }
 }
