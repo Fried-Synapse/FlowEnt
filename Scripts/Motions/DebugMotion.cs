@@ -21,9 +21,14 @@ namespace FlowEnt.Motions
             Debug.Log(GetLogData("Update", "48F352", $"<b><color=#48ECF3>with {t}</color></b>"));
         }
 
+        public override void OnLoopComplete()
+        {
+            Debug.Log(GetLogData("LoopComplete", "F3C648"));
+        }
+
         public override void OnComplete()
         {
-            Debug.Log(GetLogData("Complete", "F3C648"));
+            Debug.Log(GetLogData("Complete", "F39E48"));
         }
 
         private string GetLogData(string eventName, string colour, string extra = "")

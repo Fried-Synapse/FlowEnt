@@ -8,6 +8,7 @@ namespace FlowEnt
     {
         public virtual void OnStart() { }
         public abstract void OnUpdate(float t);
+        public virtual void OnLoopComplete() { }
         public virtual void OnComplete() { }
     }
 
@@ -15,7 +16,7 @@ namespace FlowEnt
     /// Generic Abstract Motion
     /// </summary>
     /// <typeparam name="T">Generic Type for the motion. There is a read only property of type <T> called item that can be used and it's required on the constructor.</typeparam>
-    public abstract class AbstractMotion<T> : IMotion
+    public abstract class AbstractMotion<T> : AbstractMotion
     {
         protected AbstractMotion(T item)
         {
@@ -24,9 +25,5 @@ namespace FlowEnt
 
         protected readonly T item;
         public T Item => item;
-
-        public virtual void OnStart() { }
-        public abstract void OnUpdate(float t);
-        public virtual void OnComplete() { }
     }
 }

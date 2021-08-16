@@ -15,6 +15,21 @@ namespace FlowEnt
 
         public int SkipFrames { get; set; }
         public float Delay { get; set; } = -1f;
+
+        private float timeScale = 1;
+        public float TimeScale
+        {
+            get { return timeScale; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(ErrorTimeScaleNegative);
+                }
+                timeScale = value;
+            }
+        }
+
         private int? loopCount = 1;
         public int? LoopCount
         {
@@ -28,19 +43,6 @@ namespace FlowEnt
                 loopCount = value;
             }
         }
-        private float timeScale = 1;
 
-        public float TimeScale
-        {
-            get { return timeScale; }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentException(ErrorTimeScaleNegative);
-                }
-                timeScale = value;
-            }
-        }
     }
 }

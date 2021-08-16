@@ -23,6 +23,10 @@ namespace FlowEnt
 
         public Tween(float time, bool autoStart = false) : base(autoStart)
         {
+            if (time < 0)
+            {
+                throw new ArgumentException(TweenOptions.ErrorTimeNegative);
+            }
             this.time = time;
         }
 
@@ -33,8 +37,8 @@ namespace FlowEnt
         #region Options
 
         private float time = 1;
-        private LoopType loopType;
         private IEasing easing = TweenOptions.LinearEasing;
+        private LoopType loopType;
 
         #endregion
 
@@ -144,8 +148,15 @@ namespace FlowEnt
             remainingLoops--;
             if (!(remainingLoops <= 0))
             {
+                for (int i = 0; i < motions.Length; i++)
+                {
+                    motions[i].OnLoopComplete();
+                }
+
                 onLoopCompleted?.Invoke(remainingLoops);
-                UpdateInternal(overdraft.Value);
+                float overdraft = this.overdraft.Value;
+                this.overdraft = null;
+                UpdateInternal(overdraft);
                 return;
             }
 
@@ -254,7 +265,37 @@ namespace FlowEnt
 
         public Tween SetTime(float time)
         {
+            if (time < 0)
+            {
+                throw new ArgumentException(TweenOptions.ErrorTimeNegative);
+            }
             this.time = time;
+            return this;
+        }
+
+        public Tween SetLoopCount(int? loopCount)
+        {
+            if (loopCount <= 0)
+            {
+                throw new ArgumentException(AbstractAnimationOptions.ErrorLoopCountNegative);
+            }
+            this.loopCount = loopCount;
+            return this;
+        }
+
+        public Tween SetLoopType(LoopType loopType)
+        {
+            this.loopType = loopType;
+            return this;
+        }
+
+        public Tween SetTimeScale(float timeScale)
+        {
+            if (timeScale < 0)
+            {
+                throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
+            }
+            this.timeScale = timeScale;
             return this;
         }
 
@@ -276,41 +317,15 @@ namespace FlowEnt
             return this;
         }
 
-        public Tween SetLoopType(LoopType loopType)
-        {
-            this.loopType = loopType;
-            return this;
-        }
-
-        public Tween SetLoopCount(int? loopCount)
-        {
-            if (loopCount <= 0)
-            {
-                throw new ArgumentException("Value cannot be less than 0. If you want to set an infinite loop set the value to null.");
-            }
-            this.loopCount = loopCount;
-            return this;
-        }
-
-        public Tween SetTimeScale(float timeScale)
-        {
-            if (timeScale < 0)
-            {
-                throw new ArgumentException("Value cannot be less than 0.");
-            }
-            this.timeScale = timeScale;
-            return this;
-        }
-
         private void CopyOptions(TweenOptions options)
         {
             skipFrames = options.SkipFrames;
             delay = options.Delay;
             time = options.Time;
-            loopType = options.LoopType;
-            loopCount = options.LoopCount;
-            easing = options.Easing;
             timeScale = options.TimeScale;
+            loopCount = options.LoopCount;
+            loopType = options.LoopType;
+            easing = options.Easing;
         }
 
         #endregion

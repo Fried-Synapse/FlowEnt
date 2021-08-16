@@ -161,8 +161,8 @@ namespace FlowEnt
                 return;
             }
 
-            runningAnimationWrappers.Add(nextAnimationWrapper.animation.Id, nextAnimationWrapper);
             animation = nextAnimationWrapper.animation ?? nextAnimationWrapper.animationBuilder();
+            runningAnimationWrappers.Add(animation.Id, nextAnimationWrapper);
             animation.StartInternal(overdraft);
         }
 
@@ -188,8 +188,8 @@ namespace FlowEnt
             while (nextTimeIndexedAnimationWrapper != null && time >= nextTimeIndexedAnimationWrapper.timeIndex)
             {
                 ++runningAnimationWrappersCount;
-                runningAnimationWrappers.Add(nextTimeIndexedAnimationWrapper.animation.Id, nextTimeIndexedAnimationWrapper);
                 AbstractAnimation animation = nextTimeIndexedAnimationWrapper.animation ?? nextTimeIndexedAnimationWrapper.animationBuilder();
+                runningAnimationWrappers.Add(animation.Id, nextTimeIndexedAnimationWrapper);
                 animation.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
 
                 if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
