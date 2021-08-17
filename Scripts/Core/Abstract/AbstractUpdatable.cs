@@ -29,7 +29,7 @@ namespace FlowEnt
 
     internal class UpdatableAnchor : AbstractUpdatable
     {
-        public UpdatableAnchor() : base(null)
+        public UpdatableAnchor() : base(0)
         {
 
         }

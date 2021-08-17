@@ -23,19 +23,22 @@ namespace FlowEnt
 
         public Tween(float time, bool autoStart = false) : base(autoStart)
         {
+            if (time < 0)
+            {
+                throw new ArgumentException(TweenOptions.ErrorTimeNegative);
+            }
             this.time = time;
         }
 
         private Action onStarting;
         private Action<float> onUpdating;
         private Action<float> onUpdated;
-        private Action onLoopCompleted;
 
         #region Options
 
         private float time = 1;
-        private LoopType loopType;
         private IEasing easing = TweenOptions.LinearEasing;
+        private LoopType loopType;
 
         #endregion
 
@@ -142,17 +145,19 @@ namespace FlowEnt
         private void CompleteLoop()
         {
             remainingTime = time;
-            if (loopCount == null)
-            {
-                onLoopCompleted?.Invoke();
-                UpdateInternal(overdraft.Value);
-            }
-
             remainingLoops--;
-            if (remainingLoops > 0)
+            if (!(remainingLoops <= 0))
             {
-                onLoopCompleted?.Invoke();
-                UpdateInternal(overdraft.Value);
+                for (int i = 0; i < motions.Length; i++)
+                {
+                    motions[i].OnLoopComplete();
+                }
+
+                onLoopCompleted?.Invoke(remainingLoops);
+                float overdraft = this.overdraft.Value;
+                this.overdraft = null;
+                UpdateInternal(overdraft);
+                return;
             }
 
             updateController.UnsubscribeFromUpdate(this);
@@ -202,7 +207,7 @@ namespace FlowEnt
             return this;
         }
 
-        public Tween OnLoopCompleted(Action callback)
+        public Tween OnLoopCompleted(Action<int?> callback)
         {
             onLoopCompleted += callback;
             return this;
@@ -260,7 +265,37 @@ namespace FlowEnt
 
         public Tween SetTime(float time)
         {
+            if (time < 0)
+            {
+                throw new ArgumentException(TweenOptions.ErrorTimeNegative);
+            }
             this.time = time;
+            return this;
+        }
+
+        public Tween SetLoopCount(int? loopCount)
+        {
+            if (loopCount <= 0)
+            {
+                throw new ArgumentException(AbstractAnimationOptions.ErrorLoopCountNegative);
+            }
+            this.loopCount = loopCount;
+            return this;
+        }
+
+        public Tween SetLoopType(LoopType loopType)
+        {
+            this.loopType = loopType;
+            return this;
+        }
+
+        public Tween SetTimeScale(float timeScale)
+        {
+            if (timeScale < 0)
+            {
+                throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
+            }
+            this.timeScale = timeScale;
             return this;
         }
 
@@ -282,37 +317,15 @@ namespace FlowEnt
             return this;
         }
 
-        public Tween SetLoopType(LoopType loopType)
-        {
-            this.loopType = loopType;
-            return this;
-        }
-
-        public Tween SetLoopCount(int? loopCount)
-        {
-            this.loopCount = loopCount;
-            return this;
-        }
-
-        public Tween SetTimeScale(float timeScale)
-        {
-            if (timeScale < 0)
-            {
-                throw new ArgumentException("Value cannot be less than 0.");
-            }
-            this.timeScale = timeScale;
-            return this;
-        }
-
         private void CopyOptions(TweenOptions options)
         {
             skipFrames = options.SkipFrames;
             delay = options.Delay;
             time = options.Time;
-            loopType = options.LoopType;
-            loopCount = options.LoopCount;
-            easing = options.Easing;
             timeScale = options.TimeScale;
+            loopCount = options.LoopCount;
+            loopType = options.LoopType;
+            easing = options.Easing;
         }
 
         #endregion

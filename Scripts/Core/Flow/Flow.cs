@@ -17,16 +17,16 @@ namespace FlowEnt
                 this.timeIndex = timeIndex;
             }
 
-            public AnimationWrapper(Func<AbstractAnimation> animationCreation, int index, float? timeIndex = null)
+            public AnimationWrapper(Func<AbstractAnimation> animationBuilder, int index, float? timeIndex = null)
             {
-                this.animationCreation = animationCreation;
+                this.animationBuilder = animationBuilder;
                 this.index = index;
                 this.timeIndex = timeIndex;
             }
 
             public int index;
             public AbstractAnimation animation;
-            public Func<AbstractAnimation> animationCreation;
+            public Func<AbstractAnimation> animationBuilder;
             public float? timeIndex;
             public AnimationWrapper next;
         }
@@ -146,23 +146,24 @@ namespace FlowEnt
 
         internal void CompleteAnimation(AbstractAnimation animation)
         {
-            AnimationWrapper animationWrapper = runningAnimationWrappers[animation.Id];
+            float overdraft = animation.OverDraft.Value;
+            animation.OverDraft = null;
+            AnimationWrapper nextAnimationWrapper = runningAnimationWrappers[animation.Id].next;
             runningAnimationWrappers.Remove(animation.Id);
-            AnimationWrapper nextAnimationWrapper = animationWrapper.next;
             if (nextAnimationWrapper == null)
             {
                 --runningAnimationWrappersCount;
                 if (runningAnimationWrappersCount == 0 && nextTimeIndexedAnimationWrapper == null)
                 {
-                    overdraft = animationWrapper.animation.OverDraft;
+                    this.overdraft = overdraft;
                     CompleteLoop();
                 }
                 return;
             }
 
-            runningAnimationWrappers.Add(nextAnimationWrapper.animation.Id, nextAnimationWrapper);
-            animation = nextAnimationWrapper.animation ?? nextAnimationWrapper.animationCreation();
-            animation.StartInternal(animationWrapper.animation.OverDraft.Value);
+            animation = nextAnimationWrapper.animation ?? nextAnimationWrapper.animationBuilder();
+            runningAnimationWrappers.Add(animation.Id, nextAnimationWrapper);
+            animation.StartInternal(overdraft);
         }
 
         internal override void UpdateInternal(float deltaTime)
@@ -187,8 +188,8 @@ namespace FlowEnt
             while (nextTimeIndexedAnimationWrapper != null && time >= nextTimeIndexedAnimationWrapper.timeIndex)
             {
                 ++runningAnimationWrappersCount;
-                runningAnimationWrappers.Add(nextTimeIndexedAnimationWrapper.animation.Id, nextTimeIndexedAnimationWrapper);
-                AbstractAnimation animation = nextTimeIndexedAnimationWrapper.animation ?? nextTimeIndexedAnimationWrapper.animationCreation();
+                AbstractAnimation animation = nextTimeIndexedAnimationWrapper.animation ?? nextTimeIndexedAnimationWrapper.animationBuilder();
+                runningAnimationWrappers.Add(animation.Id, nextTimeIndexedAnimationWrapper);
                 animation.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
 
                 if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
@@ -207,8 +208,10 @@ namespace FlowEnt
         private void CompleteLoop()
         {
             remainingLoops--;
-            if (remainingLoops > 0)
+
+            if (!(remainingLoops <= 0))
             {
+                onLoopCompleted?.Invoke(remainingLoops);
                 Init();
                 UpdateInternal(overdraft.Value);
                 return;
@@ -241,6 +244,12 @@ namespace FlowEnt
         public Flow OnCompleted(Action callback)
         {
             onCompleted += callback;
+            return this;
+        }
+
+        public Flow OnLoopCompleted(Action<int?> callback)
+        {
+            onLoopCompleted += callback;
             return this;
         }
 
@@ -277,10 +286,51 @@ namespace FlowEnt
         }
 
         public Flow Queue(Func<Tween, Tween> tweenBuilder)
-            => Queue(tweenBuilder(new Tween(new TweenOptions())));
+            => Queue(tweenBuilder(new Tween()));
 
         public Flow Queue(Func<Flow, Flow> flowBuilder)
             => Queue(flowBuilder(new Flow()));
+
+        public Flow QueueDeferred(Func<AbstractAnimation> animationBuilder)
+        {
+            AbstractAnimation createAnimation()
+            {
+                AbstractAnimation animation = animationBuilder();
+
+                if (animation.PlayState != PlayState.Building)
+                {
+                    throw new FlowEntException("Cannot add animation that has already started.");
+                }
+
+                if (animation.HasAutoStart)
+                {
+                    animation.CancelAutoStart();
+                }
+                animation.updateController = this;
+
+                return animation;
+            }
+
+            if (lastQueuedAnimationWrapper == null)
+            {
+                lastQueuedAnimationWrapper = new AnimationWrapper(createAnimation, animationWrappersQueue.Count, 0);
+                animationWrappersQueue.Add(lastQueuedAnimationWrapper);
+            }
+            else
+            {
+                AnimationWrapper animationWrapper = new AnimationWrapper(createAnimation, lastQueuedAnimationWrapper.index);
+                lastQueuedAnimationWrapper.next = animationWrapper;
+                lastQueuedAnimationWrapper = animationWrapper;
+            }
+
+            return this;
+        }
+
+        public Flow QueueDeferred(Func<Tween, Tween> tweenBuilder)
+            => QueueDeferred(() => tweenBuilder(new Tween()));
+
+        public Flow QueueDeferred(Func<Flow, Flow> flowBuilder)
+            => QueueDeferred(() => flowBuilder(new Flow()));
 
         public Flow At(float timeIndex, AbstractAnimation animation)
         {
@@ -311,6 +361,43 @@ namespace FlowEnt
 
         public Flow At(float timeIndex, Func<Flow, Flow> flowBuilder)
             => At(timeIndex, flowBuilder(new Flow()));
+
+        public Flow AtDeferred(float timeIndex, Func<AbstractAnimation> animationBuilder)
+        {
+            AbstractAnimation createAnimation()
+            {
+                AbstractAnimation animation = animationBuilder();
+
+                if (timeIndex < 0)
+                {
+                    throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
+                }
+
+                if (animation.PlayState != PlayState.Building)
+                {
+                    throw new FlowEntException("Cannot add animation that has already started.");
+                }
+
+                if (animation.HasAutoStart)
+                {
+                    animation.CancelAutoStart();
+                }
+                animation.updateController = this;
+
+                return animation;
+            }
+
+            lastQueuedAnimationWrapper = new AnimationWrapper(createAnimation, animationWrappersQueue.Count, timeIndex);
+            animationWrappersQueue.Add(lastQueuedAnimationWrapper);
+
+            return this;
+        }
+
+        public Flow AtDeferred(float timeIndex, Func<Tween, Tween> tweenBuilder)
+            => AtDeferred(timeIndex, () => tweenBuilder(new Tween()));
+
+        public Flow AtDeferred(float timeIndex, Func<Flow, Flow> flowBuilder)
+            => AtDeferred(timeIndex, () => flowBuilder(new Flow()));
 
         #endregion
 
@@ -344,6 +431,10 @@ namespace FlowEnt
 
         public Flow SetLoopCount(int? loopCount)
         {
+            if (loopCount <= 0)
+            {
+                throw new ArgumentException(AbstractAnimationOptions.ErrorLoopCountNegative);
+            }
             this.loopCount = loopCount;
             return this;
         }
@@ -352,7 +443,7 @@ namespace FlowEnt
         {
             if (timeScale < 0)
             {
-                throw new ArgumentException("Value cannot be less than 0");
+                throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
             }
             this.timeScale = timeScale;
             return this;
@@ -360,6 +451,8 @@ namespace FlowEnt
 
         private void CopyOptions(FlowOptions options)
         {
+            skipFrames = options.SkipFrames;
+            delay = options.Delay;
             loopCount = options.LoopCount;
             timeScale = options.TimeScale;
         }

@@ -5,13 +5,26 @@ namespace FlowEnt
 {
     public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
     {
+        internal const string ErrorTimeNegative = "Value cannot be less than 0.";
         internal static readonly IEasing LinearEasing = new LinearEasing();
 
         public TweenOptions(bool autoStart = false) : base(autoStart)
         {
         }
 
-        public float Time { get; set; } = 1f;
+        private float time = 1f;
+        public float Time
+        {
+            get { return time; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(ErrorTimeNegative);
+                }
+                time = value;
+            }
+        }
         public LoopType LoopType { get; set; }
         public IEasing Easing { get; set; } = LinearEasing;
 
@@ -39,6 +52,24 @@ namespace FlowEnt
             return this;
         }
 
+        public TweenOptions SetTimeScale(float timeScale)
+        {
+            TimeScale = timeScale;
+            return this;
+        }
+
+        public TweenOptions SetLoopCount(int? loopCount)
+        {
+            LoopCount = loopCount;
+            return this;
+        }
+
+        public TweenOptions SetLoopType(LoopType loopType)
+        {
+            LoopType = loopType;
+            return this;
+        }
+
         public TweenOptions SetEasing(IEasing easing)
         {
             Easing = easing;
@@ -57,22 +88,6 @@ namespace FlowEnt
             return this;
         }
 
-        public TweenOptions SetLoopType(LoopType loopType)
-        {
-            LoopType = loopType;
-            return this;
-        }
 
-        public TweenOptions SetLoopCount(int? loopCount)
-        {
-            LoopCount = loopCount;
-            return this;
-        }
-
-        public TweenOptions SetTimeScale(float timeScale)
-        {
-            TimeScale = timeScale;
-            return this;
-        }
     }
 }
