@@ -1,6 +1,6 @@
 {
-    "name": "FlowEnt",
-    "rootNamespace": "FlowEnt",
+    "name": "FriedSynapse.FlowEnt",
+    "rootNamespace": "FriedSynapse.FlowEnt",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
