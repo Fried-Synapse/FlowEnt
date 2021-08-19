@@ -25,18 +25,20 @@ namespace FriedSynapse.FlowEnt
         internal IUpdateController updateController;
 
         internal abstract void UpdateInternal(float deltaTime);
+        public virtual void Stop(bool triggerOnCompleted = false)
+        {
+        }
     }
 
     internal class UpdatableAnchor : AbstractUpdatable
     {
         public UpdatableAnchor() : base(0)
         {
-
         }
 
         internal override void UpdateInternal(float deltaTime)
         {
-            throw new FlowEntException("this method should not be called");
+            throw new FlowEntException("this method should not be called.");
         }
     }
 }

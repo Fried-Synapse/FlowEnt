@@ -1,3 +1,4 @@
+using FriedSynapse.FlowEnt.Motions;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -17,5 +18,8 @@ namespace FriedSynapse.FlowEnt
             where TSource : Component
             where TTarget : Component
             => wrapper.For(wrapper.Item.GetComponent<TTarget>());
+
+        public static Tween Debug(this Tween tween, string name)
+            => tween.Apply(new DebugMotion(name));
     }
 }

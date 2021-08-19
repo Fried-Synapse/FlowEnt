@@ -27,6 +27,10 @@ namespace FriedSynapse.FlowEnt
             {
                 throw new ArgumentException(TweenOptions.ErrorTimeNegative);
             }
+            if (float.IsInfinity(time))
+            {
+                throw new ArgumentException(TweenOptions.ErrorTimeInfinity);
+            }
             this.time = time;
         }
 
@@ -146,6 +150,7 @@ namespace FriedSynapse.FlowEnt
         {
             remainingTime = time;
             remainingLoops--;
+
             if (!(remainingLoops <= 0))
             {
                 for (int i = 0; i < motions.Length; i++)
@@ -158,6 +163,11 @@ namespace FriedSynapse.FlowEnt
                 this.overdraft = null;
                 UpdateInternal(overdraft);
                 return;
+            }
+
+            if (remainingLoops == 0)
+            {
+                onLoopCompleted?.Invoke(remainingLoops);
             }
 
             updateController.UnsubscribeFromUpdate(this);
@@ -268,6 +278,10 @@ namespace FriedSynapse.FlowEnt
             if (time < 0)
             {
                 throw new ArgumentException(TweenOptions.ErrorTimeNegative);
+            }
+            if (float.IsInfinity(time))
+            {
+                throw new ArgumentException(TweenOptions.ErrorTimeInfinity);
             }
             this.time = time;
             return this;

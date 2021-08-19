@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt
     public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
     {
         internal const string ErrorTimeNegative = "Value cannot be less than 0.";
+        internal const string ErrorTimeInfinity = "Value cannot be infinity.";
         internal static readonly IEasing LinearEasing = new LinearEasing();
 
         public TweenOptions(bool autoStart = false) : base(autoStart)
@@ -21,6 +22,10 @@ namespace FriedSynapse.FlowEnt
                 if (value < 0)
                 {
                     throw new ArgumentException(ErrorTimeNegative);
+                }
+                if (float.IsInfinity(value))
+                {
+                    throw new ArgumentException(ErrorTimeInfinity);
                 }
                 time = value;
             }

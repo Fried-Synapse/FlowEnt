@@ -137,6 +137,7 @@ namespace FriedSynapse.FlowEnt
             if (animationWrappersOrderedByTimeIndexed == null)
             {
                 animationWrappersOrderedByTimeIndexed = animationWrappersQueue.ToArray();
+                //TODO do we really need to apply quick sort?
                 QuickSortByTimeIndex(animationWrappersOrderedByTimeIndexed, 0, animationWrappersOrderedByTimeIndexed.Length - 1);
             }
 
@@ -217,6 +218,11 @@ namespace FriedSynapse.FlowEnt
                 return;
             }
 
+            if (remainingLoops == 0)
+            {
+                onLoopCompleted?.Invoke(remainingLoops);
+            }
+
             updateController.UnsubscribeFromUpdate(this);
 
             onCompleted?.Invoke();
@@ -232,28 +238,6 @@ namespace FriedSynapse.FlowEnt
         #endregion
 
         #region Setters
-
-        #region Events
-
-        public Flow OnStarted(Action callback)
-        {
-            onStarted += callback;
-            return this;
-        }
-
-        public Flow OnCompleted(Action callback)
-        {
-            onCompleted += callback;
-            return this;
-        }
-
-        public Flow OnLoopCompleted(Action<int?> callback)
-        {
-            onLoopCompleted += callback;
-            return this;
-        }
-
-        #endregion
 
         #region Threads
 
@@ -401,6 +385,26 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #region Events
+
+        public Flow OnStarted(Action callback)
+        {
+            onStarted += callback;
+            return this;
+        }
+
+        public Flow OnCompleted(Action callback)
+        {
+            onCompleted += callback;
+            return this;
+        }
+
+        public Flow OnLoopCompleted(Action<int?> callback)
+        {
+            onLoopCompleted += callback;
+            return this;
+        }
+
         #endregion
 
         #region Options
@@ -456,6 +460,8 @@ namespace FriedSynapse.FlowEnt
             loopCount = options.LoopCount;
             timeScale = options.TimeScale;
         }
+
+        #endregion
 
         #endregion
 

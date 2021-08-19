@@ -26,7 +26,8 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        private FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
+        private FastList<AbstractUpdatable, UpdatableAnchor> playingUpdatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
+        private FastList<AbstractUpdatable, UpdatableAnchor> pausedUpdatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
 
         private float timeScale = 1;
 
@@ -45,13 +46,8 @@ namespace FriedSynapse.FlowEnt
 
         private void Update()
         {
-            if (playState != PlayState.Playing)
-            {
-                return;
-            }
-
             float deltaTime = Time.deltaTime * timeScale;
-            AbstractUpdatable index = updatables.anchor.next;
+            AbstractUpdatable index = playingUpdatables.anchor.next;
 
             while (index != null)
             {
@@ -64,12 +60,12 @@ namespace FriedSynapse.FlowEnt
 
         void IUpdateController.SubscribeToUpdate(AbstractUpdatable updatable)
         {
-            updatables.Add(updatable);
+            playingUpdatables.Add(updatable);
         }
 
         void IUpdateController.UnsubscribeFromUpdate(AbstractUpdatable updatable)
         {
-            updatables.Remove(updatable);
+            playingUpdatables.Remove(updatable);
         }
 
         #endregion
@@ -78,12 +74,32 @@ namespace FriedSynapse.FlowEnt
 
         public void Pause()
         {
+            FastList<AbstractUpdatable, UpdatableAnchor> temp = playingUpdatables;
+            playingUpdatables = pausedUpdatables;
+            pausedUpdatables = temp;
+
             playState = PlayState.Paused;
         }
 
         public void Resume()
         {
+            FastList<AbstractUpdatable, UpdatableAnchor> temp = pausedUpdatables;
+            pausedUpdatables = playingUpdatables;
+            playingUpdatables = temp;
+
             playState = PlayState.Playing;
+        }
+
+        public void StopAll(bool triggerOnCompleted = false)
+        {
+            AbstractUpdatable index = (playState == PlayState.Playing ? playingUpdatables : pausedUpdatables).anchor.next;
+
+            while (index != null)
+            {
+                AbstractUpdatable temp = index;
+                index = index.next;
+                temp.Stop(triggerOnCompleted);
+            }
         }
 
         #endregion

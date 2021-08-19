@@ -106,7 +106,7 @@ namespace FriedSynapse.FlowEnt
             updateController.UnsubscribeFromUpdate(this);
         }
 
-        public void Stop(bool triggerOnCompleted = false)
+        public override void Stop(bool triggerOnCompleted = false)
         {
             if (!(playState == PlayState.Playing || playState == PlayState.Paused))
             {
