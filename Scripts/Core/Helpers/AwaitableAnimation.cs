@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     internal class AwaitableAnimation
     {

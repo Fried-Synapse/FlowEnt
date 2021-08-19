@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     internal interface IFluentTweenEventable<T>
     {

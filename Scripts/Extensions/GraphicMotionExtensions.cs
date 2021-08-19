@@ -1,8 +1,8 @@
-using FlowEnt.Motions.Graphics;
+using FriedSynapse.FlowEnt.Motions.Graphics;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public static class GraphicMotionExtensions
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FlowEnt.Motions.Graphics
+namespace FriedSynapse.FlowEnt.Motions.Graphics
 {
     public class AlphaMotion<TGraphic> : AbstractMotion<TGraphic>
         where TGraphic : Graphic

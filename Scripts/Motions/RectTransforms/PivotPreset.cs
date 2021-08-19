@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FlowEnt.Motions.RectTransforms
+namespace FriedSynapse.FlowEnt.Motions.RectTransforms
 {
     public enum PivotPreset
     {

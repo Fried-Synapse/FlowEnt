@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     //TODO not implemented lol.
     public class CubicSpline : ISpline

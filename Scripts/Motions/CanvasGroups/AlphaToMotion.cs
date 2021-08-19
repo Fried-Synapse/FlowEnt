@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlowEnt.Motions.CanvasGroups
+namespace FriedSynapse.FlowEnt.Motions.CanvasGroups
 {
     public class AlphaToMotion : AbstractMotion<CanvasGroup>
     {

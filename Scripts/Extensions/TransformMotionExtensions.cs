@@ -1,7 +1,7 @@
 using UnityEngine;
-using FlowEnt.Motions.Transforms;
+using FriedSynapse.FlowEnt.Motions.Transforms;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public static class TransformMotionExtensions
     {

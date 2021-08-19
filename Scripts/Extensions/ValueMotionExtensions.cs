@@ -1,8 +1,8 @@
 using System;
-using FlowEnt.Motions.Values;
+using FriedSynapse.FlowEnt.Motions.Values;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public static class ValueMotionExtensions
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlowEnt.Motions.Transforms
+namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
     public class MoveLocalToVectorMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform

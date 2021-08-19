@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlowEnt.Motions.Renderers
+namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
     public class AlphaMotion<TRenderer> : AbstractMotion<TRenderer>
         where TRenderer : Renderer

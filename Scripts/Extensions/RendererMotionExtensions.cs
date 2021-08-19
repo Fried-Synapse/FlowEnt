@@ -1,7 +1,7 @@
 using UnityEngine;
-using FlowEnt.Motions.Renderers;
+using FriedSynapse.FlowEnt.Motions.Renderers;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public static class RendererMotionExtensions
     {

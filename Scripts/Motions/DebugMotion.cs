@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlowEnt.Motions
+namespace FriedSynapse.FlowEnt.Motions
 {
     public class DebugMotion : AbstractMotion
     {
