@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public abstract class AbstractAnimation : AbstractUpdatable
     {

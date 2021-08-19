@@ -1,6 +1,6 @@
 using System;
 
-namespace FlowEnt.Motions.Values
+namespace FriedSynapse.FlowEnt.Motions.Values
 {
     public abstract class AbstractValueMotion<T> : AbstractMotion
     {

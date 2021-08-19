@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FlowEnt.Motions.Transforms
+namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
     public class RotateToVectorMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform

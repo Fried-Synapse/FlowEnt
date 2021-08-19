@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public class CreateNewMotionScriptHelper
     {

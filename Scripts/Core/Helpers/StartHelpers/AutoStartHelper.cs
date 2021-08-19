@@ -1,6 +1,6 @@
 using System;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     internal class AutoStartHelper : AbstractStartHelper
     {

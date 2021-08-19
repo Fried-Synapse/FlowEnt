@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     /// <summary>
     /// A tween is a simple interpolation from 0 to 1 which has several options and events attached.

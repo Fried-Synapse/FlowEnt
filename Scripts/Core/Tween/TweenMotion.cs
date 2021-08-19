@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public class TweenMotion<T> :
         IFluentTweenOptionable<TweenMotion<T>>,

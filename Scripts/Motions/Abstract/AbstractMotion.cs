@@ -1,5 +1,5 @@
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     /// <summary>
     /// Abstract Motion that can be used to create a simple motion.

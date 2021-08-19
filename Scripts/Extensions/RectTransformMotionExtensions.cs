@@ -1,7 +1,7 @@
-using FlowEnt.Motions.RectTransforms;
+using FriedSynapse.FlowEnt.Motions.RectTransforms;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public static class RectTransformMotionExtensions
     {

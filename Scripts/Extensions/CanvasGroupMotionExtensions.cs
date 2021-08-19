@@ -1,7 +1,7 @@
-using FlowEnt.Motions.CanvasGroups;
+using FriedSynapse.FlowEnt.Motions.CanvasGroups;
 using UnityEngine;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public static class CanvasGroupMotionExtensions
     {

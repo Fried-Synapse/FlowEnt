@@ -1,4 +1,4 @@
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public enum LoopType
     {

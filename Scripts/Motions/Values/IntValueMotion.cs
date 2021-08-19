@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FlowEnt.Motions.Values
+namespace FriedSynapse.FlowEnt.Motions.Values
 {
     public class IntValueMotion : AbstractMotion
     {

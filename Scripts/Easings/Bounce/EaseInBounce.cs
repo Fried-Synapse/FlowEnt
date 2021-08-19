@@ -1,5 +1,5 @@
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public class EaseInBounce : EaseOutBounce
     {

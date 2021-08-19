@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public static class CommonExtensions
     {

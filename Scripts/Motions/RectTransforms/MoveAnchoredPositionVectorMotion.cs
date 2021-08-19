@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlowEnt.Motions.RectTransforms
+namespace FriedSynapse.FlowEnt.Motions.RectTransforms
 {
     public class MoveAnchoredPositionVectorMotion : AbstractMotion<RectTransform>
     {

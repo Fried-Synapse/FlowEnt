@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FlowEnt
+namespace FriedSynapse.FlowEnt
 {
     public sealed class Flow : AbstractAnimation,
         IUpdateController,
