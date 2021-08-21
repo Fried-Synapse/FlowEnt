@@ -10,9 +10,11 @@ namespace FriedSynapse.FlowEnt
             if (autoStart)
             {
                 autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
+                startHelper = autoStartHelper;
             }
         }
 
+        private protected AbstractStartHelper startHelper;
         private protected AutoStartHelper autoStartHelper;
         internal bool HasAutoStart => autoStartHelper != null;
 
@@ -34,7 +36,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Settings Properties
 
-        private protected PlayState playState;
+        private protected PlayState playState = PlayState.Building;
         public PlayState PlayState => playState;
         private protected float? overdraft;
         public float? OverDraft { get => overdraft; internal set => overdraft = value; }
@@ -66,7 +68,7 @@ namespace FriedSynapse.FlowEnt
             {
                 --skipFrames;
             }
-            SkipFramesStartHelper skipFramesStartHelper = new SkipFramesStartHelper(updateController, skipFrames, (deltaTime) =>
+            startHelper = new SkipFramesStartHelper(updateController, skipFrames, (deltaTime) =>
             {
                 skipFrames = 0;
                 StartInternal(deltaTime);
@@ -75,7 +77,7 @@ namespace FriedSynapse.FlowEnt
 
         private protected void StartDelay()
         {
-            DelayedStartHelper delayedStartHelper = new DelayedStartHelper(updateController, delay, (deltaTime) =>
+            startHelper = new DelayedStartHelper(updateController, delay, (deltaTime) =>
             {
                 delay = -1f;
                 StartInternal(deltaTime);
@@ -108,13 +110,21 @@ namespace FriedSynapse.FlowEnt
 
         public override void Stop(bool triggerOnCompleted = false)
         {
-            if (!(playState == PlayState.Playing || playState == PlayState.Paused))
+            switch (playState)
             {
-                return;
+                case PlayState.Building:
+                case PlayState.Finished:
+                    return;
+                case PlayState.Waiting:
+                    updateController.UnsubscribeFromUpdate(startHelper);
+                    break;
+                case PlayState.Playing:
+                case PlayState.Paused:
+                    updateController.UnsubscribeFromUpdate(this);
+                    break;
             }
-            playState = PlayState.Finished;
 
-            updateController.UnsubscribeFromUpdate(this);
+            playState = PlayState.Finished;
 
             if (triggerOnCompleted)
             {

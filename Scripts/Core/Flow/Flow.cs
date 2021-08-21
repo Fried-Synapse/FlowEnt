@@ -105,6 +105,8 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
+            playState = PlayState.Waiting;
+
             if (skipFrames > 0)
             {
                 StartSkipFrames();
@@ -122,10 +124,8 @@ namespace FriedSynapse.FlowEnt
             Init();
 
             updateController.SubscribeToUpdate(this);
-
-            onStarted?.Invoke();
-
             playState = PlayState.Playing;
+            onStarted?.Invoke();
 
             UpdateInternal(deltaTime);
         }
@@ -225,14 +225,14 @@ namespace FriedSynapse.FlowEnt
 
             updateController.UnsubscribeFromUpdate(this);
 
+            playState = PlayState.Finished;
+
             onCompleted?.Invoke();
 
             if (updateController is Flow parentFlow)
             {
                 parentFlow.CompleteAnimation(this);
             }
-
-            playState = PlayState.Finished;
         }
 
         #endregion
