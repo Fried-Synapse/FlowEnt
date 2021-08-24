@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt
 
         public override void OnUpdate(float t)
         {
-            item.sizeDelta = Vector2.Lerp(from, to, t);
+            item.sizeDelta = Vector2.LerpUnclamped(from, to, t);
         }
     }
 }

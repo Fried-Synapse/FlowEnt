@@ -275,6 +275,9 @@ namespace FriedSynapse.FlowEnt
         public Flow Queue(Func<Flow, Flow> flowBuilder)
             => Queue(flowBuilder(new Flow()));
 
+        public Flow QueueDelay(float delay)
+            => Queue(new Tween(delay));
+
         public Flow QueueDeferred(Func<AbstractAnimation> animationBuilder)
         {
             AbstractAnimation createAnimation()

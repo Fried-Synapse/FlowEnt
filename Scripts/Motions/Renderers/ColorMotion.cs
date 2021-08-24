@@ -22,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Motions.Renderers
 
         public override void OnUpdate(float t)
         {
-            item.material.color = Color.Lerp(from, to, t);
+            item.material.color = Color.LerpUnclamped(from, to, t);
         }
     }
 }

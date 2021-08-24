@@ -9,6 +9,6 @@ namespace FriedSynapse.FlowEnt.Motions.Values
         {
         }
 
-        protected override Func<Vector3, Vector3, float, Vector3> LerpFunction => Vector3.Lerp;
+        protected override Func<Vector3, Vector3, float, Vector3> LerpFunction => Vector3.LerpUnclamped;
     }
 }

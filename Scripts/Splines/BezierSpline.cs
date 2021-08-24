@@ -77,10 +77,10 @@ namespace FriedSynapse.FlowEnt
 
                 Debug.Log($"{t} - {segment}, {segmentT}");
 
-                startPoint = Vector3.Lerp(points[segment], points[segment + 1], segmentT);
-                startControl = Vector3.Lerp(points[segment + 1], points[segment + 2], segmentT);
-                endControl = Vector3.Lerp(points[segment + 2], points[segment + 3], segmentT);
-                endPoint = Vector3.Lerp(points[segment + 3], points[segment + 4], segmentT);
+                startPoint = Vector3.LerpUnclamped(points[segment], points[segment + 1], segmentT);
+                startControl = Vector3.LerpUnclamped(points[segment + 1], points[segment + 2], segmentT);
+                endControl = Vector3.LerpUnclamped(points[segment + 2], points[segment + 3], segmentT);
+                endPoint = Vector3.LerpUnclamped(points[segment + 3], points[segment + 4], segmentT);
             }
             return GetPoint(t, startPoint, startControl, endControl, endPoint);
         }

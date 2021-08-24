@@ -9,6 +9,6 @@ namespace FriedSynapse.FlowEnt.Motions.Values
         {
         }
 
-        protected override Func<Color, Color, float, Color> LerpFunction => Color.Lerp;
+        protected override Func<Color, Color, float, Color> LerpFunction => Color.LerpUnclamped;
     }
 }

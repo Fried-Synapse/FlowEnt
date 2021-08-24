@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt
 
         public override void OnUpdate(float t)
         {
-            item.sizeDelta = Vector3.Lerp(from, to, t);
+            item.sizeDelta = Vector3.LerpUnclamped(from, to, t);
         }
     }
 }

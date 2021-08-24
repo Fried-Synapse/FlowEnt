@@ -37,6 +37,7 @@ namespace FriedSynapse.FlowEnt
         private Action onStarting;
         private Action<float> onUpdating;
         private Action<float> onUpdated;
+        private Action onCompleting;
 
         #region Options
 
@@ -174,8 +175,8 @@ namespace FriedSynapse.FlowEnt
 
             updateController.UnsubscribeFromUpdate(this);
 
+            onCompleting?.Invoke();
             playState = PlayState.Finished;
-
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnComplete();
@@ -221,6 +222,12 @@ namespace FriedSynapse.FlowEnt
         public Tween OnLoopCompleted(Action<int?> callback)
         {
             onLoopCompleted += callback;
+            return this;
+        }
+
+        public Tween OnCompleting(Action callback)
+        {
+            onCompleting += callback;
             return this;
         }
 

@@ -62,7 +62,7 @@ namespace FriedSynapse.FlowEnt
 
             float segmentT = (t - SummedDistanceRatios[segment]) / DistanceRatios[segment];
 
-            return Vector3.Lerp(Points[segment], Points[segment + 1], segmentT);
+            return Vector3.LerpUnclamped(Points[segment], Points[segment + 1], segmentT);
         }
     }
 }

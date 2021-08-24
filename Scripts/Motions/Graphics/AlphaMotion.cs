@@ -25,7 +25,7 @@ namespace FriedSynapse.FlowEnt.Motions.Graphics
         public override void OnUpdate(float t)
         {
             color = item.color;
-            color.a = Mathf.Lerp(from, to, t);
+            color.a = Mathf.LerpUnclamped(from, to, t);
             item.color = color;
         }
     }

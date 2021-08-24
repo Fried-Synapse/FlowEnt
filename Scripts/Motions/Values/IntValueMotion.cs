@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Motions.Values
 
         public override void OnUpdate(float t)
         {
-            callback((int)Mathf.Lerp(from, to, t));
+            callback((int)Mathf.LerpUnclamped(from, to, t));
         }
     }
 }

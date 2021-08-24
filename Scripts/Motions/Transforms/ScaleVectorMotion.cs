@@ -22,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
 
         public override void OnUpdate(float t)
         {
-            item.localScale = Vector3.Lerp(from, to, t);
+            item.localScale = Vector3.LerpUnclamped(from, to, t);
         }
     }
 }

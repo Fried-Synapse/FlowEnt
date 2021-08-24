@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt.Motions.CanvasGroups
 
         public override void OnUpdate(float t)
         {
-            item.alpha = Mathf.Lerp(from, to, t);
+            item.alpha = Mathf.LerpUnclamped(from, to, t);
         }
     }
 }
