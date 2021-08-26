@@ -8,25 +8,26 @@ namespace FriedSynapse.FlowEnt
         IUpdateController,
         IFluentFlowOptionable<Flow>
     {
+        private const string AnimationAlreadyStartedError = "Cannot add animation that has already started.";
         private class AnimationWrapper
         {
-            public AnimationWrapper(AbstractAnimation animation, int index, float? timeIndex = null)
+            public AnimationWrapper(AbstractUpdatable updatable, int index, float? timeIndex = null)
             {
-                this.animation = animation;
+                this.updatable = updatable;
                 this.index = index;
                 this.timeIndex = timeIndex;
             }
 
-            public AnimationWrapper(Func<AbstractAnimation> animationBuilder, int index, float? timeIndex = null)
+            public AnimationWrapper(Func<AbstractUpdatable> updatableBuilder, int index, float? timeIndex = null)
             {
-                this.animationBuilder = animationBuilder;
+                this.updatableBuilder = updatableBuilder;
                 this.index = index;
                 this.timeIndex = timeIndex;
             }
 
             public int index;
-            public AbstractAnimation animation;
-            public Func<AbstractAnimation> animationBuilder;
+            public AbstractUpdatable updatable;
+            public Func<AbstractUpdatable> updatableBuilder;
             public float? timeIndex;
             public AnimationWrapper next;
         }
@@ -145,12 +146,17 @@ namespace FriedSynapse.FlowEnt
             nextTimeIndexedAnimationWrapper = animationWrappersOrderedByTimeIndexed[nextTimeIndexedAnimationWrapperIndex++];
         }
 
-        internal void CompleteAnimation(AbstractAnimation animation)
+        internal void CompleteUpdatable(AbstractUpdatable updatable)
         {
-            float overdraft = animation.OverDraft.Value;
-            animation.OverDraft = null;
-            AnimationWrapper nextAnimationWrapper = runningAnimationWrappers[animation.Id].next;
-            runningAnimationWrappers.Remove(animation.Id);
+            float overdraft = 0;
+            if (updatable is AbstractAnimation animation)
+            {
+                overdraft = animation.OverDraft.Value;
+                animation.OverDraft = null;
+            }
+
+            AnimationWrapper nextAnimationWrapper = runningAnimationWrappers[updatable.Id].next;
+            runningAnimationWrappers.Remove(updatable.Id);
             if (nextAnimationWrapper == null)
             {
                 --runningAnimationWrappersCount;
@@ -162,9 +168,9 @@ namespace FriedSynapse.FlowEnt
                 return;
             }
 
-            animation = nextAnimationWrapper.animation ?? nextAnimationWrapper.animationBuilder();
-            runningAnimationWrappers.Add(animation.Id, nextAnimationWrapper);
-            animation.StartInternal(overdraft);
+            updatable = nextAnimationWrapper.updatable ?? nextAnimationWrapper.updatableBuilder();
+            runningAnimationWrappers.Add(updatable.Id, nextAnimationWrapper);
+            updatable.StartInternal(overdraft);
         }
 
         internal override void UpdateInternal(float deltaTime)
@@ -189,9 +195,9 @@ namespace FriedSynapse.FlowEnt
             while (nextTimeIndexedAnimationWrapper != null && time >= nextTimeIndexedAnimationWrapper.timeIndex)
             {
                 ++runningAnimationWrappersCount;
-                AbstractAnimation animation = nextTimeIndexedAnimationWrapper.animation ?? nextTimeIndexedAnimationWrapper.animationBuilder();
-                runningAnimationWrappers.Add(animation.Id, nextTimeIndexedAnimationWrapper);
-                animation.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
+                AbstractUpdatable updatable = nextTimeIndexedAnimationWrapper.updatable ?? nextTimeIndexedAnimationWrapper.updatableBuilder();
+                runningAnimationWrappers.Add(updatable.Id, nextTimeIndexedAnimationWrapper);
+                updatable.StartInternal(time - nextTimeIndexedAnimationWrapper.timeIndex.Value);
 
                 if (nextTimeIndexedAnimationWrapperIndex < animationWrappersOrderedByTimeIndexed.Length)
                 {
@@ -231,7 +237,7 @@ namespace FriedSynapse.FlowEnt
 
             if (updateController is Flow parentFlow)
             {
-                parentFlow.CompleteAnimation(this);
+                parentFlow.CompleteUpdatable(this);
             }
         }
 
@@ -241,11 +247,13 @@ namespace FriedSynapse.FlowEnt
 
         #region Threads
 
+        #region Queue
+
         public Flow Queue(AbstractAnimation animation)
         {
             if (animation.PlayState != PlayState.Building)
             {
-                throw new FlowEntException("Cannot add animation that has already started.");
+                throw new FlowEntException(AnimationAlreadyStartedError);
             }
 
             if (animation.HasAutoStart)
@@ -278,6 +286,10 @@ namespace FriedSynapse.FlowEnt
         public Flow QueueDelay(float delay)
             => Queue(new Tween(delay));
 
+        #endregion
+
+        #region QueueDeferred
+
         public Flow QueueDeferred(Func<AbstractAnimation> animationBuilder)
         {
             AbstractAnimation createAnimation()
@@ -286,7 +298,7 @@ namespace FriedSynapse.FlowEnt
 
                 if (animation.PlayState != PlayState.Building)
                 {
-                    throw new FlowEntException("Cannot add animation that has already started.");
+                    throw new FlowEntException(AnimationAlreadyStartedError);
                 }
 
                 if (animation.HasAutoStart)
@@ -319,6 +331,10 @@ namespace FriedSynapse.FlowEnt
         public Flow QueueDeferred(Func<Flow, Flow> flowBuilder)
             => QueueDeferred(() => flowBuilder(new Flow()));
 
+        #endregion
+
+        #region At
+
         public Flow At(float timeIndex, AbstractAnimation animation)
         {
             if (timeIndex < 0)
@@ -328,7 +344,7 @@ namespace FriedSynapse.FlowEnt
 
             if (animation.PlayState != PlayState.Building)
             {
-                throw new FlowEntException("Cannot add animation that has already started.");
+                throw new FlowEntException(AnimationAlreadyStartedError);
             }
 
             if (animation.HasAutoStart)
@@ -349,6 +365,10 @@ namespace FriedSynapse.FlowEnt
         public Flow At(float timeIndex, Func<Flow, Flow> flowBuilder)
             => At(timeIndex, flowBuilder(new Flow()));
 
+        #endregion
+
+        #region AtDeferred
+
         public Flow AtDeferred(float timeIndex, Func<AbstractAnimation> animationBuilder)
         {
             AbstractAnimation createAnimation()
@@ -362,7 +382,7 @@ namespace FriedSynapse.FlowEnt
 
                 if (animation.PlayState != PlayState.Building)
                 {
-                    throw new FlowEntException("Cannot add animation that has already started.");
+                    throw new FlowEntException(AnimationAlreadyStartedError);
                 }
 
                 if (animation.HasAutoStart)
@@ -385,6 +405,18 @@ namespace FriedSynapse.FlowEnt
 
         public Flow AtDeferred(float timeIndex, Func<Flow, Flow> flowBuilder)
             => AtDeferred(timeIndex, () => flowBuilder(new Flow()));
+
+        #endregion
+
+        #region WaitFor
+
+        public Flow WaitFor(AbstractFlowAwaiter flowAwaiter)
+        {
+            flowAwaiter.updateController = this;
+            return this;
+        }
+
+        #endregion
 
         #endregion
 

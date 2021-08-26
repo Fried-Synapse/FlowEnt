@@ -185,7 +185,7 @@ namespace FriedSynapse.FlowEnt
 
             if (updateController is Flow parentFlow)
             {
-                parentFlow.CompleteAnimation(this);
+                parentFlow.CompleteUpdatable(this);
             }
         }
 
