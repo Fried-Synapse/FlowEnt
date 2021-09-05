@@ -6,5 +6,11 @@ namespace FriedSynapse.FlowEnt
         {
             updateController.SubscribeToUpdate(this);
         }
+
+        private protected void Complete()
+        {
+            updateController.UnsubscribeFromUpdate(this);
+            ((Flow)updateController).CompleteUpdatable(this);
+        }
     }
 }

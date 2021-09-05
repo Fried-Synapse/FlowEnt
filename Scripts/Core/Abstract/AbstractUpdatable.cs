@@ -24,6 +24,13 @@ namespace FriedSynapse.FlowEnt
 
         internal IUpdateController updateController;
 
+        #region Events
+
+        private protected Action onStarted;
+        private protected Action onCompleted;
+
+        #endregion
+
         internal abstract void StartInternal(float deltaTime = 0);
         internal abstract void UpdateInternal(float deltaTime);
         public virtual void Stop(bool triggerOnCompleted = false)

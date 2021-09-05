@@ -14,8 +14,7 @@ namespace FriedSynapse.FlowEnt
         {
             if (callback.Invoke())
             {
-                updateController.UnsubscribeFromUpdate(this);
-                ((Flow)updateController).CompleteUpdatable(this);
+                Complete();
             }
         }
     }

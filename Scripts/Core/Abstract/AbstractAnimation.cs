@@ -28,8 +28,6 @@ namespace FriedSynapse.FlowEnt
         #endregion
 
         #region Events
-        private protected Action onStarted;
-        private protected Action onCompleted;
         private protected Action<int?> onLoopCompleted;
 
         #endregion
