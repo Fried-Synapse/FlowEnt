@@ -36,7 +36,6 @@ namespace FriedSynapse.FlowEnt
 
         private Action onStarting;
         private Action<float> onUpdating;
-        private Action<float> onUpdated;
         private Action onCompleting;
 
         #region Options

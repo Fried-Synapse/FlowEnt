@@ -315,8 +315,11 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        public Flow QueueAwaiter(Func<bool> releaseCondition)
-            => QueueAwaiter(new CallbackFlowAwaiter(releaseCondition));
+        public Flow QueueAwaiter(Func<bool> waitCondition)
+            => QueueAwaiter(new CallbackFlowAwaiter(waitCondition));
+
+        public Flow QueueAwaiter(Task task)
+            => QueueAwaiter(new TaskFlowAwaiter(task));
 
         #endregion
 
