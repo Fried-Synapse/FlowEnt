@@ -28,8 +28,6 @@ namespace FriedSynapse.FlowEnt
         #endregion
 
         #region Events
-        private protected Action onStarted;
-        private protected Action onCompleted;
         private protected Action<int?> onLoopCompleted;
 
         #endregion
@@ -83,8 +81,6 @@ namespace FriedSynapse.FlowEnt
                 StartInternal(deltaTime);
             });
         }
-
-        internal abstract void StartInternal(float deltaTime = 0);
 
         public void Resume()
         {

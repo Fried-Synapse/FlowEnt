@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
             this.spline = spline;
         }
 
-        private ISpline spline;
+        private readonly ISpline spline;
 
         public override void OnUpdate(float t)
         {

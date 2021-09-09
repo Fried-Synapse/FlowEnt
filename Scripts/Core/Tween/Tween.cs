@@ -36,7 +36,6 @@ namespace FriedSynapse.FlowEnt
 
         private Action onStarting;
         private Action<float> onUpdating;
-        private Action<float> onUpdated;
         private Action onCompleting;
 
         #region Options
@@ -185,7 +184,7 @@ namespace FriedSynapse.FlowEnt
 
             if (updateController is Flow parentFlow)
             {
-                parentFlow.CompleteAnimation(this);
+                parentFlow.CompleteUpdatable(this);
             }
         }
 

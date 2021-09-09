@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
     {
         public MoveToVectorMotion(TTransform item, Vector3 to) : base(item)
         {
-            To = to;
+            this.to = to;
         }
 
         public MoveToVectorMotion(TTransform item, Vector3 from, Vector3 to) : this(item, to)
@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
 
         private readonly bool hasFrom;
         private Vector3 from;
-        private readonly Vector3 To;
+        private readonly Vector3 to;
 
         public override void OnStart()
         {
@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
 
         public override void OnUpdate(float t)
         {
-            item.position = Vector3.LerpUnclamped(from, To, t);
+            item.position = Vector3.LerpUnclamped(from, to, t);
         }
     }
 }
