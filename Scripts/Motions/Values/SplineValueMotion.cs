@@ -12,7 +12,6 @@ namespace FriedSynapse.FlowEnt.Motions.Values
         }
 
         private readonly ISpline spline;
-        private readonly int to;
         private readonly Action<Vector3> callback;
 
         public override void OnUpdate(float t)
