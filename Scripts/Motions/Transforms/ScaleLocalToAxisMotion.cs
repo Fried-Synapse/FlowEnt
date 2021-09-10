@@ -1,17 +1,18 @@
+using FriedSynapse.FlowEnt;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
-    public class MoveToAxisMotion<TTransform> : AbstractMotion<TTransform>
+    public class ScaleLocalToAxisMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform
     {
-        public MoveToAxisMotion(TTransform item, Axis axis, float to) : base(item)
+        public ScaleLocalToAxisMotion(TTransform item, Axis axis, float to) : base(item)
         {
             this.axis = axis;
             this.to = to;
         }
 
-        public MoveToAxisMotion(TTransform item, Axis axis, float from, float to) : this(item, axis, to)
+        public ScaleLocalToAxisMotion(TTransform item, Axis axis, float from, float to) : this(item, axis, to)
         {
             hasFrom = true;
             this.from = from;
@@ -23,7 +24,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
         private readonly float to;
 
         private float valueCache;
-        private Vector3 positionCache;
+        private Vector3 scaleCache;
 
         public override void OnStart()
         {
@@ -35,14 +36,14 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
                     case Axis.XY:
                     case Axis.XZ:
                     case Axis.XYZ:
-                        from = item.position.x;
+                        from = item.localScale.x;
                         break;
                     case Axis.Y:
                     case Axis.YZ:
-                        from = item.position.y;
+                        from = item.localScale.y;
                         break;
                     case Axis.Z:
-                        from = item.position.z;
+                        from = item.localScale.z;
                         break;
                 }
             }
@@ -50,23 +51,23 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
 
         public override void OnUpdate(float t)
         {
-            positionCache = item.position;
+            scaleCache = item.localScale;
             valueCache = Mathf.LerpUnclamped(from, to, t);
 
             if (axis.HasFlag(Axis.X))
             {
-                positionCache.x = valueCache;
+                scaleCache.x = valueCache;
             }
             if (axis.HasFlag(Axis.Y))
             {
-                positionCache.y = valueCache;
+                scaleCache.y = valueCache;
             }
             if (axis.HasFlag(Axis.Z))
             {
-                positionCache.z = valueCache;
+                scaleCache.z = valueCache;
             }
 
-            item.position = positionCache;
+            item.localScale = scaleCache;
         }
     }
 }

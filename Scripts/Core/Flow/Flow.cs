@@ -215,6 +215,8 @@ namespace FriedSynapse.FlowEnt
             }
 
             #endregion
+
+            onUpdated?.Invoke(scaledDeltaTime);
         }
 
         private void CompleteLoop()
@@ -413,6 +415,12 @@ namespace FriedSynapse.FlowEnt
         public Flow OnStarted(Action callback)
         {
             onStarted += callback;
+            return this;
+        }
+
+        public Flow OnUpdated(Action<float> callback)
+        {
+            onUpdated += callback;
             return this;
         }
 
