@@ -22,6 +22,9 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
         private float from;
         private readonly float to;
 
+        private float valueCache;
+        private Vector3 positionCache;
+
         public override void OnStart()
         {
             if (!hasFrom)
@@ -44,9 +47,6 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
                 }
             }
         }
-
-        private float valueCache;
-        private Vector3 positionCache;
 
         public override void OnUpdate(float t)
         {

@@ -229,6 +229,30 @@ namespace FriedSynapse.FlowEnt
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
+        public static TweenMotion<TTransform> ScaleLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
+
+        public static TweenMotion<TTransform> ScaleLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
+
+        public static TweenMotion<TTransform> ScaleLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, to));
+
+        public static TweenMotion<TTransform> ScaleLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+
+        public static TweenMotion<TTransform> ScaleLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, to));
+
+        public static TweenMotion<TTransform> ScaleLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
+
         #endregion
 
         #endregion
