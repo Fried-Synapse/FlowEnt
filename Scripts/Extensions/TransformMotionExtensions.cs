@@ -169,6 +169,30 @@ namespace FriedSynapse.FlowEnt
             where TTransform : Transform
             => motionWrapper.Apply(new RotateToVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
+        public static TweenMotion<TTransform> RotateToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
+
+        public static TweenMotion<TTransform> RotateToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
+
+        public static TweenMotion<TTransform> RotateToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, to));
+
+        public static TweenMotion<TTransform> RotateToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+
+        public static TweenMotion<TTransform> RotateToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, to));
+
+        public static TweenMotion<TTransform> RotateToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
+
         public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalToQuaternionMotion<TTransform>(motionWrapper.Item, to));
@@ -184,6 +208,30 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
+
+        public static TweenMotion<TTransform> RotateLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
+
+        public static TweenMotion<TTransform> RotateLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
+
+        public static TweenMotion<TTransform> RotateLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, to));
+
+        public static TweenMotion<TTransform> RotateLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+
+        public static TweenMotion<TTransform> RotateLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, to));
+
+        public static TweenMotion<TTransform> RotateLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
         #endregion
 
