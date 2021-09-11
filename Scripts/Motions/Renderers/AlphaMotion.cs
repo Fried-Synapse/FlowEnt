@@ -13,7 +13,7 @@ namespace FriedSynapse.FlowEnt.Motions.Renderers
         private readonly float value;
         private float from;
         private float to;
-        private Color color;
+        private Color colorCache;
 
         public override void OnStart()
         {
@@ -23,9 +23,9 @@ namespace FriedSynapse.FlowEnt.Motions.Renderers
 
         public override void OnUpdate(float t)
         {
-            color = item.material.color;
-            color.a = Mathf.LerpUnclamped(from, to, t);
-            item.material.color = color;
+            colorCache = item.material.color;
+            colorCache.a = Mathf.LerpUnclamped(from, to, t);
+            item.material.color = colorCache;
         }
     }
 }
