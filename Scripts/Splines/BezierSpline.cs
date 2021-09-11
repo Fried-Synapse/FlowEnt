@@ -75,7 +75,7 @@ namespace FriedSynapse.FlowEnt
 
                 float segmentT = (t - (segmentLength * segment)) / segmentLength;
 
-                Debug.Log($"{t} - {segment}, {segmentT}");
+                //Debug.Log($"{t} - {segment}, {segmentT}");
 
                 startPoint = Vector3.LerpUnclamped(points[segment], points[segment + 1], segmentT);
                 startControl = Vector3.LerpUnclamped(points[segment + 1], points[segment + 2], segmentT);
