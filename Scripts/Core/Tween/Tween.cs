@@ -12,6 +12,11 @@ namespace FriedSynapse.FlowEnt
         IFluentTweenOptionable<Tween>,
         IFluentTweenEventable<Tween>
     {
+        private enum LoopDirection
+        {
+            Forward,
+            Backward
+        }
         public Tween(TweenOptions options) : base(options.AutoStart)
         {
             CopyOptions(options);
@@ -53,6 +58,7 @@ namespace FriedSynapse.FlowEnt
 
         private int? remainingLoops;
         private float remainingTime;
+        private LoopDirection loopDirection;
 
         #endregion
 
@@ -131,8 +137,7 @@ namespace FriedSynapse.FlowEnt
                 remainingTime = 0;
             }
 
-            bool isForward = loopType == LoopType.Reset || (loopCount - remainingLoops) % 2 == 0;
-            float currentLoopTime = isForward ? time - remainingTime : remainingTime;
+            float currentLoopTime = loopDirection == LoopDirection.Forward ? time - remainingTime : remainingTime;
             float t = easing.GetValue(currentLoopTime / time);
 
             onUpdating?.Invoke(t);
@@ -161,6 +166,10 @@ namespace FriedSynapse.FlowEnt
                 }
 
                 onLoopCompleted?.Invoke(remainingLoops);
+                if (loopType == LoopType.PingPong)
+                {
+                    loopDirection = loopDirection == LoopDirection.Forward ? LoopDirection.Backward : LoopDirection.Forward;
+                }
                 float overdraft = this.overdraft.Value;
                 this.overdraft = null;
                 UpdateInternal(overdraft);

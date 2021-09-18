@@ -43,6 +43,11 @@ namespace FriedSynapse.FlowEnt
 
         public PlayState PlayState { get => playState; }
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         private void Update()
         {
             if (playState != PlayState.Playing)
