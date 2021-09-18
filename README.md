@@ -3,6 +3,9 @@ FlowEnt is a tweening library based on the fluent paradigm meant to provide a fr
 The library is revolving around the concept of reusability and extensibility.
 
 [![FlowEnt tests runner](https://github.com/Fried-Synapse/FlowEnt.Builder/actions/workflows/main.yml/badge.svg)](https://github.com/Fried-Synapse/FlowEnt.Builder/actions/workflows/main.yml)
+[![Known Vulnerabilities](https://snyk.io/test/github/Fried-Synapse/FlowEnt/badge.svg)](https://snyk.io/test/github/Fried-Synapse/FlowEnt)
+
+
 
 
 
