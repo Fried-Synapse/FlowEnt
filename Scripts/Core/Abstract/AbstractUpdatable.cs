@@ -59,7 +59,7 @@ namespace FriedSynapse.FlowEnt
     internal class UpdatableAnchor : AbstractUpdatable
     {
         private const string InvalidImplementation = "This method should not be called.";
-        internal UpdatableAnchor() : base(0)
+        public UpdatableAnchor() : base(0)
         {
         }
 
