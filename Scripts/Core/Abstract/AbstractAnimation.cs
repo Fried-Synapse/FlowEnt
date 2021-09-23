@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Provides animation specific behaviour
+    /// </summary>
     public abstract class AbstractAnimation : AbstractUpdatable
     {
         protected AbstractAnimation(bool autoStart = false)
@@ -28,6 +31,7 @@ namespace FriedSynapse.FlowEnt
         #endregion
 
         #region Events
+
         private protected Action<int?> onLoopCompleted;
 
         #endregion
@@ -35,8 +39,15 @@ namespace FriedSynapse.FlowEnt
         #region Settings Properties
 
         private protected PlayState playState = PlayState.Building;
+        /// <summary>
+        /// The current state of the animation.
+        /// </summary>
         public PlayState PlayState => playState;
         private protected float? overdraft;
+        /// <summary>
+        /// THe amount of scaled time unconsumed by this animation from the last frame.
+        /// </summary>
+        /// <value></value>
         public float? OverDraft { get => overdraft; internal set => overdraft = value; }
 
         #endregion
@@ -82,6 +93,9 @@ namespace FriedSynapse.FlowEnt
             });
         }
 
+        /// <summary>
+        /// Resumes the animation.
+        /// </summary>
         public void Resume()
         {
             if (playState != PlayState.Paused)
@@ -93,6 +107,9 @@ namespace FriedSynapse.FlowEnt
             updateController.SubscribeToUpdate(this);
         }
 
+        /// <summary>
+        /// Pauses the animation.
+        /// </summary>
         public void Pause()
         {
             if (PlayState != PlayState.Playing)
@@ -103,7 +120,7 @@ namespace FriedSynapse.FlowEnt
 
             updateController.UnsubscribeFromUpdate(this);
         }
-
+        /// <inheritdoc />
         public override void Stop(bool triggerOnCompleted = false)
         {
             switch (playState)
@@ -128,6 +145,9 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
+        /// <summary>
+        /// Provides a task that can be awaited. The task completes when the animation ends.
+        /// </summary>
         public async Task AsAsync()
         {
             await new AwaitableAnimation(this);

@@ -2,8 +2,14 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Provides common options for behaviours that require frame update.
+    /// </summary>
     public abstract class AbstractUpdatable : FastListItem<AbstractUpdatable>
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="AbstractUpdatable"/> class.
+        /// </summary>
         protected AbstractUpdatable() : this(FlowEntController.Instance)
         {
         }
@@ -20,6 +26,12 @@ namespace FriedSynapse.FlowEnt
         }
 
         private static ulong lastId;
+        /// <summary>
+        /// A value used to identify the current updatable that is automatically assigned.
+        /// </summary>
+        /// <remarks>
+        /// The value is generated and it automatically increments starting from 0.
+        /// </remarks>
         public ulong Id { get; }
 
         internal IUpdateController updateController;
@@ -34,6 +46,11 @@ namespace FriedSynapse.FlowEnt
 
         internal abstract void StartInternal(float deltaTime = 0);
         internal abstract void UpdateInternal(float deltaTime);
+
+        /// <summary>
+        /// Stops the animation.
+        /// </summary>
+        /// <param name="triggerOnCompleted">If set to true will trigger the "OnCompleted" events on the animation</param>
         public virtual void Stop(bool triggerOnCompleted = false)
         {
         }
@@ -42,7 +59,7 @@ namespace FriedSynapse.FlowEnt
     internal class UpdatableAnchor : AbstractUpdatable
     {
         private const string InvalidImplementation = "This method should not be called.";
-        public UpdatableAnchor() : base(0)
+        internal UpdatableAnchor() : base(0)
         {
         }
 
