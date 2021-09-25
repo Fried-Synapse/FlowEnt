@@ -50,7 +50,7 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Stops the animation.
         /// </summary>
-        /// <param name="triggerOnCompleted">If set to true will trigger the "OnCompleted" events on the animation</param>
+        /// <param name="triggerOnCompleted">If set to true will trigger the "OnCompleted" event on the animation</param>
         public virtual void Stop(bool triggerOnCompleted = false)
         {
         }

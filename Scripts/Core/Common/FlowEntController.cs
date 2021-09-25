@@ -3,12 +3,20 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// A singleton monobehaviour that is the core of the FlowEnt library. Hold the main update method and a handful of global parameters.
+    /// The script automatically attaches itself to an object in the scene called FlowEnt(created by this script).
+    /// Make sure not to delete this object because the library will not work without this script attached to an object in the scene.
+    /// </summary>
     public class FlowEntController : MonoBehaviour,
         IUpdateController
     {
         private static FlowEntController instance;
         private static object lockObject = new object();
 
+        /// <summary>
+        /// The instance of <see cref="FlowEntController"/>.
+        /// </summary>
         public static FlowEntController Instance
         {
             get
@@ -30,17 +38,27 @@ namespace FriedSynapse.FlowEnt
 
         private float timeScale = 1;
 
+        /// <summary>
+        /// The global time scale for all animations.
+        /// </summary>
         public float TimeScale
         {
             get { return timeScale; }
             set
             {
+                if (timeScale < 0)
+                {
+                    throw new ArgumentException("Value cannot be less than 0");
+                }
                 timeScale = value;
             }
         }
 
         private PlayState playState = PlayState.Playing;
 
+        /// <summary>
+        /// The current state of animations.
+        /// </summary>
         public PlayState PlayState { get => playState; }
 
         private void Awake()
@@ -81,17 +99,27 @@ namespace FriedSynapse.FlowEnt
 
         #region Lifecycle
 
+        /// <summary>
+        /// Pauses all animations.
+        /// </summary>
         public void Pause()
         {
             playState = PlayState.Paused;
         }
 
+        /// <summary>
+        /// Resumes all animations.
+        /// </summary>
         public void Resume()
         {
             playState = PlayState.Playing;
         }
 
-        public void StopAll(bool triggerOnCompleted = false)
+        /// <summary>
+        /// Stops all animations.
+        /// </summary>
+        /// <param name="triggerOnCompleted">If set to true will trigger the "OnCompleted" event on all animations.</param>
+        public void Stop(bool triggerOnCompleted = false)
         {
             AbstractUpdatable index = updatables.anchor.next;
 
@@ -101,19 +129,6 @@ namespace FriedSynapse.FlowEnt
                 index = index.next;
                 temp.Stop(triggerOnCompleted);
             }
-        }
-
-        #endregion
-
-        #region Options
-
-        public void SetTimeScale(float timeScale)
-        {
-            if (timeScale < 0)
-            {
-                throw new ArgumentException("Value cannot be less than 0");
-            }
-            this.timeScale = timeScale;
         }
 
         #endregion

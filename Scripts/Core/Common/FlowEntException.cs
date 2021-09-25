@@ -2,6 +2,9 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Exception used by the FlowEnt library.
+    /// </summary>
     public class FlowEntException : Exception
     {
         public Flow Flow { get; }

@@ -47,7 +47,6 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// THe amount of scaled time unconsumed by this animation from the last frame.
         /// </summary>
-        /// <value></value>
         public float? OverDraft { get => overdraft; internal set => overdraft = value; }
 
         #endregion
@@ -120,6 +119,7 @@ namespace FriedSynapse.FlowEnt
 
             updateController.UnsubscribeFromUpdate(this);
         }
+
         /// <inheritdoc />
         public override void Stop(bool triggerOnCompleted = false)
         {
