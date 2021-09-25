@@ -17,4 +17,5 @@ The library is revolving around the concept of reusability and extensibility.
 **[Trello](https://trello.com/b/Azyc8Lu3/flowent)** - Issue tracking board for all items under development.
 
 ## Demo
-<iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials"></iframe>
+
+**[Demo](https://demo.flowent.friedsynapse.com)** - A little demo patched together for your amusment.
