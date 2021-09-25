@@ -46,7 +46,7 @@ namespace FriedSynapse.FlowEnt
             get { return timeScale; }
             set
             {
-                if (timeScale < 0)
+                if (value < 0)
                 {
                     throw new ArgumentException("Value cannot be less than 0");
                 }
