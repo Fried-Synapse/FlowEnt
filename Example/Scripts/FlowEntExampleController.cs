@@ -25,7 +25,7 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async void Start()
     {
-        await Task.Delay(1000);
+        await new Tween(1f).StartAsync();
 
         await BezierFlow(Objects[0]);
 
@@ -46,7 +46,7 @@ public class FlowEntExampleController : MonoBehaviour
             .Queue(t => t.SetTime(1))
             .At(1, Objects[2].Tween(3f).MoveY(2))
             .Queue(t => t.SetOptions(o => o.SetTime(1)))
-            .AsAsync();
+            .StartAsync();
     }
 
     #region Flow
