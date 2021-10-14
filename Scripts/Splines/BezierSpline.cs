@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,78 +14,58 @@ namespace FriedSynapse.FlowEnt
         public BezierSpline(params Vector3[] points) : base(points)
         {
         }
-
-        private Vector3 startPoint;
+        private Vector3[] smoothPoints;
+        private Vector3[] pointsThirds;
+        private Vector3[] pointsTwoThirds;
+        private Vector3[] pointsSixths;
+        private int segmentCount;
+        private int segment = -1;
+        private int segmentPlusOne;
         private Vector3 startControl;
         private Vector3 endControl;
         private Vector3 endPoint;
-        private int segmentCount;
-        private float segmentLength;
 
         protected override void Init()
         {
-            if (points.Length == 4)
-            {
-                return;
-            }
-            if (points.Length == 3)
-            {
-                points = new Vector3[] { points[0], points[1], points[1], points[2] };
-                return;
-            }
-            if (points.Length == 2)
-            {
-                points = new Vector3[] { points[0], points[0], points[1], points[1] };
-                return;
-            }
-
-            segmentCount = points.Length - 4;
-            segmentLength = 1f / segmentCount;
+            segmentCount = points.Length - 1;
 
             int count = points.Length;
-            Vector3[] pointsCache = new Vector3[count];
-            pointsCache[0] = points[0];
-            pointsCache[count - 1] = points[count - 1];
+            smoothPoints = new Vector3[count];
+            pointsThirds = new Vector3[count];
+            pointsTwoThirds = new Vector3[count];
+            pointsSixths = new Vector3[count];
+            smoothPoints[0] = points[0];
+            smoothPoints[count - 1] = points[count - 1];
+            for (int i = 0; i < count; i++)
+            {
+                pointsThirds[i] = points[i] / 3f;
+                pointsTwoThirds[i] = points[i] * twoThirds;
+                pointsSixths[i] = points[i] / 6f;
+            }
             for (int i = 1; i < count - 1; i++)
             {
-                pointsCache[i] = (points[i - 1] / 6f) + (points[i] * twoThirds) + (points[i + 1] / 6f);
+                smoothPoints[i] = pointsSixths[i - 1] + (points[i] * twoThirds) + pointsSixths[i + 1];
             }
-            points = pointsCache;
         }
-
 
         public override Vector3 GetPoint(float t)
         {
-            //if there are no segments we simply have a bezier case
-            if (segmentCount == 0)
+            float segmentedT = t * segmentCount;
+            int currentSegment = Mathf.FloorToInt(segmentedT);
+            if (currentSegment != segment)
             {
-                startPoint = points[0];
-                startControl = points[1];
-                endControl = points[2];
-                endPoint = points[3];
+                segment = currentSegment;
+                segmentPlusOne = Math.Min(segment + 1, segmentCount);
+
+                startControl = pointsTwoThirds[segment] + pointsThirds[segmentPlusOne];
+                endControl = pointsThirds[segment] + pointsTwoThirds[segmentPlusOne];
+                endPoint = smoothPoints[segmentPlusOne];
             }
-            //otherwise we have to lerp through the points and apply bezier for every segment
-            else
-            {
-                int segment = (int)(t / segmentLength);
 
-                if (segment >= segmentCount)
-                {
-                    segment = segmentCount - 1;
-                }
+            float segmentT = segmentedT - segment;
 
-                float segmentT = (t - (segmentLength * segment)) / segmentLength;
-
-                //Debug.Log($"{t} - {segment}, {segmentT}");
-
-                startPoint = Vector3.LerpUnclamped(points[segment], points[segment + 1], segmentT);
-                startControl = Vector3.LerpUnclamped(points[segment + 1], points[segment + 2], segmentT);
-                endControl = Vector3.LerpUnclamped(points[segment + 2], points[segment + 3], segmentT);
-                endPoint = Vector3.LerpUnclamped(points[segment + 3], points[segment + 4], segmentT);
-            }
-            return GetPoint(t, startPoint, startControl, endControl, endPoint);
+            return GetPoint(segmentT, smoothPoints[segment], startControl, endControl, endPoint);
         }
-
 
         public static Vector3 GetPoint(float t, Vector3 startPoint, Vector3 startControl, Vector3 endControl, Vector3 endPoint)
         {

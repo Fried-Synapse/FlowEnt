@@ -31,7 +31,7 @@ namespace FriedSynapse.FlowEnt
         public abstract Vector3 GetPoint(float t);
 
 #if UNITY_EDITOR
-        public void DrawGizmo(Color color = default, float width = 1f, float step = 0.01f)
+        public void DrawGizmo(Color color = default, float width = 1f, float step = 0.001f)
         {
             Vector3[] points = new Vector3[Mathf.CeilToInt(1f / step) + 2];
             float t = 0f;

@@ -79,10 +79,11 @@ public class FlowEntExampleController : MonoBehaviour
         }
         for (int i = 0; i < SplinePoints.Count - 1; i++)
         {
-            Gizmos.DrawLine(SplinePoints[i], SplinePoints[i + 1]);
+            //Gizmos.DrawLine(SplinePoints[i], SplinePoints[i + 1]);
         }
 #if UNITY_EDITOR
         new BezierSpline(SplinePoints).DrawGizmo(Color.green, 2f);
+        new LinearSpline(SplinePoints).DrawGizmo(Color.blue, 2f);
 #endif
     }
 

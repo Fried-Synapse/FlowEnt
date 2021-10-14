@@ -3,66 +3,67 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class LinearSpline : ISpline
+    //TODO this is too slow
+    public class LinearSpline : AbstractSpline
     {
-        private List<Vector3> Points { get; set; } = new List<Vector3>();
-        private List<float> DistanceRatios { get; set; } = new List<float>();
-        private List<float> SummedDistanceRatios { get; set; } = new List<float>();
 
         /// <summary>
         /// Creates a linear spline. Uncurvy.
         /// </summary>
         /// <param name="points">The sequence of points that will create the spline.</param>
-        public LinearSpline(params Vector3[] points)
+        public LinearSpline(params Vector3[] points) : base(points)
         {
-            Init(new List<Vector3>(points));
         }
 
         /// <summary>
         /// Creates a linear spline. Uncurvy.
         /// </summary>
         /// <param name="points">The sequence of points that will create the spline.</param>
-        public LinearSpline(List<Vector3> points)
+        public LinearSpline(List<Vector3> points) : base(points)
         {
-            Init(points);
         }
 
-        private void Init(List<Vector3> points)
+        private float[] distanceRatios;
+        private float[] summedDistanceRatios;
+
+        protected override void Init()
         {
-            Points = points;
+            int count = points.Length;
             float distance = 0;
-            List<float> distances = new List<float>();
-            for (int i = 0; i < Points.Count - 1; i++)
+            float[] distances = new float[count - 1];
+            distanceRatios = new float[count - 1];
+            summedDistanceRatios = new float[count - 1];
+            for (int i = 0; i < count - 1; i++)
             {
-                float segmentDistance = Vector3.Distance(Points[i], Points[i + 1]);
+                float segmentDistance = Vector3.Distance(points[i], points[i + 1]);
                 distance += segmentDistance;
-                distances.Add(segmentDistance);
+                distances[i] = segmentDistance;
             }
 
             float summedDistance = 0;
-            for (int i = 0; i < distances.Count; i++)
+            for (int i = 0; i < count - 1; i++)
             {
                 float segmentDistance = distances[i] / distance;
-                DistanceRatios.Add(segmentDistance);
-                SummedDistanceRatios.Add(summedDistance);
+                distanceRatios[i] = segmentDistance;
+                summedDistanceRatios[i] = summedDistance;
                 summedDistance += segmentDistance;
             }
         }
 
-        public Vector3 GetPoint(float t)
+        public override Vector3 GetPoint(float t)
         {
             int segment = 0;
-            for (int i = 1; i < SummedDistanceRatios.Count; i++, segment++)
+            for (int i = 1; i < summedDistanceRatios.Length; i++, segment++)
             {
-                if (t < SummedDistanceRatios[i])
+                if (t < summedDistanceRatios[i])
                 {
                     break;
                 }
             }
 
-            float segmentT = (t - SummedDistanceRatios[segment]) / DistanceRatios[segment];
+            float segmentT = (t - summedDistanceRatios[segment]) / distanceRatios[segment];
 
-            return Vector3.LerpUnclamped(Points[segment], Points[segment + 1], segmentT);
+            return Vector3.LerpUnclamped(points[segment], points[segment + 1], segmentT);
         }
     }
 }
