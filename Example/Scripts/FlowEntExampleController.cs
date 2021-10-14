@@ -53,7 +53,7 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async Task BezierFlow(Transform transform)
     {
-        BezierSpline spline = new BezierSpline(SplinePoints);
+        BSpline spline = new BSpline(SplinePoints);
         await transform
             .Tween(5f)
                 .MoveTo(spline)
@@ -82,7 +82,7 @@ public class FlowEntExampleController : MonoBehaviour
             //Gizmos.DrawLine(SplinePoints[i], SplinePoints[i + 1]);
         }
 #if UNITY_EDITOR
-        new BezierSpline(SplinePoints).DrawGizmo(Color.green, 2f);
+        new BSpline(SplinePoints).DrawGizmo(Color.green, 2f);
         new LinearSpline(SplinePoints).DrawGizmo(Color.blue, 2f);
         new BezierCurve(SplinePoints[0], SplinePoints[1], SplinePoints[2], SplinePoints[3]).DrawGizmo(Color.red, 2f);
 #endif

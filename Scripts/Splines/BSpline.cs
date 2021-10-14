@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class BezierSpline : AbstractSpline
+    public class BSpline : AbstractSpline
     {
         private const float twoThirds = 2f / 3f;
-        public BezierSpline(List<Vector3> points) : base(points)
+        public BSpline(List<Vector3> points) : base(points)
         {
         }
 
-        public BezierSpline(params Vector3[] points) : base(points)
+        public BSpline(params Vector3[] points) : base(points)
         {
         }
         private Vector3[] smoothPoints;
