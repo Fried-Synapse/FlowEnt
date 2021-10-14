@@ -43,6 +43,7 @@ namespace FriedSynapse.FlowEnt
                 pointsTwoThirds[i] = points[i] * twoThirds;
                 pointsSixths[i] = points[i] / 6f;
             }
+            int x;
             for (int i = 1; i < count - 1; i++)
             {
                 smoothPoints[i] = pointsSixths[i - 1] + pointsTwoThirds[i] + pointsSixths[i + 1];
