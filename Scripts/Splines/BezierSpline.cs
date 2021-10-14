@@ -1,3 +1,4 @@
+//Special thanks to Saksun Young for figuring out the maths on this one
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,7 @@ namespace FriedSynapse.FlowEnt
             }
             for (int i = 1; i < count - 1; i++)
             {
-                smoothPoints[i] = pointsSixths[i - 1] + (points[i] * twoThirds) + pointsSixths[i + 1];
+                smoothPoints[i] = pointsSixths[i - 1] + pointsTwoThirds[i] + pointsSixths[i + 1];
             }
         }
 
@@ -64,23 +65,7 @@ namespace FriedSynapse.FlowEnt
 
             float segmentT = segmentedT - segment;
 
-            return GetPoint(segmentT, smoothPoints[segment], startControl, endControl, endPoint);
-        }
-
-        public static Vector3 GetPoint(float t, Vector3 startPoint, Vector3 startControl, Vector3 endControl, Vector3 endPoint)
-        {
-            float u = 1 - t;
-            float tt = t * t;
-            float uu = u * u;
-            float uuu = uu * u;
-            float ttt = tt * t;
-
-            Vector3 p = uuu * startPoint;
-            p += 3 * uu * t * startControl;
-            p += 3 * u * tt * endControl;
-            p += ttt * endPoint;
-
-            return p;
+            return BezierCurve.GetPoint(segmentT, smoothPoints[segment], startControl, endControl, endPoint);
         }
     }
 }

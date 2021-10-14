@@ -8,7 +8,6 @@ namespace FriedSynapse.FlowEnt
     {
         protected AbstractSpline(List<Vector3> points) : this(points?.ToArray())
         {
-
         }
 
         protected AbstractSpline(params Vector3[] points)
@@ -29,27 +28,5 @@ namespace FriedSynapse.FlowEnt
 
         protected virtual void Init() { }
         public abstract Vector3 GetPoint(float t);
-
-#if UNITY_EDITOR
-        public void DrawGizmo(Color color = default, float width = 1f, float step = 0.001f)
-        {
-            Vector3[] points = new Vector3[Mathf.CeilToInt(1f / step) + 2];
-            float t = 0f;
-            int i = 0;
-            for (; t < 1f; t += step, i++)
-            {
-                points[i] = GetPoint(t);
-            }
-            for (; i < points.Length; i++)
-            {
-                points[i] = GetPoint(1f);
-            }
-
-            Color initialColour = UnityEditor.Handles.color;
-            UnityEditor.Handles.color = color;
-            UnityEditor.Handles.DrawAAPolyLine(width, points);
-            UnityEditor.Handles.color = initialColour;
-        }
-#endif
     }
 }

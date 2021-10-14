@@ -84,6 +84,7 @@ public class FlowEntExampleController : MonoBehaviour
 #if UNITY_EDITOR
         new BezierSpline(SplinePoints).DrawGizmo(Color.green, 2f);
         new LinearSpline(SplinePoints).DrawGizmo(Color.blue, 2f);
+        new BezierCurve(SplinePoints[0], SplinePoints[1], SplinePoints[2], SplinePoints[3]).DrawGizmo(Color.red, 2f);
 #endif
     }
 
