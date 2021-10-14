@@ -22,6 +22,7 @@ namespace FriedSynapse.FlowEnt
         private int segmentCount;
         private int segment = -1;
         private int segmentPlusOne;
+        private Vector3 startPoint;
         private Vector3 startControl;
         private Vector3 endControl;
         private Vector3 endPoint;
@@ -31,18 +32,21 @@ namespace FriedSynapse.FlowEnt
             segmentCount = points.Length - 1;
 
             int count = points.Length;
-            smoothPoints = new Vector3[count];
+
             pointsThirds = new Vector3[count];
             pointsTwoThirds = new Vector3[count];
             pointsSixths = new Vector3[count];
-            smoothPoints[0] = points[0];
-            smoothPoints[count - 1] = points[count - 1];
+
             for (int i = 0; i < count; i++)
             {
                 pointsThirds[i] = points[i] / 3f;
                 pointsTwoThirds[i] = points[i] * twoThirds;
                 pointsSixths[i] = points[i] / 6f;
             }
+
+            smoothPoints = new Vector3[count];
+            smoothPoints[0] = points[0];
+            smoothPoints[count - 1] = points[count - 1];
             for (int i = 1; i < count - 1; i++)
             {
                 smoothPoints[i] = pointsSixths[i - 1] + pointsTwoThirds[i] + pointsSixths[i + 1];
@@ -58,6 +62,7 @@ namespace FriedSynapse.FlowEnt
                 segment = currentSegment;
                 segmentPlusOne = Math.Min(segment + 1, segmentCount);
 
+                startPoint = smoothPoints[segment];
                 startControl = pointsTwoThirds[segment] + pointsThirds[segmentPlusOne];
                 endControl = pointsThirds[segment] + pointsTwoThirds[segmentPlusOne];
                 endPoint = smoothPoints[segmentPlusOne];
@@ -65,7 +70,7 @@ namespace FriedSynapse.FlowEnt
 
             float segmentT = segmentedT - segment;
 
-            return BezierCurve.GetPoint(segmentT, smoothPoints[segment], startControl, endControl, endPoint);
+            return BezierCurve.GetPoint(segmentT, startPoint, startControl, endControl, endPoint);
         }
     }
 }
