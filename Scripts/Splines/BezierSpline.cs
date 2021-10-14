@@ -14,7 +14,10 @@ namespace FriedSynapse.FlowEnt
         public BezierSpline(params Vector3[] points) : base(points)
         {
         }
-        Vector3[] smoothPoints;
+        private Vector3[] smoothPoints;
+        private Vector3[] pointsThirds;
+        private Vector3[] pointsTwoThirds;
+        private Vector3[] pointsSixths;
         private int segmentCount;
         private int segment = -1;
         private int segmentPlusOne;
@@ -24,30 +27,24 @@ namespace FriedSynapse.FlowEnt
 
         protected override void Init()
         {
-            if (points.Length == 4)
-            {
-                return;
-            }
-            if (points.Length == 3)
-            {
-                points = new Vector3[] { points[0], points[1], points[1], points[2] };
-                return;
-            }
-            if (points.Length == 2)
-            {
-                points = new Vector3[] { points[0], points[0], points[1], points[1] };
-                return;
-            }
-
             segmentCount = points.Length - 1;
 
             int count = points.Length;
             smoothPoints = new Vector3[count];
+            pointsThirds = new Vector3[count];
+            pointsTwoThirds = new Vector3[count];
+            pointsSixths = new Vector3[count];
             smoothPoints[0] = points[0];
             smoothPoints[count - 1] = points[count - 1];
+            for (int i = 0; i < count; i++)
+            {
+                pointsThirds[i] = points[i] / 3f;
+                pointsTwoThirds[i] = points[i] * twoThirds;
+                pointsSixths[i] = points[i] / 6f;
+            }
             for (int i = 1; i < count - 1; i++)
             {
-                smoothPoints[i] = (points[i - 1] / 6f) + (points[i] * twoThirds) + (points[i + 1] / 6f);
+                smoothPoints[i] = pointsSixths[i - 1] + (points[i] * twoThirds) + pointsSixths[i + 1];
             }
         }
 
@@ -60,8 +57,8 @@ namespace FriedSynapse.FlowEnt
                 segment = currentSegment;
                 segmentPlusOne = Math.Min(segment + 1, segmentCount);
 
-                startControl = (points[segment] * twoThirds) + (points[segmentPlusOne] / 3f);
-                endControl = (points[segment] / 3f) + (points[segmentPlusOne] * twoThirds);
+                startControl = pointsTwoThirds[segment] + pointsThirds[segmentPlusOne];
+                endControl = pointsThirds[segment] + pointsTwoThirds[segmentPlusOne];
                 endPoint = smoothPoints[segmentPlusOne];
             }
 
