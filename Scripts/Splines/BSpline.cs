@@ -7,13 +7,15 @@ namespace FriedSynapse.FlowEnt
 {
     public class BSpline : AbstractSpline
     {
-        private const float twoThirds = 2f / 3f;
-        public BSpline(List<Vector3> points) : base(points)
+        public BSpline(List<Vector3> points, float gradient = 1f / 3f) : base(points)
         {
+            this.gradient = gradient;
+            Init();
         }
 
         public BSpline(params Vector3[] points) : base(points)
         {
+            Init();
         }
         private Vector3[] smoothPoints;
         private Vector3[] pointsThirds;
@@ -26,8 +28,9 @@ namespace FriedSynapse.FlowEnt
         private Vector3 startControl;
         private Vector3 endControl;
         private Vector3 endPoint;
+        private readonly float gradient;
 
-        protected override void Init()
+        private void Init()
         {
             segmentCount = points.Length - 1;
 
@@ -37,11 +40,14 @@ namespace FriedSynapse.FlowEnt
             pointsTwoThirds = new Vector3[count];
             pointsSixths = new Vector3[count];
 
+            float halfGradient = gradient / 2f;
+            float inverseGradient = 1f - gradient;
+
             for (int i = 0; i < count; i++)
             {
-                pointsThirds[i] = points[i] / 3f;
-                pointsTwoThirds[i] = points[i] * twoThirds;
-                pointsSixths[i] = points[i] / 6f;
+                pointsThirds[i] = points[i] * gradient;
+                pointsTwoThirds[i] = points[i] * inverseGradient;
+                pointsSixths[i] = points[i] * halfGradient;
             }
 
             smoothPoints = new Vector3[count];

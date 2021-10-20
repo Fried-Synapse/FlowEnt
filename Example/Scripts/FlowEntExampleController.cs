@@ -71,6 +71,8 @@ public class FlowEntExampleController : MonoBehaviour
         DrawSpline();
     }
 
+    [SerializeField]
+    private float gradient;
     private void DrawSpline()
     {
         if (SplinePoints.Count < 1)
@@ -82,7 +84,7 @@ public class FlowEntExampleController : MonoBehaviour
             //Gizmos.DrawLine(SplinePoints[i], SplinePoints[i + 1]);
         }
 #if UNITY_EDITOR
-        new BSpline(SplinePoints).DrawGizmo(Color.green, 2f);
+        new BSpline(SplinePoints, gradient).DrawGizmo(Color.green, 2f);
         new LinearSpline(SplinePoints).DrawGizmo(Color.blue, 2f);
         new BezierCurve(SplinePoints[0], SplinePoints[1], SplinePoints[2], SplinePoints[3]).DrawGizmo(Color.red, 2f);
 #endif

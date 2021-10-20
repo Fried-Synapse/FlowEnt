@@ -21,12 +21,10 @@ namespace FriedSynapse.FlowEnt
                 throw new ArgumentException("Not enough points specified");
             }
             this.points = points;
-            Init();
         }
 
         protected Vector3[] points;
 
-        protected virtual void Init() { }
         public abstract Vector3 GetPoint(float t);
     }
 }
