@@ -1,6 +1,6 @@
 namespace FriedSynapse.FlowEnt
 {
-    public interface IUniformableSpline : ISpline
+    public interface INormalisableSpline : ISpline
     {
 
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class BSpline : AbstractSpline, IUniformableSpline
+    public class BSpline : AbstractSpline, INormalisableSpline
     {
         public const float DefaultGradient = 1f / 3f;
         public BSpline(List<Vector3> points, float gradient = DefaultGradient) : base(points)

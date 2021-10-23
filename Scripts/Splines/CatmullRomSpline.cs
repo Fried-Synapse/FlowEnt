@@ -24,23 +24,15 @@ namespace FriedSynapse.FlowEnt
 
         public override Vector3 GetPoint(float t)
         {
-            float scaledT, segmentT;
-            int segment;
-            try
+            float scaledT = t * segments;
+            int segment = (int)scaledT;
+            if (segment == segments)
             {
-                scaledT = t * segments;
-                segment = (int)scaledT;
-                if (segment == segments)
-                {
-                    segment--;
-                }
-                segmentT = scaledT - segment;
-                return GetPoint(segmentT, points[segment], points[segment + 1], points[segment + 2], points[segment + 3]);
+                segment--;
             }
-            catch (System.Exception)
-            {
-                throw;
-            }
+            float segmentT = scaledT - segment;
+            return GetPoint(segmentT, points[segment], points[segment + 1], points[segment + 2], points[segment + 3]);
+
         }
 
         public static Vector3 GetPoint(float t, Vector3 startControl, Vector3 startPoint, Vector3 endPoint, Vector3 endControl)

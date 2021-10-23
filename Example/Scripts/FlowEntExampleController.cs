@@ -53,7 +53,8 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async Task BezierFlow(Transform transform)
     {
-        ISpline spline = new CatmullRomSpline(SplinePoints);
+        //ISpline spline = new NormalisedSpline<BSpline>(new BSpline(SplinePoints));
+        ISpline spline = new BSpline(SplinePoints);
         await transform
             .Tween(5f)
                 .MoveTo(spline)
