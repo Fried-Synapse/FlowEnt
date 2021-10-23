@@ -121,6 +121,17 @@ namespace FriedSynapse.FlowEnt
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalToSplineMotion<TTransform>(motionWrapper.Item, spline));
 
+        public static TweenMotion<TTransform> MoveToUniform<TTransform, TUniformableSpline>(this TweenMotion<TTransform> motionWrapper, TUniformableSpline spline, int resolution = UniformSpline.DefaultResolution)
+            where TTransform : Transform
+            where TUniformableSpline : IUniformableSpline
+            => motionWrapper.Apply(new MoveToSplineMotion<TTransform>(motionWrapper.Item, new UniformSpline<TUniformableSpline>(spline, resolution)));
+
+        public static TweenMotion<TTransform> MoveLocalToUniform<TTransform, TUniformableSpline>(this TweenMotion<TTransform> motionWrapper, TUniformableSpline spline, int resolution = UniformSpline.DefaultResolution)
+            where TTransform : Transform
+            where TUniformableSpline : IUniformableSpline
+            => motionWrapper.Apply(new MoveLocalToSplineMotion<TTransform>(motionWrapper.Item, new UniformSpline<TUniformableSpline>(spline, resolution)));
+
+
         #endregion
 
         #endregion
