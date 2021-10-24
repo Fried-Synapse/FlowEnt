@@ -597,7 +597,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  gradient: 0.33
 --- !u!1 &1285232695
 GameObject:
   m_ObjectHideFlags: 0

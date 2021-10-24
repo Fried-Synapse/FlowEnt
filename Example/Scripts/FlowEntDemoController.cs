@@ -53,8 +53,7 @@ public class FlowEntDemoController : MonoBehaviour
 
     private async Task BezierFlow(Transform transform)
     {
-        ISpline spline = new NormalisedSpline(new BSpline(SplinePoints));
-        //ISpline spline = new BSpline(SplinePoints);
+        ISpline spline = new CubicSpline(SplinePoints).Normalise();
         await transform
             .Tween(25f)
                 .MoveTo(spline)
@@ -67,30 +66,27 @@ public class FlowEntDemoController : MonoBehaviour
 
     #region Editor
 
+#if UNITY_EDITOR
+
     private void OnDrawGizmos()
     {
-        DrawSpline();
+        DrawSplines();
     }
 
-    [SerializeField]
-    private float gradient;
-    private void DrawSpline()
+    private void DrawSplines()
     {
         if (SplinePoints.Count < 1)
         {
             return;
         }
-        for (int i = 0; i < SplinePoints.Count - 1; i++)
-        {
-            //Gizmos.DrawLine(SplinePoints[i], SplinePoints[i + 1]);
-        }
-#if UNITY_EDITOR
-        new BSpline(SplinePoints, gradient).DrawGizmo(Color.green, 2f);
+
+        new CubicSpline(SplinePoints).DrawGizmo(Color.blue, 2f);
+        new BSpline(SplinePoints).DrawGizmo(Color.green, 2f);
         new CatmullRomSpline(SplinePoints).DrawGizmo(Color.yellow, 2f);
-        new LinearSpline(SplinePoints).DrawGizmo(Color.blue, 2f);
         new BezierCurve(SplinePoints[0], SplinePoints[1], SplinePoints[2], SplinePoints[3]).DrawGizmo(Color.red, 2f);
-#endif
+        new LinearSpline(SplinePoints).DrawGizmo(Color.white, 2f);
     }
+#endif
 
     #endregion
 }

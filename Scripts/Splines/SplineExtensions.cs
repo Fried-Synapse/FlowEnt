@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -19,10 +20,10 @@ namespace FriedSynapse.FlowEnt
                 points[i] = spline.GetPoint(1f);
             }
 
-            Color initialColour = UnityEditor.Handles.color;
-            UnityEditor.Handles.color = color;
-            UnityEditor.Handles.DrawAAPolyLine(width, points);
-            UnityEditor.Handles.color = initialColour;
+            Color initialColour = Handles.color;
+            Handles.color = color;
+            Handles.DrawAAPolyLine(width, points);
+            Handles.color = initialColour;
         }
 #endif
     }

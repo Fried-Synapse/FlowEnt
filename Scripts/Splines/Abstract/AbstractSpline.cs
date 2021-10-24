@@ -38,8 +38,25 @@ namespace FriedSynapse.FlowEnt
 
         protected virtual int MinPoints => 2;
 
-        protected Vector3[] points;
+        protected readonly Vector3[] points;
+        protected NormalisedSpline cachedNormalisedSpline;
 
         public abstract Vector3 GetPoint(float t);
+
+        public NormalisedSpline Normalise(bool cache = true)
+        {
+            if (cache)
+            {
+                if (cachedNormalisedSpline == null)
+                {
+                    cachedNormalisedSpline = new NormalisedSpline(this);
+                }
+                return cachedNormalisedSpline;
+            }
+            else
+            {
+                return new NormalisedSpline(this);
+            }
+        }
     }
 }
