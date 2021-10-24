@@ -121,15 +121,13 @@ namespace FriedSynapse.FlowEnt
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalToSplineMotion<TTransform>(motionWrapper.Item, spline));
 
-        public static TweenMotion<TTransform> MoveToNormalised<TTransform, TUniformableSpline>(this TweenMotion<TTransform> motionWrapper, TUniformableSpline spline, int resolution = NormalisedSpline.DefaultResolution)
+        public static TweenMotion<TTransform> MoveToNormalised<TTransform>(this TweenMotion<TTransform> motionWrapper, ISpline spline, int resolution = NormalisedSpline.DefaultResolution)
             where TTransform : Transform
-            where TUniformableSpline : INormalisableSpline
-            => motionWrapper.Apply(new MoveToSplineMotion<TTransform>(motionWrapper.Item, new NormalisedSpline<TUniformableSpline>(spline, resolution)));
+            => motionWrapper.Apply(new MoveToSplineMotion<TTransform>(motionWrapper.Item, new NormalisedSpline(spline, resolution)));
 
-        public static TweenMotion<TTransform> MoveLocalToNormalised<TTransform, TUniformableSpline>(this TweenMotion<TTransform> motionWrapper, TUniformableSpline spline, int resolution = NormalisedSpline.DefaultResolution)
+        public static TweenMotion<TTransform> MoveLocalToNormalised<TTransform>(this TweenMotion<TTransform> motionWrapper, ISpline spline, int resolution = NormalisedSpline.DefaultResolution)
             where TTransform : Transform
-            where TUniformableSpline : INormalisableSpline
-            => motionWrapper.Apply(new MoveLocalToSplineMotion<TTransform>(motionWrapper.Item, new NormalisedSpline<TUniformableSpline>(spline, resolution)));
+            => motionWrapper.Apply(new MoveLocalToSplineMotion<TTransform>(motionWrapper.Item, new NormalisedSpline(spline, resolution)));
 
 
         #endregion

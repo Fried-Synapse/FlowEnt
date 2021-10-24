@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using FriedSynapse.FlowEnt;
 using UnityEngine;
 
-public class FlowEntExampleController : MonoBehaviour
+public class FlowEntDemoController : MonoBehaviour
 {
     private const float CameraJourneyLength = 6f;
 
@@ -53,10 +53,10 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async Task BezierFlow(Transform transform)
     {
-        //ISpline spline = new NormalisedSpline<BSpline>(new BSpline(SplinePoints));
-        ISpline spline = new BSpline(SplinePoints);
+        ISpline spline = new NormalisedSpline(new BSpline(SplinePoints));
+        //ISpline spline = new BSpline(SplinePoints);
         await transform
-            .Tween(5f)
+            .Tween(25f)
                 .MoveTo(spline)
             .OrientToPath()
             .OnCompleted(() => transform.transform.rotation = Quaternion.identity)

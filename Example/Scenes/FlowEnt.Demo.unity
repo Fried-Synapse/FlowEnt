@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 1055938218}
   - component: {fileID: 1055938219}
   m_Layer: 0
-  m_Name: ExampleController
+  m_Name: DemoController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1055938217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d44ef2d942019410a830aae75f99b248, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d71a22d14b6a4ddba8688f29681f4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 963194228}
@@ -551,7 +551,7 @@ MonoBehaviour:
   - {x: 1, y: 3, z: 0}
   - {x: -3, y: 1, z: 0}
   - {x: -4, y: 5, z: 0}
-  - {x: 1, y: 5, z: 0}
+  - {x: 25, y: 5, z: 0}
   - {x: -2, y: 7, z: 0}
   - {x: 0, y: 8, z: 0}
   - {x: -4, y: 8, z: 0}

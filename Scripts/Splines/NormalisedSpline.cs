@@ -1,16 +1,12 @@
+//Special thanks to Chris Hargrove(https://github.com/ChrisHargrove) for pointing out the need for normalisation.
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class NormalisedSpline
+    public class NormalisedSpline : ISpline
     {
         public const int DefaultResolution = 100;
-    }
-
-    public class NormalisedSpline<TNormalisableSpline> : NormalisedSpline, ISpline
-        where TNormalisableSpline : INormalisableSpline
-    {
-        public NormalisedSpline(TNormalisableSpline uniformableSpline, int resolution = DefaultResolution)
+        public NormalisedSpline(ISpline uniformableSpline, int resolution = DefaultResolution)
         {
             this.uniformableSpline = uniformableSpline;
             this.resolution = resolution;
@@ -19,7 +15,7 @@ namespace FriedSynapse.FlowEnt
             this.distanceTravelled = new float[resolution];
             Init();
         }
-        private readonly TNormalisableSpline uniformableSpline;
+        private readonly ISpline uniformableSpline;
         private readonly int resolution;
         private readonly float resoltionStep;
         private readonly float[] distances;
@@ -46,22 +42,29 @@ namespace FriedSynapse.FlowEnt
         public Vector3 GetPoint(float t)
         {
             float distanceT = t * distance;
-
-
-
-
-
-
-
-            float scaledT = t * resolution;
-            int segment = (int)scaledT;
-            if (segment == resolution)
-            {
-                return uniformableSpline.GetPoint(1);
-            }
-            float segmentT = scaledT - segment;
-            float normalisedT = (distanceTravelled[segment] + (segmentT * distances[segment])) / distance;
+            int segment = GetSegment(distanceT, 0, distanceTravelled.Length - 1);
+            float segmentDistance = distanceT - distanceTravelled[segment];
+            float segmentT = segmentDistance / distances[segment];
+            float normalisedT = (segment + segmentT) / resolution;
             return uniformableSpline.GetPoint(normalisedT);
+        }
+
+        private int GetSegment(float distanceT, int start, int end)
+        {
+            if (end - start <= 1)
+            {
+                return start;
+            }
+
+            int mid = (start + end) / 2;
+            if (distanceTravelled[mid] < distanceT)
+            {
+                return GetSegment(distanceT, mid, end);
+            }
+            else
+            {
+                return GetSegment(distanceT, start, mid);
+            }
         }
     }
 }
