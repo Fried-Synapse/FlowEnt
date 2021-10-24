@@ -6,7 +6,7 @@ The library is revolving around the concept of reusability and extensibility.
 
 [![FlowEnt tests runner](https://github.com/Fried-Synapse/FlowEnt.Builder/actions/workflows/main.yml/badge.svg)](https://github.com/Fried-Synapse/FlowEnt.Builder/actions/workflows/main.yml)
 ![GitHub manifest version](https://img.shields.io/github/manifest-json/v/Fried-Synapse/FlowEnt)
-
+![License](https://img.shields.io/github/license/Fried-Synapse/FlowEnt?style=plastic)
 
 
 
