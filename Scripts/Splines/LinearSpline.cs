@@ -13,6 +13,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="points">The sequence of points that will create the spline.</param>
         public LinearSpline(params Vector3[] points) : base(points)
         {
+            Init();
         }
 
         /// <summary>
@@ -21,12 +22,13 @@ namespace FriedSynapse.FlowEnt
         /// <param name="points">The sequence of points that will create the spline.</param>
         public LinearSpline(List<Vector3> points) : base(points)
         {
+            Init();
         }
 
         private float[] distanceRatios;
         private float[] summedDistanceRatios;
 
-        protected override void Init()
+        private void Init()
         {
             int count = points.Length;
             float distance = 0;

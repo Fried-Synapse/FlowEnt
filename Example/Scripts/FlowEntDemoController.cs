@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using FriedSynapse.FlowEnt;
 using UnityEngine;
 
-public class FlowEntExampleController : MonoBehaviour
+public class FlowEntDemoController : MonoBehaviour
 {
     private const float CameraJourneyLength = 6f;
 
@@ -53,9 +53,10 @@ public class FlowEntExampleController : MonoBehaviour
 
     private async Task BezierFlow(Transform transform)
     {
-        BSpline spline = new BSpline(SplinePoints);
+        ISpline spline = new NormalisedSpline(new BSpline(SplinePoints));
+        //ISpline spline = new BSpline(SplinePoints);
         await transform
-            .Tween(5f)
+            .Tween(25f)
                 .MoveTo(spline)
             .OrientToPath()
             .OnCompleted(() => transform.transform.rotation = Quaternion.identity)
@@ -71,6 +72,8 @@ public class FlowEntExampleController : MonoBehaviour
         DrawSpline();
     }
 
+    [SerializeField]
+    private float gradient;
     private void DrawSpline()
     {
         if (SplinePoints.Count < 1)
@@ -82,7 +85,8 @@ public class FlowEntExampleController : MonoBehaviour
             //Gizmos.DrawLine(SplinePoints[i], SplinePoints[i + 1]);
         }
 #if UNITY_EDITOR
-        new BSpline(SplinePoints).DrawGizmo(Color.green, 2f);
+        new BSpline(SplinePoints, gradient).DrawGizmo(Color.green, 2f);
+        new CatmullRomSpline(SplinePoints).DrawGizmo(Color.yellow, 2f);
         new LinearSpline(SplinePoints).DrawGizmo(Color.blue, 2f);
         new BezierCurve(SplinePoints[0], SplinePoints[1], SplinePoints[2], SplinePoints[3]).DrawGizmo(Color.red, 2f);
 #endif

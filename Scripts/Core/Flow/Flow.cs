@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt
         IUpdateController,
         IFluentFlowOptionable<Flow>
     {
-        private const string AnimationAlreadyStartedError = "Cannot add animation that has already started.";
+        private const string ErrorAnimationAlreadyStarted = "Cannot add animation that has already started.";
         private class UpdatableWrapper
         {
             public UpdatableWrapper(object updatableObject, int index, float? timeIndex = null)
@@ -260,7 +260,7 @@ namespace FriedSynapse.FlowEnt
         {
             if (animation.PlayState != PlayState.Building)
             {
-                throw new FlowEntException(AnimationAlreadyStartedError);
+                throw new FlowEntException(ErrorAnimationAlreadyStarted);
             }
 
             if (animation.HasAutoStart)

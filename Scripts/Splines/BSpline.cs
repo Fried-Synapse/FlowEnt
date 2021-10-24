@@ -1,4 +1,4 @@
-//Special thanks to Saksun Young for figuring out the maths on this one
+//Special thanks to Saksun Young for figuring out the maths on this one.
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,18 +7,23 @@ namespace FriedSynapse.FlowEnt
 {
     public class BSpline : AbstractSpline
     {
-        private const float twoThirds = 2f / 3f;
-        public BSpline(List<Vector3> points) : base(points)
+        public const float DefaultGradient = 1f / 3f;
+        public BSpline(List<Vector3> points, float gradient = DefaultGradient) : base(points)
         {
+            this.gradient = gradient;
+            Init();
         }
 
         public BSpline(params Vector3[] points) : base(points)
         {
+            this.gradient = DefaultGradient;
+            Init();
         }
+
         private Vector3[] smoothPoints;
-        private Vector3[] pointsThirds;
-        private Vector3[] pointsTwoThirds;
-        private Vector3[] pointsSixths;
+        private Vector3[] pointsGradient;
+        private Vector3[] pointsInverseGradient;
+        private Vector3[] pointsHalfGradient;
         private int segmentCount;
         private int segment = -1;
         private int segmentPlusOne;
@@ -26,22 +31,26 @@ namespace FriedSynapse.FlowEnt
         private Vector3 startControl;
         private Vector3 endControl;
         private Vector3 endPoint;
+        private readonly float gradient;
 
-        protected override void Init()
+        private void Init()
         {
             segmentCount = points.Length - 1;
 
             int count = points.Length;
 
-            pointsThirds = new Vector3[count];
-            pointsTwoThirds = new Vector3[count];
-            pointsSixths = new Vector3[count];
+            pointsGradient = new Vector3[count];
+            pointsInverseGradient = new Vector3[count];
+            pointsHalfGradient = new Vector3[count];
+
+            float halfGradient = gradient / 2f;
+            float inverseGradient = 1f - gradient;
 
             for (int i = 0; i < count; i++)
             {
-                pointsThirds[i] = points[i] / 3f;
-                pointsTwoThirds[i] = points[i] * twoThirds;
-                pointsSixths[i] = points[i] / 6f;
+                pointsGradient[i] = points[i] * gradient;
+                pointsInverseGradient[i] = points[i] * inverseGradient;
+                pointsHalfGradient[i] = points[i] * halfGradient;
             }
 
             smoothPoints = new Vector3[count];
@@ -49,7 +58,7 @@ namespace FriedSynapse.FlowEnt
             smoothPoints[count - 1] = points[count - 1];
             for (int i = 1; i < count - 1; i++)
             {
-                smoothPoints[i] = pointsSixths[i - 1] + pointsTwoThirds[i] + pointsSixths[i + 1];
+                smoothPoints[i] = pointsHalfGradient[i - 1] + pointsInverseGradient[i] + pointsHalfGradient[i + 1];
             }
         }
 
@@ -63,8 +72,8 @@ namespace FriedSynapse.FlowEnt
                 segmentPlusOne = Math.Min(segment + 1, segmentCount);
 
                 startPoint = smoothPoints[segment];
-                startControl = pointsTwoThirds[segment] + pointsThirds[segmentPlusOne];
-                endControl = pointsThirds[segment] + pointsTwoThirds[segmentPlusOne];
+                startControl = pointsInverseGradient[segment] + pointsGradient[segmentPlusOne];
+                endControl = pointsGradient[segment] + pointsInverseGradient[segmentPlusOne];
                 endPoint = smoothPoints[segmentPlusOne];
             }
 
