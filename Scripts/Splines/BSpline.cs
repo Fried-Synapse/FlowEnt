@@ -1,4 +1,4 @@
-//Special thanks to Saksun Young for figuring out the maths on this one
+//Special thanks to Saksun Young for figuring out the maths on this one.
 using System;
 using System.Collections.Generic;
 using UnityEngine;
