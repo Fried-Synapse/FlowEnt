@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Provides functionality to create a sequence or multiple sequences of animations.
+    /// For more information please go to https://flowent.friedsynapse.com/flow
+    /// </summary>
     public sealed class Flow : AbstractAnimation,
         IUpdateController,
         IFluentFlowOptionable<Flow>
@@ -37,13 +41,22 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        public Flow(FlowOptions options) : base(options.AutoStart)
+        /// <summary>
+        /// Creates a new flow using the options provided.
+        /// </summary>
+        /// <param name="options"></param>
+        public Flow(FlowOptions options)
         {
             CopyOptions(options);
         }
 
-        public Flow(bool autoStart = false) : base(autoStart)
+        /// <summary>
+        /// Creates a new flow.
+        /// </summary>
+        /// <param name="autoStart">Weather the flow should start automatically or not.</param>
+        public Flow(bool autoStart = false)
         {
+            SetAutoStart(autoStart);
         }
 
         #region Internal Members
@@ -78,6 +91,10 @@ namespace FriedSynapse.FlowEnt
 
         #region Lifecycle
 
+        /// <summary>
+        /// Starts the flow.
+        /// </summary>
+        /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public Flow Start()
         {
             if (playState != PlayState.Building)
@@ -93,6 +110,10 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Starts the flow async(you can await this till the flow finishes).
+        /// </summary>
+        /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public async Task<Flow> StartAsync()
         {
             if (playState != PlayState.Building)
@@ -290,6 +311,10 @@ namespace FriedSynapse.FlowEnt
 
         #region Queue
 
+        /// <summary>
+        /// Queues an animation in the current sequence.
+        /// </summary>
+        /// <param name="animation"></param>
         public Flow Queue(AbstractAnimation animation)
         {
             InitAnimation(animation);
@@ -299,15 +324,31 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Creates a tween and provides a context to build it and then queues the built animation in the current sequence.
+        /// </summary>
+        /// <param name="tweenBuilder"></param>
         public Flow Queue(Func<Tween, Tween> tweenBuilder)
             => Queue(tweenBuilder(new Tween()));
 
+        /// <summary>
+        /// Creates a flow and provides a context to build it and then queues the built animation in the current sequence.
+        /// </summary>
+        /// <param name="flowBuilder"></param>
         public Flow Queue(Func<Flow, Flow> flowBuilder)
             => Queue(flowBuilder(new Flow()));
 
+        /// <summary>
+        /// Queues a delay in the current sequence.
+        /// </summary>
+        /// <param name="delay"></param>
         public Flow QueueDelay(float delay)
             => Queue(new Tween(delay));
 
+        /// <summary>
+        /// Queues an awaiter in the current sequence.
+        /// </summary>
+        /// <param name="flowAwaiter"></param>
         public Flow QueueAwaiter(AbstractFlowAwaiter flowAwaiter)
         {
             flowAwaiter.updateController = this;
@@ -317,9 +358,17 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Queues a callback as an awaiter in the current sequence.
+        /// </summary>
+        /// <param name="waitCondition"></param>
         public Flow QueueAwaiter(Func<bool> waitCondition)
             => QueueAwaiter(new CallbackFlowAwaiter(waitCondition));
 
+        /// <summary>
+        /// Queues a task as an awaiter in the current sequence.
+        /// </summary>
+        /// <param name="task"></param>
         public Flow QueueAwaiter(Task task)
             => QueueAwaiter(new TaskFlowAwaiter(task));
 
@@ -327,6 +376,11 @@ namespace FriedSynapse.FlowEnt
 
         #region QueueDeferred
 
+        /// <summary>
+        /// Queues a callback for the animation builder in the current sequence.
+        /// This is useful when you need to create an animation after the current flow has started.
+        /// </summary>
+        /// <param name="animationBuilder"></param>
         public Flow QueueDeferred(Func<AbstractAnimation> animationBuilder)
         {
             AbstractAnimation createAnimation()
@@ -343,9 +397,19 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Queues a callback, that creates a tween and provides a context to build it, in the current sequence.
+        /// This is useful when you need to create an animation after the current flow has started.
+        /// </summary>
+        /// <param name="tweenBuilder"></param>
         public Flow QueueDeferred(Func<Tween, Tween> tweenBuilder)
             => QueueDeferred(() => tweenBuilder(new Tween()));
 
+        /// <summary>
+        /// Queues a callback, that creates a flow and provides a context to build it, in the current sequence.
+        /// This is useful when you need to create an animation after the current flow has started.
+        /// </summary>
+        /// <param name="flowBuilder"></param>
         public Flow QueueDeferred(Func<Flow, Flow> flowBuilder)
             => QueueDeferred(() => flowBuilder(new Flow()));
 
@@ -353,6 +417,11 @@ namespace FriedSynapse.FlowEnt
 
         #region At
 
+        /// <summary>
+        /// Starts a new sequence at the <paramref name="timeIndex"/> provided.
+        /// </summary>
+        /// <param name="timeIndex">Time index for the sequence to start.</param>
+        /// <param name="animation"></param>
         public Flow At(float timeIndex, AbstractAnimation animation)
         {
             if (timeIndex < 0)
@@ -368,9 +437,19 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Creates a tween and provides a context to build it and then starts a new sequence at the <paramref name="timeIndex"/> provided.
+        /// </summary>
+        /// <param name="timeIndex">Time index for the sequence to start.</param>
+        /// <param name="tweenBuilder"></param>
         public Flow At(float timeIndex, Func<Tween, Tween> tweenBuilder)
             => At(timeIndex, tweenBuilder(new Tween(new TweenOptions())));
 
+        /// <summary>
+        /// Creates a flow and provides a context to build it and then starts a new sequence at the <paramref name="timeIndex"/> provided.
+        /// </summary>
+        /// <param name="timeIndex">Time index for the sequence to start.</param>
+        /// <param name="flowBuilder"></param>
         public Flow At(float timeIndex, Func<Flow, Flow> flowBuilder)
             => At(timeIndex, flowBuilder(new Flow()));
 
@@ -378,6 +457,12 @@ namespace FriedSynapse.FlowEnt
 
         #region AtDeferred
 
+        /// <summary>
+        /// Starts a new sequence at the <paramref name="timeIndex"/> provided and uses the callback for the animation builder to add an animation to the sequence.
+        /// This is useful when you need to create an animation after the current flow has started.
+        /// </summary>
+        /// <param name="timeIndex">Time index for the sequence to start.</param>
+        /// <param name="animationBuilder"></param>
         public Flow AtDeferred(float timeIndex, Func<AbstractAnimation> animationBuilder)
         {
             AbstractAnimation createAnimation()
@@ -400,9 +485,21 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Starts a new sequence at the <paramref name="timeIndex"/> provided and uses the callback for the animation builder to add an animation to the sequence.
+        /// This is useful when you need to create an animation after the current flow has started.
+        /// </summary>
+        /// <param name="timeIndex">Time index for the sequence to start.</param>
+        /// <param name="tweenBuilder"></param>
         public Flow AtDeferred(float timeIndex, Func<Tween, Tween> tweenBuilder)
             => AtDeferred(timeIndex, () => tweenBuilder(new Tween()));
 
+        /// <summary>
+        /// Starts a new sequence at the <paramref name="timeIndex"/> provided and uses the callback for the animation builder to add an animation to the sequence.
+        /// This is useful when you need to create an animation after the current flow has started.
+        /// </summary>
+        /// <param name="timeIndex">Time index for the sequence to start.</param>
+        /// <param name="flowBuilder"></param>
         public Flow AtDeferred(float timeIndex, Func<Flow, Flow> flowBuilder)
             => AtDeferred(timeIndex, () => flowBuilder(new Flow()));
 
@@ -412,24 +509,40 @@ namespace FriedSynapse.FlowEnt
 
         #region Events
 
+        /// <summary>
+        /// Adds an event called when the flow started.
+        /// </summary>
+        /// <param name="callback">The event.</param>
         public Flow OnStarted(Action callback)
         {
             onStarted += callback;
             return this;
         }
 
+        /// <summary>
+        /// Adds an event called when the flow updated.
+        /// </summary>
+        /// <param name="callback">The event.</param>
         public Flow OnUpdated(Action<float> callback)
         {
             onUpdated += callback;
             return this;
         }
 
+        /// <summary>
+        /// Adds an event called when the flow completed.
+        /// </summary>
+        /// <param name="callback">The event.</param>
         public Flow OnCompleted(Action callback)
         {
             onCompleted += callback;
             return this;
         }
 
+        /// <summary>
+        /// Adds an event called when a loop completed.
+        /// </summary>
+        /// <param name="callback">The event. The parameter represents the number of loops left. If there are infinite loops it'll send a null param.</param>
         public Flow OnLoopCompleted(Action<int?> callback)
         {
             onLoopCompleted += callback;
@@ -440,30 +553,52 @@ namespace FriedSynapse.FlowEnt
 
         #region Options
 
+        /// <summary>
+        /// Sets all the options for this flow.
+        /// </summary>
+        /// <param name="options"></param>
         public Flow SetOptions(FlowOptions options)
         {
             CopyOptions(options);
             return this;
         }
 
+        /// <summary>
+        /// Creates a builder for options and then sets all the options for this flow.
+        /// </summary>
+        /// <param name="optionsBuilder"></param>
         public Flow SetOptions(Func<FlowOptions, FlowOptions> optionsBuilder)
         {
             CopyOptions(optionsBuilder(new FlowOptions()));
             return this;
         }
 
+        /// <summary>
+        /// Sets the amount of frames you want to skip at when this flow is started.
+        /// </summary>
+        /// <param name="frames"></param>
         public Flow SetSkipFrames(int frames)
         {
             this.skipFrames = frames;
             return this;
         }
 
+        /// <summary>
+        /// Sets the amount of time(s) that you want to delay when this flow is started.
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public Flow SetDelay(float time)
         {
             this.delay = time;
             return this;
         }
 
+        /// <summary>
+        /// Sets the amount of loops you want this flow to have. If you want infinite loops pass a null value.
+        /// Note: all loops are reset. No ping-pong option for flows.
+        /// </summary>
+        /// <param name="loopCount"></param>
         public Flow SetLoopCount(int? loopCount)
         {
             if (loopCount <= 0)
@@ -474,6 +609,10 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Sets the time scale for the current flow(and all it's animations).
+        /// </summary>
+        /// <param name="timeScale"></param>
         public Flow SetTimeScale(float timeScale)
         {
             if (timeScale < 0)
@@ -486,6 +625,7 @@ namespace FriedSynapse.FlowEnt
 
         private void CopyOptions(FlowOptions options)
         {
+            SetAutoStart(options.AutoStart);
             skipFrames = options.SkipFrames;
             delay = options.Delay;
             loopCount = options.LoopCount;

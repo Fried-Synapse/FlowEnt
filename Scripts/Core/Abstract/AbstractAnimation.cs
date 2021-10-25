@@ -8,15 +8,6 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public abstract class AbstractAnimation : AbstractUpdatable
     {
-        protected AbstractAnimation(bool autoStart = false)
-        {
-            if (autoStart)
-            {
-                autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
-                startHelper = autoStartHelper;
-            }
-        }
-
         private protected AbstractStartHelper startHelper;
         private protected AutoStartHelper autoStartHelper;
         internal bool HasAutoStart => autoStartHelper != null;
@@ -61,6 +52,22 @@ namespace FriedSynapse.FlowEnt
             }
 
             StartInternal(deltaTime);
+        }
+
+        protected void SetAutoStart(bool autoStart)
+        {
+            if (autoStart)
+            {
+                autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
+                startHelper = autoStartHelper;
+            }
+            else
+            {
+                if (autoStartHelper != null)
+                {
+                    CancelAutoStart();
+                }
+            }
         }
 
         internal void CancelAutoStart()

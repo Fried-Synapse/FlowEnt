@@ -17,16 +17,17 @@ namespace FriedSynapse.FlowEnt
             Forward,
             Backward
         }
-        public Tween(TweenOptions options) : base(options.AutoStart)
+        public Tween(TweenOptions options)
         {
             CopyOptions(options);
         }
 
-        public Tween(bool autoStart = false) : base(autoStart)
+        public Tween(bool autoStart = false)
         {
+            SetAutoStart(autoStart);
         }
 
-        public Tween(float time, bool autoStart = false) : base(autoStart)
+        public Tween(float time, bool autoStart = false)
         {
             if (time < 0)
             {
@@ -36,6 +37,7 @@ namespace FriedSynapse.FlowEnt
             {
                 throw new ArgumentException(TweenOptions.ErrorTimeInfinity);
             }
+            SetAutoStart(autoStart);
             this.time = time;
         }
 
@@ -349,6 +351,7 @@ namespace FriedSynapse.FlowEnt
 
         private void CopyOptions(TweenOptions options)
         {
+            SetAutoStart(options.AutoStart);
             skipFrames = options.SkipFrames;
             delay = options.Delay;
             time = options.Time;
