@@ -12,7 +12,9 @@ The library is revolving around the concept of reusability and extensibility.
 
 ## Tools and Communication Channels
 
-**[Discord Server](https://discord.gg/nn8XgsPRE5)** - report any issues here or propose new features.
+**[Website](https://flowent.friedsynapse.com)** - Getting started and resources.
+
+**[Discord Server](https://discord.gg/nn8XgsPRE5)** - Report any issues here or propose new features.
 
 **[Trello](https://trello.com/b/Azyc8Lu3/flowent)** - Issue tracking board for all items under development.
 
