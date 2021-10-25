@@ -45,7 +45,6 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-
         /// <inheritdoc />
         public Flow SetLoopCount(int? loopCount)
         {
@@ -56,7 +55,6 @@ namespace FriedSynapse.FlowEnt
             this.loopCount = loopCount;
             return this;
         }
-
 
         /// <inheritdoc />
         public Flow SetTimeScale(float timeScale)
