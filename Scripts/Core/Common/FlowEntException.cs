@@ -7,7 +7,14 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public class FlowEntException : Exception
     {
+        /// <summary>
+        /// The flow attached to this exception
+        /// </summary>
         public Flow Flow { get; }
+
+        /// <summary>
+        /// The tween attached to this exception
+        /// </summary>
         public Tween Tween { get; }
 
         public FlowEntException(string message) : base(message)

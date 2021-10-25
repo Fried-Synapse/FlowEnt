@@ -10,14 +10,14 @@ namespace FriedSynapse.FlowEnt
         {
             this.uniformableSpline = uniformableSpline;
             this.resolution = resolution;
-            this.resoltionStep = 1f / resolution;
+            this.resolutionStep = 1f / resolution;
             this.distances = new float[resolution];
             this.distanceTravelled = new float[resolution];
             Init();
         }
         private readonly ISpline uniformableSpline;
         private readonly int resolution;
-        private readonly float resoltionStep;
+        private readonly float resolutionStep;
         private readonly float[] distances;
         private readonly float[] distanceTravelled;
         private float distance;
@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt
             Vector3 start = uniformableSpline.GetPoint(0);
             Vector3 end;
             distanceTravelled[0] = 0;
-            for ((int i, float endStep) = (0, resoltionStep); i < resolution - 1; i++, endStep += resoltionStep)
+            for ((int i, float endStep) = (0, resolutionStep); i < resolution - 1; i++, endStep += resolutionStep)
             {
                 end = uniformableSpline.GetPoint(endStep);
                 float stepDistance = Vector3.Distance(start, end);

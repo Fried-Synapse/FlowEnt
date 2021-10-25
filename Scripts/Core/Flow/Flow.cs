@@ -4,46 +4,31 @@ using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
 {
-    public sealed class Flow : AbstractAnimation,
-        IUpdateController,
-        IFluentFlowOptionable<Flow>
+    /// <summary>
+    /// Provides functionality to create a sequence or multiple sequences of animations.
+    /// For more information please go to https://flowent.friedsynapse.com/flow
+    /// </summary>
+    public sealed partial class Flow : AbstractAnimation,
+        IUpdateController
     {
         private const string ErrorAnimationAlreadyStarted = "Cannot add animation that has already started.";
-        private class UpdatableWrapper
-        {
-            public UpdatableWrapper(object updatableObject, int index, float? timeIndex = null)
-            {
-                this.updatableObject = updatableObject;
-                this.index = index;
-                this.timeIndex = timeIndex;
-            }
 
-            private readonly object updatableObject;
-            public int index;
-            public float? timeIndex;
-            public UpdatableWrapper next;
-
-            public AbstractUpdatable GetUpdatable()
-            {
-                switch (updatableObject)
-                {
-                    case AbstractUpdatable abstractUpdatable:
-                        return abstractUpdatable;
-                    case Func<AbstractUpdatable> getAbstractUpdatable:
-                        return getAbstractUpdatable.Invoke();
-                    default:
-                        throw new ArgumentException("Unknown updatable type found.");
-                }
-            }
-        }
-
-        public Flow(FlowOptions options) : base(options.AutoStart)
+        /// <summary>
+        /// Creates a new flow using the options provided.
+        /// </summary>
+        /// <param name="options"></param>
+        public Flow(FlowOptions options)
         {
             CopyOptions(options);
         }
 
-        public Flow(bool autoStart = false) : base(autoStart)
+        /// <summary>
+        /// Creates a new flow.
+        /// </summary>
+        /// <param name="autoStart">Weather the flow should start automatically or not.</param>
+        public Flow(bool autoStart = false)
         {
+            AutoStart = autoStart;
         }
 
         #region Internal Members
@@ -78,6 +63,10 @@ namespace FriedSynapse.FlowEnt
 
         #region Lifecycle
 
+        /// <summary>
+        /// Starts the flow.
+        /// </summary>
+        /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public Flow Start()
         {
             if (playState != PlayState.Building)
@@ -93,6 +82,10 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Starts the flow async(you can await this till the flow finishes).
+        /// </summary>
+        /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public async Task<Flow> StartAsync()
         {
             if (playState != PlayState.Building)
@@ -250,254 +243,6 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region Setters
-
-        #region Threads
-
-        #region Utils
-
-        private void InitAnimation(AbstractAnimation animation)
-        {
-            if (animation.PlayState != PlayState.Building)
-            {
-                throw new FlowEntException(ErrorAnimationAlreadyStarted);
-            }
-
-            if (animation.HasAutoStart)
-            {
-                animation.CancelAutoStart();
-            }
-            animation.updateController = this;
-        }
-
-        private void AddOrQueue(object updatableObject)
-        {
-            if (lastQueuedUpdatableWrapper == null)
-            {
-                lastQueuedUpdatableWrapper = new UpdatableWrapper(updatableObject, updatableWrappersQueue.Count, 0);
-                updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
-            }
-            else
-            {
-                UpdatableWrapper animationWrapper = new UpdatableWrapper(updatableObject, lastQueuedUpdatableWrapper.index);
-                lastQueuedUpdatableWrapper.next = animationWrapper;
-                lastQueuedUpdatableWrapper = animationWrapper;
-            }
-        }
-
-
-        #endregion
-
-        #region Queue
-
-        public Flow Queue(AbstractAnimation animation)
-        {
-            InitAnimation(animation);
-
-            AddOrQueue(animation);
-
-            return this;
-        }
-
-        public Flow Queue(Func<Tween, Tween> tweenBuilder)
-            => Queue(tweenBuilder(new Tween()));
-
-        public Flow Queue(Func<Flow, Flow> flowBuilder)
-            => Queue(flowBuilder(new Flow()));
-
-        public Flow QueueDelay(float delay)
-            => Queue(new Tween(delay));
-
-        public Flow QueueAwaiter(AbstractFlowAwaiter flowAwaiter)
-        {
-            flowAwaiter.updateController = this;
-
-            AddOrQueue(flowAwaiter);
-
-            return this;
-        }
-
-        public Flow QueueAwaiter(Func<bool> waitCondition)
-            => QueueAwaiter(new CallbackFlowAwaiter(waitCondition));
-
-        public Flow QueueAwaiter(Task task)
-            => QueueAwaiter(new TaskFlowAwaiter(task));
-
-        #endregion
-
-        #region QueueDeferred
-
-        public Flow QueueDeferred(Func<AbstractAnimation> animationBuilder)
-        {
-            AbstractAnimation createAnimation()
-            {
-                AbstractAnimation animation = animationBuilder();
-
-                InitAnimation(animation);
-
-                return animation;
-            }
-
-            AddOrQueue((Func<AbstractAnimation>)createAnimation);
-
-            return this;
-        }
-
-        public Flow QueueDeferred(Func<Tween, Tween> tweenBuilder)
-            => QueueDeferred(() => tweenBuilder(new Tween()));
-
-        public Flow QueueDeferred(Func<Flow, Flow> flowBuilder)
-            => QueueDeferred(() => flowBuilder(new Flow()));
-
-        #endregion
-
-        #region At
-
-        public Flow At(float timeIndex, AbstractAnimation animation)
-        {
-            if (timeIndex < 0)
-            {
-                throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
-            }
-
-            InitAnimation(animation);
-
-            lastQueuedUpdatableWrapper = new UpdatableWrapper(animation, updatableWrappersQueue.Count, timeIndex);
-            updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
-
-            return this;
-        }
-
-        public Flow At(float timeIndex, Func<Tween, Tween> tweenBuilder)
-            => At(timeIndex, tweenBuilder(new Tween(new TweenOptions())));
-
-        public Flow At(float timeIndex, Func<Flow, Flow> flowBuilder)
-            => At(timeIndex, flowBuilder(new Flow()));
-
-        #endregion
-
-        #region AtDeferred
-
-        public Flow AtDeferred(float timeIndex, Func<AbstractAnimation> animationBuilder)
-        {
-            AbstractAnimation createAnimation()
-            {
-                AbstractAnimation animation = animationBuilder();
-
-                if (timeIndex < 0)
-                {
-                    throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
-                }
-
-                InitAnimation(animation);
-
-                return animation;
-            }
-
-            lastQueuedUpdatableWrapper = new UpdatableWrapper((Func<AbstractAnimation>)createAnimation, updatableWrappersQueue.Count, timeIndex);
-            updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
-
-            return this;
-        }
-
-        public Flow AtDeferred(float timeIndex, Func<Tween, Tween> tweenBuilder)
-            => AtDeferred(timeIndex, () => tweenBuilder(new Tween()));
-
-        public Flow AtDeferred(float timeIndex, Func<Flow, Flow> flowBuilder)
-            => AtDeferred(timeIndex, () => flowBuilder(new Flow()));
-
-        #endregion
-
-        #endregion
-
-        #region Events
-
-        public Flow OnStarted(Action callback)
-        {
-            onStarted += callback;
-            return this;
-        }
-
-        public Flow OnUpdated(Action<float> callback)
-        {
-            onUpdated += callback;
-            return this;
-        }
-
-        public Flow OnCompleted(Action callback)
-        {
-            onCompleted += callback;
-            return this;
-        }
-
-        public Flow OnLoopCompleted(Action<int?> callback)
-        {
-            onLoopCompleted += callback;
-            return this;
-        }
-
-        #endregion
-
-        #region Options
-
-        public Flow SetOptions(FlowOptions options)
-        {
-            CopyOptions(options);
-            return this;
-        }
-
-        public Flow SetOptions(Func<FlowOptions, FlowOptions> optionsBuilder)
-        {
-            CopyOptions(optionsBuilder(new FlowOptions()));
-            return this;
-        }
-
-        public Flow SetSkipFrames(int frames)
-        {
-            this.skipFrames = frames;
-            return this;
-        }
-
-        public Flow SetDelay(float time)
-        {
-            this.delay = time;
-            return this;
-        }
-
-        public Flow SetLoopCount(int? loopCount)
-        {
-            if (loopCount <= 0)
-            {
-                throw new ArgumentException(AbstractAnimationOptions.ErrorLoopCountNegative);
-            }
-            this.loopCount = loopCount;
-            return this;
-        }
-
-        public Flow SetTimeScale(float timeScale)
-        {
-            if (timeScale < 0)
-            {
-                throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
-            }
-            this.timeScale = timeScale;
-            return this;
-        }
-
-        private void CopyOptions(FlowOptions options)
-        {
-            skipFrames = options.SkipFrames;
-            delay = options.Delay;
-            loopCount = options.LoopCount;
-            timeScale = options.TimeScale;
-        }
-
-        #endregion
-
-        #endregion
-
-        #region Private
-
         #region QuickSort TimeIndex
 
         private void QuickSortByTimeIndex(UpdatableWrapper[] arr, int start, int end)
@@ -534,8 +279,6 @@ namespace FriedSynapse.FlowEnt
             arr[end] = temp;
             return i + 1;
         }
-
-        #endregion
 
         #endregion
 

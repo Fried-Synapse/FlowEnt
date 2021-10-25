@@ -43,6 +43,7 @@ public class FlowEntDemoController : MonoBehaviour
                 .For(Objects[2].GetComponent<MeshRenderer>())
                     .ColorTo(Color.black))
             .Queue(Objects[2].Tween(2f).MoveY(2))
+            .Conditional(() => true, flow => flow.Queue(t => t.SetTime(1)))
             .Queue(t => t.SetTime(1))
             .At(1, Objects[2].Tween(3f).MoveY(2))
             .Queue(t => t.SetOptions(o => o.SetTime(1)))
