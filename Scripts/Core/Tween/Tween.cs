@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// A tween is a simple interpolation from 0 to 1 which has several options and events attached.
     /// </summary>
-    public sealed class Tween : AbstractAnimation,
+    public sealed partial class Tween : AbstractAnimation,
         IFluentTweenOptionable<Tween>,
         IFluentTweenEventable<Tween>
     {
@@ -17,6 +17,7 @@ namespace FriedSynapse.FlowEnt
             Forward,
             Backward
         }
+
         public Tween(TweenOptions options)
         {
             CopyOptions(options);
@@ -24,7 +25,7 @@ namespace FriedSynapse.FlowEnt
 
         public Tween(bool autoStart = false)
         {
-            SetAutoStart(autoStart);
+            AutoStart = autoStart;
         }
 
         public Tween(float time, bool autoStart = false)
@@ -37,32 +38,14 @@ namespace FriedSynapse.FlowEnt
             {
                 throw new ArgumentException(TweenOptions.ErrorTimeInfinity);
             }
-            SetAutoStart(autoStart);
+            AutoStart = autoStart;
             this.time = time;
         }
 
-        private Action onStarting;
-        private Action<float> onUpdating;
-        private Action onCompleting;
-
-        #region Options
-
-        private float time = 1;
-        private IEasing easing = TweenOptions.LinearEasing;
-        private LoopType loopType;
-
-        #endregion
-
         private IMotion[] motions = new IMotion[0];
-
-
-        #region Internal Members
-
         private int? remainingLoops;
         private float remainingTime;
         private LoopDirection loopDirection;
-
-        #endregion
 
         #region Lifecycle
 
@@ -201,54 +184,6 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region Setters
-
-        #region Events
-
-        public Tween OnStarting(Action callback)
-        {
-            onStarting += callback;
-            return this;
-        }
-
-        public Tween OnStarted(Action callback)
-        {
-            onStarted += callback;
-            return this;
-        }
-
-        public Tween OnUpdating(Action<float> callback)
-        {
-            onUpdating += callback;
-            return this;
-        }
-
-        public Tween OnUpdated(Action<float> callback)
-        {
-            onUpdated += callback;
-            return this;
-        }
-
-        public Tween OnLoopCompleted(Action<int?> callback)
-        {
-            onLoopCompleted += callback;
-            return this;
-        }
-
-        public Tween OnCompleting(Action callback)
-        {
-            onCompleting += callback;
-            return this;
-        }
-
-        public Tween OnCompleted(Action callback)
-        {
-            onCompleted += callback;
-            return this;
-        }
-
-        #endregion
-
         #region Motions
 
         public Tween Apply(IMotion motion)
@@ -261,107 +196,6 @@ namespace FriedSynapse.FlowEnt
         {
             return new TweenMotion<T>(this, element);
         }
-
-        #endregion
-
-        #region Options
-
-        public Tween SetOptions(TweenOptions options)
-        {
-            CopyOptions(options);
-            return this;
-        }
-
-        public Tween SetOptions(Func<TweenOptions, TweenOptions> optionsBuilder)
-        {
-            CopyOptions(optionsBuilder(new TweenOptions()));
-            return this;
-        }
-
-        public Tween SetSkipFrames(int frames)
-        {
-
-            this.skipFrames = frames;
-            return this;
-        }
-
-        public Tween SetDelay(float time)
-        {
-            this.delay = time;
-            return this;
-        }
-
-        public Tween SetTime(float time)
-        {
-            if (time < 0)
-            {
-                throw new ArgumentException(TweenOptions.ErrorTimeNegative);
-            }
-            if (float.IsInfinity(time))
-            {
-                throw new ArgumentException(TweenOptions.ErrorTimeInfinity);
-            }
-            this.time = time;
-            return this;
-        }
-
-        public Tween SetLoopCount(int? loopCount)
-        {
-            if (loopCount <= 0)
-            {
-                throw new ArgumentException(AbstractAnimationOptions.ErrorLoopCountNegative);
-            }
-            this.loopCount = loopCount;
-            return this;
-        }
-
-        public Tween SetLoopType(LoopType loopType)
-        {
-            this.loopType = loopType;
-            return this;
-        }
-
-        public Tween SetTimeScale(float timeScale)
-        {
-            if (timeScale < 0)
-            {
-                throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
-            }
-            this.timeScale = timeScale;
-            return this;
-        }
-
-        public Tween SetEasing(IEasing easing)
-        {
-            this.easing = easing;
-            return this;
-        }
-
-        public Tween SetEasing(Easing easing)
-        {
-            this.easing = EasingFactory.Create(easing);
-            return this;
-        }
-
-        public Tween SetEasing(AnimationCurve animationCurve)
-        {
-            this.easing = new AnimationCurveEasing(animationCurve);
-            return this;
-        }
-
-        private void CopyOptions(TweenOptions options)
-        {
-            SetAutoStart(options.AutoStart);
-            skipFrames = options.SkipFrames;
-            delay = options.Delay;
-            time = options.Time;
-            timeScale = options.TimeScale;
-            loopCount = options.LoopCount;
-            loopType = options.LoopType;
-            easing = options.Easing;
-        }
-
-        #endregion
 
         #endregion
 

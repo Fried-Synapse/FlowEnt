@@ -29,6 +29,24 @@ namespace FriedSynapse.FlowEnt
 
         #region Settings Properties
 
+        protected bool AutoStart
+        {
+            set
+            {
+                if (value)
+                {
+                    autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
+                    startHelper = autoStartHelper;
+                }
+                else
+                {
+                    if (autoStartHelper != null)
+                    {
+                        CancelAutoStart();
+                    }
+                }
+            }
+        }
         private protected PlayState playState = PlayState.Building;
         /// <summary>
         /// The current state of the animation.
@@ -52,22 +70,6 @@ namespace FriedSynapse.FlowEnt
             }
 
             StartInternal(deltaTime);
-        }
-
-        protected void SetAutoStart(bool autoStart)
-        {
-            if (autoStart)
-            {
-                autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
-                startHelper = autoStartHelper;
-            }
-            else
-            {
-                if (autoStartHelper != null)
-                {
-                    CancelAutoStart();
-                }
-            }
         }
 
         internal void CancelAutoStart()
