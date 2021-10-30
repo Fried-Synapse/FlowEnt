@@ -11,21 +11,19 @@ namespace FriedSynapse.FlowEnt
         internal const string ErrorTimeScaleNegative = "Value cannot be less than 0.";
 
         /// <summary>
+        /// Initialises a new instance of the <see cref="AbstractAnimationOptions"/> class.
+        /// </summary>
+        public AbstractAnimationOptions()
+        {
+        }
+
+        /// <summary>
         /// Whether the animation should auto start or not. If set to false, you need to start the animation manually.
         /// </summary>
         /// <remarks>
         /// AutoStart for an animation requires to have a helper that looks for the next frame therefore manually starting the Animation will always be more efficient.
         /// </remarks>
         public bool AutoStart { get; set; }
-
-        /// <summary>
-        /// Initialises a new instance of the <see cref="AbstractAnimationOptions"/> class.
-        /// </summary>
-        /// <param name="autoStart">Sets the value of <see cref="AutoStart"></see>.</param>
-        public AbstractAnimationOptions(bool autoStart = false)
-        {
-            AutoStart = autoStart;
-        }
 
         /// <summary>
         /// The amount of frames that the animation will skip from the moment it started till the animation begins.

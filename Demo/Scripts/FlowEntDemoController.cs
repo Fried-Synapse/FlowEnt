@@ -48,19 +48,43 @@ public class FlowEntDemoController : MonoBehaviour
             .At(1, Objects[2].Tween(3f).MoveY(2))
             .Queue(t => t.SetOptions(o => o.SetTime(1)))
             .StartAsync();
+        Animate(null, null);
     }
 
     #region Flow
 
     private async Task BezierFlow(Transform transform)
     {
-        ISpline spline = new CubicSpline(SplinePoints).Normalise();
+        ISpline spline = new CatmullRomSpline(SplinePoints).Normalise();
         await transform
-            .Tween(25f)
+            .Tween(5f)
+            .SetLoopType(LoopType.PingPong)
+            .SetLoopCount(4)
                 .MoveTo(spline)
             .OrientToPath()
             .OnCompleted(() => transform.transform.rotation = Quaternion.identity)
             .AsAsync();
+    }
+
+    private async void Animate(Transform transform, List<Vector3> splinePoints)
+    {
+        // Tween tween = new Tween(10f)
+        //     .SetLoopType(LoopType.PingPong)
+        //     .SetLoopCount(4)
+        //     .For(transform)
+        //         .MoveTo(new CatmullRomSpline(splinePoints).Normalise())
+        //         .OrientToPath()
+        //     .OnCompleted(() => Debug.Log("Completed!"))
+        //     .Start();
+
+        Tween tween = new Tween(1f)
+            .For(transform)
+            .SetSkipFrames(20)
+                .Move(Vector3.one)
+            .Start();
+
+
+        await tween.AsAsync();
     }
 
     #endregion

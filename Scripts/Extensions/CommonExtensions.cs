@@ -5,11 +5,8 @@ namespace FriedSynapse.FlowEnt
 {
     public static class CommonExtensions
     {
-        public static TweenMotion<T> Tween<T>(this T item)
-            => new Tween(true).For(item);
-
-        public static TweenMotion<T> Tween<T>(this T item, float time)
-            => new Tween(time, true).For(item);
+        public static TweenMotion<T> Tween<T>(this T item, float time = FlowEnt.Tween.DefaultTime, bool autoStart = FlowEnt.Tween.DefaultAutoStart)
+            => new Tween(time, autoStart).For(item);
 
         public static TweenMotion<T> Tween<T>(this T item, TweenOptions options)
             => new Tween(options).For(item);

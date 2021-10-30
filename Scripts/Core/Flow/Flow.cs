@@ -9,7 +9,9 @@ namespace FriedSynapse.FlowEnt
     /// For more information please go to https://flowent.friedsynapse.com/flow
     /// </summary>
     public sealed partial class Flow : AbstractAnimation,
-        IUpdateController
+        IUpdateController,
+        IFluentFlowEventable<Flow>,
+        IFluentFlowOptionable<Flow>
     {
         private const string ErrorAnimationAlreadyStarted = "Cannot add animation that has already started.";
 
@@ -25,7 +27,7 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Creates a new flow.
         /// </summary>
-        /// <param name="autoStart">Weather the flow should start automatically or not.</param>
+        /// <param name="autoStart">Whether the flow should start automatically or not.</param>
         public Flow(bool autoStart = false)
         {
             AutoStart = autoStart;

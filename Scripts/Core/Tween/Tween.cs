@@ -6,28 +6,35 @@ namespace FriedSynapse.FlowEnt
 {
     /// <summary>
     /// A tween is a simple interpolation from 0 to 1 which has several options and events attached.
+    /// For more information please go to https://flowent.friedsynapse.com/tween
     /// </summary>
     public sealed partial class Tween : AbstractAnimation,
         IFluentTweenOptionable<Tween>,
         IFluentTweenEventable<Tween>
     {
+        public const float DefaultTime = 1f;
+        public const bool DefaultAutoStart = false;
         private enum LoopDirection
         {
             Forward,
             Backward
         }
 
+        /// <summary>
+        /// Creates a new tween using the options provided.
+        /// </summary>
+        /// <param name="options"></param>
         public Tween(TweenOptions options)
         {
             CopyOptions(options);
         }
 
-        public Tween(bool autoStart = false)
-        {
-            AutoStart = autoStart;
-        }
-
-        public Tween(float time, bool autoStart = false)
+        /// <summary>
+        /// Creates a new tween.
+        /// </summary>
+        /// <param name="time">The amount of time for this tween in seconds.</param>
+        /// <param name="autoStart">Whether the tween should start automatically or not.</param>
+        public Tween(float time = DefaultTime, bool autoStart = DefaultAutoStart)
         {
             if (time < 0)
             {
@@ -48,6 +55,10 @@ namespace FriedSynapse.FlowEnt
 
         #region Lifecycle
 
+        /// <summary>
+        /// Starts the tween.
+        /// </summary>
+        /// <exception cref="FlowEntException">If the tween has already started.</exception>
         public Tween Start()
         {
             if (playState != PlayState.Building)
@@ -63,6 +74,10 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        /// <summary>
+        /// Starts the tween async(you can await this till the tween finishes).
+        /// </summary>
+        /// <exception cref="FlowEntException">If the tween has already started.</exception>
         public async Task<Tween> StartAsync()
         {
             if (playState != PlayState.Building)
@@ -185,12 +200,21 @@ namespace FriedSynapse.FlowEnt
 
         #region Motions
 
+        /// <summary>
+        /// Applies the motion to the current tween.
+        /// </summary>
+        /// <param name="motion"></param>
         public Tween Apply(IMotion motion)
         {
             motions = motions.Append(motion).ToArray();
             return this;
         }
 
+        /// <summary>
+        /// Creates a scope for the object so you can add motions designed sepcifically for that object.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <typeparam name="T"></typeparam>
         public TweenMotion<T> For<T>(T element)
         {
             return new TweenMotion<T>(this, element);
