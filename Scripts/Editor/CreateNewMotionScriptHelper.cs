@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class CreateNewMotionScriptHelper
+    public static class CreateNewMotionScriptHelper
     {
         private const string MotionScriptTemplateName = "MotionScriptTemplate.cs";
 

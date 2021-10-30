@@ -14,15 +14,15 @@ namespace FriedSynapse.FlowEnt
             }
             else if (t < 2 / D1)
             {
-                return N1 * (t -= 1.5f / D1) * t + 0.75f;
+                return (N1 * (t -= 1.5f / D1) * t) + 0.75f;
             }
             else if (t < 2.5 / D1)
             {
-                return N1 * (t -= 2.25f / D1) * t + 0.9375f;
+                return (N1 * (t -= 2.25f / D1) * t) + 0.9375f;
             }
             else
             {
-                return N1 * (t -= 2.625f / D1) * t + 0.984375f;
+                return (N1 * (t -= 2.625f / D1) * t) + 0.984375f;
             }
         }
     }

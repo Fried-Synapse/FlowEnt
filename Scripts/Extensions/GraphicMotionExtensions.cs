@@ -16,7 +16,6 @@ namespace FriedSynapse.FlowEnt
             where TGraphic : Graphic
             => motion.Apply(new AlphaToMotion<TGraphic>(motion.Item, to));
 
-
         public static TweenMotion<TGraphic> AlphaTo<TGraphic>(this TweenMotion<TGraphic> motion, float from, float to)
             where TGraphic : Graphic
             => motion.Apply(new AlphaToMotion<TGraphic>(motion.Item, from, to));

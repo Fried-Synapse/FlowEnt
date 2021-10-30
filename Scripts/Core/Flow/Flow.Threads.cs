@@ -83,8 +83,6 @@ namespace FriedSynapse.FlowEnt
         public Flow Queue(Func<Flow, Flow> flowBuilder)
             => Queue(flowBuilder(new Flow()));
 
-
-
         /// <summary>
         /// Queues a delay in the current sequence.
         /// </summary>

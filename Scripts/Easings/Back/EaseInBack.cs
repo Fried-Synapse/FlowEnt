@@ -7,6 +7,6 @@ namespace FriedSynapse.FlowEnt
         private const float C3 = C1 + 1;
 
         public float GetValue(float t)
-            => C3 * t * t * t - C1 * t * t;
+            => (C3 * t * t * t) - (C1 * t * t);
     }
 }

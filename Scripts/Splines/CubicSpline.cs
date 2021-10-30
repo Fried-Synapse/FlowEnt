@@ -6,11 +6,19 @@ namespace FriedSynapse.FlowEnt
 {
     public class CubicSpline : AbstractSpline
     {
+        /// <summary>
+        /// Creates a cubic spline.
+        /// </summary>
+        /// <param name="points">The sequence of points that will create the spline.</param>
         public CubicSpline(List<Vector3> points) : base(points)
         {
             Init();
         }
 
+        /// <summary>
+        /// Creates a cubic spline.
+        /// </summary>
+        /// <param name="points">The sequence of points that will create the spline.</param>
         public CubicSpline(params Vector3[] points) : base(points)
         {
             Init();

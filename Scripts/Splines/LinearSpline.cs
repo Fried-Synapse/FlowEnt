@@ -3,10 +3,8 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    //TODO this is too slow
     public class LinearSpline : AbstractSpline
     {
-
         /// <summary>
         /// Creates a linear spline. Uncurvy.
         /// </summary>

@@ -14,22 +14,22 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// The animation is being build. The start method was not called.
         /// </summary>
-        Building = 0x01,
+        Building = 0x00,
         /// <summary>
         /// The animation has started but it's waiting for a delay.
         /// </summary>
-        Waiting = 0x02,
+        Waiting = 0x01,
         /// <summary>
         /// The animation is playing.
         /// </summary>
-        Playing = 0x04,
+        Playing = 0x02,
         /// <summary>
         /// The animation was paused.
         /// </summary>
-        Paused = 0x08,
+        Paused = 0x04,
         /// <summary>
         /// The animation completed or was stopped.
         /// </summary>
-        Finished = 0x10
+        Finished = 0x08
     }
 }

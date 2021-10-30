@@ -21,7 +21,10 @@ namespace FriedSynapse.FlowEnt
             this.updateController = updateController;
         }
 
+        //HACK for having a constructor that does nothing, to instantiate quicker when needed
+#pragma warning disable RCS1163, IDE0060
         private protected AbstractUpdatable(int thisIsAnEmptyConstructorForAnchor)
+#pragma warning restore RCS1163, IDE0060
         {
         }
 

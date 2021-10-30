@@ -43,6 +43,4 @@ namespace FriedSynapse.FlowEnt
         EaseOutBounce,
         EaseInOutBounce,
     }
-
-
 }

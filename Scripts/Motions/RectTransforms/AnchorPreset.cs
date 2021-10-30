@@ -86,6 +86,5 @@ namespace FriedSynapse.FlowEnt.Motions.RectTransforms
             }
             throw new ArgumentException($"Unknown preset type {preset}.");
         }
-
     }
 }

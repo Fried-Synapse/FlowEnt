@@ -9,7 +9,7 @@ namespace FriedSynapse.FlowEnt
 
         public float GetValue(float t)
             => t < 0.5f
-                  ? (float)(Math.Pow(2 * t, 2) * ((C2 + 1) * 2 * t - C2)) / 2
-                  : (float)(Math.Pow(2 * t - 2, 2) * ((C2 + 1) * (t * 2 - 2) + C2) + 2) / 2;
+                  ? (float)(Math.Pow(2 * t, 2) * (((C2 + 1) * 2 * t) - C2)) / 2
+                  : (float)((Math.Pow((2 * t) - 2, 2) * (((C2 + 1) * ((t * 2) - 2)) + C2)) + 2) / 2;
     }
 }

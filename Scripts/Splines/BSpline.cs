@@ -8,12 +8,21 @@ namespace FriedSynapse.FlowEnt
     public class BSpline : AbstractSpline
     {
         public const float DefaultGradient = 1f / 3f;
+
+        /// <summary>
+        /// Creates a b-spline(based on Bezier curve).
+        /// </summary>
+        /// <param name="points">The sequence of points that will create the spline.</param>
         public BSpline(List<Vector3> points, float gradient = DefaultGradient) : base(points)
         {
             this.gradient = gradient;
             Init();
         }
 
+        /// <summary>
+        /// Creates a b-spline(based on Bezier curve).
+        /// </summary>
+        /// <param name="points">The sequence of points that will create the spline.</param>
         public BSpline(params Vector3[] points) : base(points)
         {
             this.gradient = DefaultGradient;

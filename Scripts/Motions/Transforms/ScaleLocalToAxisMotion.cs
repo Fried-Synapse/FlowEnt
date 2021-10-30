@@ -54,15 +54,15 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
             scaleCache = item.localScale;
             valueCache = Mathf.LerpUnclamped(from, to, t);
 
-            if (axis.HasFlag(Axis.X))
+            if ((axis & Axis.X) != 0)
             {
                 scaleCache.x = valueCache;
             }
-            if (axis.HasFlag(Axis.Y))
+            if ((axis & Axis.Y) != 0)
             {
                 scaleCache.y = valueCache;
             }
-            if (axis.HasFlag(Axis.Z))
+            if ((axis & Axis.Z) != 0)
             {
                 scaleCache.z = valueCache;
             }

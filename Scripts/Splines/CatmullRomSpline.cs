@@ -6,11 +6,19 @@ namespace FriedSynapse.FlowEnt
 {
     public class CatmullRomSpline : AbstractSpline
     {
+        /// <summary>
+        /// Creates a Catmull-Rom spline.
+        /// </summary>
+        /// <param name="points">The sequence of points that will create the spline.</param>
         public CatmullRomSpline(List<Vector3> points) : base(points)
         {
             Init();
         }
 
+        /// <summary>
+        /// Creates a Catmull-Rom spline.
+        /// </summary>
+        /// <param name="points">The sequence of points that will create the spline.</param>
         public CatmullRomSpline(params Vector3[] points) : base(points)
         {
             Init();
@@ -33,7 +41,6 @@ namespace FriedSynapse.FlowEnt
             }
             float segmentT = scaledT - segment;
             return GetPoint(segmentT, points[segment], points[segment + 1], points[segment + 2], points[segment + 3]);
-
         }
 
         public static Vector3 GetPoint(float t, Vector3 startControl, Vector3 startPoint, Vector3 endPoint, Vector3 endControl)

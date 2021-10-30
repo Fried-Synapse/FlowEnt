@@ -5,7 +5,9 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Exception used by the FlowEnt library.
     /// </summary>
+#pragma warning disable RCS1194
     public class FlowEntException : Exception
+#pragma warning restore RCS1194
     {
         /// <summary>
         /// The flow attached to this exception

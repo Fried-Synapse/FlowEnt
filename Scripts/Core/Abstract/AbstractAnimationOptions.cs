@@ -67,6 +67,5 @@ namespace FriedSynapse.FlowEnt
                 loopCount = value;
             }
         }
-
     }
 }

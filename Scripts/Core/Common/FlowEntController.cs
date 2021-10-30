@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt
         IUpdateController
     {
         private static FlowEntController instance;
-        private static object lockObject = new object();
+        private static readonly object lockObject = new object();
 
         /// <summary>
         /// The instance of <see cref="FlowEntController"/>.
@@ -34,7 +34,7 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        private FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
+        private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
 
         private float timeScale = 1;
 

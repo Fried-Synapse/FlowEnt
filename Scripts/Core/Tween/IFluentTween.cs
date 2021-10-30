@@ -110,7 +110,5 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="timeScale"></param>
         T SetTimeScale(float timeScale);
-
-
     }
 }

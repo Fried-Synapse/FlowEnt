@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt
                   : t == 1
                       ? 1f
                       : t < 0.5f
-                          ? (float)(-(Math.Pow(2, 20 * t - 10) * Math.Sin((20 * t - 11.125) * C5)) / 2)
-                          : (float)(Math.Pow(2, -20 * t + 10) * Math.Sin((20 * t - 11.125) * C5)) / 2 + 1;
+                          ? (float)(-(Math.Pow(2, (20 * t) - 10) * Math.Sin(((20 * t) - 11.125) * C5)) / 2)
+                          : ((float)(Math.Pow(2, (-20 * t) + 10) * Math.Sin(((20 * t) - 11.125) * C5)) / 2) + 1;
     }
 }

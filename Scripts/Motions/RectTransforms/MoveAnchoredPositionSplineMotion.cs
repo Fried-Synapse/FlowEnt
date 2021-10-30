@@ -15,6 +15,5 @@ namespace FriedSynapse.FlowEnt.Motions.RectTransforms
         {
             item.anchoredPosition = spline.GetPoint(t);
         }
-
     }
 }

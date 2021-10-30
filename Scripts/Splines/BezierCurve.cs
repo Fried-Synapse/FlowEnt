@@ -4,6 +4,13 @@ namespace FriedSynapse.FlowEnt
 {
     public class BezierCurve : ISpline
     {
+        /// <summary>
+        /// Creates a bezier curve.
+        /// </summary>
+        /// <param name="startPoint"></param>
+        /// <param name="startControl"></param>
+        /// <param name="endControl"></param>
+        /// <param name="endPoint"></param>
         public BezierCurve(Vector3 startPoint, Vector3 startControl, Vector3 endControl, Vector3 endPoint)
         {
             this.startPoint = startPoint;

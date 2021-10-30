@@ -31,6 +31,5 @@ namespace FriedSynapse.FlowEnt
                 }
             }
         }
-
     }
 }

@@ -13,7 +13,6 @@ namespace FriedSynapse.FlowEnt.Motions.CanvasGroups
         private float from;
         private float to;
 
-
         public override void OnStart()
         {
             from = item.alpha;

@@ -1,7 +1,6 @@
-using FriedSynapse.FlowEnt;
-using UnityEngine;
-
-public static class TransformMotionExtensions
+namespace FriedSynapse.FlowEnt.Demo
 {
-
+    public static class TransformMotionExtensions
+    {
+    }
 }

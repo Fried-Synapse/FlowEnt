@@ -12,7 +12,6 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            throw new NotImplementedException();
         }
 
         protected Action<float> callback;
