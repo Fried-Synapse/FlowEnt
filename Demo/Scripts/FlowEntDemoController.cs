@@ -25,6 +25,10 @@ namespace FriedSynapse.FlowEnt.Demo
         private AnimationCurve animationCurve;
         private AnimationCurve AnimationCurve => animationCurve;
 
+        [SerializeField]
+        private TweenBuilder tweenBuilder;
+        private TweenBuilder TweenBuilder => tweenBuilder;
+
         private async void Start()
         {
             await new Tween(1f).StartAsync();

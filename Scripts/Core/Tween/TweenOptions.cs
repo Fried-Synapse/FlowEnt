@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
+    [Serializable]
     public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
     {
         internal const string ErrorTimeNegative = "Value cannot be less than 0.";
@@ -16,7 +17,11 @@ namespace FriedSynapse.FlowEnt
         {
         }
 
+        [SerializeField]
         private float time = 1f;
+        /// <summary>
+        /// The amount of time in seconds that this tween will last.
+        /// </summary>
         public float Time
         {
             get { return time; }
@@ -33,8 +38,20 @@ namespace FriedSynapse.FlowEnt
                 time = value;
             }
         }
-        public LoopType LoopType { get; set; }
-        public IEasing Easing { get; set; } = LinearEasing;
+
+        [SerializeField]
+        private IEasing easing = LinearEasing;
+        /// <summary>
+        /// The easing of the tween.
+        /// </summary>
+        public IEasing Easing { get => easing; set => easing = value; }
+
+        [SerializeField]
+        private LoopType loopType;
+        /// <summary>
+        /// The loop type of the tween.
+        /// </summary>
+        public LoopType LoopType { get => loopType; set => loopType = value; }
 
         /// <inheritdoc />
         public TweenOptions SetAutoStart(bool autoStart)
