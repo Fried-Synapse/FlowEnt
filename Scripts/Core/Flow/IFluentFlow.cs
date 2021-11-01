@@ -8,25 +8,25 @@ namespace FriedSynapse.FlowEnt
         /// Adds an event called when the flow started.
         /// </summary>
         /// <param name="callback">The event.</param>
-        Flow OnStarted(Action callback);
+        T OnStarted(Action callback);
 
         /// <summary>
         /// Adds an event called when the flow updated.
         /// </summary>
         /// <param name="callback">The event.</param>
-        Flow OnUpdated(Action<float> callback);
+        T OnUpdated(Action<float> callback);
 
         /// <summary>
         /// Adds an event called when a loop completed.
         /// </summary>
         /// <param name="callback">The event. The parameter represents the number of loops left. If there are infinite loops it'll send a null param.</param>
-        Flow OnLoopCompleted(Action<int?> callback);
+        T OnLoopCompleted(Action<int?> callback);
 
         /// <summary>
         /// Adds an event called when the flow completed.
         /// </summary>
         /// <param name="callback">The event.</param>
-        Flow OnCompleted(Action callback);
+        T OnCompleted(Action callback);
     }
 
     internal interface IFluentFlowOptionable<T>

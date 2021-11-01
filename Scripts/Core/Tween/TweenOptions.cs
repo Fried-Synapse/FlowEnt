@@ -4,7 +4,8 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
+    public class TweenOptions : AbstractAnimationOptions,
+        IFluentTweenOptionable<TweenOptions>
     {
         internal const string ErrorTimeNegative = "Value cannot be less than 0.";
         internal const string ErrorTimeInfinity = "Value cannot be infinity.";

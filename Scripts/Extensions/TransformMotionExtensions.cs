@@ -235,6 +235,18 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #region LookAt
+
+        public static TweenMotion<TTransform> LookAt<TTransform>(this TweenMotion<TTransform> motionWrapper, Transform target)
+            where TTransform : Transform
+            => motionWrapper.Apply(new LookAtTransformMotion<TTransform>(motionWrapper.Item, target));
+
+        public static TweenMotion<TTransform> LookAt<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 target)
+            where TTransform : Transform
+            => motionWrapper.Apply(new LookAtVector3Motion<TTransform>(motionWrapper.Item, target));
+
+        #endregion
+
         #region OrientToPath
 
         public static TweenMotion<TTransform> OrientToPath<TTransform>(this TweenMotion<TTransform> motionWrapper)
