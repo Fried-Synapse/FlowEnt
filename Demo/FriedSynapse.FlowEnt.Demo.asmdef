@@ -1,0 +1,16 @@
+{
+    "name": "FriedSynapse.FlowEnt.Demo",
+    "rootNamespace": "FriedSynapse.FlowEnt.Demo",
+    "references": [
+        "GUID:20b24152311b643c3953c429ca0ac587"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

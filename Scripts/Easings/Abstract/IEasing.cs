@@ -1,4 +1,3 @@
-
 namespace FriedSynapse.FlowEnt
 {
     public interface IEasing
