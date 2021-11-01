@@ -63,7 +63,7 @@ namespace FriedSynapse.FlowEnt
         {
             if (playState != PlayState.Building)
             {
-                throw new FlowEntException("Tween already started.");
+                throw new TweenException(this, "Tween already started.");
             }
 
             if (autoStartHelper != null)
@@ -82,7 +82,7 @@ namespace FriedSynapse.FlowEnt
         {
             if (playState != PlayState.Building)
             {
-                throw new FlowEntException("Tween already started.");
+                throw new TweenException(this, "Tween already started.");
             }
 
             if (autoStartHelper != null)
@@ -206,6 +206,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         public Tween Apply(IMotion motion)
         {
+            //TODO this could be really slow when adding a lot of motions. Consider using the fast list
             motions = motions.Append(motion).ToArray();
             return this;
         }

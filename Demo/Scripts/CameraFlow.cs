@@ -19,7 +19,7 @@ namespace FriedSynapse.FlowEnt.Demo
         private List<Vector3> splinePoints;
         private List<Vector3> SplinePoints => splinePoints;
 
-        public ISpline GetSpline() => new BSpline(splinePoints);
+        public ISpline GetSpline() => new BSpline(SplinePoints);
 
         public Flow GetFlow()
         {
@@ -27,10 +27,10 @@ namespace FriedSynapse.FlowEnt.Demo
             return new Flow()
                 .Queue(new Tween(time1)
                             .SetEasing(Easing.EaseInOutSine)
-                            .For(wrapper)
+                            .For(Wrapper)
                                 .MoveTo(GetSpline())
                                 .OrientToPath()
-                            .For(transform)
+                            .For(Transform)
                                 .LookAt(new Vector3(0f, 0.5f, 0f)));
         }
     }

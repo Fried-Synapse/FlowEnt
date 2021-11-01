@@ -72,7 +72,7 @@ namespace FriedSynapse.FlowEnt
         {
             if (playState != PlayState.Building)
             {
-                throw new FlowEntException("Flow already started.");
+                throw new FlowException(this, "Flow already started.");
             }
 
             if (autoStartHelper != null)
@@ -91,7 +91,7 @@ namespace FriedSynapse.FlowEnt
         {
             if (playState != PlayState.Building)
             {
-                throw new FlowEntException("Flow already started.");
+                throw new FlowException(this, "Flow already started.");
             }
 
             if (autoStartHelper != null)

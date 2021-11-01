@@ -78,7 +78,18 @@ namespace FriedSynapse.FlowEnt
 
             while (index != null)
             {
+#if FlowEnt_Debug
+                try
+                {
+#endif
                 index.UpdateInternal(deltaTime);
+#if FlowEnt_Debug
+                }
+                catch (Exception ex)
+                {
+                    throw new UpdateException(index.stackTrace, "Exception on update", ex);
+                }
+#endif
                 index = index.next;
             }
         }

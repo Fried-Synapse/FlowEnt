@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt
         {
             if (animation.PlayState != PlayState.Building)
             {
-                throw new FlowEntException(ErrorAnimationAlreadyStarted);
+                throw new FlowException(this, ErrorAnimationAlreadyStarted);
             }
 
             if (animation.HasAutoStart)

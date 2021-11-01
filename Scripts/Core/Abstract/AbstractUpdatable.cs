@@ -19,7 +19,19 @@ namespace FriedSynapse.FlowEnt
             Id = lastId;
             ++lastId;
             this.updateController = updateController;
+#if FlowEnt_Debug
+            const int lineCountToHide = 5;
+            string[] lines = Environment.StackTrace.Split('\n');
+            int lineCount = lines.Length - lineCountToHide;
+            string[] trimmedLines = new string[lineCount];
+            Array.Copy(lines, lineCountToHide, trimmedLines, 0, lineCount);
+            stackTrace = string.Join("\n", trimmedLines);
+#endif
         }
+
+#if FlowEnt_Debug
+        internal string stackTrace;
+#endif
 
         //HACK for having a constructor that does nothing, to instantiate quicker when needed
 #pragma warning disable RCS1163, IDE0060
@@ -68,12 +80,12 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime)
         {
-            throw new FlowEntException(InvalidImplementation);
+            throw new InvalidOperationException(InvalidImplementation);
         }
 
         internal override void UpdateInternal(float deltaTime)
         {
-            throw new FlowEntException(InvalidImplementation);
+            throw new InvalidOperationException(InvalidImplementation);
         }
     }
 }
