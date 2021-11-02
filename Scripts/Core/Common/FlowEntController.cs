@@ -82,12 +82,16 @@ namespace FriedSynapse.FlowEnt
                 try
                 {
 #endif
-                index.UpdateInternal(deltaTime);
+                    index.UpdateInternal(deltaTime);
 #if FlowEnt_Debug
                 }
                 catch (Exception ex)
                 {
-                    throw new UpdateException(index.stackTrace, "Exception on update", ex);
+                    FlowEntDebug.LogError(
+                        $"<color={FlowEntConstants.Red}><b>Exception on update</b></color>\n" +
+                        $"<color={FlowEntConstants.Orange}><b>Origin of animation that generated the exception</b></color>:\n" +
+                        $"<color={FlowEntConstants.Orange}>{index.stackTrace}</color>\n\n" +
+                        $"<b>Exception</b>:\n{ex}");
                 }
 #endif
                 index = index.next;

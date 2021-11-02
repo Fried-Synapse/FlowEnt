@@ -13,28 +13,28 @@ namespace FriedSynapse.FlowEnt.Motions
 
         public override void OnStart()
         {
-            Debug.Log(GetLogData("Start", "4871F3"));
+            FlowEntDebug.Log(GetLogData("Start", FlowEntConstants.Blue));
         }
 
         public override void OnUpdate(float t)
         {
-            Debug.Log(GetLogData("Update", "48F352", $"<b><color=#48ECF3>with {t}</color></b>"));
+            FlowEntDebug.Log(GetLogData("Update", FlowEntConstants.Green, $"<b><color={FlowEntConstants.Cyan}>with {t}</color></b>"));
         }
 
         public override void OnLoopComplete()
         {
-            Debug.Log(GetLogData("LoopComplete", "F3C648"));
+            FlowEntDebug.Log(GetLogData("LoopComplete", FlowEntConstants.Orange));
         }
 
         public override void OnComplete()
         {
-            Debug.Log(GetLogData("Complete", "F39E48"));
+            FlowEntDebug.Log(GetLogData("Complete", FlowEntConstants.Red));
         }
 
         private string GetLogData(string eventName, string colour, string extra = "")
         {
-            return $"<b>{Name,-20}</b> <b><color=#{colour}>On {eventName,-20}</color></b> {extra}" +
-                $"\n\t\t<b><color=#DEDEDE>at {Time.time,-20}</color></b> with <b><color=#DEDEDE>delta {Time.deltaTime,-20}</color></b>";
+            return $"Motion: <b>{Name,-20}</b> <b><color={colour}>On {eventName,-20}</color></b> {extra}" +
+                $"\n\t\t<b><color={FlowEntConstants.Grey}>at {Time.time,-20}</color></b> with <b><color={FlowEntConstants.Grey}>delta {Time.deltaTime,-20}</color></b>";
         }
     }
 }
