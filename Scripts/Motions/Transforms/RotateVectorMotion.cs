@@ -18,13 +18,13 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
 
         public override void OnStart()
         {
-            from = item.rotation.eulerAngles;
-            to = item.rotation.eulerAngles + value;
+            from = item.eulerAngles;
+            to = item.eulerAngles + value;
         }
 
         public override void OnUpdate(float t)
         {
-            item.rotation = Quaternion.Euler(Vector3.LerpUnclamped(from, to, t));
+            item.eulerAngles = Vector3.LerpUnclamped(from, to, t);
         }
     }
 }

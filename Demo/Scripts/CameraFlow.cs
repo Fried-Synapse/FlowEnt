@@ -23,13 +23,12 @@ namespace FriedSynapse.FlowEnt.Demo
 
         public Flow GetFlow()
         {
-            const float time1 = 30f;
+            const float time = 30f;
             return new Flow()
-                .Queue(new Tween(time1)
+                .Queue(new Tween(time)
                             .SetEasing(Easing.EaseInOutSine)
                             .For(Wrapper)
                                 .MoveTo(GetSpline())
-                                .OrientToPath()
                             .For(Transform)
                                 .LookAt(new Vector3(0f, 0.5f, 0f)));
         }
