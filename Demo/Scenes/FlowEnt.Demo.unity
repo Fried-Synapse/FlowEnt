@@ -744,6 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d71a22d14b6a4ddba8688f29681f4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replayButton: {fileID: 1780971005}
   cameraFlow:
     wrapper: {fileID: 1572146376}
     transform: {fileID: 963194228}
@@ -814,7 +815,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  replayButton: {fileID: 1780971005}
 --- !u!1 &1118211619
 GameObject:
   m_ObjectHideFlags: 0

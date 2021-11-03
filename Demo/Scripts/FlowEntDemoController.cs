@@ -36,8 +36,9 @@ namespace FriedSynapse.FlowEnt.Demo
         private void Start()
         {
             new Flow()
+                .QueueDelay(1f)
                 .Queue(GetInitialLookAround(Objects[0]))
-                .At(5f, CameraFlow.GetFlow())
+                .At(6f, CameraFlow.GetFlow())
                 .QueueDelay(1f)
                 .OnCompleted(() => ReplayButton.gameObject.SetActive(true))
                 .Start();
@@ -50,7 +51,7 @@ namespace FriedSynapse.FlowEnt.Demo
 
         private Flow GetInitialLookAround(Transform transform)
         {
-            Vector3 initial = new Vector3(-20, 0, 0);
+            Vector3 initial = new Vector3(0, 0, 0);
             Vector3 step1 = new Vector3(15, -25, 0);
             Vector3 step2 = new Vector3(25, 25, 0);
             Vector3 step3 = new Vector3(0, 0, 0);

@@ -19,7 +19,7 @@ namespace FriedSynapse.FlowEnt.Demo
         private List<Vector3> splinePoints;
         private List<Vector3> SplinePoints => splinePoints;
 
-        public ISpline GetSpline() => new BSpline(SplinePoints);
+        public ISpline GetSpline() => new BSpline(SplinePoints).Normalise();
 
         public Flow GetFlow()
         {

@@ -20,7 +20,11 @@ namespace FriedSynapse.FlowEnt
             ++lastId;
             this.updateController = updateController;
 #if FlowEnt_Debug
+#if UNITY_EDITOR
             const int lineCountToHide = 5;
+#else
+            const int lineCountToHide = 0;
+#endif
             string[] lines = Environment.StackTrace.Split('\n');
             int lineCount = lines.Length - lineCountToHide;
             string[] trimmedLines = new string[lineCount];
