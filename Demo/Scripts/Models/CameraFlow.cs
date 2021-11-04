@@ -21,16 +21,15 @@ namespace FriedSynapse.FlowEnt.Demo
 
         public ISpline GetSpline() => new BSpline(SplinePoints).Normalise();
 
-        public Flow GetFlow()
+        public Tween GetAnimation()
         {
             const float time = 30f;
-            return new Flow()
-                .Queue(new Tween(time)
-                            .SetEasing(Easing.EaseInOutSine)
-                            .For(Wrapper)
-                                .MoveTo(GetSpline())
-                            .For(Transform)
-                                .LookAt(new Vector3(0f, 0.5f, 0f)));
+            return new Tween(time)
+                        .SetEasing(Easing.EaseInOutSine)
+                        .For(Wrapper)
+                            .MoveTo(GetSpline())
+                        .For(Transform)
+                            .LookAt(new Vector3(0f, 0.5f, 0f));
         }
     }
 }

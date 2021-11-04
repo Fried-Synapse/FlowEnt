@@ -17,12 +17,8 @@ namespace FriedSynapse.FlowEnt.Demo
         private CameraFlow CameraFlow => cameraFlow;
 
         [SerializeField]
-        private List<Transform> objects;
-        private List<Transform> Objects => objects;
-
-        [SerializeField]
-        private List<Vector3> splinePoints;
-        private List<Vector3> SplinePoints => splinePoints;
+        private List<Phase> phases;
+        private List<Phase> Phases => phases;
 
         [SerializeField]
         private AnimationCurve animationCurve;
@@ -37,8 +33,9 @@ namespace FriedSynapse.FlowEnt.Demo
         {
             new Flow()
                 .QueueDelay(1f)
-                .Queue(GetInitialLookAround(Objects[0]))
-                .At(6f, CameraFlow.GetFlow())
+                .Queue(GetPhase1(Phases[0]))
+                .Queue(GetPhase2(Phases[1]))
+                .At(6f, CameraFlow.GetAnimation())
                 .QueueDelay(1f)
                 .OnCompleted(() => ReplayButton.gameObject.SetActive(true))
                 .Start();
@@ -49,7 +46,7 @@ namespace FriedSynapse.FlowEnt.Demo
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        private Flow GetInitialLookAround(Transform transform)
+        private Flow GetPhase1(Phase phase)
         {
             Vector3 initial = new Vector3(0, 0, 0);
             Vector3 step1 = new Vector3(15, -25, 0);
@@ -59,28 +56,33 @@ namespace FriedSynapse.FlowEnt.Demo
             transform.localEulerAngles = initial;
 
             return new Flow()
-                .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(transform).RotateLocalTo(initial, step1))
+                .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(phase.Objects[0]).RotateLocalTo(initial, step1))
                 .QueueDelay(0.5f)
-                .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(transform).RotateLocalTo(step1, step2))
+                .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(phase.Objects[0]).RotateLocalTo(step1, step2))
                 .QueueDelay(0.5f)
-                .Queue(new Tween(2f).SetEasing(Easing.EaseInOutSine).For(transform).RotateLocalTo(step2, step3));
+                .Queue(new Tween(2f).SetEasing(Easing.EaseInOutSine).For(phase.Objects[0]).RotateLocalTo(step2, step3));
+        }
+
+        private Flow GetPhase2(Phase phase)
+        {
+            return new Flow()
+                .Queue(new Tween(0.3f).For(phase.Objects).Apply(t =>
+                                                            {
+                                                                t.OnStarted(() =>
+                                                                {
+                                                                    t.Item.gameObject.SetActive(true);
+                                                                    t.Item.localPosition = new Vector3(t.Item.localPosition.x, -0.5f, t.Item.localPosition.z);
+                                                                });
+                                                                t.ScaleLocalToY(1f).MoveLocalToY(0f);
+                                                            }))
+                .Queue(new Tween(2f).SetEasing(new BounceEasing(4)).For(phase.Objects).Apply(t => t.MoveLocalToY(Random.Range(2f, 5f))));
         }
 
         #region Editor
 
 #if UNITY_EDITOR
-
         private void OnDrawGizmos()
         {
-            DrawSplines();
-        }
-
-        private void DrawSplines()
-        {
-            if (SplinePoints.Count < 1)
-            {
-                return;
-            }
             CameraFlow.GetSpline().DrawGizmo(Color.white, 2f);
         }
 #endif

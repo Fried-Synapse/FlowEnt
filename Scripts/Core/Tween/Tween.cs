@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -219,6 +220,16 @@ namespace FriedSynapse.FlowEnt
         public TweenMotion<T> For<T>(T element)
         {
             return new TweenMotion<T>(this, element);
+        }
+
+        public TweenMotionArray<T> For<T>(params T[] elements)
+        {
+            return new TweenMotionArray<T>(this, elements);
+        }
+
+        public TweenMotionArray<T> For<T>(List<T> elements)
+        {
+            return new TweenMotionArray<T>(this, elements.ToArray());
         }
 
         #endregion
