@@ -22,14 +22,14 @@ namespace FriedSynapse.FlowEnt
 #if FlowEnt_Debug
 #if UNITY_EDITOR
             const int lineCountToHide = 5;
-#else
-            const int lineCountToHide = 0;
-#endif
             string[] lines = Environment.StackTrace.Split('\n');
             int lineCount = lines.Length - lineCountToHide;
             string[] trimmedLines = new string[lineCount];
             Array.Copy(lines, lineCountToHide, trimmedLines, 0, lineCount);
             stackTrace = string.Join("\n", trimmedLines);
+#else
+            stackTrace = Environment.StackTrace;
+#endif
 #endif
         }
 
