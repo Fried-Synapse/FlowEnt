@@ -2,7 +2,10 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
-    //TODO add tests and docs
+    /// <summary>
+    /// Wrapper class that is used to apply motions to an array of objects of any type using a tween
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class TweenMotionArray<T>
     {
         public TweenMotionArray(Tween tween, T[] array)
@@ -14,6 +17,11 @@ namespace FriedSynapse.FlowEnt
         private Tween Tween { get; }
         private T[] Array { get; }
 
+        /// <summary>
+        /// Provides a callback used to apply all the motions needed(not tween settings because it would apply them for each member of the array).
+        /// </summary>
+        /// <param name="applyCallback"></param>
+        /// <returns></returns>
         public Tween Apply(Action<TweenMotion<T>> applyCallback)
         {
             if (applyCallback == null)

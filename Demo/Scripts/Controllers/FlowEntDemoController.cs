@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -55,27 +56,36 @@ namespace FriedSynapse.FlowEnt.Demo
 
             transform.localEulerAngles = initial;
 
+            Transform character = phase.Objects[0];
+
             return new Flow()
-                .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(phase.Objects[0]).RotateLocalTo(initial, step1))
+                .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(character).RotateLocalTo(initial, step1))
                 .QueueDelay(0.5f)
-                .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(phase.Objects[0]).RotateLocalTo(step1, step2))
+                .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(character).RotateLocalTo(step1, step2))
                 .QueueDelay(0.5f)
-                .Queue(new Tween(2f).SetEasing(Easing.EaseInOutSine).For(phase.Objects[0]).RotateLocalTo(step2, step3));
+                .Queue(new Tween(2f).SetEasing(Easing.EaseInOutSine).For(character).RotateLocalTo(step2, step3))
+                .Queue(new Tween(1f).For(character).ScaleLocalTo(Vector3.one).MoveLocalTo(Vector3.zero));
         }
 
         private Flow GetPhase2(Phase phase)
         {
+            List<Transform> first = phase.Objects.Take(4).ToList();
+            List<Transform> second = phase.Objects.Skip(4).Take(4).ToList();
             return new Flow()
-                .Queue(new Tween(0.3f).For(phase.Objects).Apply(t =>
-                                                            {
-                                                                t.OnStarted(() =>
-                                                                {
-                                                                    t.Item.gameObject.SetActive(true);
-                                                                    t.Item.localPosition = new Vector3(t.Item.localPosition.x, -0.5f, t.Item.localPosition.z);
-                                                                });
-                                                                t.ScaleLocalToY(1f).MoveLocalToY(0f);
-                                                            }))
-                .Queue(new Tween(2f).SetEasing(new BounceEasing(4)).For(phase.Objects).Apply(t => t.MoveLocalToY(Random.Range(2f, 5f))));
+                .Queue(new Tween(0.3f).For(first).Apply(t =>
+                            {
+                                t.OnStarted(() =>
+                                {
+                                    t.Item.gameObject.SetActive(true);
+                                    t.Item.localPosition = new Vector3(t.Item.localPosition.x, -0.5f, t.Item.localPosition.z);
+                                });
+                                t.ScaleLocalToY(1f).MoveLocalToY(0f);
+                            }))
+                .Queue(new Tween(2f).SetEasing(new BounceEasing(5)).For(first).Apply(t => t.MoveLocalToY(Random.Range(2f, 5f))))
+                .QueueDelay(1.7f)
+                .Queue(new Tween(1f).SetEasing(Easing.EaseInCirc).For(first).Apply(t => t.MoveLocalTo(Vector3.zero).OnCompleted(() => t.Item.gameObject.SetActive(false))))
+                .At(2f, new Tween(2f).SetEasing(Easing.EaseOutQuad).For(second).Apply(t => t.ScaleLocalTo(Vector3.one).RotateY(720)))
+                .Queue(new Tween(1f).SetEasing(Easing.EaseInCirc).For(second).Apply(t => t.MoveLocalTo(Vector3.zero).OnCompleted(() => t.Item.gameObject.SetActive(false))));
         }
 
         #region Editor

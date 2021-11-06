@@ -222,11 +222,21 @@ namespace FriedSynapse.FlowEnt
             return new TweenMotion<T>(this, element);
         }
 
+        /// <summary>
+        /// Creates a scope for the object so you can add motions designed sepcifically for that array of objects.
+        /// </summary>
+        /// <param name="elements"></param>
+        /// <typeparam name="T"></typeparam>
         public TweenMotionArray<T> For<T>(params T[] elements)
         {
             return new TweenMotionArray<T>(this, elements);
         }
 
+        /// <summary>
+        /// Creates a scope for the object so you can add motions designed sepcifically for that list of objects.
+        /// </summary>
+        /// <param name="elements"></param>
+        /// <typeparam name="T"></typeparam>
         public TweenMotionArray<T> For<T>(List<T> elements)
         {
             return new TweenMotionArray<T>(this, elements.ToArray());
