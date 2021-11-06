@@ -80,9 +80,18 @@ namespace FriedSynapse.FlowEnt.Demo
 
         #region Editor
 
+
+
+        [SerializeField]
+        private int bounces;
+
+        [Range(0f, 1f)]
+        [SerializeField]
+        private float bounciness;
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
+            new BounceEasing(bounces, bounciness).DrawGizmo(Color.green, 2f);
             CameraFlow.GetSpline().DrawGizmo(Color.white, 2f);
         }
 #endif

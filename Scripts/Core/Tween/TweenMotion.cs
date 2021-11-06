@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Wrapper class that is used to apply motions to an object of any type using a tween
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class TweenMotion<T> :
         IFluentTweenOptionable<TweenMotion<T>>,
         IFluentTweenEventable<TweenMotion<T>>
