@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Demo
 {
     [Serializable]
-    public class PhaseXAnimation : AbstractDemoAnimation
+    public class Phase5Animation : AbstractDemoAnimation
     {
         [SerializeField]
         private List<Light> lights;

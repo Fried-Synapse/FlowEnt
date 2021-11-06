@@ -31,11 +31,18 @@ namespace FriedSynapse.FlowEnt.Demo
         private Phase3Animation Phase3Animation => phase3Animation;
 
         [SerializeField]
-        private PhaseXAnimation phaseXAnimation;
-        private PhaseXAnimation PhaseXAnimation => phaseXAnimation;
+        private Phase4Animation phase4Animation;
+        private Phase4Animation Phase4Animation => phase4Animation;
+
+        [SerializeField]
+        private Phase5Animation phase5Animation;
+        private Phase5Animation Phase5Animation => phase5Animation;
 
         private void Awake()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            WebGLInput.captureAllKeyboardInput = false;
+#endif
             ReplayButton.onClick.AddListener(Replay);
         }
 
@@ -46,8 +53,9 @@ namespace FriedSynapse.FlowEnt.Demo
                 .At(6f, CameraAnimation.GetAnimation())
                 .At(6f, Phase1Animation.GetAnimation())
                 .At(11f, Phase2Animation.GetAnimation())
-                .At(15f, Phase3Animation.GetAnimation())
-                .At(35f, PhaseXAnimation.GetAnimation())
+                .At(17f, Phase3Animation.GetAnimation())
+                .At(23f, Phase4Animation.GetAnimation())
+                .At(35f, Phase5Animation.GetAnimation())
                 .QueueDelay(3f)
                 .OnCompleted(() => ReplayButton.gameObject.SetActive(true))
                 .Start();

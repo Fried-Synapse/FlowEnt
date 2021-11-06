@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Demo
 {
     [Serializable]
-    public class CharacterAnimation : AbstractDemoAnimation, IDraw
+    public class CharacterAnimation : AbstractDemoAnimation, IEditorDrawer
     {
         private readonly Vector3 Initial = new Vector3(0, -180, 0);
         private readonly Vector3 Step1 = new Vector3(-15, -205, 0);
@@ -36,12 +36,14 @@ namespace FriedSynapse.FlowEnt.Demo
                     .Queue(new Tween(3f).SetEasing(Easing.EaseInOutCubic).For(Character).MoveLocalToX(10f))
                     .At(2f, new Tween(1f).SetEasing(Easing.EaseInOutCubic).For(Character).RotateY(180)))
                 .QueueDelay(0.5f)
-                .Queue(new Tween().SetEasing(Easing.EaseInOutCubic).For(Character).MoveLocalTo(new Vector3(10f, 3f, 3f)).LookAt(Vector3.zero))
+                .Queue(new Tween().SetEasing(Easing.EaseInOutCubic).For(Character).MoveTo(SplinePoints[0]).LookAt(Vector3.zero))
                 .Queue(new Tween(15f).For(Character).MoveTo(GetSpline()).LookAt(Vector3.zero));
 
+#if UNITY_EDITOR
         public void OnDraw()
         {
             GetSpline().DrawGizmo(Color.black, 2f);
         }
+#endif
     }
 }

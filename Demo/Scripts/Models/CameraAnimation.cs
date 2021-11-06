@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Demo
 {
     [Serializable]
-    public class CameraAnimation : AbstractDemoAnimation, IDraw
+    public class CameraAnimation : AbstractDemoAnimation, IEditorDrawer
     {
         private const float Time = 30f;
 
@@ -31,9 +31,11 @@ namespace FriedSynapse.FlowEnt.Demo
                 .For(Transform)
                     .LookAt(new Vector3(0f, 0.5f, 0f));
 
+#if UNITY_EDITOR
         public void OnDraw()
         {
             GetSpline().DrawGizmo(Color.white, 2f);
         }
+#endif
     }
 }
