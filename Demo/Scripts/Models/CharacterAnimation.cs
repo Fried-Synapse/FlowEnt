@@ -36,8 +36,8 @@ namespace FriedSynapse.FlowEnt.Demo
                     .Queue(new Tween(3f).SetEasing(Easing.EaseInOutCubic).For(Character).MoveLocalToX(10f))
                     .At(2f, new Tween(1f).SetEasing(Easing.EaseInOutCubic).For(Character).RotateY(180)))
                 .QueueDelay(0.5f)
-                .Queue(new Tween().SetEasing(Easing.EaseInOutCubic).For(Character).MoveTo(SplinePoints[0]).LookAt(Vector3.zero))
-                .Queue(new Tween(15f).For(Character).MoveTo(GetSpline()).LookAt(Vector3.zero));
+                .Queue(new Tween(2.5f).SetEasing(Easing.EaseInOutCubic).For(Character).MoveTo(SplinePoints[0]).LookAt(Vector3.zero))
+                .Queue(new Tween(18f).For(Character).MoveTo(GetSpline()).LookAt(Vector3.zero));
 
 #if UNITY_EDITOR
         public void OnDraw()

@@ -53,9 +53,9 @@ namespace FriedSynapse.FlowEnt.Demo
                 .At(6f, CameraAnimation.GetAnimation())
                 .At(6f, Phase1Animation.GetAnimation())
                 .At(11f, Phase2Animation.GetAnimation())
-                .At(17f, Phase3Animation.GetAnimation())
-                .At(23f, Phase4Animation.GetAnimation())
-                .At(35f, Phase5Animation.GetAnimation())
+                .At(16.5f, Phase3Animation.GetAnimation())
+                .At(27f, Phase4Animation.GetAnimation())
+                .At(36f, Phase5Animation.GetAnimation())
                 .QueueDelay(3f)
                 .OnCompleted(() => ReplayButton.gameObject.SetActive(true))
                 .Start();
