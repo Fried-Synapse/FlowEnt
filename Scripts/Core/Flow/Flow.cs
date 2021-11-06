@@ -70,15 +70,7 @@ namespace FriedSynapse.FlowEnt
         /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public Flow Start()
         {
-            if (playState != PlayState.Building)
-            {
-                throw new FlowException(this, "Flow already started.");
-            }
-
-            if (autoStartHelper != null)
-            {
-                CancelAutoStart();
-            }
+            PreStart();
             StartInternal();
             return this;
         }
@@ -89,6 +81,14 @@ namespace FriedSynapse.FlowEnt
         /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public async Task<Flow> StartAsync()
         {
+            PreStart();
+            StartInternal();
+            await new AwaitableAnimation(this);
+            return this;
+        }
+
+        private void PreStart()
+        {
             if (playState != PlayState.Building)
             {
                 throw new FlowException(this, "Flow already started.");
@@ -98,13 +98,15 @@ namespace FriedSynapse.FlowEnt
             {
                 CancelAutoStart();
             }
-            StartInternal();
-            await new AwaitableAnimation(this);
-            return this;
         }
 
         internal override void StartInternal(float deltaTime = 0)
         {
+            if (lastQueuedUpdatableWrapper == null)
+            {
+                throw new FlowException(this, "Cannot start empty flow.");
+            }
+
             playState = PlayState.Waiting;
 
             if (skipFrames > 0)
@@ -193,9 +195,17 @@ namespace FriedSynapse.FlowEnt
 
             while (nextTimeIndexedUpdatableWrapper != null && time >= nextTimeIndexedUpdatableWrapper.timeIndex)
             {
+
                 ++runningUpdatableWrappersCount;
                 AbstractUpdatable updatable = nextTimeIndexedUpdatableWrapper.GetUpdatable();
-                runningUpdatableWrappers.Add(updatable.Id, nextTimeIndexedUpdatableWrapper);
+                try
+                {
+                    runningUpdatableWrappers.Add(updatable.Id, nextTimeIndexedUpdatableWrapper);
+                }
+                catch (System.Exception ex)
+                {
+
+                }
                 updatable.StartInternal(time - nextTimeIndexedUpdatableWrapper.timeIndex.Value);
 
                 if (nextTimeIndexedUpdatableWrapperIndex < updatableWrappersOrderedByTimeIndexed.Length)

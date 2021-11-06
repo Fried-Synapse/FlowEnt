@@ -44,7 +44,15 @@ namespace FriedSynapse.FlowEnt
             float distanceT = t * distance;
             int segment = GetSegment(distanceT, 0, distanceTravelled.Length - 1);
             float segmentDistance = distanceT - distanceTravelled[segment];
-            float segmentT = segmentDistance / distances[segment];
+            float segmentT;
+            if (distances[segment] == 0)
+            {
+                segmentT = 0;
+            }
+            else
+            {
+                segmentT = segmentDistance / distances[segment];
+            }
             float normalisedT = (segment + segmentT) / resolution;
             return uniformableSpline.GetPoint(normalisedT);
         }
