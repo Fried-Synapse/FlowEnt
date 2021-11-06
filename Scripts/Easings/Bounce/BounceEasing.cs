@@ -5,29 +5,39 @@ namespace FriedSynapse.FlowEnt
 {
     public class BounceEasing : IEasing
     {
-        public BounceEasing(int bounces, float bounciness = 1f)
+        private const int MinBounces = 1;
+        private const int MaxBounces = 20;
+        private const float MinBounciness = 0f;
+        private const float MaxBounciness = 0.7f;
+
+        public BounceEasing(int bounces, float bounciness = 0.5f)
         {
-            if (bounces < 1)
+            if (bounces < MinBounces || MaxBounces < bounces)
             {
-                throw new ArgumentException("The number of bounces has to be greater than 1.");
+                throw new ArgumentException($"The number of bounces has to be between {MinBounces} and {MaxBounces}.");
             }
 
-            if (bounciness < 0 || bounciness > 1)
+            if (bounciness < MinBounciness || MaxBounciness < bounciness)
             {
-                throw new ArgumentException("The bounciness has to be between 0 and 1.");
+                throw new ArgumentException($"The bounciness has to be between {MinBounciness} and {MaxBounciness}.");
             }
 
             this.bounces = bounces;
+            this.bounciness = bounciness;
 
             peaks = new float[bounces];
+            peakSum = (Mathf.Pow(bounciness, bounces) - 1) / (bounciness - 1);
+            for (int i = 0; i < bounces; i++)
+            {
+                peaks[i] = Mathf.Pow(bounciness, i);
+            }
+
             times = new float[bounces];
             startTimes = new float[bounces];
-            bouncesSum = bounces * (1 + bounces) / 2;
             float segmentStartTime = 0f;
             for (int i = 0; i < bounces; i++)
             {
-                float segmentTime = (bounces - i) / (float)bouncesSum;
-                peaks[i] = (1 - segmentStartTime) * Mathf.Pow(bounciness, i);
+                float segmentTime = peaks[i] / peakSum;
                 times[i] = segmentTime;
                 startTimes[i] = segmentStartTime;
                 segmentStartTime += segmentTime;
@@ -35,20 +45,22 @@ namespace FriedSynapse.FlowEnt
         }
 
         private readonly int bounces;
+        private readonly float bounciness;
         private readonly float[] peaks;
         private readonly float[] times;
         private readonly float[] startTimes;
-        private readonly int bouncesSum;
+        private readonly float peakSum;
 
         public float GetValue(float t)
         {
-            float sum = (1 - t) * bouncesSum;
-            int segment = bounces - (int)((-1f + Mathf.Sqrt(1f + (8f * sum))) / 2f) - 1;
-            if (segment < 0)
+            float sum = t * peakSum;
+            float top = Mathf.Log((1f - bounciness) * ((1f / (1f - bounciness)) - sum));
+            int segment = (int)(top / Mathf.Log(bounciness));
+            //HACK due to the fact that the result is flawed because of the lack of precision if we get a NaN we assume we're on the last bit.
+            if (segment < 0 || bounces <= segment || float.IsNaN(top))
             {
-                segment = 0;
+                segment = bounces - 1;
             }
-
             float time = times[segment];
             float root = ((2 * t) - time - (2 * startTimes[segment])) / time;
             return peaks[segment] * (-(root * root) + 1);
