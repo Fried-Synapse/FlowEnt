@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using FriedSynapse.FlowEnt.Motions.Renderers;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Demo
@@ -8,19 +7,6 @@ namespace FriedSynapse.FlowEnt.Demo
     [Serializable]
     public class Phase2Animation : AbstractDemoAnimation
     {
-        private class BlowUpMotion : AlphaToMotion<Renderer>
-        {
-            public BlowUpMotion(Renderer item) : base(item, 0f)
-            {
-            }
-
-            public override void OnUpdate(float t)
-            {
-                const int multiplier = 5;
-                base.OnUpdate(Mathf.Clamp01((t * multiplier) - (multiplier - 1)));
-            }
-        }
-
         [SerializeField]
         private List<Transform> blowers;
         private List<Transform> Blowers => blowers;
@@ -35,7 +21,7 @@ namespace FriedSynapse.FlowEnt.Demo
         private AbstractAnimation GetAnimation(Transform transform)
             => new Tween(3f)
                 .For(transform).MoveLocalToY(2f).ScaleLocalTo(Vector3.one * 5f)
-                .Apply(new BlowUpMotion(transform.GetComponent<Renderer>()))
+                .For(transform.GetComponent<MeshRenderer>()).LateAlphaTo(0, 0.8f)
                 .OnCompleted(() => transform.gameObject.SetActive(false));
     }
 }

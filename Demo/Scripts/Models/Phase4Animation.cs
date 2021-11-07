@@ -29,7 +29,9 @@ namespace FriedSynapse.FlowEnt.Demo
                     })
                     .Queue(new Tween(Random.Range(3f, 4f)).For(critter).MoveLocalTo(firstDestination).OrientToPath())
                     .Queue(new Tween(Random.Range(2f, 3f)).For(critter).MoveLocalTo(secondDestination).OrientToPath())
-                    .Queue(new Tween(5f).For(critter).MoveLocalTo(new Vector3(100f, 0f, 0)).OrientToPath());
+                    .Queue(new Tween(4f).For(critter).MoveLocalTo(new Vector3(100f, 0f, 0)).OrientToPath()
+                                        .For(critter.GetComponent<MeshRenderer>()).LateAlphaTo(0f, 0.8f))
+                    .OnCompleted(() => critter.gameObject.SetActive(false));
 
                 flow.At(Random.Range(0f, 0.5f), critterFlow);
             }

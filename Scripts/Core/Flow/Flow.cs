@@ -198,16 +198,8 @@ namespace FriedSynapse.FlowEnt
 
                 ++runningUpdatableWrappersCount;
                 AbstractUpdatable updatable = nextTimeIndexedUpdatableWrapper.GetUpdatable();
-                try
-                {
-                    runningUpdatableWrappers.Add(updatable.Id, nextTimeIndexedUpdatableWrapper);
-                }
-                catch (System.Exception ex)
-                {
-
-                }
+                runningUpdatableWrappers.Add(updatable.Id, nextTimeIndexedUpdatableWrapper);
                 updatable.StartInternal(time - nextTimeIndexedUpdatableWrapper.timeIndex.Value);
-
                 if (nextTimeIndexedUpdatableWrapperIndex < updatableWrappersOrderedByTimeIndexed.Length)
                 {
                     nextTimeIndexedUpdatableWrapper = updatableWrappersOrderedByTimeIndexed[nextTimeIndexedUpdatableWrapperIndex++];

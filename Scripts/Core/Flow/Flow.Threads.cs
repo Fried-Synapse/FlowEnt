@@ -22,16 +22,31 @@ namespace FriedSynapse.FlowEnt
             animation.updateController = this;
         }
 
-        private void AddOrQueue(object updatableObject)
+        private void AddOrQueue(AbstractUpdatable updatable)
         {
             if (lastQueuedUpdatableWrapper == null)
             {
-                lastQueuedUpdatableWrapper = new UpdatableWrapper(updatableObject, updatableWrappersQueue.Count, 0);
+                lastQueuedUpdatableWrapper = new UpdatableWrapper(updatable, updatableWrappersQueue.Count, 0);
                 updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
             }
             else
             {
-                UpdatableWrapper animationWrapper = new UpdatableWrapper(updatableObject, lastQueuedUpdatableWrapper.index);
+                UpdatableWrapper animationWrapper = new UpdatableWrapper(updatable, lastQueuedUpdatableWrapper.index);
+                lastQueuedUpdatableWrapper.next = animationWrapper;
+                lastQueuedUpdatableWrapper = animationWrapper;
+            }
+        }
+
+        private void AddOrQueue(Func<AbstractUpdatable> updatableGetter)
+        {
+            if (lastQueuedUpdatableWrapper == null)
+            {
+                lastQueuedUpdatableWrapper = new UpdatableWrapper(updatableGetter, updatableWrappersQueue.Count, 0);
+                updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
+            }
+            else
+            {
+                UpdatableWrapper animationWrapper = new UpdatableWrapper(updatableGetter, lastQueuedUpdatableWrapper.index);
                 lastQueuedUpdatableWrapper.next = animationWrapper;
                 lastQueuedUpdatableWrapper = animationWrapper;
             }
@@ -137,7 +152,7 @@ namespace FriedSynapse.FlowEnt
                 return animation;
             }
 
-            AddOrQueue((Func<AbstractAnimation>)createAnimation);
+            AddOrQueue(createAnimation);
 
             return this;
         }
@@ -224,7 +239,7 @@ namespace FriedSynapse.FlowEnt
                 return animation;
             }
 
-            lastQueuedUpdatableWrapper = new UpdatableWrapper((Func<AbstractAnimation>)createAnimation, updatableWrappersQueue.Count, timeIndex);
+            lastQueuedUpdatableWrapper = new UpdatableWrapper(createAnimation, updatableWrappersQueue.Count, timeIndex);
             updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
 
             return this;

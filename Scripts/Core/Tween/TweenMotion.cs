@@ -4,11 +4,17 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
+    internal interface ITweenProxy
+    {
+        Tween Tween { get; }
+    }
+
     /// <summary>
     /// Wrapper class that is used to apply motions to an object of any type using a tween
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class TweenMotion<T> :
+        ITweenProxy,
         IFluentTweenOptionable<TweenMotion<T>>,
         IFluentTweenEventable<TweenMotion<T>>
     {
@@ -20,6 +26,7 @@ namespace FriedSynapse.FlowEnt
 
         public Tween Tween { get; }
         public T Item { get; }
+
         public static implicit operator Tween(TweenMotion<T> motionWrapper) => motionWrapper.Tween;
 
         /// <inheritdoc cref="Tween.Apply"/>
