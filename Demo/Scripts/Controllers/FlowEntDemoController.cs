@@ -11,6 +11,14 @@ namespace FriedSynapse.FlowEnt.Demo
         private Button ReplayButton => replayButton;
 
         [SerializeField]
+        private Light worldLight;
+        private Light WorldLight => worldLight;
+
+        [SerializeField]
+        private Transform ground;
+        private Transform Ground => ground;
+
+        [SerializeField]
         private CameraAnimation cameraAnimation;
         private CameraAnimation CameraAnimation => cameraAnimation;
 
@@ -55,11 +63,17 @@ namespace FriedSynapse.FlowEnt.Demo
                 .At(11f, Phase2Animation.GetAnimation())
                 .At(16.5f, Phase3Animation.GetAnimation())
                 .At(27f, Phase4Animation.GetAnimation())
+                .At(32f, TurnOffLights())
                 .At(36f, Phase5Animation.GetAnimation())
                 .QueueDelay(3f)
                 .OnCompleted(() => ReplayButton.gameObject.SetActive(true))
                 .Start();
         }
+
+        private AbstractAnimation TurnOffLights() =>
+            new Tween(4f).SetEasing(Easing.EaseInOutSine)
+                .For(WorldLight).IntensityTo(0f)
+                .For(Ground.GetComponent<MeshRenderer>()).MaterialColorTo("_EmissionColor", Color.clear);
 
         private void Replay()
         {

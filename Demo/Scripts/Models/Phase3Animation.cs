@@ -22,9 +22,9 @@ namespace FriedSynapse.FlowEnt.Demo
             => new Flow()
                 .OnStarted(() => transform.gameObject.SetActive(true))
                 .Queue(new Tween(0.5f).For(transform.GetComponent<MeshRenderer>()).AlphaTo(0f, 1f))
-                .Queue(new Tween(1f).For(transform).MoveLocalTo(direction))
-                .Queue(new Tween(2f).SetLoopCount(3).SetLoopType(LoopType.PingPong).For(transform).MoveLocalTo(-direction))
-                .Queue(new Tween(1f).For(transform).MoveLocalTo(Vector3.zero))
+                .Queue(new Tween(1f).SetEasing(Easing.EaseOutQuad).For(transform).MoveLocalTo(direction))
+                .Queue(new Tween(2f).SetEasing(Easing.EaseInOutQuad).SetLoopCount(3).SetLoopType(LoopType.PingPong).For(transform).MoveLocalTo(-direction))
+                .Queue(new Tween(1f).SetEasing(Easing.EaseInQuad).For(transform).MoveLocalTo(Vector3.zero))
                 .Queue(new Tween(0.5f).For(transform.GetComponent<MeshRenderer>()).AlphaTo(0f))
                 .OnCompleted(() => transform.gameObject.SetActive(false));
     }

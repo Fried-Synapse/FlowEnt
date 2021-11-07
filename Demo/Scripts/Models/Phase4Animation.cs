@@ -25,13 +25,14 @@ namespace FriedSynapse.FlowEnt.Demo
                     {
                         critter.gameObject.SetActive(true);
                         critter.LookAt(firstDestination);
-                        return new Tween(1f).For(critter).MoveLocalToY(-0.5f, 0f).ScaleLocalToY(0f, 1f);
+                        return new Tween(0.5f).For(critter).MoveLocalToY(-0.5f, 0f).ScaleLocalToY(0f, 1f);
                     })
-                    .Queue(new Tween(Random.Range(3f, 4f)).For(critter).MoveLocalTo(firstDestination).OrientToPath())
-                    .Queue(new Tween(Random.Range(2f, 3f)).For(critter).MoveLocalTo(secondDestination).OrientToPath())
-                    .Queue(new Tween(4f).For(critter).MoveLocalTo(new Vector3(100f, 0f, 0)).OrientToPath()
-                                        .For(critter.GetComponent<MeshRenderer>()).LateAlphaTo(0f, 0.8f))
-                    .OnCompleted(() => critter.gameObject.SetActive(false));
+                    .Queue(new Tween(Random.Range(3f, 4f)).SetEasing(Easing.EaseOutQuad).For(critter).MoveLocalTo(firstDestination).OrientToPath())
+                    .Queue(new Tween(Random.Range(2f, 3f)).SetEasing(Easing.EaseOutQuad).For(critter).MoveLocalTo(secondDestination).OrientToPath())
+                    .Queue(new Flow()
+                            .Queue(new Tween(4f).SetEasing(Easing.EaseOutQuad).For(critter).MoveLocalTo(new Vector3(100f, 0f, 0)).OrientToPath()
+                                        .For(critter.GetComponent<MeshRenderer>()).LateAlphaTo(-1f, 0.4f))
+                            .At(2f, new Tween(0f).OnCompleted(() => critter.gameObject.SetActive(false))));
 
                 flow.At(Random.Range(0f, 0.5f), critterFlow);
             }
