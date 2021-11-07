@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.RectTransforms;
+using FriedSynapse.FlowEnt.Motions.UI.RectTransforms;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt

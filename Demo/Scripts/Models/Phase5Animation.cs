@@ -17,7 +17,7 @@ namespace FriedSynapse.FlowEnt.Demo
 
         public override AbstractAnimation GetAnimation()
         {
-            return new Tween(1f).SetEasing(new AnimationCurveEasing(Flicker)).For(Lights).Apply(l => l.IntensityTo(l.Item.gameObject.name == "Centre" ? 5f : 7f));
+            return new Tween(1f).SetEasing(new AnimationCurveEasing(Flicker)).For(Lights).Apply(l => l.IntensityTo(l.Item.gameObject.name == "Centre" ? 5f : 8f));
         }
     }
 }

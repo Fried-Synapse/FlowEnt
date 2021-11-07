@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt
     }
 
     /// <summary>
-    /// Easing list based on https://easings.net/.
+    /// Easing list based on https://easings.net/ and some custom ones.
     /// </summary>
     public enum Easing
     {
@@ -41,5 +41,9 @@ namespace FriedSynapse.FlowEnt
         EaseInBounce,
         EaseOutBounce,
         EaseInOutBounce,
+        /// <summary>Creates a bounce easing with default values.</summary>
+        Bounce,
+        /// <summary>Creates a shake easing with default values.</summary>
+        Shake
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FriedSynapse.FlowEnt
+namespace FriedSynapse.FlowEnt.Motions.UI.RectTransforms
 {
     public class ScaleSizeDeltaToMotion : AbstractMotion<RectTransform>
     {

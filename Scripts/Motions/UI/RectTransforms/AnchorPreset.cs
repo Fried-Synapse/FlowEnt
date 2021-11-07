@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FriedSynapse.FlowEnt.Motions.RectTransforms
+namespace FriedSynapse.FlowEnt.Motions.UI.RectTransforms
 {
     public enum AnchorPreset
     {

@@ -11,6 +11,10 @@ namespace FriedSynapse.FlowEnt
             Vector3[] points = new Vector3[Mathf.CeilToInt(1f / step) + 2];
             float t = 0f;
             int i = 0;
+            if (color == default)
+            {
+                color = Color.white;
+            }
             for (; t <= 1f; t += step, i++)
             {
                 points[i] = spline.GetPoint(t);

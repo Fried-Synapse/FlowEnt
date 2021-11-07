@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.Graphics;
+using FriedSynapse.FlowEnt.Motions.UI.Graphics;
 using UnityEngine;
 using UnityEngine.UI;
 

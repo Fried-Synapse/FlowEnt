@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FriedSynapse.FlowEnt.Motions.RectTransforms
+namespace FriedSynapse.FlowEnt.Motions.UI.RectTransforms
 {
     public class MoveAnchoredPositionSplineMotion : AbstractMotion<RectTransform>
     {

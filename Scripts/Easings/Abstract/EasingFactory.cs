@@ -70,6 +70,10 @@ namespace FriedSynapse.FlowEnt
                     return new EaseOutBounce();
                 case Easing.EaseInOutBounce:
                     return new EaseInOutBounce();
+                case Easing.Bounce:
+                    return new BounceEasing();
+                case Easing.Shake:
+                    return new ShakeEasing();
                 default:
                     throw new ArgumentException($"Unknown easing {easing}");
             }

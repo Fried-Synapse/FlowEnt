@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.CanvasGroups;
+using FriedSynapse.FlowEnt.Motions.UI.CanvasGroups;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
