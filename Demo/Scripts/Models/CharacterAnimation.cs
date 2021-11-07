@@ -24,6 +24,7 @@ namespace FriedSynapse.FlowEnt.Demo
 
         public override AbstractAnimation GetAnimation()
             => new Flow()
+                .SetName("Character flow")
                 .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(Character).RotateLocalTo(Initial, Step1))
                 .QueueDelay(0.5f)
                 .Queue(new Tween(1.5f).SetEasing(Easing.EaseInOutSine).For(Character).RotateLocalTo(Step1, Step2))

@@ -34,6 +34,11 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
+        /// <summary>
+        /// Returns weather the <see cref="FlowEntController"/> has an instance or not.
+        /// </summary>
+        public static bool HasInstance => instance != null;
+
         private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
 
         private float timeScale = 1;
@@ -82,7 +87,7 @@ namespace FriedSynapse.FlowEnt
                 try
                 {
 #endif
-                    index.UpdateInternal(deltaTime);
+                index.UpdateInternal(deltaTime);
 #if FlowEnt_Debug
                 }
                 catch (Exception ex)

@@ -54,6 +54,12 @@ namespace FriedSynapse.FlowEnt
         private float remainingTime;
         private LoopDirection loopDirection;
 
+        public Tween SetName(string name)
+        {
+            Name = name;
+            return this;
+        }
+
         #region Lifecycle
 
         /// <summary>

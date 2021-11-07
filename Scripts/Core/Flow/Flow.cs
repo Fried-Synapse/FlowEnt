@@ -48,6 +48,12 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        public Flow SetName(string name)
+        {
+            Name = name;
+            return this;
+        }
+
         #region IUpdateController
 
         void IUpdateController.SubscribeToUpdate(AbstractUpdatable updatable)
@@ -195,7 +201,6 @@ namespace FriedSynapse.FlowEnt
 
             while (nextTimeIndexedUpdatableWrapper != null && time >= nextTimeIndexedUpdatableWrapper.timeIndex)
             {
-
                 ++runningUpdatableWrappersCount;
                 AbstractUpdatable updatable = nextTimeIndexedUpdatableWrapper.GetUpdatable();
                 runningUpdatableWrappers.Add(updatable.Id, nextTimeIndexedUpdatableWrapper);

@@ -12,25 +12,16 @@ namespace FriedSynapse.FlowEnt.Editor
         [MenuItem("FlowEnt/Settings", false, 100)]
         private static void Init()
         {
-            FlowEntSettingsWindow window = GetWindow<FlowEntSettingsWindow>("Release");
+            FlowEntSettingsWindow window = GetWindow<FlowEntSettingsWindow>("FlowEnt Settings");
             window.Show();
         }
 
         private void OnGUI()
         {
-            ShowHeader();
+            FlowEntEditorGUILayout.Header("FlowEnt Settings");
             EditorGUI.indentLevel++;
             ShowDebug();
             EditorGUI.indentLevel--;
-        }
-
-        private void ShowHeader()
-        {
-            GUIStyle headStyle = new GUIStyle(EditorStyles.largeLabel);
-            headStyle.fontSize = 30;
-            headStyle.fontStyle = FontStyle.Bold;
-            headStyle.alignment = TextAnchor.MiddleCenter;
-            EditorGUILayout.LabelField("FlowEnt Settings", headStyle, GUILayout.Height(50f));
         }
 
         private void ShowDebug()

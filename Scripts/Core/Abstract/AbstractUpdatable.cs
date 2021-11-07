@@ -53,6 +53,11 @@ namespace FriedSynapse.FlowEnt
         /// </remarks>
         public ulong Id { get; }
 
+        /// <summary>
+        /// A name that can be used to identify the animation. Empty by default.
+        /// </summary>
+        public string Name { get; set; }
+
         internal IUpdateController updateController;
 
         #region Events
