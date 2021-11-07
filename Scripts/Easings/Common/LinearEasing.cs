@@ -1,4 +1,4 @@
-namespace FriedSynapse.FlowEnt
+namespace FriedSynapse.FlowEnt.Easings
 {
     public class LinearEasing : IEasing
     {

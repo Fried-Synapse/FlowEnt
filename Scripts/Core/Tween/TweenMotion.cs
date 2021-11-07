@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using FriedSynapse.FlowEnt.Easings;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt

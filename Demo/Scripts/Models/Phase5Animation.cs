@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FriedSynapse.FlowEnt.Easings;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Demo

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FriedSynapse.FlowEnt
+namespace FriedSynapse.FlowEnt.Easings
 {
     public abstract class AbstractOscilationEasing : IEasing
     {

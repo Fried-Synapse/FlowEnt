@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace FriedSynapse.FlowEnt
+namespace FriedSynapse.FlowEnt.Easings
 {
     public static class EasingExtensions
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace FriedSynapse.FlowEnt
+namespace FriedSynapse.FlowEnt.Easings
 {
     public static class EasingFactory
     {

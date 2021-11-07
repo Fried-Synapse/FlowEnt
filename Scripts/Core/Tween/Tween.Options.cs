@@ -1,4 +1,5 @@
 using System;
+using FriedSynapse.FlowEnt.Easings;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
