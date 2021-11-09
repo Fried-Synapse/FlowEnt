@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private const string FlowEntDebug = "FlowEnt_Debug";
 
         [MenuItem("FlowEnt/Settings", false, 100)]
-        private static void Init()
+        public static void Init()
         {
             FlowEntSettingsWindow window = GetWindow<FlowEntSettingsWindow>("FlowEnt Settings");
             window.Show();

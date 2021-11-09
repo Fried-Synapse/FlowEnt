@@ -6,8 +6,6 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public class FlowEntInspectorWindow : EditorWindow
     {
-        private const string DefaultColour = "#AAA";
-
         [MenuItem("FlowEnt/Inspector", false, 101)]
         private static void Init()
         {
@@ -16,22 +14,13 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         private Vector2 motionListScrollPosition;
-        private GUIStyle labelStyle;
-        private GUIStyle foldoutStyle;
         private bool wasPaused;
         private Dictionary<ulong, bool> animationFoldouts = new Dictionary<ulong, bool>();
         private bool collapseFlowsByDefault;
-        private bool collapseTweensByDefault = true;
         private int flowCount;
         private int tweenCount;
-
-        private void Awake()
-        {
-            labelStyle = new GUIStyle(EditorStyles.label)
-            {
-                richText = true
-            };
-        }
+        private float? timeScale;
+        private float? maxTimeScale;
         private void Update()
         {
             if (EditorApplication.isPaused != wasPaused)
@@ -54,7 +43,7 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUI.indentLevel++;
             if (!FlowEntController.HasInstance)
             {
-                EditorGUILayout.HelpBox("Inspector only available in play mode", MessageType.Info);
+                EditorGUILayout.HelpBox("Inspector only available in play mode when animations are playing.", MessageType.Info);
                 EditorGUI.indentLevel--;
                 return;
             }
@@ -82,31 +71,39 @@ namespace FriedSynapse.FlowEnt.Editor
                 FlowEntController.Instance.Stop();
             }
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            if (timeScale == null)
+            {
+                timeScale = FlowEntController.Instance.TimeScale;
+            }
+            if (maxTimeScale == null)
+            {
+                maxTimeScale = timeScale * 2f;
+            }
+            timeScale = EditorGUILayout.Slider("Time scale", timeScale.Value, 0f, maxTimeScale.Value);
+            maxTimeScale = EditorGUILayout.FloatField(maxTimeScale.Value, GUILayout.Width(50));
+            FlowEntController.Instance.TimeScale = timeScale.Value;
+            EditorGUILayout.EndHorizontal();
         }
 
         private void ShowMotionList()
         {
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"<color={DefaultColour}><b>Flow count: {flowCount}</b></color>", labelStyle, GUILayout.Width(200));
+            EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>Flow count: {flowCount}</b></color>", FlowEntEditorGUILayout.LabelStyle, GUILayout.Width(200f));
             collapseFlowsByDefault = EditorGUILayout.Toggle("Collapse flows by default", collapseFlowsByDefault);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"<color={DefaultColour}><b>Tween count: {tweenCount}</b></color>", labelStyle, GUILayout.Width(200));
-            collapseTweensByDefault = EditorGUILayout.Toggle("Collapse tweens by default", collapseTweensByDefault);
+            EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>Tween count: {tweenCount}</b></color>", FlowEntEditorGUILayout.LabelStyle, GUILayout.Width(200f));
             EditorGUILayout.EndHorizontal();
 
             flowCount = 0;
             tweenCount = 0;
 
-            motionListScrollPosition = EditorGUILayout.BeginScrollView(motionListScrollPosition);
+            motionListScrollPosition = EditorGUILayout.BeginScrollView(motionListScrollPosition, GUILayout.Height(position.height - 150f));
             ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex());
             EditorGUILayout.EndScrollView();
-        }
-
-        private void LabelField(IMotion motion)
-        {
-            EditorGUILayout.LabelField($"<color={DefaultColour}><b>{motion.GetType().Name}</b> - {motion.GetType().FullName}</color>", labelStyle);
         }
 
         private bool UpdatableFoldout(AbstractUpdatable updatable, string name, bool collapseByDefault)
@@ -118,8 +115,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             bool shouldShow = animationFoldouts[updatable.Id];
             EditorGUILayout.BeginHorizontal();
-            string updatableName = updatable.Name == null ? string.Empty : $" - {updatable.Name}";
-            shouldShow = EditorGUILayout.Foldout(shouldShow, $"{name} [{updatable.Id}]{updatableName}");
+            shouldShow = EditorGUILayout.Foldout(shouldShow, $"{name} {updatable}");
             EditorGUILayout.EndHorizontal();
             animationFoldouts[updatable.Id] = shouldShow;
 
@@ -143,15 +139,13 @@ namespace FriedSynapse.FlowEnt.Editor
                         break;
                     case Tween tween:
                         tweenCount++;
-                        if (UpdatableFoldout(tween, "Tween", collapseTweensByDefault))
+                        EditorGUILayout.BeginHorizontal();
+                        FlowEntEditorGUILayout.LabelField(tween, "Tween");
+                        if (GUILayout.Button("ⓘ", GUILayout.Width(50)))
                         {
-                            EditorGUI.indentLevel++;
-                            foreach (IMotion motion in tween.GetFieldValue<IMotion[]>("motions"))
-                            {
-                                LabelField(motion);
-                            }
-                            EditorGUI.indentLevel--;
+                            TweenInspectorWindow.Show(tween);
                         }
+                        EditorGUILayout.EndHorizontal();
                         break;
                 }
                 index = index.GetFieldValue<AbstractUpdatable>("next");

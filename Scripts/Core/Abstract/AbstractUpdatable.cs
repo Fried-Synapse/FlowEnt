@@ -78,6 +78,9 @@ namespace FriedSynapse.FlowEnt
         public virtual void Stop(bool triggerOnCompleted = false)
         {
         }
+
+        public override string ToString()
+            => $"[Id: {Id}{(Name == null ? string.Empty : $", Name: {Name}")}]";
     }
 
     internal class UpdatableAnchor : AbstractUpdatable
