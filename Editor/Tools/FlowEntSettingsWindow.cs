@@ -34,6 +34,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
             if (isDebugging != wasDebugging)
             {
+                if (EditorApplication.isPlaying)
+                {
+                    EditorApplication.isPlaying = false;
+                }
+
                 if (isDebugging)
                 {
                     definesList.Add(FlowEntDebug);

@@ -10,62 +10,75 @@ namespace FriedSynapse.FlowEnt.Editor
         private static void Init()
         {
             FlowEntInspectorWindow window = GetWindow<FlowEntInspectorWindow>("FlowEnt Inspector");
+            window.titleContent = new GUIContent("FlowEnt Inspector", Resources.Load<Texture2D>("Logo"));
             window.Show();
         }
 
         private Vector2 motionListScrollPosition;
-        private bool wasPaused;
-        private Dictionary<ulong, bool> animationFoldouts = new Dictionary<ulong, bool>();
-        private bool collapseFlowsByDefault;
         private int flowCount;
         private int tweenCount;
         private float? timeScale;
         private float? maxTimeScale;
+        private int skipFrames;
+        private string search;
         private void Update()
         {
-            if (EditorApplication.isPaused != wasPaused)
-            {
-                ResetData();
-            }
-            wasPaused = EditorApplication.isPaused;
             Repaint();
-        }
-
-        private void ResetData()
-        {
-            animationFoldouts = new Dictionary<ulong, bool>();
+            if (skipFrames > 0)
+            {
+                skipFrames--;
+                if (skipFrames == 0)
+                {
+                    FlowEntController.Instance.Pause();
+                }
+            }
         }
 
         private void OnGUI()
         {
             FlowEntEditorGUILayout.Header("FlowEnt Inspector");
 
-            EditorGUI.indentLevel++;
             if (!FlowEntController.HasInstance)
             {
                 EditorGUILayout.HelpBox("Inspector only available in play mode when animations are playing.", MessageType.Info);
-                EditorGUI.indentLevel--;
+                search = null;
                 return;
             }
 
             ShowControls();
 
-            ShowMotionList();
+            EditorGUILayout.Space(20f);
 
-            EditorGUI.indentLevel--;
+            ShowMotionList();
         }
 
         private void ShowControls()
         {
             EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Pause"))
+
+            if (FlowEntController.Instance.PlayState == PlayState.Playing)
             {
-                FlowEntController.Instance.Pause();
+                if (GUILayout.Button("Pause"))
+                {
+                    FlowEntController.Instance.Pause();
+                }
             }
-            if (GUILayout.Button("Resume"))
+            else
+            {
+                if (GUILayout.Button("Resume"))
+                {
+                    FlowEntController.Instance.Resume();
+                }
+            }
+
+            GUI.enabled = FlowEntController.Instance.PlayState == PlayState.Paused;
+            if (GUILayout.Button("Skip"))
             {
                 FlowEntController.Instance.Resume();
+                skipFrames = 2;
             }
+            GUI.enabled = true;
+
             if (GUILayout.Button("Stop"))
             {
                 FlowEntController.Instance.Stop();
@@ -81,8 +94,10 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 maxTimeScale = timeScale * 2f;
             }
-            timeScale = EditorGUILayout.Slider("Time scale", timeScale.Value, 0f, maxTimeScale.Value);
-            maxTimeScale = EditorGUILayout.FloatField(maxTimeScale.Value, GUILayout.Width(50));
+            EditorGUILayout.LabelField("Time scale", GUILayout.Width(80f));
+            timeScale = EditorGUILayout.Slider(timeScale.Value, 0f, maxTimeScale.Value);
+            EditorGUILayout.LabelField("Max", GUILayout.Width(30f));
+            maxTimeScale = EditorGUILayout.FloatField(maxTimeScale.Value, GUILayout.Width(50f));
             FlowEntController.Instance.TimeScale = timeScale.Value;
             EditorGUILayout.EndHorizontal();
         }
@@ -90,12 +105,16 @@ namespace FriedSynapse.FlowEnt.Editor
         private void ShowMotionList()
         {
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>Flow count: {flowCount}</b></color>", FlowEntEditorGUILayout.LabelStyle, GUILayout.Width(200f));
-            collapseFlowsByDefault = EditorGUILayout.Toggle("Collapse flows by default", collapseFlowsByDefault);
+            EditorGUILayout.LabelField("Search", GUILayout.Width(70f));
+            search = EditorGUILayout.TextField(search);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>Tween count: {tweenCount}</b></color>", FlowEntEditorGUILayout.LabelStyle, GUILayout.Width(200f));
+            FlowEntEditorGUILayout.LabelFieldBold($"Flow count: {flowCount}", FlowEntConstants.Grey, GUILayout.Width(200f));
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            FlowEntEditorGUILayout.LabelFieldBold($"Tween count: {tweenCount}", FlowEntConstants.Grey, GUILayout.Width(200f));
             EditorGUILayout.EndHorizontal();
 
             flowCount = 0;
@@ -106,22 +125,6 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUILayout.EndScrollView();
         }
 
-        private bool UpdatableFoldout(AbstractUpdatable updatable, string name, bool collapseByDefault)
-        {
-            if (!animationFoldouts.ContainsKey(updatable.Id))
-            {
-                animationFoldouts.Add(updatable.Id, !collapseByDefault);
-            }
-
-            bool shouldShow = animationFoldouts[updatable.Id];
-            EditorGUILayout.BeginHorizontal();
-            shouldShow = EditorGUILayout.Foldout(shouldShow, $"{name} {updatable}");
-            EditorGUILayout.EndHorizontal();
-            animationFoldouts[updatable.Id] = shouldShow;
-
-            return shouldShow;
-        }
-
         private void ShowAnimationList(AbstractUpdatable index)
         {
             while (index != null)
@@ -129,23 +132,33 @@ namespace FriedSynapse.FlowEnt.Editor
                 switch (index)
                 {
                     case Flow flow:
-                        flowCount++;
-                        if (UpdatableFoldout(flow, "Flow", collapseFlowsByDefault))
+                        if (string.IsNullOrEmpty(search) || flow.Name?.ToLower().Contains(search.ToLower()) == true)
                         {
-                            EditorGUI.indentLevel++;
-                            ShowAnimationList(flow.GetUpdatableIndex());
-                            EditorGUI.indentLevel--;
+                            flowCount++;
+                            EditorGUILayout.BeginHorizontal();
+                            FlowEntEditorGUILayout.LabelField(flow, "Flow");
+                            if (GUILayout.Button("ⓘ", GUILayout.Width(50)))
+                            {
+                                FlowInspectorWindow.Show(flow);
+                            }
+                            EditorGUILayout.EndHorizontal();
                         }
+                        EditorGUI.indentLevel++;
+                        ShowAnimationList(flow.GetUpdatableIndex());
+                        EditorGUI.indentLevel--;
                         break;
                     case Tween tween:
-                        tweenCount++;
-                        EditorGUILayout.BeginHorizontal();
-                        FlowEntEditorGUILayout.LabelField(tween, "Tween");
-                        if (GUILayout.Button("ⓘ", GUILayout.Width(50)))
+                        if (string.IsNullOrEmpty(search) || tween.Name?.ToLower().Contains(search.ToLower()) == true)
                         {
-                            TweenInspectorWindow.Show(tween);
+                            tweenCount++;
+                            EditorGUILayout.BeginHorizontal();
+                            FlowEntEditorGUILayout.LabelField(tween, "Tween");
+                            if (GUILayout.Button("ⓘ", GUILayout.Width(50)))
+                            {
+                                TweenInspectorWindow.Show(tween);
+                            }
+                            EditorGUILayout.EndHorizontal();
                         }
-                        EditorGUILayout.EndHorizontal();
                         break;
                 }
                 index = index.GetFieldValue<AbstractUpdatable>("next");

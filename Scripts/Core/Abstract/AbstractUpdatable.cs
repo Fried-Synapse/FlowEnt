@@ -20,16 +20,22 @@ namespace FriedSynapse.FlowEnt
             ++lastId;
             this.updateController = updateController;
 #if FlowEnt_Debug
-#if UNITY_EDITOR
-            const int lineCountToHide = 5;
+            const string flowEntNamespace = "  at FriedSynapse.FlowEnt.";
+            const string stackTraceNamespace = "  at System.Environment.get_StackTrace";
+            const string flowEntDemoNamespace = "  at FriedSynapse.FlowEnt.Demo";
             string[] lines = Environment.StackTrace.Split('\n');
-            int lineCount = lines.Length - lineCountToHide;
-            string[] trimmedLines = new string[lineCount];
-            Array.Copy(lines, lineCountToHide, trimmedLines, 0, lineCount);
+            System.Collections.Generic.List<string> trimmedLines = new System.Collections.Generic.List<string>();
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrEmpty(line) ||
+                    line.StartsWith(stackTraceNamespace) ||
+                    (line.StartsWith(flowEntNamespace) && !line.StartsWith(flowEntDemoNamespace)))
+                {
+                    continue;
+                }
+                trimmedLines.Add(line);
+            }
             stackTrace = string.Join("\n", trimmedLines);
-#else
-            stackTrace = Environment.StackTrace;
-#endif
 #endif
         }
 
@@ -80,7 +86,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         public override string ToString()
-            => $"[Id: {Id}{(Name == null ? string.Empty : $", Name: {Name}")}]";
+            => $"[Id: {Id}{(Name == null ? string.Empty : $", Name: \"{Name}\"")}]";
     }
 
     internal class UpdatableAnchor : AbstractUpdatable

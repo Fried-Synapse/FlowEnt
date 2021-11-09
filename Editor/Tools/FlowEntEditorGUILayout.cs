@@ -17,6 +17,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     labelStyle = new GUIStyle(EditorStyles.label)
                     {
                         richText = true,
+                        wordWrap = true,
                     };
                 }
                 return labelStyle;
@@ -45,40 +46,29 @@ namespace FriedSynapse.FlowEnt.Editor
             headStyle.fontSize = fontSize;
             headStyle.fontStyle = FontStyle.Bold;
             headStyle.alignment = TextAnchor.MiddleCenter;
-            EditorGUILayout.LabelField(name, headStyle, GUILayout.Height(fontSize + 20f));
+            GUIContent content = new GUIContent(name, Resources.Load<Texture2D>("Logo"));
+            EditorGUILayout.LabelField(content, headStyle, GUILayout.Height(fontSize + 20f));
         }
 
-        internal static void LabelField(string text, string colour = FlowEntConstants.Grey)
+        internal static void LabelField(string text, string colour = FlowEntConstants.Grey, params GUILayoutOption[] options)
         {
-            EditorGUILayout.LabelField($"<color={colour}>{text}</color>", LabelStyle);
+            EditorGUILayout.LabelField($"<color={colour}>{text}</color>", LabelStyle, options);
         }
 
-        internal static void LabelFieldBold(string text, string colour = FlowEntConstants.Grey)
+        internal static void LabelFieldBold(string text, string colour = FlowEntConstants.Grey, params GUILayoutOption[] options)
         {
-            EditorGUILayout.LabelField($"<color={colour}><b>{text}</b></color>", LabelStyle);
+            EditorGUILayout.LabelField($"<color={colour}><b>{text}</b></color>", LabelStyle, options);
         }
 
-        internal static void LabelField(AbstractUpdatable updatable, string name)
+        internal static void LabelField(AbstractUpdatable updatable, string name, params GUILayoutOption[] options)
         {
-            EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>{name}</b> {updatable}</color>", LabelStyle);
+            EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>{name}</b> {updatable}</color>", LabelStyle, options);
         }
 
-        internal static void LabelField(IMotion motion)
+        internal static void LabelField(IMotion motion, params GUILayoutOption[] options)
         {
-            EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>{motion.GetType().Name}</b> - {motion.GetType().FullName}</color>", LabelStyle);
-        }
-
-        internal static Texture2D LoadTexture(string filePath)
-        {
-            filePath = Path.Combine(Application.dataPath, filePath);
-            if (!File.Exists(filePath))
-            {
-                return null;
-            }
-            byte[] fileData = File.ReadAllBytes(filePath);
-            Texture2D texture = new Texture2D(1, 1);
-            texture.LoadImage(fileData);
-            return texture;
+            GUIContent content = new GUIContent($"<color={FlowEntConstants.Grey}><b>{motion.GetType().Name}</b></color>", motion.GetType().FullName);
+            EditorGUILayout.LabelField(content, LabelStyle, options);
         }
 
         internal static T GetFieldValue<T>(this object obj, string name)
