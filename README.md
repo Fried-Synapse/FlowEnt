@@ -9,3 +9,5 @@ The library is revolving around the concept of reusability and extensibility.
 ![License](https://img.shields.io/github/license/Fried-Synapse/FlowEnt?color=41cf58)
 
 **[Website](https://flowent.friedsynapse.com)** - Getting started and resources.
+
+**[Support](flowent@friedsynapse.com)**
