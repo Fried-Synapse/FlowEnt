@@ -6,14 +6,6 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public class FlowEntInspectorWindow : EditorWindow
     {
-        [MenuItem("FlowEnt/Inspector", false, 101)]
-        private static void Init()
-        {
-            FlowEntInspectorWindow window = GetWindow<FlowEntInspectorWindow>("FlowEnt Inspector");
-            window.titleContent = new GUIContent("FlowEnt Inspector", Resources.Load<Texture2D>("Logo"));
-            window.Show();
-        }
-
         private Vector2 motionListScrollPosition;
         private int flowCount;
         private int tweenCount;

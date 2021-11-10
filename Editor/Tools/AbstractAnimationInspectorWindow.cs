@@ -60,7 +60,7 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUILayout.HelpBox("Stack trace only available when debugging enabled. Please enable it in settings.", MessageType.Info);
             if (GUILayout.Button("Open settings"))
             {
-                FlowEntSettingsWindow.Init();
+                FlowEntMenu.ShowSettings();
             }
 #endif
         }
