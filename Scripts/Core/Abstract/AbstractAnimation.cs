@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Provides animation specific behaviour
     /// </summary>
-    public abstract class AbstractAnimation : AbstractUpdatable
+    public abstract class AbstractAnimation : AbstractUpdatable, IControllable
     {
         private protected AbstractStartHelper startHelper;
         private protected AutoStartHelper autoStartHelper;
@@ -18,7 +18,18 @@ namespace FriedSynapse.FlowEnt
         private protected float delay = -1f;
         private protected int? loopCount = 1;
         private protected float timeScale = 1f;
-
+        public float TimeScale
+        {
+            get => timeScale;
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
+                }
+                timeScale = value;
+            }
+        }
         #endregion
 
         #region Events
@@ -47,7 +58,7 @@ namespace FriedSynapse.FlowEnt
                 }
             }
         }
-        private protected PlayState playState = PlayState.Building;
+        private protected PlayState playState;
         /// <summary>
         /// The current state of the animation.
         /// </summary>

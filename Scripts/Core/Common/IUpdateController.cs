@@ -9,4 +9,13 @@ namespace FriedSynapse.FlowEnt
 
         void UnsubscribeFromUpdate(AbstractUpdatable updatable);
     }
+
+    public interface IControllable
+    {
+        float TimeScale { get; set; }
+        PlayState PlayState { get; }
+        void Resume();
+        void Pause();
+        void Stop(bool triggerOnCompleted = false);
+    }
 }

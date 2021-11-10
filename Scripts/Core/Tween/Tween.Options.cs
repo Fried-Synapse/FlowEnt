@@ -87,11 +87,7 @@ namespace FriedSynapse.FlowEnt
         /// <inheritdoc />
         public Tween SetTimeScale(float timeScale)
         {
-            if (timeScale < 0)
-            {
-                throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
-            }
-            this.timeScale = timeScale;
+            TimeScale = timeScale;
             return this;
         }
 

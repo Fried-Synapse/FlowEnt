@@ -71,14 +71,6 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUILayout.LabelField(content, LabelStyle, options);
         }
 
-        internal static T GetFieldValue<T>(this object obj, string name)
-        {
-            // Set the flags so that private and public fields from instances will be found
-            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-            FieldInfo field = obj.GetType().GetField(name, bindingFlags);
-            return (T)field?.GetValue(obj);
-        }
-
         internal static AbstractUpdatable GetUpdatableIndex(this object updateController)
         {
             const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
@@ -90,6 +82,14 @@ namespace FriedSynapse.FlowEnt.Editor
 
             field = anchor.GetType().GetField("next", bindingFlags);
             return (AbstractUpdatable)field?.GetValue(anchor);
+        }
+
+        internal static T GetFieldValue<T>(this object obj, string name)
+        {
+            // Set the flags so that private and public fields from instances will be found
+            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+            FieldInfo field = obj.GetType().GetField(name, bindingFlags);
+            return (T)field?.GetValue(obj);
         }
     }
 }

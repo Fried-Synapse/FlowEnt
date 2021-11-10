@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,24 +5,16 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public class FlowEntInspectorWindow : EditorWindow
     {
+        private ControllableSection<FlowEntController> controllableSection;
         private Vector2 motionListScrollPosition;
         private int flowCount;
         private int tweenCount;
-        private float? timeScale;
-        private float? maxTimeScale;
-        private int skipFrames;
         private string search;
+
         private void Update()
         {
             Repaint();
-            if (skipFrames > 0)
-            {
-                skipFrames--;
-                if (skipFrames == 0)
-                {
-                    FlowEntController.Instance.Pause();
-                }
-            }
+            controllableSection?.Update();
         }
 
         private void OnGUI()
@@ -34,64 +25,16 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 EditorGUILayout.HelpBox("Inspector only available in play mode when animations are playing.", MessageType.Info);
                 search = null;
+                controllableSection = null;
                 return;
             }
 
-            ShowControls();
+            controllableSection ??= new ControllableSection<FlowEntController>(FlowEntController.Instance);
+            controllableSection.ShowControls();
 
             EditorGUILayout.Space(20f);
 
             ShowMotionList();
-        }
-
-        private void ShowControls()
-        {
-            EditorGUILayout.BeginHorizontal();
-
-            if (FlowEntController.Instance.PlayState == PlayState.Playing)
-            {
-                if (GUILayout.Button("Pause"))
-                {
-                    FlowEntController.Instance.Pause();
-                }
-            }
-            else
-            {
-                if (GUILayout.Button("Resume"))
-                {
-                    FlowEntController.Instance.Resume();
-                }
-            }
-
-            GUI.enabled = FlowEntController.Instance.PlayState == PlayState.Paused;
-            if (GUILayout.Button("Skip"))
-            {
-                FlowEntController.Instance.Resume();
-                skipFrames = 2;
-            }
-            GUI.enabled = true;
-
-            if (GUILayout.Button("Stop"))
-            {
-                FlowEntController.Instance.Stop();
-            }
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            if (timeScale == null)
-            {
-                timeScale = FlowEntController.Instance.TimeScale;
-            }
-            if (maxTimeScale == null)
-            {
-                maxTimeScale = timeScale * 2f;
-            }
-            EditorGUILayout.LabelField("Time scale", GUILayout.Width(80f));
-            timeScale = EditorGUILayout.Slider(timeScale.Value, 0f, maxTimeScale.Value);
-            EditorGUILayout.LabelField("Max", GUILayout.Width(30f));
-            maxTimeScale = EditorGUILayout.FloatField(maxTimeScale.Value, GUILayout.Width(50f));
-            FlowEntController.Instance.TimeScale = timeScale.Value;
-            EditorGUILayout.EndHorizontal();
         }
 
         private void ShowMotionList()

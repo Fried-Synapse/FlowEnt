@@ -9,7 +9,8 @@ namespace FriedSynapse.FlowEnt
     /// Make sure not to delete this object because the library will not work without this script attached to an object in the scene.
     /// </summary>
     public class FlowEntController : MonoBehaviour,
-        IUpdateController
+        IUpdateController,
+        IControllable
     {
         private static FlowEntController instance;
         private static readonly object lockObject = new object();
