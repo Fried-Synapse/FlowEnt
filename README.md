@@ -10,4 +10,4 @@ The library is revolving around the concept of reusability and extensibility.
 
 **[Website](https://flowent.friedsynapse.com)** - Getting started and resources.
 
-**[Support](flowent@friedsynapse.com)**
+**[Support](mailto:flowent@friedsynapse.com)**
