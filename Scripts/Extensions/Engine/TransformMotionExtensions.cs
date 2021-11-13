@@ -295,7 +295,7 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region ScaleTo
+        #region ScaleToLocal
 
         public static TweenMotion<TTransform> ScaleLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
@@ -307,7 +307,7 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region ScaleTo AnimationCurve3d
+        #region ScaleToLocal AnimationCurve3d
 
         public static TweenMotion<TTransform> ScaleLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
             where TTransform : Transform
@@ -315,7 +315,7 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region ScaleTo Axis
+        #region ScaleToLocal Axis
 
         public static TweenMotion<TTransform> ScaleLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
