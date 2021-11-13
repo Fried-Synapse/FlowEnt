@@ -106,6 +106,25 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
+        /// <summary>
+        /// Resets the flow so in can be replayed.
+        /// </summary>
+        /// <exception cref="FlowException">If the flow is not finished.</exception>
+        public Flow Reset()
+        {
+            if (playState != PlayState.Finished)
+            {
+                throw new FlowException(this, "Can only reset a finished flow. Use Stop() to ensure flow finished when resetting.");
+            }
+
+            //TODO
+            autoStartHelper = null;
+            playState = PlayState.Building;
+            overdraft = null;
+            remainingLoops = 0;
+            return this;
+        }
+
         internal override void StartInternal(float deltaTime = 0)
         {
             if (lastQueuedUpdatableWrapper == null)

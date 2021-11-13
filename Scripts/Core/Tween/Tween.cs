@@ -68,15 +68,7 @@ namespace FriedSynapse.FlowEnt
         /// <exception cref="TweenException">If the tween has already started.</exception>
         public Tween Start()
         {
-            if (playState != PlayState.Building)
-            {
-                throw new TweenException(this, "Tween already started.");
-            }
-
-            if (autoStartHelper != null)
-            {
-                CancelAutoStart();
-            }
+            PreStart();
             StartInternal();
             return this;
         }
@@ -87,6 +79,14 @@ namespace FriedSynapse.FlowEnt
         /// <exception cref="TweenException">If the tween has already started.</exception>
         public async Task<Tween> StartAsync()
         {
+            PreStart();
+            StartInternal();
+            await new AwaitableAnimation(this);
+            return this;
+        }
+
+        private void PreStart()
+        {
             if (playState != PlayState.Building)
             {
                 throw new TweenException(this, "Tween already started.");
@@ -96,13 +96,10 @@ namespace FriedSynapse.FlowEnt
             {
                 CancelAutoStart();
             }
-            StartInternal();
-            await new AwaitableAnimation(this);
-            return this;
         }
 
         /// <summary>
-        /// Starts the tween async(you can await this till the tween finishes).
+        /// Resets the tween so in can be replayed.
         /// </summary>
         /// <exception cref="TweenException">If the tween is not finished.</exception>
         public Tween Reset()
