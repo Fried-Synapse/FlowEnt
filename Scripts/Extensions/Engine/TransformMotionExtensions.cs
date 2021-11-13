@@ -53,9 +53,33 @@ namespace FriedSynapse.FlowEnt
             where TTransform : Transform
             => motionWrapper.Apply(new MoveToVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
-        public static TweenMotion<TTransform> MoveToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
+            => motionWrapper.Apply(new MoveLocalToVectorMotion<TTransform>(motionWrapper.Item, to));
+
+        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
+
+        #endregion
+
+        #region MoveTo AnimationCurve3d
+
+        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveToAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
+
+        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveLocalToAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
+
+        #endregion
+
+        #region MoveTo Axis
+
+        public static TweenMotion<TTransform> MoveToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+                    where TTransform : Transform
+                    => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
 
         public static TweenMotion<TTransform> MoveToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
@@ -77,17 +101,9 @@ namespace FriedSynapse.FlowEnt
             where TTransform : Transform
             => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
-        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToVectorMotion<TTransform>(motionWrapper.Item, to));
-
-        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
-
         public static TweenMotion<TTransform> MoveLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
+                    where TTransform : Transform
+                    => motionWrapper.Apply(new MoveLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
 
         public static TweenMotion<TTransform> MoveLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
@@ -111,7 +127,7 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region Move Spline
+        #region MoveTo Spline
 
         public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, ISpline spline)
             where TTransform : Transform
@@ -288,6 +304,18 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotion<TTransform> ScaleLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
+
+        #endregion
+
+        #region ScaleTo AnimationCurve3d
+
+        public static TweenMotion<TTransform> ScaleLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalToAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
+
+        #endregion
+
+        #region ScaleTo Axis
 
         public static TweenMotion<TTransform> ScaleLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
