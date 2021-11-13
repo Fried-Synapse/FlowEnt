@@ -59,5 +59,11 @@ namespace FriedSynapse.FlowEnt
             replacement.next = original.next;
             replacement.previous = original.previous;
         }
+
+        internal void Clear()
+        {
+            anchor.next = null;
+            last = anchor;
+        }
     }
 }

@@ -117,11 +117,14 @@ namespace FriedSynapse.FlowEnt
                 throw new FlowException(this, "Can only reset a finished flow. Use Stop() to ensure flow finished when resetting.");
             }
 
-            //TODO
             autoStartHelper = null;
             playState = PlayState.Building;
             overdraft = null;
+            time = 0;
             remainingLoops = 0;
+            runningUpdatableWrappersCount = 0;
+            runningUpdatableWrappers.Clear();
+            updatables.Clear();
             return this;
         }
 
@@ -164,39 +167,11 @@ namespace FriedSynapse.FlowEnt
             if (updatableWrappersOrderedByTimeIndexed == null)
             {
                 updatableWrappersOrderedByTimeIndexed = updatableWrappersQueue.ToArray();
-                //TODO do we really need to apply quick sort?
                 QuickSortByTimeIndex(updatableWrappersOrderedByTimeIndexed, 0, updatableWrappersOrderedByTimeIndexed.Length - 1);
             }
 
             nextTimeIndexedUpdatableWrapperIndex = 0;
             nextTimeIndexedUpdatableWrapper = updatableWrappersOrderedByTimeIndexed[nextTimeIndexedUpdatableWrapperIndex++];
-        }
-
-        internal void CompleteUpdatable(AbstractUpdatable updatable)
-        {
-            float overdraft = 0;
-            if (updatable is AbstractAnimation animation)
-            {
-                overdraft = animation.OverDraft.Value;
-                animation.OverDraft = null;
-            }
-
-            UpdatableWrapper nextAnimationWrapper = runningUpdatableWrappers[updatable.Id].next;
-            runningUpdatableWrappers.Remove(updatable.Id);
-            if (nextAnimationWrapper == null)
-            {
-                --runningUpdatableWrappersCount;
-                if (runningUpdatableWrappersCount == 0 && nextTimeIndexedUpdatableWrapper == null)
-                {
-                    this.overdraft = overdraft;
-                    CompleteLoop();
-                }
-                return;
-            }
-
-            updatable = nextAnimationWrapper.GetUpdatable();
-            runningUpdatableWrappers.Add(updatable.Id, nextAnimationWrapper);
-            updatable.StartInternal(overdraft);
         }
 
         internal override void UpdateInternal(float deltaTime)
@@ -266,6 +241,33 @@ namespace FriedSynapse.FlowEnt
             {
                 parentFlow.CompleteUpdatable(this);
             }
+        }
+
+        internal void CompleteUpdatable(AbstractUpdatable updatable)
+        {
+            float overdraft = 0;
+            if (updatable is AbstractAnimation animation)
+            {
+                overdraft = animation.OverDraft.Value;
+                animation.OverDraft = null;
+            }
+
+            UpdatableWrapper nextAnimationWrapper = runningUpdatableWrappers[updatable.Id].next;
+            runningUpdatableWrappers.Remove(updatable.Id);
+            if (nextAnimationWrapper == null)
+            {
+                --runningUpdatableWrappersCount;
+                if (runningUpdatableWrappersCount == 0 && nextTimeIndexedUpdatableWrapper == null)
+                {
+                    this.overdraft = overdraft;
+                    CompleteLoop();
+                }
+                return;
+            }
+
+            updatable = nextAnimationWrapper.GetUpdatable();
+            runningUpdatableWrappers.Add(updatable.Id, nextAnimationWrapper);
+            updatable.StartInternal(overdraft);
         }
 
         #endregion
