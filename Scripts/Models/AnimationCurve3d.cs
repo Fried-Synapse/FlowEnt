@@ -12,13 +12,13 @@ namespace FriedSynapse.FlowEnt
         public AnimationCurve Z { get => z; set => z = value; }
 #pragma warning restore RCS1085
 
-        private Vector3 cache;
+        private Vector3 cache3d;
         public new Vector3 Evaluate(float t)
         {
-            cache.x = x.Evaluate(t);
-            cache.x = y.Evaluate(t);
-            cache.z = z.Evaluate(t);
-            return cache;
+            cache3d.x = x.Evaluate(t);
+            cache3d.x = y.Evaluate(t);
+            cache3d.z = z.Evaluate(t);
+            return cache3d;
         }
     }
 }

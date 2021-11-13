@@ -37,6 +37,22 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #region Material Float
+
+        public static TweenMotion<TRenderer> MaterialFloat<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, float value)
+            where TRenderer : Renderer
+            => motion.Apply(new MaterialFloatMotion<TRenderer>(motion.Item, propertyName, value));
+
+        public static TweenMotion<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, float to)
+            where TRenderer : Renderer
+            => motion.Apply(new MaterialFloatToMotion<TRenderer>(motion.Item, propertyName, to));
+
+        public static TweenMotion<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, float from, float to)
+            where TRenderer : Renderer
+            => motion.Apply(new MaterialFloatToMotion<TRenderer>(motion.Item, propertyName, from, to));
+
+        #endregion
+
         #region Material Alpha
 
         public static TweenMotion<TRenderer> MaterialAlpha<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, float value)
