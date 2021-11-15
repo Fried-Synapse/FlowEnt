@@ -3,7 +3,7 @@ using System;
 namespace FriedSynapse.FlowEnt
 {
 #pragma warning disable RCS1194
-    public class TweenException : Exception
+    public class TweenException : AnimationException
 #pragma warning restore RCS1194
     {
         public TweenException(Tween tween, string message) : base(message)

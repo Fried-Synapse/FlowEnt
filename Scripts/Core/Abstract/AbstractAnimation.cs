@@ -71,51 +71,39 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region Lifecycle
-
-        private void OnAutoStarted(float deltaTime)
+        #region Controls
+        /// <summary>
+        /// Sets the animation's name.
+        /// </summary>
+        /// <param name="name"></param>
+        public virtual void SetName(string name)
         {
-            if (playState != PlayState.Building)
-            {
-                return;
-            }
-
-            StartInternal(deltaTime);
+            Name = name;
         }
 
-        internal void CancelAutoStart()
+        /// <summary>
+        /// Starts the animation.
+        /// </summary>
+        public virtual void Start()
         {
-            updateController.UnsubscribeFromUpdate(autoStartHelper);
-            autoStartHelper = null;
+            PreStart();
+            StartInternal();
         }
 
-        private protected void StartSkipFrames()
+        /// <summary>
+        /// Starts the animation async(you can await this till the animation finishes).
+        /// </summary>
+        public virtual async Task StartAsync()
         {
-            //NOTE autostart already skips one frame, so we're skipping it
-            if (autoStartHelper != null)
-            {
-                --skipFrames;
-            }
-            startHelper = new SkipFramesStartHelper(updateController, skipFrames, (deltaTime) =>
-            {
-                skipFrames = 0;
-                StartInternal(deltaTime);
-            });
-        }
-
-        private protected void StartDelay()
-        {
-            startHelper = new DelayedStartHelper(updateController, delay, (deltaTime) =>
-            {
-                delay = -1f;
-                StartInternal(deltaTime);
-            });
+            PreStart();
+            StartInternal();
+            await new AwaitableAnimation(this);
         }
 
         /// <summary>
         /// Resumes the animation.
         /// </summary>
-        public void Resume()
+        public virtual void Resume()
         {
             if (playState != PlayState.Paused)
             {
@@ -129,7 +117,7 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Pauses the animation.
         /// </summary>
-        public void Pause()
+        public virtual void Pause()
         {
             if (PlayState != PlayState.Playing)
             {
@@ -175,9 +163,67 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #region Lifecycle
+
+        private void OnAutoStarted(float deltaTime)
+        {
+            if (playState != PlayState.Building)
+            {
+                return;
+            }
+
+            StartInternal(deltaTime);
+        }
+
+        internal void CancelAutoStart()
+        {
+            updateController.UnsubscribeFromUpdate(autoStartHelper);
+            autoStartHelper = null;
+        }
+
+        private protected void StartSkipFrames()
+        {
+            //NOTE autostart already skips one frame, so we're skipping it
+            if (autoStartHelper != null)
+            {
+                --skipFrames;
+            }
+            startHelper = new SkipFramesStartHelper(updateController, skipFrames, (deltaTime) =>
+            {
+                skipFrames = 0;
+                StartInternal(deltaTime);
+            });
+        }
+
+        private protected void StartDelay()
+        {
+            startHelper = new DelayedStartHelper(updateController, delay, (deltaTime) =>
+            {
+                delay = -1f;
+                StartInternal(deltaTime);
+            });
+        }
+
+        private protected abstract AnimationException GetAlreadyStartedExeption();
+
+        private void PreStart()
+        {
+            if (playState != PlayState.Building)
+            {
+                throw GetAlreadyStartedExeption();
+            }
+
+            if (autoStartHelper != null)
+            {
+                CancelAutoStart();
+            }
+        }
+
         internal void OnCompletedInternal(Action callback)
         {
             onCompleted += callback;
         }
+
+        #endregion
     }
 }

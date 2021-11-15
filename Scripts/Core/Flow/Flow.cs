@@ -47,63 +47,52 @@ namespace FriedSynapse.FlowEnt
         private int? remainingLoops;
 
         #endregion
+        private protected override AnimationException GetAlreadyStartedExeption() => new FlowException(this, "Flow already started.");
 
-        public Flow SetName(string name)
+        #region Control
+
+        /// <inheritdoc cref="AbstractAnimation.SetName(string)" />
+        public new Flow SetName(string name)
         {
-            Name = name;
+            base.SetName(name);
             return this;
         }
 
-        #region IUpdateController
-
-        void IUpdateController.SubscribeToUpdate(AbstractUpdatable updatable)
-        {
-            updatables.Add(updatable);
-        }
-
-        void IUpdateController.UnsubscribeFromUpdate(AbstractUpdatable updatable)
-        {
-            updatables.Remove(updatable);
-        }
-
-        #endregion
-
-        #region Lifecycle
-
-        /// <summary>
-        /// Starts the flow.
-        /// </summary>
+        /// <inheritdoc cref="AbstractAnimation.Start" />
         /// <exception cref="FlowEntException">If the flow has already started.</exception>
-        public Flow Start()
+        public new Flow Start()
         {
-            PreStart();
-            StartInternal();
+            base.Start();
             return this;
         }
 
-        /// <summary>
-        /// Starts the flow async(you can await this till the flow finishes).
-        /// </summary>
+        /// <inheritdoc cref="AbstractAnimation.StartAsync" />
         /// <exception cref="FlowEntException">If the flow has already started.</exception>
-        public async Task<Flow> StartAsync()
+        public new async Task<Flow> StartAsync()
         {
-            PreStart();
-            StartInternal();
-            await new AwaitableAnimation(this);
+            await base.StartAsync();
             return this;
         }
 
-        private void PreStart()
+        /// <inheritdoc cref="AbstractAnimation.Resume" />
+        public new Flow Resume()
         {
-            if (playState != PlayState.Building)
-            {
-                throw new FlowException(this, "Flow already started.");
-            }
+            base.Resume();
+            return this;
+        }
 
-            if (autoStartHelper != null)
-            {
-                CancelAutoStart();
-            }
+        /// <inheritdoc cref="AbstractAnimation.Pause" />
+        public new Flow Pause()
+        {
+            base.Pause();
+            return this;
+        }
+
+        /// <inheritdoc cref="AbstractAnimation.Stop(bool)" />
+        public new Flow Stop(bool triggerOnCompleted = false)
+        {
+            base.Stop(triggerOnCompleted);
+            return this;
         }
 
         /// <summary>
@@ -127,6 +116,24 @@ namespace FriedSynapse.FlowEnt
             updatables.Clear();
             return this;
         }
+
+        #endregion
+
+        #region IUpdateController
+
+        void IUpdateController.SubscribeToUpdate(AbstractUpdatable updatable)
+        {
+            updatables.Add(updatable);
+        }
+
+        void IUpdateController.UnsubscribeFromUpdate(AbstractUpdatable updatable)
+        {
+            updatables.Remove(updatable);
+        }
+
+        #endregion
+
+        #region Lifecycle
 
         internal override void StartInternal(float deltaTime = 0)
         {

@@ -53,49 +53,52 @@ namespace FriedSynapse.FlowEnt
         private int? remainingLoops;
         private float remainingTime;
         private LoopDirection loopDirection;
+        private protected override AnimationException GetAlreadyStartedExeption() => new TweenException(this, "Tween already started.");
 
-        public Tween SetName(string name)
+        #region Controls
+
+        /// <inheritdoc cref="AbstractAnimation.SetName(string)" />
+        public new Tween SetName(string name)
         {
-            Name = name;
+            SetName(name);
             return this;
         }
 
-        #region Lifecycle
-
-        /// <summary>
-        /// Starts the tween.
-        /// </summary>
+        /// <inheritdoc cref="AbstractAnimation.Start" />
         /// <exception cref="TweenException">If the tween has already started.</exception>
-        public Tween Start()
+        public new Tween Start()
         {
-            PreStart();
-            StartInternal();
+            base.Start();
             return this;
         }
 
-        /// <summary>
-        /// Starts the tween async(you can await this till the tween finishes).
-        /// </summary>
+        /// <inheritdoc cref="AbstractAnimation.StartAsync" />
         /// <exception cref="TweenException">If the tween has already started.</exception>
-        public async Task<Tween> StartAsync()
+        public new async Task<Tween> StartAsync()
         {
-            PreStart();
-            StartInternal();
-            await new AwaitableAnimation(this);
+            await base.StartAsync();
             return this;
         }
 
-        private void PreStart()
+        /// <inheritdoc cref="AbstractAnimation.Resume" />
+        public new Tween Resume()
         {
-            if (playState != PlayState.Building)
-            {
-                throw new TweenException(this, "Tween already started.");
-            }
+            base.Resume();
+            return this;
+        }
 
-            if (autoStartHelper != null)
-            {
-                CancelAutoStart();
-            }
+        /// <inheritdoc cref="AbstractAnimation.Pause" />
+        public new Tween Pause()
+        {
+            base.Pause();
+            return this;
+        }
+
+        /// <inheritdoc cref="AbstractAnimation.Stop" />
+        public new Tween Stop(bool triggerOnCompleted = false)
+        {
+            base.Stop(triggerOnCompleted);
+            return this;
         }
 
         /// <summary>
@@ -117,6 +120,10 @@ namespace FriedSynapse.FlowEnt
             remainingTime = 0f;
             return this;
         }
+
+        #endregion
+
+        #region Lifecycle
 
         internal override void StartInternal(float deltaTime = 0)
         {
