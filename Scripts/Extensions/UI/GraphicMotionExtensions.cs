@@ -36,6 +36,18 @@ namespace FriedSynapse.FlowEnt
             where TGraphic : Graphic
             => motion.Apply(new ColorToMotion<TGraphic>(motion.Item, from, to));
 
+        /// <summary>
+        /// Extension method that will tween the color of a graphic using a supplied gradient value that will be evaluated
+        /// each update loop of the tween to get the required color.
+        /// </summary>
+        /// <param name="motion"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TGraphic"></typeparam>
+        /// <returns></returns>
+        public static TweenMotion<TGraphic> ColorTo<TGraphic>(this TweenMotion<TGraphic> motion, Gradient gradient)
+            where TGraphic : Graphic
+            => motion.Apply(new ColorToGradientMotion<TGraphic>(motion.Item, gradient));
+
         #endregion
     }
 }
