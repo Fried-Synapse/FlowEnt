@@ -103,7 +103,8 @@ namespace FriedSynapse.FlowEnt
         /// <returns></returns>
         public static TweenMotion<TRenderer> MaterialColorTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, Gradient gradient)
             where TRenderer : Renderer
-            => motion.Apply(new MaterialColorToGradientMotion<TRenderer>(motion.Item, propertyName, gradient
+            => motion.Apply(new MaterialColorToGradientMotion<TRenderer>(motion.Item, propertyName, gradient));
+
         #endregion
     }
 }
