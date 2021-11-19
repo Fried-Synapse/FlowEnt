@@ -44,9 +44,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="value"></param>
         /// <typeparam name="TGraphic"></typeparam>
         /// <returns></returns>
-        public static TweenMotion<TGraphic> ColorGradient<TGraphic>(this TweenMotion<TGraphic> motion, Gradient value)
+        public static TweenMotion<TGraphic> ColorTo<TGraphic>(this TweenMotion<TGraphic> motion, Gradient gradient)
             where TGraphic : Graphic
-            => motion.Apply(new ColorGradientMotion<TGraphic>(motion.Item, value));
+            => motion.Apply(new ColorToGradientMotion<TGraphic>(motion.Item, gradient));
 
         #endregion
     }
