@@ -34,8 +34,7 @@ namespace FriedSynapse.FlowEnt
         /// on each update loop of the tween.
         /// </summary>
         /// <param name="motion"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="gradient"></param>
         public static TweenMotion<Light> ColorTo(this TweenMotion<Light> motion, Gradient gradient)
             => motion.Apply(new ColorToGradientMotion(motion.Item, gradient));
 

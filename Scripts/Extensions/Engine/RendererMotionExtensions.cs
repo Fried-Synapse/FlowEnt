@@ -40,8 +40,7 @@ namespace FriedSynapse.FlowEnt
         /// on each update loop of the tween.
         /// </summary>
         /// <param name="motion"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="gradient"></param>
         public static TweenMotion<TRenderer> ColorTo<TRenderer>(this TweenMotion<TRenderer> motion, Gradient gradient)
             where TRenderer : Renderer
             => motion.Apply(new ColorToGradientMotion<TRenderer>(motion.Item, gradient));
@@ -99,8 +98,8 @@ namespace FriedSynapse.FlowEnt
         /// on each update loop of the tween and a material property name that will be used to access the materials color value.
         /// </summary>
         /// <param name="motion"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="propertyName"></param>
+        /// <param name="gradient"></param>
         public static TweenMotion<TRenderer> MaterialColorTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, Gradient gradient)
             where TRenderer : Renderer
             => motion.Apply(new MaterialColorToGradientMotion<TRenderer>(motion.Item, propertyName, gradient));
