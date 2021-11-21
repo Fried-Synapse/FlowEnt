@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions
 {
+    /// <summary>
+    /// Logs tracing data on certain events using the name provided to help with debugging.
+    /// </summary>
     public class DebugMotion : AbstractMotion
     {
         public DebugMotion(string name)

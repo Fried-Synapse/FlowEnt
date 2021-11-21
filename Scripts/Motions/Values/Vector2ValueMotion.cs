@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Values
 {
+    /// <summary>
+    /// Lerps a <see cref="Vector2" /> value.
+    /// </summary>
     public class Vector2ValueMotion : AbstractValueMotion<Vector2>
     {
         public Vector2ValueMotion(Vector2 from, Vector2 to, Action<Vector2> onUpdated) : base(from, to, onUpdated)

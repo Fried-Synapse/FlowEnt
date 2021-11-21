@@ -5,6 +5,9 @@ namespace FriedSynapse.FlowEnt.Motions.Values
 {
     public class SplineValueMotion : AbstractMotion
     {
+        /// <summary>
+        /// Lerps an <see cref="ISpline" />.
+        /// </summary>
         public SplineValueMotion(ISpline spline, Action<Vector3> callback)
         {
             this.spline = spline;
