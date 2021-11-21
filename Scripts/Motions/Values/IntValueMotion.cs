@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Values
 {
+    /// <summary>
+    /// Lerps an <see cref="int" /> value.
+    /// </summary>
     public class IntValueMotion : AbstractMotion
     {
         public IntValueMotion(int from, int to, Action<int> callback)

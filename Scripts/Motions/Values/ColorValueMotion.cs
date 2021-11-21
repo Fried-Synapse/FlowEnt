@@ -5,6 +5,9 @@ namespace FriedSynapse.FlowEnt.Motions.Values
 {
     public class ColorValueMotion : AbstractValueMotion<Color>
     {
+        /// <summary>
+        /// Lerps a <see cref="Color" /> value.
+        /// </summary>
         public ColorValueMotion(Color from, Color to, Action<Color> callback) : base(from, to, callback)
         {
         }
