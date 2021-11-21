@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Demo
 
         public override AbstractAnimation GetAnimation()
             => new Flow()
-                .Queue(new Tween(0.3f).For(Jumpers).Apply(t =>
+                .Queue(new Tween(0.3f).ForAll(Jumpers).Apply(t =>
                             {
                                 t.OnStarted(() =>
                                 {
@@ -27,10 +27,10 @@ namespace FriedSynapse.FlowEnt.Demo
                                 });
                                 t.ScaleLocalToY(1f).MoveLocalToY(0f);
                             }))
-                .Queue(new Tween(2f).SetEasing(new BounceEasing(5)).For(Jumpers).Apply(t => t.MoveLocalToY(Random.Range(2f, 5f))))
+                .Queue(new Tween(2f).SetEasing(new BounceEasing(5)).ForAll(Jumpers).Apply(t => t.MoveLocalToY(Random.Range(2f, 5f))))
                 .QueueDelay(1.7f)
-                .Queue(new Tween(1f).SetEasing(Easing.EaseInCirc).For(Jumpers).Apply(t => t.MoveLocalTo(Vector3.zero).OnCompleted(() => t.Item.gameObject.SetActive(false))))
-                .At(2f, new Tween(2f).SetEasing(Easing.EaseOutQuad).For(Rotators).Apply(t => t.MoveLocalToY(0f).ScaleLocalTo(Vector3.one).RotateY(720f)))
-                .Queue(new Tween(1f).SetEasing(Easing.EaseInCirc).For(Rotators).Apply(t => t.MoveLocalTo(Vector3.zero).OnCompleted(() => t.Item.gameObject.SetActive(false))));
+                .Queue(new Tween(1f).SetEasing(Easing.EaseInCirc).ForAll(Jumpers).Apply(t => t.MoveLocalTo(Vector3.zero).OnCompleted(() => t.Item.gameObject.SetActive(false))))
+                .At(2f, new Tween(2f).SetEasing(Easing.EaseOutQuad).ForAll(Rotators).Apply(t => t.MoveLocalToY(0f).ScaleLocalTo(Vector3.one).RotateY(720f)))
+                .Queue(new Tween(1f).SetEasing(Easing.EaseInCirc).ForAll(Rotators).Apply(t => t.MoveLocalTo(Vector3.zero).OnCompleted(() => t.Item.gameObject.SetActive(false))));
     }
 }

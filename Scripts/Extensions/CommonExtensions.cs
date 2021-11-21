@@ -5,9 +5,17 @@ namespace FriedSynapse.FlowEnt
 {
     public static class CommonExtensions
     {
+        /// <summary>
+        /// Restards the tween by calling Stop, Reset, Start in this order.
+        /// </summary>
+        /// <param name="tween"></param>
         public static Tween Restart(this Tween tween)
             => tween.Stop().Reset().Start();
 
+        /// <summary>
+        /// Restards the flow by calling Stop, Reset, Start in this order.
+        /// </summary>
+        /// <param name="flow"></param>
         public static Flow Restart(this Flow flow)
             => flow.Stop().Reset().Start();
 
