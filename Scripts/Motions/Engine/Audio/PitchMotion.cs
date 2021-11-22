@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Motions.Audio
 
         public override void OnStart()
         {
-            from = item.volume;
+            from = item.pitch;
             to = Mathf.Clamp(from + value, MinPitch, MaxPitch);
         }
 

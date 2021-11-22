@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Motions.Audio
         public PitchToMotion(AudioSource item, float from, float to) : this(item, to)
         {
             hasFrom = true;
-            this.from = from;
+            this.from = Mathf.Clamp(from, MinPitch, MaxPitch);
         }
 
         private readonly bool hasFrom;
@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt.Motions.Audio
         {
             if (!hasFrom)
             {
-                from = item.volume;
+                from = item.pitch;
             }
         }
 
