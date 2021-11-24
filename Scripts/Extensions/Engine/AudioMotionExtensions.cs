@@ -42,7 +42,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         /// <param name="value"></param>
         public static TweenMotion<AudioSource> Volume(this TweenMotion<AudioSource> motion, float value)
-                => motion.Apply(new VolumeMotion(motion.Item, value));
+            => motion.Apply(new VolumeMotion(motion.Item, value));
 
         /// <summary>
         /// Applies a <see cref="VolumeToMotion" /> to the tween.
