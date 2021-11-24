@@ -1,0 +1,40 @@
+name: FlowEnt Tests
+
+on: [push, pull_request]
+
+jobs:
+  testRunner:
+    name: Test in ${{ matrix.testMode }} 📝
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        testMode:
+          - playmode
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - name: Cache Ligrary
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+      - name: Run Tests
+        uses: game-ci/unity-test-runner@v2
+        id: testsRunner
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          testMode: ${{ matrix.testMode }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Test Results
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test results for ${{ matrix.testMode }}
+          path: ${{ steps.testsRunner.outputs.artifactsPath }}

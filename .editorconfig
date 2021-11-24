@@ -1,0 +1,6 @@
+# Rules configuration
+[*.cs]
+dotnet_diagnostic.IDE0066.severity = none
+dotnet_diagnostic.IDE0090.severity = none
+dotnet_diagnostic.RCS1090.severity = none
+dotnet_diagnostic.RCS1171.severity = none
