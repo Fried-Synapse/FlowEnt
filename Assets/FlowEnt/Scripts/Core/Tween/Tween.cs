@@ -60,7 +60,7 @@ namespace FriedSynapse.FlowEnt
         /// <inheritdoc cref="AbstractAnimation.SetName(string)" />
         public new Tween SetName(string name)
         {
-            SetName(name);
+            base.SetName(name);
             return this;
         }
 
