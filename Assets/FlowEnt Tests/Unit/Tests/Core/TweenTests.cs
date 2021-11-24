@@ -9,6 +9,21 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
     public class TweenTests : AbstractEngineTests
     {
         [UnityTest]
+        public IEnumerator Name()
+        {
+            const float time = 0.1f;
+            const string name = "Billy";
+            Tween tween = default;
+
+            yield return CreateTester()
+                .Arrange(() => tween = new Tween(time))
+                .Act(() => tween.SetName(name).Start())
+                .AssertTime(time)
+                .Assert(() => Assert.AreEqual(name, tween.Name))
+                .Run();
+        }
+
+        [UnityTest]
         public IEnumerator PlayState_Values()
         {
             const float time = 1f;

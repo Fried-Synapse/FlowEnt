@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Audio
 {
     /// <summary>
-    /// Lerps a <see cref="float" /> value representing <see cref="AudioSource.volume" />.
+    /// Lerps the <see cref="AudioSource.volume" /> value.
     /// </summary>
     public class VolumeMotion : AbstractMotion<AudioSource>
     {
