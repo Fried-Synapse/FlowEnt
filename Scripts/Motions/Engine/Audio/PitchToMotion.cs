@@ -7,18 +7,15 @@ namespace FriedSynapse.FlowEnt.Motions.Audio
     /// </summary>
     public class PitchToMotion : AbstractMotion<AudioSource>
     {
-        private const float MinPitch = -3;
-        private const float MaxPitch = 3;
-
         public PitchToMotion(AudioSource item, float to) : base(item)
         {
-            this.to = Mathf.Clamp(to, MinPitch, MaxPitch);
+            this.to = to;
         }
 
         public PitchToMotion(AudioSource item, float from, float to) : this(item, to)
         {
             hasFrom = true;
-            this.from = Mathf.Clamp(from, MinPitch, MaxPitch);
+            this.from = from;
         }
 
         private readonly bool hasFrom;
@@ -35,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Motions.Audio
 
         public override void OnUpdate(float t)
         {
-            item.pitch = Mathf.Lerp(from, to, t);
+            item.pitch = Mathf.LerpUnclamped(from, to, t);
         }
     }
 }
