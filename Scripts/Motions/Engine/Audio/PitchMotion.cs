@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Audio
 {
+    /// <summary>
+    /// Lerps a <see cref="float" /> value representing <see cref="AudioSource.pitch" />
+    /// </summary>
     public class PitchMotion : AbstractMotion<AudioSource>
     {
-        private const float MinPitch = -3;
-        private const float MaxPitch = 3;
-
         public PitchMotion(AudioSource item, float value) : base(item)
         {
             this.value = value;
@@ -19,12 +19,12 @@ namespace FriedSynapse.FlowEnt.Motions.Audio
         public override void OnStart()
         {
             from = item.pitch;
-            to = Mathf.Clamp(from + value, MinPitch, MaxPitch);
+            to = from + value;
         }
 
         public override void OnUpdate(float t)
         {
-            item.pitch = Mathf.Lerp(from, to, t);
+            item.pitch = Mathf.LerpUnclamped(from, to, t);
         }
     }
 }
