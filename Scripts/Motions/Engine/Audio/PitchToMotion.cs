@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Audio
 {
+    /// <summary>
+    /// Lerps a <see cref="float" /> value representing <see cref="AudioSource.pitch" />.
+    /// </summary>
     public class PitchToMotion : AbstractMotion<AudioSource>
     {
         private const float MinPitch = -3;
