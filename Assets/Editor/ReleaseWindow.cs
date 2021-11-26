@@ -1,21 +1,34 @@
+using System.Diagnostics;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEditorEditor = UnityEditor.Editor;
+using UnityDebug = UnityEngine.Debug;
 
-namespace FriedSynapse.FlowEnt.Builder.Editor
+namespace FriedSynapse.Release
 {
     public class ReleaseWindow : EditorWindow
     {
-        [SerializeField]
-        private ReleaseData releaseData;
-        private UnityEditorEditor ReleaseDataEditor { get; set; }
+        private ReleaseData ReleaseData { get; set; }
+        private Editor ReleaseDataEditor { get; set; }
 
-        [MenuItem("FlowEnt/Release", false, 1)]
+        [MenuItem("FriedSynapse/Release", false, 1)]
         private static void Init()
         {
+            string[] ids = AssetDatabase.FindAssets("t:ReleaseData");
+            if (ids == null || ids.Length == 0)
+            {
+                UnityDebug.LogError("Cannot find Release Data!");
+                return;
+            }
+            if (ids.Length > 1)
+            {
+                UnityDebug.LogWarning("Multiple release datas found! Using the first one found.");
+                return;
+            }
             ReleaseWindow window = GetWindow<ReleaseWindow>("Release");
+            window.ReleaseData = AssetDatabase.LoadAssetAtPath<ReleaseData>(AssetDatabase.GUIDToAssetPath(ids[0]));
+            window.ReleaseDataEditor = Editor.CreateEditor(window.ReleaseData);
             window.Show();
-            window.ReleaseDataEditor = UnityEditorEditor.CreateEditor(window.releaseData);
         }
 
         private void OnGUI()
@@ -36,7 +49,21 @@ namespace FriedSynapse.FlowEnt.Builder.Editor
 
         private void Release()
         {
-            AssetDatabase.ExportPackage("Assets/FlowEnt", releaseData.GetFilePath(), ExportPackageOptions.Recurse);
+            AssetDatabase.ExportPackage($"Assets/{Application.productName}", ReleaseData.GetFilePath(), ExportPackageOptions.Recurse);
+            Upload();
+        }
+
+        private void Upload()
+        {
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = Path.Combine(Application.dataPath, "Editor/upload.sh");
+            psi.UseShellExecute = false;
+            psi.RedirectStandardOutput = true;
+            psi.Arguments = "arg1 arg2 arg3";
+
+            Process p = Process.Start(psi);
+            string strOutput = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
         }
     }
 }

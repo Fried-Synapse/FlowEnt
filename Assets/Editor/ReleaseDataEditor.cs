@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEditorEditor = UnityEditor.Editor;
 
-namespace FriedSynapse.FlowEnt.Builder.Editor
+namespace FriedSynapse.Release
 
 {
     [CustomEditor(typeof(ReleaseData))]
@@ -18,10 +18,10 @@ namespace FriedSynapse.FlowEnt.Builder.Editor
         {
             EditorGUILayout.LabelField("Data", EditorStyles.boldLabel);
 
-            BrowseField();
+            ShowDestination();
             ReleaseVersionField();
             EditorGUILayout.Space(10);
-            FilenameField();
+            ShowFilename();
 
             serializedObject.ApplyModifiedProperties();
         }
@@ -73,21 +73,17 @@ namespace FriedSynapse.FlowEnt.Builder.Editor
             EditorGUILayout.EndHorizontal();
         }
 
-        private void BrowseField()
+        private void ShowDestination()
         {
             EditorGUILayout.BeginHorizontal();
             {
-                EditorGUILayout.LabelField(serializedObject.FindProperty("destination").displayName, GUILayout.Width(EditorGUIUtility.labelWidth - 4));
-                EditorGUILayout.SelectableLabel(serializedObject.FindProperty("destination").stringValue, EditorStyles.textField, GUILayout.Height(EditorGUIUtility.singleLineHeight));
-                if (GUILayout.Button("Browse", GUILayout.MaxWidth(100)))
-                {
-                    serializedObject.FindProperty("destination").stringValue = EditorUtility.OpenFolderPanel(serializedObject.FindProperty("destination").displayName, "", "");
-                }
+                EditorGUILayout.LabelField("Destination", GUILayout.Width(EditorGUIUtility.labelWidth - 4));
+                EditorGUILayout.LabelField(ReleaseData.Destination);
             }
             EditorGUILayout.EndHorizontal();
         }
 
-        private void FilenameField()
+        private void ShowFilename()
         {
             EditorGUILayout.BeginHorizontal();
             {

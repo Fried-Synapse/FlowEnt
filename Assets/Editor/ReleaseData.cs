@@ -1,22 +1,19 @@
 using System.IO;
 using UnityEngine;
 
-namespace FriedSynapse.FlowEnt.Builder.Editor
+namespace FriedSynapse.Release
 {
     public class ReleaseData : ScriptableObject
     {
-        private const string FlowEntName = "FlowEnt";
         [SerializeField]
         private string releaseVersion;
         public string ReleaseVersion => releaseVersion;
 
-        [SerializeField]
-        private string destination;
-        public string Destination => destination;
+        public string Destination => $"/Users/Shared/Work/FriedSynapse/Builds/{Application.productName}/Packages";
 
         public string GetFileName()
         {
-            return $"{FlowEntName} {releaseVersion}.unitypackage";
+            return $"{Application.productName} {releaseVersion}.unitypackage";
         }
 
         public string GetFilePath()
