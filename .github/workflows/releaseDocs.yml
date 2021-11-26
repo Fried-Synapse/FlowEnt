@@ -29,7 +29,7 @@ jobs:
 
 
   deploy:
-    needs: buildDocs
+    needs: build
     name: Deploy Docs 🚀
     runs-on: ubuntu-latest
     steps:
