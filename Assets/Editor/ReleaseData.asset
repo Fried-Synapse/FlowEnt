@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af851be0d26f43f693e9dcbcab1bef9, type: 3}
   m_Name: ReleaseData
   m_EditorClassIdentifier: 
-  releaseVersion: v1.1.1
+  releaseVersion: v1.1.2
   destination: /Users/Shared/Work/FriedSynapse/Builds/FlowEnt/Packages
