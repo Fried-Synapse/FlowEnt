@@ -20,8 +20,8 @@ jobs:
       - name: Doxygen Action
         uses: mattnotmitt/doxygen-action@v1.1.0
         with:
-          doxyfile-path: "./Docs/Doxyfile" 
-          working-directory: "./Docs"
+          working-directory: "Docs"
+          doxyfile-path: "Doxyfile" 
       - uses: actions/upload-artifact@v2
         with:
           name: FlowEnt.Docs
@@ -30,7 +30,7 @@ jobs:
 
   deployPages:
     needs: buildDocs
-    name: Deploy Demo To Page 🚀
+    name: Deploy Docs To Page 🚀
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
