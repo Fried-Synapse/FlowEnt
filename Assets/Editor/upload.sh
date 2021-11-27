@@ -6,7 +6,6 @@ project="${1}"
 version="${2}"
 buildPath="${3}"
 buildFilename="${4}"
-encodedBuildFilename="${5}"
 organisation="Fried-Synapse"
 repo="${organisation}/${project}"
 
@@ -50,7 +49,7 @@ uploadAsset()
     -H "Accept: application/vnd.github.v3+json" \
     -H "Content-Type: application/zip" \
     --data-binary "@${buildPath}/${buildFilename}"  \
-    https://uploads.github.com/repos/${repo}/releases/${releaseId}/assets?name=${encodedBuildFilename}&label=${encodedBuildFilename}`
+    https://uploads.github.com/repos/${repo}/releases/${releaseId}/assets?name=${buildFilename}&label=${buildFilename}`
 }
 
 responseCreate="$(createRelease)"

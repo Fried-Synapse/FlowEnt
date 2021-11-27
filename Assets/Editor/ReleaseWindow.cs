@@ -77,8 +77,7 @@ namespace FriedSynapse.Release
                 $"\'{Application.productName}\' " +
                 $"\'{ReleaseData.ReleaseVersion}\' " +
                 $"\'{ReleaseData.Destination}\' " +
-                $"\'{ReleaseData.GetFileName()}\' " +
-                $"\'{UnityWebRequest.EscapeURL(ReleaseData.GetFileName())}\'";
+                $"\'{ReleaseData.GetFileName()}\' ";
             psi.WindowStyle = ProcessWindowStyle.Minimized;
             psi.CreateNoWindow = true;
             psi.UseShellExecute = false;

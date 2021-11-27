@@ -13,7 +13,7 @@ namespace FriedSynapse.Release
 
         public string GetFileName()
         {
-            return $"{Application.productName} {releaseVersion}.unitypackage";
+            return $"{Application.productName}.{releaseVersion}.unitypackage";
         }
 
         public string GetFilePath()
