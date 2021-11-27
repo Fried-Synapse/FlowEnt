@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityDebug = UnityEngine.Debug;
 
 namespace FriedSynapse.Release
@@ -11,10 +12,13 @@ namespace FriedSynapse.Release
         private ReleaseData ReleaseData { get; set; }
         private Editor ReleaseDataEditor { get; set; }
 
+        private static string[] GetAssetsIds()
+            => AssetDatabase.FindAssets("t:ReleaseData");
+
         [MenuItem("FriedSynapse/Release", false, 1)]
-        private static void Init()
+        private static void Open()
         {
-            string[] ids = AssetDatabase.FindAssets("t:ReleaseData");
+            string[] ids = GetAssetsIds();
             if (ids == null || ids.Length == 0)
             {
                 UnityDebug.LogError("Cannot find Release Data!");
@@ -26,13 +30,13 @@ namespace FriedSynapse.Release
                 return;
             }
             ReleaseWindow window = GetWindow<ReleaseWindow>("Release");
-            window.ReleaseData = AssetDatabase.LoadAssetAtPath<ReleaseData>(AssetDatabase.GUIDToAssetPath(ids[0]));
-            window.ReleaseDataEditor = Editor.CreateEditor(window.ReleaseData);
             window.Show();
         }
 
         private void OnGUI()
         {
+            Init();
+
             ReleaseDataEditor.OnInspectorGUI();
 
             EditorGUILayout.Space(100);
@@ -47,6 +51,17 @@ namespace FriedSynapse.Release
             GUILayout.EndHorizontal();
         }
 
+        private void Init()
+        {
+            if (ReleaseData != null)
+            {
+                return;
+            }
+            string[] ids = GetAssetsIds();
+            ReleaseData = AssetDatabase.LoadAssetAtPath<ReleaseData>(AssetDatabase.GUIDToAssetPath(ids[0]));
+            ReleaseDataEditor = Editor.CreateEditor(ReleaseData);
+        }
+
         private void Release()
         {
             AssetDatabase.ExportPackage($"Assets/{Application.productName}", ReleaseData.GetFilePath(), ExportPackageOptions.Recurse);
@@ -56,14 +71,22 @@ namespace FriedSynapse.Release
         private void Upload()
         {
             ProcessStartInfo psi = new ProcessStartInfo();
-            psi.FileName = Path.Combine(Application.dataPath, "Editor/upload.sh");
+            psi.FileName = "/bin/sh";
+            psi.WorkingDirectory = Path.Combine(Application.dataPath, "Editor");
+            psi.Arguments = "upload.sh " +
+                $"\'{Application.productName}\' " +
+                $"\'{ReleaseData.ReleaseVersion}\' " +
+                $"\'{ReleaseData.Destination}\' " +
+                $"\'{ReleaseData.GetFileName()}\' " +
+                $"\'{UnityWebRequest.EscapeURL(ReleaseData.GetFileName())}\'";
+            psi.WindowStyle = ProcessWindowStyle.Minimized;
+            psi.CreateNoWindow = true;
             psi.UseShellExecute = false;
             psi.RedirectStandardOutput = true;
-            psi.Arguments = "arg1 arg2 arg3";
-
             Process p = Process.Start(psi);
-            string strOutput = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
+            string strOutput = p.StandardOutput.ReadToEnd();
+            UnityDebug.Log($"{strOutput}");
         }
     }
 }
