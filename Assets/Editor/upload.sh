@@ -3,9 +3,8 @@
 source ../../../config.sh
 
 project="${1}"
-version="${2}"
-buildPath="${3}"
-buildFilename="${4}"
+buildPath="${2}"
+buildFilename="${3}"
 organisation="Fried-Synapse"
 repo="${organisation}/${project}"
 
