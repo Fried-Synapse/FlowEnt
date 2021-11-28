@@ -80,19 +80,19 @@ namespace FriedSynapse.FlowEnt
         /// Sets the easing of the tween.
         /// </summary>
         /// <param name="easing"></param>
-        T SetEasing(IEasing easing);
+        T SetEasing(IEasing easing, bool reverse = Tween.DefaultEasingReverse);
 
         /// <summary>
         /// Sets the easing of the tween using predefined values.
         /// </summary>
         /// <param name="easing"></param>
-        T SetEasing(Easing easing);
+        T SetEasing(Easing easing, bool reverse = Tween.DefaultEasingReverse);
 
         /// <summary>
         /// Sets the easing of the tween using an animation curve.
         /// </summary>
         /// <param name="animationCurve"></param>
-        T SetEasing(AnimationCurve animationCurve);
+        T SetEasing(AnimationCurve animationCurve, bool reverse = Tween.DefaultEasingReverse);
 
         /// <summary>
         /// Sets the loop type of the tween.

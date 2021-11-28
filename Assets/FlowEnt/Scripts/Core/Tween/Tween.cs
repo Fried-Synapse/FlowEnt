@@ -9,9 +9,7 @@ namespace FriedSynapse.FlowEnt
     /// A tween is a simple interpolation from 0 to 1 which has several options and events attached.
     /// For more information please go to https://flowent.friedsynapse.com/tween
     /// </summary>
-    public sealed partial class Tween : AbstractAnimation,
-        IFluentTweenOptionable<Tween>,
-        IFluentTweenEventable<Tween>
+    public sealed partial class Tween : AbstractAnimation
     {
         public const float DefaultTime = 1f;
         public const bool DefaultAutoStart = false;

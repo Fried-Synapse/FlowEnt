@@ -19,7 +19,6 @@ namespace FriedSynapse.FlowEnt
         {
         }
 
-        [SerializeField]
         private float time = 1f;
         /// <summary>
         /// The amount of time in seconds that this tween will last.
@@ -40,20 +39,15 @@ namespace FriedSynapse.FlowEnt
                 time = value;
             }
         }
-
-        [SerializeField]
-        private IEasing easing = LinearEasing;
         /// <summary>
         /// The easing of the tween.
         /// </summary>
-        public IEasing Easing { get => easing; set => easing = value; }
+        public IEasing Easing { get; set; } = LinearEasing;
 
-        [SerializeField]
-        private LoopType loopType;
         /// <summary>
         /// The loop type of the tween.
         /// </summary>
-        public LoopType LoopType { get => loopType; set => loopType = value; }
+        public LoopType LoopType { get; set; }
 
         /// <inheritdoc />
         public TweenOptions SetAutoStart(bool autoStart)
@@ -105,24 +99,18 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public TweenOptions SetEasing(IEasing easing)
+        public TweenOptions SetEasing(IEasing easing, bool reverse = Tween.DefaultEasingReverse)
         {
-            Easing = easing;
+            Easing = reverse ? easing.Reverse() : easing;
             return this;
         }
 
         /// <inheritdoc />
-        public TweenOptions SetEasing(Easing easing)
-        {
-            Easing = EasingFactory.Create(easing);
-            return this;
-        }
+        public TweenOptions SetEasing(Easing easing, bool reverse = Tween.DefaultEasingReverse)
+            => SetEasing(EasingFactory.Create(easing), reverse);
 
         /// <inheritdoc />
-        public TweenOptions SetEasing(AnimationCurve animationCurve)
-        {
-            Easing = new AnimationCurveEasing(animationCurve);
-            return this;
-        }
+        public TweenOptions SetEasing(AnimationCurve animationCurve, bool reverse = Tween.DefaultEasingReverse)
+            => SetEasing(new AnimationCurveEasing(animationCurve), reverse);
     }
 }

@@ -2,7 +2,7 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
-    public partial class Tween
+    public partial class Tween : IFluentTweenEventable<Tween>
     {
         private Action onStarting;
         private Action<float> onUpdating;

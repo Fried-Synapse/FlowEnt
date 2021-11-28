@@ -2,7 +2,7 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
-    public partial class Flow
+    public partial class Flow : IFluentFlowEventable<Flow>
     {
         /// <summary>
         /// Sets all the events for this flow.
