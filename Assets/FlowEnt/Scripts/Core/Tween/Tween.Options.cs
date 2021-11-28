@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public partial class Tween
+    public partial class Tween : IFluentTweenOptionable<Tween>
     {
+        internal const bool DefaultEasingReverse = false;
         private float time = 1;
         private IEasing easing = TweenOptions.LinearEasing;
         private LoopType loopType;
@@ -92,25 +93,19 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween SetEasing(IEasing easing)
+        public Tween SetEasing(IEasing easing, bool reverse = DefaultEasingReverse)
         {
-            this.easing = easing;
+            this.easing = reverse ? easing.Reverse() : easing;
             return this;
         }
 
         /// <inheritdoc />
-        public Tween SetEasing(Easing easing)
-        {
-            this.easing = EasingFactory.Create(easing);
-            return this;
-        }
+        public Tween SetEasing(Easing easing, bool reverse = DefaultEasingReverse)
+            => SetEasing(EasingFactory.Create(easing), reverse);
 
         /// <inheritdoc />
-        public Tween SetEasing(AnimationCurve animationCurve)
-        {
-            this.easing = new AnimationCurveEasing(animationCurve);
-            return this;
-        }
+        public Tween SetEasing(AnimationCurve animationCurve, bool reverse = DefaultEasingReverse)
+            => SetEasing(new AnimationCurveEasing(animationCurve), reverse);
 
         private void CopyOptions(TweenOptions options)
         {

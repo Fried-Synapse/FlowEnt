@@ -14,5 +14,9 @@ namespace FriedSynapse.FlowEnt.Builder
             Objects[0].Tween(1)
                 .Start();
         }
+
+        private void OnDrawGizmos()
+        {
+        }
     }
 }

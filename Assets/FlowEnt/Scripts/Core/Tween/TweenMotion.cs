@@ -131,23 +131,23 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public TweenMotion<T> SetEasing(IEasing easing)
+        public TweenMotion<T> SetEasing(IEasing easing, bool reverse = Tween.DefaultEasingReverse)
         {
-            Tween.SetEasing(easing);
+            Tween.SetEasing(easing, reverse);
             return this;
         }
 
         /// <inheritdoc />
-        public TweenMotion<T> SetEasing(Easing easing)
+        public TweenMotion<T> SetEasing(Easing easing, bool reverse = Tween.DefaultEasingReverse)
         {
-            Tween.SetEasing(easing);
+            Tween.SetEasing(easing, reverse);
             return this;
         }
 
         /// <inheritdoc />
-        public TweenMotion<T> SetEasing(AnimationCurve animationCurve)
+        public TweenMotion<T> SetEasing(AnimationCurve animationCurve, bool reverse = Tween.DefaultEasingReverse)
         {
-            Tween.SetEasing(animationCurve);
+            Tween.SetEasing(animationCurve, reverse);
             return this;
         }
 

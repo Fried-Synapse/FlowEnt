@@ -8,9 +8,7 @@ namespace FriedSynapse.FlowEnt
     /// For more information please go to https://flowent.friedsynapse.com/flow
     /// </summary>
     public sealed partial class Flow : AbstractAnimation,
-        IUpdateController,
-        IFluentFlowEventable<Flow>,
-        IFluentFlowOptionable<Flow>
+        IUpdateController
     {
         private const string ErrorAnimationAlreadyStarted = "Cannot add animation that has already started.";
 
