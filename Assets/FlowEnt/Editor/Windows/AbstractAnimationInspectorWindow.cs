@@ -60,7 +60,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private void ShowStackTrace()
         {
             FlowEntEditorGUILayout.LabelFieldBold("Stack Trace:");
-#if FlowEnt_Debug
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
             foreach (string line in Animation.GetFieldValue<string>("stackTrace").Split('\n'))
             {
                 FlowEntEditorGUILayout.LabelField(line, FlowEntConstants.Orange, GUILayout.Width(position.width - 20f));

@@ -113,7 +113,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         //TODO find a way to run this test all the time
-#if FlowEnt_Debug
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
         [UnityTest]
         public IEnumerator Update_TriggerException()
         {

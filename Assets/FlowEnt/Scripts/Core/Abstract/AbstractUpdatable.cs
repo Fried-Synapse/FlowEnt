@@ -19,7 +19,7 @@ namespace FriedSynapse.FlowEnt
             Id = lastId;
             ++lastId;
             this.updateController = updateController;
-#if FlowEnt_Debug
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
             const string flowEntNamespace = "  at FriedSynapse.FlowEnt.";
             const string stackTraceNamespace = "  at System.Environment.get_StackTrace";
             const string flowEntDemoNamespace = "  at FriedSynapse.FlowEnt.Demo";
@@ -39,7 +39,7 @@ namespace FriedSynapse.FlowEnt
 #endif
         }
 
-#if FlowEnt_Debug
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
         internal string stackTrace;
 #endif
 
