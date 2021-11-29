@@ -8,22 +8,24 @@ namespace FriedSynapse.FlowEnt.Editor
     public class FlowEntSettingsWindow : EditorWindow
     {
         private const string FlowEntDebug = "FlowEnt_Debug";
+        private const string FlowEntDebugEditor = "FlowEnt_Debug_Editor";
 
         private void OnGUI()
         {
             FlowEntEditorGUILayout.Header("FlowEnt Settings");
             EditorGUI.indentLevel++;
-            ShowDebug();
+            ShowDebug("Debugging in Editor", FlowEntDebugEditor, false);
+            ShowDebug("Debugging always", FlowEntDebug, true);
             EditorGUI.indentLevel--;
         }
 
-        private void ShowDebug()
+        private void ShowDebug(string label, string symbol, bool showWarning)
         {
             PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, out string[] defines);
             List<string> definesList = defines.ToList();
-            bool wasDebugging = definesList.Contains(FlowEntDebug);
+            bool wasDebugging = definesList.Contains(symbol);
 
-            bool isDebugging = EditorGUILayout.Toggle("Enable Debugging", wasDebugging);
+            bool isDebugging = EditorGUILayout.Toggle(label, wasDebugging);
 
             if (isDebugging != wasDebugging)
             {
@@ -34,16 +36,16 @@ namespace FriedSynapse.FlowEnt.Editor
 
                 if (isDebugging)
                 {
-                    definesList.Add(FlowEntDebug);
+                    definesList.Add(symbol);
                 }
                 else
                 {
-                    definesList.Remove(FlowEntDebug);
+                    definesList.Remove(symbol);
                 }
             }
             PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, definesList.ToArray());
 
-            if (isDebugging)
+            if (showWarning && isDebugging)
             {
                 EditorGUILayout.HelpBox("Debugging mode slows down the tween performance. Make sure you do not enable this on your producion build!", MessageType.Warning);
             }

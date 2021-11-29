@@ -84,12 +84,12 @@ namespace FriedSynapse.FlowEnt
 
             while (index != null)
             {
-#if FlowEnt_Debug
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
                 try
                 {
 #endif
                 index.UpdateInternal(deltaTime);
-#if FlowEnt_Debug
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
                 }
                 catch (Exception ex)
                 {
