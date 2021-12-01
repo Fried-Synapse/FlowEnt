@@ -9,6 +9,9 @@ namespace FriedSynapse.FlowEnt.Builder
         private List<Transform> objects;
         private List<Transform> Objects => objects;
 
+        [SerializeField]
+        private TweenBuilder tweenBuilder;
+
         private void Start()
         {
             Objects[0].Tween(1)

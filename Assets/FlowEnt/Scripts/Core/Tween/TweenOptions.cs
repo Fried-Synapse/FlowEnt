@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    [Serializable]
     public class TweenOptions : AbstractAnimationOptions,
         IFluentTweenOptionable<TweenOptions>
     {
