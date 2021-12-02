@@ -52,6 +52,12 @@ namespace FriedSynapse.FlowEnt
     internal interface IFluentTweenOptionable<T>
     {
         /// <summary>
+        /// Sets the name of the tween.
+        /// </summary>
+        /// <param name="name"></param>
+        T SetName(string name);
+
+        /// <summary>
         /// Sets whether this tween should auto-start or not.
         /// </summary>
         /// <remarks>Auto-start will be slower than a true-start. See more at https://flowent.friedsynapse.com/tips#h.s5cucrg5qyjc</remarks>

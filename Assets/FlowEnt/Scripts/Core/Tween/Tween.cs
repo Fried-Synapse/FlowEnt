@@ -55,13 +55,6 @@ namespace FriedSynapse.FlowEnt
 
         #region Controls
 
-        /// <inheritdoc cref="AbstractAnimation.SetName(string)" />
-        public new Tween SetName(string name)
-        {
-            base.SetName(name);
-            return this;
-        }
-
         /// <inheritdoc cref="AbstractAnimation.Start" />
         /// <exception cref="TweenException">If the tween has already started.</exception>
         public new Tween Start()

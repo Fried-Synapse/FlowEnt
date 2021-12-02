@@ -11,6 +11,8 @@ namespace FriedSynapse.FlowEnt
         private IEasing easing = TweenOptions.LinearEasing;
         private LoopType loopType;
 
+
+
         /// <summary>
         /// Sets all the options for this tween.
         /// </summary>
@@ -28,6 +30,13 @@ namespace FriedSynapse.FlowEnt
         public Tween SetOptions(Func<TweenOptions, TweenOptions> optionsBuilder)
         {
             CopyOptions(optionsBuilder(new TweenOptions()));
+            return this;
+        }
+
+        /// <inheritdoc cref="AbstractAnimation.SetName(string)" />
+        public new Tween SetName(string name)
+        {
+            base.SetName(name);
             return this;
         }
 

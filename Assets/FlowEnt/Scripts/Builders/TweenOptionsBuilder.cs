@@ -8,6 +8,8 @@ namespace FriedSynapse.FlowEnt
     public class TweenOptionsBuilder : AbstractBuilder<TweenOptions>
     {
         [SerializeField]
+        public string name;
+        [SerializeField]
         public bool autoStart;
         [SerializeField]
         public int skipFrames;
@@ -26,6 +28,7 @@ namespace FriedSynapse.FlowEnt
         public override TweenOptions Build()
             => new TweenOptions()
             {
+                Name = name,
                 AutoStart = autoStart,
                 SkipFrames = skipFrames,
                 Delay = delay,

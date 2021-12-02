@@ -117,6 +117,13 @@ namespace FriedSynapse.FlowEnt
         #region Options
 
         /// <inheritdoc />
+        public TweenMotion<T> SetName(string name)
+        {
+            Tween.SetName(name);
+            return this;
+        }
+
+        /// <inheritdoc />
         public TweenMotion<T> SetAutoStart(bool autoStart)
         {
             Tween.SetAutoStart(autoStart);

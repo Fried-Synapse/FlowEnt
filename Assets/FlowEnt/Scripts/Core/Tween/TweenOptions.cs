@@ -18,6 +18,11 @@ namespace FriedSynapse.FlowEnt
         {
         }
 
+        /// <summary>
+        /// The name of the Tween
+        /// </summary>
+        public string Name { get; set; }
+
         private float time = 1f;
         /// <summary>
         /// The amount of time in seconds that this tween will last.
@@ -47,6 +52,13 @@ namespace FriedSynapse.FlowEnt
         /// The loop type of the tween.
         /// </summary>
         public LoopType LoopType { get; set; }
+
+        /// <inheritdoc />
+        public TweenOptions SetName(string name)
+        {
+            Name = name;
+            return this;
+        }
 
         /// <inheritdoc />
         public TweenOptions SetAutoStart(bool autoStart)
