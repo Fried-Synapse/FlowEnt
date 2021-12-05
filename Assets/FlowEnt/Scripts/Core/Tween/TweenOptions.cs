@@ -4,13 +4,15 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    [Serializable]
     public class TweenOptions : AbstractAnimationOptions,
         IFluentTweenOptionable<TweenOptions>
     {
         internal const string ErrorTimeNegative = "Value cannot be less than 0.";
         internal const string ErrorTimeInfinity = "Value cannot be infinity.";
-        internal static readonly IEasing LinearEasing = new LinearEasing();
+        internal const float DefaultTime = 1f;
+        internal const bool DefaultEasingReverse = false;
+        internal const Easing DefaultEasing = FlowEnt.Easing.Linear;
+        internal static readonly IEasing DefaultIEasing = EasingFactory.Create(DefaultEasing);
 
         /// <summary>
         /// Initialises a new instance of the <see cref="TweenOptions"/> class.
@@ -42,12 +44,19 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// The easing of the tween.
         /// </summary>
-        public IEasing Easing { get; set; } = LinearEasing;
+        public IEasing Easing { get; set; } = DefaultIEasing;
 
         /// <summary>
         /// The loop type of the tween.
         /// </summary>
         public LoopType LoopType { get; set; }
+
+        /// <inheritdoc />
+        public TweenOptions SetName(string name)
+        {
+            Name = name;
+            return this;
+        }
 
         /// <inheritdoc />
         public TweenOptions SetAutoStart(bool autoStart)
@@ -99,18 +108,18 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public TweenOptions SetEasing(IEasing easing, bool reverse = Tween.DefaultEasingReverse)
+        public TweenOptions SetEasing(IEasing easing, bool reverse = DefaultEasingReverse)
         {
             Easing = reverse ? easing.Reverse() : easing;
             return this;
         }
 
         /// <inheritdoc />
-        public TweenOptions SetEasing(Easing easing, bool reverse = Tween.DefaultEasingReverse)
+        public TweenOptions SetEasing(Easing easing, bool reverse = DefaultEasingReverse)
             => SetEasing(EasingFactory.Create(easing), reverse);
 
         /// <inheritdoc />
-        public TweenOptions SetEasing(AnimationCurve animationCurve, bool reverse = Tween.DefaultEasingReverse)
+        public TweenOptions SetEasing(AnimationCurve animationCurve, bool reverse = DefaultEasingReverse)
             => SetEasing(new AnimationCurveEasing(animationCurve), reverse);
     }
 }

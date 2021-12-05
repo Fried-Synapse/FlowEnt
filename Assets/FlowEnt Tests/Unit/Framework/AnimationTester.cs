@@ -36,6 +36,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             return this;
         }
 
+        public AnimationTester Act(Action callback)
+        {
+            ActCallback = () =>
+            {
+                callback();
+                return null;
+            };
+            return this;
+        }
+
         public AnimationTester SetCustomWaiter(Func<IEnumerator> callback)
         {
             CustomWaiterCallback = callback;
@@ -79,21 +89,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             ArrangeCallback?.Invoke();
             ControlAnimation = ActCallback.Invoke();
             Stopwatch.Start();
-            if (ControlAnimation is Tween tween)
+            if (CustomWaiterCallback != null)
             {
-                tween.OnCompleted(OnComplete);
-            }
-            if (ControlAnimation is Flow flow)
-            {
-                flow.OnCompleted(OnComplete);
-            }
-            if (CustomWaiterCallback == null)
-            {
-                yield return WaitToCompleteAllTweens(Count);
+                yield return CustomWaiterCallback.Invoke();
             }
             else
             {
-                yield return CustomWaiterCallback.Invoke();
+                if (ControlAnimation != null)
+                {
+                    ControlAnimation.OnCompleted(OnComplete);
+                    yield return WaitToCompleteAllTweens(Count);
+                }
             }
             Stopwatch.Stop();
             yield return WaitForFrames(5);

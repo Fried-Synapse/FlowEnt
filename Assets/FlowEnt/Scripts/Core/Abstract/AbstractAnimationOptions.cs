@@ -1,16 +1,17 @@
 using System;
-using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
     /// <summary>
     /// Provides common options for animations.
     /// </summary>
-    [Serializable]
     public class AbstractAnimationOptions
     {
         internal const string ErrorLoopCountNegative = "Value cannot be 0 or less. If you want to set an infinite loop set the value to null.";
         internal const string ErrorTimeScaleNegative = "Value cannot be less than 0.";
+        internal const bool DefaultAutoStart = false;
+        internal const int DefaultLoopCount = 1;
+        internal const float DefaultTimeScale = 1f;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="AbstractAnimationOptions"/> class.
@@ -19,31 +20,29 @@ namespace FriedSynapse.FlowEnt
         {
         }
 
-        [SerializeField]
-        private bool autoStart;
+        /// <summary>
+        /// The name of the animation.
+        /// </summary>
+        public string Name { get; set; }
+
         /// <summary>
         /// Whether the animation should auto start or not. If set to false, you need to start the animation manually.
         /// </summary>
         /// <remarks>
         /// AutoStart for an animation requires to have a helper that looks for the next frame therefore manually starting the Animation will always be more efficient.
         /// </remarks>
-        public bool AutoStart { get => autoStart; set => autoStart = value; }
+        public bool AutoStart { get; set; }
 
-        [SerializeField]
-        private int skipFrames;
         /// <summary>
         /// The amount of frames that the animation will skip from the moment it started till the animation begins.
         /// </summary>
-        public int SkipFrames { get => skipFrames; set => skipFrames = value; }
+        public int SkipFrames { get; set; }
 
-        [SerializeField]
-        private float delay;
         /// <summary>
         /// The amount of time that the animation will skip from the moment it started till the animation begins.
         /// </summary>
-        public float Delay { get => delay; set => delay = value; }
+        public float Delay { get; set; }
 
-        [SerializeField]
         private float timeScale = 1;
         /// <summary>
         /// The scale of the time that will be applied to the animation.
@@ -61,7 +60,6 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        [SerializeField]
         private int? loopCount = 1;
 
         /// <summary>

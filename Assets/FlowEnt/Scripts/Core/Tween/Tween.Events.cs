@@ -36,9 +36,9 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween OnStarted(Action callback)
+        public new Tween OnStarted(Action callback)
         {
-            onStarted += callback;
+            base.OnStarted(callback);
             return this;
         }
 
@@ -50,16 +50,16 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween OnUpdated(Action<float> callback)
+        public new Tween OnUpdated(Action<float> callback)
         {
-            onUpdated += callback;
+            base.OnUpdated(callback);
             return this;
         }
 
         /// <inheritdoc />
-        public Tween OnLoopCompleted(Action<int?> callback)
+        public new Tween OnLoopCompleted(Action<int?> callback)
         {
-            onLoopCompleted += callback;
+            base.OnLoopCompleted(callback);
             return this;
         }
 
@@ -71,9 +71,9 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween OnCompleted(Action callback)
+        public new Tween OnCompleted(Action callback)
         {
-            onCompleted += callback;
+            base.OnCompleted(callback);
             return this;
         }
 

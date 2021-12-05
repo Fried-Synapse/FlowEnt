@@ -1,12 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEditor;
+using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
     public class TweenEventsTests : AbstractEngineTests
     {
+        [UnityTest]
+        public IEnumerator Builder()
+        {
+            TweenEvents tweenEvents = default;
+
+            yield return CreateTester()
+                .Act(() => tweenEvents = Variables.TweenEventsBuilder.Build())
+                .Assert(() =>
+                {
+                    static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
+
+                    assert(Variables.TweenEventsBuilder.OnStarting, tweenEvents.OnStartingEvent);
+                    assert(Variables.TweenEventsBuilder.OnStarted, tweenEvents.OnStartedEvent);
+                    assert(Variables.TweenEventsBuilder.OnUpdating, tweenEvents.OnUpdatingEvent);
+                    assert(Variables.TweenEventsBuilder.OnUpdated, tweenEvents.OnUpdatedEvent);
+                    assert(Variables.TweenEventsBuilder.OnLoopCompleted, tweenEvents.OnLoopCompletedEvent);
+                    assert(Variables.TweenEventsBuilder.OnCompleted, tweenEvents.OnCompletedEvent);
+                    assert(Variables.TweenEventsBuilder.OnCompleting, tweenEvents.OnCompletingEvent);
+                })
+                .Run();
+        }
+
         [UnityTest]
         public IEnumerator OnStarting()
         {

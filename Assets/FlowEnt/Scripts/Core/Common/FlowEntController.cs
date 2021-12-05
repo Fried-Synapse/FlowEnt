@@ -42,7 +42,7 @@ namespace FriedSynapse.FlowEnt
 
         private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
 
-        private float timeScale = 1;
+        private float timeScale = 1f;
 
         /// <summary>
         /// The global time scale for all animations.

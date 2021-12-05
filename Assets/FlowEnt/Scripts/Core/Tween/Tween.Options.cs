@@ -6,9 +6,8 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class Tween : IFluentTweenOptionable<Tween>
     {
-        internal const bool DefaultEasingReverse = false;
-        private float time = 1;
-        private IEasing easing = TweenOptions.LinearEasing;
+        private float time = TweenOptions.DefaultTime;
+        private IEasing easing = TweenOptions.DefaultIEasing;
         private LoopType loopType;
 
         /// <summary>
@@ -28,6 +27,13 @@ namespace FriedSynapse.FlowEnt
         public Tween SetOptions(Func<TweenOptions, TweenOptions> optionsBuilder)
         {
             CopyOptions(optionsBuilder(new TweenOptions()));
+            return this;
+        }
+
+        /// <inheritdoc cref="AbstractAnimation.SetName(string)" />
+        public new Tween SetName(string name)
+        {
+            base.SetName(name);
             return this;
         }
 
@@ -93,22 +99,23 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween SetEasing(IEasing easing, bool reverse = DefaultEasingReverse)
+        public Tween SetEasing(IEasing easing, bool reverse = TweenOptions.DefaultEasingReverse)
         {
             this.easing = reverse ? easing.Reverse() : easing;
             return this;
         }
 
         /// <inheritdoc />
-        public Tween SetEasing(Easing easing, bool reverse = DefaultEasingReverse)
+        public Tween SetEasing(Easing easing, bool reverse = TweenOptions.DefaultEasingReverse)
             => SetEasing(EasingFactory.Create(easing), reverse);
 
         /// <inheritdoc />
-        public Tween SetEasing(AnimationCurve animationCurve, bool reverse = DefaultEasingReverse)
+        public Tween SetEasing(AnimationCurve animationCurve, bool reverse = TweenOptions.DefaultEasingReverse)
             => SetEasing(new AnimationCurveEasing(animationCurve), reverse);
 
         private void CopyOptions(TweenOptions options)
         {
+            Name = options.Name;
             AutoStart = options.AutoStart;
             skipFrames = options.SkipFrames;
             delay = options.Delay;

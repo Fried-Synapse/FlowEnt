@@ -4,53 +4,14 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    internal interface IFluentTweenEventable<T>
-    {
-        /// <summary>
-        /// Adds an event called before the tween starts.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        T OnStarting(Action callback);
-
-        /// <summary>
-        /// Adds an event called after the tween starts.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        T OnStarted(Action callback);
-
-        /// <summary>
-        /// Adds an event called before the tween updates.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        T OnUpdating(Action<float> callback);
-
-        /// <summary>
-        /// Adds an event called after the tween updates.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        T OnUpdated(Action<float> callback);
-
-        /// <summary>
-        /// Adds an event called after a loop completed.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        T OnLoopCompleted(Action<int?> callback);
-
-        /// <summary>
-        /// Adds an event called before the tween completes.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        T OnCompleting(Action callback);
-
-        /// <summary>
-        /// Adds an event called after the tween completes.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        T OnCompleted(Action callback);
-    }
-
     internal interface IFluentTweenOptionable<T>
     {
+        /// <summary>
+        /// Sets the name of the tween.
+        /// </summary>
+        /// <param name="name"></param>
+        T SetName(string name);
+
         /// <summary>
         /// Sets whether this tween should auto-start or not.
         /// </summary>
@@ -81,21 +42,21 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="easing"></param>
         /// <param name="reverse">Will apply a reverse on the easing.</param>
-        T SetEasing(IEasing easing, bool reverse = Tween.DefaultEasingReverse);
+        T SetEasing(IEasing easing, bool reverse = TweenOptions.DefaultEasingReverse);
 
         /// <summary>
         /// Sets the easing of the tween using predefined values.
         /// </summary>
         /// <param name="easing"></param>
         /// <param name="reverse">Will apply a reverse on the easing.</param>
-        T SetEasing(Easing easing, bool reverse = Tween.DefaultEasingReverse);
+        T SetEasing(Easing easing, bool reverse = TweenOptions.DefaultEasingReverse);
 
         /// <summary>
         /// Sets the easing of the tween using an animation curve.
         /// </summary>
         /// <param name="animationCurve"></param>
         /// <param name="reverse">Will apply a reverse on the easing.</param>
-        T SetEasing(AnimationCurve animationCurve, bool reverse = Tween.DefaultEasingReverse);
+        T SetEasing(AnimationCurve animationCurve, bool reverse = TweenOptions.DefaultEasingReverse);
 
         /// <summary>
         /// Sets the loop type of the tween.
@@ -114,5 +75,26 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="timeScale"></param>
         T SetTimeScale(float timeScale);
+    }
+
+    internal interface IFluentTweenEventable<T> : IFluentAnimationEventable<T>
+    {
+        /// <summary>
+        /// Adds an event called before the animation starts.
+        /// </summary>
+        /// <param name="callback">The event.</param>
+        T OnStarting(Action callback);
+
+        /// <summary>
+        /// Adds an event called before the animation updates.
+        /// </summary>
+        /// <param name="callback">The event.</param>
+        T OnUpdating(Action<float> callback);
+
+        /// <summary>
+        /// Adds an event called before the animation completes.
+        /// </summary>
+        /// <param name="callback">The event.</param>
+        T OnCompleting(Action callback);
     }
 }

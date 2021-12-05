@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt
                 throw new FlowException(this, ErrorAnimationAlreadyStarted);
             }
 
-            if (animation.HasAutoStart)
+            if (animation.AutoStart)
             {
                 animation.CancelAutoStart();
             }

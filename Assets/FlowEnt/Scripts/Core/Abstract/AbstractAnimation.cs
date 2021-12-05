@@ -6,18 +6,17 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Provides animation specific behaviour
     /// </summary>
-    public abstract class AbstractAnimation : AbstractUpdatable, IControllable
+    public abstract partial class AbstractAnimation : AbstractUpdatable, IControllable
     {
         private protected AbstractStartHelper startHelper;
         private protected AutoStartHelper autoStartHelper;
-        internal bool HasAutoStart => autoStartHelper != null;
 
         #region Options
 
         private protected int skipFrames;
-        private protected float delay = -1f;
-        private protected int? loopCount = 1;
-        private protected float timeScale = 1f;
+        private protected float delay;
+        private protected int? loopCount = AbstractAnimationOptions.DefaultLoopCount;
+        private protected float timeScale = AbstractAnimationOptions.DefaultTimeScale;
         public float TimeScale
         {
             get => timeScale;
@@ -40,9 +39,9 @@ namespace FriedSynapse.FlowEnt
 
         #region Settings Properties
 
-        protected bool AutoStart
+        public bool AutoStart
         {
-            set
+            protected set
             {
                 if (value)
                 {
@@ -57,6 +56,7 @@ namespace FriedSynapse.FlowEnt
                     }
                 }
             }
+            get => autoStartHelper != null;
         }
         private protected PlayState playState;
         /// <summary>

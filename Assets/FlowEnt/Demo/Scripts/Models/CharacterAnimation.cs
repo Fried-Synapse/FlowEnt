@@ -12,6 +12,7 @@ namespace FriedSynapse.FlowEnt.Demo
         private readonly Vector3 Step1 = new Vector3(-15, -205, 0);
         private readonly Vector3 Step2 = new Vector3(-25, -155, 0);
 
+#pragma warning disable RCS1169, IDE0044
         [SerializeField]
         private Transform character;
         private Transform Character => character;
@@ -19,6 +20,7 @@ namespace FriedSynapse.FlowEnt.Demo
         [SerializeField]
         private List<Vector3> splinePoints;
         private List<Vector3> SplinePoints => splinePoints;
+#pragma warning restore RCS1169, IDE0044
 
         private ISpline GetSpline() => new BSpline(SplinePoints).Normalise();
 

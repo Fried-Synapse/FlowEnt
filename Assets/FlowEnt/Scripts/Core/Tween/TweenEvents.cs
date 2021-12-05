@@ -7,7 +7,6 @@ namespace FriedSynapse.FlowEnt
     {
         public Action OnStartingEvent { get; set; }
         public Action<float> OnUpdatingEvent { get; set; }
-        public Action<int?> OnLoopCompletingEvent { get; set; }
         public Action OnCompletingEvent { get; set; }
 
         /// <inheritdoc />
