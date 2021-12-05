@@ -7,34 +7,61 @@ namespace FriedSynapse.FlowEnt
     [Serializable]
     public class TweenEventsBuilder : AbstractBuilder<TweenEvents>
     {
+#pragma warning disable RCS1169, IDE0044
         [SerializeField]
-        public UnityEvent onStarting;
+        private UnityEvent onStarting;
         [SerializeField]
-        public UnityEvent onStarted;
+        private UnityEvent onStarted;
         [SerializeField]
-        public UnityEvent<float> onUpdating;
+        private UnityEvent<float> onUpdating;
         [SerializeField]
-        public UnityEvent<float> onUpdate;
+        private UnityEvent<float> onUpdated;
         [SerializeField]
-        public UnityEvent<int?> onLoopCompleting;
+        private UnityEvent<int?> onLoopCompleting;
         [SerializeField]
-        public UnityEvent<int?> onLoopCompleted;
+        private UnityEvent<int?> onLoopCompleted;
         [SerializeField]
-        public UnityEvent onCompleting;
+        private UnityEvent onCompleting;
         [SerializeField]
-        public UnityEvent onCompleted;
+        private UnityEvent onCompleted;
+#pragma warning restore RCS1169, IDE0044
 
         public override TweenEvents Build()
-            => new TweenEvents()
+        {
+            TweenEvents events = new TweenEvents();
+            if (onStarting?.GetPersistentEventCount() > 0)
             {
-                OnStartingEvent = () => onStarting?.Invoke(),
-                OnStartedEvent = () => onStarted?.Invoke(),
-                OnUpdatingEvent = (t) => onUpdating?.Invoke(t),
-                OnUpdatedEvent = (t) => onUpdate?.Invoke(t),
-                OnLoopCompletingEvent = (t) => onLoopCompleting?.Invoke(t),
-                OnLoopCompletedEvent = (t) => onLoopCompleted?.Invoke(t),
-                OnCompletingEvent = () => onCompleting?.Invoke(),
-                OnCompletedEvent = () => onCompleted?.Invoke(),
-            };
+                events.OnStartingEvent = () => onStarting.Invoke();
+            }
+            if (onStarted?.GetPersistentEventCount() > 0)
+            {
+                events.OnStartedEvent = () => onStarted.Invoke();
+            }
+            if (onUpdating?.GetPersistentEventCount() > 0)
+            {
+                events.OnUpdatingEvent = (t) => onUpdating.Invoke(t);
+            }
+            if (onUpdated?.GetPersistentEventCount() > 0)
+            {
+                events.OnUpdatedEvent = (t) => onUpdated.Invoke(t);
+            }
+            if (onLoopCompleting?.GetPersistentEventCount() > 0)
+            {
+                events.OnLoopCompletingEvent = (t) => onLoopCompleting.Invoke(t);
+            }
+            if (onLoopCompleted?.GetPersistentEventCount() > 0)
+            {
+                events.OnLoopCompletedEvent = (t) => onLoopCompleted.Invoke(t);
+            }
+            if (onCompleting?.GetPersistentEventCount() > 0)
+            {
+                events.OnCompletingEvent = () => onCompleting.Invoke();
+            }
+            if (onCompleted?.GetPersistentEventCount() > 0)
+            {
+                events.OnCompletedEvent = () => onCompleted.Invoke();
+            }
+            return events;
+        }
     }
 }

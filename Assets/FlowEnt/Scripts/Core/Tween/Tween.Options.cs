@@ -118,6 +118,7 @@ namespace FriedSynapse.FlowEnt
 
         private void CopyOptions(TweenOptions options)
         {
+            Name = options.Name;
             AutoStart = options.AutoStart;
             skipFrames = options.SkipFrames;
             delay = options.Delay;

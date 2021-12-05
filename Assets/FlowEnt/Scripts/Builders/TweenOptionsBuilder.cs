@@ -7,14 +7,15 @@ namespace FriedSynapse.FlowEnt
     [Serializable]
     public class TweenOptionsBuilder : AbstractBuilder<TweenOptions>
     {
+#pragma warning disable RCS1169, IDE0044
         [SerializeField]
-        public string name;
+        private string name;
         [SerializeField]
-        public bool autoStart;
+        private bool autoStart;
         [SerializeField]
-        public int skipFrames;
+        private int skipFrames;
         [SerializeField]
-        public float delay;
+        private float delay;
         [SerializeField]
         private float timeScale = 1;
         [SerializeField]
@@ -24,7 +25,11 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private int loopCount = 1;
         [SerializeField]
+        private bool isLoopCountInfinite;
+        [SerializeField]
         private LoopType loopType;
+#pragma warning restore RCS1169, IDE0044
+
         public override TweenOptions Build()
             => new TweenOptions()
             {
@@ -35,7 +40,7 @@ namespace FriedSynapse.FlowEnt
                 TimeScale = timeScale,
                 Time = time,
                 Easing = EasingFactory.Create(easing),
-                LoopCount = loopCount,
+                LoopCount = isLoopCountInfinite ? default(int?) : loopCount,
                 LoopType = loopType
             };
     }

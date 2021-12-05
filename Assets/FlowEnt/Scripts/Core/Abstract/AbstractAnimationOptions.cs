@@ -19,6 +19,11 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <summary>
+        /// The name of the animation.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Whether the animation should auto start or not. If set to false, you need to start the animation manually.
         /// </summary>
         /// <remarks>

@@ -9,12 +9,14 @@ namespace FriedSynapse.FlowEnt.Demo
     [Serializable]
     public class Phase1Animation : AbstractDemoAnimation
     {
+#pragma warning disable RCS1169, IDE0044
         [SerializeField]
         private List<Transform> jumpers;
         private List<Transform> Jumpers => jumpers;
         [SerializeField]
         private List<Transform> rotators;
         private List<Transform> Rotators => rotators;
+#pragma warning restore RCS1169, IDE0044
 
         public override AbstractAnimation GetAnimation()
             => new Flow()

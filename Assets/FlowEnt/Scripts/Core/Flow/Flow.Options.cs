@@ -65,7 +65,8 @@ namespace FriedSynapse.FlowEnt
 
         private void CopyOptions(FlowOptions options)
         {
-            SetAutoStart(options.AutoStart);
+            Name = options.Name;
+            AutoStart = options.AutoStart;
             skipFrames = options.SkipFrames;
             delay = options.Delay;
             loopCount = options.LoopCount;
