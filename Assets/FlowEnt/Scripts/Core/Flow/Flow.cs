@@ -25,7 +25,7 @@ namespace FriedSynapse.FlowEnt
         /// Creates a new flow.
         /// </summary>
         /// <param name="autoStart">Whether the flow should start automatically or not.</param>
-        public Flow(bool autoStart = false)
+        public Flow(bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
         {
             AutoStart = autoStart;
         }

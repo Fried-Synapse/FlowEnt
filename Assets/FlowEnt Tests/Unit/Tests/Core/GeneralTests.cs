@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using UnityEngine;
 using UnityEngine.TestTools;
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
+using System.Text.RegularExpressions;
+using UnityEngine;
+#endif
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
@@ -14,7 +16,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator TimeScale()
         {
-            const float time = 2f;
+            const float time = 1f;
             const float timeScale = 2f;
 
             yield return CreateTester()
@@ -26,7 +28,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                             .Start();
                 })
                 .AssertTime(time / timeScale)
-                .Abrogate(() => FlowEntController.Instance.TimeScale = 1)
                 .Run();
         }
 

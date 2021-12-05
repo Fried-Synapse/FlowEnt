@@ -1,5 +1,4 @@
 using FriedSynapse.FlowEnt.Motions;
-using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -12,7 +11,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="time"></param>
         /// <param name="autoStart"></param>
         /// <typeparam name="T"></typeparam>
-        public static TweenMotion<T> Tween<T>(this T item, float time = FlowEnt.Tween.DefaultTime, bool autoStart = FlowEnt.Tween.DefaultAutoStart)
+        public static TweenMotion<T> Tween<T>(this T item, float time = TweenOptions.DefaultTime, bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
             => new Tween(time, autoStart).For(item);
 
         /// <summary>

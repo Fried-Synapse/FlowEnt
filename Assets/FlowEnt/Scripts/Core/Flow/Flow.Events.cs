@@ -25,30 +25,30 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Flow OnStarted(Action callback)
+        public new Flow OnStarted(Action callback)
         {
-            onStarted += callback;
+            base.OnStarted(callback);
             return this;
         }
 
         /// <inheritdoc />
-        public Flow OnUpdated(Action<float> callback)
+        public new Flow OnUpdated(Action<float> callback)
         {
-            onUpdated += callback;
+            base.OnUpdated(callback);
             return this;
         }
 
         /// <inheritdoc />
-        public Flow OnLoopCompleted(Action<int?> callback)
+        public new Flow OnLoopCompleted(Action<int?> callback)
         {
-            onLoopCompleted += callback;
+            base.OnLoopCompleted(callback);
             return this;
         }
 
         /// <inheritdoc />
-        public Flow OnCompleted(Action callback)
+        public new Flow OnCompleted(Action callback)
         {
-            onCompleted += callback;
+            base.OnCompleted(callback);
             return this;
         }
 

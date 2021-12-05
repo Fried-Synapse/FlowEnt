@@ -11,8 +11,6 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public sealed partial class Tween : AbstractAnimation
     {
-        public const float DefaultTime = 1f;
-        public const bool DefaultAutoStart = false;
         private enum LoopDirection
         {
             Forward,
@@ -33,7 +31,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="time">The amount of time for this tween in seconds.</param>
         /// <param name="autoStart">Whether the tween should start automatically or not.</param>
-        public Tween(float time = DefaultTime, bool autoStart = DefaultAutoStart)
+        public Tween(float time = TweenOptions.DefaultTime, bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
         {
             if (time < 0)
             {

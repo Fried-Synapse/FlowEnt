@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -10,6 +11,39 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
     public class TweenOptionsTests : AbstractEngineTests
     {
+        #region Builder
+
+        [UnityTest]
+        public IEnumerator Builder()
+        {
+            TweenOptions tweenOptions = default;
+
+            yield return CreateTester()
+                .Act(() => tweenOptions = Variables.TweenOptionsBuilder.Build())
+                .Assert(() =>
+                {
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.Name, tweenOptions.Name);
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.AutoStart, tweenOptions.AutoStart);
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.SkipFrames, tweenOptions.SkipFrames);
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.Delay, tweenOptions.Delay);
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.TimeScale, tweenOptions.TimeScale);
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.Time, tweenOptions.Time);
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.Easing, tweenOptions.Easing);
+                    if (Variables.TweenOptionsBuilder.IsLoopCountInfinite)
+                    {
+                        Assert.AreEqual(null, tweenOptions.LoopCount);
+                    }
+                    else
+                    {
+                        Assert.AreEqual(Variables.TweenOptionsBuilder.LoopCount, tweenOptions.LoopCount);
+                    }
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.LoopType, tweenOptions.LoopType);
+                })
+                .Run();
+        }
+
+        #endregion
+
         #region Time
 
         [UnityTest]

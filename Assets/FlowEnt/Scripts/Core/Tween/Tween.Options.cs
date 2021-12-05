@@ -6,12 +6,9 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class Tween : IFluentTweenOptionable<Tween>
     {
-        internal const bool DefaultEasingReverse = false;
-        private float time = 1;
-        private IEasing easing = TweenOptions.LinearEasing;
+        private float time = TweenOptions.DefaultTime;
+        private IEasing easing = TweenOptions.DefaultIEasing;
         private LoopType loopType;
-
-
 
         /// <summary>
         /// Sets all the options for this tween.
@@ -102,18 +99,18 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween SetEasing(IEasing easing, bool reverse = DefaultEasingReverse)
+        public Tween SetEasing(IEasing easing, bool reverse = TweenOptions.DefaultEasingReverse)
         {
             this.easing = reverse ? easing.Reverse() : easing;
             return this;
         }
 
         /// <inheritdoc />
-        public Tween SetEasing(Easing easing, bool reverse = DefaultEasingReverse)
+        public Tween SetEasing(Easing easing, bool reverse = TweenOptions.DefaultEasingReverse)
             => SetEasing(EasingFactory.Create(easing), reverse);
 
         /// <inheritdoc />
-        public Tween SetEasing(AnimationCurve animationCurve, bool reverse = DefaultEasingReverse)
+        public Tween SetEasing(AnimationCurve animationCurve, bool reverse = TweenOptions.DefaultEasingReverse)
             => SetEasing(new AnimationCurveEasing(animationCurve), reverse);
 
         private void CopyOptions(TweenOptions options)

@@ -7,59 +7,67 @@ namespace FriedSynapse.FlowEnt
     [Serializable]
     public class TweenEventsBuilder : AbstractBuilder<TweenEvents>
     {
-#pragma warning disable RCS1169, IDE0044
+#pragma warning disable RCS1085, RCS1169, IDE0044
         [SerializeField]
         private UnityEvent onStarting;
+        public UnityEvent OnStarting { get => onStarting; set => onStarting = value; }
+
         [SerializeField]
         private UnityEvent onStarted;
+        public UnityEvent OnStarted { get => onStarted; set => onStarted = value; }
+
         [SerializeField]
         private UnityEvent<float> onUpdating;
+        public UnityEvent<float> OnUpdating { get => onUpdating; set => onUpdating = value; }
+
         [SerializeField]
         private UnityEvent<float> onUpdated;
-        [SerializeField]
-        private UnityEvent<int?> onLoopCompleting;
+        public UnityEvent<float> OnUpdated { get => onUpdated; set => onUpdated = value; }
+
         [SerializeField]
         private UnityEvent<int?> onLoopCompleted;
+        public UnityEvent<int?> OnLoopCompleted { get => onLoopCompleted; set => onLoopCompleted = value; }
+
         [SerializeField]
         private UnityEvent onCompleting;
+        public UnityEvent OnCompleting { get => onCompleting; set => onCompleting = value; }
+
         [SerializeField]
         private UnityEvent onCompleted;
-#pragma warning restore RCS1169, IDE0044
+        public UnityEvent OnCompleted { get => onCompleted; set => onCompleted = value; }
+
+#pragma warning restore RCS1085, RCS1169, IDE0044
 
         public override TweenEvents Build()
         {
             TweenEvents events = new TweenEvents();
-            if (onStarting?.GetPersistentEventCount() > 0)
+            if (OnStarting?.GetPersistentEventCount() > 0)
             {
-                events.OnStartingEvent = () => onStarting.Invoke();
+                events.OnStarting(() => OnStarting.Invoke());
             }
-            if (onStarted?.GetPersistentEventCount() > 0)
+            if (OnStarted?.GetPersistentEventCount() > 0)
             {
-                events.OnStartedEvent = () => onStarted.Invoke();
+                events.OnStarted(() => OnStarted.Invoke());
             }
-            if (onUpdating?.GetPersistentEventCount() > 0)
+            if (OnUpdating?.GetPersistentEventCount() > 0)
             {
-                events.OnUpdatingEvent = (t) => onUpdating.Invoke(t);
+                events.OnUpdating((t) => OnUpdating.Invoke(t));
             }
-            if (onUpdated?.GetPersistentEventCount() > 0)
+            if (OnUpdated?.GetPersistentEventCount() > 0)
             {
-                events.OnUpdatedEvent = (t) => onUpdated.Invoke(t);
+                events.OnUpdated((t) => OnUpdated.Invoke(t));
             }
-            if (onLoopCompleting?.GetPersistentEventCount() > 0)
+            if (OnLoopCompleted?.GetPersistentEventCount() > 0)
             {
-                events.OnLoopCompletingEvent = (t) => onLoopCompleting.Invoke(t);
+                events.OnLoopCompleted((t) => OnLoopCompleted.Invoke(t));
             }
-            if (onLoopCompleted?.GetPersistentEventCount() > 0)
+            if (OnCompleting?.GetPersistentEventCount() > 0)
             {
-                events.OnLoopCompletedEvent = (t) => onLoopCompleted.Invoke(t);
+                events.OnCompleting(() => OnCompleting.Invoke());
             }
-            if (onCompleting?.GetPersistentEventCount() > 0)
+            if (OnCompleted?.GetPersistentEventCount() > 0)
             {
-                events.OnCompletingEvent = () => onCompleting.Invoke();
-            }
-            if (onCompleted?.GetPersistentEventCount() > 0)
-            {
-                events.OnCompletedEvent = () => onCompleted.Invoke();
+                events.OnCompleted(() => OnCompleted.Invoke());
             }
             return events;
         }
