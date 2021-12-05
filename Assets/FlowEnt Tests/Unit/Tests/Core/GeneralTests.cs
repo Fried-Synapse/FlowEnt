@@ -28,6 +28,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                             .Start();
                 })
                 .AssertTime(time / timeScale)
+                .Abrogate(() => FlowEntController.Instance.TimeScale = 1f)
                 .Run();
         }
 
