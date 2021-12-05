@@ -9,7 +9,7 @@ The library is revolving around the concept of reusability and extensibility.
 
 [![Version](https://img.shields.io/github/v/release/Fried-Synapse/FlowEnt?include_prereleases)](https://github.com/Fried-Synapse/FlowEnt/releases)
 [![License](https://img.shields.io/github/license/Fried-Synapse/FlowEnt?color=41cf58)](https://github.com/Fried-Synapse/FlowEnt/blob/main/LICENSE.md)
-[![Language](https://img.shields.io/github/languages/top/Fried-Synapse/FlowEnt)]()
+[![Language](https://img.shields.io/github/languages/top/Fried-Synapse/FlowEnt)](#)
 [![FlowEnt tests runner](https://github.com/Fried-Synapse/FlowEnt/actions/workflows/tests.yml/badge.svg)](https://github.com/Fried-Synapse/FlowEnt/actions/workflows/tests.yml)
-[![Downloads](https://img.shields.io/github/downloads/Fried-Synapse/FlowEnt/total)]()
+[![Downloads](https://img.shields.io/github/downloads/Fried-Synapse/FlowEnt/total)](#)
 
