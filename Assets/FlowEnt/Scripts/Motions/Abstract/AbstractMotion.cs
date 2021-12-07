@@ -1,4 +1,7 @@
 
+using System;
+using UnityEngine;
+
 namespace FriedSynapse.FlowEnt
 {
     /// <summary>
@@ -10,6 +13,16 @@ namespace FriedSynapse.FlowEnt
         public abstract void OnUpdate(float t);
         public virtual void OnLoopComplete() { }
         public virtual void OnComplete() { }
+    }
+
+    [Serializable]
+    public abstract class AbstractMotionBuilder<T> : IMotionBuilder
+    {
+        [SerializeField]
+        protected T item;
+        public T Item => item;
+
+        public abstract IMotion Build();
     }
 
     /// <summary>

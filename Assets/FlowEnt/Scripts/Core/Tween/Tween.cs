@@ -226,8 +226,17 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         public Tween Apply(IMotion motion)
         {
-            //TODO this could be really slow when adding a lot of motions. Consider using the fast list
             motions = motions.Append(motion).ToArray();
+            return this;
+        }
+
+        /// <summary>
+        /// Applies all the motions to the current tween.
+        /// </summary>
+        /// <param name="motions"></param>
+        public Tween Apply(IEnumerable<IMotion> motions)
+        {
+            this.motions = this.motions.Concat(motions).ToArray();
             return this;
         }
 

@@ -10,49 +10,49 @@ namespace FriedSynapse.FlowEnt
 #pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]
         private string name;
-        public string Name { get => name; set => name = value; }
+        public string Name => name;
         [SerializeField]
         private bool autoStart;
-        public bool AutoStart { get => autoStart; set => autoStart = value; }
+        public bool AutoStart => autoStart;
         [SerializeField]
         private int skipFrames;
-        public int SkipFrames { get => skipFrames; set => skipFrames = value; }
+        public int SkipFrames => skipFrames;
         [SerializeField]
         private float delay;
-        public float Delay { get => delay; set => delay = value; }
+        public float Delay => delay;
         [SerializeField]
         private float timeScale = AbstractAnimationOptions.DefaultTimeScale;
-        public float TimeScale { get => timeScale; set => timeScale = value; }
+        public float TimeScale => timeScale;
         [SerializeField]
         private float time = TweenOptions.DefaultTime;
-        public float Time { get => time; set => time = value; }
+        public float Time => time;
         [SerializeField]
         private Easing easing = TweenOptions.DefaultEasing;
-        public Easing Easing { get => easing; set => easing = value; }
+        public Easing Easing => easing;
         [SerializeField]
         private int loopCount = 1;
-        public int LoopCount { get => loopCount; set => loopCount = value; }
+        public int LoopCount => loopCount;
         [SerializeField]
         private bool isLoopCountInfinite;
-        public bool IsLoopCountInfinite { get => isLoopCountInfinite; set => isLoopCountInfinite = value; }
+        public bool IsLoopCountInfinite => isLoopCountInfinite;
         [SerializeField]
         private LoopType loopType;
-        public LoopType LoopType { get => loopType; set => loopType = value; }
+        public LoopType LoopType => loopType;
 
 #pragma warning restore RCS1169, RCS1085, IDE0044
 
         public override TweenOptions Build()
             => new TweenOptions()
             {
-                Name = Name,
-                AutoStart = AutoStart,
-                SkipFrames = SkipFrames,
-                Delay = Delay,
-                TimeScale = TimeScale,
-                Time = Time,
-                Easing = EasingFactory.Create(Easing),
-                LoopCount = IsLoopCountInfinite ? default(int?) : LoopCount,
-                LoopType = LoopType
+                Name = name,
+                AutoStart = autoStart,
+                SkipFrames = skipFrames,
+                Delay = delay,
+                TimeScale = timeScale,
+                Time = time,
+                Easing = EasingFactory.Create(easing),
+                LoopCount = isLoopCountInfinite ? default(int?) : loopCount,
+                LoopType = loopType
             };
     }
 }
