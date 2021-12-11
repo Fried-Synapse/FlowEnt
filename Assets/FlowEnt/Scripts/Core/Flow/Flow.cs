@@ -49,13 +49,6 @@ namespace FriedSynapse.FlowEnt
 
         #region Control
 
-        /// <inheritdoc cref="AbstractAnimation.SetName(string)" />
-        public new Flow SetName(string name)
-        {
-            base.SetName(name);
-            return this;
-        }
-
         /// <inheritdoc cref="AbstractAnimation.Start" />
         /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public new Flow Start()

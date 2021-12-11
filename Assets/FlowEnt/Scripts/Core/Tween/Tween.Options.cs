@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        /// <inheritdoc cref="AbstractAnimation.SetName(string)" />
+        /// <inheritdoc />
         public new Tween SetName(string name)
         {
             base.SetName(name);
@@ -38,23 +38,23 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween SetAutoStart(bool autoStart)
+        public new Tween SetAutoStart(bool autoStart)
         {
-            AutoStart = autoStart;
+            base.SetAutoStart(autoStart);
             return this;
         }
 
         /// <inheritdoc />
-        public Tween SetSkipFrames(int frames)
+        public new Tween SetSkipFrames(int frames)
         {
-            this.skipFrames = frames;
+            base.SetSkipFrames(frames);
             return this;
         }
 
         /// <inheritdoc />
-        public Tween SetDelay(float time)
+        public new Tween SetDelay(float time)
         {
-            this.delay = time;
+            base.SetDelay(time);
             return this;
         }
 
@@ -74,13 +74,9 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween SetLoopCount(int? loopCount)
+        public new Tween SetLoopCount(int? loopCount)
         {
-            if (loopCount <= 0)
-            {
-                throw new ArgumentException(AbstractAnimationOptions.ErrorLoopCountNegative);
-            }
-            this.loopCount = loopCount;
+            base.SetLoopCount(loopCount);
             return this;
         }
 
@@ -92,9 +88,9 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Tween SetTimeScale(float timeScale)
+        public new Tween SetTimeScale(float timeScale)
         {
-            TimeScale = timeScale;
+            base.SetTimeScale(timeScale);
             return this;
         }
 
@@ -115,13 +111,8 @@ namespace FriedSynapse.FlowEnt
 
         private void CopyOptions(TweenOptions options)
         {
-            Name = options.Name;
-            AutoStart = options.AutoStart;
-            skipFrames = options.SkipFrames;
-            delay = options.Delay;
+            base.CopyOptions(options);
             time = options.Time;
-            timeScale = options.TimeScale;
-            loopCount = options.LoopCount;
             loopType = options.LoopType;
             easing = options.Easing;
         }
