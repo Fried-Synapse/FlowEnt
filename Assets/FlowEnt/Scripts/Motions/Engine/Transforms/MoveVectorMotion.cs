@@ -1,21 +1,7 @@
-using System;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
-    [Serializable]
-    public class MoveVectorMotionBuilder : AbstractMotionBuilder<Transform>
-    {
-        [SerializeField]
-        private Vector3 value;
-        public Vector3 Value => value;
-
-        public override IMotion Build()
-        {
-            return new MoveVectorMotion<Transform>(item, value);
-        }
-    }
-
     public class MoveVectorMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform
     {
