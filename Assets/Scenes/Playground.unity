@@ -198,9 +198,6 @@ MonoBehaviour:
       onUpdated:
         m_PersistentCalls:
           m_Calls: []
-      onLoopCompleting:
-        m_PersistentCalls:
-          m_Calls: []
       onLoopCompleted:
         m_PersistentCalls:
           m_Calls: []
@@ -222,6 +219,8 @@ MonoBehaviour:
       onCompleted:
         m_PersistentCalls:
           m_Calls: []
+    motions:
+      motionBuilders: []
 --- !u!1 &814997873
 GameObject:
   m_ObjectHideFlags: 0

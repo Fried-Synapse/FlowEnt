@@ -16,13 +16,24 @@ namespace FriedSynapse.FlowEnt
     }
 
     [Serializable]
-    public abstract class AbstractMotionBuilder<T> : IMotionBuilder
+    public class SerializableMotionBuilder
+    {
+        [SerializeField]
+        protected int xx;
+    }
+
+    [Serializable]
+    public abstract class AbstractMotionBuilder : SerializableMotionBuilder, IBuilder<IMotion>
+    {
+        public abstract IMotion Build();
+    }
+
+    [Serializable]
+    public abstract class AbstractMotionBuilder<T> : AbstractMotionBuilder
     {
         [SerializeField]
         protected T item;
         public T Item => item;
-
-        public abstract IMotion Build();
     }
 
     /// <summary>
