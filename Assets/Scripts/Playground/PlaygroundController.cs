@@ -9,6 +9,9 @@ namespace FriedSynapse.FlowEnt.Builder
         [SerializeField]
         private List<Transform> objects;
         private List<Transform> Objects => objects;
+
+        [SerializeField]
+        private TweenBuilder tweenBuilder;
 #pragma warning restore RCS1169, IDE0044
 
         private void Start()
