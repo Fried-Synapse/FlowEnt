@@ -10,7 +10,6 @@ namespace FriedSynapse.FlowEnt.Builder
     public enum TestType
     {
         None = 0x000,
-        OfficialList = Tween | Flow | Transform | DoTweenTween | DoTweenSequence | DoTweenTransform,
         Tween = 0x001,
         Flow = 0x002,
         FlowTween = 0x004,
@@ -18,10 +17,12 @@ namespace FriedSynapse.FlowEnt.Builder
         DoTweenTween = 0x010,
         DoTweenSequence = 0x020,
         DoTweenTransform = 0x040,
+        OfficialList = Tween | Flow | Transform | DoTweenTween | DoTweenSequence | DoTweenTransform,
     }
 
     public class FrameRateTestController : MonoBehaviour
     {
+#pragma warning disable IDE0044, RCS1169
         [SerializeField]
         private TestType tests;
 
@@ -36,10 +37,12 @@ namespace FriedSynapse.FlowEnt.Builder
 
         [SerializeField]
         private Transform cube;
+#pragma warning restore IDE0044, RCS1169
 
         private int framesCount;
         public int FramesCount => framesCount;
 
+#pragma warning disable IDE0051, RCS1213
         private async void Start()
         {
             Transform frameRateAnchorInstance = Instantiate(frameRateAnchor);
@@ -88,6 +91,7 @@ namespace FriedSynapse.FlowEnt.Builder
         {
             framesCount++;
         }
+#pragma warning restore IDE0051, RCS1213
 
         public Transform CreateCube()
             => Instantiate(cube);
@@ -100,7 +104,8 @@ namespace FriedSynapse.FlowEnt.Builder
             const int k32 = 32 * k;
             const int k64 = 64 * k;
             const int k128 = 128 * k;
-            _ = k8 + k16 + k32 + k64 + k128;
+            const int k256 = 256 * k;
+            _ = k8 + k16 + k32 + k64 + k128 + k256;
 
             List<AbstractFrameRateTest> result = new List<AbstractFrameRateTest>();
             void addTest(TestType testType, AbstractFrameRateTest test)
@@ -111,11 +116,11 @@ namespace FriedSynapse.FlowEnt.Builder
                 }
             }
 
-            addTest(TestType.Tween, new TweenFrameRateTest(this, testTime, k128));
+            addTest(TestType.Tween, new TweenFrameRateTest(this, testTime, k256));
             addTest(TestType.Flow, new FlowFrameRateTest(this, testTime, k128));
             addTest(TestType.FlowTween, new FlowTweenFrameRateTest(this, testTime, k8));
             addTest(TestType.Transform, new TransformFrameRateTest(this, testTime, k8));
-            addTest(TestType.DoTweenTween, new DoTweenTweenFrameRateTest(this, testTime, k128));
+            addTest(TestType.DoTweenTween, new DoTweenTweenFrameRateTest(this, testTime, k256));
             addTest(TestType.DoTweenSequence, new DoTweenSequenceFrameRateTest(this, testTime, k128));
             addTest(TestType.DoTweenTransform, new DoTweenTransformFrameRateTest(this, testTime, k8));
 

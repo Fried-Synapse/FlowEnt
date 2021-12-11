@@ -25,52 +25,48 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public Flow SetAutoStart(bool autoStart)
+        public new Flow SetName(string name)
         {
-            AutoStart = autoStart;
+            base.SetName(name);
             return this;
         }
 
         /// <inheritdoc />
-        public Flow SetSkipFrames(int frames)
+        public new Flow SetAutoStart(bool autoStart)
         {
-            this.skipFrames = frames;
+            base.SetAutoStart(autoStart);
             return this;
         }
 
         /// <inheritdoc />
-        public Flow SetDelay(float time)
+        public new Flow SetSkipFrames(int frames)
         {
-            this.delay = time;
+            base.SetSkipFrames(frames);
             return this;
         }
 
         /// <inheritdoc />
-        public Flow SetLoopCount(int? loopCount)
+        public new Flow SetDelay(float time)
         {
-            if (loopCount <= 0)
-            {
-                throw new ArgumentException(AbstractAnimationOptions.ErrorLoopCountNegative);
-            }
-            this.loopCount = loopCount;
+            base.SetDelay(time);
             return this;
         }
 
         /// <inheritdoc />
-        public Flow SetTimeScale(float timeScale)
+        public new Flow SetLoopCount(int? loopCount)
         {
-            TimeScale = timeScale;
+            base.SetLoopCount(loopCount);
+            return this;
+        }
+
+        /// <inheritdoc />
+        public new Flow SetTimeScale(float timeScale)
+        {
+            base.SetTimeScale(timeScale);
             return this;
         }
 
         private void CopyOptions(FlowOptions options)
-        {
-            Name = options.Name;
-            AutoStart = options.AutoStart;
-            skipFrames = options.SkipFrames;
-            delay = options.Delay;
-            loopCount = options.LoopCount;
-            timeScale = options.TimeScale;
-        }
+            => base.CopyOptions(options);
     }
 }

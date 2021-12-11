@@ -72,14 +72,6 @@ namespace FriedSynapse.FlowEnt
         #endregion
 
         #region Controls
-        /// <summary>
-        /// Sets the animation's name.
-        /// </summary>
-        /// <param name="name"></param>
-        public virtual void SetName(string name)
-        {
-            Name = name;
-        }
 
         /// <summary>
         /// Starts the animation.
