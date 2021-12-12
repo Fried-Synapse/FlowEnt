@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
+    /// <summary>
+    /// Lerps the <see cref="Transform.position" /> value.
+    /// </summary>
     public class MoveVectorMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform
     {
