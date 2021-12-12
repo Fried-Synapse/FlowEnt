@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="options"></param>
         public Flow SetOptions(FlowOptions options)
         {
-            CopyOptions(options);
+            base.SetOptions(options);
             return this;
         }
 
@@ -19,12 +19,10 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="optionsBuilder"></param>
         public Flow SetOptions(Func<FlowOptions, FlowOptions> optionsBuilder)
-        {
-            CopyOptions(optionsBuilder(new FlowOptions()));
-            return this;
-        }
+            => SetOptions(optionsBuilder(new FlowOptions()));
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetName
         public new Flow SetName(string name)
         {
             base.SetName(name);
@@ -32,6 +30,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetAutoStart
         public new Flow SetAutoStart(bool autoStart)
         {
             base.SetAutoStart(autoStart);
@@ -39,6 +38,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetSkipFrames
         public new Flow SetSkipFrames(int frames)
         {
             base.SetSkipFrames(frames);
@@ -46,6 +46,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelay
         public new Flow SetDelay(float time)
         {
             base.SetDelay(time);
@@ -53,6 +54,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetLoopCount
         public new Flow SetLoopCount(int? loopCount)
         {
             base.SetLoopCount(loopCount);
@@ -60,13 +62,11 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetTimeScale
         public new Flow SetTimeScale(float timeScale)
         {
             base.SetTimeScale(timeScale);
             return this;
         }
-
-        private void CopyOptions(FlowOptions options)
-            => base.CopyOptions(options);
     }
 }

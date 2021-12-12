@@ -4,7 +4,18 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class AbstractAnimation : IFluentAnimationOptionable<AbstractAnimation>
     {
+        protected void SetOptions(AbstractAnimationOptions options)
+        {
+            Name = options.Name;
+            AutoStart = options.AutoStart;
+            skipFrames = options.SkipFrames;
+            delay = options.Delay;
+            timeScale = options.TimeScale;
+            loopCount = options.LoopCount;
+        }
+
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetName
         public AbstractAnimation SetName(string name)
         {
             Name = name;
@@ -12,6 +23,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetAutoStart
         public AbstractAnimation SetAutoStart(bool autoStart)
         {
             AutoStart = autoStart;
@@ -19,6 +31,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetSkipFrames
         public AbstractAnimation SetSkipFrames(int frames)
         {
             skipFrames = frames;
@@ -26,6 +39,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelay
         public AbstractAnimation SetDelay(float time)
         {
             delay = time;
@@ -33,6 +47,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetLoopCount
         public AbstractAnimation SetLoopCount(int? loopCount)
         {
             if (loopCount <= 0)
@@ -44,20 +59,11 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetTimeScale
         public AbstractAnimation SetTimeScale(float timeScale)
         {
             TimeScale = timeScale;
             return this;
-        }
-
-        protected void CopyOptions(AbstractAnimationOptions options)
-        {
-            Name = options.Name;
-            AutoStart = options.AutoStart;
-            skipFrames = options.SkipFrames;
-            delay = options.Delay;
-            timeScale = options.TimeScale;
-            loopCount = options.LoopCount;
         }
     }
 }

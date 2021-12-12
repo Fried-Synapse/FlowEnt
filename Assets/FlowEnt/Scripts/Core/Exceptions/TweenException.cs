@@ -15,6 +15,5 @@ namespace FriedSynapse.FlowEnt
         /// The tween attached to this exception.
         /// </summary>
         public Tween Tween { get; }
-
     }
 }

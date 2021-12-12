@@ -76,51 +76,63 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Starts the animation.
         /// </summary>
-        public virtual void Start()
+        public AbstractAnimation Start()
         {
             PreStart();
             StartInternal();
+            return this;
         }
 
         /// <summary>
         /// Starts the animation async(you can await this till the animation finishes).
         /// </summary>
-        public virtual async Task StartAsync()
+        public async Task<AbstractAnimation> StartAsync()
         {
             PreStart();
             StartInternal();
             await new AwaitableAnimation(this);
+            return this;
         }
 
         /// <summary>
         /// Resumes the animation.
         /// </summary>
-        public virtual void Resume()
+        public AbstractAnimation Resume()
         {
             if (playState != PlayState.Paused)
             {
-                return;
+                return this;
             }
             playState = PlayState.Playing;
 
             updateController.SubscribeToUpdate(this);
+            return this;
         }
+
+        void IControllable.Resume()
+            => Resume();
 
         /// <summary>
         /// Pauses the animation.
         /// </summary>
-        public virtual void Pause()
+        public AbstractAnimation Pause()
         {
             if (PlayState != PlayState.Playing)
             {
-                return;
+                return this;
             }
             playState = PlayState.Paused;
 
             updateController.UnsubscribeFromUpdate(this);
+            return this;
         }
 
-        /// <inheritdoc />
+        void IControllable.Pause()
+            => Pause();
+
+        /// <inheritdoc cref="AbstractUpdatable.Stop(bool)"/>
+        /// \copydoc AbstractUpdatable.Stop
+        //TODO make this return AbstractAnimation
         public override void Stop(bool triggerOnCompleted = false)
         {
             switch (playState)
@@ -143,6 +155,32 @@ namespace FriedSynapse.FlowEnt
             {
                 onCompleted?.Invoke();
             }
+        }
+
+        /// <summary>
+        /// Resets the animation so in can be replayed.
+        /// </summary>
+        public AbstractAnimation Reset()
+        {
+            if (this is Tween tween)
+            {
+                tween.Reset();
+                return this;
+            }
+
+            if (this is Flow flow)
+            {
+                flow.Reset();
+                return this;
+            }
+            return this;
+        }
+
+        protected void ResetInternal()
+        {
+            autoStartHelper = null;
+            playState = PlayState.Building;
+            overdraft = null;
         }
 
         /// <summary>

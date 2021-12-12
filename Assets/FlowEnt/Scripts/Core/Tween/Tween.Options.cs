@@ -16,7 +16,10 @@ namespace FriedSynapse.FlowEnt
         /// <param name="options"></param>
         public Tween SetOptions(TweenOptions options)
         {
-            CopyOptions(options);
+            base.SetOptions(options);
+            time = options.Time;
+            loopType = options.LoopType;
+            easing = options.Easing;
             return this;
         }
 
@@ -25,12 +28,10 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="optionsBuilder"></param>
         public Tween SetOptions(Func<TweenOptions, TweenOptions> optionsBuilder)
-        {
-            CopyOptions(optionsBuilder(new TweenOptions()));
-            return this;
-        }
+            => SetOptions(optionsBuilder(new TweenOptions()));
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetName
         public new Tween SetName(string name)
         {
             base.SetName(name);
@@ -38,6 +39,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetAutoStart
         public new Tween SetAutoStart(bool autoStart)
         {
             base.SetAutoStart(autoStart);
@@ -45,6 +47,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetSkipFrames
         public new Tween SetSkipFrames(int frames)
         {
             base.SetSkipFrames(frames);
@@ -52,6 +55,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelay
         public new Tween SetDelay(float time)
         {
             base.SetDelay(time);
@@ -59,6 +63,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentTweenOptionable.SetTime
         public Tween SetTime(float time)
         {
             if (time < 0)
@@ -74,6 +79,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetLoopCount
         public new Tween SetLoopCount(int? loopCount)
         {
             base.SetLoopCount(loopCount);
@@ -81,6 +87,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentTweenOptionable.SetLoopType
         public Tween SetLoopType(LoopType loopType)
         {
             this.loopType = loopType;
@@ -88,6 +95,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetTimeScale
         public new Tween SetTimeScale(float timeScale)
         {
             base.SetTimeScale(timeScale);
@@ -95,6 +103,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentTweenOptionable.SetEasing
         public Tween SetEasing(IEasing easing, bool reverse = TweenOptions.DefaultEasingReverse)
         {
             this.easing = reverse ? easing.Reverse() : easing;
@@ -102,19 +111,13 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentTweenOptionable.SetEasing
         public Tween SetEasing(Easing easing, bool reverse = TweenOptions.DefaultEasingReverse)
             => SetEasing(EasingFactory.Create(easing), reverse);
 
         /// <inheritdoc />
+        /// \copydoc IFluentTweenOptionable.SetEasing
         public Tween SetEasing(AnimationCurve animationCurve, bool reverse = TweenOptions.DefaultEasingReverse)
             => SetEasing(new AnimationCurveEasing(animationCurve), reverse);
-
-        private void CopyOptions(TweenOptions options)
-        {
-            base.CopyOptions(options);
-            time = options.Time;
-            loopType = options.LoopType;
-            easing = options.Easing;
-        }
     }
 }

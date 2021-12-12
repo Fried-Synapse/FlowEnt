@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="options"></param>
         public Flow(FlowOptions options)
         {
-            CopyOptions(options);
+            SetOptions(options);
         }
 
         /// <summary>
@@ -50,6 +50,7 @@ namespace FriedSynapse.FlowEnt
         #region Control
 
         /// <inheritdoc cref="AbstractAnimation.Start" />
+        /// \copydoc AbstractAnimation.Start
         /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public new Flow Start()
         {
@@ -58,6 +59,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.StartAsync" />
+        /// \copydoc AbstractAnimation.StartAsync
         /// <exception cref="FlowEntException">If the flow has already started.</exception>
         public new async Task<Flow> StartAsync()
         {
@@ -66,6 +68,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.Resume" />
+        /// \copydoc AbstractAnimation.Resume
         public new Flow Resume()
         {
             base.Resume();
@@ -73,6 +76,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.Pause" />
+        /// \copydoc AbstractAnimation.Pause
         public new Flow Pause()
         {
             base.Pause();
@@ -80,26 +84,24 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.Stop(bool)" />
+        /// \copydoc AbstractAnimation.Stop
         public new Flow Stop(bool triggerOnCompleted = false)
         {
             base.Stop(triggerOnCompleted);
             return this;
         }
 
-        /// <summary>
-        /// Resets the flow so in can be replayed.
-        /// </summary>
+        /// <inheritdoc cref="AbstractAnimation.Reset" />
+        /// \copydoc AbstractAnimation.Reset
         /// <exception cref="FlowException">If the flow is not finished.</exception>
-        public Flow Reset()
+        public new Flow Reset()
         {
             if (playState != PlayState.Finished)
             {
                 throw new FlowException(this, "Can only reset a finished flow. Use Stop() to ensure flow finished when resetting.");
             }
 
-            autoStartHelper = null;
-            playState = PlayState.Building;
-            overdraft = null;
+            ResetInternal();
             time = 0;
             remainingLoops = 0;
             runningUpdatableWrappersCount = 0;

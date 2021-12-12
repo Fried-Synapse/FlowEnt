@@ -5,7 +5,6 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public class TweenInspectorWindow : AbstractAnimationInspectorWindow<TweenInspectorWindow, Tween>
     {
-
         protected override void OnGuiInternal()
         {
             GUILayout.Space(10);

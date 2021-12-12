@@ -14,6 +14,7 @@ namespace FriedSynapse.FlowEnt.Builder
         private TweenBuilder tweenBuilder;
 #pragma warning restore RCS1169, IDE0044
 
+#pragma warning disable IDE0051, RCS1213
         private void Start()
         {
         }
@@ -21,5 +22,6 @@ namespace FriedSynapse.FlowEnt.Builder
         private void OnDrawGizmos()
         {
         }
+#pragma warning restore IDE0051, RCS1213
     }
 }

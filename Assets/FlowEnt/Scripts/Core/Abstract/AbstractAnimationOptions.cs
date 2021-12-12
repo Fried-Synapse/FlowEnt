@@ -5,7 +5,7 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Provides common options for animations.
     /// </summary>
-    public class AbstractAnimationOptions
+    public class AbstractAnimationOptions : IFluentAnimationOptionable<AbstractAnimationOptions>
     {
         internal const string ErrorLoopCountNegative = "Value cannot be 0 or less. If you want to set an infinite loop set the value to null.";
         internal const string ErrorTimeScaleNegative = "Value cannot be less than 0.";
@@ -76,6 +76,54 @@ namespace FriedSynapse.FlowEnt
                 }
                 loopCount = value;
             }
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetName
+        public AbstractAnimationOptions SetName(string name)
+        {
+            Name = name;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetAutoStart
+        public AbstractAnimationOptions SetAutoStart(bool autoStart)
+        {
+            AutoStart = autoStart;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetSkipFrames
+        public AbstractAnimationOptions SetSkipFrames(int frames)
+        {
+            SkipFrames = frames;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelay
+        public AbstractAnimationOptions SetDelay(float time)
+        {
+            Delay = time;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetLoopCount
+        public AbstractAnimationOptions SetLoopCount(int? loopCount)
+        {
+            LoopCount = loopCount;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetTimeScale
+        public AbstractAnimationOptions SetTimeScale(float timeScale)
+        {
+            TimeScale = timeScale;
+            return this;
         }
     }
 }
