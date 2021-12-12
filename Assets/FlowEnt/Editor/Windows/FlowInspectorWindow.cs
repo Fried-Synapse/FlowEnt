@@ -4,7 +4,6 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         protected override void OnGuiInternal()
         {
-
         }
     }
 }

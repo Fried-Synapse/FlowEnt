@@ -23,7 +23,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="options"></param>
         public Tween(TweenOptions options)
         {
-            CopyOptions(options);
+            SetOptions(options);
         }
 
         /// <summary>
@@ -55,6 +55,7 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="AbstractAnimation.Start" />
         /// <exception cref="TweenException">If the tween has already started.</exception>
+        /// \copydoc AbstractAnimation.Start
         public new Tween Start()
         {
             base.Start();
@@ -62,6 +63,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.StartAsync" />
+        /// \copydoc AbstractAnimation.StartAsync
         /// <exception cref="TweenException">If the tween has already started.</exception>
         public new async Task<Tween> StartAsync()
         {
@@ -70,6 +72,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.Resume" />
+        /// \copydoc AbstractAnimation.Resume
         public new Tween Resume()
         {
             base.Resume();
@@ -77,33 +80,32 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.Pause" />
+        /// \copydoc AbstractAnimation.Pause
         public new Tween Pause()
         {
             base.Pause();
             return this;
         }
 
-        /// <inheritdoc cref="AbstractAnimation.Stop" />
+        /// <inheritdoc cref="AbstractAnimation.Stop(bool)" />
+        /// \copydoc AbstractAnimation.Stop
         public new Tween Stop(bool triggerOnCompleted = false)
         {
             base.Stop(triggerOnCompleted);
             return this;
         }
 
-        /// <summary>
-        /// Resets the tween so in can be replayed.
-        /// </summary>
+        /// <inheritdoc cref="AbstractAnimation.Reset" />
+        /// \copydoc AbstractAnimation.Reset
         /// <exception cref="TweenException">If the tween is not finished.</exception>
-        public Tween Reset()
+        public new Tween Reset()
         {
             if (playState != PlayState.Finished)
             {
                 throw new TweenException(this, "Can only reset a finished tween. Use Stop() to ensure tween finished when resetting.");
             }
 
-            autoStartHelper = null;
-            playState = PlayState.Building;
-            overdraft = null;
+            ResetInternal();
             loopDirection = LoopDirection.Forward;
             remainingLoops = 0;
             remainingTime = 0f;
@@ -271,6 +273,5 @@ namespace FriedSynapse.FlowEnt
         }
 
         #endregion
-
     }
 }

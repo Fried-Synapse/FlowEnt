@@ -2,14 +2,23 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class TweenEvents : AbstractAnimationEvents,
-        IFluentTweenEventable<TweenEvents>
+    public class TweenEvents : AbstractAnimationEvents, IFluentTweenEventable<TweenEvents>
     {
+        /// <summary>
+        /// The event called when an animation is starting.
+        /// </summary>
         public Action OnStartingEvent { get; set; }
+        /// <summary>
+        /// The event called when an animation is updating.
+        /// </summary>
         public Action<float> OnUpdatingEvent { get; set; }
+        /// <summary>
+        /// The event called when an animation is completing.
+        /// </summary>
         public Action OnCompletingEvent { get; set; }
 
         /// <inheritdoc />
+        /// \copydoc IFluentTweenEventable.OnStarting
         public TweenEvents OnStarting(Action callback)
         {
             OnStartingEvent = callback;
@@ -17,13 +26,15 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public TweenEvents OnStarted(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnStarted
+        public new TweenEvents OnStarted(Action callback)
         {
             OnStartedEvent = callback;
             return this;
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentTweenEventable.OnUpdating
         public TweenEvents OnUpdating(Action<float> callback)
         {
             OnUpdatingEvent = callback;
@@ -31,20 +42,23 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public TweenEvents OnUpdated(Action<float> callback)
+        /// \copydoc IFluentAnimationEventable.OnUpdated
+        public new TweenEvents OnUpdated(Action<float> callback)
         {
             OnUpdatedEvent = callback;
             return this;
         }
 
         /// <inheritdoc />
-        public TweenEvents OnLoopCompleted(Action<int?> callback)
+        /// \copydoc IFluentAnimationEventable.OnLoopCompleted
+        public new TweenEvents OnLoopCompleted(Action<int?> callback)
         {
             OnLoopCompletedEvent = callback;
             return this;
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentTweenEventable.OnCompleting
         public TweenEvents OnCompleting(Action callback)
         {
             OnCompletingEvent = callback;
@@ -52,7 +66,8 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        public TweenEvents OnCompleted(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnCompleted
+        public new TweenEvents OnCompleted(Action callback)
         {
             OnCompletedEvent = callback;
             return this;

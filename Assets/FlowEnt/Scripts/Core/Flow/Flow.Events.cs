@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="events"></param>
         public Flow SetEvents(FlowEvents events)
         {
-            CopyEvents(events);
+            base.SetEvents(events);
             return this;
         }
 
@@ -19,12 +19,10 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="eventsBuilder"></param>
         public Flow SetEvents(Func<FlowEvents, FlowEvents> eventsBuilder)
-        {
-            CopyEvents(eventsBuilder(new FlowEvents()));
-            return this;
-        }
+            => SetEvents(eventsBuilder(new FlowEvents()));
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnStarted
         public new Flow OnStarted(Action callback)
         {
             base.OnStarted(callback);
@@ -32,6 +30,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnUpdated
         public new Flow OnUpdated(Action<float> callback)
         {
             base.OnUpdated(callback);
@@ -39,6 +38,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnLoopCompleted
         public new Flow OnLoopCompleted(Action<int?> callback)
         {
             base.OnLoopCompleted(callback);
@@ -46,18 +46,11 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnCompleted
         public new Flow OnCompleted(Action callback)
         {
             base.OnCompleted(callback);
             return this;
-        }
-
-        private void CopyEvents(FlowEvents options)
-        {
-            onStarted = options.OnStartedEvent;
-            onUpdated = options.OnUpdatedEvent;
-            onLoopCompleted = options.OnLoopCompletedEvent;
-            onCompleted = options.OnCompletedEvent;
         }
     }
 }

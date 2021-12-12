@@ -1,12 +1,10 @@
-using System;
-
 namespace FriedSynapse.FlowEnt
 {
-    internal interface IFluentFlowOptionable<T>
+    internal interface IFluentFlowOptionable<TFlow> : IFluentAnimationOptionable<TFlow>
     {
     }
 
-    internal interface IFluentFlowEventable<T> : IFluentAnimationEventable<T>
+    internal interface IFluentFlowEventable<TFLow> : IFluentAnimationEventable<TFLow>
     {
     }
 }

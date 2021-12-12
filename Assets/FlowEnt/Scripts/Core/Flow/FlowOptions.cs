@@ -1,5 +1,8 @@
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Provides options for flows.
+    /// </summary>
     public class FlowOptions : AbstractAnimationOptions, IFluentFlowOptionable<FlowOptions>
     {
         /// <summary>
@@ -12,37 +15,50 @@ namespace FriedSynapse.FlowEnt
         #region Options
 
         /// <inheritdoc />
-        public FlowOptions SetAutoStart(bool autoStart)
+        /// \copydoc IFluentAnimationOptionable.SetName
+        public new FlowOptions SetName(string name)
         {
-            AutoStart = autoStart;
+            base.SetName(name);
             return this;
         }
 
         /// <inheritdoc />
-        public FlowOptions SetSkipFrames(int frames)
+        /// \copydoc IFluentAnimationOptionable.SetAutoStart
+        public new FlowOptions SetAutoStart(bool autoStart)
         {
-            SkipFrames = frames;
+            base.SetAutoStart(autoStart);
             return this;
         }
 
         /// <inheritdoc />
-        public FlowOptions SetDelay(float time)
+        /// \copydoc IFluentAnimationOptionable.SetSkipFrames
+        public new FlowOptions SetSkipFrames(int frames)
         {
-            Delay = time;
+            base.SetSkipFrames(frames);
             return this;
         }
 
         /// <inheritdoc />
-        public FlowOptions SetLoopCount(int? loopCount)
+        /// \copydoc IFluentAnimationOptionable.SetDelay
+        public new FlowOptions SetDelay(float time)
         {
-            LoopCount = loopCount;
+            base.SetDelay(time);
             return this;
         }
 
         /// <inheritdoc />
-        public FlowOptions SetTimeScale(float timeScale)
+        /// \copydoc IFluentAnimationOptionable.SetLoopCount
+        public new FlowOptions SetLoopCount(int? loopCount)
         {
-            TimeScale = timeScale;
+            base.SetLoopCount(loopCount);
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetTimeScale
+        public new FlowOptions SetTimeScale(float timeScale)
+        {
+            base.SetTimeScale(timeScale);
             return this;
         }
 

@@ -21,7 +21,6 @@ namespace FriedSynapse.FlowEnt
         /// Provides a callback used to apply all the motions needed(not tween settings because it would apply them for each member of the array).
         /// </summary>
         /// <param name="applyCallback"></param>
-        /// <returns></returns>
         public Tween Apply(Action<TweenMotion<T>> applyCallback)
         {
             if (applyCallback == null)

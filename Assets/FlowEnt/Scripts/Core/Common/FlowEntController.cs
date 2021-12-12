@@ -67,6 +67,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public PlayState PlayState { get => playState; }
 
+#pragma warning disable IDE0051, RCS1213
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
@@ -103,6 +104,7 @@ namespace FriedSynapse.FlowEnt
                 index = index.next;
             }
         }
+#pragma warning restore IDE0051, RCS1213
 
         #region IUpdateController
 
