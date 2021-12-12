@@ -1,0 +1,14 @@
+{
+    "name": "FriedSynapse.Quickit",
+    "rootNamespace": "FriedSynapse.Quickit",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
