@@ -2,6 +2,9 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Provides events for tweens.
+    /// </summary>
     public class TweenEvents : AbstractAnimationEvents, IFluentTweenEventable<TweenEvents>
     {
         /// <summary>
