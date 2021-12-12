@@ -9,6 +9,12 @@ namespace FriedSynapse.FlowEnt
 
         #region Move
 
+        /// <summary>
+        /// Applies a <see cref="MoveVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> Move<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, value));
