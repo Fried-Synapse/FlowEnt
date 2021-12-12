@@ -1,0 +1,16 @@
+{
+    "name": "FriedSynapse.Quickit.Editor",
+    "rootNamespace": "FriedSynapse.Quickit.Editor",
+    "references": [
+        "GUID:c59acf50987564ad393ad16eb0be1a82"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

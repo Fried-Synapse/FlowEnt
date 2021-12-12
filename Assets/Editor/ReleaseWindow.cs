@@ -20,6 +20,7 @@ namespace FriedSynapse.Release
         private float LabelWidth => 60;
         private float LabelContentWidth => position.width - (2 * Margin) - LabelWidth;
 
+#pragma warning disable IDE0051, RCS1213
         [MenuItem("FriedSynapse/Release", true, 1)]
         private static bool ValidateOpen()
             => File.Exists(ConfigPath);
@@ -30,9 +31,11 @@ namespace FriedSynapse.Release
             ReleaseWindow window = GetWindow<ReleaseWindow>("Release");
             window.Show();
         }
+#pragma warning restore IDE0051, RCS1213
 
         #region GUI
 
+#pragma warning disable IDE0051, RCS1213
         private void OnGUI()
         {
             Init();
@@ -48,7 +51,12 @@ namespace FriedSynapse.Release
             EditorGUILayout.Space(40);
 
             ShowReleaseButton();
+
+            EditorGUILayout.Space(10);
+
+            ShowGithubButton();
         }
+#pragma warning restore IDE0051, RCS1213
 
         private void ReleaseVersionField()
         {
@@ -125,6 +133,18 @@ namespace FriedSynapse.Release
             if (GUILayout.Button("Release", GUILayout.Width(position.width - (2 * Margin) - 100), GUILayout.Height(50)))
             {
                 Release();
+            }
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+        }
+
+        private void ShowGithubButton()
+        {
+            GUILayout.BeginHorizontal(ContentStyle);
+            GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Github", GUILayout.Width(80), GUILayout.Height(30)))
+            {
+                Application.OpenURL($"https://github.com/Fried-Synapse/{Application.productName}/releases/tag/{Version}");
             }
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
