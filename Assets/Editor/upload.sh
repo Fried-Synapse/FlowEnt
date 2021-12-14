@@ -29,7 +29,7 @@ createRelease()
     -X POST \
     -H "Authorization: token ${token}"  \
     -H "Accept: application/vnd.github.v3+json" \
-    -d '{"tag_name": "'${version}'", "name":"'${version}'","generate_release_notes":true, "prerelease":true}' \
+    -d '{ "tag_name": "'${version}'", "name":"'${version}'","generate_release_notes":true, "prerelease":false }' \
     https://api.github.com/repos/${repo}/releases`
 }
 
