@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Renderers
     /// <summary>
     /// Lerps the value for the specified shader property.
     /// </summary>
+    /// <typeparam name="TRenderer"></typeparam>
     public class MaterialFloatMotion<TRenderer> : AbstractFloatMotion<TRenderer>
         where TRenderer : Renderer
     {

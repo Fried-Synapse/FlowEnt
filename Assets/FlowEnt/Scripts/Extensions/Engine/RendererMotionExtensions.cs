@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt
         #region Alpha
 
         /// <summary>
-        /// Applies a <see cref="AlphaMotion" /> to the tween.
+        /// Applies a <see cref="AlphaMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new AlphaMotion<TRenderer>(tweenMotion.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="AlphaMotion" /> to the tween.
+        /// Applies a <see cref="AlphaMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
@@ -28,7 +28,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new AlphaMotion<TRenderer>(tweenMotion.Item, null, to));
 
         /// <summary>
-        /// Applies a <see cref="AlphaMotion" /> to the tween.
+        /// Applies a <see cref="AlphaMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
@@ -43,7 +43,7 @@ namespace FriedSynapse.FlowEnt
         #region Color
 
         /// <summary>
-        /// Applies a <see cref="ColorMotion" /> to the tween.
+        /// Applies a <see cref="ColorMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
@@ -53,7 +53,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new ColorMotion<TRenderer>(tweenMotion.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="ColorMotion" /> to the tween.
+        /// Applies a <see cref="ColorMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
@@ -63,7 +63,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new ColorMotion<TRenderer>(tweenMotion.Item, null, to));
 
         /// <summary>
-        /// Applies a <see cref="ColorMotion" /> to the tween.
+        /// Applies a <see cref="ColorMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
@@ -74,7 +74,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new ColorMotion<TRenderer>(tweenMotion.Item, from, to));
 
         /// <summary>
-        /// Applies a <see cref="ColorGradientMotion" /> to the tween.
+        /// Applies a <see cref="ColorGradientMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="gradient"></param>
@@ -88,7 +88,7 @@ namespace FriedSynapse.FlowEnt
         #region Material Float
 
         /// <summary>
-        /// Applies a <see cref="MaterialFloatMotion" /> to the tween.
+        /// Applies a <see cref="MaterialFloatMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -99,7 +99,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new MaterialFloatMotion<TRenderer>(tweenMotion.Item, propertyName, value));
 
         /// <summary>
-        /// Applies a <see cref="MaterialFloatMotion" /> to the tween.
+        /// Applies a <see cref="MaterialFloatMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -110,7 +110,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new MaterialFloatMotion<TRenderer>(tweenMotion.Item, propertyName, null, to));
 
         /// <summary>
-        /// Applies a <see cref="MaterialFloatMotion" /> to the tween.
+        /// Applies a <see cref="MaterialFloatMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -126,7 +126,7 @@ namespace FriedSynapse.FlowEnt
         #region Material Alpha
 
         /// <summary>
-        /// Applies a <see cref="MaterialAlphaMotion" /> to the tween.
+        /// Applies a <see cref="MaterialAlphaMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -137,7 +137,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new MaterialAlphaMotion<TRenderer>(tweenMotion.Item, propertyName, value));
 
         /// <summary>
-        /// Applies a <see cref="MaterialAlphaMotion" /> to the tween.
+        /// Applies a <see cref="MaterialAlphaMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -148,7 +148,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new MaterialAlphaMotion<TRenderer>(tweenMotion.Item, propertyName, null, to));
 
         /// <summary>
-        /// Applies a <see cref="MaterialAlphaMotion" /> to the tween.
+        /// Applies a <see cref="MaterialAlphaMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -164,8 +164,7 @@ namespace FriedSynapse.FlowEnt
         #region Material Color
 
         /// <summary>
-        /// Applies a <see cref="MaterialColorMotion" /> to the tween.
-        /// 
+        /// Applies a <see cref="MaterialColorMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -176,7 +175,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new MaterialColorMotion<TRenderer>(tweenMotion.Item, propertyName, value));
 
         /// <summary>
-        /// Applies a <see cref="MaterialColorMotion" /> to the tween.
+        /// Applies a <see cref="MaterialColorMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -187,7 +186,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new MaterialColorMotion<TRenderer>(tweenMotion.Item, propertyName, null, to));
 
         /// <summary>
-        /// Applies a <see cref="MaterialColorMotion" /> to the tween.
+        /// Applies a <see cref="MaterialColorMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
@@ -199,7 +198,7 @@ namespace FriedSynapse.FlowEnt
             => tweenMotion.Apply(new MaterialColorMotion<TRenderer>(tweenMotion.Item, propertyName, from, to));
 
         /// <summary>
-        /// Applies a <see cref="MaterialColorGradientMotion" /> to the tween.
+        /// Applies a <see cref="MaterialColorGradientMotion{TRenderer}" /> to the tween.
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="propertyName"></param>
