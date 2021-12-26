@@ -3,29 +3,24 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
-    public class MaterialColorMotion<TRenderer> : AbstractMotion<TRenderer>
+    /// <summary>
+    /// Lerps the color for the specified shader property.
+    /// </summary>
+    public class MaterialColorMotion<TRenderer> : AbstractColorMotion<TRenderer>
         where TRenderer : Renderer
     {
-        public MaterialColorMotion(TRenderer item, string propertyName, Color value) : base(item)
+        public MaterialColorMotion(TRenderer item, string propertyName, Color value) : base(item, value)
         {
             this.propertyName = propertyName;
-            this.value = value;
+        }
+
+        public MaterialColorMotion(TRenderer item, string propertyName, Color? from, Color to) : base(item, from, to)
+        {
+            this.propertyName = propertyName;
         }
 
         private readonly string propertyName;
-        private readonly Color value;
-        private Color from;
-        private Color to;
-
-        public override void OnStart()
-        {
-            from = item.material.GetColor(propertyName);
-            to = from + value;
-        }
-
-        public override void OnUpdate(float t)
-        {
-            item.material.SetColor(propertyName, Color.LerpUnclamped(from, to, t));
-        }
+        protected override Color GetFrom() => item.material.GetColor(propertyName);
+        protected override void SetValue(Color value) => item.material.SetColor(propertyName, value);
     }
 }

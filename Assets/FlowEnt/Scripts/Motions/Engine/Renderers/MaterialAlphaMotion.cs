@@ -3,32 +3,24 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
-    public class MaterialAlphaMotion<TRenderer> : AbstractMotion<TRenderer>
+    /// <summary>
+    /// Lerps the alpha for the specified shader property.
+    /// </summary>
+    public class MaterialAlphaMotion<TRenderer> : AbstractAlphaMotion<TRenderer>
         where TRenderer : Renderer
     {
-        public MaterialAlphaMotion(TRenderer item, string propertyName, float value) : base(item)
+        public MaterialAlphaMotion(TRenderer item, string propertyName, float value) : base(item, value)
         {
             this.propertyName = propertyName;
-            this.value = value;
+        }
+
+        public MaterialAlphaMotion(TRenderer item, string propertyName, float? from, float to) : base(item, from, to)
+        {
+            this.propertyName = propertyName;
         }
 
         private readonly string propertyName;
-        private readonly float value;
-        private float from;
-        private float to;
-        private Color colorCache;
-
-        public override void OnStart()
-        {
-            from = item.material.GetColor(propertyName).a;
-            to = from + value;
-        }
-
-        public override void OnUpdate(float t)
-        {
-            colorCache = item.material.GetColor(propertyName);
-            colorCache.a = Mathf.LerpUnclamped(from, to, t);
-            item.material.SetColor(propertyName, colorCache);
-        }
+        protected override float GetFrom() => item.material.GetColor(propertyName).a;
+        protected override void SetValue(float value) => item.material.SetColor(propertyName, SetAlpha(item.material.GetColor(propertyName), value));
     }
 }
