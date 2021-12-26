@@ -1,4 +1,5 @@
 using System;
+using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Values

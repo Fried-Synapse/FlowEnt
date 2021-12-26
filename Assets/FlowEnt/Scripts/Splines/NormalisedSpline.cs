@@ -3,6 +3,12 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// This spline is a normalised version of any ISpline given.
+    /// </summary>
+    /// <remarks>
+    /// The concept of normalisation means that the delta T will be proportional to the lenght of each segment of the spline.
+    /// </remarks>
     public class NormalisedSpline : ISpline
     {
         public const int DefaultResolution = 100;

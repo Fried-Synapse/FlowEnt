@@ -16,7 +16,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         public static void Equal(Quaternion expected, Quaternion actual, float precision = Epsilon)
             => Assert.LessOrEqual(Quaternion.Angle(expected, actual), precision);
 
-
         public static void Time(float expected, float actual, float errorMargin = 0.03f)
         {
             Assert.GreaterOrEqual(actual, expected - errorMargin);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
