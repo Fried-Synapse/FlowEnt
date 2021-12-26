@@ -187,7 +187,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float value = 1f;
 
             yield return CreateTester()
-                .Arrange(() => Component.nearClipPlane = 0f)
+                .Arrange(() => Component.nearClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).NearClipPlane(value).Start())
                 .AssertTime(TestTime)
                 .Assert(() => FlowEntAssert.Equal(value, Component.nearClipPlane))
@@ -200,7 +200,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = 2f;
 
             yield return CreateTester()
-                .Arrange(() => Component.nearClipPlane = 0f)
+                .Arrange(() => Component.nearClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).NearClipPlaneTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, Component.nearClipPlane))
@@ -216,7 +216,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingValue = null;
 
             yield return CreateTester()
-                .Arrange(() => Component.nearClipPlane = 0f)
+                .Arrange(() => Component.nearClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).NearClipPlaneTo(from, to)
                     .OnUpdated(_ => startingValue ??= Component.nearClipPlane)
                     .Start())
@@ -239,7 +239,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float value = 1f;
 
             yield return CreateTester()
-                .Arrange(() => Component.farClipPlane = 0f)
+                .Arrange(() => Component.farClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).FarClipPlane(value).Start())
                 .AssertTime(TestTime)
                 .Assert(() => FlowEntAssert.Equal(value, Component.farClipPlane))
@@ -252,7 +252,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = 2f;
 
             yield return CreateTester()
-                .Arrange(() => Component.farClipPlane = 0f)
+                .Arrange(() => Component.farClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).FarClipPlaneTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, Component.farClipPlane))
@@ -268,7 +268,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingValue = null;
 
             yield return CreateTester()
-                .Arrange(() => Component.farClipPlane = 0f)
+                .Arrange(() => Component.farClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).FarClipPlaneTo(from, to)
                     .OnUpdated(_ => startingValue ??= Component.farClipPlane)
                     .Start())
