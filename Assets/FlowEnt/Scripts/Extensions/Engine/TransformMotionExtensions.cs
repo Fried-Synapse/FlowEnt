@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt
         #region Move
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion" /> to the tween.
+        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
@@ -19,129 +19,295 @@ namespace FriedSynapse.FlowEnt
             where TTransform : Transform
             => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, value));
 
-        public static TweenMotion<TTransform> MoveX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
+        /// <summary>
+        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0f, 0f)));
+            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, default, to));
 
-        public static TweenMotion<TTransform> MoveY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
+        /// <summary>
+        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, y, 0f)));
+            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
-        public static TweenMotion<TTransform> MoveZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, z)));
-
+        /// <summary>
+        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> MoveLocal<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, value));
 
-        public static TweenMotion<TTransform> MoveLocalX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0f, 0f)));
-
-        public static TweenMotion<TTransform> MoveLocalY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, y, 0f)));
-
-        public static TweenMotion<TTransform> MoveLocalZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, z)));
-
-        #endregion
-
-        #region MoveTo
-
-        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveToVectorMotion<TTransform>(motionWrapper.Item, to));
-
-        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new MoveToVectorMotion<TTransform>(motionWrapper.Item, from, to));
-
+        /// <summary>
+        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToVectorMotion<TTransform>(motionWrapper.Item, to));
+            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, default, to));
 
+        /// <summary>
+        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
+            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
         #endregion
 
         #region MoveTo AnimationCurve3d
 
+        /// <summary>
+        /// Applies a <see cref="MoveAnimationCurve3dMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="animationCurve"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveToAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
+            => motionWrapper.Apply(new MoveAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
 
+        /// <summary>
+        /// Applies a <see cref="MoveLocalAnimationCurve3dMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="animationCurve"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
+            => motionWrapper.Apply(new MoveLocalAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
 
         #endregion
 
-        #region MoveTo Axis
+        #region Move Axis
 
-        public static TweenMotion<TTransform> MoveToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-                    where TTransform : Transform
-                    => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
-
-        public static TweenMotion<TTransform> MoveToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="x"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
+            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0f, 0f)));
 
-        public static TweenMotion<TTransform> MoveToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, to));
+            => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
 
-        public static TweenMotion<TTransform> MoveToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+            => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
 
-        public static TweenMotion<TTransform> MoveToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="x"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, to));
+            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0f, 0f)));
 
-        public static TweenMotion<TTransform> MoveToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
+            => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
 
-        public static TweenMotion<TTransform> MoveLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-                    where TTransform : Transform
-                    => motionWrapper.Apply(new MoveLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
-
-        public static TweenMotion<TTransform> MoveLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
+            => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
 
-        public static TweenMotion<TTransform> MoveLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="y"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, to));
+            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, y, 0f)));
 
-        public static TweenMotion<TTransform> MoveLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+            => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
 
-        public static TweenMotion<TTransform> MoveLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, to));
+            => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
 
-        public static TweenMotion<TTransform> MoveLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="y"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
+            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, y, 0f)));
+
+        /// <summary>
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="z"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, z)));
+
+        /// <summary>
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="z"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, z)));
+
+        /// <summary>
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> MoveLocalZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
         #endregion
 
         #region MoveTo Spline
 
+        /// <summary>
+        /// Applies a <see cref="MoveSplineMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="spline"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, ISpline spline)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveToSplineMotion<TTransform>(motionWrapper.Item, spline));
+            => motionWrapper.Apply(new MoveSplineMotion<TTransform>(motionWrapper.Item, spline));
 
+        /// <summary>
+        /// Applies a <see cref="MoveLocalSplineMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="spline"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, ISpline spline)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalToSplineMotion<TTransform>(motionWrapper.Item, spline));
+            => motionWrapper.Apply(new MoveLocalSplineMotion<TTransform>(motionWrapper.Item, spline));
 
         #endregion
 
@@ -151,118 +317,294 @@ namespace FriedSynapse.FlowEnt
 
         #region Rotate
 
+        /// <summary>
+        /// Applies a <see cref="RotateQuaternionMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> Rotate<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion value)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, value));
 
+        /// <summary>
+        /// Applies a <see cref="RotateQuaternionMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateQuaternionMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion from, Quaternion to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalQuaternionMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalQuaternionMotion<TTransform>(motionWrapper.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalQuaternionMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion from, Quaternion to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalQuaternionMotion<TTransform>(motionWrapper.Item, from, to));
+
+        #endregion
+
+        #region Rotate Vector
+
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> Rotate<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, value));
 
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalVectorMotion<TTransform>(motionWrapper.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalVectorMotion<TTransform>(motionWrapper.Item, from, to));
+
+        #endregion
+
+        #region Rotate Axis
+
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="x"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> RotateX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0f, 0f)));
 
+        /// <summary>
+        /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="y"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> RotateY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, y, 0f)));
 
+        /// <summary>
+        /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="z"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> RotateZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, z)));
 
-        #endregion
-
-        #region RotateTo
-
-        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion to)
+        /// <summary>
+        /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateToQuaternionMotion<TTransform>(motionWrapper.Item, to));
+            => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
 
-        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion from, Quaternion to)
+        /// <summary>
+        /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateToQuaternionMotion<TTransform>(motionWrapper.Item, from, to));
+            => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
-        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+        /// <summary>
+        /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateToVectorMotion<TTransform>(motionWrapper.Item, to));
+            => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
 
-        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+        /// <summary>
+        /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> RotateLocalZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateToVectorMotion<TTransform>(motionWrapper.Item, from, to));
-
-        public static TweenMotion<TTransform> RotateToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
-
-        public static TweenMotion<TTransform> RotateToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
-
-        public static TweenMotion<TTransform> RotateToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, to));
-
-        public static TweenMotion<TTransform> RotateToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
-
-        public static TweenMotion<TTransform> RotateToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, to));
-
-        public static TweenMotion<TTransform> RotateToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
-
-        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToQuaternionMotion<TTransform>(motionWrapper.Item, to));
-
-        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion from, Quaternion to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToQuaternionMotion<TTransform>(motionWrapper.Item, from, to));
-
-        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToVectorMotion<TTransform>(motionWrapper.Item, to));
-
-        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
-
-        public static TweenMotion<TTransform> RotateLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
-
-        public static TweenMotion<TTransform> RotateLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
-
-        public static TweenMotion<TTransform> RotateLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, to));
-
-        public static TweenMotion<TTransform> RotateLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
-
-        public static TweenMotion<TTransform> RotateLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, to));
-
-        public static TweenMotion<TTransform> RotateLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new RotateLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
+            => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
         #endregion
 
         #region LookAt
 
+        /// <summary>
+        /// Applies a <see cref="LookAtTransformMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="target"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> LookAt<TTransform>(this TweenMotion<TTransform> motionWrapper, Transform target)
             where TTransform : Transform
             => motionWrapper.Apply(new LookAtTransformMotion<TTransform>(motionWrapper.Item, target));
 
+        /// <summary>
+        /// Applies a <see cref="LookAtVector3Motion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="target"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> LookAt<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 target)
             where TTransform : Transform
             => motionWrapper.Apply(new LookAtVector3Motion<TTransform>(motionWrapper.Item, target));
@@ -271,6 +613,11 @@ namespace FriedSynapse.FlowEnt
 
         #region OrientToPath
 
+        /// <summary>
+        /// Applies a <see cref="OrientToPathMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> OrientToPath<TTransform>(this TweenMotion<TTransform> motionWrapper)
             where TTransform : Transform
             => motionWrapper.Apply(new OrientToPathMotion<TTransform>(motionWrapper.Item));
@@ -283,69 +630,147 @@ namespace FriedSynapse.FlowEnt
 
         #region Scale
 
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
         public static TweenMotion<TTransform> Scale<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleVectorMotion<TTransform>(motionWrapper.Item, value));
+            => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, value));
 
-        public static TweenMotion<TTransform> ScaleX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 1f, 1f)));
+            => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, default, to));
 
-        public static TweenMotion<TTransform> ScaleY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleVectorMotion<TTransform>(motionWrapper.Item, new Vector3(1f, y, 1f)));
-
-        public static TweenMotion<TTransform> ScaleZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
-            where TTransform : Transform
-            => motionWrapper.Apply(new ScaleVectorMotion<TTransform>(motionWrapper.Item, new Vector3(1f, 1f, z)));
+            => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
         #endregion
 
-        #region ScaleToLocal
+        #region ScaleTo AnimationCurve3d
 
-        public static TweenMotion<TTransform> ScaleLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalAnimationCurve3dMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="animationCurve"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToVectorMotion<TTransform>(motionWrapper.Item, to));
-
-        public static TweenMotion<TTransform> ScaleLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
-            where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToVectorMotion<TTransform>(motionWrapper.Item, from, to));
+            => motionWrapper.Apply(new ScaleLocalAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
 
         #endregion
 
-        #region ScaleToLocal AnimationCurve3d
+        #region Scale Axis
 
-        public static TweenMotion<TTransform> ScaleLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleX<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
+            => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(value, 1f, 1f)));
 
-        #endregion
-
-        #region ScaleToLocal Axis
-
-        public static TweenMotion<TTransform> ScaleLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, to));
+            => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
 
-        public static TweenMotion<TTransform> ScaleLocalToX<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
+            => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
 
-        public static TweenMotion<TTransform> ScaleLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleY<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, to));
+            => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(1f, value, 1f)));
 
-        public static TweenMotion<TTransform> ScaleLocalToY<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
+            => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
 
-        public static TweenMotion<TTransform> ScaleLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, to));
+            => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
 
-        public static TweenMotion<TTransform> ScaleLocalToZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new ScaleLocalToAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
+            => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(1f, 1f, value)));
+
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotion<TTransform> ScaleZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+            where TTransform : Transform
+            => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
         #endregion
 

@@ -3,27 +3,22 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
-    public class MoveLocalVectorMotion<TTransform> : AbstractMotion<TTransform>
+    /// <summary>
+    /// Lerps the <see cref="Transform.localPosition" /> value.
+    /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
+    public class MoveLocalVectorMotion<TTransform> : AbstractVector3Motion<TTransform>
         where TTransform : Transform
     {
-        public MoveLocalVectorMotion(TTransform item, Vector3 value) : base(item)
+        public MoveLocalVectorMotion(TTransform item, Vector3 value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly Vector3 value;
-        private Vector3 from;
-        private Vector3 to;
-
-        public override void OnStart()
+        public MoveLocalVectorMotion(TTransform item, Vector3? from, Vector3 to) : base(item, from, to)
         {
-            from = item.localPosition;
-            to = from + value;
         }
 
-        public override void OnUpdate(float t)
-        {
-            item.localPosition = Vector3.LerpUnclamped(from, to, t);
-        }
+        protected override Vector3 GetFrom() => item.localPosition;
+        protected override void SetValue(Vector3 value) => item.localPosition = value;
     }
 }
