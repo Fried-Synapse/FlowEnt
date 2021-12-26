@@ -3,26 +3,20 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.UI.CanvasGroups
 {
-    public class AlphaMotion : AbstractMotion<CanvasGroup>
+    /// <summary>
+    /// Lerps the <see cref="CanvasGroup.alpha" /> value.
+    /// </summary>
+    public class AlphaMotion : AbstractAlphaMotion<CanvasGroup>
     {
-        public AlphaMotion(CanvasGroup item, float value) : base(item)
+        public AlphaMotion(CanvasGroup item, float value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly float value;
-        private float from;
-        private float to;
-
-        public override void OnStart()
+        public AlphaMotion(CanvasGroup item, float? from, float to) : base(item, from, to)
         {
-            from = item.alpha;
-            to = from + value;
         }
 
-        public override void OnUpdate(float t)
-        {
-            item.alpha = Mathf.LerpUnclamped(from, to, t);
-        }
+        protected override float GetFrom() => item.alpha;
+        protected override void SetValue(float value) => item.alpha = value;
     }
 }
