@@ -3,15 +3,12 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
-    public class ColorToGradientMotion<TRenderer> : AbstractMotion<TRenderer>
+    public class ColorGradientMotion<TRenderer> : AbstractGradientMotion<TRenderer>
         where TRenderer : Renderer
     {
-        public ColorToGradientMotion(TRenderer item, Gradient gradient) : base(item)
+        public ColorGradientMotion(TRenderer item, Gradient gradient) : base(item, gradient)
         {
-            this.gradient = gradient;
         }
-
-        private readonly Gradient gradient;
 
         public override void OnUpdate(float t)
         {

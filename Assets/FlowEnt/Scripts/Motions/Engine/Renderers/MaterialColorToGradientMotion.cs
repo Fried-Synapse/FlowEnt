@@ -3,18 +3,15 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
-    public class MaterialColorToGradientMotion<TRenderer> : AbstractMotion<TRenderer>
+    public class MaterialColorToGradientMotion<TRenderer> : AbstractGradientMotion<TRenderer>
         where TRenderer : Renderer
     {
-        public MaterialColorToGradientMotion(TRenderer item, string propertyName, Gradient gradient) : base(item)
+        public MaterialColorToGradientMotion(TRenderer item, string propertyName, Gradient gradient) : base(item, gradient)
         {
             this.propertyName = propertyName;
-            this.gradient = gradient;
         }
 
         private readonly string propertyName;
-        private readonly Gradient gradient;
-
         public override void OnUpdate(float t)
         {
             item.material.SetColor(propertyName, gradient.Evaluate(t));

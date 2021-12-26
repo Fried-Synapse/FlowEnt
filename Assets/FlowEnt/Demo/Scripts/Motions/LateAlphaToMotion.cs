@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Demo
 {
-    public class LateAlphaToMotion : AlphaToMotion<MeshRenderer>
+    public class LateAlphaMotion : AlphaMotion<MeshRenderer>
     {
-        public LateAlphaToMotion(MeshRenderer item, float value, float percentage) : base(item, value)
+        public LateAlphaMotion(MeshRenderer item, float value, float percentage) : base(item, value)
         {
             multiplier = 1f / (1f - percentage);
         }

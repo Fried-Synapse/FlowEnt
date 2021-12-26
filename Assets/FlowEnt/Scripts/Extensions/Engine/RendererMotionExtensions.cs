@@ -13,11 +13,11 @@ namespace FriedSynapse.FlowEnt
 
         public static TweenMotion<TRenderer> AlphaTo<TRenderer>(this TweenMotion<TRenderer> motion, float to)
             where TRenderer : Renderer
-            => motion.Apply(new AlphaToMotion<TRenderer>(motion.Item, to));
+            => motion.Apply(new AlphaMotion<TRenderer>(motion.Item, null, to));
 
         public static TweenMotion<TRenderer> AlphaTo<TRenderer>(this TweenMotion<TRenderer> motion, float from, float to)
             where TRenderer : Renderer
-            => motion.Apply(new AlphaToMotion<TRenderer>(motion.Item, from, to));
+            => motion.Apply(new AlphaMotion<TRenderer>(motion.Item, from, to));
 
         #endregion
 
@@ -29,21 +29,15 @@ namespace FriedSynapse.FlowEnt
 
         public static TweenMotion<TRenderer> ColorTo<TRenderer>(this TweenMotion<TRenderer> motion, Color to)
             where TRenderer : Renderer
-            => motion.Apply(new ColorToMotion<TRenderer>(motion.Item, to));
+            => motion.Apply(new ColorMotion<TRenderer>(motion.Item, null, to));
 
         public static TweenMotion<TRenderer> ColorTo<TRenderer>(this TweenMotion<TRenderer> motion, Color from, Color to)
             where TRenderer : Renderer
-            => motion.Apply(new ColorToMotion<TRenderer>(motion.Item, from, to));
+            => motion.Apply(new ColorMotion<TRenderer>(motion.Item, from, to));
 
-        /// <summary>
-        /// Extension method that will tween a renderers color using a supplied gradient value that will be evaluated
-        /// on each update loop of the tween.
-        /// </summary>
-        /// <param name="motion"></param>
-        /// <param name="gradient"></param>
         public static TweenMotion<TRenderer> ColorTo<TRenderer>(this TweenMotion<TRenderer> motion, Gradient gradient)
             where TRenderer : Renderer
-            => motion.Apply(new ColorToGradientMotion<TRenderer>(motion.Item, gradient));
+            => motion.Apply(new ColorGradientMotion<TRenderer>(motion.Item, gradient));
 
         #endregion
 
@@ -55,11 +49,11 @@ namespace FriedSynapse.FlowEnt
 
         public static TweenMotion<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, float to)
             where TRenderer : Renderer
-            => motion.Apply(new MaterialFloatToMotion<TRenderer>(motion.Item, propertyName, to));
+            => motion.Apply(new MaterialFloatMotion<TRenderer>(motion.Item, propertyName, null, to));
 
         public static TweenMotion<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, float from, float to)
             where TRenderer : Renderer
-            => motion.Apply(new MaterialFloatToMotion<TRenderer>(motion.Item, propertyName, from, to));
+            => motion.Apply(new MaterialFloatMotion<TRenderer>(motion.Item, propertyName, from, to));
 
         #endregion
 
@@ -71,11 +65,11 @@ namespace FriedSynapse.FlowEnt
 
         public static TweenMotion<TRenderer> MaterialAlphaTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, float to)
             where TRenderer : Renderer
-            => motion.Apply(new MaterialAlphaToMotion<TRenderer>(motion.Item, propertyName, to));
+            => motion.Apply(new MaterialAlphaMotion<TRenderer>(motion.Item, propertyName, null, to));
 
         public static TweenMotion<TRenderer> MaterialAlphaTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, float from, float to)
             where TRenderer : Renderer
-            => motion.Apply(new MaterialAlphaToMotion<TRenderer>(motion.Item, propertyName, from, to));
+            => motion.Apply(new MaterialAlphaMotion<TRenderer>(motion.Item, propertyName, from, to));
 
         #endregion
 
@@ -87,19 +81,12 @@ namespace FriedSynapse.FlowEnt
 
         public static TweenMotion<TRenderer> MaterialColorTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, Color to)
             where TRenderer : Renderer
-            => motion.Apply(new MaterialColorToMotion<TRenderer>(motion.Item, propertyName, to));
+            => motion.Apply(new MaterialColorMotion<TRenderer>(motion.Item, propertyName, null, to));
 
         public static TweenMotion<TRenderer> MaterialColorTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, Color from, Color to)
             where TRenderer : Renderer
-            => motion.Apply(new MaterialColorToMotion<TRenderer>(motion.Item, propertyName, from, to));
+            => motion.Apply(new MaterialColorMotion<TRenderer>(motion.Item, propertyName, from, to));
 
-        /// <summary>
-        /// Extension method that will tween a renderers color using a supplied gradient value which will be evaluated
-        /// on each update loop of the tween and a material property name that will be used to access the materials color value.
-        /// </summary>
-        /// <param name="motion"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="gradient"></param>
         public static TweenMotion<TRenderer> MaterialColorTo<TRenderer>(this TweenMotion<TRenderer> motion, string propertyName, Gradient gradient)
             where TRenderer : Renderer
             => motion.Apply(new MaterialColorToGradientMotion<TRenderer>(motion.Item, propertyName, gradient));
