@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Looks at a transform using the <see cref="Transform.LookAt(Transform)" /> method.
     /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
     public class LookAtTransformMotion<TTransform> : AbstractMotion<TTransform>
         where TTransform : Transform
     {

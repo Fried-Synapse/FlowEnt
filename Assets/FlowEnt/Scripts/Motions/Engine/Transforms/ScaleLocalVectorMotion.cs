@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
+    /// <summary>
+    /// Lerps the <see cref="Transform.localScale" /> value.
+    /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
     public class ScaleLocalVectorMotion<TTransform> : AbstractVector3Motion<TTransform>
         where TTransform : Transform
     {

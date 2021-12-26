@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.localEulerAngles" /> value.
     /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
     public class RotateLocalVectorMotion<TTransform> : AbstractVector3Motion<TTransform>
         where TTransform : Transform
     {

@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.position" /> value using a spline.
     /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
     public class MoveSplineMotion<TTransform> : AbstractSplineMotion<TTransform>
         where TTransform : Transform
     {

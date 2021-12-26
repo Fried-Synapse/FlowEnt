@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.localPosition" /> value using an animation curve 3d.
     /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
     public class MoveLocalAnimationCurve3dMotion<TTransform> : AbstractAnimationCurve3dMotion<TTransform>
         where TTransform : Transform
     {

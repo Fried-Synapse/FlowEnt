@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Renderers
     /// <summary>
     /// Lerps the alpha for the specified shader property using a gradient.
     /// </summary>
+    /// <typeparam name="TRenderer"></typeparam>
     public class MaterialColorGradientMotion<TRenderer> : AbstractGradientMotion<TRenderer>
         where TRenderer : Renderer
     {

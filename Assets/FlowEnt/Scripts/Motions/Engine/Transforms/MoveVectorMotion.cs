@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.position" /> value.
     /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
     public class MoveVectorMotion<TTransform> : AbstractVector3Motion<TTransform>
         where TTransform : Transform
     {

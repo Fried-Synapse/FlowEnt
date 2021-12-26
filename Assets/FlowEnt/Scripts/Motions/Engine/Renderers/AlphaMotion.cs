@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Renderers
     /// <summary>
     /// Lerps the alpha for <see cref="Material.color" /> for <see cref="Renderer.material" /> value.
     /// </summary>
+    /// <typeparam name="TRenderer"></typeparam>
     public class AlphaMotion<TRenderer> : AbstractAlphaMotion<TRenderer>
         where TRenderer : Renderer
     {

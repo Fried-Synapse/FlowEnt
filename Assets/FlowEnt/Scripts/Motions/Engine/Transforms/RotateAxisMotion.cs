@@ -5,6 +5,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.eulerAngles" /> value by axis.
     /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
     public class RotateAxisMotion<TTransform> : AbstractAxisMotion<TTransform>
         where TTransform : Transform
     {

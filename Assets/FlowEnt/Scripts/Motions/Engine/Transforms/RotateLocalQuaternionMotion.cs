@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.localRotation" /> value.
     /// </summary>
+    /// <typeparam name="TTransform"></typeparam>
     public class RotateLocalQuaternionMotion<TTransform> : AbstractQuaternionMotion<TTransform>
         where TTransform : Transform
     {
