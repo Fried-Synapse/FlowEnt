@@ -103,11 +103,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="x"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
+        public static TweenMotion<TTransform> MoveX<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0f, 0f)));
+            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(value, 0f, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
@@ -134,11 +134,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="x"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
+        public static TweenMotion<TTransform> MoveLocalX<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0f, 0f)));
+            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(value, 0f, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
@@ -165,11 +165,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="y"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
+        public static TweenMotion<TTransform> MoveY<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, y, 0f)));
+            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, value, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
@@ -196,11 +196,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="y"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
+        public static TweenMotion<TTransform> MoveLocalY<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, y, 0f)));
+            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, value, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
@@ -227,11 +227,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="z"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
+        public static TweenMotion<TTransform> MoveZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, z)));
+            => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, value)));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
@@ -258,11 +258,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="z"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
+        public static TweenMotion<TTransform> MoveLocalZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, z)));
+            => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, value)));
 
         /// <summary>
         /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
@@ -433,11 +433,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="x"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateX<TTransform>(this TweenMotion<TTransform> motionWrapper, float x)
+        public static TweenMotion<TTransform> RotateX<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(x, 0f, 0f)));
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(value, 0f, 0f)));
 
         /// <summary>
         /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.
@@ -485,11 +485,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="y"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateY<TTransform>(this TweenMotion<TTransform> motionWrapper, float y)
+        public static TweenMotion<TTransform> RotateY<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, y, 0f)));
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, value, 0f)));
 
         /// <summary>
         /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.
@@ -537,11 +537,11 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="motionWrapper"></param>
-        /// <param name="z"></param>
+        /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float z)
+        public static TweenMotion<TTransform> RotateZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
             where TTransform : Transform
-            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, z)));
+            => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, value)));
 
         /// <summary>
         /// Applies a <see cref="RotateAxisMotion{TTransform}" /> to the tween.

@@ -3,7 +3,7 @@ using FriedSynapse.FlowEnt.Motions.AudioSources;
 
 namespace FriedSynapse.FlowEnt
 {
-    public static class AudioMotionExtensions
+    public static class AudioSourceMotionExtensions
     {
         #region Pitch
 
