@@ -20,4 +20,22 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             }
         }
     }
+
+    public abstract class AbstractEngineTests<TComponent> : AbstractEngineTests
+        where TComponent : Component
+    {
+        private TComponent component;
+
+        protected TComponent Component
+        {
+            get
+            {
+                if (component == null)
+                {
+                    component = GameObject.AddComponent<TComponent>();
+                }
+                return component;
+            }
+        }
+    }
 }

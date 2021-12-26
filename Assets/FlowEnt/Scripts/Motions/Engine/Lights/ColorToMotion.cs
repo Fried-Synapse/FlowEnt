@@ -1,5 +1,5 @@
+using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace FriedSynapse.FlowEnt.Motions.Lights
 {

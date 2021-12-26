@@ -1,4 +1,4 @@
-namespace FriedSynapse.FlowEnt
+namespace FriedSynapse.FlowEnt.Motions.Abstract
 {
     public interface IMotion
     {

@@ -27,6 +27,7 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="PitchToMotion" /> to the tween.
         /// </summary>
         /// <param name="motion"></param>
+        /// <param name="from"></param>
         /// <param name="to"></param>
         public static TweenMotion<AudioSource> PitchTo(this TweenMotion<AudioSource> motion, float from, float to)
             => motion.Apply(new PitchToMotion(motion.Item, from, to));

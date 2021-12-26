@@ -5,22 +5,8 @@ using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 {
-    public class AudioTests : AbstractEngineTests
+    public class AudioTests : AbstractEngineTests<AudioSource>
     {
-        private AudioSource audioSource;
-
-        private AudioSource AudioSource
-        {
-            get
-            {
-                if (audioSource == null)
-                {
-                    audioSource = GameObject.AddComponent<AudioSource>();
-                }
-                return audioSource;
-            }
-        }
-
         #region Pitch
 
         [UnityTest]
@@ -29,10 +15,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float value = 2.3f;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.pitch = 0f)
-                .Act(() => AudioSource.Tween(TestTime).Pitch(value).Start())
+                .Arrange(() => Component.pitch = 0f)
+                .Act(() => Component.Tween(TestTime).Pitch(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.Equal(value, AudioSource.pitch))
+                .Assert(() => FlowEntAssert.Equal(value, Component.pitch))
                 .Run();
         }
 
@@ -42,10 +28,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = 2.3f;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.pitch = 0f)
-                .Act(() => AudioSource.Tween(TestTime).PitchTo(to).Start())
+                .Arrange(() => Component.pitch = 0f)
+                .Act(() => Component.Tween(TestTime).PitchTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, AudioSource.pitch))
+                .Assert(() => Assert.AreEqual(to, Component.pitch))
                 .Run();
         }
 
@@ -58,15 +44,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingValue = null;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.pitch = 0f)
-                .Act(() => AudioSource.Tween(TestTime).PitchTo(from, to)
-                    .OnUpdated(_ => startingValue ??= AudioSource.pitch)
+                .Arrange(() => Component.pitch = 0f)
+                .Act(() => Component.Tween(TestTime).PitchTo(from, to)
+                    .OnUpdated(_ => startingValue ??= Component.pitch)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, AudioSource.pitch);
+                    Assert.AreEqual(to, Component.pitch);
                 })
                 .Run();
         }
@@ -82,10 +68,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float value = 0.75f;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0f)
-                .Act(() => AudioSource.Tween(TestTime).Volume(value).Start())
+                .Arrange(() => Component.volume = 0f)
+                .Act(() => Component.Tween(TestTime).Volume(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, AudioSource.volume))
+                .Assert(() => Assert.AreEqual(value, Component.volume))
                 .Run();
         }
 
@@ -96,10 +82,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float maxValue = 1f;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0f)
-                .Act(() => AudioSource.Tween(TestTime).Volume(value).Start())
+                .Arrange(() => Component.volume = 0f)
+                .Act(() => Component.Tween(TestTime).Volume(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(maxValue, AudioSource.volume))
+                .Assert(() => Assert.AreEqual(maxValue, Component.volume))
                 .Run();
         }
 
@@ -112,16 +98,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             bool underClamp = false;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0.5f)
-                .Act(() => AudioSource.Tween(TestTime)
+                .Arrange(() => Component.volume = 0.5f)
+                .Act(() => Component.Tween(TestTime)
                     .Volume(value)
                     .SetEasing(Easing.EaseOutBack)
-                    .OnUpdated((t) => underClamp = underClamp ? underClamp : AudioSource.volume < 0)
+                    .OnUpdated((t) => underClamp = underClamp ? underClamp : Component.volume < 0)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(minValue, AudioSource.volume);
+                    Assert.AreEqual(minValue, Component.volume);
                     Assert.IsFalse(underClamp);
                 })
                 .Run();
@@ -136,16 +122,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             bool overClamp = false;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0f)
-                .Act(() => AudioSource.Tween(TestTime)
+                .Arrange(() => Component.volume = 0f)
+                .Act(() => Component.Tween(TestTime)
                     .Volume(value)
                     .SetEasing(Easing.EaseOutBack)
-                    .OnUpdated((t) => overClamp = overClamp ? overClamp : AudioSource.volume > 1)
+                    .OnUpdated((t) => overClamp = overClamp ? overClamp : Component.volume > 1)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(maxValue, AudioSource.volume);
+                    Assert.AreEqual(maxValue, Component.volume);
                     Assert.IsFalse(overClamp);
                 })
                 .Run();
@@ -158,10 +144,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float minValue = 0f;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0.5f)
-                .Act(() => AudioSource.Tween(TestTime).Volume(value).Start())
+                .Arrange(() => Component.volume = 0.5f)
+                .Act(() => Component.Tween(TestTime).Volume(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(minValue, AudioSource.volume))
+                .Assert(() => Assert.AreEqual(minValue, Component.volume))
                 .Run();
         }
 
@@ -171,10 +157,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = 0.75f;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0f)
-                .Act(() => AudioSource.Tween(TestTime).VolumeTo(to).Start())
+                .Arrange(() => Component.volume = 0f)
+                .Act(() => Component.Tween(TestTime).VolumeTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, AudioSource.volume))
+                .Assert(() => Assert.AreEqual(to, Component.volume))
                 .Run();
         }
 
@@ -185,10 +171,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float maxValue = 1f;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0f)
-                .Act(() => AudioSource.Tween(TestTime).VolumeTo(to).Start())
+                .Arrange(() => Component.volume = 0f)
+                .Act(() => Component.Tween(TestTime).VolumeTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(maxValue, AudioSource.volume))
+                .Assert(() => Assert.AreEqual(maxValue, Component.volume))
                 .Run();
         }
 
@@ -199,10 +185,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float minValue = 0f;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0.25f)
-                .Act(() => AudioSource.Tween(TestTime).VolumeTo(to).Start())
+                .Arrange(() => Component.volume = 0.25f)
+                .Act(() => Component.Tween(TestTime).VolumeTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(minValue, AudioSource.volume))
+                .Assert(() => Assert.AreEqual(minValue, Component.volume))
                 .Run();
         }
 
@@ -215,15 +201,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingValue = null;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0f)
-                .Act(() => AudioSource.Tween(TestTime).VolumeTo(from, to)
-                    .OnUpdated(_ => startingValue ??= AudioSource.volume)
+                .Arrange(() => Component.volume = 0f)
+                .Act(() => Component.Tween(TestTime).VolumeTo(from, to)
+                    .OnUpdated(_ => startingValue ??= Component.volume)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, AudioSource.volume);
+                    Assert.AreEqual(to, Component.volume);
                 })
                 .Run();
         }
@@ -239,15 +225,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingValue = null;
 
             yield return CreateTester()
-                .Arrange(() => AudioSource.volume = 0.5f)
-                .Act(() => AudioSource.Tween(TestTime).VolumeTo(from, to)
-                    .OnUpdated(_ => startingValue ??= AudioSource.volume)
+                .Arrange(() => Component.volume = 0.5f)
+                .Act(() => Component.Tween(TestTime).VolumeTo(from, to)
+                    .OnUpdated(_ => startingValue ??= Component.volume)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(minValue, startingValue);
-                    Assert.AreEqual(maxValue, AudioSource.volume);
+                    Assert.AreEqual(maxValue, Component.volume);
                 })
                 .Run();
         }
