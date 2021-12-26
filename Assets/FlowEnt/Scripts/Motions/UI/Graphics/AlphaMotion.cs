@@ -1,33 +1,24 @@
 using FriedSynapse.FlowEnt.Motions.Abstract;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace FriedSynapse.FlowEnt.Motions.UI.Graphics
 {
-    public class AlphaMotion<TGraphic> : AbstractMotion<TGraphic>
+    /// <summary>
+    /// Lerps the alpha for <see cref="Graphic.color" /> value.
+    /// </summary>
+    /// <typeparam name="TGraphic"></typeparam>
+    public class AlphaMotion<TGraphic> : AbstractAlphaMotion<TGraphic>
         where TGraphic : Graphic
     {
-        public AlphaMotion(TGraphic item, float value) : base(item)
+        public AlphaMotion(TGraphic item, float value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly float value;
-        private float from;
-        private float to;
-        private Color color;
-
-        public override void OnStart()
+        public AlphaMotion(TGraphic item, float? from, float to) : base(item, from, to)
         {
-            from = item.color.a;
-            to = from + value;
         }
 
-        public override void OnUpdate(float t)
-        {
-            color = item.color;
-            color.a = Mathf.LerpUnclamped(from, to, t);
-            item.color = color;
-        }
+        protected override float GetFrom() => item.color.a;
+        protected override void SetValue(float value) => item.color = SetAlpha(item.color, value);
     }
 }

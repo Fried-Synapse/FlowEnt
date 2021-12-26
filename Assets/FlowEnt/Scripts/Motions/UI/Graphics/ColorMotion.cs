@@ -4,27 +4,22 @@ using UnityEngine.UI;
 
 namespace FriedSynapse.FlowEnt.Motions.UI.Graphics
 {
-    public class ColorMotion<TGraphic> : AbstractMotion<TGraphic>
+    /// <summary>
+    /// Lerps the <see cref="Graphic.color" /> value.
+    /// </summary>
+    /// <typeparam name="TGraphic"></typeparam>
+    public class ColorMotion<TGraphic> : AbstractColorMotion<TGraphic>
         where TGraphic : Graphic
     {
-        public ColorMotion(TGraphic item, Color value) : base(item)
+        public ColorMotion(TGraphic item, Color value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly Color value;
-        private Color from;
-        private Color to;
-
-        public override void OnStart()
+        public ColorMotion(TGraphic item, Color? from, Color to) : base(item, from, to)
         {
-            from = item.color;
-            to = from + value;
         }
 
-        public override void OnUpdate(float t)
-        {
-            item.color = Color.LerpUnclamped(from, to, t);
-        }
+        protected override Color GetFrom() => item.color;
+        protected override void SetValue(Color value) => item.color = value;
     }
 }
