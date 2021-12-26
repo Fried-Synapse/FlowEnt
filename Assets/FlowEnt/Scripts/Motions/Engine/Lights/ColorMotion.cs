@@ -3,26 +3,17 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Lights
 {
-    public class ColorMotion : AbstractMotion<Light>
+    public class ColorMotion : AbstractColorMotion<Light>
     {
-        public ColorMotion(Light item, Color value) : base(item)
+        public ColorMotion(Light item, Color value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly Color value;
-        private Color from;
-        private Color to;
-
-        public override void OnStart()
+        public ColorMotion(Light item, Color? from, Color to) : base(item, from, to)
         {
-            from = item.color;
-            to = from + value;
         }
 
-        public override void OnUpdate(float t)
-        {
-            item.color = Color.LerpUnclamped(from, to, t);
-        }
+        protected override Color GetFrom() => item.color;
+        protected override void SetValue(Color value) => item.color = value;
     }
 }
