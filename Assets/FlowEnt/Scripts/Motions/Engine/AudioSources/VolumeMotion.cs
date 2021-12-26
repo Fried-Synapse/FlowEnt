@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Motions.AudioSources
         {
         }
 
-        public VolumeMotion(AudioSource item, float? from, float to) : base(item, from == null ? null : Mathf.Clamp01(from.Value), Mathf.Clamp01(to))
+        public VolumeMotion(AudioSource item, float? from, float to) : base(item, from == null ? default : Mathf.Clamp01(from.Value), Mathf.Clamp01(to))
         {
         }
 
