@@ -3,26 +3,21 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.UI.RectTransforms
 {
-    public class ScaleSizeDeltaMotion : AbstractMotion<RectTransform>
+    /// <summary>
+    /// Lerps the <see cref="RectTransform.sizeDelta" /> value.
+    /// </summary>
+    public class ScaleSizeDeltaMotion : AbstractVector2Motion<RectTransform>
     {
-        public ScaleSizeDeltaMotion(RectTransform item, Vector2 value) : base(item)
+        public ScaleSizeDeltaMotion(RectTransform item, Vector2 value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly Vector2 value;
-        private Vector2 from;
-        private Vector2 to;
-
-        public override void OnStart()
+        public ScaleSizeDeltaMotion(RectTransform item, Vector2? from, Vector2 to) : base(item, from, to)
         {
-            from = item.sizeDelta;
-            to = Vector2.Scale(from, value);
         }
 
-        public override void OnUpdate(float t)
-        {
-            item.sizeDelta = Vector2.LerpUnclamped(from, to, t);
-        }
+        protected override Vector2 GetFrom() => item.sizeDelta;
+        protected override Vector2 GetTo(Vector2 from, Vector2 value) => Vector2.Scale(from, value);
+        protected override void SetValue(Vector2 value) => item.sizeDelta = value;
     }
 }

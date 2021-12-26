@@ -9,43 +9,92 @@ namespace FriedSynapse.FlowEnt
 
         #region MoveAnchoredPosition
 
-        public static TweenMotion<RectTransform> MoveAnchoredPosition(this TweenMotion<RectTransform> motionWrapper, Vector2 value)
-            => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, value));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="value"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPosition(this TweenMotion<RectTransform> tweenMotion, Vector2 value)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, value));
 
-        public static TweenMotion<RectTransform> MoveAnchoredPositionX(this TweenMotion<RectTransform> motionWrapper, float x)
-            => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, new Vector2(x, 0f)));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> tweenMotion, Vector2 to)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, default, to));
 
-        public static TweenMotion<RectTransform> MoveAnchoredPositionY(this TweenMotion<RectTransform> motionWrapper, float y)
-            => motionWrapper.Apply(new MoveAnchoredPositionVectorMotion(motionWrapper.Item, new Vector2(0f, y)));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> tweenMotion, Vector2 from, Vector2 to)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, from, to));
 
-        #endregion
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="value"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionX(this TweenMotion<RectTransform> tweenMotion, float value)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, new Vector2(value, 0f)));
 
-        #region MoveAnchoredPositionTo
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionXTo(this TweenMotion<RectTransform> tweenMotion, float to)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, default, new Vector2(to, tweenMotion.Item.anchoredPosition.y)));
 
-        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
-            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, to));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionXTo(this TweenMotion<RectTransform> tweenMotion, float from, float to)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, new Vector2(from, tweenMotion.Item.anchoredPosition.y), new Vector2(to, tweenMotion.Item.anchoredPosition.y)));
 
-        public static TweenMotion<RectTransform> MoveAnchoredPositionXTo(this TweenMotion<RectTransform> motionWrapper, float to)
-            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, new Vector2(to, motionWrapper.Item.anchoredPosition.y)));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="value"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionY(this TweenMotion<RectTransform> tweenMotion, float value)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, new Vector2(0f, value)));
 
-        public static TweenMotion<RectTransform> MoveAnchoredPositionYTo(this TweenMotion<RectTransform> motionWrapper, float to)
-            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, new Vector2(motionWrapper.Item.anchoredPosition.x, to)));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionYTo(this TweenMotion<RectTransform> tweenMotion, float to)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, default, new Vector2(tweenMotion.Item.anchoredPosition.x, to)));
 
-        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> motionWrapper, Vector2 from, Vector2 to)
-            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, from, to));
-
-        public static TweenMotion<RectTransform> MoveAnchoredPositionXTo(this TweenMotion<RectTransform> motionWrapper, float from, float to)
-            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, new Vector2(from, motionWrapper.Item.anchoredPosition.y), new Vector2(to, motionWrapper.Item.anchoredPosition.y)));
-
-        public static TweenMotion<RectTransform> MoveAnchoredPositionYTo(this TweenMotion<RectTransform> motionWrapper, float from, float to)
-            => motionWrapper.Apply(new MoveAnchoredPositionToVectorMotion(motionWrapper.Item, new Vector2(motionWrapper.Item.anchoredPosition.x, from), new Vector2(motionWrapper.Item.anchoredPosition.x, to)));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionYTo(this TweenMotion<RectTransform> tweenMotion, float from, float to)
+            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, new Vector2(tweenMotion.Item.anchoredPosition.x, from), new Vector2(tweenMotion.Item.anchoredPosition.x, to)));
 
         #endregion
 
         #region MoveAnchoredPosition Spline
 
-        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> motionWrapper, ISpline spline)
-            => motionWrapper.Apply(new MoveAnchoredPositionSplineMotion(motionWrapper.Item, spline));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchoredPositionSplineMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="spline"></param>
+        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> tweenMotion, ISpline spline)
+            => tweenMotion.Apply(new MoveAnchoredPositionSplineMotion(tweenMotion.Item, spline));
 
         #endregion
 
@@ -53,33 +102,80 @@ namespace FriedSynapse.FlowEnt
 
         #region MoveAnchorTo 
 
-        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> motionWrapper, Vector2 toMin, Vector2 toMax)
-            => motionWrapper.Apply(new MoveAnchorToMotion(motionWrapper.Item, toMin, toMax));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchorToMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="toMin"></param>
+        /// <param name="toMax"></param>
+        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> tweenMotion, Vector2 toMin, Vector2 toMax)
+            => tweenMotion.Apply(new MoveAnchorToMotion(tweenMotion.Item, toMin, toMax));
 
-        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> motionWrapper, Vector2 fromMin, Vector2 fromMax, Vector2 toMin, Vector2 toMax)
-            => motionWrapper.Apply(new MoveAnchorToMotion(motionWrapper.Item, fromMin, fromMax, toMin, toMax));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchorToMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="fromMin"></param>
+        /// <param name="fromMax"></param>
+        /// <param name="toMin"></param>
+        /// <param name="toMax"></param>
+        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> tweenMotion, Vector2 fromMin, Vector2 fromMax, Vector2 toMin, Vector2 toMax)
+            => tweenMotion.Apply(new MoveAnchorToMotion(tweenMotion.Item, fromMin, fromMax, toMin, toMax));
 
-        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> motionWrapper, AnchorPreset to)
-            => motionWrapper.Apply(new MoveAnchorToMotion(motionWrapper.Item, to));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchorToMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> tweenMotion, AnchorPreset to)
+            => tweenMotion.Apply(new MoveAnchorToMotion(tweenMotion.Item, to));
 
-        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> motionWrapper, AnchorPreset from, AnchorPreset to)
-            => motionWrapper.Apply(new MoveAnchorToMotion(motionWrapper.Item, from, to));
+        /// <summary>
+        /// Applies a <see cref="MoveAnchorToMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> tweenMotion, AnchorPreset from, AnchorPreset to)
+            => tweenMotion.Apply(new MoveAnchorToMotion(tweenMotion.Item, from, to));
 
         #endregion
 
         #region MoveAnchorTo 
 
-        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
-            => motionWrapper.Apply(new MovePivotToMotion(motionWrapper.Item, to));
+        /// <summary>
+        /// Applies a <see cref="MovePivotToMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> tweenMotion, Vector2 to)
+            => tweenMotion.Apply(new MovePivotToMotion(tweenMotion.Item, to));
 
-        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> motionWrapper, Vector2 from, Vector2 to)
-            => motionWrapper.Apply(new MovePivotToMotion(motionWrapper.Item, from, to));
+        /// <summary>
+        /// Applies a <see cref="MovePivotToMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> tweenMotion, Vector2 from, Vector2 to)
+            => tweenMotion.Apply(new MovePivotToMotion(tweenMotion.Item, from, to));
 
-        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> motionWrapper, PivotPreset to)
-            => motionWrapper.Apply(new MovePivotToMotion(motionWrapper.Item, to));
+        /// <summary>
+        /// Applies a <see cref="MovePivotToMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> tweenMotion, PivotPreset to)
+            => tweenMotion.Apply(new MovePivotToMotion(tweenMotion.Item, to));
 
-        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> motionWrapper, PivotPreset from, PivotPreset to)
-            => motionWrapper.Apply(new MovePivotToMotion(motionWrapper.Item, from, to));
+        /// <summary>
+        /// Applies a <see cref="MovePivotToMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> tweenMotion, PivotPreset from, PivotPreset to)
+            => tweenMotion.Apply(new MovePivotToMotion(tweenMotion.Item, from, to));
 
         #endregion
 
@@ -87,24 +183,46 @@ namespace FriedSynapse.FlowEnt
 
         #region ScaleSizeDelta
 
-        public static TweenMotion<RectTransform> ScaleSizeDelta(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
-            => motionWrapper.Apply(new ScaleSizeDeltaMotion(motionWrapper.Item, to));
+        /// <summary>
+        /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="value"></param>
+        public static TweenMotion<RectTransform> ScaleSizeDelta(this TweenMotion<RectTransform> tweenMotion, Vector2 value)
+            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, value));
 
-        public static TweenMotion<RectTransform> ScaleSizeDeltaX(this TweenMotion<RectTransform> motionWrapper, float x)
-            => motionWrapper.Apply(new ScaleSizeDeltaMotion(motionWrapper.Item, new Vector2(x, 1f)));
+        /// <summary>
+        /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> ScaleSizeDeltaTo(this TweenMotion<RectTransform> tweenMotion, Vector2 to)
+            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, default, to));
 
-        public static TweenMotion<RectTransform> ScaleSizeDeltaY(this TweenMotion<RectTransform> motionWrapper, float y)
-            => motionWrapper.Apply(new ScaleSizeDeltaMotion(motionWrapper.Item, new Vector2(1f, y)));
+        /// <summary>
+        /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<RectTransform> ScaleSizeDeltaTo(this TweenMotion<RectTransform> tweenMotion, Vector2 from, Vector2 to)
+            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, from, to));
 
-        #endregion
+        /// <summary>
+        /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="value"></param>
+        public static TweenMotion<RectTransform> ScaleSizeDeltaX(this TweenMotion<RectTransform> tweenMotion, float value)
+            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, new Vector2(value, 1f)));
 
-        #region ScaleSizeDeltaTo
-
-        public static TweenMotion<RectTransform> ScaleSizeDeltaTo(this TweenMotion<RectTransform> motionWrapper, Vector2 to)
-            => motionWrapper.Apply(new ScaleSizeDeltaToMotion(motionWrapper.Item, to));
-
-        public static TweenMotion<RectTransform> ScaleSizeDeltaTo(this TweenMotion<RectTransform> motionWrapper, Vector2 from, Vector2 to)
-            => motionWrapper.Apply(new ScaleSizeDeltaToMotion(motionWrapper.Item, from, to));
+        /// <summary>
+        /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="value"></param>
+        public static TweenMotion<RectTransform> ScaleSizeDeltaY(this TweenMotion<RectTransform> tweenMotion, float value)
+            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, new Vector2(1f, value)));
 
         #endregion
 

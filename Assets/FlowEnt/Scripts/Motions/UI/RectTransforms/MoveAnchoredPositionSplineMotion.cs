@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.UI.RectTransforms
 {
-    public class MoveAnchoredPositionSplineMotion : AbstractMotion<RectTransform>
+    /// <summary>
+    /// Lerps the <see cref="RectTransform.anchoredPosition" /> value using a spline.
+    /// </summary>
+    public class MoveAnchoredPositionSplineMotion : AbstractSplineMotion<RectTransform>
     {
-        public MoveAnchoredPositionSplineMotion(RectTransform item, ISpline spline) : base(item)
+        public MoveAnchoredPositionSplineMotion(RectTransform item, ISpline spline) : base(item, spline)
         {
-            this.spline = spline;
         }
-
-        private readonly ISpline spline;
 
         public override void OnUpdate(float t)
         {
