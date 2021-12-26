@@ -1,5 +1,5 @@
 using UnityEngine;
-using FriedSynapse.FlowEnt.Motions.Audio;
+using FriedSynapse.FlowEnt.Motions.AudioSources;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         /// <param name="to"></param>
         public static TweenMotion<AudioSource> PitchTo(this TweenMotion<AudioSource> motion, float to)
-            => motion.Apply(new PitchToMotion(motion.Item, to));
+            => motion.Apply(new PitchMotion(motion.Item, null, to));
 
         /// <summary>
         /// Applies a <see cref="PitchToMotion" /> to the tween.
@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         public static TweenMotion<AudioSource> PitchTo(this TweenMotion<AudioSource> motion, float from, float to)
-            => motion.Apply(new PitchToMotion(motion.Item, from, to));
+            => motion.Apply(new PitchMotion(motion.Item, from, to));
 
         #endregion
 
@@ -52,17 +52,17 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         /// <param name="to"></param>
         public static TweenMotion<AudioSource> VolumeTo(this TweenMotion<AudioSource> motion, float to)
-            => motion.Apply(new VolumeToMotion(motion.Item, to));
+            => motion.Apply(new VolumeMotion(motion.Item, null, to));
 
         /// <summary>
         /// Applies a <see cref="VolumeToMotion" /> to the tween.
         /// </summary>
-        /// /// <remarks><paramref name="from"/> and <paramref name="to"/> values will be clamped between 0 and 1.</remarks>
+        /// <remarks><paramref name="from"/> and <paramref name="to"/> values will be clamped between 0 and 1.</remarks>
         /// <param name="motion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         public static TweenMotion<AudioSource> VolumeTo(this TweenMotion<AudioSource> motion, float from, float to)
-            => motion.Apply(new VolumeToMotion(motion.Item, from, to));
+            => motion.Apply(new VolumeMotion(motion.Item, from, to));
 
         #endregion
     }
