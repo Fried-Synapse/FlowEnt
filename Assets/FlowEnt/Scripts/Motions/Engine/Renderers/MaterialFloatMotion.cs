@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
+    /// <summary>
+    /// Lerps the value for the specified shader property.
+    /// </summary>
     public class MaterialFloatMotion<TRenderer> : AbstractFloatMotion<TRenderer>
         where TRenderer : Renderer
     {

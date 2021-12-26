@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
+    /// <summary>
+    /// Lerps the <see cref="Material.color" /> for <see cref="Renderer.material" /> value using a gradient.
+    /// </summary>
     public class ColorGradientMotion<TRenderer> : AbstractGradientMotion<TRenderer>
         where TRenderer : Renderer
     {

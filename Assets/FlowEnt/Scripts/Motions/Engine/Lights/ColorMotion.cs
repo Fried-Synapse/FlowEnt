@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Lights
 {
+    /// <summary>
+    /// Lerps the <see cref="Light.color" /> value.
+    /// </summary>
     public class ColorMotion : AbstractColorMotion<Light>
     {
         public ColorMotion(Light item, Color value) : base(item, value)

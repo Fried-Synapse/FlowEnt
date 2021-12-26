@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Lights
 {
+    /// <summary>
+    /// Lerps the <see cref="Light.intensity" /> value.
+    /// </summary>
     public class IntensityMotion : AbstractFloatMotion<Light>
     {
         public IntensityMotion(Light item, float value) : base(item, value)

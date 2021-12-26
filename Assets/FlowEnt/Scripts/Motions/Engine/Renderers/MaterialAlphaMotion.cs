@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
+    /// <summary>
+    /// Lerps the alpha for the specified shader property.
+    /// </summary>
     public class MaterialAlphaMotion<TRenderer> : AbstractAlphaMotion<TRenderer>
         where TRenderer : Renderer
     {

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Renderers
 {
+    /// <summary>
+    /// Lerps the color for the specified shader property.
+    /// </summary>
     public class MaterialColorMotion<TRenderer> : AbstractColorMotion<TRenderer>
         where TRenderer : Renderer
     {
