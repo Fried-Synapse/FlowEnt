@@ -22,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Demo
 
         private AbstractAnimation GetAnimation(Transform transform)
             => new Tween(3f)
-                .For(transform).MoveLocalToY(2f).ScaleLocalTo(Vector3.one * 5f)
+                .For(transform).MoveLocalYTo(2f).ScaleTo(Vector3.one * 5f)
                 .For(transform.GetComponent<MeshRenderer>()).LateAlphaTo(0, 0.8f)
                 .OnCompleted(() => transform.gameObject.SetActive(false));
     }

@@ -1,31 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
-    public class RotateVectorMotion<TTransform> : AbstractMotion<TTransform>
+    /// <summary>
+    /// Lerps the <see cref="Transform.eulerAngles" /> value.
+    /// </summary>
+    public class RotateVectorMotion<TTransform> : AbstractVector3Motion<TTransform>
         where TTransform : Transform
     {
-        public RotateVectorMotion(TTransform item, Vector3 value) : base(item)
+        public RotateVectorMotion(TTransform item, Vector3 value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly Vector3 value;
-        private Vector3 from;
-        private Vector3 to;
-
-        public override void OnStart()
+        public RotateVectorMotion(TTransform item, Vector3? from, Vector3 to) : base(item, from, to)
         {
-            from = item.eulerAngles;
-            to = item.eulerAngles + value;
         }
 
-        public override void OnUpdate(float t)
-        {
-            item.eulerAngles = Vector3.LerpUnclamped(from, to, t);
-        }
+        protected override Vector3 GetFrom() => item.eulerAngles;
+        protected override void SetValue(Vector3 value) => item.eulerAngles = value;
     }
 }

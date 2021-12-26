@@ -3,27 +3,21 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
-    public class RotateQuaternionMotion<TTransform> : AbstractMotion<TTransform>
+    /// <summary>
+    /// Lerps the <see cref="Transform.rotation" /> value.
+    /// </summary>
+    public class RotateQuaternionMotion<TTransform> : AbstractQuaternionMotion<TTransform>
         where TTransform : Transform
     {
-        public RotateQuaternionMotion(TTransform item, Quaternion value) : base(item)
+        public RotateQuaternionMotion(TTransform item, Quaternion value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly Quaternion value;
-        private Quaternion from;
-        private Quaternion to;
-
-        public override void OnStart()
+        public RotateQuaternionMotion(TTransform item, Quaternion? from, Quaternion to) : base(item, from, to)
         {
-            from = item.rotation;
-            to = item.rotation * value;
         }
 
-        public override void OnUpdate(float t)
-        {
-            item.rotation = Quaternion.LerpUnclamped(from, to, t);
-        }
+        protected override Quaternion GetFrom() => item.rotation;
+        protected override void SetValue(Quaternion value) => item.rotation = value;
     }
 }

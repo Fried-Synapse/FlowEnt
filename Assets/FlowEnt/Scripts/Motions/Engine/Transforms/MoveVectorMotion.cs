@@ -6,27 +6,18 @@ namespace FriedSynapse.FlowEnt.Motions.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.position" /> value.
     /// </summary>
-    public class MoveVectorMotion<TTransform> : AbstractMotion<TTransform>
+    public class MoveVectorMotion<TTransform> : AbstractVector3Motion<TTransform>
         where TTransform : Transform
     {
-        public MoveVectorMotion(TTransform item, Vector3 value) : base(item)
+        public MoveVectorMotion(TTransform item, Vector3 value) : base(item, value)
         {
-            this.value = value;
         }
 
-        private readonly Vector3 value;
-        private Vector3 from;
-        private Vector3 to;
-
-        public override void OnStart()
+        public MoveVectorMotion(TTransform item, Vector3? from, Vector3 to) : base(item, from, to)
         {
-            from = item.position;
-            to = from + value;
         }
 
-        public override void OnUpdate(float t)
-        {
-            item.position = Vector3.LerpUnclamped(from, to, t);
-        }
+        protected override Vector3 GetFrom() => item.position;
+        protected override void SetValue(Vector3 value) => item.position = value;
     }
 }

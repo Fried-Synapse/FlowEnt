@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Transforms
 {
-    public class MoveLocalToSplineMotion<TTransform> : AbstractMotion<TTransform>
+    /// <summary>
+    /// Lerps the <see cref="Transform.localPosition" /> value using a spline.
+    /// </summary>
+    public class MoveLocalSplineMotion<TTransform> : AbstractSplineMotion<TTransform>
         where TTransform : Transform
     {
-        public MoveLocalToSplineMotion(TTransform item, ISpline spline) : base(item)
+        public MoveLocalSplineMotion(TTransform item, ISpline spline) : base(item, spline)
         {
-            this.spline = spline;
         }
-
-        private readonly ISpline spline;
 
         public override void OnUpdate(float t)
         {
