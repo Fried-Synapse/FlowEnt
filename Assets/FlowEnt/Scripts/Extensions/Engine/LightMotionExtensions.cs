@@ -7,36 +7,67 @@ namespace FriedSynapse.FlowEnt
     {
         #region Intensity
 
-        public static TweenMotion<Light> Intensity(this TweenMotion<Light> motion, float value)
-            => motion.Apply(new IntensityMotion(motion.Item, value));
+        /// <summary>
+        /// Applies a <see cref="IntensityMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="value"></param>
+        public static TweenMotion<Light> Intensity(this TweenMotion<Light> tweenMotion, float value)
+            => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, value));
 
-        public static TweenMotion<Light> IntensityTo(this TweenMotion<Light> motion, float to)
-            => motion.Apply(new IntensityToMotion(motion.Item, to));
+        /// <summary>
+        /// Applies a <see cref="IntensityMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<Light> IntensityTo(this TweenMotion<Light> tweenMotion, float to)
+            => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, null, to));
 
-        public static TweenMotion<Light> IntensityTo(this TweenMotion<Light> motion, float from, float to)
-            => motion.Apply(new IntensityToMotion(motion.Item, from, to));
+        /// <summary>
+        /// Applies a <see cref="IntensityMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<Light> IntensityTo(this TweenMotion<Light> tweenMotion, float from, float to)
+            => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, from, to));
 
         #endregion
 
         #region Color
 
-        public static TweenMotion<Light> Color(this TweenMotion<Light> motion, Color value)
-            => motion.Apply(new ColorMotion(motion.Item, value));
-
-        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> motion, Color to)
-            => motion.Apply(new ColorToMotion(motion.Item, to));
-
-        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> motion, Color from, Color to)
-            => motion.Apply(new ColorToMotion(motion.Item, from, to));
+        /// <summary>
+        /// Applies a <see cref="ColorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="value"></param>
+        public static TweenMotion<Light> Color(this TweenMotion<Light> tweenMotion, Color value)
+            => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, value));
 
         /// <summary>
-        /// Extension method that will tween a lights color using a supplied gradient value that will be evaluated
-        /// on each update loop of the tween.
+        /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
-        /// <param name="motion"></param>
+        /// <param name="tweenMotion"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> tweenMotion, Color to)
+            => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, null, to));
+
+        /// <summary>
+        /// Applies a <see cref="ColorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> tweenMotion, Color from, Color to)
+            => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="ColorGradientMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tweenMotion"></param>
         /// <param name="gradient"></param>
-        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> motion, Gradient gradient)
-            => motion.Apply(new ColorToGradientMotion(motion.Item, gradient));
+        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> tweenMotion, Gradient gradient)
+            => tweenMotion.Apply(new ColorGradientMotion(tweenMotion.Item, gradient));
 
         #endregion
     }
