@@ -777,6 +777,30 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #region Move Towards
+
+        /// <summary>
+        /// Applies a <see cref="MoveTowardsVectorMotion{TTransform}" /> to the echo.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="target"></param>
+        /// <param name="speed"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static EchoMotionProxy<TTransform> MoveTowards<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
+            where TTransform : Transform
+            => proxy.Apply(new MoveTowardsVectorMotion<TTransform>(proxy.Item, target, speed));
+
+        /// <summary>
+        /// Applies a <see cref="MoveTowardsVectorElasticMotion{TTransform}" /> to the echo.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="target"></param>
+        /// <param name="speed"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static EchoMotionProxy<TTransform> MoveTowardsElastic<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
+            where TTransform : Transform
+            => proxy.Apply(new MoveTowardsVectorElasticMotion<TTransform>(proxy.Item, target, speed));
+
         /// <summary>
         /// Applies a <see cref="MoveTowardsTransformMotion{TTransform}" /> to the echo.
         /// </summary>
@@ -798,5 +822,7 @@ namespace FriedSynapse.FlowEnt
         public static EchoMotionProxy<TTransform> MoveTowardsElastic<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
             where TTransform : Transform
             => proxy.Apply(new MoveTowardsTransformElasticMotion<TTransform>(proxy.Item, target, speed));
+
+        #endregion
     }
 }

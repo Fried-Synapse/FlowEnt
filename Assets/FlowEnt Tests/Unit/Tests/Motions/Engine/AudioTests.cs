@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.pitch = 0f)
                 .Act(() => Component.Tween(TestTime).Pitch(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.Equal(value, Component.pitch))
+                .Assert(() => FlowEntAssert.AreEqual(value, Component.pitch))
                 .Run();
         }
 

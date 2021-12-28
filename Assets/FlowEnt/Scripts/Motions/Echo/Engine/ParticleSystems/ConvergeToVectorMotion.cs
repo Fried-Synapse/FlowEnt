@@ -16,8 +16,8 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
         }
 
         protected Vector3 target;
-        private readonly float speed;
-        private Particle[] particles = new Particle[0];
+        protected float speed;
+        protected Particle[] particles = new Particle[0];
 
         public override void OnUpdate(float t)
         {

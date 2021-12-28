@@ -25,17 +25,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         where TComponent : Component
     {
         private TComponent component;
+        protected TComponent Component => component ??= GameObject.AddComponent<TComponent>();
 
-        protected TComponent Component
+        protected override void OnTeardown()
         {
-            get
-            {
-                if (component == null)
-                {
-                    component = GameObject.AddComponent<TComponent>();
-                }
-                return component;
-            }
+            base.OnTeardown();
+            component = null;
         }
     }
 }
