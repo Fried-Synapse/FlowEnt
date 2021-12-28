@@ -173,10 +173,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             const int loopCount = 2;
 
             yield return CreateTester()
-                .Act(() => new Tween()
+                .Act(() => new Tween(TestTime)
                             .SetLoopCount(loopCount)
                             .Start())
-                .AssertTime(loopCount)
+                .AssertTime(loopCount * TestTime)
                 .Run();
         }
 
@@ -186,10 +186,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             const int loopCount = 2;
 
             yield return CreateTester()
-                .Act(() => new Tween()
+                .Act(() => new Tween(TestTime)
                             .SetOptions(new TweenOptions().SetLoopCount(loopCount))
                             .Start())
-                .AssertTime(loopCount)
+                .AssertTime(loopCount * TestTime)
                 .Run();
         }
 
@@ -204,7 +204,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    new Tween().SetTime(tweenTime)
+                    new Tween(tweenTime)
                         .OnLoopCompleted((loopsLeft) =>
                         {
                             if (loopsLeft == null)

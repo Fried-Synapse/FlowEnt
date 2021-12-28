@@ -1,37 +1,35 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
-    public class TweenEventsTests : AbstractEngineTests
+    public class EchoEventsTests : AbstractEngineTests
     {
         #region Builder
 
-        [UnityTest]
-        public IEnumerator Builder()
-        {
-            TweenEvents tweenEvents = default;
+        // [UnityTest]
+        // public IEnumerator Builder()
+        // {
+        //     EchoEvents echoEvents = default;
 
-            yield return CreateTester()
-                .Act(() => tweenEvents = Variables.TweenEventsBuilder.Build())
-                .Assert(() =>
-                {
-                    static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
+        //     yield return CreateTester()
+        //         .Act(() => echoEvents = Variables.EchoEventsBuilder.Build())
+        //         .Assert(() =>
+        //         {
+        //             static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
 
-                    assert(Variables.TweenEventsBuilder.OnStarting, tweenEvents.OnStartingEvent);
-                    assert(Variables.TweenEventsBuilder.OnStarted, tweenEvents.OnStartedEvent);
-                    assert(Variables.TweenEventsBuilder.OnUpdating, tweenEvents.OnUpdatingEvent);
-                    assert(Variables.TweenEventsBuilder.OnUpdated, tweenEvents.OnUpdatedEvent);
-                    assert(Variables.TweenEventsBuilder.OnLoopCompleted, tweenEvents.OnLoopCompletedEvent);
-                    assert(Variables.TweenEventsBuilder.OnCompleted, tweenEvents.OnCompletedEvent);
-                    assert(Variables.TweenEventsBuilder.OnCompleting, tweenEvents.OnCompletingEvent);
-                })
-                .Run();
-        }
+        //             assert(Variables.EchoEventsBuilder.OnStarting, echoEvents.OnStartingEvent);
+        //             assert(Variables.EchoEventsBuilder.OnStarted, echoEvents.OnStartedEvent);
+        //             assert(Variables.EchoEventsBuilder.OnUpdating, echoEvents.OnUpdatingEvent);
+        //             assert(Variables.EchoEventsBuilder.OnUpdated, echoEvents.OnUpdatedEvent);
+        //             assert(Variables.EchoEventsBuilder.OnLoopCompleted, echoEvents.OnLoopCompletedEvent);
+        //             assert(Variables.EchoEventsBuilder.OnCompleted, echoEvents.OnCompletedEvent);
+        //             assert(Variables.EchoEventsBuilder.OnCompleting, echoEvents.OnCompletingEvent);
+        //         })
+        //         .Run();
+        // }
 
         #endregion
 
@@ -45,7 +43,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() =>
-                    new Tween(TestTime)
+                    new Echo(TestTime)
                         .OnStarting(() => { wasCalled = true; controlT = deltaT; })
                         .OnUpdated(t => deltaT = t)
                         .Start())
@@ -68,7 +66,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() =>
-                    new Tween(TestTime)
+                    new Echo(TestTime)
                         .OnStarted(() => { wasCalled = true; controlT = deltaT; })
                         .OnUpdated(t => deltaT = t)
                         .Start())
@@ -89,7 +87,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() =>
-                    new Tween(TestTime)
+                    new Echo(TestTime)
                         .OnUpdating(t => { wasCalled = true; deltas.Add(t); })
                         .Start())
                 .AssertTime(TestTime)
@@ -110,7 +108,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() =>
-                    new Tween(TestTime)
+                    new Echo(TestTime)
                         .OnUpdated(t => { wasCalled = true; deltas.Add(t); })
                         .Start())
                 .AssertTime(TestTime)
@@ -134,16 +132,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() =>
-                    new Tween(TestTime / expectedLoopCount)
+                    new Echo(TestTime / expectedLoopCount)
                         .SetLoopCount(expectedLoopCount)
-                        .OnUpdated(t => deltaT = t)
+                        .OnUpdated(t => deltaT += t)
                         .OnLoopCompleted((_) => { loopCount++; controlT = deltaT; })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(expectedLoopCount, loopCount);
-                    Assert.AreEqual(expectedT, controlT);
+                    Assert.GreaterOrEqual(expectedT, controlT);
                 })
                 .Run();
         }
@@ -160,18 +158,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    Tween tween = new Tween(TestTime / expectedLoopCount)
+                    Echo echo = new Echo(TestTime / expectedLoopCount)
                         .SetLoopCount(expectedLoopCount)
-                        .OnUpdated(t => deltaT = t)
+                        .OnUpdated(t => deltaT += t)
                         .OnLoopCompleted((_) => { loopCount++; controlT = deltaT; })
                         .Start();
-                    return new Tween(TestTime).OnCompleted(() => tween.Stop()).Start();
+                    return new Echo(TestTime).OnCompleted(() => echo.Stop()).Start();
                 })
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(expectedLoopCount, loopCount);
-                    Assert.AreEqual(expectedT, controlT);
+                    Assert.GreaterOrEqual(expectedT, controlT);
                 })
                 .Run();
         }
@@ -186,15 +184,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() =>
-                    new Tween(TestTime)
-                        .OnUpdated(t => deltaT = t)
+                    new Echo(TestTime)
+                        .OnUpdated(t => deltaT += t)
                         .OnCompleting(() => { wasCalled = true; controlT = deltaT; })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.True(wasCalled);
-                    Assert.AreEqual(expectedT, controlT);
+                    Assert.GreaterOrEqual(expectedT, controlT);
                 })
                 .Run();
         }
@@ -209,15 +207,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() =>
-                    new Tween(TestTime)
-                        .OnUpdated(t => deltaT = t)
+                    new Echo(TestTime)
+                        .OnUpdated(t => deltaT += t)
                         .OnCompleted(() => { wasCalled = true; controlT = deltaT; })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.True(wasCalled);
-                    Assert.AreEqual(expectedT, controlT);
+                    Assert.GreaterOrEqual(expectedT, controlT);
                 })
                 .Run();
         }
