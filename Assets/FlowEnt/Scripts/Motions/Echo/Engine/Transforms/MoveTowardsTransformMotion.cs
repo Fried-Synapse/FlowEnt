@@ -16,8 +16,8 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
             this.speed = speed;
         }
 
-        private readonly Transform target;
-        private readonly float speed;
+        protected readonly Transform target;
+        protected float speed;
 
         public override void OnUpdate(float t)
         {
