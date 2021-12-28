@@ -23,7 +23,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
             this.item = item;
         }
 
-        protected TItem item;
+        protected readonly TItem item;
         public TItem Item => item;
     }
 }
