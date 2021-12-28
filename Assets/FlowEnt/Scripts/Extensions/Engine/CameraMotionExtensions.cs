@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.Cameras;
+using FriedSynapse.FlowEnt.Motions.Tween.Cameras;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<Camera> BackgroundColor(this TweenMotion<Camera> tweenMotion, Color value)
+        public static TweenMotionProxy<Camera> BackgroundColor(this TweenMotionProxy<Camera> tweenMotion, Color value)
             => tweenMotion.Apply(new BackgroundColorMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> BackgroundColorTo(this TweenMotion<Camera> tweenMotion, Color to)
+        public static TweenMotionProxy<Camera> BackgroundColorTo(this TweenMotionProxy<Camera> tweenMotion, Color to)
             => tweenMotion.Apply(new BackgroundColorMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> BackgroundColorTo(this TweenMotion<Camera> tweenMotion, Color from, Color to)
+        public static TweenMotionProxy<Camera> BackgroundColorTo(this TweenMotionProxy<Camera> tweenMotion, Color from, Color to)
             => tweenMotion.Apply(new BackgroundColorMotion(tweenMotion.Item, from, to));
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> BackgroundColorTo(this TweenMotion<Camera> tweenMotion, Gradient to)
+        public static TweenMotionProxy<Camera> BackgroundColorTo(this TweenMotionProxy<Camera> tweenMotion, Gradient to)
             => tweenMotion.Apply(new BackgroundColorGradientMotion(tweenMotion.Item, to));
 
         #endregion
@@ -49,7 +49,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<Camera> OrthographicSize(this TweenMotion<Camera> tweenMotion, float value)
+        public static TweenMotionProxy<Camera> OrthographicSize(this TweenMotionProxy<Camera> tweenMotion, float value)
             => tweenMotion.Apply(new OrthographicSizeMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> OrthographicSizeTo(this TweenMotion<Camera> tweenMotion, float to)
+        public static TweenMotionProxy<Camera> OrthographicSizeTo(this TweenMotionProxy<Camera> tweenMotion, float to)
             => tweenMotion.Apply(new OrthographicSizeMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> OrthographicSizeTo(this TweenMotion<Camera> tweenMotion, float from, float to)
+        public static TweenMotionProxy<Camera> OrthographicSizeTo(this TweenMotionProxy<Camera> tweenMotion, float from, float to)
             => tweenMotion.Apply(new OrthographicSizeMotion(tweenMotion.Item, from, to));
 
         #endregion
@@ -78,7 +78,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<Camera> FieldOfView(this TweenMotion<Camera> tweenMotion, float value)
+        public static TweenMotionProxy<Camera> FieldOfView(this TweenMotionProxy<Camera> tweenMotion, float value)
             => tweenMotion.Apply(new FieldOfViewMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> FieldOfViewTo(this TweenMotion<Camera> tweenMotion, float to)
+        public static TweenMotionProxy<Camera> FieldOfViewTo(this TweenMotionProxy<Camera> tweenMotion, float to)
             => tweenMotion.Apply(new FieldOfViewMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> FieldOfViewTo(this TweenMotion<Camera> tweenMotion, float from, float to)
+        public static TweenMotionProxy<Camera> FieldOfViewTo(this TweenMotionProxy<Camera> tweenMotion, float from, float to)
             => tweenMotion.Apply(new FieldOfViewMotion(tweenMotion.Item, from, to));
 
         #endregion
@@ -107,7 +107,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<Camera> NearClipPlane(this TweenMotion<Camera> tweenMotion, float value)
+        public static TweenMotionProxy<Camera> NearClipPlane(this TweenMotionProxy<Camera> tweenMotion, float value)
             => tweenMotion.Apply(new NearClipPlaneMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> NearClipPlaneTo(this TweenMotion<Camera> tweenMotion, float to)
+        public static TweenMotionProxy<Camera> NearClipPlaneTo(this TweenMotionProxy<Camera> tweenMotion, float to)
             => tweenMotion.Apply(new NearClipPlaneMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> NearClipPlaneTo(this TweenMotion<Camera> tweenMotion, float from, float to)
+        public static TweenMotionProxy<Camera> NearClipPlaneTo(this TweenMotionProxy<Camera> tweenMotion, float from, float to)
             => tweenMotion.Apply(new NearClipPlaneMotion(tweenMotion.Item, from, to));
 
         #endregion
@@ -136,7 +136,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<Camera> FarClipPlane(this TweenMotion<Camera> tweenMotion, float value)
+        public static TweenMotionProxy<Camera> FarClipPlane(this TweenMotionProxy<Camera> tweenMotion, float value)
             => tweenMotion.Apply(new FarClipPlaneMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> FarClipPlaneTo(this TweenMotion<Camera> tweenMotion, float to)
+        public static TweenMotionProxy<Camera> FarClipPlaneTo(this TweenMotionProxy<Camera> tweenMotion, float to)
             => tweenMotion.Apply(new FarClipPlaneMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Camera> FarClipPlaneTo(this TweenMotion<Camera> tweenMotion, float from, float to)
+        public static TweenMotionProxy<Camera> FarClipPlaneTo(this TweenMotionProxy<Camera> tweenMotion, float from, float to)
             => tweenMotion.Apply(new FarClipPlaneMotion(tweenMotion.Item, from, to));
 
         #endregion

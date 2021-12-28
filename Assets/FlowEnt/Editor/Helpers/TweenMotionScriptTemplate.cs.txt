@@ -1,0 +1,23 @@
+using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+    public class #SCRIPTNAME# : AbstractTweenMotion<Type>
+    {
+        public #SCRIPTNAME#(Type item) : base(item)
+        {
+        }
+
+        public override void OnStart()
+        {
+        }
+
+        public override void OnUpdate(float t)
+        {
+        }
+
+        public override void OnComplete()
+        {
+        }
+    }
+#ROOTNAMESPACEEND#

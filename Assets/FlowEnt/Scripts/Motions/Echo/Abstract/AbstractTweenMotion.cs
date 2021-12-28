@@ -1,0 +1,29 @@
+namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
+{
+    /// <summary>
+    /// Abstract Motion that can be used to create a simple motion.
+    /// </summary>
+    public abstract class AbstractEchoMotion : IEchoMotion
+    {
+        public virtual void OnStart() { }
+        public abstract void OnUpdate(float t);
+        public virtual void OnLoopComplete() { }
+        public virtual void OnComplete() { }
+    }
+
+    /// <summary>
+    /// Generic Abstract Motion
+    /// </summary>
+    /// <typeparam name="TItem">Generic Type for the motion. There is a read only property of type <T> called item that can be used and it's required on the constructor.</typeparam>
+    public abstract class AbstractEchoMotion<TItem> : AbstractEchoMotion
+        where TItem : class
+    {
+        protected AbstractEchoMotion(TItem item)
+        {
+            this.item = item;
+        }
+
+        protected TItem item;
+        public TItem Item => item;
+    }
+}

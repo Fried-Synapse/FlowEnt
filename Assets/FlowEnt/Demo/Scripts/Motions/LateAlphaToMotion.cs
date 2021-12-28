@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.Renderers;
+using FriedSynapse.FlowEnt.Motions.Tween.Renderers;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Demo

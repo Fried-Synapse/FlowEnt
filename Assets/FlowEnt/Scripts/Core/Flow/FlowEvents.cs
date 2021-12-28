@@ -5,7 +5,8 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Provides events for flows.
     /// </summary>
-    public class FlowEvents : AbstractAnimationEvents, IFluentFlowEventable<FlowEvents>
+    public class FlowEvents : AbstractAnimationEvents,
+        IFluentFlowEventable<FlowEvents>
     {
         /// <inheritdoc />
         /// \copydoc IFluentAnimationEventable.OnStarted

@@ -1,5 +1,5 @@
 using UnityEngine;
-using FriedSynapse.FlowEnt.Motions.Renderers;
+using FriedSynapse.FlowEnt.Motions.Tween.Renderers;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -13,7 +13,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> Alpha<TRenderer>(this TweenMotion<TRenderer> tweenMotion, float value)
+        public static TweenMotionProxy<TRenderer> Alpha<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, float value)
             where TRenderer : Renderer
             => tweenMotion.Apply(new AlphaMotion<TRenderer>(tweenMotion.Item, value));
 
@@ -23,7 +23,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> AlphaTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, float to)
+        public static TweenMotionProxy<TRenderer> AlphaTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, float to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new AlphaMotion<TRenderer>(tweenMotion.Item, null, to));
 
@@ -34,7 +34,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> AlphaTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, float from, float to)
+        public static TweenMotionProxy<TRenderer> AlphaTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, float from, float to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new AlphaMotion<TRenderer>(tweenMotion.Item, from, to));
 
@@ -48,7 +48,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> Color<TRenderer>(this TweenMotion<TRenderer> tweenMotion, Color value)
+        public static TweenMotionProxy<TRenderer> Color<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, Color value)
             where TRenderer : Renderer
             => tweenMotion.Apply(new ColorMotion<TRenderer>(tweenMotion.Item, value));
 
@@ -58,7 +58,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> ColorTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, Color to)
+        public static TweenMotionProxy<TRenderer> ColorTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, Color to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new ColorMotion<TRenderer>(tweenMotion.Item, null, to));
 
@@ -69,7 +69,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> ColorTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, Color from, Color to)
+        public static TweenMotionProxy<TRenderer> ColorTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, Color from, Color to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new ColorMotion<TRenderer>(tweenMotion.Item, from, to));
 
@@ -79,7 +79,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="gradient"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> ColorTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, Gradient gradient)
+        public static TweenMotionProxy<TRenderer> ColorTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, Gradient gradient)
             where TRenderer : Renderer
             => tweenMotion.Apply(new ColorGradientMotion<TRenderer>(tweenMotion.Item, gradient));
 
@@ -94,7 +94,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="propertyName"></param>
         /// <param name="value"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialFloat<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, float value)
+        public static TweenMotionProxy<TRenderer> MaterialFloat<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, float value)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialFloatMotion<TRenderer>(tweenMotion.Item, propertyName, value));
 
@@ -105,7 +105,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="propertyName"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, float to)
+        public static TweenMotionProxy<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, float to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialFloatMotion<TRenderer>(tweenMotion.Item, propertyName, null, to));
 
@@ -117,7 +117,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, float from, float to)
+        public static TweenMotionProxy<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, float from, float to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialFloatMotion<TRenderer>(tweenMotion.Item, propertyName, from, to));
 
@@ -132,7 +132,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="propertyName"></param>
         /// <param name="value"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialAlpha<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, float value)
+        public static TweenMotionProxy<TRenderer> MaterialAlpha<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, float value)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialAlphaMotion<TRenderer>(tweenMotion.Item, propertyName, value));
 
@@ -143,7 +143,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="propertyName"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialAlphaTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, float to)
+        public static TweenMotionProxy<TRenderer> MaterialAlphaTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, float to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialAlphaMotion<TRenderer>(tweenMotion.Item, propertyName, null, to));
 
@@ -155,7 +155,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialAlphaTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, float from, float to)
+        public static TweenMotionProxy<TRenderer> MaterialAlphaTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, float from, float to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialAlphaMotion<TRenderer>(tweenMotion.Item, propertyName, from, to));
 
@@ -170,7 +170,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="propertyName"></param>
         /// <param name="value"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialColor<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, Color value)
+        public static TweenMotionProxy<TRenderer> MaterialColor<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, Color value)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialColorMotion<TRenderer>(tweenMotion.Item, propertyName, value));
 
@@ -181,7 +181,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="propertyName"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialColorTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, Color to)
+        public static TweenMotionProxy<TRenderer> MaterialColorTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, Color to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialColorMotion<TRenderer>(tweenMotion.Item, propertyName, null, to));
 
@@ -193,7 +193,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialColorTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, Color from, Color to)
+        public static TweenMotionProxy<TRenderer> MaterialColorTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, Color from, Color to)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialColorMotion<TRenderer>(tweenMotion.Item, propertyName, from, to));
 
@@ -204,7 +204,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="propertyName"></param>
         /// <param name="gradient"></param>
         /// <typeparam name="TRenderer"></typeparam>
-        public static TweenMotion<TRenderer> MaterialColorTo<TRenderer>(this TweenMotion<TRenderer> tweenMotion, string propertyName, Gradient gradient)
+        public static TweenMotionProxy<TRenderer> MaterialColorTo<TRenderer>(this TweenMotionProxy<TRenderer> tweenMotion, string propertyName, Gradient gradient)
             where TRenderer : Renderer
             => tweenMotion.Apply(new MaterialColorGradientMotion<TRenderer>(tweenMotion.Item, propertyName, gradient));
 

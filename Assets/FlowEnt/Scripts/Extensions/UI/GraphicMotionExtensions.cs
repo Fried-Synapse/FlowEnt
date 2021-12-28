@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.UI.Graphics;
+using FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         /// <param name="value"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotion<TGraphic> Alpha<TGraphic>(this TweenMotion<TGraphic> motion, float value)
+        public static TweenMotionProxy<TGraphic> Alpha<TGraphic>(this TweenMotionProxy<TGraphic> motion, float value)
             where TGraphic : Graphic
             => motion.Apply(new AlphaMotion<TGraphic>(motion.Item, value));
 
@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         /// <param name="to"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotion<TGraphic> AlphaTo<TGraphic>(this TweenMotion<TGraphic> motion, float to)
+        public static TweenMotionProxy<TGraphic> AlphaTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, float to)
             where TGraphic : Graphic
             => motion.Apply(new AlphaMotion<TGraphic>(motion.Item, default, to));
 
@@ -35,7 +35,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotion<TGraphic> AlphaTo<TGraphic>(this TweenMotion<TGraphic> motion, float from, float to)
+        public static TweenMotionProxy<TGraphic> AlphaTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, float from, float to)
             where TGraphic : Graphic
             => motion.Apply(new AlphaMotion<TGraphic>(motion.Item, from, to));
 
@@ -49,7 +49,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         /// <param name="value"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotion<TGraphic> Color<TGraphic>(this TweenMotion<TGraphic> motion, Color value)
+        public static TweenMotionProxy<TGraphic> Color<TGraphic>(this TweenMotionProxy<TGraphic> motion, Color value)
             where TGraphic : Graphic
             => motion.Apply(new ColorMotion<TGraphic>(motion.Item, value));
 
@@ -59,7 +59,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         /// <param name="to"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotion<TGraphic> ColorTo<TGraphic>(this TweenMotion<TGraphic> motion, Color to)
+        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, Color to)
             where TGraphic : Graphic
             => motion.Apply(new ColorMotion<TGraphic>(motion.Item, default, to));
 
@@ -70,7 +70,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotion<TGraphic> ColorTo<TGraphic>(this TweenMotion<TGraphic> motion, Color from, Color to)
+        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, Color from, Color to)
             where TGraphic : Graphic
             => motion.Apply(new ColorMotion<TGraphic>(motion.Item, from, to));
 
@@ -80,7 +80,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         /// <param name="gradient"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotion<TGraphic> ColorTo<TGraphic>(this TweenMotion<TGraphic> motion, Gradient gradient)
+        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, Gradient gradient)
             where TGraphic : Graphic
             => motion.Apply(new ColorGradientMotion<TGraphic>(motion.Item, gradient));
 

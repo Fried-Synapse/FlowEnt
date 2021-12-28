@@ -40,7 +40,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public static bool HasInstance => instance != null;
 
-        private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
+        private readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
 
         private float timeScale = 1f;
 

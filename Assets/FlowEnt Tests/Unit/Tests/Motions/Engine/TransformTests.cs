@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using FriedSynapse.FlowEnt.Motions.Transforms;
+using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;

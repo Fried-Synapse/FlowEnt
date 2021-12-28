@@ -154,8 +154,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(time)
                 .Assert(() =>
                 {
-                    Assert.True(startException != null && startException is TweenException);
-                    Assert.Throws<TweenException>(() => tween.Start());
+                    Assert.True(startException != null && startException is AnimationException animationException && animationException.Animation is Tween);
+                    Assert.Throws<AnimationException>(() => tween.Start());
                 })
                 .Run();
         }

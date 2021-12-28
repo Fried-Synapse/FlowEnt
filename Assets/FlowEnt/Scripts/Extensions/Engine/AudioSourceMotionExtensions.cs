@@ -1,5 +1,5 @@
 using UnityEngine;
-using FriedSynapse.FlowEnt.Motions.AudioSources;
+using FriedSynapse.FlowEnt.Motions.Tween.AudioSources;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<AudioSource> Pitch(this TweenMotion<AudioSource> tweenMotion, float value)
+        public static TweenMotionProxy<AudioSource> Pitch(this TweenMotionProxy<AudioSource> tweenMotion, float value)
             => tweenMotion.Apply(new PitchMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<AudioSource> PitchTo(this TweenMotion<AudioSource> tweenMotion, float to)
+        public static TweenMotionProxy<AudioSource> PitchTo(this TweenMotionProxy<AudioSource> tweenMotion, float to)
             => tweenMotion.Apply(new PitchMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<AudioSource> PitchTo(this TweenMotion<AudioSource> tweenMotion, float from, float to)
+        public static TweenMotionProxy<AudioSource> PitchTo(this TweenMotionProxy<AudioSource> tweenMotion, float from, float to)
             => tweenMotion.Apply(new PitchMotion(tweenMotion.Item, from, to));
 
         #endregion
@@ -42,7 +42,7 @@ namespace FriedSynapse.FlowEnt
         /// <remarks>Calculated destination value (current value + <paramref name="value"/>) will be clamped between 0 and 1.</remarks>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<AudioSource> Volume(this TweenMotion<AudioSource> tweenMotion, float value)
+        public static TweenMotionProxy<AudioSource> Volume(this TweenMotionProxy<AudioSource> tweenMotion, float value)
             => tweenMotion.Apply(new VolumeMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace FriedSynapse.FlowEnt
         /// <remarks><paramref name="to"/> value will be clamped between 0 and 1.</remarks>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<AudioSource> VolumeTo(this TweenMotion<AudioSource> tweenMotion, float to)
+        public static TweenMotionProxy<AudioSource> VolumeTo(this TweenMotionProxy<AudioSource> tweenMotion, float to)
             => tweenMotion.Apply(new VolumeMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<AudioSource> VolumeTo(this TweenMotion<AudioSource> tweenMotion, float from, float to)
+        public static TweenMotionProxy<AudioSource> VolumeTo(this TweenMotionProxy<AudioSource> tweenMotion, float from, float to)
             => tweenMotion.Apply(new VolumeMotion(tweenMotion.Item, from, to));
 
         #endregion

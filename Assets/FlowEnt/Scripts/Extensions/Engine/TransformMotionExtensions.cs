@@ -1,5 +1,6 @@
 using UnityEngine;
-using FriedSynapse.FlowEnt.Motions.Transforms;
+using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
+using FriedSynapse.FlowEnt.Motions.Echo.Transforms;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -15,7 +16,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> Move<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
+        public static TweenMotionProxy<TTransform> Move<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, value));
 
@@ -25,7 +26,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+        public static TweenMotionProxy<TTransform> MoveTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, default, to));
 
@@ -36,7 +37,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+        public static TweenMotionProxy<TTransform> MoveTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
@@ -46,7 +47,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocal<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
+        public static TweenMotionProxy<TTransform> MoveLocal<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, value));
 
@@ -56,7 +57,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+        public static TweenMotionProxy<TTransform> MoveLocalTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, default, to));
 
@@ -67,7 +68,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+        public static TweenMotionProxy<TTransform> MoveLocalTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
@@ -81,7 +82,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="animationCurve"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
+        public static TweenMotionProxy<TTransform> MoveTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, AnimationCurve3d animationCurve)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
 
@@ -91,7 +92,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="animationCurve"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
+        public static TweenMotionProxy<TTransform> MoveLocalTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, AnimationCurve3d animationCurve)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
 
@@ -105,7 +106,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveX<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> MoveX<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(value, 0f, 0f)));
 
@@ -115,7 +116,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> MoveXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
 
@@ -126,7 +127,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> MoveXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
 
@@ -136,7 +137,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalX<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> MoveLocalX<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(value, 0f, 0f)));
 
@@ -146,7 +147,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> MoveLocalXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
 
@@ -157,7 +158,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> MoveLocalXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
 
@@ -167,7 +168,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveY<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> MoveY<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, value, 0f)));
 
@@ -177,7 +178,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> MoveYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
 
@@ -188,7 +189,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> MoveYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
 
@@ -198,7 +199,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalY<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> MoveLocalY<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, value, 0f)));
 
@@ -208,7 +209,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> MoveLocalYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
 
@@ -219,7 +220,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> MoveLocalYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
 
@@ -229,7 +230,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> MoveZ<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, value)));
 
@@ -239,7 +240,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> MoveZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
 
@@ -250,7 +251,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> MoveZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
@@ -260,7 +261,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> MoveLocalZ<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, value)));
 
@@ -270,7 +271,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> MoveLocalZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
 
@@ -281,7 +282,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> MoveLocalZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
@@ -295,7 +296,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="spline"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveTo<TTransform>(this TweenMotion<TTransform> motionWrapper, ISpline spline)
+        public static TweenMotionProxy<TTransform> MoveTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, ISpline spline)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveSplineMotion<TTransform>(motionWrapper.Item, spline));
 
@@ -305,7 +306,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="spline"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> MoveLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, ISpline spline)
+        public static TweenMotionProxy<TTransform> MoveLocalTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, ISpline spline)
             where TTransform : Transform
             => motionWrapper.Apply(new MoveLocalSplineMotion<TTransform>(motionWrapper.Item, spline));
 
@@ -323,7 +324,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> Rotate<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion value)
+        public static TweenMotionProxy<TTransform> Rotate<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Quaternion value)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, value));
 
@@ -333,7 +334,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion to)
+        public static TweenMotionProxy<TTransform> RotateTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Quaternion to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, default, to));
 
@@ -344,7 +345,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion from, Quaternion to)
+        public static TweenMotionProxy<TTransform> RotateTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Quaternion from, Quaternion to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateQuaternionMotion<TTransform>(motionWrapper.Item, from, to));
 
@@ -354,7 +355,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion to)
+        public static TweenMotionProxy<TTransform> RotateLocalTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Quaternion to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalQuaternionMotion<TTransform>(motionWrapper.Item, default, to));
 
@@ -365,7 +366,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Quaternion from, Quaternion to)
+        public static TweenMotionProxy<TTransform> RotateLocalTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Quaternion from, Quaternion to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalQuaternionMotion<TTransform>(motionWrapper.Item, from, to));
 
@@ -379,7 +380,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> Rotate<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
+        public static TweenMotionProxy<TTransform> Rotate<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, value));
 
@@ -389,7 +390,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+        public static TweenMotionProxy<TTransform> RotateTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, default, to));
 
@@ -400,7 +401,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+        public static TweenMotionProxy<TTransform> RotateTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
@@ -410,7 +411,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+        public static TweenMotionProxy<TTransform> RotateLocalTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalVectorMotion<TTransform>(motionWrapper.Item, default, to));
 
@@ -421,7 +422,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+        public static TweenMotionProxy<TTransform> RotateLocalTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
@@ -435,7 +436,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateX<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> RotateX<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(value, 0f, 0f)));
 
@@ -445,7 +446,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> RotateXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
 
@@ -456,7 +457,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> RotateXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
 
@@ -466,7 +467,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> RotateLocalXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
 
@@ -477,7 +478,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> RotateLocalXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
 
@@ -487,7 +488,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateY<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> RotateY<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, value, 0f)));
 
@@ -497,7 +498,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> RotateYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
 
@@ -508,7 +509,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> RotateYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
 
@@ -518,7 +519,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> RotateLocalYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
 
@@ -529,7 +530,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> RotateLocalYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
 
@@ -539,7 +540,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> RotateZ<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateVectorMotion<TTransform>(motionWrapper.Item, new Vector3(0f, 0f, value)));
 
@@ -549,7 +550,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> RotateZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
 
@@ -560,7 +561,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> RotateZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
@@ -570,7 +571,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> RotateLocalZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
 
@@ -581,7 +582,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> RotateLocalZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> RotateLocalZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new RotateLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
@@ -595,7 +596,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="target"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> LookAt<TTransform>(this TweenMotion<TTransform> motionWrapper, Transform target)
+        public static TweenMotionProxy<TTransform> LookAt<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Transform target)
             where TTransform : Transform
             => motionWrapper.Apply(new LookAtTransformMotion<TTransform>(motionWrapper.Item, target));
 
@@ -605,7 +606,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="target"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> LookAt<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 target)
+        public static TweenMotionProxy<TTransform> LookAt<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 target)
             where TTransform : Transform
             => motionWrapper.Apply(new LookAtVector3Motion<TTransform>(motionWrapper.Item, target));
 
@@ -618,7 +619,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="motionWrapper"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> OrientToPath<TTransform>(this TweenMotion<TTransform> motionWrapper)
+        public static TweenMotionProxy<TTransform> OrientToPath<TTransform>(this TweenMotionProxy<TTransform> motionWrapper)
             where TTransform : Transform
             => motionWrapper.Apply(new OrientToPathMotion<TTransform>(motionWrapper.Item));
 
@@ -636,7 +637,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> Scale<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 value)
+        public static TweenMotionProxy<TTransform> Scale<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 value)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, value));
 
@@ -646,7 +647,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 to)
+        public static TweenMotionProxy<TTransform> ScaleTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, default, to));
 
@@ -657,7 +658,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleTo<TTransform>(this TweenMotion<TTransform> motionWrapper, Vector3 from, Vector3 to)
+        public static TweenMotionProxy<TTransform> ScaleTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, Vector3 from, Vector3 to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, from, to));
 
@@ -671,7 +672,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="animationCurve"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleTo<TTransform>(this TweenMotion<TTransform> motionWrapper, AnimationCurve3d animationCurve)
+        public static TweenMotionProxy<TTransform> ScaleTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, AnimationCurve3d animationCurve)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalAnimationCurve3dMotion<TTransform>(motionWrapper.Item, animationCurve));
 
@@ -685,7 +686,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleX<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> ScaleX<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(value, 1f, 1f)));
 
@@ -695,7 +696,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> ScaleXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, default, to));
 
@@ -706,7 +707,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleXTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> ScaleXTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.X, from, to));
 
@@ -716,7 +717,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleY<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> ScaleY<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(1f, value, 1f)));
 
@@ -726,7 +727,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> ScaleYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, default, to));
 
@@ -737,7 +738,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleYTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> ScaleYTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Y, from, to));
 
@@ -747,7 +748,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleZ<TTransform>(this TweenMotion<TTransform> motionWrapper, float value)
+        public static TweenMotionProxy<TTransform> ScaleZ<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float value)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalVectorMotion<TTransform>(motionWrapper.Item, new Vector3(1f, 1f, value)));
 
@@ -757,7 +758,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motionWrapper"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float to)
+        public static TweenMotionProxy<TTransform> ScaleZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, default, to));
 
@@ -768,12 +769,34 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotion<TTransform> ScaleZTo<TTransform>(this TweenMotion<TTransform> motionWrapper, float from, float to)
+        public static TweenMotionProxy<TTransform> ScaleZTo<TTransform>(this TweenMotionProxy<TTransform> motionWrapper, float from, float to)
             where TTransform : Transform
             => motionWrapper.Apply(new ScaleLocalAxisMotion<TTransform>(motionWrapper.Item, Axis.Z, from, to));
 
         #endregion
 
         #endregion
+
+        /// <summary>
+        /// Applies a <see cref="MoveTowardsTransformMotion{TTransform}" /> to the echo.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="target"></param>
+        /// <param name="speed"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static EchoMotionProxy<TTransform> MoveTowards<TTransform>(this EchoMotionProxy<TTransform> motionWrapper, Transform target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveTowardsTransformMotion<TTransform>(motionWrapper.Item, target, speed));
+
+        /// <summary>
+        /// Applies a <see cref="MoveTowardsTransformElasticMotion{TTransform}" /> to the echo.
+        /// </summary>
+        /// <param name="motionWrapper"></param>
+        /// <param name="target"></param>
+        /// <param name="speed"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static EchoMotionProxy<TTransform> MoveTowardsElastic<TTransform>(this EchoMotionProxy<TTransform> motionWrapper, Transform target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
+            where TTransform : Transform
+            => motionWrapper.Apply(new MoveTowardsTransformElasticMotion<TTransform>(motionWrapper.Item, target, speed));
     }
 }

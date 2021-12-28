@@ -1,5 +1,5 @@
 using System;
-using FriedSynapse.FlowEnt.Motions.Values;
+using FriedSynapse.FlowEnt.Motions.Tween.Values;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt

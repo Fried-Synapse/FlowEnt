@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentTweenEventable.OnStarting
         public TweenEvents OnStarting(Action callback)
         {
-            OnStartingEvent = callback;
+            OnStartingEvent += callback;
             return this;
         }
 
@@ -32,7 +32,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentAnimationEventable.OnStarted
         public new TweenEvents OnStarted(Action callback)
         {
-            OnStartedEvent = callback;
+            base.OnStarted(callback);
             return this;
         }
 
@@ -40,7 +40,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentTweenEventable.OnUpdating
         public TweenEvents OnUpdating(Action<float> callback)
         {
-            OnUpdatingEvent = callback;
+            OnUpdatingEvent += callback;
             return this;
         }
 
@@ -48,7 +48,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentAnimationEventable.OnUpdated
         public new TweenEvents OnUpdated(Action<float> callback)
         {
-            OnUpdatedEvent = callback;
+            base.OnUpdated(callback);
             return this;
         }
 
@@ -56,7 +56,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentAnimationEventable.OnLoopCompleted
         public new TweenEvents OnLoopCompleted(Action<int?> callback)
         {
-            OnLoopCompletedEvent = callback;
+            base.OnLoopCompleted(callback);
             return this;
         }
 
@@ -64,7 +64,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentTweenEventable.OnCompleting
         public TweenEvents OnCompleting(Action callback)
         {
-            OnCompletingEvent = callback;
+            OnCompletingEvent += callback;
             return this;
         }
 
@@ -72,7 +72,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentAnimationEventable.OnCompleted
         public new TweenEvents OnCompleted(Action callback)
         {
-            OnCompletedEvent = callback;
+            base.OnCompleted(callback);
             return this;
         }
     }

@@ -8,7 +8,8 @@ namespace FriedSynapse.FlowEnt
     /// For more information please go to https://flowent.friedsynapse.com/flow
     /// </summary>
     public sealed partial class Flow : AbstractAnimation,
-        IUpdateController
+        IUpdateController,
+        IFluentControllable<Flow>
     {
         private const string ErrorAnimationAlreadyStarted = "Cannot add animation that has already started.";
 
@@ -32,7 +33,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Internal Members
 
-        private readonly FastList<AbstractUpdatable, UpdatableAnchor> updatables = new FastList<AbstractUpdatable, UpdatableAnchor>();
+        private readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
         private readonly List<UpdatableWrapper> updatableWrappersQueue = new List<UpdatableWrapper>(2);
         private UpdatableWrapper lastQueuedUpdatableWrapper;
         private UpdatableWrapper[] updatableWrappersOrderedByTimeIndexed;
@@ -45,13 +46,12 @@ namespace FriedSynapse.FlowEnt
         private int? remainingLoops;
 
         #endregion
-        private protected override AnimationException GetAlreadyStartedExeption() => new FlowException(this, "Flow already started.");
 
-        #region Control
+        #region Controls
 
         /// <inheritdoc cref="AbstractAnimation.Start" />
         /// \copydoc AbstractAnimation.Start
-        /// <exception cref="FlowEntException">If the flow has already started.</exception>
+        /// <exception cref="AnimationException">If the flow has already started.</exception>
         public new Flow Start()
         {
             base.Start();
@@ -60,7 +60,7 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="AbstractAnimation.StartAsync" />
         /// \copydoc AbstractAnimation.StartAsync
-        /// <exception cref="FlowEntException">If the flow has already started.</exception>
+        /// <exception cref="AnimationException">If the flow has already started.</exception>
         public new async Task<Flow> StartAsync()
         {
             await base.StartAsync();
@@ -93,14 +93,9 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="AbstractAnimation.Reset" />
         /// \copydoc AbstractAnimation.Reset
-        /// <exception cref="FlowException">If the flow is not finished.</exception>
+        /// <exception cref="AnimationException">If the flow is not finished.</exception>
         public new Flow Reset()
         {
-            if (playState != PlayState.Finished)
-            {
-                throw new FlowException(this, "Can only reset a finished flow. Use Stop() to ensure flow finished when resetting.");
-            }
-
             ResetInternal();
             time = 0;
             remainingLoops = 0;
@@ -132,7 +127,7 @@ namespace FriedSynapse.FlowEnt
         {
             if (lastQueuedUpdatableWrapper == null)
             {
-                throw new FlowException(this, "Cannot start empty flow.");
+                throw new AnimationException(this, "Cannot start empty flow.");
             }
 
             playState = PlayState.Waiting;

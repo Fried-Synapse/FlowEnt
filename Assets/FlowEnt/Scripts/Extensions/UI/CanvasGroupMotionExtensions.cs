@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.UI.CanvasGroups;
+using FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<CanvasGroup> Alpha(this TweenMotion<CanvasGroup> tweenMotion, float value)
+        public static TweenMotionProxy<CanvasGroup> Alpha(this TweenMotionProxy<CanvasGroup> tweenMotion, float value)
             => tweenMotion.Apply(new AlphaMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<CanvasGroup> AlphaTo(this TweenMotion<CanvasGroup> tweenMotion, float to)
+        public static TweenMotionProxy<CanvasGroup> AlphaTo(this TweenMotionProxy<CanvasGroup> tweenMotion, float to)
             => tweenMotion.Apply(new AlphaMotion(tweenMotion.Item, default, to));
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<CanvasGroup> AlphaTo(this TweenMotion<CanvasGroup> tweenMotion, float from, float to)
+        public static TweenMotionProxy<CanvasGroup> AlphaTo(this TweenMotionProxy<CanvasGroup> tweenMotion, float from, float to)
             => tweenMotion.Apply(new AlphaMotion(tweenMotion.Item, from, to));
     }
 }

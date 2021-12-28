@@ -1,5 +1,5 @@
 using UnityEngine;
-using FriedSynapse.FlowEnt.Motions.Lights;
+using FriedSynapse.FlowEnt.Motions.Tween.Lights;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<Light> Intensity(this TweenMotion<Light> tweenMotion, float value)
+        public static TweenMotionProxy<Light> Intensity(this TweenMotionProxy<Light> tweenMotion, float value)
             => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Light> IntensityTo(this TweenMotion<Light> tweenMotion, float to)
+        public static TweenMotionProxy<Light> IntensityTo(this TweenMotionProxy<Light> tweenMotion, float to)
             => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Light> IntensityTo(this TweenMotion<Light> tweenMotion, float from, float to)
+        public static TweenMotionProxy<Light> IntensityTo(this TweenMotionProxy<Light> tweenMotion, float from, float to)
             => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, from, to));
 
         #endregion
@@ -41,7 +41,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="value"></param>
-        public static TweenMotion<Light> Color(this TweenMotion<Light> tweenMotion, Color value)
+        public static TweenMotionProxy<Light> Color(this TweenMotionProxy<Light> tweenMotion, Color value)
             => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, value));
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> tweenMotion, Color to)
+        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> tweenMotion, Color to)
             => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, null, to));
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="tweenMotion"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> tweenMotion, Color from, Color to)
+        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> tweenMotion, Color from, Color to)
             => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, from, to));
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="tweenMotion"></param>
         /// <param name="gradient"></param>
-        public static TweenMotion<Light> ColorTo(this TweenMotion<Light> tweenMotion, Gradient gradient)
+        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> tweenMotion, Gradient gradient)
             => tweenMotion.Apply(new ColorGradientMotion(tweenMotion.Item, gradient));
 
         #endregion
