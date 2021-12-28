@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<AudioSource> PitchTo(this TweenMotionProxy<AudioSource> proxy, float to)
-            => proxy.Apply(new PitchMotion(proxy.Item, null, to));
+            => proxy.Apply(new PitchMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="PitchToMotion" /> to the tween.
@@ -52,7 +52,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<AudioSource> VolumeTo(this TweenMotionProxy<AudioSource> proxy, float to)
-            => proxy.Apply(new VolumeMotion(proxy.Item, null, to));
+            => proxy.Apply(new VolumeMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="VolumeToMotion" /> to the tween.

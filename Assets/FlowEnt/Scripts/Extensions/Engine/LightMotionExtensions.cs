@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<Light> IntensityTo(this TweenMotionProxy<Light> proxy, float to)
-            => proxy.Apply(new IntensityMotion(proxy.Item, null, to));
+            => proxy.Apply(new IntensityMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="IntensityMotion" /> to the tween.
@@ -50,7 +50,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> proxy, Color to)
-            => proxy.Apply(new ColorMotion(proxy.Item, null, to));
+            => proxy.Apply(new ColorMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.

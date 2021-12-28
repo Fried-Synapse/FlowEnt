@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<Camera> BackgroundColorTo(this TweenMotionProxy<Camera> proxy, Color to)
-            => proxy.Apply(new BackgroundColorMotion(proxy.Item, null, to));
+            => proxy.Apply(new BackgroundColorMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="BackgroundColorMotion" /> to the tween.
@@ -58,7 +58,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<Camera> OrthographicSizeTo(this TweenMotionProxy<Camera> proxy, float to)
-            => proxy.Apply(new OrthographicSizeMotion(proxy.Item, null, to));
+            => proxy.Apply(new OrthographicSizeMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="OrthographicSizeMotion" /> to the tween.
@@ -87,7 +87,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<Camera> FieldOfViewTo(this TweenMotionProxy<Camera> proxy, float to)
-            => proxy.Apply(new FieldOfViewMotion(proxy.Item, null, to));
+            => proxy.Apply(new FieldOfViewMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="FieldOfViewMotion" /> to the tween.
@@ -116,7 +116,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<Camera> NearClipPlaneTo(this TweenMotionProxy<Camera> proxy, float to)
-            => proxy.Apply(new NearClipPlaneMotion(proxy.Item, null, to));
+            => proxy.Apply(new NearClipPlaneMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="NearClipPlaneMotion" /> to the tween.
@@ -145,7 +145,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<Camera> FarClipPlaneTo(this TweenMotionProxy<Camera> proxy, float to)
-            => proxy.Apply(new FarClipPlaneMotion(proxy.Item, null, to));
+            => proxy.Apply(new FarClipPlaneMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="FarClipPlaneMotion" /> to the tween.

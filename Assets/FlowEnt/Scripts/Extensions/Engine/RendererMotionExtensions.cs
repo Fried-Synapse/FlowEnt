@@ -25,7 +25,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRenderer"></typeparam>
         public static TweenMotionProxy<TRenderer> AlphaTo<TRenderer>(this TweenMotionProxy<TRenderer> proxy, float to)
             where TRenderer : Renderer
-            => proxy.Apply(new AlphaMotion<TRenderer>(proxy.Item, null, to));
+            => proxy.Apply(new AlphaMotion<TRenderer>(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="AlphaMotion{TRenderer}" /> to the tween.
@@ -60,7 +60,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRenderer"></typeparam>
         public static TweenMotionProxy<TRenderer> ColorTo<TRenderer>(this TweenMotionProxy<TRenderer> proxy, Color to)
             where TRenderer : Renderer
-            => proxy.Apply(new ColorMotion<TRenderer>(proxy.Item, null, to));
+            => proxy.Apply(new ColorMotion<TRenderer>(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="ColorMotion{TRenderer}" /> to the tween.
@@ -107,7 +107,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRenderer"></typeparam>
         public static TweenMotionProxy<TRenderer> MaterialFloatTo<TRenderer>(this TweenMotionProxy<TRenderer> proxy, string propertyName, float to)
             where TRenderer : Renderer
-            => proxy.Apply(new MaterialFloatMotion<TRenderer>(proxy.Item, propertyName, null, to));
+            => proxy.Apply(new MaterialFloatMotion<TRenderer>(proxy.Item, propertyName, default, to));
 
         /// <summary>
         /// Applies a <see cref="MaterialFloatMotion{TRenderer}" /> to the tween.
@@ -145,7 +145,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRenderer"></typeparam>
         public static TweenMotionProxy<TRenderer> MaterialAlphaTo<TRenderer>(this TweenMotionProxy<TRenderer> proxy, string propertyName, float to)
             where TRenderer : Renderer
-            => proxy.Apply(new MaterialAlphaMotion<TRenderer>(proxy.Item, propertyName, null, to));
+            => proxy.Apply(new MaterialAlphaMotion<TRenderer>(proxy.Item, propertyName, default, to));
 
         /// <summary>
         /// Applies a <see cref="MaterialAlphaMotion{TRenderer}" /> to the tween.
@@ -183,7 +183,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRenderer"></typeparam>
         public static TweenMotionProxy<TRenderer> MaterialColorTo<TRenderer>(this TweenMotionProxy<TRenderer> proxy, string propertyName, Color to)
             where TRenderer : Renderer
-            => proxy.Apply(new MaterialColorMotion<TRenderer>(proxy.Item, propertyName, null, to));
+            => proxy.Apply(new MaterialColorMotion<TRenderer>(proxy.Item, propertyName, default, to));
 
         /// <summary>
         /// Applies a <see cref="MaterialColorMotion{TRenderer}" /> to the tween.
