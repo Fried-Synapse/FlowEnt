@@ -8,26 +8,26 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotionProxy<CanvasGroup> Alpha(this TweenMotionProxy<CanvasGroup> tweenMotion, float value)
-            => tweenMotion.Apply(new AlphaMotion(tweenMotion.Item, value));
+        public static TweenMotionProxy<CanvasGroup> Alpha(this TweenMotionProxy<CanvasGroup> proxy, float value)
+            => proxy.Apply(new AlphaMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotionProxy<CanvasGroup> AlphaTo(this TweenMotionProxy<CanvasGroup> tweenMotion, float to)
-            => tweenMotion.Apply(new AlphaMotion(tweenMotion.Item, default, to));
+        public static TweenMotionProxy<CanvasGroup> AlphaTo(this TweenMotionProxy<CanvasGroup> proxy, float to)
+            => proxy.Apply(new AlphaMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotionProxy<CanvasGroup> AlphaTo(this TweenMotionProxy<CanvasGroup> tweenMotion, float from, float to)
-            => tweenMotion.Apply(new AlphaMotion(tweenMotion.Item, from, to));
+        public static TweenMotionProxy<CanvasGroup> AlphaTo(this TweenMotionProxy<CanvasGroup> proxy, float from, float to)
+            => proxy.Apply(new AlphaMotion(proxy.Item, from, to));
     }
 }

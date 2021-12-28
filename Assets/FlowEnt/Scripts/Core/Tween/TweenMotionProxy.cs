@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt
         public Tween Tween { get; }
         public TItem Item { get; }
 
-        public static implicit operator Tween(TweenMotionProxy<TItem> motionWrapper) => motionWrapper.Tween;
+        public static implicit operator Tween(TweenMotionProxy<TItem> proxy) => proxy.Tween;
 
         #region Motions
 

@@ -25,7 +25,7 @@ namespace FriedSynapse.FlowEnt
         public Echo Echo { get; }
         public TItem Item { get; }
 
-        public static implicit operator Echo(EchoMotionProxy<TItem> motionWrapper) => motionWrapper.Echo;
+        public static implicit operator Echo(EchoMotionProxy<TItem> proxy) => proxy.Echo;
 
         #region Motions
 

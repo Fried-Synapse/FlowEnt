@@ -10,27 +10,27 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="IntensityMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotionProxy<Light> Intensity(this TweenMotionProxy<Light> tweenMotion, float value)
-            => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, value));
+        public static TweenMotionProxy<Light> Intensity(this TweenMotionProxy<Light> proxy, float value)
+            => proxy.Apply(new IntensityMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="IntensityMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotionProxy<Light> IntensityTo(this TweenMotionProxy<Light> tweenMotion, float to)
-            => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, null, to));
+        public static TweenMotionProxy<Light> IntensityTo(this TweenMotionProxy<Light> proxy, float to)
+            => proxy.Apply(new IntensityMotion(proxy.Item, null, to));
 
         /// <summary>
         /// Applies a <see cref="IntensityMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotionProxy<Light> IntensityTo(this TweenMotionProxy<Light> tweenMotion, float from, float to)
-            => tweenMotion.Apply(new IntensityMotion(tweenMotion.Item, from, to));
+        public static TweenMotionProxy<Light> IntensityTo(this TweenMotionProxy<Light> proxy, float from, float to)
+            => proxy.Apply(new IntensityMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -39,35 +39,35 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotionProxy<Light> Color(this TweenMotionProxy<Light> tweenMotion, Color value)
-            => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, value));
+        public static TweenMotionProxy<Light> Color(this TweenMotionProxy<Light> proxy, Color value)
+            => proxy.Apply(new ColorMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> tweenMotion, Color to)
-            => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, null, to));
+        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> proxy, Color to)
+            => proxy.Apply(new ColorMotion(proxy.Item, null, to));
 
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> tweenMotion, Color from, Color to)
-            => tweenMotion.Apply(new ColorMotion(tweenMotion.Item, from, to));
+        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> proxy, Color from, Color to)
+            => proxy.Apply(new ColorMotion(proxy.Item, from, to));
 
         /// <summary>
         /// Applies a <see cref="ColorGradientMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="gradient"></param>
-        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> tweenMotion, Gradient gradient)
-            => tweenMotion.Apply(new ColorGradientMotion(tweenMotion.Item, gradient));
+        public static TweenMotionProxy<Light> ColorTo(this TweenMotionProxy<Light> proxy, Gradient gradient)
+            => proxy.Apply(new ColorGradientMotion(proxy.Item, gradient));
 
         #endregion
     }

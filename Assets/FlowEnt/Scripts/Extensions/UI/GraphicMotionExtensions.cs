@@ -11,33 +11,33 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
-        /// <param name="motion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotionProxy<TGraphic> Alpha<TGraphic>(this TweenMotionProxy<TGraphic> motion, float value)
+        public static TweenMotionProxy<TGraphic> Alpha<TGraphic>(this TweenMotionProxy<TGraphic> proxy, float value)
             where TGraphic : Graphic
-            => motion.Apply(new AlphaMotion<TGraphic>(motion.Item, value));
+            => proxy.Apply(new AlphaMotion<TGraphic>(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
-        /// <param name="motion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotionProxy<TGraphic> AlphaTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, float to)
+        public static TweenMotionProxy<TGraphic> AlphaTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, float to)
             where TGraphic : Graphic
-            => motion.Apply(new AlphaMotion<TGraphic>(motion.Item, default, to));
+            => proxy.Apply(new AlphaMotion<TGraphic>(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
-        /// <param name="motion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotionProxy<TGraphic> AlphaTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, float from, float to)
+        public static TweenMotionProxy<TGraphic> AlphaTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, float from, float to)
             where TGraphic : Graphic
-            => motion.Apply(new AlphaMotion<TGraphic>(motion.Item, from, to));
+            => proxy.Apply(new AlphaMotion<TGraphic>(proxy.Item, from, to));
 
         #endregion
 
@@ -46,43 +46,43 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
-        /// <param name="motion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotionProxy<TGraphic> Color<TGraphic>(this TweenMotionProxy<TGraphic> motion, Color value)
+        public static TweenMotionProxy<TGraphic> Color<TGraphic>(this TweenMotionProxy<TGraphic> proxy, Color value)
             where TGraphic : Graphic
-            => motion.Apply(new ColorMotion<TGraphic>(motion.Item, value));
+            => proxy.Apply(new ColorMotion<TGraphic>(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
-        /// <param name="motion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, Color to)
+        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, Color to)
             where TGraphic : Graphic
-            => motion.Apply(new ColorMotion<TGraphic>(motion.Item, default, to));
+            => proxy.Apply(new ColorMotion<TGraphic>(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
-        /// <param name="motion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, Color from, Color to)
+        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, Color from, Color to)
             where TGraphic : Graphic
-            => motion.Apply(new ColorMotion<TGraphic>(motion.Item, from, to));
+            => proxy.Apply(new ColorMotion<TGraphic>(proxy.Item, from, to));
 
         /// <summary>
         /// Applies a <see cref="ColorGradientMotion" /> to the tween.
         /// </summary>
-        /// <param name="motion"></param>
+        /// <param name="proxy"></param>
         /// <param name="gradient"></param>
         /// <typeparam name="TGraphic"></typeparam>
-        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> motion, Gradient gradient)
+        public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, Gradient gradient)
             where TGraphic : Graphic
-            => motion.Apply(new ColorGradientMotion<TGraphic>(motion.Item, gradient));
+            => proxy.Apply(new ColorGradientMotion<TGraphic>(proxy.Item, gradient));
 
         #endregion
     }
