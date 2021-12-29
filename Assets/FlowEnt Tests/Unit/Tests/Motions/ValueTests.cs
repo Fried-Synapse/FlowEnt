@@ -141,8 +141,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     () =>
                     {
                         Assert.True(values.TrueForAll(v => from.eulerAngles.y <= v.eulerAngles.y && v.eulerAngles.y <= to.eulerAngles.y));
-                        FlowEntAssert.Equal(from, values[0]);
-                        FlowEntAssert.Equal(to, values[values.Count - 1]);
+                        FlowEntAssert.AreEqual(from, values[0]);
+                        FlowEntAssert.AreEqual(to, values[values.Count - 1]);
                     })
                 .Run();
         }

@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bf93e2c89cf46d9b86aee3dfd07b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tests: 123
+  tests: 247
   count: 10
   testTime: 1
   frameRateAnchor: {fileID: 2790963635679519058, guid: 5982d5b3564484a66ad44561af8265da, type: 3}

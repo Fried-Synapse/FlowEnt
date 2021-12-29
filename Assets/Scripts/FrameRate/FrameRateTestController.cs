@@ -11,13 +11,14 @@ namespace FriedSynapse.FlowEnt.Builder
     {
         None = 0x000,
         Tween = 0x001,
-        Flow = 0x002,
-        FlowTween = 0x004,
-        Transform = 0x008,
-        DoTweenTween = 0x010,
-        DoTweenSequence = 0x020,
-        DoTweenTransform = 0x040,
-        OfficialList = Tween | Flow | Transform | DoTweenTween | DoTweenSequence | DoTweenTransform,
+        Echo = 0x002,
+        Flow = 0x004,
+        FlowTween = 0x008,
+        Transform = 0x010,
+        DoTweenTween = 0x020,
+        DoTweenSequence = 0x040,
+        DoTweenTransform = 0x080,
+        OfficialList = Tween | Echo | Flow | Transform | DoTweenTween | DoTweenSequence | DoTweenTransform,
     }
 
     public class FrameRateTestController : MonoBehaviour
@@ -55,22 +56,11 @@ namespace FriedSynapse.FlowEnt.Builder
 
             string csv = string.Empty;
 
+            await RunTestAsync(tests[0], 1);
+
             for (int i = 0; i < tests.Count; i++)
             {
-                double warmup = 0;
-                double fps = 0;
-
-                tests[i].Load();
-                for (int j = 0; j < count; j++)
-                {
-                    await Task.Delay(500);
-                    await tests[i].RunAsync();
-                    await Task.Delay(500);
-
-                    warmup += tests[i].WarmupTime;
-                    fps += tests[i].FrameRate;
-                }
-                tests[i].Unload();
+                (double warmup, double fps) = await RunTestAsync(tests[i], count);
 
                 warmup /= count;
                 fps /= count;
@@ -96,6 +86,26 @@ namespace FriedSynapse.FlowEnt.Builder
         public Transform CreateCube()
             => Instantiate(cube);
 
+        private async Task<(double, double)> RunTestAsync(AbstractFrameRateTest test, int count)
+        {
+            double warmup = 0;
+            double fps = 0;
+
+            test.Load();
+            for (int j = 0; j < count; j++)
+            {
+                await Task.Delay(500);
+                await test.RunAsync();
+                await Task.Delay(500);
+
+                warmup += test.WarmupTime;
+                fps += test.FrameRate;
+            }
+            test.Unload();
+
+            return (warmup, fps);
+        }
+
         private List<AbstractFrameRateTest> GetTests()
         {
             const int k = 1000;
@@ -117,9 +127,10 @@ namespace FriedSynapse.FlowEnt.Builder
             }
 
             addTest(TestType.Tween, new TweenFrameRateTest(this, testTime, k256));
+            addTest(TestType.Echo, new EchoFrameRateTest(this, testTime, k256));
             addTest(TestType.Flow, new FlowFrameRateTest(this, testTime, k128));
-            addTest(TestType.FlowTween, new FlowTweenFrameRateTest(this, testTime, k8));
             addTest(TestType.Transform, new TransformFrameRateTest(this, testTime, k8));
+            addTest(TestType.FlowTween, new FlowTweenFrameRateTest(this, testTime, k8));
             addTest(TestType.DoTweenTween, new DoTweenTweenFrameRateTest(this, testTime, k256));
             addTest(TestType.DoTweenSequence, new DoTweenSequenceFrameRateTest(this, testTime, k128));
             addTest(TestType.DoTweenTransform, new DoTweenTransformFrameRateTest(this, testTime, k8));

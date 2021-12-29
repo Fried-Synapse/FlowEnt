@@ -5,22 +5,30 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public static class CreateNewMotionScriptHelper
     {
-        private const string MotionScriptTemplateName = "MotionScriptTemplate.cs";
+        private const string TweenMotionTemplateName = "TweenMotionScriptTemplate.cs";
+        private const string EchoMotionTemplateName = "EchoMotionScriptTemplate.cs";
 
-        [MenuItem(itemName: "Assets/Create/Motion Script %#m", isValidateFunction: false, priority: 82)]
-        public static void CreateScriptFromTemplate()
+        [MenuItem(itemName: "Assets/Create/Tween Motion Script %#t", isValidateFunction: false, priority: 82)]
+        public static void CreateTweenMotionFromTemplate()
+            => CreateScriptFromTemplate(TweenMotionTemplateName);
+
+        [MenuItem(itemName: "Assets/Create/Echo Motion Script %#e", isValidateFunction: false, priority: 82)]
+        public static void CreateEchoMotionFromTemplate()
+            => CreateScriptFromTemplate(EchoMotionTemplateName);
+
+        private static void CreateScriptFromTemplate(string templateName)
         {
-            string[] results = AssetDatabase.FindAssets(MotionScriptTemplateName);
+            string[] results = AssetDatabase.FindAssets(templateName);
             switch (results.Length)
             {
                 case 0:
-                    Debug.LogError($"Cannot find file \"{MotionScriptTemplateName}\". Please make sure all the FlowEnt scripts are in the project.");
+                    Debug.LogError($"Cannot find file \"{templateName}\". Please make sure all the FlowEnt scripts are in the project.");
                     break;
                 case 1:
                     ProjectWindowUtil.CreateScriptAssetFromTemplateFile(AssetDatabase.GUIDToAssetPath(results[0]), "NewMotionScript.cs");
                     break;
                 default:
-                    Debug.LogWarning($"Multiple versions of {MotionScriptTemplateName} were found. The first occurence was used to create the motion script.");
+                    Debug.LogWarning($"Multiple versions of {templateName} were found. The first occurrence was used to create the motion script.");
                     goto case 1;
             }
         }

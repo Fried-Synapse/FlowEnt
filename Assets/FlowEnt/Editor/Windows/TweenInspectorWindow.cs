@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.Abstract;
+using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             FlowEntEditorGUILayout.LabelFieldBold("Motions:");
             EditorGUI.indentLevel++;
-            foreach (IMotion motion in Animation.GetFieldValue<IMotion[]>("motions"))
+            foreach (ITweenMotion motion in Animation.GetFieldValue<ITweenMotion[]>("motions"))
             {
                 FlowEntEditorGUILayout.LabelField(motion);
             }

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.TestTools;
 
@@ -10,6 +9,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
     public class TweenEventsTests : AbstractEngineTests
     {
+        #region Builder
+
         [UnityTest]
         public IEnumerator Builder()
         {
@@ -31,6 +32,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 })
                 .Run();
         }
+
+        #endregion
 
         [UnityTest]
         public IEnumerator OnStarting()
@@ -133,8 +136,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                     new Tween(TestTime / expectedLoopCount)
                         .SetLoopCount(expectedLoopCount)
-                        .OnLoopCompleted((_) => { loopCount++; controlT = deltaT; })
                         .OnUpdated(t => deltaT = t)
+                        .OnLoopCompleted((_) => { loopCount++; controlT = deltaT; })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -159,8 +162,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     Tween tween = new Tween(TestTime / expectedLoopCount)
                         .SetLoopCount(expectedLoopCount)
-                        .OnLoopCompleted((_) => { loopCount++; controlT = deltaT; })
                         .OnUpdated(t => deltaT = t)
+                        .OnLoopCompleted((_) => { loopCount++; controlT = deltaT; })
                         .Start();
                     return new Tween(TestTime).OnCompleted(() => tween.Stop()).Start();
                 })
@@ -184,8 +187,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                     new Tween(TestTime)
-                        .OnCompleting(() => { wasCalled = true; controlT = deltaT; })
                         .OnUpdated(t => deltaT = t)
+                        .OnCompleting(() => { wasCalled = true; controlT = deltaT; })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -207,8 +210,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                     new Tween(TestTime)
-                        .OnCompleted(() => { wasCalled = true; controlT = deltaT; })
                         .OnUpdated(t => deltaT = t)
+                        .OnCompleted(() => { wasCalled = true; controlT = deltaT; })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>

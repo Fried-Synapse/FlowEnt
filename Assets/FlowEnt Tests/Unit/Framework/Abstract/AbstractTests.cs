@@ -54,7 +54,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
     public abstract class AbstractTests<TVariables> : AbstractTests
         where TVariables : AbstractVariables
     {
-        private readonly Lazy<TVariables> variables = new Lazy<TVariables>(() => Object.FindObjectOfType<TVariables>());
-        public TVariables Variables => variables.Value;
+        private TVariables variables;
+        protected TVariables Variables => variables ??= Object.FindObjectOfType<TVariables>();
+
+        protected override void OnTeardown()
+        {
+            base.OnTeardown();
+            variables = null;
+        }
     }
 }

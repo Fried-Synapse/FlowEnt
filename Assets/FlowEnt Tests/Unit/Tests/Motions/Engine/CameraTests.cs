@@ -86,7 +86,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.orthographicSize = 0f)
                 .Act(() => Component.Tween(TestTime).OrthographicSize(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.Equal(value, Component.orthographicSize))
+                .Assert(() => FlowEntAssert.AreEqual(value, Component.orthographicSize))
                 .Run();
         }
 
@@ -138,7 +138,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.fieldOfView = 0f)
                 .Act(() => Component.Tween(TestTime).FieldOfView(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.Equal(value, Component.fieldOfView))
+                .Assert(() => FlowEntAssert.AreEqual(value, Component.fieldOfView))
                 .Run();
         }
 
@@ -190,7 +190,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.nearClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).NearClipPlane(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.Equal(value, Component.nearClipPlane))
+                .Assert(() => FlowEntAssert.AreEqual(value, Component.nearClipPlane))
                 .Run();
         }
 
@@ -242,7 +242,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.farClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).FarClipPlane(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.Equal(value, Component.farClipPlane))
+                .Assert(() => FlowEntAssert.AreEqual(value, Component.farClipPlane))
                 .Run();
         }
 

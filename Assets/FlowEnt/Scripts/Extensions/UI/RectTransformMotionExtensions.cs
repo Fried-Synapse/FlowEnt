@@ -1,4 +1,4 @@
-using FriedSynapse.FlowEnt.Motions.UI.RectTransforms;
+using FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -12,77 +12,77 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPosition(this TweenMotion<RectTransform> tweenMotion, Vector2 value)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, value));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPosition(this TweenMotionProxy<RectTransform> proxy, Vector2 value)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> tweenMotion, Vector2 to)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, default, to));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionTo(this TweenMotionProxy<RectTransform> proxy, Vector2 to)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> tweenMotion, Vector2 from, Vector2 to)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, from, to));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionTo(this TweenMotionProxy<RectTransform> proxy, Vector2 from, Vector2 to)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, from, to));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionX(this TweenMotion<RectTransform> tweenMotion, float value)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, new Vector2(value, 0f)));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionX(this TweenMotionProxy<RectTransform> proxy, float value)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, new Vector2(value, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionXTo(this TweenMotion<RectTransform> tweenMotion, float to)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, default, new Vector2(to, tweenMotion.Item.anchoredPosition.y)));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionXTo(this TweenMotionProxy<RectTransform> proxy, float to)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, default, new Vector2(to, proxy.Item.anchoredPosition.y)));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionXTo(this TweenMotion<RectTransform> tweenMotion, float from, float to)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, new Vector2(from, tweenMotion.Item.anchoredPosition.y), new Vector2(to, tweenMotion.Item.anchoredPosition.y)));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionXTo(this TweenMotionProxy<RectTransform> proxy, float from, float to)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, new Vector2(from, proxy.Item.anchoredPosition.y), new Vector2(to, proxy.Item.anchoredPosition.y)));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionY(this TweenMotion<RectTransform> tweenMotion, float value)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, new Vector2(0f, value)));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionY(this TweenMotionProxy<RectTransform> proxy, float value)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, new Vector2(0f, value)));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionYTo(this TweenMotion<RectTransform> tweenMotion, float to)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, default, new Vector2(tweenMotion.Item.anchoredPosition.x, to)));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionYTo(this TweenMotionProxy<RectTransform> proxy, float to)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, default, new Vector2(proxy.Item.anchoredPosition.x, to)));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionVectorMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionYTo(this TweenMotion<RectTransform> tweenMotion, float from, float to)
-            => tweenMotion.Apply(new MoveAnchoredPositionVectorMotion(tweenMotion.Item, new Vector2(tweenMotion.Item.anchoredPosition.x, from), new Vector2(tweenMotion.Item.anchoredPosition.x, to)));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionYTo(this TweenMotionProxy<RectTransform> proxy, float from, float to)
+            => proxy.Apply(new MoveAnchoredPositionVectorMotion(proxy.Item, new Vector2(proxy.Item.anchoredPosition.x, from), new Vector2(proxy.Item.anchoredPosition.x, to)));
 
         #endregion
 
@@ -91,10 +91,10 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="MoveAnchoredPositionSplineMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="spline"></param>
-        public static TweenMotion<RectTransform> MoveAnchoredPositionTo(this TweenMotion<RectTransform> tweenMotion, ISpline spline)
-            => tweenMotion.Apply(new MoveAnchoredPositionSplineMotion(tweenMotion.Item, spline));
+        public static TweenMotionProxy<RectTransform> MoveAnchoredPositionTo(this TweenMotionProxy<RectTransform> proxy, ISpline spline)
+            => proxy.Apply(new MoveAnchoredPositionSplineMotion(proxy.Item, spline));
 
         #endregion
 
@@ -105,39 +105,39 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="MoveAnchorToMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="toMin"></param>
         /// <param name="toMax"></param>
-        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> tweenMotion, Vector2 toMin, Vector2 toMax)
-            => tweenMotion.Apply(new MoveAnchorToMotion(tweenMotion.Item, toMin, toMax));
+        public static TweenMotionProxy<RectTransform> MoveAnchorTo(this TweenMotionProxy<RectTransform> proxy, Vector2 toMin, Vector2 toMax)
+            => proxy.Apply(new MoveAnchorToMotion(proxy.Item, toMin, toMax));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchorToMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="fromMin"></param>
         /// <param name="fromMax"></param>
         /// <param name="toMin"></param>
         /// <param name="toMax"></param>
-        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> tweenMotion, Vector2 fromMin, Vector2 fromMax, Vector2 toMin, Vector2 toMax)
-            => tweenMotion.Apply(new MoveAnchorToMotion(tweenMotion.Item, fromMin, fromMax, toMin, toMax));
+        public static TweenMotionProxy<RectTransform> MoveAnchorTo(this TweenMotionProxy<RectTransform> proxy, Vector2 fromMin, Vector2 fromMax, Vector2 toMin, Vector2 toMax)
+            => proxy.Apply(new MoveAnchorToMotion(proxy.Item, fromMin, fromMax, toMin, toMax));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchorToMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> tweenMotion, AnchorPreset to)
-            => tweenMotion.Apply(new MoveAnchorToMotion(tweenMotion.Item, to));
+        public static TweenMotionProxy<RectTransform> MoveAnchorTo(this TweenMotionProxy<RectTransform> proxy, AnchorPreset to)
+            => proxy.Apply(new MoveAnchorToMotion(proxy.Item, to));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchorToMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MoveAnchorTo(this TweenMotion<RectTransform> tweenMotion, AnchorPreset from, AnchorPreset to)
-            => tweenMotion.Apply(new MoveAnchorToMotion(tweenMotion.Item, from, to));
+        public static TweenMotionProxy<RectTransform> MoveAnchorTo(this TweenMotionProxy<RectTransform> proxy, AnchorPreset from, AnchorPreset to)
+            => proxy.Apply(new MoveAnchorToMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -146,36 +146,36 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="MovePivotToMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> tweenMotion, Vector2 to)
-            => tweenMotion.Apply(new MovePivotToMotion(tweenMotion.Item, to));
+        public static TweenMotionProxy<RectTransform> MovePivotTo(this TweenMotionProxy<RectTransform> proxy, Vector2 to)
+            => proxy.Apply(new MovePivotToMotion(proxy.Item, to));
 
         /// <summary>
         /// Applies a <see cref="MovePivotToMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> tweenMotion, Vector2 from, Vector2 to)
-            => tweenMotion.Apply(new MovePivotToMotion(tweenMotion.Item, from, to));
+        public static TweenMotionProxy<RectTransform> MovePivotTo(this TweenMotionProxy<RectTransform> proxy, Vector2 from, Vector2 to)
+            => proxy.Apply(new MovePivotToMotion(proxy.Item, from, to));
 
         /// <summary>
         /// Applies a <see cref="MovePivotToMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> tweenMotion, PivotPreset to)
-            => tweenMotion.Apply(new MovePivotToMotion(tweenMotion.Item, to));
+        public static TweenMotionProxy<RectTransform> MovePivotTo(this TweenMotionProxy<RectTransform> proxy, PivotPreset to)
+            => proxy.Apply(new MovePivotToMotion(proxy.Item, to));
 
         /// <summary>
         /// Applies a <see cref="MovePivotToMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> MovePivotTo(this TweenMotion<RectTransform> tweenMotion, PivotPreset from, PivotPreset to)
-            => tweenMotion.Apply(new MovePivotToMotion(tweenMotion.Item, from, to));
+        public static TweenMotionProxy<RectTransform> MovePivotTo(this TweenMotionProxy<RectTransform> proxy, PivotPreset from, PivotPreset to)
+            => proxy.Apply(new MovePivotToMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -186,43 +186,43 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotion<RectTransform> ScaleSizeDelta(this TweenMotion<RectTransform> tweenMotion, Vector2 value)
-            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, value));
+        public static TweenMotionProxy<RectTransform> ScaleSizeDelta(this TweenMotionProxy<RectTransform> proxy, Vector2 value)
+            => proxy.Apply(new ScaleSizeDeltaMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> ScaleSizeDeltaTo(this TweenMotion<RectTransform> tweenMotion, Vector2 to)
-            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, default, to));
+        public static TweenMotionProxy<RectTransform> ScaleSizeDeltaTo(this TweenMotionProxy<RectTransform> proxy, Vector2 to)
+            => proxy.Apply(new ScaleSizeDeltaMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public static TweenMotion<RectTransform> ScaleSizeDeltaTo(this TweenMotion<RectTransform> tweenMotion, Vector2 from, Vector2 to)
-            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, from, to));
+        public static TweenMotionProxy<RectTransform> ScaleSizeDeltaTo(this TweenMotionProxy<RectTransform> proxy, Vector2 from, Vector2 to)
+            => proxy.Apply(new ScaleSizeDeltaMotion(proxy.Item, from, to));
 
         /// <summary>
         /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotion<RectTransform> ScaleSizeDeltaX(this TweenMotion<RectTransform> tweenMotion, float value)
-            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, new Vector2(value, 1f)));
+        public static TweenMotionProxy<RectTransform> ScaleSizeDeltaX(this TweenMotionProxy<RectTransform> proxy, float value)
+            => proxy.Apply(new ScaleSizeDeltaMotion(proxy.Item, new Vector2(value, 1f)));
 
         /// <summary>
         /// Applies a <see cref="ScaleSizeDeltaMotion" /> to the tween.
         /// </summary>
-        /// <param name="tweenMotion"></param>
+        /// <param name="proxy"></param>
         /// <param name="value"></param>
-        public static TweenMotion<RectTransform> ScaleSizeDeltaY(this TweenMotion<RectTransform> tweenMotion, float value)
-            => tweenMotion.Apply(new ScaleSizeDeltaMotion(tweenMotion.Item, new Vector2(1f, value)));
+        public static TweenMotionProxy<RectTransform> ScaleSizeDeltaY(this TweenMotionProxy<RectTransform> proxy, float value)
+            => proxy.Apply(new ScaleSizeDeltaMotion(proxy.Item, new Vector2(1f, value)));
 
         #endregion
 

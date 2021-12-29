@@ -14,6 +14,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         public TweenEventsBuilder TweenEventsBuilder => tweenEventsBuilder;
 
         [SerializeField]
+        private Transform target;
+        public Transform Target => target;
+
+        [SerializeField]
         private AnimationCurve3d animationCurve;
         public AnimationCurve3d AnimationCurve => animationCurve;
 
