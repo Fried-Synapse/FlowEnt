@@ -172,8 +172,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             const int loopCount = 2;
 
             yield return CreateTester()
-                .Act(() => new Echo(TestTime)
-                            .SetOptions(new EchoOptions().SetLoopCount(loopCount))
+                .Act(() => new Echo()
+                            .SetOptions(new EchoOptions().SetTimeout(TestTime).SetLoopCount(loopCount))
                             .Start())
                 .AssertTime(loopCount * TestTime)
                 .Run();

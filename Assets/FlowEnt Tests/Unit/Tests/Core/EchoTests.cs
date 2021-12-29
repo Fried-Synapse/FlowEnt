@@ -26,7 +26,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator PlayState_Values()
         {
-            const float time = 1f;
             const float delay = 1f;
             bool isBuilding = false;
             bool isWaiting = false;
@@ -37,7 +36,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    echo = new Echo(time)
+                    echo = new Echo(TestTime)
                                    .SetDelay(delay);
 
                     isBuilding = echo.PlayState == PlayState.Building;
@@ -47,14 +46,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     Flow flowControl = new Flow()
                                     .Queue(new Echo(delay / 2f).OnCompleted(() => isWaiting = echo.PlayState == PlayState.Waiting))
                                     .Queue(new Echo(delay / 2f))
-                                    .Queue(new Echo(time / 4f).OnCompleted(() => isPlaying = echo.PlayState == PlayState.Playing))
-                                    .Queue(new Echo(time / 4f).OnCompleted(() => echo.Pause()))
-                                    .Queue(new Echo(time / 4f).OnCompleted(() => isPaused = echo.PlayState == PlayState.Paused))
-                                    .Queue(new Echo(time / 4f).OnCompleted(() => echo.Resume()))
+                                    .Queue(new Echo(TestTime / 4f).OnCompleted(() => isPlaying = echo.PlayState == PlayState.Playing))
+                                    .Queue(new Echo(TestTime / 4f).OnCompleted(() => echo.Pause()))
+                                    .Queue(new Echo(TestTime / 4f).OnCompleted(() => isPaused = echo.PlayState == PlayState.Paused))
+                                    .Queue(new Echo(TestTime / 4f).OnCompleted(() => echo.Resume()))
                                     .Start();
                     return echo;
                 })
-                .AssertTime(delay + (time * 1.5f))
+                .AssertTime(delay + (TestTime * 1.5f))
                 .Assert(() =>
                 {
                     Assert.True(isBuilding);
@@ -69,18 +68,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator Start()
         {
-            const float time = 1f;
-
             yield return CreateTester()
-                .Act(() => new Echo(time).Start())
-                .AssertTime(time)
+                .Act(() => new Echo(TestTime).Start())
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator StartAsync()
         {
-            const float time = 1f;
             Task task = null;
 
             IEnumerator customWaiter()
@@ -94,19 +90,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    Echo echo = new Echo(time);
+                    Echo echo = new Echo(TestTime);
                     task = echo.StartAsync();
                     return echo;
                 })
                 .SetCustomWaiter(customWaiter)
-                .AssertTime(time)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Start_WaitAsync()
         {
-            const float time = 1f;
             Task task = null;
 
             IEnumerator customWaiter()
@@ -120,26 +115,25 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    Echo echo = new Echo(time).Start();
+                    Echo echo = new Echo(TestTime).Start();
                     task = echo.AsAsync();
                     return echo;
                 })
                 .SetCustomWaiter(customWaiter)
-                .AssertTime(time)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Start_Started()
         {
-            const float time = 1f;
             Exception startException = null;
             Echo echo = null;
 
             yield return CreateTester()
                 .Act(() =>
                 {
-                    echo = new Echo(time).Start();
+                    echo = new Echo(TestTime).Start();
                     try
                     {
                         echo.Start();
@@ -151,7 +145,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return echo;
                 })
-                .AssertTime(time)
+                .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.True(startException != null && startException is AnimationException animationException && animationException.Animation is Echo);
@@ -163,7 +157,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator PauseResume()
         {
-            const float testTime = 2f;
+            const float testTime = 1f;
 
             yield return CreateTester()
                 .Act(() =>
@@ -184,19 +178,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator Stop()
         {
-            const float testTime = 1f;
             bool hasFinished = false;
 
             yield return CreateTester()
                 .Act(() =>
                 {
                     Echo echo = new Echo()
-                                    .SetTimeout(testTime)
+                                    .SetTimeout(TestTime)
                                     .OnCompleted(() => hasFinished = true)
                                     .Start();
                     return new Flow()
-                                    .Queue(new Echo(testTime / 2f).OnCompleted(() => echo.Stop()))
-                                    .Queue(new Echo(testTime))
+                                    .Queue(new Echo(TestTime / 2f).OnCompleted(() => echo.Stop()))
+                                    .Queue(new Echo(TestTime))
                                     .Start();
                 })
                 .Assert(() => Assert.AreEqual(false, hasFinished))
@@ -206,19 +199,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator Stop_TriggerOnCompleted()
         {
-            const float testTime = 1f;
             bool hasFinished = false;
 
             yield return CreateTester()
                 .Act(() =>
                 {
                     Echo echo = new Echo()
-                        .SetTimeout(testTime)
+                        .SetTimeout(TestTime)
                         .OnCompleted(() => hasFinished = true)
                         .Start();
                     return new Flow()
-                        .Queue(new Echo(testTime / 2f).OnCompleted(() => echo.Stop(true)))
-                        .Queue(new Echo(testTime))
+                        .Queue(new Echo(TestTime / 2f).OnCompleted(() => echo.Stop(true)))
+                        .Queue(new Echo(TestTime))
                         .Start();
                 })
                 .Assert(() => Assert.AreEqual(true, hasFinished))
@@ -228,7 +220,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator Reset()
         {
-            const float testTime = 1f;
             const int runs = 3;
             int runned = 0;
             Echo echo = null;
@@ -236,7 +227,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    echo = new Echo(testTime / runs)
+                    echo = new Echo(TestTime / runs)
                         .OnCompleted(() =>
                         {
                             runned++;
@@ -246,9 +237,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                             }
                         })
                         .Start();
-                    return new Echo(testTime).Start();
+                    return new Echo(TestTime).Start();
                 })
-                .AssertTime(testTime)
+                .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(PlayState.Finished, echo.PlayState);
@@ -260,20 +251,19 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator ResetUsingFlow()
         {
-            const float testTime = 1f;
             Echo echo = null;
 
             yield return CreateTester()
                 .Act(() =>
                 {
                     echo = new Echo()
-                        .SetTimeout(testTime / 2f);
+                        .SetTimeout(TestTime / 2f);
                     return new Flow()
                         .Queue(echo)
                         .QueueDeferred(() => echo.Reset())
                         .Start();
                 })
-                .AssertTime(testTime)
+                .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(PlayState.Finished, echo.PlayState))
                 .Run();
         }
