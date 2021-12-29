@@ -9,12 +9,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 {
     public abstract class AbstractTests
     {
-        protected const float TestTime = 0.5f;
+        public const float TestTime = 0.5f;
         protected const float DoubleTestTime = TestTime * 2f;
         protected const float TripleTestTime = TestTime * 3f;
         protected const float HalfTestTime = TestTime / 2f;
         protected const float ThirdTestTime = TestTime / 3f;
+        protected const float TwoThirdsTestTime = TestTime * 2f / 3f;
         protected const float QuarterTestTime = TestTime / 4f;
+        protected const float ThreeQuartersTestTime = TestTime * 3f / 4f;
 
         public List<GameObject> GameObjects { get; set; } = new List<GameObject>();
         public GameObject GameObject => GameObjects[0];
