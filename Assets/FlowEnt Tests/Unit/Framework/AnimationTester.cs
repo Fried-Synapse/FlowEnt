@@ -1,11 +1,15 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit
 {
     public class AnimationTester
     {
+        private const float OvertimeAllowance = 0.1f;
+        private const float MaxRunTime = AbstractTests.TestTime + OvertimeAllowance;
+
         public AnimationTester(AbstractTests tests, int count)
         {
             Tests = tests;
@@ -82,8 +86,25 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             return this;
         }
 
-        public IEnumerator Run()
+        public IEnumerator Run(string overtimeReason = "", float? maxRunTime = null)
         {
+            float internalMaxRunTime;
+            if (maxRunTime == null)
+            {
+                internalMaxRunTime = MaxRunTime;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(overtimeReason))
+                {
+                    throw new ArgumentException("You specified a different run time. You need to provide a reason for the overtime");
+                }
+                else
+                {
+                    internalMaxRunTime = maxRunTime.Value + OvertimeAllowance;
+                }
+            }
+
             Tests.CreateObjects(Count);
             yield return WaitForFrames(5);
             ArrangeCallback?.Invoke();
@@ -102,6 +123,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
                 }
             }
             Stopwatch.Stop();
+            if (Stopwatch.Elapsed.TotalSeconds > internalMaxRunTime)
+            {
+                throw new TimeoutException($"Test took too long. Expected: {internalMaxRunTime} but was {Stopwatch.Elapsed.TotalSeconds}.");
+            }
+            else
+            {
+                if (Stopwatch.Elapsed.TotalSeconds > MaxRunTime)
+                {
+                    Debug.LogWarning($"Test went to overtime. Reason: {overtimeReason}. Time: {Stopwatch.Elapsed.TotalSeconds}");
+                }
+            }
             yield return WaitForFrames(5);
             AssertCallback?.Invoke();
             AbrogateCallback?.Invoke();

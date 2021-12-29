@@ -41,43 +41,37 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #endregion
 
-        #region Time
+        #region Timeout
 
         [UnityTest]
         public IEnumerator Timeout_Default()
         {
-            const float timeout = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetTimeout(timeout)
+                            .SetTimeout(TestTime)
                             .Start())
-                .AssertTime(timeout)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Timeout_Constructor()
         {
-            const float timeout = 2f;
-
             yield return CreateTester()
-                .Act(() => new Echo(timeout)
+                .Act(() => new Echo(TestTime)
                             .Start())
-                .AssertTime(timeout)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Timeout_WithOptions()
         {
-            const float timeout = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetOptions(new EchoOptions().SetTimeout(timeout))
+                            .SetOptions(new EchoOptions().SetTimeout(TestTime))
                             .Start())
-                .AssertTime(timeout)
+                .AssertTime(TestTime)
                 .Run();
         }
 
@@ -107,35 +101,77 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #endregion
 
+        #region SetStopCondition
+
+        [UnityTest]
+        public IEnumerator SetStopCondition_Timeout()
+        {
+            yield return CreateTester()
+                .Act(() => new Echo()
+                            .SetStopCondition((time) => time > TestTime)
+                            .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator SetStopCondition_TweenControl()
+        {
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    bool flag = false;
+                    Tween tween = new Tween(TestTime).OnCompleted(() => flag = true).Start();
+
+                    return new Echo()
+                        .SetStopCondition((_) => flag)
+                        .Start();
+                })
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator SetStopCondition_MultiCondition()
+        {
+            yield return CreateTester()
+                .Act(() => new Echo()
+                            .SetStopCondition((time) => time > TestTime * 2)
+                            .SetStopCondition((time) => time > TestTime)
+                            .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        #endregion
+
         #region TimeScale
 
         [UnityTest]
         public IEnumerator TimeScale()
         {
-            const float testTime = 2f;
             const float testTimeScale = 2f;
 
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .SetTimeScale(testTimeScale)
                             .Start())
-                .AssertTime(testTime / testTimeScale)
+                .AssertTime(TestTime / testTimeScale)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator TimeScale_WithOptions()
         {
-            const float testTime = 2f;
             const float testTimeScale = 2f;
 
             yield return CreateTester()
                 .Act(() => new Echo()
                             .SetOptions(new EchoOptions().SetTimeScale(testTimeScale))
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .Start())
-                .AssertTime(testTime / testTimeScale)
+                .AssertTime(TestTime / testTimeScale)
                 .Run();
         }
 
@@ -159,10 +195,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             const int loopCount = 2;
 
             yield return CreateTester()
-                .Act(() => new Echo(TestTime)
+                .Act(() => new Echo(TestTime / loopCount)
                             .SetLoopCount(loopCount)
                             .Start())
-                .AssertTime(loopCount * TestTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
@@ -173,24 +209,23 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetOptions(new EchoOptions().SetTimeout(TestTime).SetLoopCount(loopCount))
+                            .SetOptions(new EchoOptions().SetTimeout(TestTime / loopCount).SetLoopCount(loopCount))
                             .Start())
-                .AssertTime(loopCount * TestTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator LoopCount_NullValue()
         {
-            const float echoTime = 0.15f;
             int? loopCount = null;
-            const int loopCountTries = 5;
+            const int loopCountTries = 4;
             int loopCountCounter = 0;
 
             yield return CreateTester()
                 .Act(() =>
                 {
-                    new Echo(echoTime)
+                    new Echo(QuarterTestTime)
                         .OnLoopCompleted((loopsLeft) =>
                         {
                             if (loopsLeft == null)
@@ -201,10 +236,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                         .SetLoopCount(loopCount)
                         .Start();
 
-                    return new Echo(loopCountTries * echoTime).Start();
+                    return new Echo(loopCountTries * QuarterTestTime).Start();
                 })
                 .Assert(() => Assert.AreEqual(loopCountTries, loopCountCounter))
-                .AssertTime(loopCountTries * echoTime)
+                .AssertTime(loopCountTries * QuarterTestTime)
                 .Run();
         }
 
@@ -230,7 +265,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -239,7 +273,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Echo()
                             .SetSkipFrames(skipFrames)
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
@@ -249,7 +283,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_WithOptions()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -258,7 +291,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Echo()
                             .SetOptions(new EchoOptions().SetSkipFrames(skipFrames))
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
@@ -268,7 +301,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_AutoStart()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -277,7 +309,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Echo(1f, true)
                             .SetSkipFrames(skipFrames)
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
                 .Run();
@@ -286,7 +318,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_NegativeValue()
         {
-            const float testTime = 2f;
             const int skipFrames = -20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -295,7 +326,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Echo()
                             .SetSkipFrames(skipFrames)
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(0, frameCount))
@@ -334,66 +365,56 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator Delay()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetDelay(delay)
-                            .SetTimeout(testTime)
+                            .SetDelay(HalfTestTime)
+                            .SetTimeout(HalfTestTime)
                             .Start())
-                .AssertTime(delay + testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_AutoStart()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo(1f, true)
-                            .SetDelay(delay)
-                            .SetTimeout(testTime))
-                .AssertTime(delay + testTime)
+                            .SetDelay(HalfTestTime)
+                            .SetTimeout(HalfTestTime))
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_WithOptions()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetOptions(new EchoOptions().SetDelay(delay))
-                            .SetTimeout(testTime)
+                            .SetOptions(new EchoOptions().SetDelay(HalfTestTime))
+                            .SetTimeout(HalfTestTime)
                             .Start())
-                .AssertTime(delay + testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_NegativeValue()
         {
-            const float testTime = 2f;
             const float delay = -2f;
 
             yield return CreateTester()
                 .Act(() => new Echo()
                             .SetDelay(delay)
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .Start())
-                .AssertTime(testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_StopBeforeStart()
         {
-            const float delay = 1f;
+            const float delay = TestTime;
             const float time = delay / 2;
             bool onStartedCalled = false;
             Echo controlEcho = null;
