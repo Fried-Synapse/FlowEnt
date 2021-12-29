@@ -49,38 +49,32 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator Time_Default()
         {
-            const float time = 2f;
-
             yield return CreateTester()
                 .Act(() => new Tween()
-                            .SetTime(time)
+                            .SetTime(TestTime)
                             .Start())
-                .AssertTime(time)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Time_Constructor()
         {
-            const float time = 2f;
-
             yield return CreateTester()
-                .Act(() => new Tween(time)
+                .Act(() => new Tween(TestTime)
                             .Start())
-                .AssertTime(time)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Time_WithOptions()
         {
-            const float time = 2f;
-
             yield return CreateTester()
                 .Act(() => new Tween()
-                            .SetOptions(new TweenOptions().SetTime(time))
+                            .SetOptions(new TweenOptions().SetTime(TestTime))
                             .Start())
-                .AssertTime(time)
+                .AssertTime(TestTime)
                 .Run();
         }
 
@@ -126,30 +120,28 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator TimeScale()
         {
-            const float testTime = 2f;
             const float testTimeScale = 2f;
 
             yield return CreateTester()
                 .Act(() => new Tween()
-                            .SetTime(testTime)
+                            .SetTime(TestTime)
                             .SetTimeScale(testTimeScale)
                             .Start())
-                .AssertTime(testTime / testTimeScale)
+                .AssertTime(TestTime / testTimeScale)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator TimeScale_WithOptions()
         {
-            const float testTime = 2f;
             const float testTimeScale = 2f;
 
             yield return CreateTester()
                 .Act(() => new Tween()
                             .SetOptions(new TweenOptions().SetTimeScale(testTimeScale))
-                            .SetTime(testTime)
+                            .SetTime(TestTime)
                             .Start())
-                .AssertTime(testTime / testTimeScale)
+                .AssertTime(TestTime / testTimeScale)
                 .Run();
         }
 

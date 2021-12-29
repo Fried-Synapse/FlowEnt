@@ -41,43 +41,37 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #endregion
 
-        #region Time
+        #region Timeout
 
         [UnityTest]
         public IEnumerator Timeout_Default()
         {
-            const float timeout = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetTimeout(timeout)
+                            .SetTimeout(TestTime)
                             .Start())
-                .AssertTime(timeout)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Timeout_Constructor()
         {
-            const float timeout = 2f;
-
             yield return CreateTester()
-                .Act(() => new Echo(timeout)
+                .Act(() => new Echo(TestTime)
                             .Start())
-                .AssertTime(timeout)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Timeout_WithOptions()
         {
-            const float timeout = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetOptions(new EchoOptions().SetTimeout(timeout))
+                            .SetOptions(new EchoOptions().SetTimeout(TestTime))
                             .Start())
-                .AssertTime(timeout)
+                .AssertTime(TestTime)
                 .Run();
         }
 
@@ -107,35 +101,77 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #endregion
 
+        #region SetStopCondition
+
+        [UnityTest]
+        public IEnumerator SetStopCondition_Timeout()
+        {
+            yield return CreateTester()
+                .Act(() => new Echo()
+                            .SetStopCondition((time) => time > TestTime)
+                            .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator SetStopCondition_TweenControl()
+        {
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    bool flag = false;
+                    Tween tween = new Tween(TestTime).OnCompleted(() => flag = true).Start();
+
+                    return new Echo()
+                        .SetStopCondition((_) => flag)
+                        .Start();
+                })
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator SetStopCondition_MultiCondition()
+        {
+            yield return CreateTester()
+                .Act(() => new Echo()
+                            .SetStopCondition((time) => time > TestTime * 2)
+                            .SetStopCondition((time) => time > TestTime)
+                            .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        #endregion
+
         #region TimeScale
 
         [UnityTest]
         public IEnumerator TimeScale()
         {
-            const float testTime = 2f;
             const float testTimeScale = 2f;
 
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .SetTimeScale(testTimeScale)
                             .Start())
-                .AssertTime(testTime / testTimeScale)
+                .AssertTime(TestTime / testTimeScale)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator TimeScale_WithOptions()
         {
-            const float testTime = 2f;
             const float testTimeScale = 2f;
 
             yield return CreateTester()
                 .Act(() => new Echo()
                             .SetOptions(new EchoOptions().SetTimeScale(testTimeScale))
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .Start())
-                .AssertTime(testTime / testTimeScale)
+                .AssertTime(TestTime / testTimeScale)
                 .Run();
         }
 
