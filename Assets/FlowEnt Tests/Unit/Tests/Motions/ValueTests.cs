@@ -20,7 +20,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<float> values = new List<float>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
@@ -39,7 +40,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<int> values = new List<int>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
@@ -58,7 +60,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<Vector2> values = new List<Vector2>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
@@ -77,7 +80,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<Vector3> values = new List<Vector3>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
@@ -96,7 +100,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<Vector4> values = new List<Vector4>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
@@ -117,7 +122,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<Vector3> values = new List<Vector3>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
@@ -136,7 +142,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<Quaternion> values = new List<Quaternion>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
@@ -155,7 +162,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<Color> values = new List<Color>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
@@ -174,7 +182,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             List<Color32> values = new List<Color32>();
 
             yield return CreateTester()
-                .Act(() => new Tween(1f).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {

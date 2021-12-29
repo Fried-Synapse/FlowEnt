@@ -16,6 +16,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             const float time = 0.05f;
             const int tweens = 10;
             const int innerFlows = 10;
+            const float testTime = time * tweens * innerFlows;
 
             yield return CreateTester()
                 .Act(() =>
@@ -34,8 +35,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return flow.Start();
                 })
-                .AssertTime(time * tweens * innerFlows)
-                .Run();
+                .AssertTime(testTime)
+                .Run($"Tweens inside flows inside flow on {nameof(Time_ForTween)}", testTime);
         }
 
         #endregion
@@ -45,8 +46,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator LoopCount()
         {
-            const int tweens = 5;
-            const int loopCount = 5;
+            const int tweens = 3;
+            const int loopCount = 3;
+            const float testTime = QuarterTestTime * tweens * loopCount;
 
             yield return CreateTester()
                 .Act(() =>
@@ -61,15 +63,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     flow.SetLoopCount(loopCount);
                     return flow.Start();
                 })
-                .AssertTime(QuarterTestTime * tweens * loopCount)
-                .Run();
+                .AssertTime(testTime)
+                .Run($"Loop inside queued tweens on {nameof(LoopCount)}", testTime);
         }
 
         [UnityTest]
         public IEnumerator LoopCount_ForTween()
         {
-            const int tweens = 5;
-            const int loopCount = 5;
+            const int tweens = 3;
+            const int loopCount = 3;
+            const float testTime = QuarterTestTime * tweens * loopCount;
 
             yield return CreateTester()
                 .Act(() =>
@@ -84,15 +87,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return flow.Start();
                 })
-                .AssertTime(QuarterTestTime * tweens * loopCount)
-                .Run();
+                .AssertTime(testTime)
+                .Run($"Loop inside queued tweens on {nameof(LoopCount_ForTween)}", testTime);
         }
 
         [UnityTest]
         public IEnumerator LoopCount_WithOptions()
         {
-            const int tweens = 5;
-            const int loopCount = 5;
+            const int tweens = 3;
+            const int loopCount = 3;
+            const float testTime = QuarterTestTime * tweens * loopCount;
 
             yield return CreateTester()
                 .Act(() =>
@@ -108,14 +112,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     return flow.Start();
                 })
                 .AssertTime(QuarterTestTime * tweens * loopCount)
-                .Run();
+                .Run($"Loop inside queued tweens on {nameof(LoopCount_WithOptions)}", testTime);
         }
 
         [UnityTest]
         public IEnumerator LoopCount_NullValue()
         {
             int? loopCount = null;
-            const int loopCountTries = 5;
+            const int loopCountTries = 4;
             int loopCountCounter = 0;
 
             yield return CreateTester()
@@ -133,10 +137,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                         .SetLoopCount(loopCount)
                         .Start();
 
-                    return new Tween(loopCountTries * QuarterTestTime).Start();
+                    return new Tween(TestTime).Start();
                 })
                 .Assert(() => Assert.AreEqual(loopCountTries, loopCountCounter))
-                .AssertTime(loopCountTries * QuarterTestTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 

@@ -196,7 +196,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return new Flow()
                                     .Queue(new Tween(QuarterTestTime).OnCompleted(() => flow.Stop()))
-                                    .Queue(new Tween(HalfTestTime))
+                                    .Queue(new Tween(QuarterTestTime))
                                     .Start();
                 })
                 .Assert(() => Assert.AreEqual(false, hasFinished))
@@ -218,7 +218,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return new Flow()
                                     .Queue(new Tween(QuarterTestTime).OnCompleted(() => flow.Stop(true)))
-                                    .Queue(new Tween(HalfTestTime))
+                                    .Queue(new Tween(QuarterTestTime))
                                     .Start();
                 })
                 .Assert(() => Assert.AreEqual(true, hasFinished))

@@ -165,10 +165,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             const int loopCount = 2;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime)
+                .Act(() => new Tween(HalfTestTime)
                             .SetLoopCount(loopCount)
                             .Start())
-                .AssertTime(loopCount * TestTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
@@ -179,24 +179,23 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => new Tween()
-                            .SetOptions(new TweenOptions().SetTime(TestTime).SetLoopCount(loopCount))
+                            .SetOptions(new TweenOptions().SetTime(HalfTestTime).SetLoopCount(loopCount))
                             .Start())
-                .AssertTime(loopCount * TestTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator LoopCount_NullValue()
         {
-            const float tweenTime = 0.15f;
             int? loopCount = null;
-            const int loopCountTries = 5;
+            const int loopCountTries = 4;
             int loopCountCounter = 0;
 
             yield return CreateTester()
                 .Act(() =>
                 {
-                    new Tween(tweenTime)
+                    new Tween(QuarterTestTime)
                         .OnLoopCompleted((loopsLeft) =>
                         {
                             if (loopsLeft == null)
@@ -207,10 +206,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                         .SetLoopCount(loopCount)
                         .Start();
 
-                    return new Tween(loopCountTries * tweenTime).Start();
+                    return new Tween(loopCountTries * QuarterTestTime).Start();
                 })
                 .Assert(() => Assert.AreEqual(loopCountTries, loopCountCounter))
-                .AssertTime(loopCountTries * tweenTime)
+                .AssertTime(loopCountTries * QuarterTestTime)
                 .Run();
         }
 
@@ -241,13 +240,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             List<float> current = ascending;
 
             yield return CreateTester()
-                .Act(() => new Tween()
+                .Act(() => new Tween(HalfTestTime)
                             .SetLoopType(LoopType.PingPong)
                             .SetLoopCount(2)
                             .OnUpdating(t => current.Add(t))
                             .OnLoopCompleted(_ => current = descending)
                             .Start())
-                .AssertTime(2)
+                .AssertTime(TestTime)
                 .Assert(() => Assert.IsTrue(ascending.SequenceEqual(ascending.OrderBy(v => v))))
                 .Assert(() => Assert.IsTrue(descending.SequenceEqual(descending.OrderByDescending(v => v))))
                 .Run();
@@ -264,7 +263,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             bool biggerThanOne = false;
 
             yield return CreateTester()
-                .Act(() => new Tween()
+                .Act(() => new Tween(TestTime)
                             .SetEasing(Easing.EaseInOutElastic)
                             .OnUpdating(t =>
                             {
@@ -278,7 +277,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                                 }
                             })
                             .Start())
-                .AssertTime(1)
+                .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.True(smallerThanZero);
@@ -294,8 +293,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             bool biggerThanOne = false;
 
             yield return CreateTester()
-                .Act(() => new Tween()
-                            .SetEasing(Easing.EaseInOutElastic)
+                .Act(() => new Tween(TestTime)
+                            .SetEasing(Easing.EaseInOutBack)
                             .OnUpdating(t =>
                             {
                                 if (t < 0)
@@ -308,7 +307,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                                 }
                             })
                             .Start())
-                .AssertTime(1)
+                .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.True(smallerThanZero);

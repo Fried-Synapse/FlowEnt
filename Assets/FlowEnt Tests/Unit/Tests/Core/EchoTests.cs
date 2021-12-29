@@ -61,7 +61,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     Assert.True(isPaused);
                     Assert.True(echo.PlayState == PlayState.Finished);
                 })
-                .Run();
+                .Run($"Testing different states on {nameof(PlayState_Values)}", DoubleTestTime);
         }
 
         [UnityTest]
@@ -160,15 +160,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     Echo echo = new Echo()
-                                    .SetTimeout(TestTime)
+                                    .SetTimeout(HalfTestTime)
                                     .Start();
                     Flow flowControl = new Flow()
-                                    .Queue(new Echo(HalfTestTime).OnCompleted(() => echo.Pause()))
-                                    .Queue(new Echo(HalfTestTime).OnCompleted(() => echo.Resume()))
+                                    .Queue(new Echo(QuarterTestTime).OnCompleted(() => echo.Pause()))
+                                    .Queue(new Echo(QuarterTestTime).OnCompleted(() => echo.Resume()))
                                     .Start();
                     return echo;
                 })
-                .AssertTime(TestTime * 1.5f)
+                .AssertTime(ThreeQuartersTestTime)
                 .Run();
         }
 
@@ -181,12 +181,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     Echo echo = new Echo()
-                                    .SetTimeout(TestTime)
+                                    .SetTimeout(HalfTestTime)
                                     .OnCompleted(() => hasFinished = true)
                                     .Start();
                     return new Flow()
-                                    .Queue(new Echo(TestTime / 2f).OnCompleted(() => echo.Stop()))
-                                    .Queue(new Echo(TestTime))
+                                    .Queue(new Echo(QuarterTestTime).OnCompleted(() => echo.Stop()))
+                                    .Queue(new Echo(QuarterTestTime))
                                     .Start();
                 })
                 .Assert(() => Assert.AreEqual(false, hasFinished))
@@ -202,12 +202,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     Echo echo = new Echo()
-                        .SetTimeout(TestTime)
+                        .SetTimeout(HalfTestTime)
                         .OnCompleted(() => hasFinished = true)
                         .Start();
                     return new Flow()
-                        .Queue(new Echo(TestTime / 2f).OnCompleted(() => echo.Stop(true)))
-                        .Queue(new Echo(TestTime))
+                        .Queue(new Echo(QuarterTestTime).OnCompleted(() => echo.Stop(true)))
+                        .Queue(new Echo(QuarterTestTime))
                         .Start();
                 })
                 .Assert(() => Assert.AreEqual(true, hasFinished))

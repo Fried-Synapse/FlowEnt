@@ -195,10 +195,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             const int loopCount = 2;
 
             yield return CreateTester()
-                .Act(() => new Echo(TestTime)
+                .Act(() => new Echo(TestTime / loopCount)
                             .SetLoopCount(loopCount)
                             .Start())
-                .AssertTime(loopCount * TestTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
@@ -209,24 +209,23 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetOptions(new EchoOptions().SetTimeout(TestTime).SetLoopCount(loopCount))
+                            .SetOptions(new EchoOptions().SetTimeout(TestTime / loopCount).SetLoopCount(loopCount))
                             .Start())
-                .AssertTime(loopCount * TestTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator LoopCount_NullValue()
         {
-            const float echoTime = 0.15f;
             int? loopCount = null;
-            const int loopCountTries = 5;
+            const int loopCountTries = 4;
             int loopCountCounter = 0;
 
             yield return CreateTester()
                 .Act(() =>
                 {
-                    new Echo(echoTime)
+                    new Echo(QuarterTestTime)
                         .OnLoopCompleted((loopsLeft) =>
                         {
                             if (loopsLeft == null)
@@ -237,10 +236,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                         .SetLoopCount(loopCount)
                         .Start();
 
-                    return new Echo(loopCountTries * echoTime).Start();
+                    return new Echo(loopCountTries * QuarterTestTime).Start();
                 })
                 .Assert(() => Assert.AreEqual(loopCountTries, loopCountCounter))
-                .AssertTime(loopCountTries * echoTime)
+                .AssertTime(loopCountTries * QuarterTestTime)
                 .Run();
         }
 
@@ -266,7 +265,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -275,7 +273,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Echo()
                             .SetSkipFrames(skipFrames)
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
@@ -285,7 +283,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_WithOptions()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -294,7 +291,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Echo()
                             .SetOptions(new EchoOptions().SetSkipFrames(skipFrames))
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
@@ -304,7 +301,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_AutoStart()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -313,7 +309,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Echo(1f, true)
                             .SetSkipFrames(skipFrames)
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
                 .Run();
@@ -322,7 +318,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_NegativeValue()
         {
-            const float testTime = 2f;
             const int skipFrames = -20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -331,7 +326,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Echo()
                             .SetSkipFrames(skipFrames)
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(0, frameCount))
