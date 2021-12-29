@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit
 {
@@ -102,6 +103,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
                 }
             }
             Stopwatch.Stop();
+            if (Stopwatch.Elapsed.TotalSeconds > 0.6)
+            {
+                Debug.LogWarning($"Very long test. Time spent: {Stopwatch.Elapsed.TotalSeconds}s");
+            }
             yield return WaitForFrames(5);
             AssertCallback?.Invoke();
             AbrogateCallback?.Invoke();

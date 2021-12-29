@@ -324,7 +324,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -333,7 +332,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Tween()
                             .SetSkipFrames(skipFrames)
-                            .SetTime(testTime)
+                            .SetTime(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
@@ -343,7 +342,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_WithOptions()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -352,7 +350,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Tween()
                             .SetOptions(new TweenOptions().SetSkipFrames(skipFrames))
-                            .SetTime(testTime)
+                            .SetTime(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
@@ -362,7 +360,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_AutoStart()
         {
-            const float testTime = 2f;
             const int skipFrames = 20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -371,7 +368,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Tween(1f, true)
                             .SetSkipFrames(skipFrames)
-                            .SetTime(testTime)
+                            .SetTime(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
                 .Assert(() => Assert.AreEqual(skipFrames, frameCount))
                 .Run();
@@ -380,7 +377,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator SkipFrames_NegativeValue()
         {
-            const float testTime = 2f;
             const int skipFrames = -20;
             int frameCountStart = 0;
             int frameCount = 0;
@@ -389,7 +385,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Tween()
                             .SetSkipFrames(skipFrames)
-                            .SetTime(testTime)
+                            .SetTime(TestTime)
                             .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
                             .Start())
                 .Assert(() => Assert.AreEqual(0, frameCount))
@@ -400,23 +396,22 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         public IEnumerator SkipFrames_StopBeforeStart()
         {
             const int skipFrames = 10000;
-            const float time = 0.1f;
             bool onStartedCalled = false;
             Tween controlTween = null;
 
             yield return CreateTester()
                 .Act(() =>
                 {
-                    Tween tween = new Tween(time)
+                    Tween tween = new Tween(QuarterTestTime)
                             .SetSkipFrames(skipFrames)
                             .OnStarted(() => onStartedCalled = true)
                             .Start();
 
-                    controlTween = new Tween(time).OnCompleted(() => tween.Stop(true)).Start();
+                    controlTween = new Tween(QuarterTestTime).OnCompleted(() => tween.Stop(true)).Start();
 
                     return tween;
                 })
-                .AssertTime((stopwatch) => FlowEntAssert.Time(time + controlTween.OverDraft.Value, (float)stopwatch.Elapsed.TotalSeconds))
+                .AssertTime((stopwatch) => FlowEntAssert.Time(QuarterTestTime + controlTween.OverDraft.Value, (float)stopwatch.Elapsed.TotalSeconds))
                 .Assert(() => Assert.False(onStartedCalled))
                 .Run();
         }
@@ -428,66 +423,56 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator Delay()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Tween()
-                            .SetDelay(delay)
-                            .SetTime(testTime)
+                            .SetDelay(HalfTestTime)
+                            .SetTime(HalfTestTime)
                             .Start())
-                .AssertTime(delay + testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_AutoStart()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Tween(1f, true)
-                            .SetDelay(delay)
-                            .SetTime(testTime))
-                .AssertTime(delay + testTime)
+                            .SetDelay(HalfTestTime)
+                            .SetTime(HalfTestTime))
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_WithOptions()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Tween()
-                            .SetOptions(new TweenOptions().SetDelay(delay))
-                            .SetTime(testTime)
+                            .SetOptions(new TweenOptions().SetDelay(HalfTestTime))
+                            .SetTime(HalfTestTime)
                             .Start())
-                .AssertTime(delay + testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_NegativeValue()
         {
-            const float testTime = 2f;
             const float delay = -2f;
 
             yield return CreateTester()
                 .Act(() => new Tween()
                             .SetDelay(delay)
-                            .SetTime(testTime)
+                            .SetTime(TestTime)
                             .Start())
-                .AssertTime(testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_StopBeforeStart()
         {
-            const float delay = 1f;
+            const float delay = TestTime;
             const float time = delay / 2;
             bool onStartedCalled = false;
             Tween controlTween = null;

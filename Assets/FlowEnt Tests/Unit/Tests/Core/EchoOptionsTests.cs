@@ -370,66 +370,56 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator Delay()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetDelay(delay)
-                            .SetTimeout(testTime)
+                            .SetDelay(HalfTestTime)
+                            .SetTimeout(HalfTestTime)
                             .Start())
-                .AssertTime(delay + testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_AutoStart()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo(1f, true)
-                            .SetDelay(delay)
-                            .SetTimeout(testTime))
-                .AssertTime(delay + testTime)
+                            .SetDelay(HalfTestTime)
+                            .SetTimeout(HalfTestTime))
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_WithOptions()
         {
-            const float testTime = 2f;
-            const float delay = 2f;
-
             yield return CreateTester()
                 .Act(() => new Echo()
-                            .SetOptions(new EchoOptions().SetDelay(delay))
-                            .SetTimeout(testTime)
+                            .SetOptions(new EchoOptions().SetDelay(HalfTestTime))
+                            .SetTimeout(HalfTestTime)
                             .Start())
-                .AssertTime(delay + testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_NegativeValue()
         {
-            const float testTime = 2f;
             const float delay = -2f;
 
             yield return CreateTester()
                 .Act(() => new Echo()
                             .SetDelay(delay)
-                            .SetTimeout(testTime)
+                            .SetTimeout(TestTime)
                             .Start())
-                .AssertTime(testTime)
+                .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_StopBeforeStart()
         {
-            const float delay = 1f;
+            const float delay = TestTime;
             const float time = delay / 2;
             bool onStartedCalled = false;
             Echo controlEcho = null;
