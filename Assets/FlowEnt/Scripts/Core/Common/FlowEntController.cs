@@ -41,6 +41,11 @@ namespace FriedSynapse.FlowEnt
         public static bool HasInstance => instance != null;
 
         private readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
+        private readonly UpdatablesFastList<AbstractUpdatable> smoothUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        private readonly UpdatablesFastList<AbstractUpdatable> lateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        private readonly UpdatablesFastList<AbstractUpdatable> smoothLateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        private readonly UpdatablesFastList<AbstractUpdatable> fixedUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        private readonly UpdatablesFastList<AbstractUpdatable> customUpdatables = new UpdatablesFastList<AbstractUpdatable>();
 
         private float timeScale = 1f;
 
@@ -79,8 +84,43 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
+            Update(updatables, Time.deltaTime);
+            Update(smoothUpdatables, Time.smoothDeltaTime);
+        }
 
-            float deltaTime = Time.deltaTime * timeScale;
+        private void LateUpdate()
+        {
+            if (playState != PlayState.Playing)
+            {
+                return;
+            }
+            Update(lateUpdatables, Time.deltaTime);
+            Update(smoothLateUpdatables, Time.smoothDeltaTime);
+        }
+
+        private void FixedUpdate()
+        {
+            if (playState != PlayState.Playing)
+            {
+                return;
+            }
+            Update(fixedUpdatables, Time.fixedDeltaTime);
+        }
+
+        public void CustomUpdate(float deltaTime)
+        {
+            if (playState != PlayState.Playing)
+            {
+                return;
+            }
+            Update(customUpdatables, deltaTime);
+        }
+
+#pragma warning restore IDE0051, RCS1213
+
+        private void Update(UpdatablesFastList<AbstractUpdatable> updatables, float deltaTime)
+        {
+            float scaledDeltaTime = deltaTime * timeScale;
             AbstractUpdatable index = updatables.anchor.next;
 
             while (index != null)
@@ -89,7 +129,7 @@ namespace FriedSynapse.FlowEnt
                 try
                 {
 #endif
-                index.UpdateInternal(deltaTime);
+                index.UpdateInternal(scaledDeltaTime);
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
                 }
                 catch (Exception ex)
@@ -104,18 +144,57 @@ namespace FriedSynapse.FlowEnt
                 index = index.next;
             }
         }
-#pragma warning restore IDE0051, RCS1213
 
         #region IUpdateController
 
         void IUpdateController.SubscribeToUpdate(AbstractUpdatable updatable)
         {
-            updatables.Add(updatable);
+            switch (updatable.updateType)
+            {
+                case UpdateType.Update:
+                    updatables.Add(updatable);
+                    break;
+                case UpdateType.SmoothUpdate:
+                    smoothUpdatables.Add(updatable);
+                    break;
+                case UpdateType.LateUpdate:
+                    lateUpdatables.Add(updatable);
+                    break;
+                case UpdateType.SmoothLateUpdate:
+                    smoothLateUpdatables.Add(updatable);
+                    break;
+                case UpdateType.FixedUpdate:
+                    fixedUpdatables.Add(updatable);
+                    break;
+                case UpdateType.Custom:
+                    customUpdatables.Add(updatable);
+                    break;
+            }
         }
 
         void IUpdateController.UnsubscribeFromUpdate(AbstractUpdatable updatable)
         {
-            updatables.Remove(updatable);
+            switch (updatable.updateType)
+            {
+                case UpdateType.Update:
+                    updatables.Remove(updatable);
+                    break;
+                case UpdateType.SmoothUpdate:
+                    smoothUpdatables.Remove(updatable);
+                    break;
+                case UpdateType.LateUpdate:
+                    lateUpdatables.Remove(updatable);
+                    break;
+                case UpdateType.SmoothLateUpdate:
+                    smoothLateUpdatables.Remove(updatable);
+                    break;
+                case UpdateType.FixedUpdate:
+                    fixedUpdatables.Remove(updatable);
+                    break;
+                case UpdateType.Custom:
+                    customUpdatables.Remove(updatable);
+                    break;
+            }
         }
 
         #endregion

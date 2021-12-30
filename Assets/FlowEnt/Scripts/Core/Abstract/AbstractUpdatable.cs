@@ -64,6 +64,8 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public string Name { get; set; }
 
+        internal UpdateType updateType;
+
         internal IUpdateController updateController;
 
         #region Events

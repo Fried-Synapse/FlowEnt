@@ -201,6 +201,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetUpdateType
+        public TweenMotionProxy<TItem> SetUpdateType(UpdateType updateType)
+        {
+            Tween.SetUpdateType(updateType);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetAutoStart
         public TweenMotionProxy<TItem> SetAutoStart(bool autoStart)
         {

@@ -199,6 +199,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetUpdateType
+        public EchoMotionProxy<TItem> SetUpdateType(UpdateType updateType)
+        {
+            Echo.SetUpdateType(updateType);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetAutoStart
         public EchoMotionProxy<TItem> SetAutoStart(bool autoStart)
         {

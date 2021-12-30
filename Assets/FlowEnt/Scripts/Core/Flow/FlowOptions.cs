@@ -23,6 +23,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetUpdateType
+        public new FlowOptions SetUpdateType(UpdateType updateType)
+        {
+            base.SetUpdateType(updateType);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetAutoStart
         public new FlowOptions SetAutoStart(bool autoStart)
         {

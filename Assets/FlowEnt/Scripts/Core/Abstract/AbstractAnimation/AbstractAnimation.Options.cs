@@ -4,9 +4,53 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class AbstractAnimation : IFluentAnimationOptionable<AbstractAnimation>
     {
+        public UpdateType UpdateType { get => updateType; set => updateType = value; }
+        public bool AutoStart
+        {
+            protected set
+            {
+                if (value)
+                {
+                    autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
+                    startHelper = autoStartHelper;
+                }
+                else
+                {
+                    if (autoStartHelper != null)
+                    {
+                        CancelAutoStart();
+                    }
+                }
+            }
+            get => autoStartHelper != null;
+        }
+        private protected int skipFrames;
+        private protected float delay;
+        private protected int? loopCount = AbstractAnimationOptions.DefaultLoopCount;
+        private protected float timeScale = AbstractAnimationOptions.DefaultTimeScale;
+        public float TimeScale
+        {
+            get => timeScale;
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
+                }
+                timeScale = value;
+            }
+        }
+
+        private protected PlayState playState;
+        /// <summary>
+        /// The current state of the animation.
+        /// </summary>
+        public PlayState PlayState => playState;
+
         protected void SetOptions(AbstractAnimationOptions options)
         {
             Name = options.Name;
+            UpdateType = options.UpdateType;
             AutoStart = options.AutoStart;
             skipFrames = options.SkipFrames;
             delay = options.Delay;
@@ -19,6 +63,14 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimation SetName(string name)
         {
             Name = name;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetUpdateType
+        public AbstractAnimation SetUpdateType(UpdateType updateType)
+        {
+            UpdateType = updateType;
             return this;
         }
 
