@@ -12,7 +12,7 @@ using UnityEngine;
         {
         }
 
-        public override void OnUpdate(float t)
+        public override void OnUpdate(float deltaTime)
         {
         }
 

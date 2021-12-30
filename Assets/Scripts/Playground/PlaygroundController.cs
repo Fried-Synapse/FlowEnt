@@ -14,6 +14,7 @@ namespace FriedSynapse.FlowEnt.Builder
 #pragma warning disable IDE0051, RCS1213
         private void Start()
         {
+            Objects[0].Echo().MoveTowardsElastic(Objects[1], 3).LookAt(Objects[1]).Start();
         }
 
         private void OnDrawGizmos()

@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
     public abstract class AbstractEchoMotion : IEchoMotion
     {
         public virtual void OnStart() { }
-        public abstract void OnUpdate(float t);
+        public abstract void OnUpdate(float deltaTime);
         public virtual void OnLoopComplete() { }
         public virtual void OnComplete() { }
     }
