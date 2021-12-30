@@ -9,7 +9,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
         {
         }
 
-        public override void OnUpdate(float t)
+        public override void OnUpdate(float deltaTime)
         {
             if (particles.Length < item.main.maxParticles)
             {
@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
             for (int i = 0; i < activeCount; i++)
             {
                 Particle particle = particles[i];
-                particles[i].position = Vector3.MoveTowards(particles[i].position, target, t * speed * Vector3.Distance(particle.position, target));
+                particles[i].position = Vector3.MoveTowards(particles[i].position, target, deltaTime * speed * Vector3.Distance(particle.position, target));
             }
             item.SetParticles(particles, activeCount);
         }

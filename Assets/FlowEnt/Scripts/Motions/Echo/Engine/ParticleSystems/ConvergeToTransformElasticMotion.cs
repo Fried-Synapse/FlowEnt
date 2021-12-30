@@ -11,10 +11,10 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
 
         private new readonly Transform target;
 
-        public override void OnUpdate(float t)
+        public override void OnUpdate(float deltaTime)
         {
             base.target = target.position;
-            base.OnUpdate(t);
+            base.OnUpdate(deltaTime);
         }
     }
 }

@@ -19,9 +19,9 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
         protected Vector3 target;
         protected float speed;
 
-        public override void OnUpdate(float t)
+        public override void OnUpdate(float deltaTime)
         {
-            item.position = Vector3.MoveTowards(item.position, target, speed * t);
+            item.position = Vector3.MoveTowards(item.position, target, speed * deltaTime);
         }
     }
 }

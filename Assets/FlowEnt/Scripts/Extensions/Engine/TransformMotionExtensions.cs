@@ -598,7 +598,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> LookAt<TTransform>(this TweenMotionProxy<TTransform> proxy, Transform target)
             where TTransform : Transform
-            => proxy.Apply(new LookAtTransformMotion<TTransform>(proxy.Item, target));
+            => proxy.Apply(new Motions.Tween.Transforms.LookAtTransformMotion<TTransform>(proxy.Item, target));
 
         /// <summary>
         /// Applies a <see cref="LookAtVector3Motion{TTransform}" /> to the tween.
@@ -608,7 +608,27 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> LookAt<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 target)
             where TTransform : Transform
-            => proxy.Apply(new LookAtVector3Motion<TTransform>(proxy.Item, target));
+            => proxy.Apply(new Motions.Tween.Transforms.LookAtVector3Motion<TTransform>(proxy.Item, target));
+
+        /// <summary>
+        /// Applies a <see cref="LookAtTransformMotion{TTransform}" /> to the echo.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="target"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static EchoMotionProxy<TTransform> LookAt<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target)
+            where TTransform : Transform
+            => proxy.Apply(new Motions.Echo.Transforms.LookAtTransformMotion<TTransform>(proxy.Item, target));
+
+        /// <summary>
+        /// Applies a <see cref="LookAtVector3Motion{TTransform}" /> to the echo.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="target"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static EchoMotionProxy<TTransform> LookAt<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target)
+            where TTransform : Transform
+            => proxy.Apply(new Motions.Echo.Transforms.LookAtVector3Motion<TTransform>(proxy.Item, target));
 
         #endregion
 

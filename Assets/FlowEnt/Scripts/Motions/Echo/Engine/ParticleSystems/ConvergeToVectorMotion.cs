@@ -6,9 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
 {
     public class ConvergeToVectorMotion : AbstractEchoMotion<ParticleSystem>
     {
-#pragma warning disable RCS1158
         public const float DefaultSpeed = 1f;
-#pragma warning restore RCS1158
         public ConvergeToVectorMotion(ParticleSystem item, Vector3 target, float speed = DefaultSpeed) : base(item)
         {
             this.target = target;
@@ -19,7 +17,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
         protected float speed;
         protected Particle[] particles = new Particle[0];
 
-        public override void OnUpdate(float t)
+        public override void OnUpdate(float deltaTime)
         {
             if (particles.Length < item.main.maxParticles)
             {
@@ -29,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
             int activeCount = item.GetParticles(particles);
             for (int i = 0; i < activeCount; i++)
             {
-                particles[i].position = Vector3.MoveTowards(particles[i].position, target, t * speed);
+                particles[i].position = Vector3.MoveTowards(particles[i].position, target, deltaTime * speed);
             }
             item.SetParticles(particles, activeCount);
         }

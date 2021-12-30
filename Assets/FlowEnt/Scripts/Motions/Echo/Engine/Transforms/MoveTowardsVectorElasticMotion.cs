@@ -12,10 +12,10 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
 
         private new readonly float speed;
 
-        public override void OnUpdate(float t)
+        public override void OnUpdate(float deltaTime)
         {
             base.speed = speed * Vector3.Distance(item.position, target);
-            base.OnUpdate(t);
+            base.OnUpdate(deltaTime);
         }
     }
 }
