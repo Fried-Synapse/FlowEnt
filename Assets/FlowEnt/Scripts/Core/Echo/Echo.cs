@@ -6,6 +6,10 @@ using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// An echo is a simple update loop that provides a delta time and other settings for custom animation
+    /// For more information please go to https://flowent.friedsynapse.com/echo
+    /// </summary>
     public sealed partial class Echo : AbstractAnimation,
         IFluentControllable<Echo>
     {

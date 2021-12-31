@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    [CustomPropertyDrawer(typeof(TweenOptionsBuilder))]
-    public class TweenOptionsBuilderPropertyDrawer : AbstractBuilderPropertyDrawer<TweenOptionsBuilderPropertyDrawer.PropertiesEnum>
+    [CustomPropertyDrawer(typeof(EchoOptionsBuilder))]
+    public class EchoOptionsBuilderPropertyDrawer : AbstractBuilderPropertyDrawer<EchoOptionsBuilderPropertyDrawer.PropertiesEnum>
     {
         public enum PropertiesEnum
         {
@@ -14,10 +14,8 @@ namespace FriedSynapse.FlowEnt.Editor
             skipFrames,
             delay,
             timeScale,
-            time,
-            easing,
+            timeout,
             loopCount,
-            loopType
         }
 
         protected override float PropertyHeight => EditorGUIUtility.singleLineHeight;
@@ -30,6 +28,9 @@ namespace FriedSynapse.FlowEnt.Editor
                 Rect propertyPosition = FlowEntDrawers.GetRect(position, i + 1);
                 switch (prop)
                 {
+                    case PropertiesEnum.timeout:
+                        DrawNullable(propertyPosition, property, nameof(PropertiesEnum.timeout), "hasTimeout");
+                        break;
                     case PropertiesEnum.loopCount:
                         DrawNullable(propertyPosition, property, nameof(PropertiesEnum.loopCount), "isLoopCountInfinite", true);
                         break;

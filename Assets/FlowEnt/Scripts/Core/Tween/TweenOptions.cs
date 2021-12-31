@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     /// <summary>
-    /// Provides options for tweens.
+    /// Provides options for tween.
     /// </summary>
     public class TweenOptions : AbstractAnimationOptions, IFluentTweenOptionable<TweenOptions>
     {

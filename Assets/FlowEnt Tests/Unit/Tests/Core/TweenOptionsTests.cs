@@ -28,6 +28,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Assert(() =>
                 {
                     Assert.AreEqual(Variables.TweenOptionsBuilder.Name, tweenOptions.Name);
+                    Assert.AreEqual(Variables.TweenOptionsBuilder.UpdateType, tweenOptions.UpdateType);
                     Assert.AreEqual(Variables.TweenOptionsBuilder.AutoStart, tweenOptions.AutoStart);
                     Assert.AreEqual(Variables.TweenOptionsBuilder.SkipFrames, tweenOptions.SkipFrames);
                     Assert.AreEqual(Variables.TweenOptionsBuilder.Delay, tweenOptions.Delay);

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class TweenEventsBuilder : AbstractAnimationEventsBuilder<TweenEvents>
+    public class EchoEventsBuilder : AbstractAnimationEventsBuilder<EchoEvents>
     {
 #pragma warning disable RCS1085, RCS1169, IDE0044
         [SerializeField]
@@ -19,12 +19,11 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private UnityEvent onCompleting;
         public UnityEvent OnCompleting => onCompleting;
-
 #pragma warning restore RCS1085, RCS1169, IDE0044
 
-        public override TweenEvents Build()
+        public override EchoEvents Build()
         {
-            TweenEvents events = base.Build();
+            EchoEvents events = base.Build();
             if (onStarting?.GetPersistentEventCount() > 0)
             {
                 events.OnStarting(() => onStarting.Invoke());

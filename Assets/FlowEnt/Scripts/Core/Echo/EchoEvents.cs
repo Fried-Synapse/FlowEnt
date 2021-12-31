@@ -2,6 +2,9 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Provides events for echo.
+    /// </summary>
     public class EchoEvents : AbstractAnimationEvents,
         IFluentEchoEventable<EchoEvents>
     {

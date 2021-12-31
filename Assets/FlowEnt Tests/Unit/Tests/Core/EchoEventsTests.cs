@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
@@ -15,27 +17,27 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #region Builder
 
-        // [UnityTest]
-        // public IEnumerator Builder()
-        // {
-        //     EchoEvents echoEvents = default;
+        [UnityTest]
+        public IEnumerator Builder()
+        {
+            EchoEvents echoEvents = default;
 
-        //     yield return CreateTester()
-        //         .Act(() => echoEvents = Variables.EchoEventsBuilder.Build())
-        //         .Assert(() =>
-        //         {
-        //             static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
+            yield return CreateTester()
+                .Act(() => echoEvents = Variables.EchoEventsBuilder.Build())
+                .Assert(() =>
+                {
+                    static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
 
-        //             assert(Variables.EchoEventsBuilder.OnStarting, echoEvents.OnStartingEvent);
-        //             assert(Variables.EchoEventsBuilder.OnStarted, echoEvents.OnStartedEvent);
-        //             assert(Variables.EchoEventsBuilder.OnUpdating, echoEvents.OnUpdatingEvent);
-        //             assert(Variables.EchoEventsBuilder.OnUpdated, echoEvents.OnUpdatedEvent);
-        //             assert(Variables.EchoEventsBuilder.OnLoopCompleted, echoEvents.OnLoopCompletedEvent);
-        //             assert(Variables.EchoEventsBuilder.OnCompleted, echoEvents.OnCompletedEvent);
-        //             assert(Variables.EchoEventsBuilder.OnCompleting, echoEvents.OnCompletingEvent);
-        //         })
-        //         .Run();
-        // }
+                    assert(Variables.EchoEventsBuilder.OnStarting, echoEvents.OnStartingEvent);
+                    assert(Variables.EchoEventsBuilder.OnStarted, echoEvents.OnStartedEvent);
+                    assert(Variables.EchoEventsBuilder.OnUpdating, echoEvents.OnUpdatingEvent);
+                    assert(Variables.EchoEventsBuilder.OnUpdated, echoEvents.OnUpdatedEvent);
+                    assert(Variables.EchoEventsBuilder.OnLoopCompleted, echoEvents.OnLoopCompletedEvent);
+                    assert(Variables.EchoEventsBuilder.OnCompleted, echoEvents.OnCompletedEvent);
+                    assert(Variables.EchoEventsBuilder.OnCompleting, echoEvents.OnCompletingEvent);
+                })
+                .Run();
+        }
 
         #endregion
 

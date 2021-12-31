@@ -15,34 +15,40 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #region Builder
 
-        // [UnityTest]
-        // public IEnumerator Builder()
-        // {
-        //     EchoOptions echoOptions = default;
+        [UnityTest]
+        public IEnumerator Builder()
+        {
+            EchoOptions echoOptions = default;
 
-        //     yield return CreateTester()
-        //         .Act(() => echoOptions = Variables.EchoOptionsBuilder.Build())
-        //         .Assert(() =>
-        //         {
-        //             Assert.AreEqual(Variables.EchoOptionsBuilder.Name, echoOptions.Name);
-        //             Assert.AreEqual(Variables.EchoOptionsBuilder.AutoStart, echoOptions.AutoStart);
-        //             Assert.AreEqual(Variables.EchoOptionsBuilder.SkipFrames, echoOptions.SkipFrames);
-        //             Assert.AreEqual(Variables.EchoOptionsBuilder.Delay, echoOptions.Delay);
-        //             Assert.AreEqual(Variables.EchoOptionsBuilder.TimeScale, echoOptions.TimeScale);
-        //             Assert.AreEqual(Variables.EchoOptionsBuilder.Time, echoOptions.Time);
-        //             Assert.AreEqual(EasingFactory.Create(Variables.EchoOptionsBuilder.Easing).GetType().FullName, echoOptions.Easing.GetType().FullName);
-        //             if (Variables.EchoOptionsBuilder.IsLoopCountInfinite)
-        //             {
-        //                 Assert.AreEqual(null, echoOptions.LoopCount);
-        //             }
-        //             else
-        //             {
-        //                 Assert.AreEqual(Variables.EchoOptionsBuilder.LoopCount, echoOptions.LoopCount);
-        //             }
-        //             Assert.AreEqual(Variables.EchoOptionsBuilder.LoopType, echoOptions.LoopType);
-        //         })
-        //         .Run();
-        // }
+            yield return CreateTester()
+                .Act(() => echoOptions = Variables.EchoOptionsBuilder.Build())
+                .Assert(() =>
+                {
+                    Assert.AreEqual(Variables.EchoOptionsBuilder.Name, echoOptions.Name);
+                    Assert.AreEqual(Variables.EchoOptionsBuilder.UpdateType, echoOptions.UpdateType);
+                    Assert.AreEqual(Variables.EchoOptionsBuilder.AutoStart, echoOptions.AutoStart);
+                    Assert.AreEqual(Variables.EchoOptionsBuilder.SkipFrames, echoOptions.SkipFrames);
+                    Assert.AreEqual(Variables.EchoOptionsBuilder.Delay, echoOptions.Delay);
+                    Assert.AreEqual(Variables.EchoOptionsBuilder.TimeScale, echoOptions.TimeScale);
+                    if (Variables.EchoOptionsBuilder.HasTimeout)
+                    {
+                        Assert.AreEqual(Variables.EchoOptionsBuilder.Timeout, echoOptions.Timeout);
+                    }
+                    else
+                    {
+                        Assert.AreEqual(null, echoOptions.Timeout);
+                    }
+                    if (Variables.EchoOptionsBuilder.IsLoopCountInfinite)
+                    {
+                        Assert.AreEqual(null, echoOptions.LoopCount);
+                    }
+                    else
+                    {
+                        Assert.AreEqual(Variables.EchoOptionsBuilder.LoopCount, echoOptions.LoopCount);
+                    }
+                })
+                .Run();
+        }
 
         #endregion
 
