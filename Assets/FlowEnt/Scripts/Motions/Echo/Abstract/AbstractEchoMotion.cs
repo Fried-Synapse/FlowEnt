@@ -1,9 +1,11 @@
+using FriedSynapse.FlowEnt.Motions.Abstract;
+
 namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
 {
     /// <summary>
     /// Abstract Motion that can be used to create a simple motion.
     /// </summary>
-    public abstract class AbstractEchoMotion : IEchoMotion
+    public abstract class AbstractEchoMotion : AbstractMotion, IEchoMotion
     {
         public virtual void OnStart() { }
         public abstract void OnUpdate(float deltaTime);

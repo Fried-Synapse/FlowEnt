@@ -48,6 +48,7 @@ namespace FriedSynapse.FlowEnt.Demo
         private Phase5Animation Phase5Animation => phase5Animation;
 #pragma warning restore RCS1169, IDE0044
 
+#pragma warning disable IDE0051, RCS1213
         private void Awake()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
@@ -71,6 +72,7 @@ namespace FriedSynapse.FlowEnt.Demo
                 .OnCompleted(() => ReplayButton.gameObject.SetActive(true))
                 .Start();
         }
+#pragma warning restore IDE0051, RCS1213
 
         private AbstractAnimation TurnOffLights() =>
             new Tween(4f).SetEasing(Easing.EaseInOutSine)
@@ -85,11 +87,13 @@ namespace FriedSynapse.FlowEnt.Demo
         #region Editor
 
 #if UNITY_EDITOR
+#pragma warning disable IDE0051, RCS1213
         private void OnDrawGizmos()
         {
             CameraAnimation.OnDraw();
             CharacterAnimation.OnDraw();
         }
+#pragma warning restore IDE0051, RCS1213
 #endif
 
         #endregion
