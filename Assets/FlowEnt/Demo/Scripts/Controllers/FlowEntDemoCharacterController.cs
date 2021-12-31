@@ -17,8 +17,8 @@ namespace FriedSynapse.FlowEnt.Demo
         {
             CharacterController
                 .Echo()
-                .Move(10f)
-                .Rotate(Camera.transform, 5f)
+                    .Move(10f)
+                    .Rotate(Camera.transform, 5f)
                 .Start();
         }
     }

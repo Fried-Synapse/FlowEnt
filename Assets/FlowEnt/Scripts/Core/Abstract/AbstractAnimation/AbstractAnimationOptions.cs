@@ -26,6 +26,11 @@ namespace FriedSynapse.FlowEnt
         public string Name { get; set; }
 
         /// <summary>
+        /// The update type of the animation.
+        /// </summary>
+        public UpdateType UpdateType { get; set; }
+
+        /// <summary>
         /// Whether the animation should auto start or not. If set to false, you need to start the animation manually.
         /// </summary>
         /// <remarks>
@@ -83,6 +88,14 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimationOptions SetName(string name)
         {
             Name = name;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetName
+        public AbstractAnimationOptions SetUpdateType(UpdateType updateType)
+        {
+            UpdateType = updateType;
             return this;
         }
 

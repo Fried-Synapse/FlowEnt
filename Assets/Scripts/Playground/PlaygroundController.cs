@@ -15,6 +15,11 @@ namespace FriedSynapse.FlowEnt.Builder
         private void Start()
         {
             Objects[0].Echo().MoveTowardsElastic(Objects[1], 3).LookAt(Objects[1]).Start();
+            new Echo().SetName("Update").Debug().Start();
+            new Echo().SetName("Smooth Update").SetUpdateType(UpdateType.SmoothUpdate).Debug().Start();
+            new Echo().SetName("Late Update").SetUpdateType(UpdateType.LateUpdate).Debug().Start();
+            new Echo().SetName("Smooth Late Update").SetUpdateType(UpdateType.SmoothLateUpdate).Debug().Start();
+            new Echo().SetName("Fixed Update").SetUpdateType(UpdateType.FixedUpdate).Debug().Start();
         }
 
         private void OnDrawGizmos()

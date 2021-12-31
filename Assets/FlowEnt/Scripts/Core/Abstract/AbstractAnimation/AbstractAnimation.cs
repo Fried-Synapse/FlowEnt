@@ -6,57 +6,15 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Provides animation specific behaviour
     /// </summary>
-    public abstract partial class AbstractAnimation : AbstractUpdatable, IControllable
+    public abstract partial class AbstractAnimation : AbstractUpdatable,
+        IFluentControllable<AbstractAnimation>,
+        IControllable
     {
+        #region Properties       
+
         private protected AbstractStartHelper startHelper;
         private protected AutoStartHelper autoStartHelper;
 
-        #region Options
-
-        private protected int skipFrames;
-        private protected float delay;
-        private protected int? loopCount = AbstractAnimationOptions.DefaultLoopCount;
-        private protected float timeScale = AbstractAnimationOptions.DefaultTimeScale;
-        public float TimeScale
-        {
-            get => timeScale;
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
-                }
-                timeScale = value;
-            }
-        }
-        #endregion
-
-        #region Settings Properties
-
-        public bool AutoStart
-        {
-            protected set
-            {
-                if (value)
-                {
-                    autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
-                    startHelper = autoStartHelper;
-                }
-                else
-                {
-                    if (autoStartHelper != null)
-                    {
-                        CancelAutoStart();
-                    }
-                }
-            }
-            get => autoStartHelper != null;
-        }
-        private protected PlayState playState;
-        /// <summary>
-        /// The current state of the animation.
-        /// </summary>
-        public PlayState PlayState => playState;
         private protected float? overdraft;
         /// <summary>
         /// THe amount of scaled time unconsumed by this animation from the last frame.
@@ -126,7 +84,7 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="AbstractUpdatable.Stop(bool)"/>
         /// \copydoc AbstractUpdatable.Stop
-        //TODO make this return AbstractAnimation
+        //TODO make this return AbstractAnimation.
         public override void Stop(bool triggerOnCompleted = false)
         {
             switch (playState)
@@ -151,21 +109,29 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
+        //TODO this should be implemented by the default stop.
+        AbstractAnimation IFluentControllable<AbstractAnimation>.Stop(bool triggerOnCompleted)
+        {
+            Stop(triggerOnCompleted);
+            return this;
+        }
+
         /// <summary>
         /// Resets the animation so in can be replayed.
         /// </summary>
         public AbstractAnimation Reset()
         {
-            if (this is Tween tween)
+            switch (this)
             {
-                tween.Reset();
-                return this;
-            }
-
-            if (this is Flow flow)
-            {
-                flow.Reset();
-                return this;
+                case Tween tween:
+                    tween.Reset();
+                    return this;
+                case Echo echo:
+                    echo.Reset();
+                    return this;
+                case Flow flow:
+                    flow.Reset();
+                    return this;
             }
             return this;
         }

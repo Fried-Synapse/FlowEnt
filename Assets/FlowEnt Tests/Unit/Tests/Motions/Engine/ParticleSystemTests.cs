@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             main.startSpeed = 0;
         }
 
-        private const float Speed = 30f;
+        private const float Speed = 50f;
         private const float ConvergeToValue = 2f;
 
         [UnityTest]

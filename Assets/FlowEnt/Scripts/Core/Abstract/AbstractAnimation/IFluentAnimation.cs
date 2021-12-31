@@ -11,6 +11,12 @@ namespace FriedSynapse.FlowEnt
         TAnimation SetName(string name);
 
         /// <summary>
+        /// Sets the update type for the animation.
+        /// </summary>
+        /// <param name="updateType"></param>
+        TAnimation SetUpdateType(UpdateType updateType);
+
+        /// <summary>
         /// Sets whether this animation should auto-start or not.
         /// </summary>
         /// <remarks>Auto-start will be slower than a true-start. See more at https://flowent.friedsynapse.com/tips#h.s5cucrg5qyjc</remarks>

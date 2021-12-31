@@ -1447,7 +1447,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #region MoveTowards
 
-        private const float Speed = 30f;
+        private const float Speed = 50f;
         private const float MoveTowardsValue = 2f;
 
         [UnityTest]
