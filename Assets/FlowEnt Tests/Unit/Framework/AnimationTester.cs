@@ -20,6 +20,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         private AbstractTests Tests { get; }
         private int Count { get; }
         private Action ArrangeCallback { get; set; }
+        private int ActDelay { get; set; }
         private Func<AbstractAnimation> ActCallback { get; set; }
         private Func<IEnumerator> CustomWaiterCallback { get; set; }
         private Action AssertCallback { get; set; }
@@ -31,6 +32,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         public AnimationTester Arrange(Action callback)
         {
             ArrangeCallback = callback;
+            return this;
+        }
+
+        public AnimationTester SetActDelay(int actDelay)
+        {
+            ActDelay = actDelay;
             return this;
         }
 
@@ -108,6 +115,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             Tests.CreateObjects(Count);
             yield return WaitForFrames(5);
             ArrangeCallback?.Invoke();
+            if (ActDelay > 0)
+            {
+                yield return WaitForFrames(ActDelay);
+            }
             ControlAnimation = ActCallback.Invoke();
             Stopwatch.Start();
             if (CustomWaiterCallback != null)

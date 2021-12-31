@@ -79,11 +79,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     List<Tween> tweens = new List<Tween>();
                     for (int i = 0; i < tweensCount; i++)
                     {
-                        tweens.Add(new Tween(TestTime * 2).OnCompleted(() => comletedTweens++).Start());
+                        tweens.Add(new Tween(TestTime).OnCompleted(() => comletedTweens++).Start());
                     }
-                    return new Tween(TestTime).OnCompleted(() => FlowEntController.Instance.Stop()).Start();
+                    return new Tween(HalfTestTime).OnCompleted(() => FlowEntController.Instance.Stop()).Start();
                 })
-                .AssertTime(TestTime)
+                .AssertTime(HalfTestTime)
                 .Assert(() => Assert.AreEqual(expectedCompletedTweens, comletedTweens))
                 .Run();
         }

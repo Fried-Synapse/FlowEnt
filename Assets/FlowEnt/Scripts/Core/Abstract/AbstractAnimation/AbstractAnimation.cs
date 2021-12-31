@@ -121,16 +121,17 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public AbstractAnimation Reset()
         {
-            if (this is Tween tween)
+            switch (this)
             {
-                tween.Reset();
-                return this;
-            }
-
-            if (this is Flow flow)
-            {
-                flow.Reset();
-                return this;
+                case Tween tween:
+                    tween.Reset();
+                    return this;
+                case Echo echo:
+                    echo.Reset();
+                    return this;
+                case Flow flow:
+                    flow.Reset();
+                    return this;
             }
             return this;
         }

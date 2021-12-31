@@ -9,7 +9,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 {
     public abstract class AbstractTests
     {
-        public const float TestTime = 0.5f;
+        public const float TestTime = 0.3f;
         protected const float DoubleTestTime = TestTime * 2f;
         protected const float TripleTestTime = TestTime * 3f;
         protected const float HalfTestTime = TestTime / 2f;
