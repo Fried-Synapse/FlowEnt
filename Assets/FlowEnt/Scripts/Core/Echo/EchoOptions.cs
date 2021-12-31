@@ -2,6 +2,9 @@ using System;
 
 namespace FriedSynapse.FlowEnt
 {
+    /// <summary>
+    /// Provides options for echo.
+    /// </summary>
     public class EchoOptions : AbstractAnimationOptions, IFluentEchoOptionable<EchoOptions>
     {
         internal const string ErrorTimeoutNegative = "Value cannot be less than 0.";
