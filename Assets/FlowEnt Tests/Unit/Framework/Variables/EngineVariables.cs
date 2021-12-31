@@ -14,6 +14,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         public TweenEventsBuilder TweenEventsBuilder => tweenEventsBuilder;
 
         [SerializeField]
+        private EchoOptionsBuilder echoOptionsBuilder;
+        public EchoOptionsBuilder EchoOptionsBuilder => echoOptionsBuilder;
+
+        [SerializeField]
+        private EchoEventsBuilder echoEventsBuilder;
+        public EchoEventsBuilder EchoEventsBuilder => echoEventsBuilder;
+
+        [SerializeField]
         private Transform target;
         public Transform Target => target;
 
