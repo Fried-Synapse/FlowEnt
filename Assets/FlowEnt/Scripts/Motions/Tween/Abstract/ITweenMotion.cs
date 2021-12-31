@@ -1,6 +1,8 @@
+using FriedSynapse.FlowEnt.Motions.Abstract;
+
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
-    public interface ITweenMotion
+    public interface ITweenMotion : IMotion
     {
         public void OnStart();
         public void OnUpdate(float t);

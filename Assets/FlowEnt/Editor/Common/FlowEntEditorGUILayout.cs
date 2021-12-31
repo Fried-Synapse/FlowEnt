@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
-using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
+using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEditor;
 using UnityEngine;
 
@@ -68,7 +68,7 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>{name}</b> {updatable}</color>", LabelStyle, options);
         }
 
-        internal static void LabelField(ITweenMotion motion, params GUILayoutOption[] options)
+        internal static void LabelField(IMotion motion, params GUILayoutOption[] options)
         {
             GUIContent content = new GUIContent($"<color={FlowEntConstants.Grey}><b>{motion.GetType().Name}</b></color>", motion.GetType().FullName);
             EditorGUILayout.LabelField(content, LabelStyle, options);

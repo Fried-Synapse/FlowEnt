@@ -7,8 +7,9 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         private ControllableSection<FlowEntController> controllableSection;
         private Vector2 motionListScrollPosition;
-        private int flowCount;
         private int tweenCount;
+        private int echoCount;
+        private int flowCount;
         private string search;
 
         private void Update()
@@ -45,15 +46,20 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
-            FlowEntEditorGUILayout.LabelFieldBold($"Flow count: {flowCount}", FlowEntConstants.Grey, GUILayout.Width(200f));
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
             FlowEntEditorGUILayout.LabelFieldBold($"Tween count: {tweenCount}", FlowEntConstants.Grey, GUILayout.Width(200f));
             EditorGUILayout.EndHorizontal();
 
-            flowCount = 0;
+            EditorGUILayout.BeginHorizontal();
+            FlowEntEditorGUILayout.LabelFieldBold($"Echo count: {echoCount}", FlowEntConstants.Grey, GUILayout.Width(200f));
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            FlowEntEditorGUILayout.LabelFieldBold($"Flow count: {flowCount}", FlowEntConstants.Grey, GUILayout.Width(200f));
+            EditorGUILayout.EndHorizontal();
+
             tweenCount = 0;
+            echoCount = 0;
+            flowCount = 0;
 
             motionListScrollPosition = EditorGUILayout.BeginScrollView(motionListScrollPosition, GUILayout.Height(position.height - 150f));
             ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex());
@@ -66,6 +72,32 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 switch (index)
                 {
+                    case Tween tween:
+                        if (string.IsNullOrEmpty(search) || tween.Name?.ToLower().Contains(search.ToLower()) == true)
+                        {
+                            tweenCount++;
+                            EditorGUILayout.BeginHorizontal();
+                            FlowEntEditorGUILayout.LabelField(tween, "Tween");
+                            if (GUILayout.Button("ⓘ", GUILayout.Width(50)))
+                            {
+                                TweenInspectorWindow.Show(tween);
+                            }
+                            EditorGUILayout.EndHorizontal();
+                        }
+                        break;
+                    case Echo echo:
+                        if (string.IsNullOrEmpty(search) || echo.Name?.ToLower().Contains(search.ToLower()) == true)
+                        {
+                            echoCount++;
+                            EditorGUILayout.BeginHorizontal();
+                            FlowEntEditorGUILayout.LabelField(echo, "Echo");
+                            if (GUILayout.Button("ⓘ", GUILayout.Width(50)))
+                            {
+                                EchoInspectorWindow.Show(echo);
+                            }
+                            EditorGUILayout.EndHorizontal();
+                        }
+                        break;
                     case Flow flow:
                         if (string.IsNullOrEmpty(search) || flow.Name?.ToLower().Contains(search.ToLower()) == true)
                         {
@@ -81,19 +113,6 @@ namespace FriedSynapse.FlowEnt.Editor
                         EditorGUI.indentLevel++;
                         ShowAnimationList(flow.GetUpdatableIndex());
                         EditorGUI.indentLevel--;
-                        break;
-                    case Tween tween:
-                        if (string.IsNullOrEmpty(search) || tween.Name?.ToLower().Contains(search.ToLower()) == true)
-                        {
-                            tweenCount++;
-                            EditorGUILayout.BeginHorizontal();
-                            FlowEntEditorGUILayout.LabelField(tween, "Tween");
-                            if (GUILayout.Button("ⓘ", GUILayout.Width(50)))
-                            {
-                                TweenInspectorWindow.Show(tween);
-                            }
-                            EditorGUILayout.EndHorizontal();
-                        }
                         break;
                 }
                 index = index.GetFieldValue<AbstractUpdatable>("next");
