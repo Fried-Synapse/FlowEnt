@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt
     public static class ParticleSystemMotionExtensions
     {
         /// <summary>
-        /// Applies a <see cref="ConvergeToVectorMotion" /> to the tween.
+        /// Applies a <see cref="ConvergeToVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ConvergeToVectorMotion(proxy.Item, target, speed));
 
         /// <summary>
-        /// Applies a <see cref="ConvergeToVectorElasticMotion" /> to the tween.
+        /// Applies a <see cref="ConvergeToVectorElasticMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ConvergeToVectorElasticMotion(proxy.Item, target, speed));
 
         /// <summary>
-        /// Applies a <see cref="ConvergeToTransformMotion" /> to the tween.
+        /// Applies a <see cref="ConvergeToTransformMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -33,7 +33,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ConvergeToTransformMotion(proxy.Item, target, speed));
 
         /// <summary>
-        /// Applies a <see cref="ConvergeToTransformElasticMotion" /> to the tween.
+        /// Applies a <see cref="ConvergeToTransformElasticMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
