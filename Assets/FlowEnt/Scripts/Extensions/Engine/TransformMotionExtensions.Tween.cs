@@ -1,10 +1,9 @@
 using UnityEngine;
 using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
-using FriedSynapse.FlowEnt.Motions.Echo.Transforms;
 
 namespace FriedSynapse.FlowEnt
 {
-    public static class TransformMotionExtensions
+    public static partial class TransformMotionExtensions
     {
         #region Move
 
@@ -598,7 +597,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> LookAt<TTransform>(this TweenMotionProxy<TTransform> proxy, Transform target)
             where TTransform : Transform
-            => proxy.Apply(new Motions.Tween.Transforms.LookAtTransformMotion<TTransform>(proxy.Item, target));
+            => proxy.Apply(new LookAtTransformMotion<TTransform>(proxy.Item, target));
 
         /// <summary>
         /// Applies a <see cref="LookAtVector3Motion{TTransform}" /> to the tween.
@@ -608,27 +607,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> LookAt<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 target)
             where TTransform : Transform
-            => proxy.Apply(new Motions.Tween.Transforms.LookAtVector3Motion<TTransform>(proxy.Item, target));
-
-        /// <summary>
-        /// Applies a <see cref="LookAtTransformMotion{TTransform}" /> to the echo.
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <param name="target"></param>
-        /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> LookAt<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target)
-            where TTransform : Transform
-            => proxy.Apply(new Motions.Echo.Transforms.LookAtTransformMotion<TTransform>(proxy.Item, target));
-
-        /// <summary>
-        /// Applies a <see cref="LookAtVector3Motion{TTransform}" /> to the echo.
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <param name="target"></param>
-        /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> LookAt<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target)
-            where TTransform : Transform
-            => proxy.Apply(new Motions.Echo.Transforms.LookAtVector3Motion<TTransform>(proxy.Item, target));
+            => proxy.Apply(new LookAtVector3Motion<TTransform>(proxy.Item, target));
 
         #endregion
 
@@ -794,54 +773,6 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ScaleLocalAxisMotion<TTransform>(proxy.Item, Axis.Z, from, to));
 
         #endregion
-
-        #endregion
-
-        #region Move Towards
-
-        /// <summary>
-        /// Applies a <see cref="MoveTowardsVectorMotion{TTransform}" /> to the echo.
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <param name="target"></param>
-        /// <param name="speed"></param>
-        /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> MoveTowards<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
-            where TTransform : Transform
-            => proxy.Apply(new MoveTowardsVectorMotion<TTransform>(proxy.Item, target, speed));
-
-        /// <summary>
-        /// Applies a <see cref="MoveTowardsVectorElasticMotion{TTransform}" /> to the echo.
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <param name="target"></param>
-        /// <param name="speed"></param>
-        /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> MoveTowardsElastic<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
-            where TTransform : Transform
-            => proxy.Apply(new MoveTowardsVectorElasticMotion<TTransform>(proxy.Item, target, speed));
-
-        /// <summary>
-        /// Applies a <see cref="MoveTowardsTransformMotion{TTransform}" /> to the echo.
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <param name="target"></param>
-        /// <param name="speed"></param>
-        /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> MoveTowards<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
-            where TTransform : Transform
-            => proxy.Apply(new MoveTowardsTransformMotion<TTransform>(proxy.Item, target, speed));
-
-        /// <summary>
-        /// Applies a <see cref="MoveTowardsTransformElasticMotion{TTransform}" /> to the echo.
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <param name="target"></param>
-        /// <param name="speed"></param>
-        /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> MoveTowardsElastic<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = MoveTowardsTransformMotion<TTransform>.DefaultSpeed)
-            where TTransform : Transform
-            => proxy.Apply(new MoveTowardsTransformElasticMotion<TTransform>(proxy.Item, target, speed));
 
         #endregion
     }

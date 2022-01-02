@@ -87,6 +87,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             return this;
         }
 
+        public AnimationTester Assert<TAnimation>(Action<TAnimation> callback)
+            where TAnimation : AbstractAnimation
+        {
+            AssertCallback = () => callback.Invoke((TAnimation)ControlAnimation);
+            return this;
+        }
+
         public AnimationTester Abrogate(Action callback)
         {
             AbrogateCallback = callback;
