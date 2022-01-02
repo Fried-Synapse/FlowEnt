@@ -6,19 +6,19 @@ namespace FriedSynapse.FlowEnt
     public static class CharacterControllerMotionExtensions
     {
         /// <summary>
-        /// Applies a <see cref="MoveMotion" /> to the tween.
+        /// Applies a <see cref="MoveByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<CharacterController> Move(this EchoMotionProxy<CharacterController> proxy, float speed = MoveMotion.DefaultSpeed)
-            => proxy.Apply(new MoveMotion(proxy.Item, speed));
+        public static EchoMotionProxy<CharacterController> MoveByInput(this EchoMotionProxy<CharacterController> proxy, float speed = MoveByInputMotion.DefaultSpeed)
+            => proxy.Apply(new MoveByInputMotion(proxy.Item, speed));
 
         /// <summary>
-        /// Applies a <see cref="RotateMotion" /> to the tween.
+        /// Applies a <see cref="RotateByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<CharacterController> Rotate(this EchoMotionProxy<CharacterController> proxy, Transform camera, float speed = RotateMotion.DefaultSensitivity)
-            => proxy.Apply(new RotateMotion(proxy.Item, camera, speed));
+        public static EchoMotionProxy<CharacterController> RotateByInput(this EchoMotionProxy<CharacterController> proxy, Transform camera, float speed = RotateByInputMotion.DefaultSensitivity)
+            => proxy.Apply(new RotateByInputMotion(proxy.Item, camera, speed));
     }
 }

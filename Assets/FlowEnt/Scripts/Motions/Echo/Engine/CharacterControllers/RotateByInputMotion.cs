@@ -1,15 +1,15 @@
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEngine;
 
-namespace FriedSynapse.FlowEnt
+namespace FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
 {
     /// <summary>
     /// Rotates the charater using the inputs.
     /// </summary>
-    public class RotateMotion : AbstractEchoMotion<CharacterController>
+    public class RotateByInputMotion : AbstractEchoMotion<CharacterController>
     {
         public const float DefaultSensitivity = 5f;
-        public RotateMotion(CharacterController item, Transform camera, float sensitivity = DefaultSensitivity) : base(item)
+        public RotateByInputMotion(CharacterController item, Transform camera, float sensitivity = DefaultSensitivity) : base(item)
         {
             this.sensitivity = sensitivity;
             this.camera = camera;
@@ -29,7 +29,10 @@ namespace FriedSynapse.FlowEnt
             camera.Rotate(-verticalRotation * sensitivity, 0, 0);
 
             Vector3 currentRotation = camera.localEulerAngles;
-            if (currentRotation.x > 180) currentRotation.x -= 360;
+            if (currentRotation.x > 180)
+            {
+                currentRotation.x -= 360;
+            }
             camera.localRotation = Quaternion.Euler(currentRotation);
         }
     }
