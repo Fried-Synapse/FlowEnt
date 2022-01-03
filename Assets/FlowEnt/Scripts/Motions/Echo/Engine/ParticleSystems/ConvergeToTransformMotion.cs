@@ -4,7 +4,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
 {
     public class ConvergeToTransformMotion : ConvergeToVectorMotion
     {
-        public ConvergeToTransformMotion(ParticleSystem item, Transform target, float speed = DefaultSpeed) : base(item, target.position, speed)
+        public ConvergeToTransformMotion(ParticleSystem item, Transform target, float speed = DefaultSpeed, SpeedType speedType = DefaultSpeedType) : base(item, target.position, speed, speedType)
         {
             this.target = target;
         }

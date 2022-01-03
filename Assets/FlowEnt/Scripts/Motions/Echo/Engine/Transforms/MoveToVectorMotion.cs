@@ -18,13 +18,13 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
         public MoveToVectorMotion(TTransform item, Vector3 target, float speed = DefaultSpeed, SpeedType speedType = DefaultSpeedType) : base(item)
         {
             this.target = target;
-            this.speedType = speedType;
             this.speed = speed;
+            this.speedType = speedType;
         }
 
         protected Vector3 target;
-        private readonly SpeedType speedType;
         private readonly float speed;
+        private readonly SpeedType speedType;
 
         public override void OnUpdate(float deltaTime)
         {
