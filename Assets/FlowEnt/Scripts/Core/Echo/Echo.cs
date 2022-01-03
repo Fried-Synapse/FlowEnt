@@ -78,7 +78,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.Stop(bool)" />
-        /// \copydoc AbstractAnimation.Stop
+        /// \copydoc AbstractUpdatable.Stop
         public new Echo Stop(bool triggerOnCompleted = false)
         {
             base.Stop(triggerOnCompleted);
