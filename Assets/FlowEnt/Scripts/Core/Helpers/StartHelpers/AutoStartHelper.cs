@@ -4,7 +4,7 @@ namespace FriedSynapse.FlowEnt
 {
     internal class AutoStartHelper : AbstractStartHelper
     {
-        public AutoStartHelper(IUpdateController updateController, Action<float> callback) : base(updateController, callback)
+        public AutoStartHelper(IUpdateController updateController, UpdateType updateType, Action<float> callback) : base(updateController, updateType, callback)
         {
         }
 

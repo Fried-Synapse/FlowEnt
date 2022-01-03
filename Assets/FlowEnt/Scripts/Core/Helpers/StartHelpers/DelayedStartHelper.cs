@@ -4,7 +4,7 @@ namespace FriedSynapse.FlowEnt
 {
     internal class DelayedStartHelper : AbstractStartHelper
     {
-        public DelayedStartHelper(IUpdateController updateController, float time, Action<float> callback) : base(updateController, callback)
+        public DelayedStartHelper(IUpdateController updateController, UpdateType updateType, float time, Action<float> callback) : base(updateController, updateType, callback)
         {
             this.time = time;
         }

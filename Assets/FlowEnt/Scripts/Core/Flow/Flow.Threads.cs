@@ -111,6 +111,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="flowAwaiter"></param>
         public Flow QueueAwaiter(AbstractFlowAwaiter flowAwaiter)
         {
+            flowAwaiter.updateType = updateType;
             flowAwaiter.updateController = this;
 
             AddOrQueue(flowAwaiter);

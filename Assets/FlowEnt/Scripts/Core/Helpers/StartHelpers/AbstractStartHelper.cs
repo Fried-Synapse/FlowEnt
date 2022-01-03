@@ -4,8 +4,9 @@ namespace FriedSynapse.FlowEnt
 {
     internal abstract class AbstractStartHelper : AbstractUpdatable
     {
-        protected AbstractStartHelper(IUpdateController updateController, Action<float> callback) : base(updateController)
+        protected AbstractStartHelper(IUpdateController updateController, UpdateType updateType, Action<float> callback) : base(updateController)
         {
+            this.updateType = updateType;
             this.updateController.SubscribeToUpdate(this);
             this.callback = callback;
         }

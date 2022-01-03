@@ -4,14 +4,26 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class AbstractAnimation : IFluentAnimationOptionable<AbstractAnimation>
     {
-        public UpdateType UpdateType { get => updateType; set => updateType = value; }
+        public UpdateType UpdateType
+        {
+            get => updateType;
+            set
+            {
+                updateType = value;
+                if (AutoStart)
+                {
+                    autoStartHelper.updateType = updateType;
+                }
+            }
+        }
         public bool AutoStart
         {
+            get => autoStartHelper != null;
             protected set
             {
                 if (value)
                 {
-                    autoStartHelper = new AutoStartHelper(updateController, OnAutoStarted);
+                    autoStartHelper = new AutoStartHelper(updateController, updateType, OnAutoStarted);
                     startHelper = autoStartHelper;
                 }
                 else
@@ -22,7 +34,6 @@ namespace FriedSynapse.FlowEnt
                     }
                 }
             }
-            get => autoStartHelper != null;
         }
         private protected int skipFrames;
         private protected float delay;

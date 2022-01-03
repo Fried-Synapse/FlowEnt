@@ -4,7 +4,7 @@ namespace FriedSynapse.FlowEnt
 {
     internal class SkipFramesStartHelper : AbstractStartHelper
     {
-        public SkipFramesStartHelper(IUpdateController updateController, int frames, Action<float> callback) : base(updateController, callback)
+        public SkipFramesStartHelper(IUpdateController updateController, UpdateType updateType, int frames, Action<float> callback) : base(updateController, updateType, callback)
         {
             this.frames = frames;
         }
