@@ -7,13 +7,41 @@ using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 {
-    public class TransformTests : AbstractEngineTests
+    public class TransformTweenTests : AbstractEngineTests
     {
-        #region Move
-
-        #region Move
+        #region Constants
 
         private const float MoveValue = 4f;
+        private const float MoveFromValue = 1f;
+        private const float MoveToValue = 4f;
+        private const float MoveToSplineValue = 4f;
+        private List<Vector3> GetSpline(Vector3 to)
+        {
+            return new List<Vector3>()
+            {
+                new Vector3(0, 0, 0),
+                new Vector3(0, 2, 0),
+                new Vector3(0, 3, 3),
+                new Vector3(5, 4, 3),
+                new Vector3(0, 8, 0),
+                to
+            };
+        }
+
+        private const float RotateXValue = 20f;
+        private const float RotateYValue = 40f;
+        private const float RotateZValue = 80f;
+        private const float FullCircle = 360f;
+
+        private const float ScaleValue = 2f;
+        private const float ScaleFrom = 2f;
+        private const float ScaleTo = 4f;
+
+        #endregion
+
+        #region Move
+
+        #region Move
 
         [UnityTest]
         public IEnumerator Move()
@@ -114,9 +142,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #endregion
 
         #region MoveTo 
-
-        private const float MoveFromValue = 1f;
-        private const float MoveToValue = 4f;
 
         [UnityTest]
         public IEnumerator MoveTo()
@@ -616,20 +641,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #region MoveTo Spline
 
-        private const float MoveToSplineValue = 4f;
-        private List<Vector3> GetSpline(Vector3 to)
-        {
-            return new List<Vector3>()
-            {
-                new Vector3(0, 0, 0),
-                new Vector3(0, 2, 0),
-                new Vector3(0, 3, 3),
-                new Vector3(5, 4, 3),
-                new Vector3(0, 8, 0),
-                to
-            };
-        }
-
         [UnityTest]
         public IEnumerator MoveToSpline_Linear()
         {
@@ -683,11 +694,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #endregion
 
         #region Rotate
-
-        private const float RotateXValue = 20f;
-        private const float RotateYValue = 40f;
-        private const float RotateZValue = 80f;
-        private const float FullCircle = 360f;
 
         #region Rotate
 
@@ -1119,8 +1125,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #region Scale
 
-        private const float ScaleValue = 2f;
-
         [UnityTest]
         public IEnumerator Scale()
         {
@@ -1180,9 +1184,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #endregion
 
         #region ScaleLocalTo
-
-        private const float ScaleFrom = 2f;
-        private const float ScaleTo = 4f;
 
         [UnityTest]
         public IEnumerator ScaleLocalTo()
@@ -1442,57 +1443,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         }
 
         #endregion
-
-        #endregion
-
-        #region MoveTowards
-
-        private const float Speed = 50f;
-        private const float MoveTowardsValue = 2f;
-
-        [UnityTest]
-        public IEnumerator MoveTowardsVector()
-        {
-            Vector3 target = new Vector3(MoveTowardsValue, MoveTowardsValue, MoveTowardsValue);
-
-            yield return CreateTester()
-                .Act(() => GameObject.transform.Echo(TestTime).MoveTowards(target, Speed).Start())
-                .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(target, GameObject.transform.position))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator MoveTowardsVectorElastic()
-        {
-            Vector3 target = new Vector3(MoveTowardsValue, MoveTowardsValue, MoveTowardsValue);
-
-            yield return CreateTester()
-                .Act(() => GameObject.transform.Echo(TestTime).MoveTowardsElastic(target, Speed).Start())
-                .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(target, GameObject.transform.position))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator MoveTowardsTransform()
-        {
-            yield return CreateTester()
-                .Act(() => GameObject.transform.Echo(TestTime).MoveTowards(Variables.Target, Speed).Start())
-                .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(Variables.Target.position, GameObject.transform.position))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator MoveTowardsTransformElastic()
-        {
-            yield return CreateTester()
-                .Act(() => GameObject.transform.Echo(TestTime).MoveTowardsElastic(Variables.Target, Speed).Start())
-                .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(Variables.Target.position, GameObject.transform.position))
-                .Run();
-        }
 
         #endregion
     }

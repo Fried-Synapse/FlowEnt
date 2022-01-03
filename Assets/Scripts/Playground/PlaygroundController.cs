@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FriedSynapse.FlowEnt.Motions.Echo;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
@@ -14,12 +15,10 @@ namespace FriedSynapse.FlowEnt.Builder
 #pragma warning disable IDE0051, RCS1213
         private void Start()
         {
-            Objects[0].Echo().MoveTowardsElastic(Objects[1], 3).LookAt(Objects[1]).Start();
-            new Echo().SetName("Update").Debug().Start();
-            new Echo().SetName("Smooth Update").SetUpdateType(UpdateType.SmoothUpdate).Debug().Start();
-            new Echo().SetName("Late Update").SetUpdateType(UpdateType.LateUpdate).Debug().Start();
-            new Echo().SetName("Smooth Late Update").SetUpdateType(UpdateType.SmoothLateUpdate).Debug().Start();
-            new Echo().SetName("Fixed Update").SetUpdateType(UpdateType.FixedUpdate).Debug().Start();
+            Objects[0].Echo()
+                .MoveTo(Objects[1], 5, SpeedType.Gravity)
+                .LookAt(Objects[1])
+                .Start();
         }
 
         private void OnDrawGizmos()
