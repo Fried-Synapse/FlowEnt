@@ -42,7 +42,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
                     break;
             }
 
-            item.localScale = Vector3.MoveTowards(item.position, target, speed * deltaTime);
+            item.localScale = Vector3.MoveTowards(item.localScale, target, speed * deltaTime);
         }
     }
 }

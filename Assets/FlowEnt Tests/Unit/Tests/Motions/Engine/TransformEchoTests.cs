@@ -94,7 +94,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3 target = new Vector3(ScaleValue, ScaleValue, ScaleValue);
 
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = Vector3.one)
+                .Arrange(() => GameObject.transform.localScale = Vector3.zero)
                 .Act(() => GameObject.transform.Echo(TestTime).Scale(target).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>((echo) => FlowEntAssert.AreEqual(target * (TestTime + echo.OverDraft.Value), GameObject.transform.localScale))
@@ -105,7 +105,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         public IEnumerator ScaleX()
         {
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = Vector3.one)
+                .Arrange(() => GameObject.transform.localScale = Vector3.zero)
                 .Act(() => GameObject.transform.Echo(TestTime).ScaleX(ScaleValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>((echo) => FlowEntAssert.AreEqual(ScaleValue * (TestTime + echo.OverDraft.Value), GameObject.transform.localScale.x))
@@ -116,7 +116,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         public IEnumerator ScaleY()
         {
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = Vector3.one)
+                .Arrange(() => GameObject.transform.localScale = Vector3.zero)
                 .Act(() => GameObject.transform.Echo(TestTime).ScaleY(ScaleValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>((echo) => FlowEntAssert.AreEqual(ScaleValue * (TestTime + echo.OverDraft.Value), GameObject.transform.localScale.y))
@@ -127,7 +127,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         public IEnumerator ScaleZ()
         {
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = Vector3.one)
+                .Arrange(() => GameObject.transform.localScale = Vector3.zero)
                 .Act(() => GameObject.transform.Echo(TestTime).ScaleZ(ScaleValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>((echo) => FlowEntAssert.AreEqual(ScaleValue * (TestTime + echo.OverDraft.Value), GameObject.transform.localScale.z))
