@@ -9,8 +9,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #region Constants
 
         private const float MoveValue = 3f;
+        private const float RotateValue = 45f;
         private const float ScaleValue = 3f;
-        private const float Speed = 50f;
+        private const float Speed = 1000f;
 
         #endregion
 
@@ -81,6 +82,103 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).MoveTo(Variables.Target, Speed).Start())
                 .AssertTime(TestTime)
                 .Assert(() => FlowEntAssert.AreEqual(Variables.Target.position, GameObject.transform.position))
+                .Run();
+        }
+
+        #endregion
+
+        #region Rotate
+
+        [UnityTest]
+        public IEnumerator RotateQuaternion()
+        {
+            Quaternion target = Quaternion.Euler(RotateValue, RotateValue, RotateValue);
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.eulerAngles = Vector3.zero)
+                .Act(() => GameObject.transform.Echo(TestTime).Rotate(target).Start())
+                .AssertTime(TestTime)
+                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(target.eulerAngles * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateVector()
+        {
+            Vector3 target = new Vector3(RotateValue, RotateValue, RotateValue);
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.eulerAngles = Vector3.zero)
+                .Act(() => GameObject.transform.Echo(TestTime).Rotate(target).Start())
+                .AssertTime(TestTime)
+                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(target * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateX()
+        {
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.eulerAngles = Vector3.zero)
+                .Act(() => GameObject.transform.Echo(TestTime).RotateX(RotateValue).Start())
+                .AssertTime(TestTime)
+                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(RotateValue * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles.x))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateY()
+        {
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.eulerAngles = Vector3.zero)
+                .Act(() => GameObject.transform.Echo(TestTime).RotateY(RotateValue).Start())
+                .AssertTime(TestTime)
+                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(RotateValue * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles.y))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateZ()
+        {
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.eulerAngles = Vector3.zero)
+                .Act(() => GameObject.transform.Echo(TestTime).RotateZ(RotateValue).Start())
+                .AssertTime(TestTime)
+                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(RotateValue * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles.z))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateToQuaternion()
+        {
+            Quaternion target = Quaternion.Euler(RotateValue, RotateValue, RotateValue);
+
+            yield return CreateTester()
+                .Act(() => GameObject.transform.Echo(TestTime).RotateTo(target, Speed).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(target, GameObject.transform.rotation))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateToVector()
+        {
+            Vector3 target = new Vector3(RotateValue, RotateValue, RotateValue);
+
+            yield return CreateTester()
+                .Act(() => GameObject.transform.Echo(TestTime).RotateTo(target, Speed).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(target, GameObject.transform.eulerAngles))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateToTransform()
+        {
+            yield return CreateTester()
+                .Act(() => GameObject.transform.Echo(TestTime).RotateTo(Variables.Target, Speed).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(Variables.Target.eulerAngles, GameObject.transform.eulerAngles))
                 .Run();
         }
 
