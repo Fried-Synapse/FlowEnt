@@ -143,6 +143,7 @@ namespace FriedSynapse.FlowEnt
                 throw new AnimationException(this, "Can only reset a finished animation. Use Stop() to ensure animation finished when resetting.");
             }
 
+            startHelper = null;
             autoStartHelper = null;
             playState = PlayState.Building;
             overdraft = null;
@@ -183,7 +184,7 @@ namespace FriedSynapse.FlowEnt
             {
                 --skipFrames;
             }
-            startHelper = new SkipFramesStartHelper(updateController, skipFrames, (deltaTime) =>
+            startHelper = new SkipFramesStartHelper(updateController, updateType, skipFrames, (deltaTime) =>
             {
                 skipFrames = 0;
                 StartInternal(deltaTime);
@@ -192,7 +193,7 @@ namespace FriedSynapse.FlowEnt
 
         private protected void StartDelay()
         {
-            startHelper = new DelayedStartHelper(updateController, delay, (deltaTime) =>
+            startHelper = new DelayedStartHelper(updateController, updateType, delay, (deltaTime) =>
             {
                 delay = -1f;
                 StartInternal(deltaTime);
