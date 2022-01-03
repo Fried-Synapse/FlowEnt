@@ -15,8 +15,6 @@ namespace FriedSynapse.FlowEnt.Builder
 #pragma warning disable IDE0051, RCS1213
         private void Start()
         {
-            new Echo().KeyDown(KeyCode.S, (_) => Debug.Log("pressed")).Start();
-
             Objects[0].Echo()
                 .MoveTo(Objects[1], 5, SpeedType.Gravity)
                 .LookAt(Objects[1])

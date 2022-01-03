@@ -1,5 +1,6 @@
 using UnityEngine;
 using FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems;
+using FriedSynapse.FlowEnt.Motions.Echo;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -11,17 +12,8 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="target"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<ParticleSystem> ConvergeTo(this EchoMotionProxy<ParticleSystem> proxy, Vector3 target, float speed = ConvergeToVectorMotion.DefaultSpeed)
-            => proxy.Apply(new ConvergeToVectorMotion(proxy.Item, target, speed));
-
-        /// <summary>
-        /// Applies a <see cref="ConvergeToVectorElasticMotion" /> to the echo.
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <param name="target"></param>
-        /// <param name="speed"></param>
-        public static EchoMotionProxy<ParticleSystem> ConvergeToElastic(this EchoMotionProxy<ParticleSystem> proxy, Vector3 target, float speed = ConvergeToVectorMotion.DefaultSpeed)
-            => proxy.Apply(new ConvergeToVectorElasticMotion(proxy.Item, target, speed));
+        public static EchoMotionProxy<ParticleSystem> ConvergeTo(this EchoMotionProxy<ParticleSystem> proxy, Vector3 target, float speed = ConvergeToVectorMotion.DefaultSpeed, SpeedType speedType = ConvergeToVectorMotion.DefaultSpeedType)
+            => proxy.Apply(new ConvergeToVectorMotion(proxy.Item, target, speed, speedType));
 
         /// <summary>
         /// Applies a <see cref="ConvergeToTransformMotion" /> to the echo.
@@ -29,16 +21,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="target"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<ParticleSystem> ConvergeTo(this EchoMotionProxy<ParticleSystem> proxy, Transform target, float speed = ConvergeToVectorMotion.DefaultSpeed)
-            => proxy.Apply(new ConvergeToTransformMotion(proxy.Item, target, speed));
-
-        /// <summary>
-        /// Applies a <see cref="ConvergeToTransformElasticMotion" /> to the echo.
-        /// </summary>
-        /// <param name="proxy"></param>
-        /// <param name="target"></param>
-        /// <param name="speed"></param>
-        public static EchoMotionProxy<ParticleSystem> ConvergeToElastic(this EchoMotionProxy<ParticleSystem> proxy, Transform target, float speed = ConvergeToVectorMotion.DefaultSpeed)
-            => proxy.Apply(new ConvergeToTransformElasticMotion(proxy.Item, target, speed));
+        public static EchoMotionProxy<ParticleSystem> ConvergeTo(this EchoMotionProxy<ParticleSystem> proxy, Transform target, float speed = ConvergeToVectorMotion.DefaultSpeed, SpeedType speedType = ConvergeToVectorMotion.DefaultSpeedType)
+            => proxy.Apply(new ConvergeToTransformMotion(proxy.Item, target, speed, speedType));
     }
 }
