@@ -1,11 +1,11 @@
-using FriedSynapse.FlowEnt.Motions.Tween.Renderers;
+using FriedSynapse.FlowEnt.Motions.Tween.Materials;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Demo
 {
-    public class LateAlphaMotion : AlphaMotion<MeshRenderer>
+    public class LateAlphaMotion : AlphaMotion<Material>
     {
-        public LateAlphaMotion(MeshRenderer item, float value, float percentage) : base(item, value)
+        public LateAlphaMotion(Material item, float value, float percentage) : base(item, value)
         {
             multiplier = 1f / (1f - percentage);
         }
