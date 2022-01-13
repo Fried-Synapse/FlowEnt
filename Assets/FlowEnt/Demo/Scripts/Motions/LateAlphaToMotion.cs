@@ -5,7 +5,7 @@ namespace FriedSynapse.FlowEnt.Demo
 {
     public class LateAlphaMotion : AlphaMotion<Material>
     {
-        public LateAlphaMotion(Material item, float value, float percentage) : base(item, value)
+        public LateAlphaMotion(Material item, float to, float percentage) : base(item, null, to)
         {
             multiplier = 1f / (1f - percentage);
         }
