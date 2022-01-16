@@ -9,16 +9,16 @@ namespace FriedSynapse.FlowEnt.Demo
     {
 #pragma warning disable RCS1169, IDE0044
         [SerializeField]
-        private List<Transform> pendula;
-        private List<Transform> Pendula => pendula;
+        private List<Transform> pendulums;
+        private List<Transform> Pendulums => pendulums;
 #pragma warning restore RCS1169, IDE0044
 
         public override AbstractAnimation GetAnimation()
             => new Flow()
-                .At(0.0f, GetAnimation(Pendula[0], new Vector3(4f, 0f, 4f)))
-                .At(0.5f, GetAnimation(Pendula[1], new Vector3(4f, 0f, -4f)))
-                .At(1.0f, GetAnimation(Pendula[2], new Vector3(4f, 0f, 0f)))
-                .At(1.5f, GetAnimation(Pendula[3], new Vector3(0f, 0f, -4f)));
+                .At(0.0f, GetAnimation(Pendulums[0], new Vector3(4f, 0f, 4f)))
+                .At(0.5f, GetAnimation(Pendulums[1], new Vector3(4f, 0f, -4f)))
+                .At(1.0f, GetAnimation(Pendulums[2], new Vector3(4f, 0f, 0f)))
+                .At(1.5f, GetAnimation(Pendulums[3], new Vector3(0f, 0f, -4f)));
 
         private AbstractAnimation GetAnimation(Transform transform, Vector3 direction)
             => new Flow()

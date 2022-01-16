@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Lights
 {
+#if !UNITY_WEBGL
     /// <summary>
     /// Lerps the <see cref="Light.shadowRadius" /> value.
     /// </summary>
@@ -19,4 +20,5 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Lights
         protected override float GetFrom() => item.shadowRadius;
         protected override void SetValue(float value) => item.shadowRadius = value;
     }
+#endif
 }
