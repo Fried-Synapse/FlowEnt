@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 576502907}
   - component: {fileID: 576502906}
   m_Layer: 0
-  m_Name: Pendul
+  m_Name: Pendulum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2352,7 +2352,7 @@ MonoBehaviour:
     - {fileID: 1919772450}
     - {fileID: 787260529}
   phase3Animation:
-    penduls:
+    pendulums:
     - {fileID: 576502905}
     - {fileID: 1944385354}
     - {fileID: 1165504257}
@@ -2744,7 +2744,7 @@ GameObject:
   - component: {fileID: 1165504259}
   - component: {fileID: 1165504258}
   m_Layer: 0
-  m_Name: Pendul
+  m_Name: Pendulum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9683,7 +9683,7 @@ GameObject:
   - component: {fileID: 1944385356}
   - component: {fileID: 1944385355}
   m_Layer: 0
-  m_Name: Pendul
+  m_Name: Pendulum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9778,7 +9778,7 @@ GameObject:
   - component: {fileID: 2055125728}
   - component: {fileID: 2055125727}
   m_Layer: 0
-  m_Name: Pendul
+  m_Name: Pendulum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -101,6 +101,7 @@ namespace FriedSynapse.FlowEnt
         #endregion
 
         #region ShadowRadius
+#if !UNITY_WEBGL
 
         /// <summary>
         /// Applies a <see cref="ShadowRadiusMotion" /> to the tween.
@@ -127,6 +128,7 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotionProxy<Light> ShadowRadiusTo(this TweenMotionProxy<Light> proxy, float from, float to)
             => proxy.Apply(new ShadowRadiusMotion(proxy.Item, from, to));
 
+#endif
         #endregion
 
         #region ShadowStrength
