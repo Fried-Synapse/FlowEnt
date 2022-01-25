@@ -184,6 +184,39 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
+        #region RotateAround
+
+        [UnityTest]
+        public IEnumerator RotateAroundTransform()
+        {
+            Transform point = null;
+
+            yield return CreateTester()
+                .Arrange(() =>
+                {
+                    GameObject.transform.position = Vector3.left;
+                    point = new GameObject().transform;
+                    point.position = Vector3.zero;
+                })
+                .Act(() => GameObject.transform.Echo(TestTime).RotateAround(Vector3.zero, Vector3.up, 90f / TestTime).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(Vector3.forward, GameObject.transform.position, 0.1f))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateAroundVector()
+        {
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = Vector3.left)
+                .Act(() => GameObject.transform.Echo(TestTime).RotateAround(Vector3.zero, Vector3.up, 90f / TestTime).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(Vector3.forward, GameObject.transform.position, 0.1f))
+                .Run();
+        }
+
+        #endregion
+
         #region Scale
 
         [UnityTest]

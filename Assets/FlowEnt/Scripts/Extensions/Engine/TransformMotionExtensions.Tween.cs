@@ -587,6 +587,34 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #region RotateAround
+
+        /// <summary>
+        /// Applies a <see cref="RotateAroundTransformMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="point"></param>
+        /// <param name="axis"></param>
+        /// <param name="toAngle"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotionProxy<TTransform> RotateAround<TTransform>(this TweenMotionProxy<TTransform> proxy, Transform point, Vector3 axis, float toAngle)
+            where TTransform : Transform
+            => proxy.Apply(new RotateAroundTransformMotion<TTransform>(proxy.Item, point, axis, toAngle));
+
+        /// <summary>
+        /// Applies a <see cref="RotateAroundVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="point"></param>
+        /// <param name="axis"></param>
+        /// <param name="toAngle"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotionProxy<TTransform> RotateAround<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 point, Vector3 axis, float toAngle)
+            where TTransform : Transform
+            => proxy.Apply(new RotateAroundVectorMotion<TTransform>(proxy.Item, point, axis, toAngle));
+
+        #endregion
+
         #region LookAt
 
         /// <summary>
