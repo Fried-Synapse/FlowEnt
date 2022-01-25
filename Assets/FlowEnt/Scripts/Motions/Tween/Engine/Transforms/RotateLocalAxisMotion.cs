@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// Lerps the <see cref="Transform.localEulerAngles" /> value by axis.
     /// </summary>
     /// <typeparam name="TTransform"></typeparam>
-    public class RotateLocalAxisMotion<TTransform> : AbstractAxisMotion<TTransform>
+    public class RotateLocalAxisMotion<TTransform> : AbstractRotateAxisMotion<TTransform>
         where TTransform : Transform
     {
         public RotateLocalAxisMotion(TTransform item, Axis axis, float value) : base(item, axis, value)
@@ -17,6 +17,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         {
         }
 
-        protected override Vector3 Target { get => item.localEulerAngles; set => item.localEulerAngles = value; }
+        protected override Vector3 EulerAngles => item.localEulerAngles;
     }
 }
