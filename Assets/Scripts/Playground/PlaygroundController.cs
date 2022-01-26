@@ -25,6 +25,7 @@ namespace FriedSynapse.FlowEnt.Builder
 #pragma warning disable IDE0051, RCS1213
         private void Start()
         {
+            Green.Echo(2).RotateAround(Vector3.zero, Vector3.up, 90f / 2).Start();
         }
 
         private void OnDrawGizmos()

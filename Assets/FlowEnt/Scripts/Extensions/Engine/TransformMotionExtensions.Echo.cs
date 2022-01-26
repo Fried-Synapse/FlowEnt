@@ -170,6 +170,34 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #region RotateAround
+
+        /// <summary>
+        /// Applies a <see cref="RotateAroundTransformMotion{TTransform}" /> to the echo.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="point"></param>
+        /// <param name="axis"></param>
+        /// <param name="speed"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static EchoMotionProxy<TTransform> RotateAround<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform point, Vector3 axis, float speed)
+            where TTransform : Transform
+            => proxy.Apply(new RotateAroundTransformMotion<TTransform>(proxy.Item, point, axis, speed));
+
+        /// <summary>
+        /// Applies a <see cref="RotateAroundVectorMotion{TTransform}" /> to the echo.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="point"></param>
+        /// <param name="axis"></param>
+        /// <param name="speed"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static EchoMotionProxy<TTransform> RotateAround<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 point, Vector3 axis, float speed)
+            where TTransform : Transform
+            => proxy.Apply(new RotateAroundVectorMotion<TTransform>(proxy.Item, point, axis, speed));
+
+        #endregion
+
         #region LookAt
 
         /// <summary>
