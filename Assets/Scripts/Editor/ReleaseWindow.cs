@@ -182,7 +182,7 @@ namespace FriedSynapse.Release
         {
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.FileName = "/bin/sh";
-            psi.WorkingDirectory = Path.Combine(Application.dataPath, "Editor");
+            psi.WorkingDirectory = Path.Combine(Application.dataPath, "Scripts/Editor");
             psi.Arguments = "upload.sh " +
                 $"\'{Application.productName}\' " +
                 $"\'{Destination}\' " +

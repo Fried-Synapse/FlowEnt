@@ -178,6 +178,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #endregion
 
         #region ShadowRadius
+#if !UNITY_WEBGL
 
         [UnityTest]
         public IEnumerator ShadowRadius()
@@ -225,7 +226,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 })
                 .Run();
         }
-
+        
+#endif
         #endregion
 
         #region ShadowStrength

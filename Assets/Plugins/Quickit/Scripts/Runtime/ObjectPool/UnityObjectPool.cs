@@ -24,8 +24,9 @@ namespace FriedSynapse.Quickit
 
             if (reuseTemplate)
             {
-                PoolModel model = new PoolModel(template);
-                Items.Add(model);
+                PoolModel model = new PoolModel();
+                items.Add(template, model);
+                onItemAdded?.Invoke(template);
             }
             Increase(reuseTemplate ? startAmount - 1 : startAmount);
         }
