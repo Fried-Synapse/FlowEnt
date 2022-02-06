@@ -98,7 +98,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => GameObject.transform.eulerAngles = Vector3.zero)
                 .Act(() => GameObject.transform.Echo(TestTime).Rotate(target).Start())
                 .AssertTime(TestTime)
-                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(target.eulerAngles * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles))
+                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(target.eulerAngles * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles, 5f))
                 .Run();
         }
 
@@ -111,7 +111,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => GameObject.transform.eulerAngles = Vector3.zero)
                 .Act(() => GameObject.transform.Echo(TestTime).Rotate(target).Start())
                 .AssertTime(TestTime)
-                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(target * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles))
+                .Assert<Echo>((echo) => FlowEntAssert.AreEqual(target * (TestTime + echo.OverDraft.Value), GameObject.transform.eulerAngles, 5f))
                 .Run();
         }
 

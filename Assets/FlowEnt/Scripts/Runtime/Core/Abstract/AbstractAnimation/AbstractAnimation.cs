@@ -91,7 +91,7 @@ namespace FriedSynapse.FlowEnt
             {
                 case PlayState.Building:
                 case PlayState.Finished:
-                    return;
+                    break;
                 case PlayState.Waiting:
                     updateController.UnsubscribeFromUpdate(startHelper);
                     break;

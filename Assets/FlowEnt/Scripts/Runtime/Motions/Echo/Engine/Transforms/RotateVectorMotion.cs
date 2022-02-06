@@ -19,7 +19,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
 
         public override void OnUpdate(float deltaTime)
         {
-            item.eulerAngles += speed * deltaTime;
+            item.Rotate(speed * deltaTime);
         }
     }
 }

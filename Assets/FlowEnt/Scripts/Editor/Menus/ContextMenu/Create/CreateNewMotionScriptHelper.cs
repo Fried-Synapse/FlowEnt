@@ -8,11 +8,11 @@ namespace FriedSynapse.FlowEnt.Editor
         private const string TweenMotionTemplateName = "TweenMotionScriptTemplate.cs";
         private const string EchoMotionTemplateName = "EchoMotionScriptTemplate.cs";
 
-        [MenuItem(itemName: "Assets/Create/FlowEnt/Tween Motion Script %#t", isValidateFunction: false, priority: 10)]
+        [MenuItem(itemName: "Assets/Create/FlowEnt/Tween Motion Script %#t", isValidateFunction: false, priority: 81)]
         public static void CreateTweenMotionFromTemplate()
             => CreateScriptFromTemplate(TweenMotionTemplateName);
 
-        [MenuItem(itemName: "Assets/Create/FlowEnt/Echo Motion Script %#e", isValidateFunction: false, priority: 11)]
+        [MenuItem(itemName: "Assets/Create/FlowEnt/Echo Motion Script %#e", isValidateFunction: false, priority: 82)]
         public static void CreateEchoMotionFromTemplate()
             => CreateScriptFromTemplate(EchoMotionTemplateName);
 
