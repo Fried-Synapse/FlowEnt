@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace FriedSynapse.Quickit
 {
+    #region With Factory
+
     public abstract class SingletonBehaviour<TInstance, TInstanceFactory> : MonoBehaviour
         where TInstance : SingletonBehaviour<TInstance, TInstanceFactory>
         where TInstanceFactory : ISingletonFactory<TInstance>, new()
@@ -14,7 +16,7 @@ namespace FriedSynapse.Quickit
             {
                 lock (lockObject)
                 {
-                    if (instance == null)
+                    if (instance == default)
                     {
                         instance = new TInstanceFactory().CreateInstance();
                     }
@@ -22,8 +24,25 @@ namespace FriedSynapse.Quickit
                 return instance;
             }
         }
-        public static bool HasInstance => instance != null;
+
+#pragma warning disable RCS1158
+        public static bool HasInstance => Instance != default;
+#pragma warning restore RCS1158
+
+        protected void ResetInstance()
+        {
+            instance = default;
+        }
+
+        protected virtual void OnDestroy()
+        {
+            ResetInstance();
+        }
     }
+
+    #endregion
+
+    #region Auto
 
     public class AutoSingletonBehaviourInstanceFactory<TInstance> : ISingletonFactory<TInstance>
         where TInstance : AutoSingletonBehaviour<TInstance>
@@ -40,6 +59,10 @@ namespace FriedSynapse.Quickit
         where TInstance : AutoSingletonBehaviour<TInstance>
     {
     }
+
+    #endregion
+
+    #region Manual
 
     public class ManualSingletonBehaviourInstanceFactory<TInstance> : ISingletonFactory<TInstance>
         where TInstance : ManualSingletonBehaviour<TInstance>
@@ -61,4 +84,6 @@ namespace FriedSynapse.Quickit
         where TInstance : ManualSingletonBehaviour<TInstance>
     {
     }
+
+    #endregion
 }

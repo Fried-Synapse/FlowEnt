@@ -8,7 +8,7 @@ namespace FriedSynapse.Quickit.Editor
 {
     public static class ProjectTools
     {
-        [MenuItem("Tools/Quickit/Project/Delete solution files")]
+        [MenuItem("Tools/Quickit/Project/Delete solution files", false, 100)]
         public static void DeleteSolutionFiles()
         {
             List<string> ext = new List<string> { "csproj", "sln" };

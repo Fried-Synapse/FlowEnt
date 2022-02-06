@@ -9,6 +9,10 @@ namespace FriedSynapse.Quickit
 
     public static class Mathq
     {
+        private const float DefaultEpsilon = 0.0001f;
+        public static bool EpsilonEquals(float a, float b, float precision = DefaultEpsilon)
+            => Mathf.Abs(a - b) < precision;
+
         public static float Round(float value, int digits = 0)
         {
             float multiplier = Mathf.Pow(10, digits);

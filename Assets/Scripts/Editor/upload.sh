@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../../../config.sh
+source ../../../../config.sh
 
 project="${1}"
 buildPath="${2}"
