@@ -1,7 +1,6 @@
-using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
-namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
+namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractRotateAxisMotion<TTransform> : AbstractFloatMotion<TTransform>
             where TTransform : Transform

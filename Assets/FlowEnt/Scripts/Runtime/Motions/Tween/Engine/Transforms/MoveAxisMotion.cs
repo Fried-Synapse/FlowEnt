@@ -1,3 +1,4 @@
+using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms

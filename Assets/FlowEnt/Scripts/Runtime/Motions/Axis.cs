@@ -1,6 +1,6 @@
 using System;
 
-namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
+namespace FriedSynapse.FlowEnt.Motions
 {
     [Flags]
     public enum Axis

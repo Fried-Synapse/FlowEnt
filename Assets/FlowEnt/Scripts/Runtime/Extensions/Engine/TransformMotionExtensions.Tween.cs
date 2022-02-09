@@ -1,5 +1,6 @@
 using UnityEngine;
 using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
+using FriedSynapse.FlowEnt.Motions;
 
 namespace FriedSynapse.FlowEnt
 {
