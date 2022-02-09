@@ -173,6 +173,185 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #region Rotate
+
+        #region Rotate
+
+        /// <summary>
+        /// Applies a <see cref="RotateQuaternionMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> Rotate<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Quaternion value)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new RotateQuaternionMotion<TRigidbody>(proxy.Item, value));
+
+        /// <summary>
+        /// Applies a <see cref="RotateQuaternionMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> RotateTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Quaternion to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new RotateQuaternionMotion<TRigidbody>(proxy.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateQuaternionMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> RotateTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Quaternion from, Quaternion to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new RotateQuaternionMotion<TRigidbody>(proxy.Item, from, to));
+
+        #endregion
+
+        #region Rotate Vector
+
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> Rotate<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 value)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new RotateVectorMotion<TRigidbody>(proxy.Item, value));
+
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> RotateTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new RotateVectorMotion<TRigidbody>(proxy.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateVectorMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> RotateTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 from, Vector3 to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new RotateVectorMotion<TRigidbody>(proxy.Item, from, to));
+
+        #endregion
+
+        #endregion
+
+        #region Mass
+
+        /// <summary>
+        /// Applies a <see cref="MassMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> Mass<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float value)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new MassMotion<TRigidbody>(proxy.Item, value));
+
+        /// <summary>
+        /// Applies a <see cref="MassMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> MassTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new MassMotion<TRigidbody>(proxy.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="MassMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> MassTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float from, float to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new MassMotion<TRigidbody>(proxy.Item, from, to));
+
+        #endregion
+
+        #region Velocity
+
+        /// <summary>
+        /// Applies a <see cref="VelocityMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> Velocity<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 value)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new VelocityMotion<TRigidbody>(proxy.Item, value));
+
+        /// <summary>
+        /// Applies a <see cref="VelocityMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> VelocityTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new VelocityMotion<TRigidbody>(proxy.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="VelocityMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> VelocityTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 from, Vector3 to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new VelocityMotion<TRigidbody>(proxy.Item, from, to));
+
+        #endregion
+
+        #region Angular Velocity
+
+        /// <summary>
+        /// Applies a <see cref="AngularVelocityMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> AngularVelocity<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 value)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new AngularVelocityMotion<TRigidbody>(proxy.Item, value));
+
+        /// <summary>
+        /// Applies a <see cref="AngularVelocityMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> AngularVelocityTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new AngularVelocityMotion<TRigidbody>(proxy.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="AngularVelocityMotion{TRigidbody}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <typeparam name="TRigidbody"></typeparam>
+        public static TweenMotionProxy<TRigidbody> AngularVelocityTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 from, Vector3 to)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new AngularVelocityMotion<TRigidbody>(proxy.Item, from, to));
+
+        #endregion
+
         #endregion
 
         #region Echo

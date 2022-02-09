@@ -34,9 +34,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         private const float RotateZValue = 80f;
         private const float FullCircle = 360f;
 
-        private const float ScaleValue = 2f;
-        private const float ScaleFrom = 2f;
-        private const float ScaleTo = 4f;
+        private const float VelocityErrorMargin = 0.3f;
 
         #endregion
 
@@ -55,6 +53,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             }
         }
 
+        private void ArrangeForVelocity()
+        {
+            Rigidbody.mass = 0;
+            Rigidbody.isKinematic = false;
+        }
+
         #region Move
 
         #region Move
@@ -70,46 +74,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(() => Assert.AreEqual(value, Rigidbody.position))
                 .Run();
         }
-
-        [UnityTest]
-        public IEnumerator MoveX()
-        {
-            const float value = MoveValue;
-
-            yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveX(value).Start())
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(value, 0, 0), Rigidbody.position))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator MoveY()
-        {
-            const float value = MoveValue;
-
-            yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveY(value).Start())
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(0, value, 0), Rigidbody.position))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator MoveZ()
-        {
-            const float value = MoveValue;
-
-            yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveZ(value).Start())
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(0, 0, value), Rigidbody.position))
-                .Run();
-        }
-
-        #endregion
-
-        #region MoveTo 
 
         [UnityTest]
         public IEnumerator MoveTo()
@@ -145,7 +109,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        #region MoveTo AnimationCurve3d
+        #region Move AnimationCurve3d
 
         [UnityTest]
         public IEnumerator MoveToAnimationCurve3d()
@@ -166,7 +130,19 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        #region MoveTo Axis 
+        #region Move Axis 
+
+        [UnityTest]
+        public IEnumerator MoveX()
+        {
+            const float value = MoveValue;
+
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).MoveX(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.AreEqual(new Vector3(value, 0, 0), Rigidbody.position))
+                .Run();
+        }
 
         [UnityTest]
         public IEnumerator MoveToX()
@@ -201,6 +177,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         }
 
         [UnityTest]
+        public IEnumerator MoveY()
+        {
+            const float value = MoveValue;
+
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).MoveY(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.AreEqual(new Vector3(0, value, 0), Rigidbody.position))
+                .Run();
+        }
+
+        [UnityTest]
         public IEnumerator MoveToY()
         {
             const float to = MoveToValue;
@@ -229,6 +217,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     Assert.AreEqual(from, startingFrom);
                     Assert.AreEqual(to, Rigidbody.position.y);
                 })
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MoveZ()
+        {
+            const float value = MoveValue;
+
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).MoveZ(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.AreEqual(new Vector3(0, 0, value), Rigidbody.position))
                 .Run();
         }
 
@@ -363,7 +363,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        #region MoveTo Spline
+        #region Move Spline
 
         [UnityTest]
         public IEnumerator MoveToSpline_Linear()
@@ -392,5 +392,258 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #endregion
 
         #endregion
+
+        #region Rotate
+
+        #region Rotate Vector
+
+        [UnityTest]
+        public IEnumerator RotateQuaternion()
+        {
+            Quaternion from = Quaternion.Euler(new Vector3(-RotateXValue, 0f, 0f));
+            Quaternion value = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, 0f));
+            Quaternion to = from * value;
+
+            yield return CreateTester()
+                .Arrange(() => Rigidbody.rotation = from)
+                .Act(() => Rigidbody.Tween(TestTime).Rotate(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.rotation))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateToQuaternion()
+        {
+            Quaternion to = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, RotateZValue));
+
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).RotateTo(to).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.rotation))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateFromToQuaternion()
+        {
+            Quaternion from = Quaternion.Euler(new Vector3(RotateXValue, FullCircle - RotateYValue, FullCircle - RotateZValue));
+            Quaternion to = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, RotateZValue));
+            Quaternion? startingFrom = null;
+
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).RotateTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Rigidbody.rotation)
+                                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    FlowEntAssert.AreEqual(from, startingFrom.Value);
+                    FlowEntAssert.AreEqual(to, Rigidbody.rotation);
+                })
+                .Run();
+        }
+
+        #endregion
+
+        #region Rotate Quaternion
+
+        [UnityTest]
+        public IEnumerator RotateVector()
+        {
+            Vector3 from = new Vector3(-RotateXValue, 0f, 0f);
+            Vector3 value = new Vector3(RotateXValue, RotateYValue, 0f);
+            Vector3 to = from + value;
+
+            yield return CreateTester()
+                .Arrange(() => Rigidbody.rotation = Quaternion.Euler(from))
+                .Act(() => Rigidbody.Tween(TestTime).Rotate(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.rotation.eulerAngles))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateToVector()
+        {
+            Vector3 to = new Vector3(RotateXValue, RotateYValue, RotateZValue);
+
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).RotateTo(to).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.rotation.eulerAngles))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RotateFromToVector()
+        {
+            Vector3 from = new Vector3(RotateXValue, FullCircle - RotateYValue, FullCircle - RotateZValue);
+            Vector3 to = new Vector3(RotateXValue, RotateYValue, RotateZValue);
+            Vector3? startingFrom = null;
+
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).RotateTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Rigidbody.rotation.eulerAngles)
+                                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    FlowEntAssert.AreEqual(from, startingFrom.Value);
+                    FlowEntAssert.AreEqual(to, Rigidbody.rotation.eulerAngles);
+                })
+                .Run();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Mass
+
+        [UnityTest]
+        public IEnumerator Mass()
+        {
+            float initialMass = 0;
+            yield return CreateTester()
+                .Arrange(() => initialMass = Rigidbody.mass)
+                .Act(() => Rigidbody.Tween(TestTime).Mass(MoveValue).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.AreEqual(MoveValue, Rigidbody.mass - initialMass))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MassTo()
+        {
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).MassTo(MoveToValue).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.AreEqual(MoveToValue, Rigidbody.mass))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MassFromTo()
+        {
+            float? startingFrom = null;
+
+            yield return CreateTester()
+                .Act(() => Rigidbody.Tween(TestTime).MassTo(MoveFromValue, MoveToValue)
+                                    .OnUpdated((_) => startingFrom ??= Rigidbody.mass)
+                                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(MoveFromValue, startingFrom);
+                    Assert.AreEqual(MoveToValue, Rigidbody.mass);
+                })
+                .Run();
+        }
+
+        #endregion
+
+        #region Velocity
+
+        [UnityTest]
+        public IEnumerator Velocity()
+        {
+            Vector3 value = new Vector3(MoveValue, MoveValue, MoveValue);
+
+            yield return CreateTester()
+                .Arrange(ArrangeForVelocity)
+                .Act(() => Rigidbody.Tween(TestTime).Velocity(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(value, Rigidbody.velocity, VelocityErrorMargin))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator VelocityTo()
+        {
+            Vector3 to = new Vector3(MoveToValue, MoveToValue, MoveToValue);
+
+            yield return CreateTester()
+                .Arrange(ArrangeForVelocity)
+                .Act(() => Rigidbody.Tween(TestTime).VelocityTo(to).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.velocity, VelocityErrorMargin))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator VelocityFromTo()
+        {
+            Vector3 from = new Vector3(MoveFromValue, MoveFromValue, MoveFromValue);
+            Vector3 to = new Vector3(MoveToValue, MoveToValue, MoveToValue);
+            Vector3? startingFrom = null;
+
+            yield return CreateTester()
+                .Arrange(ArrangeForVelocity)
+                .Act(() => Rigidbody.Tween(TestTime).VelocityTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Rigidbody.velocity)
+                                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(from, startingFrom);
+                    FlowEntAssert.AreEqual(to, Rigidbody.velocity, VelocityErrorMargin);
+                })
+                .Run();
+        }
+
+        #endregion
+
+        #region Move
+
+        [UnityTest]
+        public IEnumerator AngularVelocity()
+        {
+            Vector3 value = new Vector3(MoveValue, MoveValue, MoveValue);
+
+            yield return CreateTester()
+                .Arrange(ArrangeForVelocity)
+                .Act(() => Rigidbody.Tween(TestTime).AngularVelocity(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(value, Rigidbody.angularVelocity, VelocityErrorMargin))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator AngularVelocityTo()
+        {
+            Vector3 to = new Vector3(MoveToValue, MoveToValue, MoveToValue);
+
+            yield return CreateTester()
+                .Arrange(ArrangeForVelocity)
+                .Act(() => Rigidbody.Tween(TestTime).AngularVelocityTo(to).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.angularVelocity, VelocityErrorMargin))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator AngularVelocityFromTo()
+        {
+            Vector3 from = new Vector3(MoveFromValue, MoveFromValue, MoveFromValue);
+            Vector3 to = new Vector3(MoveToValue, MoveToValue, MoveToValue);
+            Vector3? startingFrom = null;
+
+            yield return CreateTester()
+                .Arrange(ArrangeForVelocity)
+                .Act(() => Rigidbody.Tween(TestTime).AngularVelocityTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Rigidbody.angularVelocity)
+                                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(from, startingFrom);
+                    FlowEntAssert.AreEqual(to, Rigidbody.angularVelocity, VelocityErrorMargin);
+                })
+                .Run();
+        }
+
+        #endregion
+
     }
 }

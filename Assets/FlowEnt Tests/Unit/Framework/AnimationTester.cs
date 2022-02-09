@@ -23,7 +23,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         private int ActDelay { get; set; }
         private Func<AbstractAnimation> ActCallback { get; set; }
         private Func<IEnumerator> CustomWaiterCallback { get; set; }
-        private int AssertDelay { get; set; } = 5;
+        private int AssertDelay { get; set; }
         private Action AssertCallback { get; set; }
         private Action AbrogateCallback { get; set; }
         protected AbstractAnimation ControlAnimation { get; set; }
@@ -129,7 +129,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             Tests.CreateObjects(Count);
             yield return WaitForFrames(5);
             ArrangeCallback?.Invoke();
-            yield return WaitForFrames(ActDelay);
+            if (ActDelay > 0)
+            {
+                yield return WaitForFrames(ActDelay);
+            }
             ControlAnimation = ActCallback.Invoke();
             Stopwatch.Start();
             if (CustomWaiterCallback != null)
@@ -156,7 +159,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
                     Debug.LogWarning($"Test went to overtime. Reason: {overtimeReason}. Time: {Stopwatch.Elapsed.TotalSeconds}");
                 }
             }
-            yield return WaitForFrames(AssertDelay);
+            if (ActDelay > 0)
+            {
+                yield return WaitForFrames(AssertDelay);
+            }
             AssertCallback?.Invoke();
             AbrogateCallback?.Invoke();
         }
