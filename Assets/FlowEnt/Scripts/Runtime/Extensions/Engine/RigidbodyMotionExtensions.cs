@@ -363,24 +363,27 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<Rigidbody> MoveByInput(this EchoMotionProxy<Rigidbody> proxy, float speed = MoveByInputMotion.DefaultSpeed)
-            => proxy.Apply(new MoveByInputMotion(proxy.Item, speed));
+        public static EchoMotionProxy<TRigidbody> MoveByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, float speed = MoveByInputMotion<TRigidbody>.DefaultSpeed)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new MoveByInputMotion<TRigidbody>(proxy.Item, speed));
 
         /// <summary>
         /// Applies a <see cref="RotateByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<Rigidbody> RotateByInput(this EchoMotionProxy<Rigidbody> proxy, Transform camera, float speed = RotateByInputMotion.DefaultSensitivity)
-            => proxy.Apply(new RotateByInputMotion(proxy.Item, camera, speed));
+        public static EchoMotionProxy<TRigidbody> RotateByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, Transform camera, float speed = RotateByInputMotion<TRigidbody>.DefaultSensitivity)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new RotateByInputMotion<TRigidbody>(proxy.Item, camera, speed));
 
         /// <summary>
         /// Applies a <see cref="JumpByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="force"></param>
-        public static EchoMotionProxy<Rigidbody> JumpByInput(this EchoMotionProxy<Rigidbody> proxy, float force = JumpByInputMotion.DefaultForce)
-            => proxy.Apply(new JumpByInputMotion(proxy.Item, force));
+        public static EchoMotionProxy<TRigidbody> JumpByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, float force = JumpByInputMotion<TRigidbody>.DefaultForce)
+            where TRigidbody : Rigidbody
+            => proxy.Apply(new JumpByInputMotion<TRigidbody>(proxy.Item, force));
 
         #endregion
 
