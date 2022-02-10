@@ -6,10 +6,11 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
     /// <summary>
     /// Moves the charater using the inputs.
     /// </summary>
-    public class MoveByInputMotion : AbstractEchoMotion<CharacterController>
+    public class MoveByInputMotion<TCharacterController> : AbstractEchoMotion<TCharacterController>
+        where TCharacterController : CharacterController
     {
         public const float DefaultSpeed = 10f;
-        public MoveByInputMotion(CharacterController item, float speed = DefaultSpeed) : base(item)
+        public MoveByInputMotion(TCharacterController item, float speed = DefaultSpeed) : base(item)
         {
             this.speed = speed;
             transform = item.transform;

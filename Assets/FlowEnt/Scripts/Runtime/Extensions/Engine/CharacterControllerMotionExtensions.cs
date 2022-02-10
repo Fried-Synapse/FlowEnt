@@ -10,15 +10,17 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<CharacterController> MoveByInput(this EchoMotionProxy<CharacterController> proxy, float speed = MoveByInputMotion.DefaultSpeed)
-            => proxy.Apply(new MoveByInputMotion(proxy.Item, speed));
+        public static EchoMotionProxy<TCharacterController> MoveByInput<TCharacterController>(this EchoMotionProxy<TCharacterController> proxy, float speed = MoveByInputMotion<TCharacterController>.DefaultSpeed)
+        where TCharacterController : CharacterController
+            => proxy.Apply(new MoveByInputMotion<TCharacterController>(proxy.Item, speed));
 
         /// <summary>
         /// Applies a <see cref="RotateByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<CharacterController> RotateByInput(this EchoMotionProxy<CharacterController> proxy, Transform camera, float speed = RotateByInputMotion.DefaultSensitivity)
-            => proxy.Apply(new RotateByInputMotion(proxy.Item, camera, speed));
+        public static EchoMotionProxy<TCharacterController> RotateByInput<TCharacterController>(this EchoMotionProxy<TCharacterController> proxy, Transform camera, float speed = RotateByInputMotion<TCharacterController>.DefaultSensitivity)
+            where TCharacterController : CharacterController
+            => proxy.Apply(new RotateByInputMotion<TCharacterController>(proxy.Item, camera, speed));
     }
 }
