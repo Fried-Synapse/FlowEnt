@@ -6,10 +6,11 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
     /// <summary>
     /// Rotates the charater using the inputs.
     /// </summary>
-    public class RotateByInputMotion : AbstractEchoMotion<CharacterController>
+    public class RotateByInputMotion<TCharacterController> : AbstractEchoMotion<TCharacterController>
+        where TCharacterController : CharacterController
     {
         public const float DefaultSensitivity = 5f;
-        public RotateByInputMotion(CharacterController item, Transform camera, float sensitivity = DefaultSensitivity) : base(item)
+        public RotateByInputMotion(TCharacterController item, Transform camera, float sensitivity = DefaultSensitivity) : base(item)
         {
             this.sensitivity = sensitivity;
             this.camera = camera;
