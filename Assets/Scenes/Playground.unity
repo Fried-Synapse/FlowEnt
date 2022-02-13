@@ -208,7 +208,8 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     motions:
-      motionsSerialised: '[]'
+      motionsSerialised: '[{"$type":"FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveVectorValueMotionBuilder,
+        FriedSynapse.FlowEnt"}]'
 --- !u!1 &494542730
 GameObject:
   m_ObjectHideFlags: 0

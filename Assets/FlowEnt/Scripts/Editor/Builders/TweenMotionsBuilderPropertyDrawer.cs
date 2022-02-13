@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            property.isExpanded = EditorGUI.Foldout(FlowEntDrawers.GetRect(position, 0), property.isExpanded, label);
+            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
             if (!property.isExpanded)
             {
@@ -40,7 +40,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 motions = new List<AbstractTweenMotionBuilder>();
             }
 
-            Rect buttonPosition = FlowEntDrawers.GetRect(position, 1);
+            Rect buttonPosition = FlowEntEditorGUILayout.GetRect(position, 1);
             if (GUI.Button(buttonPosition, "Add motion"))
             {
                 MotionPickerWindow.Show(AddMotion);
@@ -51,7 +51,13 @@ namespace FriedSynapse.FlowEnt.Editor
                 motions.Add(motion);
             }
             NewBuilders.Clear();
-            motionsSerialisedProperty.stringValue = JsonConvert.SerializeObject(motions);
+
+            for (int i = 0; i < motions.Count; i++)
+            {
+                Rect propertyPosition = FlowEntEditorGUILayout.GetRect(position, i + 2);
+                EditorGUI.LabelField(propertyPosition, motions[i].GetType().Name);
+            }
+            motionsSerialisedProperty.stringValue = JsonConvert.SerializeObject(motions, JsonSettings.FullyTyped);
         }
 
         private void AddMotion(AbstractTweenMotionBuilder builder)
