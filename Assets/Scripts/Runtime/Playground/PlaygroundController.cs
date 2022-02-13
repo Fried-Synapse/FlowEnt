@@ -20,6 +20,10 @@ namespace FriedSynapse.FlowEnt.Builder
         [SerializeField]
         private Transform red;
         private Transform Red => red;
+
+        [SerializeField]
+        private TweenBuilder test;
+        private TweenBuilder Test => test;
 #pragma warning restore RCS1169, IDE0044
 
 #pragma warning disable IDE0051, RCS1213
