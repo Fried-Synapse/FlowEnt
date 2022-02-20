@@ -12,6 +12,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             public static GUIContent Play = EditorGUIUtility.IconContent("PlayButton@2x", "Play");
             public static GUIContent Pause = EditorGUIUtility.IconContent("PauseButton@2x", "Pause");
+            public static GUIStyle Style = new GUIStyle(EditorStyles.miniButton) { padding = new RectOffset(2, 2, 2, 2) };
         }
 
         private readonly List<string> visibleProperties = new List<string>{
@@ -58,20 +59,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
         {
-            int baseDepth = property.depth;
-            property.NextVisible(true);
-            do
+            FlowEntEditorGUILayout.ForEachVisibleProperty(property, p =>
             {
-                if (property.depth == baseDepth)
+                if (visibleProperties.Contains(p.name))
                 {
-                    break;
+                    predicate(p);
                 }
-                if (visibleProperties.Contains(property.name))
-                {
-                    predicate(property);
-                }
-            }
-            while (property.NextVisible(false));
+            });
         }
 
         private void DrawControls(Rect position, SerializedProperty property)
@@ -79,7 +73,7 @@ namespace FriedSynapse.FlowEnt.Editor
             float playButtonWidth = EditorGUIUtility.singleLineHeight;
             Rect playButtonPosition = position;
             playButtonPosition.width = playButtonWidth;
-            if (GUI.Button(playButtonPosition, Icon.Play))
+            if (GUI.Button(playButtonPosition, Icon.Play, Icon.Style))
             {
                 previewTween = property.GetValue<TweenBuilder>().Build();
                 previewTween.OnUpdating(t => previewTime = t);

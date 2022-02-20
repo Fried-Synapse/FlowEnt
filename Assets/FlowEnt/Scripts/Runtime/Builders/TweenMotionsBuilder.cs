@@ -6,14 +6,8 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public abstract class AbstractTweenMotionBuilder : AbstractBuilder<ITweenMotion>
+    public abstract class AbstractTweenMotionBuilder : AbstractMotionBuilder<ITweenMotion>
     {
-#pragma warning disable IDE0044, RCS1169, RCS1213, IDE0051
-        [SerializeField]
-        private string name;
-        [SerializeField]
-        private bool isEnabled;
-#pragma warning restore IDE0044, RCS1169, RCS1213, IDE0051
     }
 
     [Serializable]
@@ -33,6 +27,6 @@ namespace FriedSynapse.FlowEnt
 #pragma warning restore IDE0044, RCS1169
 
         public override List<ITweenMotion> Build()
-            => motions.ConvertAll(m => m.Build());
+            => motions.FindAll(m => m.IsEnabled).ConvertAll(m => m.Build());
     }
 }

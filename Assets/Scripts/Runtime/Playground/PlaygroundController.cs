@@ -9,19 +9,15 @@ namespace FriedSynapse.FlowEnt.Builder
         [SerializeField]
         private Transform character;
         private Transform Character => character;
-
         [SerializeField]
         private Transform green;
         private Transform Green => green;
-
         [SerializeField]
         private Transform yellow;
         private Transform Yellow => yellow;
-
         [SerializeField]
         private Transform red;
         private Transform Red => red;
-
         [SerializeField]
         private TweenBuilder tween;
         private TweenBuilder Tween => tween;
@@ -33,6 +29,7 @@ namespace FriedSynapse.FlowEnt.Builder
 #pragma warning disable IDE0051, RCS1213
         private void Start()
         {
+            Tween.Build().Start();
         }
 
         private void OnDrawGizmos()

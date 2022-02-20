@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public abstract class AbstractEchoMotionBuilder : AbstractBuilder<IEchoMotion>
+    public abstract class AbstractEchoMotionBuilder : AbstractMotionBuilder<IEchoMotion>
     {
     }
 
@@ -27,6 +27,6 @@ namespace FriedSynapse.FlowEnt
 #pragma warning restore IDE0044, RCS1169
 
         public override List<IEchoMotion> Build()
-            => motions.ConvertAll(m => m.Build());
+            => motions.FindAll(m => m.IsEnabled).ConvertAll(m => m.Build());
     }
 }

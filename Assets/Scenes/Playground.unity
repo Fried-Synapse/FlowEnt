@@ -182,7 +182,7 @@ MonoBehaviour:
       timeScale: 1
       loopCount: 1
       isLoopCountInfinite: 0
-      time: 10
+      time: 2
       easing: 0
       loopType: 0
     events:
@@ -210,6 +210,7 @@ MonoBehaviour:
     motions:
       motions:
       - id: 0
+      - id: 1
   echo:
     options:
       name: 
@@ -251,7 +252,16 @@ MonoBehaviour:
     00000000:
       type: {class: MoveVectorValueMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
       data:
+        name: 
+        isEnabled: 1
         item: {fileID: 1168015055}
+        value: {x: 2, y: 0, z: 0}
+    00000001:
+      type: {class: MoveVectorValueMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
+      data:
+        name: 
+        isEnabled: 1
+        item: {fileID: 1726780655}
         value: {x: 0, y: 2, z: 0}
 --- !u!1 &494542730
 GameObject:
@@ -898,7 +908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168015054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 4, z: 0}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1798944332}

@@ -20,8 +20,6 @@ namespace FriedSynapse.FlowEnt
 #pragma warning restore RCS1169, RCS1085, IDE0044
 
         public override Tween Build()
-            => new Tween(Options.Build()).SetEvents(Events.Build()).Apply(motions.Build());
-
-
+            => new Tween(Options.Build()).SetEvents(Events.Build()).Apply(Motions.Build());
     }
 }

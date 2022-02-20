@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
+            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label, EditorStyles.foldoutHeader);
 
             if (!property.isExpanded)
             {
@@ -76,10 +76,9 @@ namespace FriedSynapse.FlowEnt.Editor
                     continue;
                 }
                 SerializedProperty motionProperty = motionsProperty.GetArrayElementAtIndex(i);
-                string name = motions[i].GetType().Name;
-                float height = EditorGUI.GetPropertyHeight(motionProperty, new GUIContent(name), true) + FlowEntConstants.DrawerSpacing;
+                float height = EditorGUI.GetPropertyHeight(motionProperty, true) + FlowEntConstants.DrawerSpacing;
                 position.height = height;
-                EditorGUI.PropertyField(position, motionProperty, new GUIContent(name), true);
+                EditorGUI.PropertyField(position, motionProperty, true);
                 position.y += height;
             }
         }

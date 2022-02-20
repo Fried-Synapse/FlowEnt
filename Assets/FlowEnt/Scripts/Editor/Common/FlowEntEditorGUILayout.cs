@@ -143,6 +143,22 @@ namespace FriedSynapse.FlowEnt.Editor
             return (T)obj;
         }
 
+        public static void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
+        {
+            int baseDepth = property.depth;
+            property.NextVisible(true);
+            do
+            {
+                if (property.depth <= baseDepth)
+                {
+                    break;
+                }
+
+                predicate(property);
+            }
+            while (property.NextVisible(false));
+        }
+
         internal static Rect GetRect(Rect position, int index)
             => GetRect(position, index, FlowEntConstants.SpacedSingleLineHeight, EditorGUIUtility.singleLineHeight);
 

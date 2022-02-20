@@ -28,9 +28,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         private Vector3 value;
 
         public override ITweenMotion Build()
-        {
-            return new MoveVectorMotion(item, value);
-        }
+            => new MoveVectorMotion(item, value);
     }
 
     [Serializable]
@@ -42,8 +40,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         private Vector3 to;
 
         public override ITweenMotion Build()
-        {
-            return new MoveVectorMotion(item, from, to);
-        }
+            => new MoveVectorMotion(item, from, to);
     }
 }
