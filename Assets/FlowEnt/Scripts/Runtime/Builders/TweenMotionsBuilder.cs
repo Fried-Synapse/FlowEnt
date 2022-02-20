@@ -1,14 +1,13 @@
 using System;
-using System.Collections.Generic;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
-using Newtonsoft.Json;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public abstract class AbstractTweenMotionBuilder : AbstractBuilder<ITweenMotion>
+    public abstract class AbstractTweenMotionBuilder : MonoBehaviour, IBuilder<ITweenMotion>
     {
+        public abstract ITweenMotion Build();
     }
 
     [Serializable]
@@ -20,17 +19,17 @@ namespace FriedSynapse.FlowEnt
     }
 
     [Serializable]
-    public class TweenMotionsBuilder : AbstractBuilder<List<ITweenMotion>>
+    public class TweenMotionsBuilder : AbstractBuilder<ITweenMotion[]>
     {
-#pragma warning disable RCS1169, RCS1085, IDE0044
+#pragma warning disable IDE0044, RCS1169
         [SerializeField]
-        private string motionsSerialised;
-#pragma warning restore RCS1169, RCS1085, IDE0044
+        private AbstractTweenMotionBuilder[] motions;
+        public AbstractTweenMotionBuilder[] Motions => motions;
+#pragma warning restore IDE0044, RCS1169
 
-        public override List<ITweenMotion> Build()
+        public override ITweenMotion[] Build()
         {
-            List<AbstractTweenMotionBuilder> motions = JsonConvert.DeserializeObject<List<AbstractTweenMotionBuilder>>(motionsSerialised, JsonSettings.FullyTyped);
-            return motions.ConvertAll(m => m.Build());
+            return null;
         }
     }
 }

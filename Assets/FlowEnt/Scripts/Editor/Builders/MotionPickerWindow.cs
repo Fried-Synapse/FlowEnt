@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Editor
     public class MotionPickerWindow : EditorWindow
     {
         private static MotionPickerWindow instance;
-        public static void Show(Action<AbstractTweenMotionBuilder> callback)
+        public static void Show(Action<Type> callback)
         {
             instance?.Close();
             instance = CreateWindow<MotionPickerWindow>("Select animation");
@@ -19,7 +19,7 @@ namespace FriedSynapse.FlowEnt.Editor
             instance.ShowPopup();
         }
 
-        private Action<AbstractTweenMotionBuilder> callback;
+        private Action<Type> callback;
         private string searchText;
         private List<Type> builders = new List<Type>();
 
@@ -38,7 +38,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 if (GUILayout.Button(builderType.Name))
                 {
-                    callback.Invoke((AbstractTweenMotionBuilder)Activator.CreateInstance(builderType));
+                    callback.Invoke(builderType);
                     instance?.Close();
                 }
             }

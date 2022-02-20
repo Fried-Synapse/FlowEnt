@@ -24,6 +24,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     [Serializable]
     public class MoveVectorValueMotionBuilder : AbstractTweenMotionBuilder<Transform>
     {
+        [Serializable]
+        public class Test
+        {
+            [SerializeField]
+            private string test1;
+            [SerializeField]
+            private Vector3 test2;
+        }
+        [SerializeField]
+        private Test test;
         [SerializeField]
         private Vector3 value;
 

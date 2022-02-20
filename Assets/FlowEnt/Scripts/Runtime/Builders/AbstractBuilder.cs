@@ -1,3 +1,5 @@
+using System;
+
 namespace FriedSynapse.FlowEnt
 {
     public interface IBuilder<T>
