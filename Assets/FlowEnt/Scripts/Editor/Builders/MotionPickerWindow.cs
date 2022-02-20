@@ -10,35 +10,36 @@ namespace FriedSynapse.FlowEnt.Editor
     public class MotionPickerWindow : EditorWindow
     {
         private static MotionPickerWindow instance;
-        public static void Show(Action<Type> callback)
+        public static void Show<T>(Action<T> callback)
+            where T : class
         {
             instance?.Close();
             instance = CreateWindow<MotionPickerWindow>("Select animation");
-            instance.builders = GetTypes<AbstractTweenMotionBuilder>();
-            instance.callback = callback;
+            instance.types = GetTypes<T>();
+            instance.callback = type => callback.Invoke((T)Activator.CreateInstance(type));
             instance.ShowPopup();
         }
 
         private Action<Type> callback;
         private string searchText;
-        private List<Type> builders = new List<Type>();
+        private List<Type> types = new List<Type>();
 
 #pragma warning disable IDE0051, RCS1213
         private void OnGUI()
         {
             searchText = EditorGUILayout.TextField(searchText);
 
-            List<Type> builders = this.builders;
+            List<Type> types = this.types;
             if (!string.IsNullOrEmpty(searchText))
             {
-                builders = builders.FindAll(t => t.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
+                types = types.FindAll(t => t.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
-            foreach (Type builderType in builders)
+            foreach (Type type in types)
             {
-                if (GUILayout.Button(builderType.Name))
+                if (GUILayout.Button(type.Name))
                 {
-                    callback.Invoke(builderType);
+                    callback.Invoke(type);
                     instance?.Close();
                 }
             }

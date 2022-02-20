@@ -1,13 +1,19 @@
 using System;
+using System.Collections.Generic;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public abstract class AbstractTweenMotionBuilder : MonoBehaviour, IBuilder<ITweenMotion>
+    public abstract class AbstractTweenMotionBuilder : AbstractBuilder<ITweenMotion>
     {
-        public abstract ITweenMotion Build();
+#pragma warning disable IDE0044, RCS1169, RCS1213, IDE0051
+        [SerializeField]
+        private string name;
+        [SerializeField]
+        private bool isEnabled;
+#pragma warning restore IDE0044, RCS1169, RCS1213, IDE0051
     }
 
     [Serializable]
@@ -19,17 +25,14 @@ namespace FriedSynapse.FlowEnt
     }
 
     [Serializable]
-    public class TweenMotionsBuilder : AbstractBuilder<ITweenMotion[]>
+    public class TweenMotionsBuilder : AbstractBuilder<List<ITweenMotion>>
     {
 #pragma warning disable IDE0044, RCS1169
-        [SerializeField]
-        private AbstractTweenMotionBuilder[] motions;
-        public AbstractTweenMotionBuilder[] Motions => motions;
+        [SerializeReference]
+        private List<AbstractTweenMotionBuilder> motions = new List<AbstractTweenMotionBuilder>();
 #pragma warning restore IDE0044, RCS1169
 
-        public override ITweenMotion[] Build()
-        {
-            return null;
-        }
+        public override List<ITweenMotion> Build()
+            => motions.ConvertAll(m => m.Build());
     }
 }

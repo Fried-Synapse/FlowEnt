@@ -8,6 +8,7 @@ namespace FriedSynapse.FlowEnt
     /// The script automatically attaches itself to an object in the scene called FlowEnt(created by this script).
     /// Make sure not to delete this object because the library will not work without this script attached to an object in the scene.
     /// </summary>
+    [ExecuteInEditMode]
     public class FlowEntController : MonoBehaviour,
         IUpdateController,
         IControllable

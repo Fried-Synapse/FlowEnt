@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 371499374}
   - component: {fileID: 371499375}
-  - component: {fileID: 371499376}
   m_Layer: 0
   m_Name: PlaygroundController
   m_TagString: Untagged
@@ -173,7 +172,7 @@ MonoBehaviour:
   green: {fileID: 1168015055}
   yellow: {fileID: 1726780655}
   red: {fileID: 1562631411}
-  test:
+  tween:
     options:
       name: 
       updateType: 0
@@ -183,7 +182,7 @@ MonoBehaviour:
       timeScale: 1
       loopCount: 1
       isLoopCountInfinite: 0
-      time: 1
+      time: 10
       easing: 0
       loopType: 0
     events:
@@ -210,24 +209,50 @@ MonoBehaviour:
           m_Calls: []
     motions:
       motions:
-      - {fileID: 371499376}
---- !u!114 &371499376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371499373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 776026197}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  test:
-    test1: 
-    test2: {x: 0, y: 0, z: 0}
-  value: {x: 3, y: 2, z: 0}
+      - id: 0
+  echo:
+    options:
+      name: 
+      updateType: 0
+      autoStart: 0
+      skipFrames: 0
+      delay: 0
+      timeScale: 1
+      loopCount: 1
+      isLoopCountInfinite: 0
+      timeout: 0
+      hasTimeout: 0
+    events:
+      onStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onStarting:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdating:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleting:
+        m_PersistentCalls:
+          m_Calls: []
+    motions:
+      motions: []
+  references:
+    version: 1
+    00000000:
+      type: {class: MoveVectorValueMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
+      data:
+        item: {fileID: 1168015055}
+        value: {x: 0, y: 2, z: 0}
 --- !u!1 &494542730
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,20 +474,6 @@ Transform:
   m_Father: {fileID: 889323556}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!115 &776026197
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: MoveVectorValueMotionBuilder
-  m_Namespace: FriedSynapse.FlowEnt.Motions.Tween.Transforms
 --- !u!1 &889323555
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,8 +897,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168015054}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1798944332}
@@ -1155,7 +1166,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562631410}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

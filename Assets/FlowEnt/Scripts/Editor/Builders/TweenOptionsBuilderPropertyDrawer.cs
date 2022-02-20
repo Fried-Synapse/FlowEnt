@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenOptionsBuilder))]
-    public class TweenOptionsBuilderPropertyDrawer : AbstractBuilderPropertyDrawer<TweenOptionsBuilderPropertyDrawer.PropertiesEnum>
+    public class TweenOptionsBuilderPropertyDrawer : AbstractPropertiesBuilderPropertyDrawer<TweenOptionsBuilderPropertyDrawer.PropertiesEnum>
     {
         public enum PropertiesEnum
         {

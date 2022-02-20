@@ -23,14 +23,16 @@ namespace FriedSynapse.FlowEnt.Builder
         private Transform Red => red;
 
         [SerializeField]
-        private TweenBuilder test;
-        private TweenBuilder Test => test;
+        private TweenBuilder tween;
+        private TweenBuilder Tween => tween;
+        [SerializeField]
+        private EchoBuilder echo;
+        private EchoBuilder Echo => echo;
 #pragma warning restore RCS1169, IDE0044
 
 #pragma warning disable IDE0051, RCS1213
         private void Start()
         {
-            Green.Echo(2).RotateAround(Vector3.zero, Vector3.up, 90f / 2).Start();
         }
 
         private void OnDrawGizmos()

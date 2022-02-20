@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractBuilderPropertyDrawer<TPropertiesEnum> : PropertyDrawer
+    public abstract class AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum> : PropertyDrawer
         where TPropertiesEnum : Enum
     {
         protected abstract float PropertyHeight { get; }

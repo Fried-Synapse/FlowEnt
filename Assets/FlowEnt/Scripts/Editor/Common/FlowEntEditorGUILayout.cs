@@ -95,7 +95,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal static T GetFieldValue<T>(this object obj, string name)
         {
-            // Set the flags so that private and public fields from instances will be found
             const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
             FieldInfo field = obj.GetType().GetField(name, bindingFlags);
             return (T)field?.GetValue(obj);
@@ -145,7 +144,7 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         internal static Rect GetRect(Rect position, int index)
-            => GetRect(position, index, FlowEntConstants.SpacedSingleLineHeight, FlowEntConstants.SingleLineHeight);
+            => GetRect(position, index, FlowEntConstants.SpacedSingleLineHeight, EditorGUIUtility.singleLineHeight);
 
         internal static Rect GetRect(Rect position, int index, float spacedLineHeight, float lineHeight)
             => new Rect(position.x, position.y + (index * spacedLineHeight), position.width, lineHeight);
