@@ -6,7 +6,6 @@ namespace FriedSynapse.FlowEnt
         SmoothUpdate,
         LateUpdate,
         SmoothLateUpdate,
-        FixedUpdate,
-        Custom
+        FixedUpdate
     }
 }

@@ -46,7 +46,6 @@ namespace FriedSynapse.FlowEnt
         private readonly UpdatablesFastList<AbstractUpdatable> lateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
         private readonly UpdatablesFastList<AbstractUpdatable> smoothLateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
         private readonly UpdatablesFastList<AbstractUpdatable> fixedUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        private readonly UpdatablesFastList<AbstractUpdatable> customUpdatables = new UpdatablesFastList<AbstractUpdatable>();
 
         private float timeScale = 1f;
 
@@ -108,15 +107,6 @@ namespace FriedSynapse.FlowEnt
             Update(fixedUpdatables, Time.fixedDeltaTime * timeScale);
         }
 
-        public void CustomUpdate(float deltaTime)
-        {
-            if (playState != PlayState.Playing)
-            {
-                return;
-            }
-            Update(customUpdatables, deltaTime * timeScale);
-        }
-
 #pragma warning restore IDE0051, RCS1213
 
         internal static void Update(UpdatablesFastList<AbstractUpdatable> updatables, float scaledDeltaTime)
@@ -166,9 +156,6 @@ namespace FriedSynapse.FlowEnt
                 case UpdateType.FixedUpdate:
                     fixedUpdatables.Add(updatable);
                     break;
-                case UpdateType.Custom:
-                    customUpdatables.Add(updatable);
-                    break;
             }
         }
 
@@ -190,9 +177,6 @@ namespace FriedSynapse.FlowEnt
                     break;
                 case UpdateType.FixedUpdate:
                     fixedUpdatables.Remove(updatable);
-                    break;
-                case UpdateType.Custom:
-                    customUpdatables.Remove(updatable);
                     break;
             }
         }
