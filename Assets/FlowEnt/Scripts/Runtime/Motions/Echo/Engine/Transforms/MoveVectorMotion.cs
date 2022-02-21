@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEngine;
 
@@ -6,11 +7,9 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
     /// <summary>
     /// Moves the transform using the provided speed.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class MoveVectorMotion<TTransform> : AbstractEchoMotion<TTransform>
-        where TTransform : Transform
+    public class MoveVectorMotion : AbstractEchoMotion<Transform>
     {
-        public MoveVectorMotion(TTransform item, Vector3 speed) : base(item)
+        public MoveVectorMotion(Transform item, Vector3 speed) : base(item)
         {
             this.speed = speed;
         }
@@ -21,5 +20,15 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
         {
             item.position += speed * deltaTime;
         }
+    }
+
+    [Serializable]
+    public class MoveVectorMotionBuilder : AbstractEchoMotionBuilder<Transform>
+    {
+        [SerializeField]
+        private Vector3 speed;
+
+        public override IEchoMotion Build()
+            => new MoveVectorMotion(item, speed);
     }
 }

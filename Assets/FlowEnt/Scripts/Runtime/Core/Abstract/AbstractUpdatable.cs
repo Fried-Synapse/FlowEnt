@@ -8,13 +8,17 @@ namespace FriedSynapse.FlowEnt
     public abstract class AbstractUpdatable : FastListItem<AbstractUpdatable>
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="AbstractUpdatable"/> class.
+        /// Creates a new instance using <see cref="FlowEntController"/>.
         /// </summary>
         protected AbstractUpdatable() : this(FlowEntController.Instance)
         {
         }
 
-        private protected AbstractUpdatable(IUpdateController updateController)
+        /// <summary>
+        /// Creates a new instance using the specified <see cref="IUpdateController"/>.
+        /// </summary>
+        /// <param name="updateController"></param>
+        protected AbstractUpdatable(IUpdateController updateController)
         {
             Id = lastId;
             ++lastId;

@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> Move<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 speed)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion<TTransform>(proxy.Item, speed));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, speed));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
@@ -28,7 +28,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> MoveX<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion<TTransform>(proxy.Item, new Vector3(speed, 0f, 0f)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(speed, 0f, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
@@ -38,7 +38,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> MoveY<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion<TTransform>(proxy.Item, new Vector3(0f, speed, 0f)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, speed, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
@@ -48,7 +48,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> MoveZ<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion<TTransform>(proxy.Item, new Vector3(0f, 0f, speed)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, 0f, speed)));
 
         /// <summary>
         /// Applies a <see cref="MoveToVectorMotion{TTransform}" /> to the echo.

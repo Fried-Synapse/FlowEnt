@@ -1,82 +1,26 @@
-using System;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenBuilder))]
-    public class TweenBuilderPropertyDrawer : PropertyDrawer
+    public class TweenBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer
     {
-        private static class Icon
-        {
-            public static GUIContent Play = EditorGUIUtility.IconContent("PlayButton@2x", "Play");
-            public static GUIContent Pause = EditorGUIUtility.IconContent("PauseButton@2x", "Pause");
-            public static GUIStyle Style = new GUIStyle(EditorStyles.miniButton) { padding = new RectOffset(2, 2, 2, 2) };
-        }
-
-        private readonly List<string> visibleProperties = new List<string>{
-            "options",
-            "events",
-            "motions",
-        };
         private float previewTime;
         private Tween previewTween;
-
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            if (!property.isExpanded)
-            {
-                return EditorGUIUtility.singleLineHeight;
-            }
-
-            float height = FlowEntConstants.SpacedSingleLineHeight * 2;
-            ForEachVisibleProperty(property, p => height += EditorGUI.GetPropertyHeight(p, true));
-            return height;
-        }
-
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-        {
-            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
-
-            if (!property.isExpanded)
-            {
-                return;
-            }
-
-            EditorGUI.indentLevel++;
-            DrawControls(FlowEntEditorGUILayout.GetRect(position, 1), property);
-            position.y += FlowEntConstants.SpacedSingleLineHeight * 2;
-            ForEachVisibleProperty(property, p =>
-            {
-                float height = EditorGUI.GetPropertyHeight(p, true) + FlowEntConstants.DrawerSpacing;
-                position.height = height;
-                EditorGUI.PropertyField(position, p, true);
-                position.y += height;
-            });
-            EditorGUI.indentLevel--;
-        }
-
-        private void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
-        {
-            FlowEntEditorGUILayout.ForEachVisibleProperty(property, p =>
-            {
-                if (visibleProperties.Contains(p.name))
-                {
-                    predicate(p);
-                }
-            });
-        }
-
-        private void DrawControls(Rect position, SerializedProperty property)
+        protected override void DrawControls(Rect position, SerializedProperty property)
         {
             float playButtonWidth = EditorGUIUtility.singleLineHeight;
             Rect playButtonPosition = position;
             playButtonPosition.width = playButtonWidth;
             if (GUI.Button(playButtonPosition, Icon.Play, Icon.Style))
             {
-                previewTween = property.GetValue<TweenBuilder>().Build();
-                previewTween.OnUpdating(t => previewTime = t);
+                previewTween = property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
+                previewTween.OnUpdating(t =>
+                {
+                    previewTime = t;
+                    EditorUtility.SetDirty(property.serializedObject.targetObject);
+                });
                 previewTween.SetFieldValue("updateController", FlowEntEditorController.Instance);
                 previewTween.Start();
             }
@@ -86,6 +30,12 @@ namespace FriedSynapse.FlowEnt.Editor
             progressPosition.x += playButtonWidth;
 
             previewTime = EditorGUI.Slider(progressPosition, previewTime, 0f, 1f);
+        }
+
+        protected override void OnScopeChanged()
+        {
+            previewTween = null;
+            previewTime = 0;
         }
     }
 }

@@ -20,6 +20,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <summary>
+        /// Creates a new tween with the specified <see cref="IUpdateController"/>.
+        /// </summary>
+        /// <param name="updateController"></param>
+        public Tween(IUpdateController updateController) : base(updateController)
+        {
+        }
+
+        /// <summary>
         /// Creates a new tween using the options provided.
         /// </summary>
         /// <param name="options"></param>

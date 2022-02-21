@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public void Init()
         {
-            EditorApplication.update += Update;
+            EditorApplication.update += () => FlowEntController.Update(updatables, Time.deltaTime);
         }
 
         public void SubscribeToUpdate(AbstractUpdatable updatable)
@@ -39,33 +40,6 @@ namespace FriedSynapse.FlowEnt.Editor
         public void UnsubscribeFromUpdate(AbstractUpdatable updatable)
         {
             updatables.Remove(updatable);
-        }
-
-        private void Update()
-        {
-            float deltaTime = Time.deltaTime;
-            AbstractUpdatable index = updatables.anchor.next;
-
-            while (index != null)
-            {
-#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
-                try
-                {
-#endif
-                index.UpdateInternal(deltaTime);
-#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
-                }
-                catch (Exception ex)
-                {
-                    FlowEntDebug.LogError(
-                        $"<color={FlowEntConstants.Red}><b>Exception on update</b></color>\n" +
-                        $"<color={FlowEntConstants.Orange}><b>Origin of animation that generated the exception</b></color>:\n" +
-                        $"<color={FlowEntConstants.Orange}>{index.stackTrace}</color>\n\n" +
-                        $"<b>Exception</b>:\n{ex}");
-                }
-#endif
-                index = index.next;
-            }
         }
     }
 }

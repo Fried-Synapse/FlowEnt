@@ -85,8 +85,8 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
-            Update(updatables, Time.deltaTime);
-            Update(smoothUpdatables, Time.smoothDeltaTime);
+            Update(updatables, Time.deltaTime * timeScale);
+            Update(smoothUpdatables, Time.smoothDeltaTime * timeScale);
         }
 
         private void LateUpdate()
@@ -95,8 +95,8 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
-            Update(lateUpdatables, Time.deltaTime);
-            Update(smoothLateUpdatables, Time.smoothDeltaTime);
+            Update(lateUpdatables, Time.deltaTime * timeScale);
+            Update(smoothLateUpdatables, Time.smoothDeltaTime * timeScale);
         }
 
         private void FixedUpdate()
@@ -105,7 +105,7 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
-            Update(fixedUpdatables, Time.fixedDeltaTime);
+            Update(fixedUpdatables, Time.fixedDeltaTime * timeScale);
         }
 
         public void CustomUpdate(float deltaTime)
@@ -114,14 +114,13 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
-            Update(customUpdatables, deltaTime);
+            Update(customUpdatables, deltaTime * timeScale);
         }
 
 #pragma warning restore IDE0051, RCS1213
 
-        private void Update(UpdatablesFastList<AbstractUpdatable> updatables, float deltaTime)
+        internal static void Update(UpdatablesFastList<AbstractUpdatable> updatables, float scaledDeltaTime)
         {
-            float scaledDeltaTime = deltaTime * timeScale;
             AbstractUpdatable index = updatables.anchor.next;
 
             while (index != null)
