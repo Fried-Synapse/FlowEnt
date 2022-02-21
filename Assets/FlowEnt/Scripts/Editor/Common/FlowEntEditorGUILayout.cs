@@ -100,6 +100,13 @@ namespace FriedSynapse.FlowEnt.Editor
             return (T)field?.GetValue(obj);
         }
 
+        internal static void SetFieldValue<T>(this object obj, string name, T value)
+        {
+            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+            FieldInfo field = obj.GetType().GetField(name, bindingFlags);
+            field?.SetValue(obj, value);
+        }
+
         internal static T GetValue<T>(this SerializedProperty prop)
         {
             static object getValue(object source, string name)

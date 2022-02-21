@@ -77,6 +77,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 previewTween = property.GetValue<TweenBuilder>().Build();
                 previewTween.OnUpdating(t => previewTime = t);
+                previewTween.SetFieldValue("updateController", FlowEntEditorController.Instance);
                 previewTween.Start();
             }
 
