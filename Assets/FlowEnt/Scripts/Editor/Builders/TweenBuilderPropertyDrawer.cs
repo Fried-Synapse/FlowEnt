@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt.Editor
             progressPosition.width -= playButtonWidth;
             progressPosition.x += playButtonWidth;
 
-            previewTime = EditorGUI.Slider(progressPosition, previewTime, 0f, 1f);
+            EditorGUI.Slider(progressPosition, previewTime, 0f, 1f);
         }
 
         protected override void OnScopeChanged()
