@@ -1,40 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenBuilder))]
-    public class TweenBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer
+    public class TweenBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Tween>
     {
+        private const PlayState Started = PlayState.Playing | PlayState.Paused;
         private float previewTime;
-        private Tween previewTween;
+
         protected override void DrawControls(Rect position, SerializedProperty property)
         {
-            float playButtonWidth = EditorGUIUtility.singleLineHeight;
-            Rect playButtonPosition = position;
-            playButtonPosition.width = playButtonWidth;
-            if (GUI.Button(playButtonPosition, Icon.Play, Icon.Style))
-            {
-                previewTween = property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
-                previewTween.OnUpdating(t =>
-                {
-                    previewTime = t;
-                    EditorUtility.SetDirty(property.serializedObject.targetObject);
-                });
-                previewTween.SetFieldValue("updateController", FlowEntEditorController.Instance);
-                previewTween.Start();
-            }
+            DrawButtons(position, property);
 
             Rect progressPosition = position;
-            progressPosition.width -= playButtonWidth;
-            progressPosition.x += playButtonWidth;
+            float buttonsWidth = EditorGUIUtility.singleLineHeight * 2;
+            progressPosition.width -= buttonsWidth;
+            progressPosition.x += buttonsWidth;
 
-            EditorGUI.Slider(progressPosition, previewTime, 0f, 1f);
+            float editedPreviewTime = EditorGUI.Slider(progressPosition, previewTime, 0f, 1f);
+            if (editedPreviewTime != previewTime)
+            {
+                if (previewAnimation?.PlayState.HasFlag(Started) == true)
+                {
+                    base.Reset();
+                }
+
+                if (previewAnimation == null)
+                {
+                    previewAnimation = property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
+                }
+
+                previewTime = editedPreviewTime;
+                previewAnimation.SetT(previewTime);
+            }
         }
 
-        protected override void OnScopeChanged()
+        protected override Tween Build(SerializedProperty property)
+            => property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
+
+        protected override UnityEngine.Object[] GetObjects(Tween animation)
         {
-            previewTween = null;
+            ITweenMotion[] motions = animation.GetFieldValue<ITweenMotion[]>("motions");
+            List<UnityEngine.Object> result = new List<UnityEngine.Object>();
+            foreach (ITweenMotion motion in motions)
+            {
+
+            }
+            return result.ToArray();
+        }
+
+        protected override void OnAnimationUpdated(float t)
+        {
+            previewTime = t;
+        }
+
+        protected override void Reset()
+        {
+            base.Reset();
             previewTime = 0;
         }
     }

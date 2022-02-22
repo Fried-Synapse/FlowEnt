@@ -254,7 +254,7 @@ MonoBehaviour:
       type: {class: MoveVectorValueMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
       data:
         name: 
-        isEnabled: 1
+        isEnabled: 0
         item: {fileID: 1168015055}
         value: {x: 2, y: 0, z: 0}
     00000001:

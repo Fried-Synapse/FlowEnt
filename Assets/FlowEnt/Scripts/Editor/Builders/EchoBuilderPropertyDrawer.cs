@@ -4,46 +4,32 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(EchoBuilder))]
-    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer
+    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo>
     {
         private float previewTime;
-        private Echo previewEcho;
+
+        protected override Echo Build(SerializedProperty property)
+            => property.GetValue<EchoBuilder>().Build(FlowEntEditorController.Instance);
+
         protected override void DrawControls(Rect position, SerializedProperty property)
         {
-            float playButtonWidth = EditorGUIUtility.singleLineHeight;
-            Rect playButtonPosition = position;
-            playButtonPosition.width = playButtonWidth;
-            if (previewEcho?.PlayState == PlayState.Playing)
-            {
-                if (GUI.Button(playButtonPosition, Icon.Pause, Icon.Style))
-                {
-                    previewEcho.Pause();
-                }
-            }
-            else
-            {
-                if (GUI.Button(playButtonPosition, Icon.Play, Icon.Style))
-                {
-                    previewEcho = property.GetValue<EchoBuilder>().Build(FlowEntEditorController.Instance);
-                    previewEcho.OnUpdating(t =>
-                    {
-                        previewTime += t;
-                        EditorUtility.SetDirty(property.serializedObject.targetObject);
-                    });
-                    previewEcho.SetFieldValue("updateController", FlowEntEditorController.Instance);
-                    previewEcho.Start();
-                }
-            }
+            DrawButtons(position, property);
 
             Rect progressPosition = position;
-            progressPosition.width -= playButtonWidth;
-            progressPosition.x += playButtonWidth;
+            float buttonsWidth = EditorGUIUtility.singleLineHeight * 2;
+            progressPosition.width -= buttonsWidth;
+            progressPosition.x += buttonsWidth;
             EditorGUI.LabelField(progressPosition, "Time elapsed", previewTime.ToString());
         }
 
-        protected override void OnScopeChanged()
+        protected override void OnAnimationUpdated(float t)
         {
-            previewEcho = null;
+            previewTime += t;
+        }
+
+        protected override void Reset()
+        {
+            base.Reset();
             previewTime = 0;
         }
     }

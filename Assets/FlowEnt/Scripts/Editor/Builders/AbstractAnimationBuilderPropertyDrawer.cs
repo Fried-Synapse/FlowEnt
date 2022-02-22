@@ -5,12 +5,14 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractAnimationBuilderPropertyDrawer : PropertyDrawer
+    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation> : PropertyDrawer
+        where TAnimation : AbstractAnimation
     {
         protected static class Icon
         {
             public static GUIContent Play = EditorGUIUtility.IconContent("PlayButton@2x", "Play");
             public static GUIContent Pause = EditorGUIUtility.IconContent("PauseButton@2x", "Pause");
+            public static GUIContent Stop = EditorGUIUtility.IconContent("PreMatQuad@2x", "Pause");
             public static GUIStyle Style = new GUIStyle(EditorStyles.miniButton) { padding = new RectOffset(2, 2, 2, 2) };
         }
 
@@ -20,8 +22,16 @@ namespace FriedSynapse.FlowEnt.Editor
             "motions",
         };
 
+        protected TAnimation previewAnimation;
         protected abstract void DrawControls(Rect position, SerializedProperty property);
-        protected abstract void OnScopeChanged();
+        protected abstract TAnimation Build(SerializedProperty property);
+        protected abstract UnityEngine.Object[] GetObjects(TAnimation animation);
+        protected abstract void OnAnimationUpdated(float t);
+        protected virtual void Reset()
+        {
+            previewAnimation?.Stop();
+            previewAnimation = null;
+        }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -59,10 +69,50 @@ namespace FriedSynapse.FlowEnt.Editor
 
                 if (check.changed)
                 {
-                    OnScopeChanged();
+                    Reset();
                 }
             }
             EditorGUI.indentLevel--;
+        }
+
+        protected void DrawButtons(Rect position, SerializedProperty property)
+        {
+            position.width = EditorGUIUtility.singleLineHeight;
+            position.x += 5;
+            if (previewAnimation?.PlayState == PlayState.Playing)
+            {
+                if (GUI.Button(position, Icon.Pause, Icon.Style))
+                {
+                    previewAnimation.Pause();
+                }
+            }
+            else
+            {
+                if (GUI.Button(position, Icon.Play, Icon.Style))
+                {
+                    if (previewAnimation?.PlayState == PlayState.Paused)
+                    {
+                        previewAnimation.Resume();
+                    }
+                    else
+                    {
+                        previewAnimation = Build(property);
+                        previewAnimation.OnUpdated(t =>
+                        {
+                            OnAnimationUpdated(t);
+                            EditorUtility.SetDirty(property.serializedObject.targetObject);
+                        });
+                        int undoGroupId = Undo.GetCurrentGroup();
+                        //Undo.RecordObjects(GetObjects(previewAnimation), "Animation Preview");
+                        previewAnimation.Start();
+                    }
+                }
+            }
+            position.x += EditorGUIUtility.singleLineHeight;
+            if (GUI.Button(position, Icon.Stop, Icon.Style))
+            {
+                Reset();
+            }
         }
 
         private void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
