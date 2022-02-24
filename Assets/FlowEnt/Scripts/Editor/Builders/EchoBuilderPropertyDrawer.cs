@@ -1,15 +1,13 @@
+using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(EchoBuilder))]
-    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo>
+    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo, IEchoMotion>
     {
         private float previewTime;
-
-        protected override Echo Build(SerializedProperty property)
-            => property.GetValue<EchoBuilder>().Build(FlowEntEditorController.Instance);
 
         protected override void DrawControls(Rect position, SerializedProperty property)
         {
@@ -21,6 +19,9 @@ namespace FriedSynapse.FlowEnt.Editor
             progressPosition.x += buttonsWidth;
             EditorGUI.LabelField(progressPosition, "Time elapsed", previewTime.ToString());
         }
+
+        protected override Echo Build(SerializedProperty property)
+            => property.GetValue<EchoBuilder>().Build(FlowEntEditorController.Instance);
 
         protected override void OnAnimationUpdated(float t)
         {

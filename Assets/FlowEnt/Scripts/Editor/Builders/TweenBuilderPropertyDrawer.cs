@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEditor;
 using UnityEngine;
@@ -8,7 +6,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenBuilder))]
-    public class TweenBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Tween>
+    public class TweenBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Tween, ITweenMotion>
     {
         private const PlayState Started = PlayState.Playing | PlayState.Paused;
         private float previewTime;
@@ -25,34 +23,30 @@ namespace FriedSynapse.FlowEnt.Editor
             float editedPreviewTime = EditorGUI.Slider(progressPosition, previewTime, 0f, 1f);
             if (editedPreviewTime != previewTime)
             {
-                if (previewAnimation?.PlayState.HasFlag(Started) == true)
-                {
-                    base.Reset();
-                }
-
                 if (previewAnimation == null)
                 {
                     previewAnimation = property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
+                    RecordUndo();
+                    previewAnimation.OnCompleting(() => Debug.Log($"fuck"));
+                    previewAnimation.Start();
+                    previewAnimation.Pause();
+                }
+                else
+                {
+                    if ((previewAnimation.PlayState & Started) != 0)
+                    {
+                        previewAnimation.Pause();
+                    }
                 }
 
+                float delta = (editedPreviewTime - previewTime) * previewAnimation.Time;
+                previewAnimation.GetType().GetMethod("UpdateInternal", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(previewAnimation, new object[1] { delta });
                 previewTime = editedPreviewTime;
-                previewAnimation.SetT(previewTime);
             }
         }
 
         protected override Tween Build(SerializedProperty property)
             => property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
-
-        protected override UnityEngine.Object[] GetObjects(Tween animation)
-        {
-            ITweenMotion[] motions = animation.GetFieldValue<ITweenMotion[]>("motions");
-            List<UnityEngine.Object> result = new List<UnityEngine.Object>();
-            foreach (ITweenMotion motion in motions)
-            {
-
-            }
-            return result.ToArray();
-        }
 
         protected override void OnAnimationUpdated(float t)
         {
