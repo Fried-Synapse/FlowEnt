@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenBuilder))]
-    public class TweenBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Tween, ITweenMotion>
+    public class TweenBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Tween>
     {
         private const PlayState Started = PlayState.Playing | PlayState.Paused;
         private float previewTime;
@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 if (previewAnimation == null)
                 {
                     previewAnimation = property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
-                    RecordUndo();
+                    FlowEntEditorController.Instance.StartPreview(previewAnimation, false);
                     previewAnimation.OnCompleting(() => Debug.Log($"fuck"));
                     previewAnimation.Start();
                     previewAnimation.Pause();

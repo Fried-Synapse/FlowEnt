@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
+using FriedSynapse.FlowEnt.Reflection;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEditor;
 using UnityEngine;
@@ -82,29 +83,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static AbstractUpdatable GetUpdatableIndexForObject(object updateController)
         {
-            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-            FieldInfo field = updateController.GetType().GetField("updatables", bindingFlags);
-            object updatables = field?.GetValue(updateController);
-
-            field = updatables.GetType().GetField("anchor", bindingFlags);
-            object anchor = field?.GetValue(updatables);
-
-            field = anchor.GetType().GetField("next", bindingFlags);
-            return (AbstractUpdatable)field?.GetValue(anchor);
-        }
-
-        internal static T GetFieldValue<T>(this object obj, string name)
-        {
-            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-            FieldInfo field = obj.GetType().GetField(name, bindingFlags);
-            return (T)field?.GetValue(obj);
-        }
-
-        internal static void SetFieldValue<T>(this object obj, string name, T value)
-        {
-            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-            FieldInfo field = obj.GetType().GetField(name, bindingFlags);
-            field?.SetValue(obj, value);
+            object updatables = updateController.GetFieldValue<object>("updatables");
+            object anchor = updatables.GetFieldValue<object>("anchor");
+            return anchor.GetFieldValue<AbstractUpdatable>("next");
         }
 
         internal static T GetValue<T>(this SerializedProperty prop)

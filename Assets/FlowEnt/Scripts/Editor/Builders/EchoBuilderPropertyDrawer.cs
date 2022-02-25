@@ -1,11 +1,10 @@
-using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(EchoBuilder))]
-    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo, IEchoMotion>
+    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo>
     {
         private float previewTime;
 

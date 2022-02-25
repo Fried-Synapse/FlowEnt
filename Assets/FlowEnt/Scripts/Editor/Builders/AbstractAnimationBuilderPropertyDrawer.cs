@@ -1,15 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TMotion> : PropertyDrawer
+    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation> : PropertyDrawer
         where TAnimation : AbstractAnimation
-        where TMotion : IMotion
     {
         protected static class Icon
         {
@@ -25,35 +22,15 @@ namespace FriedSynapse.FlowEnt.Editor
             "motions",
         };
 
-        private int? undoGroupId;
         protected TAnimation previewAnimation;
+        protected virtual bool IsInPreview => previewAnimation != null;
         protected abstract void DrawControls(Rect position, SerializedProperty property);
         protected abstract TAnimation Build(SerializedProperty property);
         protected abstract void OnAnimationUpdated(float t);
+
         protected virtual void Reset()
         {
-            previewAnimation?.Stop();
-            previewAnimation = null;
-            if (undoGroupId != null)
-            {
-                Undo.RevertAllDownToGroup(undoGroupId.Value);
-                undoGroupId = null;
-            }
-        }
-
-        protected void RecordUndo()
-        {
-            if (undoGroupId != null)
-            {
-                return;
-            }
-            UnityEngine.Object[] objects = GetObjects(previewAnimation);
-            if (objects.Length > 0)
-            {
-                undoGroupId = Undo.GetCurrentGroup();
-                Undo.IncrementCurrentGroup();
-                Undo.RecordObjects(objects, "Animation Preview");
-            }
+            FlowEntEditorController.Instance.StopPreview();
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -63,7 +40,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 return EditorGUIUtility.singleLineHeight;
             }
 
-            float height = FlowEntConstants.SpacedSingleLineHeight * 2;
+            float height = (FlowEntConstants.SpacedSingleLineHeight * 2) + 10;
             ForEachVisibleProperty(property, p => height += EditorGUI.GetPropertyHeight(p, true));
             return height;
         }
@@ -72,12 +49,18 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
+            if (IsInPreview)
+            {
+                EditorGUI.DrawRect(position, new Color(1f, 0f, 0f, 0.2f));
+            }
+
             if (!property.isExpanded)
             {
                 return;
             }
 
             EditorGUI.indentLevel++;
+
             DrawControls(FlowEntEditorGUILayout.GetRect(position, 1), property);
             using (EditorGUI.ChangeCheckScope check = new EditorGUI.ChangeCheckScope())
             {
@@ -95,6 +78,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     Reset();
                 }
             }
+
             EditorGUI.indentLevel--;
         }
 
@@ -125,7 +109,7 @@ namespace FriedSynapse.FlowEnt.Editor
                             OnAnimationUpdated(t);
                             EditorUtility.SetDirty(property.serializedObject.targetObject);
                         });
-                        RecordUndo();
+                        FlowEntEditorController.Instance.StartPreview(previewAnimation);
                         previewAnimation.Start();
                     }
                 }
@@ -146,35 +130,6 @@ namespace FriedSynapse.FlowEnt.Editor
                     predicate(p);
                 }
             });
-        }
-
-        private UnityEngine.Object[] GetObjects(TAnimation animation)
-        {
-            TMotion[] motions = animation.GetFieldValue<TMotion[]>("motions");
-            List<UnityEngine.Object> result = new List<UnityEngine.Object>();
-            Type type = typeof(UnityEngine.Object);
-            foreach (TMotion motion in motions)
-            {
-                List<UnityEngine.Object> allObjects = motion
-                    .GetType()
-                    .GetFields()
-                    .Where(fi => type.IsAssignableFrom(fi.FieldType))
-                    .Select(fi => (UnityEngine.Object)fi.GetValue(motion))
-                    .ToList();
-
-                allObjects.AddRange(motion
-                    .GetType()
-                    .GetProperties()
-                    .Where(pi => type.IsAssignableFrom(pi.PropertyType))
-                    .Select(pi => (UnityEngine.Object)pi.GetValue(motion)));
-
-                IEnumerable<UnityEngine.Object> objects = allObjects
-                    .Distinct()
-                    .Where(o => o != null);
-
-                result.AddRange(objects);
-            }
-            return result.ToArray();
         }
     }
 }
