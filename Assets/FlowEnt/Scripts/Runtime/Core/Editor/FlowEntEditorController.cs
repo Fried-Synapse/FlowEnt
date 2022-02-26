@@ -5,10 +5,16 @@ using System.Linq;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
-using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
+    public interface IPreviewable
+    {
+        public SerializedObject SerializedObject { get; }
+        public AbstractAnimation PreviewAnimation { get; }
+        public void Reset();
+    }
+
     public class FlowEntEditorController : IUpdateController
     {
         protected static readonly object lockObject = new object();
@@ -31,9 +37,37 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
 
+        private int? undoGroupId;
+        private IPreviewable previewProperty;
+        public bool IsInPreview => previewProperty != null;
+        private float lastTimeSinceStartup;
+        private float editorDeltaTime;
+
         public void Init()
         {
-            EditorApplication.update += () => FlowEntController.Update(updatables, Time.deltaTime);
+            lastTimeSinceStartup = (float)EditorApplication.timeSinceStartup;
+            EditorApplication.update += Update;
+        }
+
+        private void Update()
+        {
+            editorDeltaTime = (float)EditorApplication.timeSinceStartup - lastTimeSinceStartup;
+            lastTimeSinceStartup = (float)EditorApplication.timeSinceStartup;
+            FlowEntController.Update(updatables, editorDeltaTime);
+
+            bool hasFoundObject = false;
+            foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
+            {
+                if (item.serializedObject == previewProperty?.SerializedObject)
+                {
+                    hasFoundObject = true;
+                    break;
+                }
+            }
+            if (!hasFoundObject)
+            {
+                StopPreview();
+            }
         }
 
         public void SubscribeToUpdate(AbstractUpdatable updatable)
@@ -46,30 +80,13 @@ namespace FriedSynapse.FlowEnt.Editor
             updatables.Remove(updatable);
         }
 
-        private int? undoGroupId;
-        private AbstractAnimation previewAnimation;
-        public AbstractAnimation PreviewAnimation => previewAnimation;
-
-        public void StartPreview(AbstractAnimation previewAnimation, bool shouldOverride = true)
+        public void StartPreview(IPreviewable previewProperty)
         {
-            if (undoGroupId != null)
-            {
-                if (shouldOverride)
-                {
-                    StopPreview();
-                }
-                else
-                {
-                    return;
-                }
-            }
+            this.previewProperty = previewProperty;
 
-            this.previewAnimation = previewAnimation;
-
-            UnityEngine.Object[]
-            getObjects()
+            UnityEngine.Object[] getObjects()
             {
-                IMotion[] motions = previewAnimation.GetFieldValue<IMotion[]>("motions");
+                IMotion[] motions = this.previewProperty.PreviewAnimation.GetFieldValue<IMotion[]>("motions");
                 List<UnityEngine.Object> result = new List<UnityEngine.Object>();
                 Type type = typeof(UnityEngine.Object);
                 foreach (IMotion motion in motions)
@@ -96,9 +113,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 return result.ToArray();
             }
 
-            UnityEngine.Object[]
-            objects = getObjects();
-            if (objects.Length > 0)
+            UnityEngine.Object[] objects = getObjects();
+            if (objects?.Length > 0)
             {
                 undoGroupId = Undo.GetCurrentGroup();
                 Undo.IncrementCurrentGroup();
@@ -108,8 +124,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public void StopPreview()
         {
-            previewAnimation?.Stop();
-            previewAnimation = null;
+            previewProperty?.Reset();
+            previewProperty = null;
+
             if (undoGroupId != null)
             {
                 Undo.RevertAllDownToGroup(undoGroupId.Value);

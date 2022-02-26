@@ -1,5 +1,4 @@
 using System.Reflection;
-using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,8 +25,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 if (previewAnimation == null)
                 {
                     previewAnimation = property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
-                    FlowEntEditorController.Instance.StartPreview(previewAnimation, false);
-                    previewAnimation.OnCompleting(() => Debug.Log($"fuck"));
+                    FlowEntEditorController.Instance.StartPreview(this);
                     previewAnimation.Start();
                     previewAnimation.Pause();
                 }
@@ -53,7 +51,7 @@ namespace FriedSynapse.FlowEnt.Editor
             previewTime = t;
         }
 
-        protected override void Reset()
+        public override void Reset()
         {
             base.Reset();
             previewTime = 0;

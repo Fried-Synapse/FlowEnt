@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Editor
             previewTime += t;
         }
 
-        protected override void Reset()
+        public override void Reset()
         {
             base.Reset();
             previewTime = 0;

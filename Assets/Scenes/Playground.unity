@@ -221,7 +221,7 @@ MonoBehaviour:
       timeScale: 1
       loopCount: 1
       isLoopCountInfinite: 0
-      time: 1
+      time: 5
       easing: 0
       loopType: 0
     events:

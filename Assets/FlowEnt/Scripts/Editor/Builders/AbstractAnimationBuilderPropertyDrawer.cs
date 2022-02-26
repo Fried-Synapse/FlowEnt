@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation> : PropertyDrawer
+    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation> : PropertyDrawer, IPreviewable
         where TAnimation : AbstractAnimation
     {
         protected static class Icon
@@ -23,14 +23,17 @@ namespace FriedSynapse.FlowEnt.Editor
         };
 
         protected TAnimation previewAnimation;
+        public AbstractAnimation PreviewAnimation => previewAnimation;
+        public SerializedObject SerializedObject { get; private set; }
         protected virtual bool IsInPreview => previewAnimation != null;
         protected abstract void DrawControls(Rect position, SerializedProperty property);
         protected abstract TAnimation Build(SerializedProperty property);
         protected abstract void OnAnimationUpdated(float t);
 
-        protected virtual void Reset()
+        public virtual void Reset()
         {
-            FlowEntEditorController.Instance.StopPreview();
+            previewAnimation?.Stop();
+            previewAnimation = null;
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -47,6 +50,16 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            SerializedObject = property.serializedObject;
+            Event ev = Event.current;
+            if (ev.type == EventType.MouseDown && ev.button == 1 && position.Contains(ev.mousePosition))
+            {
+                GenericMenu context = new GenericMenu();
+                context.AddItem(new GUIContent("Copy"), false, () => { });
+                context.AddItem(new GUIContent("Paste"), false, () => { });
+                context.ShowAsContext();
+            }
+
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
             if (IsInPreview)
@@ -75,7 +88,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
                 if (check.changed)
                 {
-                    Reset();
+                    FlowEntEditorController.Instance.StopPreview();
                 }
             }
 
@@ -103,13 +116,28 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                     else
                     {
+                        FlowEntEditorController.Instance.StopPreview();
                         previewAnimation = Build(property);
                         previewAnimation.OnUpdated(t =>
                         {
-                            OnAnimationUpdated(t);
-                            EditorUtility.SetDirty(property.serializedObject.targetObject);
+                            if (property?.serializedObject?.targetObject == null)
+                            {
+                                FlowEntEditorController.Instance.StopPreview();
+                            }
+                            else
+                            {
+                                OnAnimationUpdated(t);
+                                foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
+                                {
+                                    if (item.serializedObject == property?.serializedObject)
+                                    {
+                                        item.Repaint();
+                                        break;
+                                    }
+                                }
+                            }
                         });
-                        FlowEntEditorController.Instance.StartPreview(previewAnimation);
+                        FlowEntEditorController.Instance.StartPreview(this);
                         previewAnimation.Start();
                     }
                 }
@@ -117,7 +145,7 @@ namespace FriedSynapse.FlowEnt.Editor
             position.x += EditorGUIUtility.singleLineHeight;
             if (GUI.Button(position, Icon.Stop, Icon.Style))
             {
-                Reset();
+                FlowEntEditorController.Instance.StopPreview();
             }
         }
 
