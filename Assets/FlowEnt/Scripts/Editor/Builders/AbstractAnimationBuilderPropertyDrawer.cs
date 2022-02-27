@@ -36,6 +36,25 @@ namespace FriedSynapse.FlowEnt.Editor
             previewAnimation = null;
         }
 
+        protected void StartPreview(SerializedProperty property)
+        {
+            previewAnimation = Build(property);
+            previewAnimation.OnUpdated(t =>
+            {
+                OnAnimationUpdated(t);
+                foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
+                {
+                    if (item.serializedObject == property?.serializedObject)
+                    {
+                        item.Repaint();
+                        break;
+                    }
+                }
+            });
+            FlowEntEditorController.Instance.StartPreview(this);
+            previewAnimation.Start();
+        }
+
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             if (!property.isExpanded)
@@ -117,28 +136,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     else
                     {
                         FlowEntEditorController.Instance.StopPreview();
-                        previewAnimation = Build(property);
-                        previewAnimation.OnUpdated(t =>
-                        {
-                            if (property?.serializedObject?.targetObject == null)
-                            {
-                                FlowEntEditorController.Instance.StopPreview();
-                            }
-                            else
-                            {
-                                OnAnimationUpdated(t);
-                                foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
-                                {
-                                    if (item.serializedObject == property?.serializedObject)
-                                    {
-                                        item.Repaint();
-                                        break;
-                                    }
-                                }
-                            }
-                        });
-                        FlowEntEditorController.Instance.StartPreview(this);
-                        previewAnimation.Start();
+                        StartPreview(property);
                     }
                 }
             }

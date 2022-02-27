@@ -47,6 +47,12 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             lastTimeSinceStartup = (float)EditorApplication.timeSinceStartup;
             EditorApplication.update += Update;
+            Undo.postprocessModifications += PostprocessModificationsCallback;
+        }
+
+        UndoPropertyModification[] PostprocessModificationsCallback(UndoPropertyModification[] modifications)
+        {
+            return modifications;
         }
 
         private void Update()
@@ -55,19 +61,19 @@ namespace FriedSynapse.FlowEnt.Editor
             lastTimeSinceStartup = (float)EditorApplication.timeSinceStartup;
             FlowEntController.Update(updatables, editorDeltaTime);
 
-            bool hasFoundObject = false;
+            if (previewProperty == null)
+            {
+                return;
+            }
+
             foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
             {
                 if (item.serializedObject == previewProperty?.SerializedObject)
                 {
-                    hasFoundObject = true;
-                    break;
+                    return;
                 }
             }
-            if (!hasFoundObject)
-            {
-                StopPreview();
-            }
+            StopPreview();
         }
 
         public void SubscribeToUpdate(AbstractUpdatable updatable)

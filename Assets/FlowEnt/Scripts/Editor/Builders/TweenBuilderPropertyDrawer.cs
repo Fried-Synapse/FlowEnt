@@ -24,9 +24,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 if (previewAnimation == null)
                 {
-                    previewAnimation = property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
-                    FlowEntEditorController.Instance.StartPreview(this);
-                    previewAnimation.Start();
+                    StartPreview(property);
                     previewAnimation.Pause();
                 }
                 else
