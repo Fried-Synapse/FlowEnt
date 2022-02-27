@@ -123,165 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &241984369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 241984371}
-  - component: {fileID: 241984370}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &241984370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241984369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4c467a0552f4090abd7b1963ce3423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  green: {fileID: 0}
-  yellow: {fileID: 0}
-  red: {fileID: 0}
-  tween:
-    options:
-      name: 
-      updateType: 0
-      autoStart: 0
-      skipFrames: 0
-      delay: 0
-      timeScale: 1
-      loopCount: 1
-      isLoopCountInfinite: 0
-      time: 1
-      easing: 0
-      loopType: 0
-    events:
-      onStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      onUpdated:
-        m_PersistentCalls:
-          m_Calls: []
-      onLoopCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onStarting:
-        m_PersistentCalls:
-          m_Calls: []
-      onUpdating:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleting:
-        m_PersistentCalls:
-          m_Calls: []
-    motions:
-      motions: []
-  tween1:
-    options:
-      name: 
-      updateType: 0
-      autoStart: 0
-      skipFrames: 0
-      delay: 0
-      timeScale: 1
-      loopCount: 1
-      isLoopCountInfinite: 0
-      time: 1
-      easing: 0
-      loopType: 0
-    events:
-      onStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      onUpdated:
-        m_PersistentCalls:
-          m_Calls: []
-      onLoopCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onStarting:
-        m_PersistentCalls:
-          m_Calls: []
-      onUpdating:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleting:
-        m_PersistentCalls:
-          m_Calls: []
-    motions:
-      motions: []
-  echo:
-    options:
-      name: 
-      updateType: 0
-      autoStart: 0
-      skipFrames: 0
-      delay: 0
-      timeScale: 1
-      loopCount: 1
-      isLoopCountInfinite: 0
-      timeout: 0
-      hasTimeout: 0
-    events:
-      onStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      onUpdated:
-        m_PersistentCalls:
-          m_Calls: []
-      onLoopCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onStarting:
-        m_PersistentCalls:
-          m_Calls: []
-      onUpdating:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleting:
-        m_PersistentCalls:
-          m_Calls: []
-    motions:
-      motions: []
-  references:
-    version: 1
---- !u!4 &241984371
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241984369}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371499373
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 371499374}
   - component: {fileID: 371499375}
+  - component: {fileID: 371499376}
   m_Layer: 0
   m_Name: PlaygroundController
   m_TagString: Untagged
@@ -327,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4c467a0552f4090abd7b1963ce3423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test:
+    x: 0
   character: {fileID: 494542734}
   green: {fileID: 1168015055}
   yellow: {fileID: 1726780655}
@@ -467,6 +311,61 @@ MonoBehaviour:
         isEnabled: 1
         item: {fileID: 1562631411}
         speed: {x: 0, y: 1, z: 0}
+--- !u!114 &371499376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371499373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdc95d9dfe9cf54398eecb6868b0335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updateMode: 0
+  _foldoutControl: 1
+  _foldoutEvents: 0
+  _duration: 1
+  timeMode: 1
+  wrapMode: 0
+  arrivedAction: 3
+  sampleOnAwake: 1
+  _onForwardArrived:
+    m_PersistentCalls:
+      m_Calls: []
+  _onBackArrived:
+    m_PersistentCalls:
+      m_Calls: []
+  _animations:
+  - id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: TweenRectTransformSizeDelta, ns: UnityExtensions.Tween, asm: Assembly-CSharp-firstpass}
+      data:
+        enabled: 1
+        _minNormalizedTime: 0
+        _maxNormalizedTime: 1
+        _holdBeforeStart: 1
+        _holdAfterEnd: 1
+        _interpolator:
+          type: 1
+          strength: 0.5
+          customCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        _foldout: 1
+        _comment: 
+        from: {x: 0, y: 0}
+        to: {x: 0, y: 0}
+        target: {fileID: 0}
+        toggle:
+          x: 0
+          y: 0
 --- !u!1 &494542730
 GameObject:
   m_ObjectHideFlags: 0

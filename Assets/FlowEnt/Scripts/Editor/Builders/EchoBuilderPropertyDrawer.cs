@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(EchoBuilder))]
-    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo>
+    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo, EchoBuilder>
     {
         private float previewTime;
 

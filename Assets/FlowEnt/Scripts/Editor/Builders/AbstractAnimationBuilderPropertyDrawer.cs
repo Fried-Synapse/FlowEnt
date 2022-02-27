@@ -5,11 +5,13 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation> : PropertyDrawer, IPreviewable
+    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer, IPreviewable
         where TAnimation : AbstractAnimation
+        where TAnimationBuilder : AbstractBuilder<TAnimation>
     {
         protected static class Icon
         {
+            public static GUIContent Menu = EditorGUIUtility.IconContent("_Menu@2x", "Menu");
             public static GUIContent Play = EditorGUIUtility.IconContent("PlayButton@2x", "Play");
             public static GUIContent Pause = EditorGUIUtility.IconContent("PauseButton@2x", "Pause");
             public static GUIContent Stop = EditorGUIUtility.IconContent("PreMatQuad@2x", "Pause");
@@ -29,6 +31,7 @@ namespace FriedSynapse.FlowEnt.Editor
         protected abstract void DrawControls(Rect position, SerializedProperty property);
         protected abstract TAnimation Build(SerializedProperty property);
         protected abstract void OnAnimationUpdated(float t);
+        private static TAnimationBuilder clipboard;
 
         public virtual void Reset()
         {
@@ -42,6 +45,7 @@ namespace FriedSynapse.FlowEnt.Editor
             previewAnimation.OnUpdated(t =>
             {
                 OnAnimationUpdated(t);
+
                 foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
                 {
                     if (item.serializedObject == property?.serializedObject)
@@ -70,14 +74,6 @@ namespace FriedSynapse.FlowEnt.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             SerializedObject = property.serializedObject;
-            Event ev = Event.current;
-            if (ev.type == EventType.MouseDown && ev.button == 1 && position.Contains(ev.mousePosition))
-            {
-                GenericMenu context = new GenericMenu();
-                context.AddItem(new GUIContent("Copy"), false, () => { });
-                context.AddItem(new GUIContent("Paste"), false, () => { });
-                context.ShowAsContext();
-            }
 
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
@@ -85,6 +81,8 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 EditorGUI.DrawRect(position, new Color(1f, 0f, 0f, 0.2f));
             }
+
+            DrawMenu(position, property);
 
             if (!property.isExpanded)
             {
@@ -112,6 +110,28 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             EditorGUI.indentLevel--;
+        }
+
+        private void DrawMenu(Rect position, SerializedProperty property)
+        {
+            Rect menuPosition = position;
+            const float menuWidth = 20f;
+            menuPosition.x = position.xMax - (menuWidth / 2f) - 10;
+            menuPosition.width = menuWidth;
+            menuPosition.height = EditorGUIUtility.singleLineHeight;
+            if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
+            {
+                TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
+                GenericMenu context = new GenericMenu();
+                void copyMotion()
+                {
+                    clipboard = (TAnimationBuilder)Activator.CreateInstance(animation.GetType());
+                    EditorUtility.CopySerializedManagedFieldsOnly(animation, clipboard);
+                }
+                context.AddItem(new GUIContent("Copy"), copyMotion);
+                context.AddItem(new GUIContent("Paste Values"), () => EditorUtility.CopySerializedManagedFieldsOnly(clipboard, animation), clipboard == null || animation.GetType() != clipboard.GetType());
+                context.ShowAsContext();
+            }
         }
 
         protected void DrawButtons(Rect position, SerializedProperty property)

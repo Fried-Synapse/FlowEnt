@@ -10,13 +10,13 @@ namespace FriedSynapse.FlowEnt.Editor
     public class MotionPickerWindow : EditorWindow
     {
         private static MotionPickerWindow instance;
-        public static void Show<T>(Action<T> callback)
-            where T : class
+        public static void Show<TMotionBuilder>(Action<TMotionBuilder> callback)
+            where TMotionBuilder : IMotionBuilder
         {
             instance?.Close();
             instance = CreateWindow<MotionPickerWindow>("Select animation");
-            instance.types = GetTypes<T>();
-            instance.callback = type => callback.Invoke((T)Activator.CreateInstance(type));
+            instance.types = GetTypes<TMotionBuilder>();
+            instance.callback = type => callback.Invoke((TMotionBuilder)Activator.CreateInstance(type));
             instance.ShowPopup();
         }
 
@@ -51,11 +51,11 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 #pragma warning restore IDE0051, RCS1213
 
-        public static List<Type> GetTypes<T>()
-            where T : class
+        public static List<Type> GetTypes<TMotionBuilder>()
+            where TMotionBuilder : IMotionBuilder
         {
             List<Type> objects = new List<Type>();
-            Type type = typeof(T);
+            Type type = typeof(TMotionBuilder);
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type)));
