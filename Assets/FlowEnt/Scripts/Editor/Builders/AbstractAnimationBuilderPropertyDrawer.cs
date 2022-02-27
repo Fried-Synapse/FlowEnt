@@ -66,7 +66,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 return EditorGUIUtility.singleLineHeight;
             }
 
-            float height = (FlowEntConstants.SpacedSingleLineHeight * 2) + 10;
+            float height = (FlowEntConstants.SpacedSingleLineHeight * 2) + FlowEntConstants.DrawerSpacing;
             ForEachVisibleProperty(property, p => height += EditorGUI.GetPropertyHeight(p, true));
             return height;
         }
@@ -94,7 +94,7 @@ namespace FriedSynapse.FlowEnt.Editor
             DrawControls(FlowEntEditorGUILayout.GetRect(position, 1), property);
             using (EditorGUI.ChangeCheckScope check = new EditorGUI.ChangeCheckScope())
             {
-                position.y += FlowEntConstants.SpacedSingleLineHeight * 2;
+                position.y += FlowEntConstants.SpacedSingleLineHeight + EditorGUIUtility.singleLineHeight;
                 ForEachVisibleProperty(property, p =>
                 {
                     float height = EditorGUI.GetPropertyHeight(p, true) + FlowEntConstants.DrawerSpacing;
@@ -134,7 +134,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        protected void DrawButtons(Rect position, SerializedProperty property)
+        protected void DrawControlButtons(Rect position, SerializedProperty property)
         {
             position.width = EditorGUIUtility.singleLineHeight;
             position.x += 5;

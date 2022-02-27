@@ -9,14 +9,7 @@ namespace FriedSynapse.FlowEnt.Editor
     public abstract class AbstractMotionsBuilderPropertyDrawer<TMotionBuilder> : PropertyDrawer
         where TMotionBuilder : IMotionBuilder
     {
-        protected static class Icon
-        {
-            public static GUIContent Menu = EditorGUIUtility.IconContent("_Menu@2x", "Menu");
-            public static GUIStyle Style = new GUIStyle(EditorStyles.miniButton) { padding = new RectOffset(2, 2, 2, 2) };
-        }
-
         private readonly Queue<TMotionBuilder> addedBuildersTypes = new Queue<TMotionBuilder>();
-        private static TMotionBuilder clipboard;
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -72,9 +65,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
             for (int i = 0; i < motionsProperty.arraySize; i++)
             {
-                DrawMenu(position, motions, motions[i]);
                 SerializedProperty motionProperty = motionsProperty.GetArrayElementAtIndex(i);
-                float height = EditorGUI.GetPropertyHeight(motionProperty, true) + FlowEntConstants.DrawerSpacing;
+                float height = EditorGUI.GetPropertyHeight(motionProperty, true);
                 position.height = height;
                 EditorGUI.PropertyField(position, motionProperty, true);
                 position.y += height;
@@ -84,30 +76,6 @@ namespace FriedSynapse.FlowEnt.Editor
         private void AddMotion(TMotionBuilder builder)
         {
             addedBuildersTypes.Enqueue(builder);
-        }
-
-        private void DrawMenu(Rect position, List<TMotionBuilder> motions, TMotionBuilder motion)
-        {
-            Rect menuPosition = position;
-            const float menuWidth = 20f;
-            menuPosition.x = position.xMax - (menuWidth / 2f) - 10;
-            menuPosition.width = menuWidth;
-            menuPosition.height = EditorGUIUtility.singleLineHeight;
-            //NOTE this should not be in here...it should be in the motion builder drawer
-            if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
-            {
-                GenericMenu context = new GenericMenu();
-                context.AddItem(new GUIContent("Remove Motion"), () => motions.Remove(motion));
-                void copyMotion()
-                {
-                    clipboard = (TMotionBuilder)Activator.CreateInstance(motion.GetType());
-                    EditorUtility.CopySerializedManagedFieldsOnly(motion, clipboard);
-                }
-                context.AddItem(new GUIContent("Copy Motion"), copyMotion);
-                context.AddItem(new GUIContent("Paste Motion Values"), () => EditorUtility.CopySerializedManagedFieldsOnly(clipboard, motion), clipboard == null || motion.GetType() != clipboard.GetType());
-                context.AddItem(new GUIContent("Paste Motion as new"), () => motions.Add(clipboard), clipboard == null);
-                context.ShowAsContext();
-            }
         }
     }
 }

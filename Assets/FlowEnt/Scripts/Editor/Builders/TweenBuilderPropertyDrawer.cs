@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void DrawControls(Rect position, SerializedProperty property)
         {
-            DrawButtons(position, property);
+            DrawControlButtons(position, property);
 
             Rect progressPosition = position;
             float buttonsWidth = EditorGUIUtility.singleLineHeight * 2;

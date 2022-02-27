@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,6 +11,12 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public class MotionPickerWindow : EditorWindow
     {
+        private class TypeInfo
+        {
+            public Type Type { get; set; }
+            public List<string> Names { get; set; } = new List<string>();
+        }
+
         private static MotionPickerWindow instance;
         public static void Show<TMotionBuilder>(Action<TMotionBuilder> callback)
             where TMotionBuilder : IMotionBuilder
@@ -22,24 +30,24 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private Action<Type> callback;
         private string searchText;
-        private List<Type> types = new List<Type>();
+        private List<TypeInfo> types = new List<TypeInfo>();
 
 #pragma warning disable IDE0051, RCS1213
         private void OnGUI()
         {
             searchText = EditorGUILayout.TextField(searchText);
 
-            List<Type> types = this.types;
+            List<TypeInfo> types = this.types;
             if (!string.IsNullOrEmpty(searchText))
             {
-                types = types.FindAll(t => t.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0);
+                types = types.FindAll(t => t.Names.Any(n => n.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0));
             }
 
-            foreach (Type type in types)
+            foreach (TypeInfo typeInfo in types)
             {
-                if (GUILayout.Button(type.Name))
+                if (GUILayout.Button(typeInfo.Names[0]))
                 {
-                    callback.Invoke(type);
+                    callback.Invoke(typeInfo.Type);
                     instance?.Close();
                 }
             }
@@ -51,14 +59,15 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 #pragma warning restore IDE0051, RCS1213
 
-        public static List<Type> GetTypes<TMotionBuilder>()
+        private static List<TypeInfo> GetTypes<TMotionBuilder>()
             where TMotionBuilder : IMotionBuilder
         {
-            List<Type> objects = new List<Type>();
+            List<TypeInfo> objects = new List<TypeInfo>();
             Type type = typeof(TMotionBuilder);
+
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type)));
+                objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type)).Select(t => new TypeInfo() { Type = t, Names = AbstractMotionBuilderPropertyDrawer.GetNames(t) }));
             }
             return objects;
         }

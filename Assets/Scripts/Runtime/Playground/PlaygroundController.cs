@@ -1,4 +1,3 @@
-using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
@@ -11,10 +10,6 @@ namespace FriedSynapse.FlowEnt.Builder
     public class PlaygroundController : MonoBehaviour
     {
 #pragma warning disable RCS1169, IDE0044
-        [SerializeField]
-        private Test test;
-        private Test Test => test;
-
         [SerializeField]
         private Transform character;
         private Transform Character => character;

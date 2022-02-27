@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         protected override void SetValue(Vector3 value) => item.position = value;
     }
 
-    [Serializable]
+    [Serializable, DisplayName("Test")]
     public class MoveVectorValueMotionBuilder : AbstractTweenMotionBuilder<Transform>
     {
         [SerializeField]

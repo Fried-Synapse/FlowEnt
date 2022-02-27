@@ -66,6 +66,20 @@ namespace FriedSynapse.FlowEnt.Editor
             return (T)obj;
         }
 
+        public static SerializedProperty GetParent(this SerializedProperty property)
+        {
+            string path = property.propertyPath;
+            int index = path.LastIndexOf('.');
+            return index < 0 ? null : property.serializedObject.FindProperty(path.Substring(0, index));
+        }
+
+        public static SerializedProperty GetParentArray(this SerializedProperty property)
+        {
+            string path = property.propertyPath;
+            int index = path.LastIndexOf('.', path.LastIndexOf('.') - 1);
+            return index < 0 ? null : property.serializedObject.FindProperty(path.Substring(0, index));
+        }
+
         public static void AddItem(this GenericMenu menu, GUIContent content, GenericMenu.MenuFunction callback, bool isDisabled = false, bool isOn = false)
         {
             if (isDisabled)

@@ -59,7 +59,18 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             editorDeltaTime = (float)EditorApplication.timeSinceStartup - lastTimeSinceStartup;
             lastTimeSinceStartup = (float)EditorApplication.timeSinceStartup;
-            FlowEntController.Update(updatables, editorDeltaTime);
+            try
+            {
+                FlowEntController.Update(updatables, editorDeltaTime);
+            }
+            catch (Exception ex)
+            {
+                FlowEntDebug.LogError(
+                    $"<color={FlowEntConstants.Red}><b>Exception on update</b></color>\n" +
+                    $"<color={FlowEntConstants.Orange}><b>The preview animation is throwing an exception</b></color>:\n\n" +
+                    $"<b>Exception</b>:\n{ex}");
+                StopPreview();
+            }
 
             if (previewProperty == null)
             {
