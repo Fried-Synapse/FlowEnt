@@ -41,6 +41,11 @@ namespace FriedSynapse.FlowEnt.Builder
         private void OnDrawGizmos()
         {
         }
+
+        public void Log(Vector3 x)
+        {
+            Debug.Log($"{x}");
+        }
 #pragma warning restore IDE0051, RCS1213
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
@@ -51,5 +52,25 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
             SetValue(lerpFunction(from, to, t));
         }
+    }
+
+    [Serializable]
+    public abstract class AbstractValueValueMotionBuilder<TItem, TValue> : AbstractTweenMotionBuilder<TItem>
+        where TItem : class
+        where TValue : struct
+    {
+        [SerializeField]
+        protected TValue value;
+    }
+
+    [Serializable]
+    public abstract class AbstractValueFromToMotionBuilder<TItem, TValue> : AbstractTweenMotionBuilder<TItem>
+        where TItem : class
+        where TValue : struct
+    {
+        [SerializeField]
+        protected TValue from;
+        [SerializeField]
+        protected TValue to;
     }
 }

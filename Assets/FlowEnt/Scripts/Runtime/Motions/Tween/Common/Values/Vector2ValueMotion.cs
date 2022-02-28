@@ -15,4 +15,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 
         protected override Func<Vector2, Vector2, float, Vector2> LerpFunction => Vector2.LerpUnclamped;
     }
+
+    [Serializable]
+    public class Vector2ValueMotionBuilder : AbstractFromToValueMotionBuilder<Vector2>
+    {
+        public override ITweenMotion Build()
+            => new Vector2ValueMotion(from, to, GetCallback());
+    }
 }

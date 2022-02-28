@@ -17,4 +17,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         protected override Func<Quaternion, Quaternion, float, Quaternion> LerpFunction => Quaternion.LerpUnclamped;
         protected override Quaternion GetTo(Quaternion from, Quaternion value) => from * value;
     }
+
+    [Serializable]
+    public abstract class AbstractQuaternionValueMotionBuilder<TItem> : AbstractValueValueMotionBuilder<TItem, Quaternion>
+        where TItem : class
+    {
+    }
+
+    [Serializable]
+    public abstract class AbstractQuaternionFromToMotionBuilder<TItem> : AbstractValueFromToMotionBuilder<TItem, Quaternion>
+        where TItem : class
+    {
+    }
 }

@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 371499374}
   - component: {fileID: 371499375}
-  - component: {fileID: 371499376}
   m_Layer: 0
   m_Name: PlaygroundController
   m_TagString: Untagged
@@ -212,6 +211,7 @@ MonoBehaviour:
       motions:
       - id: 0
       - id: 1
+      - id: 2
   tween1:
     options:
       name: 
@@ -285,7 +285,7 @@ MonoBehaviour:
           m_Calls: []
     motions:
       motions:
-      - id: 2
+      - id: 3
   references:
     version: 1
     00000000:
@@ -305,6 +305,34 @@ MonoBehaviour:
         item: {fileID: 1726780655}
         value: {x: 0, y: 2, z: 0}
     00000002:
+      type: {class: SplineValueMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Values, asm: FriedSynapse.FlowEnt}
+      data:
+        name: 
+        isNameEnabled: 0
+        isEnabled: 1
+        callback:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 371499375}
+              m_TargetAssemblyTypeName: FriedSynapse.FlowEnt.Builder.PlaygroundController,
+                FriedSynapse.FlowEnt.Builder
+              m_MethodName: Log
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 1
+        type: 1
+        normalise: 0
+        points:
+        - {x: 3, y: 0, z: 0}
+        - {x: 3, y: 3, z: 0}
+        - {x: 3, y: 3, z: 3}
+    00000003:
       type: {class: MoveVectorMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Echo.Transforms, asm: FriedSynapse.FlowEnt}
       data:
         name: 
@@ -312,61 +340,6 @@ MonoBehaviour:
         isEnabled: 1
         item: {fileID: 1562631411}
         speed: {x: 0, y: 1, z: 0}
---- !u!114 &371499376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371499373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fdc95d9dfe9cf54398eecb6868b0335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _updateMode: 0
-  _foldoutControl: 1
-  _foldoutEvents: 0
-  _duration: 1
-  timeMode: 1
-  wrapMode: 0
-  arrivedAction: 3
-  sampleOnAwake: 1
-  _onForwardArrived:
-    m_PersistentCalls:
-      m_Calls: []
-  _onBackArrived:
-    m_PersistentCalls:
-      m_Calls: []
-  _animations:
-  - id: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: TweenRectTransformSizeDelta, ns: UnityExtensions.Tween, asm: Assembly-CSharp-firstpass}
-      data:
-        enabled: 1
-        _minNormalizedTime: 0
-        _maxNormalizedTime: 1
-        _holdBeforeStart: 1
-        _holdAfterEnd: 1
-        _interpolator:
-          type: 1
-          strength: 0.99130243
-          customCurve:
-            serializedVersion: 2
-            m_Curve: []
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-        _foldout: 1
-        _comment: 
-        from: {x: 0, y: 0}
-        to: {x: 0, y: 0}
-        target: {fileID: 0}
-        toggle:
-          x: 0
-          y: 0
 --- !u!1 &494542730
 GameObject:
   m_ObjectHideFlags: 0

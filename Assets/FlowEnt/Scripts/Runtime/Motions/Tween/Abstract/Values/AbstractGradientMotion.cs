@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
@@ -11,5 +12,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         }
 
         protected readonly Gradient gradient;
+    }
+
+    [Serializable]
+    public abstract class AbstractGradientMotionBuilder<TItem> : AbstractTweenMotionBuilder<TItem>
+        where TItem : class
+    {
+        [SerializeField]
+        protected Gradient gradient;
     }
 }

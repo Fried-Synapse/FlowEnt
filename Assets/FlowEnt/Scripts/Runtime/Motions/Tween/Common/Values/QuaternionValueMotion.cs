@@ -15,4 +15,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 
         protected override Func<Quaternion, Quaternion, float, Quaternion> LerpFunction => Quaternion.LerpUnclamped;
     }
+
+    [Serializable]
+    public class QuaternionValueMotionBuilder : AbstractFromToValueMotionBuilder<Quaternion>
+    {
+        public override ITweenMotion Build()
+            => new QuaternionValueMotion(from, to, GetCallback());
+    }
 }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract

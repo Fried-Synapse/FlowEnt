@@ -25,4 +25,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
             callback((int)Mathf.LerpUnclamped(from, to, t));
         }
     }
+
+    [Serializable]
+    public class IntValueMotionBuilder : AbstractFromToValueMotionBuilder<int>
+    {
+        public override ITweenMotion Build()
+            => new IntValueMotion(from, to, GetCallback());
+    }
 }

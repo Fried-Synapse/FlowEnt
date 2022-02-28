@@ -133,20 +133,31 @@ namespace FriedSynapse.FlowEnt.Editor
             });
         }
 
-        public static List<string> GetNames(Type t, IMotionBuilder motionBuilder = null)
+        public static List<string> GetNames(Type type, IMotionBuilder motionBuilder = null)
         {
             List<string> names = new List<string>();
             if (motionBuilder != null && !string.IsNullOrEmpty(motionBuilder.Name))
             {
                 names.Add(motionBuilder.Name);
             }
-            DisplayNameAttribute displayNameAttribute = t.GetCustomAttribute<DisplayNameAttribute>();
+            DisplayNameAttribute displayNameAttribute = type.GetCustomAttribute<DisplayNameAttribute>();
             if (displayNameAttribute != null)
             {
                 names.Add(displayNameAttribute.DisplayName);
             }
-            names.Add(Regex.Replace(t.Name, "[A-Z]", " $0"));
-            names.Add(t.Name);
+            static string prettify(string name)
+            {
+                const string builder = "Builder";
+                string prettyString = Regex.Replace(name, "[A-Z]", " $0");
+                string[] prettyParts = prettyString.Split(' ');
+                if (prettyParts[prettyParts.Length - 1] == builder)
+                {
+                    prettyString = Regex.Replace(prettyString, $"{builder}$", string.Empty);
+                }
+                return prettyString;
+            };
+            names.Add(prettify(type.Name));
+            names.Add(type.Name);
             return names;
         }
     }

@@ -15,4 +15,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 
         protected override Func<Color, Color, float, Color> LerpFunction => Color.LerpUnclamped;
     }
+
+    [Serializable]
+    public class ColorValueMotionBuilder : AbstractFromToValueMotionBuilder<Color>
+    {
+        public override ITweenMotion Build()
+            => new ColorValueMotion(from, to, GetCallback());
+    }
 }

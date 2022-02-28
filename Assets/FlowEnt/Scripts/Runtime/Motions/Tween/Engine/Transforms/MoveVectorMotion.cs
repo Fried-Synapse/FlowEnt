@@ -22,24 +22,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         protected override void SetValue(Vector3 value) => item.position = value;
     }
 
-    [Serializable, DisplayName("Test")]
-    public class MoveVectorValueMotionBuilder : AbstractTweenMotionBuilder<Transform>
+    [Serializable]
+    public class MoveVectorValueMotionBuilder : AbstractVector3ValueMotionBuilder<Transform>
     {
-        [SerializeField]
-        private Vector3 value;
-
         public override ITweenMotion Build()
             => new MoveVectorMotion(item, value);
     }
 
     [Serializable]
-    public class MoveVectorFromToMotionBuilder : AbstractTweenMotionBuilder<Transform>
+    public class MoveVectorFromToMotionBuilder : AbstractVector3FromToMotionBuilder<Transform>
     {
-        [SerializeField]
-        private Vector3 from;
-        [SerializeField]
-        private Vector3 to;
-
         public override ITweenMotion Build()
             => new MoveVectorMotion(item, from, to);
     }

@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,11 +7,9 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.position" /> value using a spline.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class MoveSplineMotion<TTransform> : AbstractSplineMotion<TTransform>
-        where TTransform : Transform
+    public class MoveSplineMotion : AbstractSplineMotion<Transform>
     {
-        public MoveSplineMotion(TTransform item, ISpline spline) : base(item, spline)
+        public MoveSplineMotion(Transform item, ISpline spline) : base(item, spline)
         {
         }
 
@@ -18,5 +17,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         {
             item.position = spline.GetPoint(t);
         }
+    }
+
+    [Serializable]
+    public class MoveSplineMotionBuilder : AbstractSplineMotionBuilder<Transform>
+    {
+        public override ITweenMotion Build()
+            => new MoveSplineMotion(item, GetSpline());
     }
 }

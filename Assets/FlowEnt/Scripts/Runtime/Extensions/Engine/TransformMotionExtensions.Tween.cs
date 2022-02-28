@@ -298,7 +298,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveTo<TTransform>(this TweenMotionProxy<TTransform> proxy, ISpline spline)
             where TTransform : Transform
-            => proxy.Apply(new MoveSplineMotion<TTransform>(proxy.Item, spline));
+            => proxy.Apply(new MoveSplineMotion(proxy.Item, spline));
 
         /// <summary>
         /// Applies a <see cref="MoveLocalSplineMotion{TTransform}" /> to the tween.
