@@ -139,13 +139,12 @@ namespace FriedSynapse.FlowEnt
             remainingLoops = loopCount;
             remainingTime = time;
 
-            updateController.SubscribeToUpdate(this);
-
             onStarting?.Invoke();
             for (int i = 0; i < motions.Length; i++)
             {
                 motions[i].OnStart();
             }
+            updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
             onStarted?.Invoke();
 

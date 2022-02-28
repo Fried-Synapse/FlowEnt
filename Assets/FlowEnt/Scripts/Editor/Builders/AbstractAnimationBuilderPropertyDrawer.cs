@@ -56,7 +56,18 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
             });
             FlowEntEditorController.Instance.StartPreview(this);
-            previewAnimation.Start();
+            try
+            {
+                previewAnimation.Start();
+            }
+            catch (Exception ex)
+            {
+                FlowEntDebug.LogError(
+                    $"<color={FlowEntConstants.Red}><b>Exception on starting animation</b></color>\n" +
+                    $"<color={FlowEntConstants.Orange}><b>The preview animation is throwing an exception</b></color>:\n\n" +
+                    $"<b>Exception</b>:\n{ex}");
+                FlowEntEditorController.Instance.StopPreview();
+            }
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

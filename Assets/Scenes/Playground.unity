@@ -169,8 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4c467a0552f4090abd7b1963ce3423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test:
-    x: 0
   character: {fileID: 494542734}
   green: {fileID: 1168015055}
   yellow: {fileID: 1726780655}
@@ -294,6 +292,7 @@ MonoBehaviour:
       type: {class: MoveVectorValueMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
       data:
         name: 
+        isNameEnabled: 0
         isEnabled: 0
         item: {fileID: 1168015055}
         value: {x: 2, y: 0, z: 0}
@@ -301,6 +300,7 @@ MonoBehaviour:
       type: {class: MoveVectorValueMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
       data:
         name: 
+        isNameEnabled: 0
         isEnabled: 1
         item: {fileID: 1726780655}
         value: {x: 0, y: 2, z: 0}
@@ -308,6 +308,7 @@ MonoBehaviour:
       type: {class: MoveVectorMotionBuilder, ns: FriedSynapse.FlowEnt.Motions.Echo.Transforms, asm: FriedSynapse.FlowEnt}
       data:
         name: 
+        isNameEnabled: 0
         isEnabled: 1
         item: {fileID: 1562631411}
         speed: {x: 0, y: 1, z: 0}
@@ -351,7 +352,7 @@ MonoBehaviour:
         _holdAfterEnd: 1
         _interpolator:
           type: 1
-          strength: 0.5
+          strength: 0.99130243
           customCurve:
             serializedVersion: 2
             m_Curve: []
