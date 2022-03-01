@@ -6,6 +6,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 {
     public class ColorValueMotion : AbstractValueMotion<Color>
     {
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new ColorValueMotion(from, to, GetCallback());
+        }
+
         /// <summary>
         /// Lerps a <see cref="Color" /> value.
         /// </summary>
@@ -14,12 +21,5 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
         }
 
         protected override Func<Color, Color, float, Color> LerpFunction => Color.LerpUnclamped;
-    }
-
-    [Serializable]
-    public class ColorValueMotionBuilder : AbstractFromToValueMotionBuilder<Color>
-    {
-        public override ITweenMotion Build()
-            => new ColorValueMotion(from, to, GetCallback());
     }
 }

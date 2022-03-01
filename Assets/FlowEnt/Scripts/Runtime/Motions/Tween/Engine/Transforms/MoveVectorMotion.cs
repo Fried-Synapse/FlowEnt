@@ -10,6 +10,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// </summary>
     public class MoveVectorMotion : AbstractVector3Motion<Transform>
     {
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new MoveVectorMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new MoveVectorMotion(item, from, to);
+        }
+
         public MoveVectorMotion(Transform item, Vector3 value) : base(item, value)
         {
         }
@@ -20,19 +34,5 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
 
         protected override Vector3 GetFrom() => item.position;
         protected override void SetValue(Vector3 value) => item.position = value;
-    }
-
-    [Serializable]
-    public class MoveVectorValueMotionBuilder : AbstractVector3ValueMotionBuilder<Transform>
-    {
-        public override ITweenMotion Build()
-            => new MoveVectorMotion(item, value);
-    }
-
-    [Serializable]
-    public class MoveVectorFromToMotionBuilder : AbstractVector3FromToMotionBuilder<Transform>
-    {
-        public override ITweenMotion Build()
-            => new MoveVectorMotion(item, from, to);
     }
 }

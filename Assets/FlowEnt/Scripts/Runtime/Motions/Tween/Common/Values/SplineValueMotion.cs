@@ -7,6 +7,36 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 {
     public class SplineValueMotion : AbstractTweenMotion
     {
+        [Serializable]
+        public class Builder : AbstractValueMotion<Vector3>.AbstractEventBuilder
+        {
+#pragma warning disable IDE0044, RCS1169
+            [SerializeField]
+            private SplineFactory.SplineType type;
+            [SerializeField]
+            private bool normalise;
+            // [SerializeField]
+            // private bool preview;
+            [SerializeField]
+            private List<Vector3> points;
+#pragma warning restore IDE0044, RCS1169
+
+            public override ITweenMotion Build()
+                => new SplineValueMotion(SplineFactory.GetSpline(type, points, normalise), GetCallback());
+
+#if UNITY_EDITOR
+#pragma warning disable IDE0051, RCS1213
+            //TODO this function is not called because this is not a monobehaviour...
+            private void OnDrawGizmos()
+            {
+                // if (preview)
+                // {
+                //     GetSpline().DrawGizmo(Color.white, 2f);
+                // }
+            }
+#pragma warning restore IDE0051, RCS1213
+#endif
+        }
         /// <summary>
         /// Lerps an <see cref="ISpline" />.
         /// </summary>
@@ -23,36 +53,5 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
         {
             callback(spline.GetPoint(t));
         }
-    }
-
-    [Serializable]
-    public class SplineValueMotionBuilder : AbstractValueMotionBuilder<Vector3>
-    {
-#pragma warning disable IDE0044, RCS1169
-        [SerializeField]
-        private SplineFactory.SplineType type;
-        [SerializeField]
-        private bool normalise;
-        // [SerializeField]
-        // private bool preview;
-        [SerializeField]
-        private List<Vector3> points;
-#pragma warning restore IDE0044, RCS1169
-
-        public override ITweenMotion Build()
-            => new SplineValueMotion(SplineFactory.GetSpline(type, points, normalise), GetCallback());
-
-#if UNITY_EDITOR
-#pragma warning disable IDE0051, RCS1213
-        //TODO this function is not called because this is not a monobehaviour...
-        private void OnDrawGizmos()
-        {
-            // if (preview)
-            // {
-            //     GetSpline().DrawGizmo(Color.white, 2f);
-            // }
-        }
-#pragma warning restore IDE0051, RCS1213
-#endif
     }
 }

@@ -7,6 +7,22 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         where TItem : class
         where TValue : struct
     {
+        [Serializable]
+        public abstract class AbstractValueBuilder : AbstractTweenMotionBuilder<TItem>
+        {
+            [SerializeField]
+            protected TValue value;
+        }
+
+        [Serializable]
+        public abstract class AbstractFromToBuilder : AbstractTweenMotionBuilder<TItem>
+        {
+            [SerializeField]
+            protected TValue from;
+            [SerializeField]
+            protected TValue to;
+        }
+
         protected AbstractValueMotion(TItem item, TValue value) : base(item)
         {
             this.value = value;
@@ -52,25 +68,5 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
             SetValue(lerpFunction(from, to, t));
         }
-    }
-
-    [Serializable]
-    public abstract class AbstractValueValueMotionBuilder<TItem, TValue> : AbstractTweenMotionBuilder<TItem>
-        where TItem : class
-        where TValue : struct
-    {
-        [SerializeField]
-        protected TValue value;
-    }
-
-    [Serializable]
-    public abstract class AbstractValueFromToMotionBuilder<TItem, TValue> : AbstractTweenMotionBuilder<TItem>
-        where TItem : class
-        where TValue : struct
-    {
-        [SerializeField]
-        protected TValue from;
-        [SerializeField]
-        protected TValue to;
     }
 }

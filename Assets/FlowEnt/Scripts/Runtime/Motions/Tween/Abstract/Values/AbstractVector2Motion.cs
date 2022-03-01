@@ -17,16 +17,4 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         protected override Func<Vector2, Vector2, float, Vector2> LerpFunction => Vector2.LerpUnclamped;
         protected override Vector2 GetTo(Vector2 from, Vector2 value) => from + value;
     }
-
-    [Serializable]
-    public abstract class AbstractVector2ValueMotionBuilder<TItem> : AbstractValueValueMotionBuilder<TItem, Vector2>
-        where TItem : class
-    {
-    }
-
-    [Serializable]
-    public abstract class AbstractVector2FromToMotionBuilder<TItem> : AbstractValueFromToMotionBuilder<TItem, Vector2>
-        where TItem : class
-    {
-    }
 }

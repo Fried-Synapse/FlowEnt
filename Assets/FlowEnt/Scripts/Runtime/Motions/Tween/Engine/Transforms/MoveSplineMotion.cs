@@ -9,6 +9,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// </summary>
     public class MoveSplineMotion : AbstractSplineMotion<Transform>
     {
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new MoveSplineMotion(item, GetSpline());
+        }
+
         public MoveSplineMotion(Transform item, ISpline spline) : base(item, spline)
         {
         }
@@ -17,12 +24,5 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         {
             item.position = spline.GetPoint(t);
         }
-    }
-
-    [Serializable]
-    public class MoveSplineMotionBuilder : AbstractSplineMotionBuilder<Transform>
-    {
-        public override ITweenMotion Build()
-            => new MoveSplineMotion(item, GetSpline());
     }
 }

@@ -17,16 +17,4 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         protected override Func<Rect, Rect, float, Rect> LerpFunction => throw new NotImplementedException();
         protected override Rect GetTo(Rect from, Rect value) => throw new NotImplementedException();
     }
-
-    [Serializable]
-    public abstract class AbstractRectValueMotionBuilder<TItem> : AbstractValueValueMotionBuilder<TItem, Rect>
-        where TItem : class
-    {
-    }
-
-    [Serializable]
-    public abstract class AbstractRectFromToMotionBuilder<TItem> : AbstractValueFromToMotionBuilder<TItem, Rect>
-        where TItem : class
-    {
-    }
 }

@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -8,6 +9,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Lights
     /// </summary>
     public class ColorGradientMotion : AbstractGradientMotion<Light>
     {
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new ColorGradientMotion(item, gradient);
+        }
+
         public ColorGradientMotion(Light item, Gradient gradient) : base(item, gradient)
         {
         }

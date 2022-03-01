@@ -145,18 +145,22 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 names.Add(displayNameAttribute.DisplayName);
             }
-            static string prettify(string name)
+            static string getPrettyName(Type type)
             {
                 const string builder = "Builder";
-                string prettyString = Regex.Replace(name, "[A-Z]", " $0");
+
+                string[] nameParts = type.FullName.Split('.');
+                string prettyString = nameParts[nameParts.Length - 1];
+                prettyString = Regex.Replace(prettyString, "\\+", " -");
+                prettyString = Regex.Replace(prettyString, "[A-Z]", " $0");
                 string[] prettyParts = prettyString.Split(' ');
                 if (prettyParts[prettyParts.Length - 1] == builder)
                 {
-                    prettyString = Regex.Replace(prettyString, $"{builder}$", string.Empty);
+                    prettyString = Regex.Replace(prettyString, $"{(type.Name == builder ? $" - {builder}" : builder)}$", string.Empty);
                 }
-                return prettyString;
+                return prettyString.TrimStart();
             };
-            names.Add(prettify(type.Name));
+            names.Add(getPrettyName(type));
             names.Add(type.Name);
             return names;
         }

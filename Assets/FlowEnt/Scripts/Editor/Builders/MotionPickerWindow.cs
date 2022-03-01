@@ -31,6 +31,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private Action<Type> callback;
         private string searchText;
         private List<TypeInfo> types = new List<TypeInfo>();
+        private Vector2 scrollPosition;
 
 #pragma warning disable IDE0051, RCS1213
         private void OnGUI()
@@ -42,6 +43,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 types = types.FindAll(t => t.Names.Any(n => n.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0));
             }
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Width(position.width), GUILayout.Height(position.height));
 
             foreach (TypeInfo typeInfo in types)
             {
@@ -51,6 +53,8 @@ namespace FriedSynapse.FlowEnt.Editor
                     instance?.Close();
                 }
             }
+
+            EditorGUILayout.EndScrollView();
         }
 
         private void OnLostFocus()
