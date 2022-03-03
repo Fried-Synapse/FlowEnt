@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,15 +7,27 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
     /// <summary>
     /// Lerps the <see cref="Rigidbody.mass" /> value.
     /// </summary>
-    /// <typeparam name="TRigidbody"></typeparam>
-    public class MassMotion<TRigidbody> : AbstractFloatMotion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class MassMotion : AbstractFloatMotion<Rigidbody>
     {
-        public MassMotion(TRigidbody item, float value) : base(item, value)
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new MassMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new MassMotion(item, from, to);
+        }
+
+        public MassMotion(Rigidbody item, float value) : base(item, value)
         {
         }
 
-        public MassMotion(TRigidbody item, float? from, float to) : base(item, from, to)
+        public MassMotion(Rigidbody item, float? from, float to) : base(item, from, to)
         {
         }
 

@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,11 +7,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// <summary>
     /// Looks at a transform using the <see cref="Transform.LookAt(Vector3)" /> method.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class LookAtVector3Motion<TTransform> : AbstractTweenMotion<TTransform>
-        where TTransform : Transform
+    public class LookAtVector3Motion : AbstractTweenMotion<Transform>
     {
-        public LookAtVector3Motion(TTransform item, Vector3 target) : base(item)
+        [Serializable]
+        public class Builder : AbstractTweenMotionBuilder<Transform>
+        {
+#pragma warning disable IDE0044, RCS1169
+            [SerializeField]
+            private Vector3 target;
+#pragma warning restore IDE0044, RCS1169
+            public override ITweenMotion Build()
+                => new LookAtVector3Motion(item, target);
+        }
+
+        public LookAtVector3Motion(Transform item, Vector3 target) : base(item)
         {
             this.target = target;
         }

@@ -6,11 +6,10 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
     /// <summary>
     /// Moves the charater using the inputs.
     /// </summary>
-    public class MoveByInputMotion<TRigidbody> : AbstractEchoMotion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class MoveByInputMotion : AbstractEchoMotion<Rigidbody>
     {
         public const float DefaultSpeed = 10f;
-        public MoveByInputMotion(TRigidbody item, float speed = DefaultSpeed) : base(item)
+        public MoveByInputMotion(Rigidbody item, float speed = DefaultSpeed) : base(item)
         {
             this.speed = speed;
             transform = item.transform;

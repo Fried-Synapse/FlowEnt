@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,11 +7,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.localPosition" /> value using an animation curve 3d.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class MoveLocalAnimationCurve3dMotion<TTransform> : AbstractAnimationCurve3dMotion<TTransform>
-        where TTransform : Transform
+    public class MoveLocalAnimationCurve3dMotion : AbstractAnimationCurve3dMotion<Transform>
     {
-        public MoveLocalAnimationCurve3dMotion(TTransform item, AnimationCurve3d animationCurve) : base(item, animationCurve)
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new MoveLocalAnimationCurve3dMotion(item, animationCurve);
+        }
+
+        public MoveLocalAnimationCurve3dMotion(Transform item, AnimationCurve3d animationCurve) : base(item, animationCurve)
         {
         }
 

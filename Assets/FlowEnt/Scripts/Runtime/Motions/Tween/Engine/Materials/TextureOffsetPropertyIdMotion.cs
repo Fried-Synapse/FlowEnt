@@ -6,16 +6,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the texture offset for the specified shader property.
     /// </summary>
-    /// <typeparam name="TMaterial"></typeparam>
-    public class TextureOffsetPropertyIdMotion<TMaterial> : AbstractVector2Motion<TMaterial>
-        where TMaterial : Material
+    public class TextureOffsetPropertyIdMotion : AbstractVector2Motion<Material>
     {
-        public TextureOffsetPropertyIdMotion(TMaterial item, int propertyId, Vector2 value) : base(item, value)
+        public TextureOffsetPropertyIdMotion(Material item, int propertyId, Vector2 value) : base(item, value)
         {
             this.propertyId = propertyId;
         }
 
-        public TextureOffsetPropertyIdMotion(TMaterial item, int propertyId, Vector2? from, Vector2 to) : base(item, from, to)
+        public TextureOffsetPropertyIdMotion(Material item, int propertyId, Vector2? from, Vector2 to) : base(item, from, to)
         {
             this.propertyId = propertyId;
         }

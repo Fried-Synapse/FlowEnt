@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,11 +7,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
     /// <summary>
     /// Lerps the <see cref="Rigidbody.position" /> value using an animation curve 3d.
     /// </summary>
-    /// <typeparam name="TRigidbody"></typeparam>
-    public class MoveAnimationCurve3dMotion<TRigidbody> : AbstractAnimationCurve3dMotion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class MoveAnimationCurve3dMotion : AbstractAnimationCurve3dMotion<Rigidbody>
     {
-        public MoveAnimationCurve3dMotion(TRigidbody item, AnimationCurve3d animationCurve) : base(item, animationCurve)
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new MoveAnimationCurve3dMotion(item, animationCurve);
+        }
+
+        public MoveAnimationCurve3dMotion(Rigidbody item, AnimationCurve3d animationCurve) : base(item, animationCurve)
         {
         }
 

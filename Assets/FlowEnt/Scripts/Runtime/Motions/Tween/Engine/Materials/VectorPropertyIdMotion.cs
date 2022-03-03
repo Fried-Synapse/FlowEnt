@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,16 +7,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the vector for the specified shader property.
     /// </summary>
-    /// <typeparam name="TMaterial"></typeparam>
-    public class VectorPropertyIdMotion<TMaterial> : AbstractVector4Motion<TMaterial>
-        where TMaterial : Material
+    public class VectorPropertyIdMotion : AbstractVector4Motion<Material>
     {
-        public VectorPropertyIdMotion(TMaterial item, int propertyId, Vector4 value) : base(item, value)
+        public VectorPropertyIdMotion(Material item, int propertyId, Vector4 value) : base(item, value)
         {
             this.propertyId = propertyId;
         }
 
-        public VectorPropertyIdMotion(TMaterial item, int propertyId, Vector4? from, Vector4 to) : base(item, from, to)
+        public VectorPropertyIdMotion(Material item, int propertyId, Vector4? from, Vector4 to) : base(item, from, to)
         {
             this.propertyId = propertyId;
         }

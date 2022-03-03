@@ -6,16 +6,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the texture scale for the specified shader property.
     /// </summary>
-    /// <typeparam name="TMaterial"></typeparam>
-    public class TextureScalePropertyIdMotion<TMaterial> : AbstractVector2Motion<TMaterial>
-        where TMaterial : Material
+    public class TextureScalePropertyIdMotion : AbstractVector2Motion<Material>
     {
-        public TextureScalePropertyIdMotion(TMaterial item, int propertyId, Vector2 value) : base(item, value)
+        public TextureScalePropertyIdMotion(Material item, int propertyId, Vector2 value) : base(item, value)
         {
             this.propertyId = propertyId;
         }
 
-        public TextureScalePropertyIdMotion(TMaterial item, int propertyId, Vector2? from, Vector2 to) : base(item, from, to)
+        public TextureScalePropertyIdMotion(Material item, int propertyId, Vector2? from, Vector2 to) : base(item, from, to)
         {
             this.propertyId = propertyId;
         }

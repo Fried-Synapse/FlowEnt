@@ -6,11 +6,10 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
     /// <summary>
     /// Moves the charater using the inputs.
     /// </summary>
-    public class JumpByInputMotion<TRigidbody> : AbstractEchoMotion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class JumpByInputMotion : AbstractEchoMotion<Rigidbody>
     {
         public const float DefaultForce = 10f;
-        public JumpByInputMotion(TRigidbody item, float jumpForce = DefaultForce) : base(item)
+        public JumpByInputMotion(Rigidbody item, float jumpForce = DefaultForce) : base(item)
         {
             this.jumpForce = -jumpForce;
         }

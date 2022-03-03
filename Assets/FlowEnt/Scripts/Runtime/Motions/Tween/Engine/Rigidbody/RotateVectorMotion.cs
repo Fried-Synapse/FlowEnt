@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,15 +7,27 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
     /// <summary>
     /// Lerps the <see cref="Rigidbody.rotation.eulerAngles" /> value.
     /// </summary>
-    /// <typeparam name="TRigidbody"></typeparam>
-    public class RotateVectorMotion<TRigidbody> : AbstractVector3Motion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class RotateVectorMotion : AbstractVector3Motion<Rigidbody>
     {
-        public RotateVectorMotion(TRigidbody item, Vector3 value) : base(item, value)
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new RotateVectorMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new RotateVectorMotion(item, from, to);
+        }
+
+        public RotateVectorMotion(Rigidbody item, Vector3 value) : base(item, value)
         {
         }
 
-        public RotateVectorMotion(TRigidbody item, Vector3? from, Vector3 to) : base(item, from, to)
+        public RotateVectorMotion(Rigidbody item, Vector3? from, Vector3 to) : base(item, from, to)
         {
         }
 

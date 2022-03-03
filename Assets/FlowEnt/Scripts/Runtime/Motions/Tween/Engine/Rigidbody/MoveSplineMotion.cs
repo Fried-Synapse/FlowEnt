@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,11 +7,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
     /// <summary>
     /// Lerps the <see cref="Rigidbody.position" /> value using a spline.
     /// </summary>
-    /// <typeparam name="TRigidbody"></typeparam>
-    public class MoveSplineMotion<TRigidbody> : AbstractSplineMotion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class MoveSplineMotion : AbstractSplineMotion<Rigidbody>
     {
-        public MoveSplineMotion(TRigidbody item, ISpline spline) : base(item, spline)
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new MoveSplineMotion(item, GetSpline());
+        }
+
+        public MoveSplineMotion(Rigidbody item, ISpline spline) : base(item, spline)
         {
         }
 

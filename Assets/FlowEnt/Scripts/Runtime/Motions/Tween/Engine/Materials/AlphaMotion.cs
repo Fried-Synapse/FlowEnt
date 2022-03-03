@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,15 +7,27 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the alpha for <see cref="Material.color" /> value.
     /// </summary>
-    /// <typeparam name="TMaterial"></typeparam>
-    public class AlphaMotion<TMaterial> : AbstractAlphaMotion<TMaterial>
-        where TMaterial : Material
+    public class AlphaMotion : AbstractAlphaMotion<Material>
     {
-        public AlphaMotion(TMaterial item, float value) : base(item, value)
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new AlphaMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new AlphaMotion(item, from, to);
+        }
+
+        public AlphaMotion(Material item, float value) : base(item, value)
         {
         }
 
-        public AlphaMotion(TMaterial item, float? from, float to) : base(item, from, to)
+        public AlphaMotion(Material item, float? from, float to) : base(item, from, to)
         {
         }
 

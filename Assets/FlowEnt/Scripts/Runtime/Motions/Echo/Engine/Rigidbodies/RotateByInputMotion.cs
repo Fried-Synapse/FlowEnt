@@ -6,11 +6,10 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
     /// <summary>
     /// Rotates the rigidbody using the inputs.
     /// </summary>
-    public class RotateByInputMotion<TRigidbody> : AbstractEchoMotion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class RotateByInputMotion : AbstractEchoMotion<Rigidbody>
     {
         public const float DefaultSensitivity = 5f;
-        public RotateByInputMotion(TRigidbody item, Transform camera, float sensitivity = DefaultSensitivity) : base(item)
+        public RotateByInputMotion(Rigidbody item, Transform camera, float sensitivity = DefaultSensitivity) : base(item)
         {
             this.sensitivity = sensitivity;
             this.camera = camera;

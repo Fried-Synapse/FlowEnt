@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -23,8 +21,9 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             instance?.Close();
             instance = CreateWindow<MotionPickerWindow>("Select animation");
-            instance.types = GetTypes<TMotionBuilder>();
+            instance.types = GetTypes<TMotionBuilder>().OrderBy(t => t.Names[0]).ToList();
             instance.callback = type => callback.Invoke((TMotionBuilder)Activator.CreateInstance(type));
+            instance.Init();
             instance.ShowPopup();
         }
 
@@ -32,6 +31,13 @@ namespace FriedSynapse.FlowEnt.Editor
         private string searchText;
         private List<TypeInfo> types = new List<TypeInfo>();
         private Vector2 scrollPosition;
+        private GUIStyle button;
+
+        private void Init()
+        {
+            button = new GUIStyle(GUI.skin.button);
+            button.alignment = TextAnchor.MiddleLeft;
+        }
 
 #pragma warning disable IDE0051, RCS1213
         private void OnGUI()
@@ -47,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             foreach (TypeInfo typeInfo in types)
             {
-                if (GUILayout.Button(typeInfo.Names[0]))
+                if (GUILayout.Button(typeInfo.Names[0], button))
                 {
                     callback.Invoke(typeInfo.Type);
                     instance?.Close();

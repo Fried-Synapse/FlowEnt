@@ -1,19 +1,33 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
 {
     /// <summary>
-    /// Lerps the <see cref="TRigidbody.angularVelocity" /> value.
+    /// Lerps the <see cref="Rigidbody.angularVelocity" /> value.
     /// </summary>
-    public class AngularVelocityMotion<TRigidbody> : AbstractVector3Motion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class AngularVelocityMotion : AbstractVector3Motion<Rigidbody>
     {
-        public AngularVelocityMotion(TRigidbody item, Vector3 value) : base(item, value)
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new AngularVelocityMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new AngularVelocityMotion(item, from, to);
+        }
+
+        public AngularVelocityMotion(Rigidbody item, Vector3 value) : base(item, value)
         {
         }
 
-        public AngularVelocityMotion(TRigidbody item, Vector3? from, Vector3 to) : base(item, from, to)
+        public AngularVelocityMotion(Rigidbody item, Vector3? from, Vector3 to) : base(item, from, to)
         {
         }
 

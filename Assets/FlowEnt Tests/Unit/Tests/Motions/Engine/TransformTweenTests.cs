@@ -354,7 +354,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion<Transform>(GameObject.transform, Axis.XY, to)).Start())
+                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion(GameObject.transform, Axis.XY, to)).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -373,7 +373,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFromY = null;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveAxisMotion<Transform>(GameObject.transform, Axis.XY, from, to))
+                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveAxisMotion(GameObject.transform, Axis.XY, from, to))
                                     .OnUpdated((_) =>
                                     {
                                         startingFromX ??= GameObject.transform.position.x;
@@ -547,7 +547,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveLocalAxisMotion<Transform>(GameObject.transform, Axis.XY, to)).Start())
+                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveLocalAxisMotion(GameObject.transform, Axis.XY, to)).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -566,7 +566,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFromY = null;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveLocalAxisMotion<Transform>(GameObject.transform, Axis.XY, from, to))
+                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveLocalAxisMotion(GameObject.transform, Axis.XY, from, to))
                                     .OnUpdated((_) =>
                                     {
                                         startingFromX ??= GameObject.transform.localPosition.x;
@@ -1389,7 +1389,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Arrange(() => GameObject.transform.localScale = from)
-                .Act(() => new Tween(TestTime).Apply(new ScaleLocalAxisMotion<Transform>(GameObject.transform, Axis.XY, default, to)).Start())
+                .Act(() => new Tween(TestTime).Apply(new ScaleLocalAxisMotion(GameObject.transform, Axis.XY, default, to)).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -1408,7 +1408,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFromY = null;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).Apply(new ScaleLocalAxisMotion<Transform>(GameObject.transform, Axis.XY, from, to))
+                .Act(() => new Tween(TestTime).Apply(new ScaleLocalAxisMotion(GameObject.transform, Axis.XY, from, to))
                     .OnUpdated((_) =>
                     {
                         startingFromX ??= GameObject.transform.localScale.x;

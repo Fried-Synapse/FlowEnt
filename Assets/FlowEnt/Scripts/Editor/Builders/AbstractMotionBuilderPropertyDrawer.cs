@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEditor;
@@ -32,6 +33,8 @@ namespace FriedSynapse.FlowEnt.Editor
             ControlFields.IsEnabled,
         };
         private static IMotionBuilder clipboard;
+        private static readonly Regex nestedRegEx = new Regex("\\+");
+        private static readonly Regex prettyNameRegEx = new Regex("[A-Z]");
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -148,20 +151,31 @@ namespace FriedSynapse.FlowEnt.Editor
             static string getPrettyName(Type type)
             {
                 const string builder = "Builder";
+                const string flowEntAssembly = "FriedSynapse.FlowEnt";
 
                 string[] nameParts = type.FullName.Split('.');
-                string prettyString = nameParts[nameParts.Length - 1];
-                prettyString = Regex.Replace(prettyString, "\\+", " -");
-                prettyString = Regex.Replace(prettyString, "[A-Z]", " $0");
-                string[] prettyParts = prettyString.Split(' ');
+                string prettyName = nameParts[nameParts.Length - 1];
+                prettyName = nestedRegEx.Replace(prettyName, " -");
+                prettyName = prettyNameRegEx.Replace(prettyName, " $0");
+                string[] prettyParts = prettyName.Split(' ');
                 if (prettyParts[prettyParts.Length - 1] == builder)
                 {
-                    prettyString = Regex.Replace(prettyString, $"{(type.Name == builder ? $" - {builder}" : builder)}$", string.Empty);
+                    prettyName = Regex.Replace(prettyName, $"{(type.Name == builder ? $" - {builder}" : builder)}$", string.Empty);
                 }
-                return prettyString.TrimStart();
-            };
+                if (type.Assembly.GetName().Name == flowEntAssembly)
+                {
+                    prettyName = $"{type.Namespace.Split('.').Last()} -{prettyName}";
+                }
+                return prettyName.TrimStart();
+            }
             names.Add(getPrettyName(type));
-            names.Add(type.Name);
+            static string getName(Type type)
+            {
+                string[] nameParts = type.FullName.Split('.');
+                string name = nameParts[nameParts.Length - 1];
+                return nestedRegEx.Replace(name, "-");
+            }
+            names.Add(getName(type));
             return names;
         }
     }

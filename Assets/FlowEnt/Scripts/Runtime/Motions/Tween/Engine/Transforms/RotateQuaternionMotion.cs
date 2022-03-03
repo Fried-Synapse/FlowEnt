@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,15 +7,27 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.rotation" /> value.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class RotateQuaternionMotion<TTransform> : AbstractQuaternionMotion<TTransform>
-        where TTransform : Transform
+    public class RotateQuaternionMotion : AbstractQuaternionMotion<Transform>
     {
-        public RotateQuaternionMotion(TTransform item, Quaternion value) : base(item, value)
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new RotateQuaternionMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new RotateQuaternionMotion(item, from, to);
+        }
+
+        public RotateQuaternionMotion(Transform item, Quaternion value) : base(item, value)
         {
         }
 
-        public RotateQuaternionMotion(TTransform item, Quaternion? from, Quaternion to) : base(item, from, to)
+        public RotateQuaternionMotion(Transform item, Quaternion? from, Quaternion to) : base(item, from, to)
         {
         }
 
