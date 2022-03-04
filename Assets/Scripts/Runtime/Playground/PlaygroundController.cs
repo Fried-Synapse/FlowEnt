@@ -26,8 +26,6 @@ namespace FriedSynapse.FlowEnt.Builder
         private TweenBuilder tween;
         private TweenBuilder Tween => tween;
         [SerializeField]
-        private TweenBuilder tween1;
-        [SerializeField]
         private EchoBuilder echo;
         private EchoBuilder Echo => echo;
 #pragma warning restore RCS1169, IDE0044

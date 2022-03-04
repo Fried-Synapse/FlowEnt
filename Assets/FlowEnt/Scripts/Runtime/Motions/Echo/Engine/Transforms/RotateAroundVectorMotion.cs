@@ -6,11 +6,11 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
     /// <summary>
     /// Lerps the given value and applies it to <see cref="Transform.RotateAround(Vector3, Vector3, float)" />.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class RotateAroundVectorMotion<TTransform> : AbstractEchoMotion<TTransform>
-        where TTransform : Transform
+    public class RotateAroundVectorMotion : AbstractEchoMotion<Transform>
     {
-        public RotateAroundVectorMotion(TTransform item, Vector3 point, Vector3 axis, float speed) : base(item)
+        //TODO add builders
+
+        public RotateAroundVectorMotion(Transform item, Vector3 point, Vector3 axis, float speed) : base(item)
         {
             this.point = point;
             this.axis = axis;

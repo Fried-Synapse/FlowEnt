@@ -7,28 +7,22 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
     /// <summary>
     /// Moves the transform using the provided speed.
     /// </summary>
-    public class MoveVectorMotion : AbstractEchoMotion<Transform>
+    public class MoveVectorMotion : AbstractVector3SpeedMotion<Transform>
     {
-        public MoveVectorMotion(Transform item, Vector3 speed) : base(item)
+        [Serializable]
+        public class Builder : AbstractVector3SpeedBuilder
         {
-            this.speed = speed;
+            public override IEchoMotion Build()
+                => new MoveVectorMotion(item, speed);
         }
 
-        private readonly Vector3 speed;
+        public MoveVectorMotion(Transform item, Vector3 speed) : base(item, speed)
+        {
+        }
 
         public override void OnUpdate(float deltaTime)
         {
             item.position += speed * deltaTime;
         }
-    }
-
-    [Serializable]
-    public class MoveVectorMotionBuilder : AbstractEchoMotionBuilder<Transform>
-    {
-        [SerializeField]
-        private Vector3 speed;
-
-        public override IEchoMotion Build()
-            => new MoveVectorMotion(item, speed);
     }
 }

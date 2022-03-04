@@ -8,14 +8,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         where TValue : struct
     {
         [Serializable]
-        public abstract class AbstractValueBuilder : AbstractTweenMotionBuilder<TItem>
+        public abstract class AbstractValueBuilder : AbstractBuilder
         {
             [SerializeField]
             protected TValue value;
         }
 
         [Serializable]
-        public abstract class AbstractFromToBuilder : AbstractTweenMotionBuilder<TItem>
+        public abstract class AbstractFromToBuilder : AbstractBuilder
         {
             [SerializeField]
             protected TValue from;

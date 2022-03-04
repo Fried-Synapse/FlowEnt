@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     public class MoveLocalAnimationCurve3dMotion : AbstractAnimationCurve3dMotion<Transform>
     {
         [Serializable]
-        public class Builder : AbstractBuilder
+        public class Builder : AbstractAnimationCurve3dBuilder
         {
             public override ITweenMotion Build()
                 => new MoveLocalAnimationCurve3dMotion(item, animationCurve);

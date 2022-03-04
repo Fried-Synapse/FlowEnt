@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         where TItem : class
     {
         [Serializable]
-        public abstract class AbstractBuilder : AbstractTweenMotionBuilder<TItem>
+        public abstract class AbstractSplineBuilder : AbstractBuilder
         {
 #pragma warning disable IDE0044, RCS1169
             [SerializeField]

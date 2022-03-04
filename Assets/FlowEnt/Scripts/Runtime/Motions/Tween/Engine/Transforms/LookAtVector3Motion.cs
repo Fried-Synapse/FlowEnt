@@ -10,12 +10,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     public class LookAtVector3Motion : AbstractTweenMotion<Transform>
     {
         [Serializable]
-        public class Builder : AbstractTweenMotionBuilder<Transform>
+        public class Builder : AbstractBuilder
         {
-#pragma warning disable IDE0044, RCS1169
             [SerializeField]
             private Vector3 target;
-#pragma warning restore IDE0044, RCS1169
+
             public override ITweenMotion Build()
                 => new LookAtVector3Motion(item, target);
         }

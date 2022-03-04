@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
@@ -20,6 +21,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     public abstract class AbstractTweenMotion<TItem> : AbstractTweenMotion
         where TItem : class
     {
+        [Serializable]
+        public abstract class AbstractBuilder : AbstractTweenMotionBuilder<TItem>
+        {
+        }
+
         protected AbstractTweenMotion(TItem item)
         {
             this.item = item;

@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     public class MoveSplineMotion : AbstractSplineMotion<Transform>
     {
         [Serializable]
-        public class Builder : AbstractBuilder
+        public class Builder : AbstractSplineBuilder
         {
             public override ITweenMotion Build()
                 => new MoveSplineMotion(item, GetSpline());

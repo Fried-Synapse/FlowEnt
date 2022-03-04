@@ -6,14 +6,9 @@ namespace FriedSynapse.FlowEnt.Demo
     {
 #pragma warning disable RCS1169, IDE0044
         [SerializeField]
-        private CharacterController characterController;
-        private CharacterController CharacterController => characterController;
-        [SerializeField]
-        private Rigidbody characterRigidBody;
-        private Rigidbody CharacterRigidBody => characterRigidBody;
-        [SerializeField]
-        private new Camera camera;
-        private Camera Camera => camera;
+        private EchoBuilder echo;
+        private EchoBuilder Echo => echo;
+
 #pragma warning restore RCS1169, IDE0044
 
 #pragma warning disable IDE0051, RCS1213
@@ -25,13 +20,9 @@ namespace FriedSynapse.FlowEnt.Demo
 
         private void InitCharacterAnimation()
         {
-            Echo controlEcho = CharacterRigidBody
-                .Echo()
+            Echo controlEcho = Echo.Build()
                     .OnStarting(() => Debug.Log("Initialising character controller."))
                     .SetStopCondition(_ => Input.GetKeyDown(KeyCode.Escape))
-                    .MoveByInput()
-                    .RotateByInput(Camera.transform)
-                    .JumpByInput(20)
                 .Start();
             new Echo().OnUpdating(_ =>
             {

@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     public class LookAtTransformMotion : AbstractTweenMotion<Transform>
     {
         [Serializable]
-        public class Builder : AbstractTweenMotionBuilder<Transform>
+        public class Builder : AbstractBuilder
         {
 #pragma warning disable IDE0044, RCS1169
             [SerializeField]

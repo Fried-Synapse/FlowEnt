@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         where TItem : class
     {
         [Serializable]
-        public abstract class AbstractBuilder : AbstractTweenMotionBuilder<TItem>
+        public abstract class AbstractGradientBuilder : AbstractBuilder
         {
             [SerializeField]
             protected Gradient gradient;

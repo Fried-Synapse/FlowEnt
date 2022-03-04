@@ -185,9 +185,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf36cc070a1274f0e84b612352a63d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
-  characterRigidBody: {fileID: 375960203}
-  camera: {fileID: 963194227}
+  echo:
+    options:
+      name: 
+      updateType: 0
+      autoStart: 0
+      skipFrames: 0
+      delay: 0
+      timeScale: 1
+      loopCount: 1
+      isLoopCountInfinite: 0
+      timeout: 0
+      hasTimeout: 0
+    events:
+      onStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onStarting:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdating:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleting:
+        m_PersistentCalls:
+          m_Calls: []
+    motions:
+      motions:
+      - id: 0
+      - id: 1
+      - id: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: JumpByInputMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies, asm: FriedSynapse.FlowEnt}
+      data:
+        name: 
+        isNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 375960203}
+        jumpForce: 10
+    00000001:
+      type: {class: MoveByInputMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies, asm: FriedSynapse.FlowEnt}
+      data:
+        name: 
+        isNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 375960203}
+        speed: 10
+    00000002:
+      type: {class: RotateByInputMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies, asm: FriedSynapse.FlowEnt}
+      data:
+        name: 
+        isNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 375960203}
+        sensitivity: 5
+        camera: {fileID: 963194228}
 --- !u!1 &446014556
 GameObject:
   m_ObjectHideFlags: 0

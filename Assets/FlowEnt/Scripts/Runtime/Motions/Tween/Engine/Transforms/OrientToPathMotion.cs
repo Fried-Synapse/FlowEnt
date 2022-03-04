@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     public class OrientToPathMotion : AbstractTweenMotion<Transform>
     {
         [Serializable]
-        public class Builder : AbstractTweenMotionBuilder<Transform>
+        public class Builder : AbstractBuilder
         {
             public override ITweenMotion Build()
                 => new OrientToPathMotion(item);
