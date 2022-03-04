@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -8,6 +9,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Lights
     /// </summary>
     public class RangeMotion : AbstractFloatMotion<Light>
     {
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new RangeMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new RangeMotion(item, from, to);
+        }
+
         public RangeMotion(Light item, float value) : base(item, value)
         {
         }

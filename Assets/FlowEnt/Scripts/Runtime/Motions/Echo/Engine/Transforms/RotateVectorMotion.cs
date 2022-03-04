@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEngine;
 
@@ -6,16 +7,18 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
     /// <summary>
     /// Rotates the transform using the provided speed.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class RotateVectorMotion<TTransform> : AbstractEchoMotion<TTransform>
-        where TTransform : Transform
+    public class RotateVectorMotion : AbstractVector3SpeedMotion<Transform>
     {
-        public RotateVectorMotion(TTransform item, Vector3 speed) : base(item)
+        [Serializable]
+        public class Builder : AbstractVector3SpeedBuilder
         {
-            this.speed = speed;
+            public override IEchoMotion Build()
+                => new RotateVectorMotion(item, speed);
         }
 
-        private readonly Vector3 speed;
+        public RotateVectorMotion(Transform item, Vector3 speed) : base(item, speed)
+        {
+        }
 
         public override void OnUpdate(float deltaTime)
         {

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractBuilderPropertyDrawer<TPropertiesEnum> : PropertyDrawer
+    public abstract class AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum> : PropertyDrawer
         where TPropertiesEnum : Enum
     {
         protected abstract float PropertyHeight { get; }
@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            property.isExpanded = EditorGUI.Foldout(FlowEntDrawers.GetRect(position, 0), property.isExpanded, label);
+            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label, EditorStyles.foldoutHeader);
 
             if (!property.isExpanded)
             {

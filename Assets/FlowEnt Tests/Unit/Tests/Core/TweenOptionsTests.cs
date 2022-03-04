@@ -24,26 +24,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             TweenOptions tweenOptions = default;
 
             yield return CreateTester()
-                .Act(() => tweenOptions = Variables.TweenOptionsBuilder.Build())
+                .Act(() => tweenOptions = Variables.Tween.Options.Build())
                 .Assert(() =>
                 {
-                    Assert.AreEqual(Variables.TweenOptionsBuilder.Name, tweenOptions.Name);
-                    Assert.AreEqual(Variables.TweenOptionsBuilder.UpdateType, tweenOptions.UpdateType);
-                    Assert.AreEqual(Variables.TweenOptionsBuilder.AutoStart, tweenOptions.AutoStart);
-                    Assert.AreEqual(Variables.TweenOptionsBuilder.SkipFrames, tweenOptions.SkipFrames);
-                    Assert.AreEqual(Variables.TweenOptionsBuilder.Delay, tweenOptions.Delay);
-                    Assert.AreEqual(Variables.TweenOptionsBuilder.TimeScale, tweenOptions.TimeScale);
-                    Assert.AreEqual(Variables.TweenOptionsBuilder.Time, tweenOptions.Time);
-                    Assert.AreEqual(EasingFactory.Create(Variables.TweenOptionsBuilder.Easing).GetType().FullName, tweenOptions.Easing.GetType().FullName);
-                    if (Variables.TweenOptionsBuilder.IsLoopCountInfinite)
+                    Assert.AreEqual(Variables.Tween.Options.Name, tweenOptions.Name);
+                    Assert.AreEqual(Variables.Tween.Options.UpdateType, tweenOptions.UpdateType);
+                    Assert.AreEqual(Variables.Tween.Options.AutoStart, tweenOptions.AutoStart);
+                    Assert.AreEqual(Variables.Tween.Options.SkipFrames, tweenOptions.SkipFrames);
+                    Assert.AreEqual(Variables.Tween.Options.Delay, tweenOptions.Delay);
+                    Assert.AreEqual(Variables.Tween.Options.TimeScale, tweenOptions.TimeScale);
+                    Assert.AreEqual(Variables.Tween.Options.Time, tweenOptions.Time);
+                    Assert.AreEqual(EasingFactory.Create(Variables.Tween.Options.Easing).GetType().FullName, tweenOptions.Easing.GetType().FullName);
+                    if (Variables.Tween.Options.IsLoopCountInfinite)
                     {
                         Assert.AreEqual(null, tweenOptions.LoopCount);
                     }
                     else
                     {
-                        Assert.AreEqual(Variables.TweenOptionsBuilder.LoopCount, tweenOptions.LoopCount);
+                        Assert.AreEqual(Variables.Tween.Options.LoopCount, tweenOptions.LoopCount);
                     }
-                    Assert.AreEqual(Variables.TweenOptionsBuilder.LoopType, tweenOptions.LoopType);
+                    Assert.AreEqual(Variables.Tween.Options.LoopType, tweenOptions.LoopType);
                 })
                 .Run();
         }

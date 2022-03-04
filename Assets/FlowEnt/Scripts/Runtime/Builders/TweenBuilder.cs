@@ -14,9 +14,20 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private TweenEventsBuilder events;
         public TweenEventsBuilder Events => events;
+        [SerializeField]
+        private TweenMotionsBuilder motions;
+        public TweenMotionsBuilder Motions => motions;
 #pragma warning restore RCS1169, RCS1085, IDE0044
 
         public override Tween Build()
-            => new Tween(Options.Build()).SetEvents(Events.Build());
+            => new Tween(Options.Build())
+                .SetEvents(Events.Build())
+                .Apply(Motions.Build());
+
+        public Tween Build(IUpdateController updateController)
+            => new Tween(updateController)
+                .SetOptions(Options.Build())
+                .SetEvents(Events.Build())
+                .Apply(Motions.Build());
     }
 }

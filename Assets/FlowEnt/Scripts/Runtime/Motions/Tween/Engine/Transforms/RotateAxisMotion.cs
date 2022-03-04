@@ -6,15 +6,15 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.eulerAngles" /> value by axis.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class RotateAxisMotion<TTransform> : AbstractRotateAxisMotion<TTransform>
-        where TTransform : Transform
+    public class RotateAxisMotion : AbstractRotateAxisMotion<Transform>
     {
-        public RotateAxisMotion(TTransform item, Axis axis, float value) : base(item, axis, value)
+        //TODO add builders
+
+        public RotateAxisMotion(Transform item, Axis axis, float value) : base(item, axis, value)
         {
         }
 
-        public RotateAxisMotion(TTransform item, Axis axis, float? from, float to) : base(item, axis, from, to)
+        public RotateAxisMotion(Transform item, Axis axis, float? from, float to) : base(item, axis, from, to)
         {
         }
 

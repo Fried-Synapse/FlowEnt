@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> Move<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveVectorMotion<TRigidbody>(proxy.Item, value));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
@@ -31,7 +31,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveVectorMotion<TRigidbody>(proxy.Item, default, to));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
@@ -42,7 +42,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 from, Vector3 to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveVectorMotion<TRigidbody>(proxy.Item, from, to));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -56,7 +56,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, AnimationCurve3d animationCurve)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveAnimationCurve3dMotion<TRigidbody>(proxy.Item, animationCurve));
+            => proxy.Apply(new MoveAnimationCurve3dMotion(proxy.Item, animationCurve));
 
         #endregion
 
@@ -70,7 +70,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveX<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveVectorMotion<TRigidbody>(proxy.Item, new Vector3(value, 0f, 0f)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(value, 0f, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
@@ -80,7 +80,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveXTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveAxisMotion<TRigidbody>(proxy.Item, Axis.X, default, to));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.X, default, to));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
@@ -91,7 +91,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveXTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float from, float to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveAxisMotion<TRigidbody>(proxy.Item, Axis.X, from, to));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.X, from, to));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
@@ -101,7 +101,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveY<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveVectorMotion<TRigidbody>(proxy.Item, new Vector3(0f, value, 0f)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, value, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
@@ -111,7 +111,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveYTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveAxisMotion<TRigidbody>(proxy.Item, Axis.Y, default, to));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Y, default, to));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
@@ -122,7 +122,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveYTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float from, float to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveAxisMotion<TRigidbody>(proxy.Item, Axis.Y, from, to));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Y, from, to));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
@@ -132,7 +132,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveZ<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveVectorMotion<TRigidbody>(proxy.Item, new Vector3(0f, 0f, value)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, 0f, value)));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
@@ -142,7 +142,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveZTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveAxisMotion<TRigidbody>(proxy.Item, Axis.Z, default, to));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Z, default, to));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
@@ -153,7 +153,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveZTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float from, float to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveAxisMotion<TRigidbody>(proxy.Item, Axis.Z, from, to));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Z, from, to));
 
         #endregion
 
@@ -167,7 +167,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, ISpline spline)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveSplineMotion<TRigidbody>(proxy.Item, spline));
+            => proxy.Apply(new MoveSplineMotion(proxy.Item, spline));
 
         #endregion
 
@@ -185,7 +185,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> Rotate<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Quaternion value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new RotateQuaternionMotion<TRigidbody>(proxy.Item, value));
+            => proxy.Apply(new RotateQuaternionMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="RotateQuaternionMotion{TRigidbody}" /> to the tween.
@@ -195,7 +195,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> RotateTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Quaternion to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new RotateQuaternionMotion<TRigidbody>(proxy.Item, default, to));
+            => proxy.Apply(new RotateQuaternionMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="RotateQuaternionMotion{TRigidbody}" /> to the tween.
@@ -206,7 +206,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> RotateTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Quaternion from, Quaternion to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new RotateQuaternionMotion<TRigidbody>(proxy.Item, from, to));
+            => proxy.Apply(new RotateQuaternionMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -220,7 +220,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> Rotate<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new RotateVectorMotion<TRigidbody>(proxy.Item, value));
+            => proxy.Apply(new RotateVectorMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TRigidbody}" /> to the tween.
@@ -230,7 +230,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> RotateTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new RotateVectorMotion<TRigidbody>(proxy.Item, default, to));
+            => proxy.Apply(new RotateVectorMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TRigidbody}" /> to the tween.
@@ -241,7 +241,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> RotateTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 from, Vector3 to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new RotateVectorMotion<TRigidbody>(proxy.Item, from, to));
+            => proxy.Apply(new RotateVectorMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -257,7 +257,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> Mass<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MassMotion<TRigidbody>(proxy.Item, value));
+            => proxy.Apply(new MassMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="MassMotion{TRigidbody}" /> to the tween.
@@ -267,7 +267,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MassTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MassMotion<TRigidbody>(proxy.Item, default, to));
+            => proxy.Apply(new MassMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="MassMotion{TRigidbody}" /> to the tween.
@@ -278,7 +278,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MassTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, float from, float to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MassMotion<TRigidbody>(proxy.Item, from, to));
+            => proxy.Apply(new MassMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -292,7 +292,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> Velocity<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new VelocityMotion<TRigidbody>(proxy.Item, value));
+            => proxy.Apply(new VelocityMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="VelocityMotion{TRigidbody}" /> to the tween.
@@ -302,7 +302,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> VelocityTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new VelocityMotion<TRigidbody>(proxy.Item, default, to));
+            => proxy.Apply(new VelocityMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="VelocityMotion{TRigidbody}" /> to the tween.
@@ -313,7 +313,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> VelocityTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 from, Vector3 to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new VelocityMotion<TRigidbody>(proxy.Item, from, to));
+            => proxy.Apply(new VelocityMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -327,7 +327,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> AngularVelocity<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 value)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new AngularVelocityMotion<TRigidbody>(proxy.Item, value));
+            => proxy.Apply(new AngularVelocityMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="AngularVelocityMotion{TRigidbody}" /> to the tween.
@@ -337,7 +337,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> AngularVelocityTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new AngularVelocityMotion<TRigidbody>(proxy.Item, default, to));
+            => proxy.Apply(new AngularVelocityMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="AngularVelocityMotion{TRigidbody}" /> to the tween.
@@ -348,7 +348,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> AngularVelocityTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy, Vector3 from, Vector3 to)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new AngularVelocityMotion<TRigidbody>(proxy.Item, from, to));
+            => proxy.Apply(new AngularVelocityMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -363,27 +363,27 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<TRigidbody> MoveByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, float speed = MoveByInputMotion<TRigidbody>.DefaultSpeed)
+        public static EchoMotionProxy<TRigidbody> MoveByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, float speed = MoveByInputMotion.DefaultSpeed)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveByInputMotion<TRigidbody>(proxy.Item, speed));
+            => proxy.Apply(new MoveByInputMotion(proxy.Item, speed));
 
         /// <summary>
         /// Applies a <see cref="RotateByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
-        public static EchoMotionProxy<TRigidbody> RotateByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, Transform camera, float speed = RotateByInputMotion<TRigidbody>.DefaultSensitivity)
+        public static EchoMotionProxy<TRigidbody> RotateByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, Transform camera, float speed = RotateByInputMotion.DefaultSensitivity)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new RotateByInputMotion<TRigidbody>(proxy.Item, camera, speed));
+            => proxy.Apply(new RotateByInputMotion(proxy.Item, camera, speed));
 
         /// <summary>
         /// Applies a <see cref="JumpByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="force"></param>
-        public static EchoMotionProxy<TRigidbody> JumpByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, float force = JumpByInputMotion<TRigidbody>.DefaultForce)
+        public static EchoMotionProxy<TRigidbody> JumpByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy, float force = JumpByInputMotion.DefaultForce)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new JumpByInputMotion<TRigidbody>(proxy.Item, force));
+            => proxy.Apply(new JumpByInputMotion(proxy.Item, force));
 
         #endregion
 

@@ -23,18 +23,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             TweenEvents tweenEvents = default;
 
             yield return CreateTester()
-                .Act(() => tweenEvents = Variables.TweenEventsBuilder.Build())
+                .Act(() => tweenEvents = Variables.Tween.Events.Build())
                 .Assert(() =>
                 {
                     static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
 
-                    assert(Variables.TweenEventsBuilder.OnStarting, tweenEvents.OnStartingEvent);
-                    assert(Variables.TweenEventsBuilder.OnStarted, tweenEvents.OnStartedEvent);
-                    assert(Variables.TweenEventsBuilder.OnUpdating, tweenEvents.OnUpdatingEvent);
-                    assert(Variables.TweenEventsBuilder.OnUpdated, tweenEvents.OnUpdatedEvent);
-                    assert(Variables.TweenEventsBuilder.OnLoopCompleted, tweenEvents.OnLoopCompletedEvent);
-                    assert(Variables.TweenEventsBuilder.OnCompleted, tweenEvents.OnCompletedEvent);
-                    assert(Variables.TweenEventsBuilder.OnCompleting, tweenEvents.OnCompletingEvent);
+                    assert(Variables.Tween.Events.OnStarting, tweenEvents.OnStartingEvent);
+                    assert(Variables.Tween.Events.OnStarted, tweenEvents.OnStartedEvent);
+                    assert(Variables.Tween.Events.OnUpdating, tweenEvents.OnUpdatingEvent);
+                    assert(Variables.Tween.Events.OnUpdated, tweenEvents.OnUpdatedEvent);
+                    assert(Variables.Tween.Events.OnLoopCompleted, tweenEvents.OnLoopCompletedEvent);
+                    assert(Variables.Tween.Events.OnCompleted, tweenEvents.OnCompletedEvent);
+                    assert(Variables.Tween.Events.OnCompleting, tweenEvents.OnCompletingEvent);
                 })
                 .Run();
         }

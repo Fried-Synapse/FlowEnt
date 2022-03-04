@@ -1,3 +1,5 @@
+using System;
+using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
@@ -5,11 +7,21 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
     /// <summary>
     /// Rotates the transform towards the target using the deltaTime as a step. If target is rotated it'll continue to rotate towards.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class RotateToTransformMotion<TTransform> : RotateToQuaternionMotion<TTransform>
-        where TTransform : Transform
+    public class RotateToTransformMotion : RotateToQuaternionMotion
     {
-        public RotateToTransformMotion(TTransform item, Transform target, float speed = DefaultSpeed, SpeedType speedType = DefaultSpeedType) : base(item, target.rotation, speed, speedType)
+        [Serializable]
+        public new class Builder : AbstractFloatSpeedTypeBuilder
+        {
+#pragma warning disable IDE0044, RCS1169
+            [SerializeField]
+            private Transform target;
+#pragma warning restore IDE0044, RCS1169
+
+            public override IEchoMotion Build()
+                => new RotateToTransformMotion(item, target, speed, speedType);
+        }
+
+        public RotateToTransformMotion(Transform item, Transform target, float speed = DefaultSpeed, SpeedType speedType = DefaultSpeedType) : base(item, target.rotation, speed, speedType)
         {
             this.target = target;
         }

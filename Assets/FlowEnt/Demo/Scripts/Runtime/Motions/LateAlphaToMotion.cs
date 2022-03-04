@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Demo
 {
-    public class LateAlphaMotion : AlphaMotion<Material>
+    public class LateAlphaMotion : AlphaMotion
     {
         public LateAlphaMotion(Material item, float to, float percentage) : base(item, null, to)
         {

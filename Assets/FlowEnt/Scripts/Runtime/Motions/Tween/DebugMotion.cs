@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -8,6 +9,17 @@ namespace FriedSynapse.FlowEnt.Motions.Tween
     /// </summary>
     public class DebugMotion : AbstractTweenMotion
     {
+        [Serializable]
+        public class Builder : AbstractTweenMotionBuilder
+        {
+#pragma warning disable IDE0044, RCS1169
+            [SerializeField]
+            private string name;
+#pragma warning restore IDE0044, RCS1169
+            public override ITweenMotion Build()
+                => new DebugMotion(name);
+        }
+
         public DebugMotion(string name)
         {
             Name = name;

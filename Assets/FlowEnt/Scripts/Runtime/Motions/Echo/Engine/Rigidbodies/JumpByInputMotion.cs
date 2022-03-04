@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEngine;
 
@@ -6,11 +7,22 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
     /// <summary>
     /// Moves the charater using the inputs.
     /// </summary>
-    public class JumpByInputMotion<TRigidbody> : AbstractEchoMotion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class JumpByInputMotion : AbstractEchoMotion<Rigidbody>
     {
         public const float DefaultForce = 10f;
-        public JumpByInputMotion(TRigidbody item, float jumpForce = DefaultForce) : base(item)
+
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+#pragma warning disable IDE0044, RCS1169
+            [SerializeField]
+            private float jumpForce = DefaultForce;
+#pragma warning restore IDE0044, RCS1169
+            public override IEchoMotion Build()
+                => new JumpByInputMotion(item, jumpForce);
+        }
+
+        public JumpByInputMotion(Rigidbody item, float jumpForce = DefaultForce) : base(item)
         {
             this.jumpForce = -jumpForce;
         }

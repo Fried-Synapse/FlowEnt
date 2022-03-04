@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> Move<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 speed)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion<TTransform>(proxy.Item, speed));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, speed));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
@@ -28,7 +28,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> MoveX<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion<TTransform>(proxy.Item, new Vector3(speed, 0f, 0f)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(speed, 0f, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
@@ -38,7 +38,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> MoveY<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion<TTransform>(proxy.Item, new Vector3(0f, speed, 0f)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, speed, 0f)));
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
@@ -48,7 +48,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> MoveZ<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion<TTransform>(proxy.Item, new Vector3(0f, 0f, speed)));
+            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, 0f, speed)));
 
         /// <summary>
         /// Applies a <see cref="MoveToVectorMotion{TTransform}" /> to the echo.
@@ -58,9 +58,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="speed"></param>
         /// <param name="speedType"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> MoveTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = MoveToTransformMotion<TTransform>.DefaultSpeed, SpeedType speedType = MoveToTransformMotion<TTransform>.DefaultSpeedType)
+        public static EchoMotionProxy<TTransform> MoveTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = MoveToVectorMotion.DefaultSpeed, SpeedType speedType = MoveToVectorMotion.DefaultSpeedType)
             where TTransform : Transform
-            => proxy.Apply(new MoveToVectorMotion<TTransform>(proxy.Item, target, speed, speedType));
+            => proxy.Apply(new MoveToVectorMotion(proxy.Item, target, speed, speedType));
 
         /// <summary>
         /// Applies a <see cref="MoveToTransformMotion{TTransform}" /> to the echo.
@@ -70,9 +70,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="speed"></param>
         /// <param name="speedType"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> MoveTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = MoveToTransformMotion<TTransform>.DefaultSpeed, SpeedType speedType = MoveToTransformMotion<TTransform>.DefaultSpeedType)
+        public static EchoMotionProxy<TTransform> MoveTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = MoveToVectorMotion.DefaultSpeed, SpeedType speedType = MoveToVectorMotion.DefaultSpeedType)
             where TTransform : Transform
-            => proxy.Apply(new MoveToTransformMotion<TTransform>(proxy.Item, target, speed, speedType));
+            => proxy.Apply(new MoveToTransformMotion(proxy.Item, target, speed, speedType));
 
         #endregion
 
@@ -90,7 +90,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> Rotate<TTransform>(this EchoMotionProxy<TTransform> proxy, Quaternion speed)
             where TTransform : Transform
-            => proxy.Apply(new RotateVectorMotion<TTransform>(proxy.Item, speed.eulerAngles));
+            => proxy.Apply(new RotateVectorMotion(proxy.Item, speed.eulerAngles));
 
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
@@ -100,7 +100,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> Rotate<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 speed)
             where TTransform : Transform
-            => proxy.Apply(new RotateVectorMotion<TTransform>(proxy.Item, speed));
+            => proxy.Apply(new RotateVectorMotion(proxy.Item, speed));
 
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
@@ -110,7 +110,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> RotateX<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new RotateVectorMotion<TTransform>(proxy.Item, new Vector3(speed, 0f, 0f)));
+            => proxy.Apply(new RotateVectorMotion(proxy.Item, new Vector3(speed, 0f, 0f)));
 
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
@@ -120,7 +120,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> RotateY<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new RotateVectorMotion<TTransform>(proxy.Item, new Vector3(0f, speed, 0f)));
+            => proxy.Apply(new RotateVectorMotion(proxy.Item, new Vector3(0f, speed, 0f)));
 
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
@@ -130,7 +130,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> RotateZ<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new RotateVectorMotion<TTransform>(proxy.Item, new Vector3(0f, 0f, speed)));
+            => proxy.Apply(new RotateVectorMotion(proxy.Item, new Vector3(0f, 0f, speed)));
 
         /// <summary>
         /// Applies a <see cref="RotateToVectorMotion{TTransform}" /> to the echo.
@@ -140,9 +140,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="speed"></param>
         /// <param name="speedType"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> RotateTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Quaternion target, float speed = RotateToTransformMotion<TTransform>.DefaultSpeed, SpeedType speedType = RotateToTransformMotion<TTransform>.DefaultSpeedType)
+        public static EchoMotionProxy<TTransform> RotateTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Quaternion target, float speed = RotateToTransformMotion.DefaultSpeed, SpeedType speedType = RotateToTransformMotion.DefaultSpeedType)
             where TTransform : Transform
-            => proxy.Apply(new RotateToQuaternionMotion<TTransform>(proxy.Item, target, speed, speedType));
+            => proxy.Apply(new RotateToQuaternionMotion(proxy.Item, target, speed, speedType));
 
         /// <summary>
         /// Applies a <see cref="RotateToVectorMotion{TTransform}" /> to the echo.
@@ -152,9 +152,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="speed"></param>
         /// <param name="speedType"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> RotateTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = RotateToTransformMotion<TTransform>.DefaultSpeed, SpeedType speedType = RotateToTransformMotion<TTransform>.DefaultSpeedType)
+        public static EchoMotionProxy<TTransform> RotateTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = RotateToQuaternionMotion.DefaultSpeed, SpeedType speedType = RotateToQuaternionMotion.DefaultSpeedType)
             where TTransform : Transform
-            => proxy.Apply(new RotateToQuaternionMotion<TTransform>(proxy.Item, Quaternion.Euler(target), speed, speedType));
+            => proxy.Apply(new RotateToQuaternionMotion(proxy.Item, Quaternion.Euler(target), speed, speedType));
 
         /// <summary>
         /// Applies a <see cref="RotateToTransformMotion{TTransform}" /> to the echo.
@@ -164,9 +164,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="speed"></param>
         /// <param name="speedType"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> RotateTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = RotateToTransformMotion<TTransform>.DefaultSpeed, SpeedType speedType = RotateToTransformMotion<TTransform>.DefaultSpeedType)
+        public static EchoMotionProxy<TTransform> RotateTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = RotateToQuaternionMotion.DefaultSpeed, SpeedType speedType = RotateToQuaternionMotion.DefaultSpeedType)
             where TTransform : Transform
-            => proxy.Apply(new RotateToTransformMotion<TTransform>(proxy.Item, target, speed, speedType));
+            => proxy.Apply(new RotateToTransformMotion(proxy.Item, target, speed, speedType));
 
         #endregion
 
@@ -182,7 +182,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> RotateAround<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform point, Vector3 axis, float speed)
             where TTransform : Transform
-            => proxy.Apply(new RotateAroundTransformMotion<TTransform>(proxy.Item, point, axis, speed));
+            => proxy.Apply(new RotateAroundTransformMotion(proxy.Item, point, axis, speed));
 
         /// <summary>
         /// Applies a <see cref="RotateAroundVectorMotion{TTransform}" /> to the echo.
@@ -194,7 +194,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> RotateAround<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 point, Vector3 axis, float speed)
             where TTransform : Transform
-            => proxy.Apply(new RotateAroundVectorMotion<TTransform>(proxy.Item, point, axis, speed));
+            => proxy.Apply(new RotateAroundVectorMotion(proxy.Item, point, axis, speed));
 
         #endregion
 
@@ -208,7 +208,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> LookAt<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target)
             where TTransform : Transform
-            => proxy.Apply(new LookAtTransformMotion<TTransform>(proxy.Item, target));
+            => proxy.Apply(new LookAtTransformMotion(proxy.Item, target));
 
         /// <summary>
         /// Applies a <see cref="LookAtVector3Motion{TTransform}" /> to the echo.
@@ -218,7 +218,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> LookAt<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target)
             where TTransform : Transform
-            => proxy.Apply(new LookAtVector3Motion<TTransform>(proxy.Item, target));
+            => proxy.Apply(new LookAtVector3Motion(proxy.Item, target));
 
         #endregion
 
@@ -236,7 +236,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> Scale<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 speed)
             where TTransform : Transform
-            => proxy.Apply(new ScaleVectorMotion<TTransform>(proxy.Item, speed));
+            => proxy.Apply(new ScaleVectorMotion(proxy.Item, speed));
 
         /// <summary>
         /// Applies a <see cref="ScaleVectorMotion{TTransform}" /> to the echo.
@@ -246,7 +246,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> ScaleX<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new ScaleVectorMotion<TTransform>(proxy.Item, new Vector3(speed, 1f, 1f)));
+            => proxy.Apply(new ScaleVectorMotion(proxy.Item, new Vector3(speed, 1f, 1f)));
 
         /// <summary>
         /// Applies a <see cref="ScaleVectorMotion{TTransform}" /> to the echo.
@@ -256,7 +256,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> ScaleY<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new ScaleVectorMotion<TTransform>(proxy.Item, new Vector3(1f, speed, 1f)));
+            => proxy.Apply(new ScaleVectorMotion(proxy.Item, new Vector3(1f, speed, 1f)));
 
         /// <summary>
         /// Applies a <see cref="ScaleVectorMotion{TTransform}" /> to the echo.
@@ -266,7 +266,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TTransform"></typeparam>
         public static EchoMotionProxy<TTransform> ScaleZ<TTransform>(this EchoMotionProxy<TTransform> proxy, float speed)
             where TTransform : Transform
-            => proxy.Apply(new ScaleVectorMotion<TTransform>(proxy.Item, new Vector3(1f, 1f, speed)));
+            => proxy.Apply(new ScaleVectorMotion(proxy.Item, new Vector3(1f, 1f, speed)));
 
         /// <summary>
         /// Applies a <see cref="ScaleToVectorMotion{TTransform}" /> to the echo.
@@ -276,9 +276,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="speed"></param>
         /// <param name="speedType"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> ScaleTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = ScaleToTransformMotion<TTransform>.DefaultSpeed, SpeedType speedType = ScaleToTransformMotion<TTransform>.DefaultSpeedType)
+        public static EchoMotionProxy<TTransform> ScaleTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Vector3 target, float speed = ScaleToVectorMotion.DefaultSpeed, SpeedType speedType = ScaleToVectorMotion.DefaultSpeedType)
             where TTransform : Transform
-            => proxy.Apply(new ScaleToVectorMotion<TTransform>(proxy.Item, target, speed, speedType));
+            => proxy.Apply(new ScaleToVectorMotion(proxy.Item, target, speed, speedType));
 
         /// <summary>
         /// Applies a <see cref="ScaleToTransformMotion{TTransform}" /> to the echo.
@@ -288,9 +288,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="speed"></param>
         /// <param name="speedType"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static EchoMotionProxy<TTransform> ScaleTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = ScaleToTransformMotion<TTransform>.DefaultSpeed, SpeedType speedType = ScaleToTransformMotion<TTransform>.DefaultSpeedType)
+        public static EchoMotionProxy<TTransform> ScaleTo<TTransform>(this EchoMotionProxy<TTransform> proxy, Transform target, float speed = ScaleToVectorMotion.DefaultSpeed, SpeedType speedType = ScaleToVectorMotion.DefaultSpeedType)
             where TTransform : Transform
-            => proxy.Apply(new ScaleToTransformMotion<TTransform>(proxy.Item, target, speed, speedType));
+            => proxy.Apply(new ScaleToTransformMotion(proxy.Item, target, speed, speedType));
 
         #endregion
 

@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,11 +7,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the <see cref="Material.color" /> value using a gradient.
     /// </summary>
-    /// <typeparam name="TMaterial"></typeparam>
-    public class ColorGradientMotion<TMaterial> : AbstractGradientMotion<TMaterial>
-        where TMaterial : Material
+    public class ColorGradientMotion : AbstractGradientMotion<Material>
     {
-        public ColorGradientMotion(TMaterial item, Gradient gradient) : base(item, gradient)
+        [Serializable]
+        public class Builder : AbstractGradientBuilder
+        {
+            public override ITweenMotion Build()
+                => new ColorGradientMotion(item, gradient);
+        }
+
+        public ColorGradientMotion(Material item, Gradient gradient) : base(item, gradient)
         {
         }
 

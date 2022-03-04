@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
@@ -5,6 +6,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     public abstract class AbstractAxisMotion<TItem> : AbstractFloatMotion<TItem>
         where TItem : class
     {
+        [Serializable]
+        public abstract class AbstractAxisValueBuilder : AbstractValueBuilder
+        {
+            [SerializeField]
+            protected Axis axis;
+        }
+
+        [Serializable]
+        public abstract class AbstractAxisFromToBuilder : AbstractFromToBuilder
+        {
+            [SerializeField]
+            protected Axis axis;
+        }
+
         protected AbstractAxisMotion(TItem item, Axis axis, float value) : base(item, value)
         {
             this.axis = axis;

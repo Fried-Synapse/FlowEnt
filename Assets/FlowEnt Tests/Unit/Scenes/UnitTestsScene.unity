@@ -166,145 +166,155 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb56f4e712ea4a1c9c6fe5f7504b16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tweenOptionsBuilder:
-    name: tween
-    updateType: 3
-    autoStart: 1
-    skipFrames: 1
-    delay: 1
-    timeScale: 2
-    loopCount: 2
-    isLoopCountInfinite: 0
-    time: 2
-    easing: 1
-    loopType: 1
-  tweenEventsBuilder:
-    onStarted:
-      m_PersistentCalls:
-        m_Calls: []
-    onUpdated:
-      m_PersistentCalls:
-        m_Calls: []
-    onLoopCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleted:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1336522373}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    onStarting:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1336522373}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-    onUpdating:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1336522373}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-    onCompleting:
-      m_PersistentCalls:
-        m_Calls: []
-  echoOptionsBuilder:
-    name: echo
-    updateType: 4
-    autoStart: 1
-    skipFrames: 2
-    delay: 2
-    timeScale: 2
-    loopCount: 1
-    isLoopCountInfinite: 1
-    timeout: 3
-    hasTimeout: 1
-  echoEventsBuilder:
-    onStarted:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1336522373}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    onUpdated:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1336522373}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-    onLoopCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-    onStarting:
-      m_PersistentCalls:
-        m_Calls: []
-    onUpdating:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleting:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1336522373}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+  tween:
+    options:
+      name: tween
+      updateType: 3
+      autoStart: 0
+      skipFrames: 1
+      delay: 1
+      timeScale: 2
+      loopCount: 2
+      isLoopCountInfinite: 0
+      time: 2
+      easing: 1
+      loopType: 1
+    events:
+      onStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1336522373}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      onStarting:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1336522373}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      onUpdating:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1336522373}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      onCompleting:
+        m_PersistentCalls:
+          m_Calls: []
+    motions:
+      motions:
+      - id: 0
+      - id: 1
+  echo:
+    options:
+      name: echo
+      updateType: 4
+      autoStart: 0
+      skipFrames: 2
+      delay: 2
+      timeScale: 2
+      loopCount: 1
+      isLoopCountInfinite: 1
+      timeout: 3
+      hasTimeout: 1
+    events:
+      onStarted:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1336522373}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      onUpdated:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1336522373}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      onLoopCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onStarting:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdating:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleting:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1336522373}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    motions:
+      motions:
+      - id: 2
+      - id: 3
   target: {fileID: 1812087892}
   animationCurve:
     x:
@@ -408,6 +418,38 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: MoveVectorMotion/ValueBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
+      data:
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 0}
+        value: {x: 0, y: 0, z: 0}
+    00000001:
+      type: {class: DebugMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Tween, asm: FriedSynapse.FlowEnt}
+      data:
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        name: 
+    00000002:
+      type: {class: MoveVectorMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Echo.Transforms, asm: FriedSynapse.FlowEnt}
+      data:
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 0}
+        speed: {x: 0, y: 0, z: 0}
+    00000003:
+      type: {class: DebugMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Echo, asm: FriedSynapse.FlowEnt}
+      data:
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        name: 
 --- !u!1 &1592411052
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,15 +7,27 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
     /// <summary>
     /// Lerps the <see cref="Rigidbody.rotation" /> value.
     /// </summary>
-    /// <typeparam name="TRigidbody"></typeparam>
-    public class RotateQuaternionMotion<TRigidbody> : AbstractQuaternionMotion<TRigidbody>
-        where TRigidbody : Rigidbody
+    public class RotateQuaternionMotion : AbstractQuaternionMotion<Rigidbody>
     {
-        public RotateQuaternionMotion(TRigidbody item, Quaternion value) : base(item, value)
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new RotateQuaternionMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new RotateQuaternionMotion(item, from, to);
+        }
+
+        public RotateQuaternionMotion(Rigidbody item, Quaternion value) : base(item, value)
         {
         }
 
-        public RotateQuaternionMotion(TRigidbody item, Quaternion? from, Quaternion to) : base(item, from, to)
+        public RotateQuaternionMotion(Rigidbody item, Quaternion? from, Quaternion to) : base(item, from, to)
         {
         }
 

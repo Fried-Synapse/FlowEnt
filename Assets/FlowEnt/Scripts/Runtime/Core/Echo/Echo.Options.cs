@@ -5,7 +5,9 @@ namespace FriedSynapse.FlowEnt
     public partial class Echo : IFluentEchoOptionable<Echo>
     {
         private float? timeout;
+        public float? Timeout => timeout;
         private Func<float, bool> stopCondition;
+        public Func<float, bool> StopCondition => stopCondition;
 
         /// <summary>
         /// Sets all the options for this tween.

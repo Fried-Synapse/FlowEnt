@@ -10,6 +10,16 @@ namespace FriedSynapse.FlowEnt
         IFluentControllable<AbstractAnimation>,
         IControllable
     {
+        /// <inheritdoc cref="AbstractUpdatable()"/>
+        protected AbstractAnimation()
+        {
+        }
+
+        /// <inheritdoc cref="AbstractUpdatable(IUpdateController)"/>
+        protected AbstractAnimation(IUpdateController updateController) : base(updateController)
+        {
+        }
+
         #region Properties       
 
         private protected AbstractStartHelper startHelper;
@@ -93,7 +103,10 @@ namespace FriedSynapse.FlowEnt
                 case PlayState.Finished:
                     break;
                 case PlayState.Waiting:
-                    updateController.UnsubscribeFromUpdate(startHelper);
+                    if (startHelper != null)
+                    {
+                        updateController.UnsubscribeFromUpdate(startHelper);
+                    }
                     break;
                 case PlayState.Playing:
                 case PlayState.Paused:

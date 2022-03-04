@@ -6,6 +6,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 {
     public class Vector4ValueMotion : AbstractValueMotion<Vector4>
     {
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new Vector4ValueMotion(from, to, GetCallback());
+        }
+
         /// <summary>
         /// Lerps a <see cref="Vector4" /> value.
         /// </summary>

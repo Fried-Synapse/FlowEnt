@@ -242,6 +242,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                             .Start() as TAnimation;
                     return new Tween(TestTime).Start();
                 })
+                .SetAssertDelay(2)
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {

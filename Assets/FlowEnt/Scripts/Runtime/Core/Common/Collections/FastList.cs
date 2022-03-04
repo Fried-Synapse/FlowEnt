@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace FriedSynapse.FlowEnt
 {
     public class FastListItem<T>
@@ -64,6 +66,19 @@ namespace FriedSynapse.FlowEnt
         {
             anchor.next = null;
             last = anchor;
+        }
+
+        internal List<T> ToList()
+        {
+            T index = anchor.next;
+            List<T> result = new List<T>();
+            while (index != null)
+            {
+                result.Add(index);
+                index = index.next;
+            }
+
+            return result;
         }
     }
 }

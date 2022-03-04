@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 
 namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
@@ -20,6 +21,11 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
     public abstract class AbstractEchoMotion<TItem> : AbstractEchoMotion
         where TItem : class
     {
+        [Serializable]
+        public abstract class AbstractBuilder : AbstractEchoMotionBuilder<TItem>
+        {
+        }
+
         protected AbstractEchoMotion(TItem item)
         {
             this.item = item;

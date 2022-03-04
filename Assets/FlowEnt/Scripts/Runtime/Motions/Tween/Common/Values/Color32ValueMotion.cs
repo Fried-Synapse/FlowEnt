@@ -6,6 +6,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 {
     public class Color32ValueMotion : AbstractValueMotion<Color32>
     {
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new Color32ValueMotion(from, to, GetCallback());
+        }
+
         /// <summary>
         /// Lerps a <see cref="Color32" /> value.
         /// </summary>

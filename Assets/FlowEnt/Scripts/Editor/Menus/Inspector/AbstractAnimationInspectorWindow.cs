@@ -18,6 +18,7 @@ namespace FriedSynapse.FlowEnt.Editor
             window.Show();
         }
 
+#pragma warning disable IDE0051, RCS1213
         private void Update()
         {
             Repaint();
@@ -56,6 +57,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
             GUILayout.Space(10);
         }
+#pragma warning restore IDE0051, RCS1213
 
         private void ShowStackTrace()
         {

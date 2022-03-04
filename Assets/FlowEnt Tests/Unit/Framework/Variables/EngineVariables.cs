@@ -6,20 +6,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
     {
 #pragma warning disable RCS1169, IDE0044
         [SerializeField]
-        private TweenOptionsBuilder tweenOptionsBuilder;
-        public TweenOptionsBuilder TweenOptionsBuilder => tweenOptionsBuilder;
+        private TweenBuilder tween;
+        public TweenBuilder Tween => tween;
 
         [SerializeField]
-        private TweenEventsBuilder tweenEventsBuilder;
-        public TweenEventsBuilder TweenEventsBuilder => tweenEventsBuilder;
-
-        [SerializeField]
-        private EchoOptionsBuilder echoOptionsBuilder;
-        public EchoOptionsBuilder EchoOptionsBuilder => echoOptionsBuilder;
-
-        [SerializeField]
-        private EchoEventsBuilder echoEventsBuilder;
-        public EchoEventsBuilder EchoEventsBuilder => echoEventsBuilder;
+        private EchoBuilder echo;
+        public EchoBuilder Echo => echo;
 
         [SerializeField]
         private Transform target;

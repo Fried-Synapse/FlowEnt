@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEngine;
 
@@ -8,6 +9,17 @@ namespace FriedSynapse.FlowEnt.Motions.Echo
     /// </summary>
     public class DebugMotion : AbstractEchoMotion
     {
+        [Serializable]
+        public class Builder : AbstractEchoMotionBuilder
+        {
+#pragma warning disable IDE0044, RCS1169
+            [SerializeField]
+            private string name;
+#pragma warning restore IDE0044, RCS1169
+            public override IEchoMotion Build()
+                => new DebugMotion(name);
+        }
+
         public DebugMotion(string name)
         {
             Name = name;

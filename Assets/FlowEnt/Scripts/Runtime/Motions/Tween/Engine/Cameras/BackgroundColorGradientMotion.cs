@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -8,6 +9,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Cameras
     /// </summary>
     public class BackgroundColorGradientMotion : AbstractGradientMotion<Camera>
     {
+        [Serializable]
+        public class Builder : AbstractGradientBuilder
+        {
+            public override ITweenMotion Build()
+                => new BackgroundColorGradientMotion(item, gradient);
+        }
+
         public BackgroundColorGradientMotion(Camera item, Gradient gradient) : base(item, gradient)
         {
         }

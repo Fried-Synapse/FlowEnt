@@ -5,6 +5,8 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     public abstract class AbstractRotateAxisMotion<TTransform> : AbstractFloatMotion<TTransform>
             where TTransform : Transform
     {
+        //TODO add builders
+
         protected AbstractRotateAxisMotion(TTransform item, Axis axis, float value) : base(item, value)
         {
             this.axis = axis;

@@ -1,23 +1,28 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
 namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
 {
-    public class ConvergeToVectorMotion : AbstractEchoMotion<ParticleSystem>
+    public class ConvergeToVectorMotion : AbstractFloatSpeedTypeMotion<ParticleSystem>
     {
-        public const float DefaultSpeed = 1f;
-        public const SpeedType DefaultSpeedType = SpeedType.Linear;
-        public ConvergeToVectorMotion(ParticleSystem item, Vector3 target, float speed = DefaultSpeed, SpeedType speedType = DefaultSpeedType) : base(item)
+        [Serializable]
+        public class Builder : AbstractFloatSpeedTypeBuilder
+        {
+            [SerializeField]
+            private Vector3 target;
+
+            public override IEchoMotion Build()
+                => new ConvergeToVectorMotion(item, target, speed, speedType);
+        }
+
+        public ConvergeToVectorMotion(ParticleSystem item, Vector3 target, float speed = DefaultSpeed, SpeedType speedType = DefaultSpeedType) : base(item, speed, speedType)
         {
             this.target = target;
-            this.speed = speed;
-            this.speedType = speedType;
         }
 
         protected Vector3 target;
-        protected float speed;
-        private readonly SpeedType speedType;
         protected Particle[] particles = new Particle[0];
 
         public override void OnUpdate(float deltaTime)
@@ -31,21 +36,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
             for (int i = 0; i < activeCount; i++)
             {
                 Particle particle = particles[i];
-                float speed = 0;
-                switch (speedType)
-                {
-                    case SpeedType.Linear:
-                        speed = this.speed;
-                        break;
-                    case SpeedType.Elastic:
-                        speed = this.speed * Vector3.Distance(particle.position, target);
-                        break;
-                    case SpeedType.Gravity:
-                        speed = this.speed / Vector3.Distance(particle.position, target);
-                        break;
-                }
-
-                particles[i].position = Vector3.MoveTowards(particle.position, target, deltaTime * speed);
+                particles[i].position = Vector3.MoveTowards(particle.position, target, deltaTime * GetSpeed(Vector3.Distance(particle.position, target)));
             }
             item.SetParticles(particles, activeCount);
         }

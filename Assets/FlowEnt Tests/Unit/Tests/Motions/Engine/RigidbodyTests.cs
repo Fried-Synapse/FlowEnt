@@ -270,7 +270,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion<Rigidbody>(Rigidbody, Axis.XY, to)).Start())
+                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion(Rigidbody, Axis.XY, to)).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -289,7 +289,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFromY = null;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).For(Rigidbody).Apply(new MoveAxisMotion<Rigidbody>(Rigidbody, Axis.XY, from, to))
+                .Act(() => new Tween(TestTime).For(Rigidbody).Apply(new MoveAxisMotion(Rigidbody, Axis.XY, from, to))
                                     .OnUpdated((_) =>
                                     {
                                         startingFromX ??= Rigidbody.position.x;

@@ -6,6 +6,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 {
     public class QuaternionValueMotion : AbstractValueMotion<Quaternion>
     {
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new QuaternionValueMotion(from, to, GetCallback());
+        }
+
         /// <summary>
         /// Lerps a <see cref="Quaternion" /> value.
         /// </summary>

@@ -9,6 +9,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
     /// </summary>
     public class Vector3ValueMotion : AbstractValueMotion<Vector3>
     {
+        [Serializable]
+        public class Builder : AbstractBuilder
+        {
+            public override ITweenMotion Build()
+                => new Vector3ValueMotion(from, to, GetCallback());
+        }
+
         public Vector3ValueMotion(Vector3 from, Vector3 to, Action<Vector3> onUpdated) : base(from, to, onUpdated)
         {
         }

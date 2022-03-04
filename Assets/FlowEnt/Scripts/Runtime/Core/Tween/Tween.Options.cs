@@ -7,8 +7,11 @@ namespace FriedSynapse.FlowEnt
     public partial class Tween : IFluentTweenOptionable<Tween>
     {
         private float time = TweenOptions.DefaultTime;
+        public float Time => time;
         private IEasing easing = TweenOptions.DefaultIEasing;
+        public IEasing Easing => easing;
         private LoopType loopType;
+        public LoopType LoopType => loopType;
 
         /// <summary>
         /// Sets all the options for this tween.

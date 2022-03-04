@@ -6,11 +6,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// <summary>
     /// Lerps the given value and applies it to <see cref="Transform.RotateAround(Vector3, Vector3, float)" />.
     /// </summary>
-    /// <typeparam name="TTransform"></typeparam>
-    public class RotateAroundVectorMotion<TTransform> : AbstractTweenMotion<TTransform>
-        where TTransform : Transform
+    public class RotateAroundVectorMotion : AbstractTweenMotion<Transform>
     {
-        public RotateAroundVectorMotion(TTransform item, Vector3 point, Vector3 axis, float toAngle) : base(item)
+        //TODO add builders
+
+        public RotateAroundVectorMotion(Transform item, Vector3 point, Vector3 axis, float toAngle) : base(item)
         {
             this.point = point;
             this.axis = axis;

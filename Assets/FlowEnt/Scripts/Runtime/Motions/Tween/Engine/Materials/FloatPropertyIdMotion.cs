@@ -6,16 +6,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the value for the specified shader property.
     /// </summary>
-    /// <typeparam name="TMaterial"></typeparam>
-    public class FloatPropertyIdMotion<TMaterial> : AbstractFloatMotion<TMaterial>
-        where TMaterial : Material
+    public class FloatPropertyIdMotion : AbstractFloatMotion<Material>
     {
-        public FloatPropertyIdMotion(TMaterial item, int propertyId, float value) : base(item, value)
+        public FloatPropertyIdMotion(Material item, int propertyId, float value) : base(item, value)
         {
             this.propertyId = propertyId;
         }
 
-        public FloatPropertyIdMotion(TMaterial item, int propertyId, float? from, float to) : base(item, from, to)
+        public FloatPropertyIdMotion(Material item, int propertyId, float? from, float to) : base(item, from, to)
         {
             this.propertyId = propertyId;
         }

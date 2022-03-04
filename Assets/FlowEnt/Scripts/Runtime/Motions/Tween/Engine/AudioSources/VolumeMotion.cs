@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -8,6 +9,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.AudioSources
     /// </summary>
     public class VolumeMotion : AbstractFloatMotion<AudioSource>
     {
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new VolumeMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new VolumeMotion(item, from, to);
+        }
+
         public VolumeMotion(AudioSource item, float value) : base(item, value)
         {
         }

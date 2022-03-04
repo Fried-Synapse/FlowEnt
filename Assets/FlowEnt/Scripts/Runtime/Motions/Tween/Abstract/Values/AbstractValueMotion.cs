@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
@@ -6,6 +7,22 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         where TItem : class
         where TValue : struct
     {
+        [Serializable]
+        public abstract class AbstractValueBuilder : AbstractBuilder
+        {
+            [SerializeField]
+            protected TValue value;
+        }
+
+        [Serializable]
+        public abstract class AbstractFromToBuilder : AbstractBuilder
+        {
+            [SerializeField]
+            protected TValue from;
+            [SerializeField]
+            protected TValue to;
+        }
+
         protected AbstractValueMotion(TItem item, TValue value) : base(item)
         {
             this.value = value;
