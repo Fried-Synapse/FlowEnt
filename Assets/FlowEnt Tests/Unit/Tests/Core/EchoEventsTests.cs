@@ -23,18 +23,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             EchoEvents echoEvents = default;
 
             yield return CreateTester()
-                .Act(() => echoEvents = Variables.EchoEventsBuilder.Build())
+                .Act(() => echoEvents = Variables.Echo.Events.Build())
                 .Assert(() =>
                 {
                     static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
 
-                    assert(Variables.EchoEventsBuilder.OnStarting, echoEvents.OnStartingEvent);
-                    assert(Variables.EchoEventsBuilder.OnStarted, echoEvents.OnStartedEvent);
-                    assert(Variables.EchoEventsBuilder.OnUpdating, echoEvents.OnUpdatingEvent);
-                    assert(Variables.EchoEventsBuilder.OnUpdated, echoEvents.OnUpdatedEvent);
-                    assert(Variables.EchoEventsBuilder.OnLoopCompleted, echoEvents.OnLoopCompletedEvent);
-                    assert(Variables.EchoEventsBuilder.OnCompleted, echoEvents.OnCompletedEvent);
-                    assert(Variables.EchoEventsBuilder.OnCompleting, echoEvents.OnCompletingEvent);
+                    assert(Variables.Echo.Events.OnStarting, echoEvents.OnStartingEvent);
+                    assert(Variables.Echo.Events.OnStarted, echoEvents.OnStartedEvent);
+                    assert(Variables.Echo.Events.OnUpdating, echoEvents.OnUpdatingEvent);
+                    assert(Variables.Echo.Events.OnUpdated, echoEvents.OnUpdatedEvent);
+                    assert(Variables.Echo.Events.OnLoopCompleted, echoEvents.OnLoopCompletedEvent);
+                    assert(Variables.Echo.Events.OnCompleted, echoEvents.OnCompletedEvent);
+                    assert(Variables.Echo.Events.OnCompleting, echoEvents.OnCompletingEvent);
                 })
                 .Run();
         }

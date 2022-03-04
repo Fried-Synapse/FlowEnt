@@ -21,30 +21,30 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             EchoOptions echoOptions = default;
 
             yield return CreateTester()
-                .Act(() => echoOptions = Variables.EchoOptionsBuilder.Build())
+                .Act(() => echoOptions = Variables.Echo.Options.Build())
                 .Assert(() =>
                 {
-                    Assert.AreEqual(Variables.EchoOptionsBuilder.Name, echoOptions.Name);
-                    Assert.AreEqual(Variables.EchoOptionsBuilder.UpdateType, echoOptions.UpdateType);
-                    Assert.AreEqual(Variables.EchoOptionsBuilder.AutoStart, echoOptions.AutoStart);
-                    Assert.AreEqual(Variables.EchoOptionsBuilder.SkipFrames, echoOptions.SkipFrames);
-                    Assert.AreEqual(Variables.EchoOptionsBuilder.Delay, echoOptions.Delay);
-                    Assert.AreEqual(Variables.EchoOptionsBuilder.TimeScale, echoOptions.TimeScale);
-                    if (Variables.EchoOptionsBuilder.HasTimeout)
+                    Assert.AreEqual(Variables.Echo.Options.Name, echoOptions.Name);
+                    Assert.AreEqual(Variables.Echo.Options.UpdateType, echoOptions.UpdateType);
+                    Assert.AreEqual(Variables.Echo.Options.AutoStart, echoOptions.AutoStart);
+                    Assert.AreEqual(Variables.Echo.Options.SkipFrames, echoOptions.SkipFrames);
+                    Assert.AreEqual(Variables.Echo.Options.Delay, echoOptions.Delay);
+                    Assert.AreEqual(Variables.Echo.Options.TimeScale, echoOptions.TimeScale);
+                    if (Variables.Echo.Options.HasTimeout)
                     {
-                        Assert.AreEqual(Variables.EchoOptionsBuilder.Timeout, echoOptions.Timeout);
+                        Assert.AreEqual(Variables.Echo.Options.Timeout, echoOptions.Timeout);
                     }
                     else
                     {
                         Assert.AreEqual(null, echoOptions.Timeout);
                     }
-                    if (Variables.EchoOptionsBuilder.IsLoopCountInfinite)
+                    if (Variables.Echo.Options.IsLoopCountInfinite)
                     {
                         Assert.AreEqual(null, echoOptions.LoopCount);
                     }
                     else
                     {
-                        Assert.AreEqual(Variables.EchoOptionsBuilder.LoopCount, echoOptions.LoopCount);
+                        Assert.AreEqual(Variables.Echo.Options.LoopCount, echoOptions.LoopCount);
                     }
                 })
                 .Run();

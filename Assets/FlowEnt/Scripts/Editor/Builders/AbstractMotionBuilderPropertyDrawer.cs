@@ -21,15 +21,15 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static class ControlFields
         {
-            public const string Name = "name";
-            public const string IsNameEnabled = "isNameEnabled";
+            public const string DisplayName = "displayName";
+            public const string IsDisplayNameEnabled = "isDisplayNameEnabled";
             public const string IsEnabled = "isEnabled";
         }
 
         private readonly List<string> hiddenProperties = new List<string>
         {
-            ControlFields.Name,
-            ControlFields.IsNameEnabled,
+            ControlFields.DisplayName,
+            ControlFields.IsDisplayNameEnabled,
             ControlFields.IsEnabled,
         };
         private static IMotionBuilder clipboard;
@@ -44,7 +44,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             float height = FlowEntConstants.SpacedSingleLineHeight + 5;
-            if (property.FindPropertyRelative(ControlFields.IsNameEnabled).boolValue)
+            if (property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled).boolValue)
             {
                 height += FlowEntConstants.SpacedSingleLineHeight;
             }
@@ -73,11 +73,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
             EditorGUI.indentLevel++;
             position.y += FlowEntConstants.SpacedSingleLineHeight;
-            var x = property.FindPropertyRelative(ControlFields.IsNameEnabled);
-            if (property.FindPropertyRelative(ControlFields.IsNameEnabled).boolValue)
+            var x = property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled);
+            if (property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled).boolValue)
             {
                 position.height = EditorGUIUtility.singleLineHeight;
-                EditorGUI.PropertyField(position, property.FindPropertyRelative(ControlFields.Name));
+                EditorGUI.PropertyField(position, property.FindPropertyRelative(ControlFields.DisplayName));
                 position.y += FlowEntConstants.SpacedSingleLineHeight;
             }
             ForEachVisibleProperty(property, p =>
@@ -114,7 +114,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 context.AddItem(new GUIContent("Paste Motion Values"), () => EditorUtility.CopySerializedManagedFieldsOnly(clipboard, motion), clipboard == null || motion.GetType() != clipboard.GetType());
                 context.AddItem(new GUIContent("Paste Motion as new"), () => motions.Add(clipboard), clipboard == null);
                 context.AddSeparator(string.Empty);
-                SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(ControlFields.IsNameEnabled);
+                SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled);
                 void showRename()
                 {
                     isNameEnabledProperty.boolValue = !isNameEnabledProperty.boolValue;
@@ -139,9 +139,9 @@ namespace FriedSynapse.FlowEnt.Editor
         public static List<string> GetNames(Type type, IMotionBuilder motionBuilder = null)
         {
             List<string> names = new List<string>();
-            if (motionBuilder != null && !string.IsNullOrEmpty(motionBuilder.Name))
+            if (motionBuilder != null && !string.IsNullOrEmpty(motionBuilder.DisplayName))
             {
-                names.Add(motionBuilder.Name);
+                names.Add(motionBuilder.DisplayName);
             }
             DisplayNameAttribute displayNameAttribute = type.GetCustomAttribute<DisplayNameAttribute>();
             if (displayNameAttribute != null)

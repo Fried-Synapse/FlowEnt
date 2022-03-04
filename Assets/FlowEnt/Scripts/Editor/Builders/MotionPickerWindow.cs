@@ -32,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private List<TypeInfo> types = new List<TypeInfo>();
         private Vector2 scrollPosition;
         private GUIStyle button;
-
+        private bool hadInitialFocus;
         private void Init()
         {
             button = new GUIStyle(GUI.skin.button);
@@ -42,7 +42,13 @@ namespace FriedSynapse.FlowEnt.Editor
 #pragma warning disable IDE0051, RCS1213
         private void OnGUI()
         {
+            GUI.SetNextControlName("SearchField");
             searchText = EditorGUILayout.TextField(searchText);
+            if (!hadInitialFocus)
+            {
+                hadInitialFocus = true;
+                EditorGUI.FocusTextInControl("SearchField");
+            }
 
             List<TypeInfo> types = this.types;
             if (!string.IsNullOrEmpty(searchText))

@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt
 
     public interface IMotionBuilder
     {
-        public string Name { get; }
+        public string DisplayName { get; }
         public bool IsEnabled { get; }
     }
 
@@ -24,10 +24,10 @@ namespace FriedSynapse.FlowEnt
     {
 #pragma warning disable IDE0044, RCS1169, RCS1213, IDE0051, CS0414
         [SerializeField]
-        private string name;
-        public string Name => name;
+        private string displayName;
+        public string DisplayName => displayName;
         [SerializeField]
-        private bool isNameEnabled;
+        private bool isDisplayNameEnabled;
         [SerializeField]
         private bool isEnabled = true;
         public bool IsEnabled => isEnabled;
