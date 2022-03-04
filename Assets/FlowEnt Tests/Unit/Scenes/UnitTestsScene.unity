@@ -170,7 +170,7 @@ MonoBehaviour:
     options:
       name: tween
       updateType: 3
-      autoStart: 1
+      autoStart: 0
       skipFrames: 1
       delay: 1
       timeScale: 2
@@ -245,7 +245,7 @@ MonoBehaviour:
     options:
       name: echo
       updateType: 4
-      autoStart: 1
+      autoStart: 0
       skipFrames: 2
       delay: 2
       timeScale: 2
