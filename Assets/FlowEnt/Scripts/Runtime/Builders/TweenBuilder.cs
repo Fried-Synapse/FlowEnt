@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class TweenBuilder : AbstractBuilder<Tween>
+    public class TweenBuilder : AbstractAnimationBuilder<Tween>
     {
 #pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]

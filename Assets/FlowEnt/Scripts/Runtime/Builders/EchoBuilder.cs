@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class EchoBuilder : AbstractBuilder<Echo>
+    public class EchoBuilder : AbstractAnimationBuilder<Echo>
     {
 #pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]
