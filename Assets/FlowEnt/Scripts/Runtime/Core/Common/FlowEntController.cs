@@ -36,6 +36,28 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
+        private static IUpdateController updateControllerInstance;
+        internal static IUpdateController UpdateControllerInstance
+        {
+            get
+            {
+                lock (lockObject)
+                {
+                    if (updateControllerInstance == null)
+                    {
+#if UNITY_EDITOR
+#pragma warning disable IDE0004 //HACK unity is dum-dum. Doesn't know how to cast.
+                        updateControllerInstance = Application.isPlaying ? (IUpdateController)Instance : Editor.FlowEntEditorController.Instance;
+#pragma warning restore IDE0004
+#else
+                        updateControllerInstance = Instance;
+#endif
+                    }
+                }
+                return updateControllerInstance;
+            }
+        }
+
         /// <summary>
         /// Returns weather the <see cref="FlowEntController"/> has an instance or not.
         /// </summary>

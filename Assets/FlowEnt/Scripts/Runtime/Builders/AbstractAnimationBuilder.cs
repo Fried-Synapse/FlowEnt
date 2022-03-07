@@ -7,7 +7,6 @@ namespace FriedSynapse.FlowEnt
     public abstract class AbstractAnimationBuilder<TAnimation> : AbstractBuilder<TAnimation>, IAbstractAnimationBuilder
         where TAnimation : AbstractAnimation
     {
-
         AbstractAnimation IAbstractAnimationBuilder.Build()
             => Build();
     }

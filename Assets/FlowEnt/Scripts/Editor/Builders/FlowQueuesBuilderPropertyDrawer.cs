@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         protected override Rect Draw(Rect position, SerializedProperty property)
         {
-            DrawButton(position, "Add queue", () => AddItem(new FlowBuilder.QueueList.Queue()));
+            DrawButton(position, "Add queue", () => GetData(property).AddedItemTypes.Enqueue(new FlowBuilder.QueueList.Queue()));
             return position;
         }
     }

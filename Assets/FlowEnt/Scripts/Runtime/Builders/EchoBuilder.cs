@@ -20,13 +20,7 @@ namespace FriedSynapse.FlowEnt
 #pragma warning restore RCS1169, RCS1085, IDE0044
 
         public override Echo Build()
-            => SetAll(new Echo());
-
-        public Echo Build(IUpdateController updateController = null)
-            => SetAll(new Echo(updateController));
-
-        private Echo SetAll(Echo echo)
-            => echo.SetOptions(Options.Build())
+            => new Echo(Options.Build())
                 .SetEvents(Events.Build())
                 .Apply(Motions.Build());
     }

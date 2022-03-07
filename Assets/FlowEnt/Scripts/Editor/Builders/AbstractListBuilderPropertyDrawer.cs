@@ -5,14 +5,16 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractListBuilderPropertyDrawer<TListItem> : PropertyDrawer
+    public abstract class AbstractListBuilderPropertyDrawer<TListItem> : PropertyDrawer<AbstractListBuilderPropertyDrawer<TListItem>.Data>
         where TListItem : IBuilderListItem
     {
+        public class Data
+        {
+            public Queue<TListItem> AddedItemTypes { get; } = new Queue<TListItem>();
+        }
         protected virtual void DrawMenu(Rect position, SerializedProperty property) { }
         protected virtual GUIContent GetLabel(SerializedProperty property, GUIContent label) => label;
         protected abstract Rect Draw(Rect position, SerializedProperty property);
-
-        private readonly Queue<TListItem> addedItemTypes = new Queue<TListItem>();
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -59,13 +61,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void DrawList(Rect position, SerializedProperty property)
         {
+            Data data = GetData(property);
             SerializedProperty listProperty = property.FindPropertyRelative("items");
             List<TListItem> list = listProperty.GetValue<List<TListItem>>();
 
-            while (addedItemTypes.Count > 0)
+            while (data.AddedItemTypes.Count > 0)
             {
-                TListItem builder = addedItemTypes.Dequeue();
-                list.Add(builder);
+                list.Add(data.AddedItemTypes.Dequeue());
             }
 
             for (int i = 0; i < listProperty.arraySize; i++)
@@ -76,11 +78,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 EditorGUI.PropertyField(position, listItemProperty, true);
                 position.y += height;
             }
-        }
-
-        protected void AddItem(TListItem item)
-        {
-            addedItemTypes.Enqueue(item);
         }
     }
 }

@@ -7,38 +7,51 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer, IPreviewable, ICrudable<TAnimationBuilder>
+    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer<AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder>.Data>,
+        ICrudable<TAnimationBuilder>
         where TAnimation : AbstractAnimation
         where TAnimationBuilder : AbstractAnimationBuilder<TAnimation>
     {
+        public class Data : IPreviewable
+        {
+            public TAnimation PreviewAnimation { get; set; }
+            AbstractAnimation IPreviewable.PreviewAnimation => PreviewAnimation;
+            public float PreviewTime { get; set; }
+            public bool IsInPreview => PreviewAnimation != null;
+            public SerializedObject SerializedObject { get; set; }
+
+            public void Reset()
+            {
+                PreviewTime = 0;
+                PreviewAnimation?.Stop();
+                PreviewAnimation = null;
+            }
+        }
+
         protected virtual List<string> VisibleProperties => new List<string>{
             "options",
             "events",
             "motions",
         };
 
-        protected TAnimation previewAnimation;
-        public AbstractAnimation PreviewAnimation => previewAnimation;
-        private bool IsInPreview => previewAnimation != null;
-        public SerializedObject SerializedObject { get; private set; }
         private static TAnimationBuilder clipboard;
         public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
+
+        public SerializedObject SerializedObject => throw new NotImplementedException();
+
+        public AbstractAnimation PreviewAnimation => throw new NotImplementedException();
+
         protected abstract void DrawControls(Rect position, SerializedProperty property);
         protected abstract TAnimation Build(SerializedProperty property);
-        protected abstract void OnAnimationUpdated(float t);
-
-        public virtual void Reset()
-        {
-            previewAnimation?.Stop();
-            previewAnimation = null;
-        }
+        protected abstract void OnAnimationUpdated(Data data, float t);
 
         protected void StartPreview(SerializedProperty property)
         {
-            previewAnimation = Build(property);
-            previewAnimation.OnUpdated(t =>
+            Data data = GetData(property);
+            data.PreviewAnimation = Build(property);
+            data.PreviewAnimation.OnUpdated(t =>
             {
-                OnAnimationUpdated(t);
+                OnAnimationUpdated(data, t);
 
                 foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
                 {
@@ -49,10 +62,10 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                 }
             });
-            FlowEntEditorController.Instance.StartPreview(this);
+            FlowEntEditorController.Instance.StartPreview(data);
             try
             {
-                previewAnimation.Start();
+                data.PreviewAnimation.Start();
             }
             catch (Exception ex)
             {
@@ -78,7 +91,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SerializedObject = property.serializedObject;
+            Data data = GetData(property);
+            data.SerializedObject = property.serializedObject;
 
             TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
             SerializedProperty parentProperty = property.GetParentArray();
@@ -87,7 +101,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
-            if (IsInPreview)
+            if (data.IsInPreview)
             {
                 EditorGUI.DrawRect(position, new Color(1f, 0f, 0f, 0.2f));
             }
@@ -114,12 +128,10 @@ namespace FriedSynapse.FlowEnt.Editor
                     position.y += height;
                 });
 
-                //TODO this check stops all animations in a flow from working.
-                TODO
-                // if (check.changed)
-                // {
-                //     FlowEntEditorController.Instance.StopPreview();
-                // }
+                if (data.IsInPreview && check.changed)
+                {
+                    FlowEntEditorController.Instance.StopPreview();
+                }
             }
 
             EditorGUI.indentLevel--;
@@ -144,23 +156,24 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected float DrawControlButtons(Rect position, SerializedProperty property)
         {
+            Data data = GetData(property);
             position = EditorGUI.IndentedRect(position);
             position.x -= 10f;
             position.width = EditorGUIUtility.singleLineHeight;
-            if (previewAnimation?.PlayState == PlayState.Playing)
+            if (data.PreviewAnimation?.PlayState == PlayState.Playing)
             {
                 if (GUI.Button(position, Icon.Pause, Icon.Style))
                 {
-                    previewAnimation.Pause();
+                    data.PreviewAnimation.Pause();
                 }
             }
             else
             {
                 if (GUI.Button(position, Icon.Play, Icon.Style))
                 {
-                    if (previewAnimation?.PlayState == PlayState.Paused)
+                    if (data.PreviewAnimation?.PlayState == PlayState.Paused)
                     {
-                        previewAnimation.Resume();
+                        data.PreviewAnimation.Resume();
                     }
                     else
                     {

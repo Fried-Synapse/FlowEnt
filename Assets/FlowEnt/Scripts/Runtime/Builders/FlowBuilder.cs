@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -42,15 +41,9 @@ namespace FriedSynapse.FlowEnt
 #pragma warning restore IDE0044, RCS1169
 
         public override Flow Build()
-            => SetAll(new Flow());
-
-        public Flow Build(IUpdateController updateController)
-            => SetAll(new Flow(updateController));
-
-        private Flow SetAll(Flow flow)
         {
-            flow.SetOptions(Options.Build());
-            flow.SetEvents(Events.Build());
+            Flow flow = new Flow(Options.Build())
+                .SetEvents(Events.Build());
             foreach (QueueList.Queue queue in Queues.Items)
             {
                 int animationCount = queue.Items.Count;

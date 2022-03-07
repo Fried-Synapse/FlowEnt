@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         protected override Rect Draw(Rect position, SerializedProperty property)
         {
-            DrawButton(position, "Add motion", () => MotionPickerWindow.Show<AbstractEchoMotionBuilder>(AddItem));
+            DrawButton(position, "Add motion", () => MotionPickerWindow.Show<AbstractEchoMotionBuilder>(GetData(property).AddedItemTypes.Enqueue));
             return position;
         }
     }

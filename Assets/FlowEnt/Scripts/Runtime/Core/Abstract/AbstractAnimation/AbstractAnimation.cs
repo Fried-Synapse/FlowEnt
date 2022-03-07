@@ -15,11 +15,6 @@ namespace FriedSynapse.FlowEnt
         {
         }
 
-        /// <inheritdoc cref="AbstractUpdatable(IUpdateController)"/>
-        protected AbstractAnimation(IUpdateController updateController) : base(updateController)
-        {
-        }
-
         #region Properties       
 
         private protected AbstractStartHelper startHelper;

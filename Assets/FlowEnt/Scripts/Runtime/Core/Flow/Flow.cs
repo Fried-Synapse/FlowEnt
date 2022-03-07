@@ -13,11 +13,6 @@ namespace FriedSynapse.FlowEnt
     {
         private const string ErrorAnimationAlreadyStarted = "Cannot add animation that has already started.";
 
-        /// <inheritdoc cref="AbstractUpdatable(IUpdateController)"/>
-        public Flow(IUpdateController updateController) : base(updateController)
-        {
-        }
-
         /// <summary>
         /// Creates a new flow using the options provided.
         /// </summary>

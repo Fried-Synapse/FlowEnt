@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public interface IBuilder<T>
+    public interface IBuilder<TItem>
     {
-        public T Build();
+        public TItem Build();
     }
 
-    public abstract class AbstractBuilder<T> : IBuilder<T>
+    public abstract class AbstractBuilder<TItem> : IBuilder<TItem>
     {
-        public abstract T Build();
+        public abstract TItem Build();
     }
 
     public interface IBuilderListItem

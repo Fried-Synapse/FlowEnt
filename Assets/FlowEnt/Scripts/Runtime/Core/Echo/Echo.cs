@@ -13,11 +13,6 @@ namespace FriedSynapse.FlowEnt
     public sealed partial class Echo : AbstractAnimation,
         IFluentControllable<Echo>
     {
-        /// <inheritdoc cref="AbstractUpdatable(IUpdateController)"/>
-        public Echo(IUpdateController updateController) : base(updateController)
-        {
-        }
-
         /// <summary>
         /// Creates a new echo using the options provided.
         /// </summary>
