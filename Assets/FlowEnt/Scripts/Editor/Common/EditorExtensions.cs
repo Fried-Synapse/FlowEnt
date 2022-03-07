@@ -32,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     return null;
                 }
                 Type type = source.GetType();
-                FieldInfo fieldInfo = type.GetField(name, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo fieldInfo = type.GetField(name, ReflectionExtensions.DefaultBindingFlags);
                 return fieldInfo.GetValue(source);
             }
 
@@ -76,8 +76,18 @@ namespace FriedSynapse.FlowEnt.Editor
         public static SerializedProperty GetParentArray(this SerializedProperty property)
         {
             string path = property.propertyPath;
-            int index = path.LastIndexOf('.', path.LastIndexOf('.') - 1);
-            return index < 0 ? null : property.serializedObject.FindProperty(path.Substring(0, index));
+            int index = path.LastIndexOf('.') - 1;
+            if (index < 0)
+            {
+                return null;
+            }
+            index = path.LastIndexOf('.', index);
+            if (index < 0)
+            {
+                return null;
+            }
+            SerializedProperty parentProperty = property.serializedObject.FindProperty(path.Substring(0, index));
+            return parentProperty.isArray ? parentProperty : null;
         }
 
         public static void AddItem(this GenericMenu menu, GUIContent content, GenericMenu.MenuFunction callback, bool isDisabled = false, bool isOn = false)

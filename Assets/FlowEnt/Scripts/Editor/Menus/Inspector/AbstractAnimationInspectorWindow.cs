@@ -1,5 +1,8 @@
 using UnityEditor;
 using UnityEngine;
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
+using FriedSynapse.FlowEnt.Reflection;
+#endif
 
 namespace FriedSynapse.FlowEnt.Editor
 {

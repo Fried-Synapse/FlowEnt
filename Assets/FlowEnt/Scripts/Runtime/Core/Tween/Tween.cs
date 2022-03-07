@@ -19,10 +19,7 @@ namespace FriedSynapse.FlowEnt
             Backward
         }
 
-        /// <summary>
-        /// Creates a new tween with the specified <see cref="IUpdateController"/>.
-        /// </summary>
-        /// <param name="updateController"></param>
+        /// <inheritdoc cref="AbstractUpdatable(IUpdateController)"/>
         public Tween(IUpdateController updateController) : base(updateController)
         {
         }

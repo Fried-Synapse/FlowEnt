@@ -13,7 +13,11 @@ namespace FriedSynapse.FlowEnt
         public abstract T Build();
     }
 
-    public interface IMotionBuilder
+    public interface IBuilderListItem
+    {
+    }
+
+    public interface IMotionBuilder : IBuilderListItem
     {
         public string DisplayName { get; }
         public bool IsEnabled { get; }

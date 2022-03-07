@@ -1,24 +1,17 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer, IPreviewable
+    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer, IPreviewable, ICrudable<TAnimationBuilder>
         where TAnimation : AbstractAnimation
-        where TAnimationBuilder : AbstractBuilder<TAnimation>
+        where TAnimationBuilder : AbstractAnimationBuilder<TAnimation>
     {
-        protected static class Icon
-        {
-            public static GUIContent Menu = EditorGUIUtility.IconContent("_Menu@2x", "Menu");
-            public static GUIContent Play = EditorGUIUtility.IconContent("PlayButton@2x", "Play");
-            public static GUIContent Pause = EditorGUIUtility.IconContent("PauseButton@2x", "Pause");
-            public static GUIContent Stop = EditorGUIUtility.IconContent("PreMatQuad@2x", "Pause");
-            public static GUIStyle Style = new GUIStyle(EditorStyles.miniButton) { padding = new RectOffset(2, 2, 2, 2) };
-        }
-
-        private readonly List<string> visibleProperties = new List<string>{
+        protected virtual List<string> VisibleProperties => new List<string>{
             "options",
             "events",
             "motions",
@@ -26,12 +19,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected TAnimation previewAnimation;
         public AbstractAnimation PreviewAnimation => previewAnimation;
+        private bool IsInPreview => previewAnimation != null;
         public SerializedObject SerializedObject { get; private set; }
-        protected virtual bool IsInPreview => previewAnimation != null;
+        private static TAnimationBuilder clipboard;
+        public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
         protected abstract void DrawControls(Rect position, SerializedProperty property);
         protected abstract TAnimation Build(SerializedProperty property);
         protected abstract void OnAnimationUpdated(float t);
-        private static TAnimationBuilder clipboard;
 
         public virtual void Reset()
         {
@@ -86,6 +80,11 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             SerializedObject = property.serializedObject;
 
+            TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
+            SerializedProperty parentProperty = property.GetParentArray();
+            string name = animation.GetPropertyValue<object>("Options").GetPropertyValue<string>("Name");
+            label.text = $"{(parentProperty == null ? label.text : "")} [{animation.GetType().Name.Replace("Builder", "")}{(string.IsNullOrEmpty(name) ? "" : $" - {name}")}]";
+
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
             if (IsInPreview)
@@ -103,6 +102,7 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUI.indentLevel++;
 
             DrawControls(FlowEntEditorGUILayout.GetRect(position, 1), property);
+
             using (EditorGUI.ChangeCheckScope check = new EditorGUI.ChangeCheckScope())
             {
                 position.y += FlowEntConstants.SpacedSingleLineHeight + EditorGUIUtility.singleLineHeight;
@@ -114,10 +114,12 @@ namespace FriedSynapse.FlowEnt.Editor
                     position.y += height;
                 });
 
-                if (check.changed)
-                {
-                    FlowEntEditorController.Instance.StopPreview();
-                }
+                //TODO this check stops all animations in a flow from working.
+                TODO
+                // if (check.changed)
+                // {
+                //     FlowEntEditorController.Instance.StopPreview();
+                // }
             }
 
             EditorGUI.indentLevel--;
@@ -133,22 +135,18 @@ namespace FriedSynapse.FlowEnt.Editor
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
                 TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
+                SerializedProperty parentProperty = property.GetParentArray();
                 GenericMenu context = new GenericMenu();
-                void copyMotion()
-                {
-                    clipboard = (TAnimationBuilder)Activator.CreateInstance(animation.GetType());
-                    EditorUtility.CopySerializedManagedFieldsOnly(animation, clipboard);
-                }
-                context.AddItem(new GUIContent("Copy"), copyMotion);
-                context.AddItem(new GUIContent("Paste Values"), () => EditorUtility.CopySerializedManagedFieldsOnly(clipboard, animation), clipboard == null || animation.GetType() != clipboard.GetType());
+                FlowEntEditorGUILayout.ShowCrud(context, parentProperty?.GetValue<IList>(), animation, "Animation", this);
                 context.ShowAsContext();
             }
         }
 
-        protected void DrawControlButtons(Rect position, SerializedProperty property)
+        protected float DrawControlButtons(Rect position, SerializedProperty property)
         {
+            position = EditorGUI.IndentedRect(position);
+            position.x -= 10f;
             position.width = EditorGUIUtility.singleLineHeight;
-            position.x += 5;
             if (previewAnimation?.PlayState == PlayState.Playing)
             {
                 if (GUI.Button(position, Icon.Pause, Icon.Style))
@@ -176,13 +174,14 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 FlowEntEditorController.Instance.StopPreview();
             }
+            return EditorGUIUtility.singleLineHeight * 2;
         }
 
         private void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
         {
             FlowEntEditorGUILayout.ForEachVisibleProperty(property, p =>
             {
-                if (visibleProperties.Contains(p.name))
+                if (VisibleProperties.Contains(p.name))
                 {
                     predicate(p);
                 }

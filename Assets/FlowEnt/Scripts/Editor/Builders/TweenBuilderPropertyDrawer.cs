@@ -12,14 +12,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void DrawControls(Rect position, SerializedProperty property)
         {
-            DrawControlButtons(position, property);
-
-            Rect progressPosition = position;
-            float buttonsWidth = EditorGUIUtility.singleLineHeight * 2;
-            progressPosition.width -= buttonsWidth;
-            progressPosition.x += buttonsWidth;
-
-            float editedPreviewTime = EditorGUI.Slider(progressPosition, previewTime, 0f, 1f);
+            float buttonsWidth = DrawControlButtons(position, property);
+            float editedPreviewTime = EditorGUI.Slider(FlowEntEditorGUILayout.GetIndentedRect(position, buttonsWidth), previewTime, 0f, 1f);
             if (editedPreviewTime != previewTime)
             {
                 if (previewAnimation == null)

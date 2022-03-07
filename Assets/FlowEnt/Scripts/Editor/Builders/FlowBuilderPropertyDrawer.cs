@@ -1,12 +1,19 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    [CustomPropertyDrawer(typeof(EchoBuilder))]
-    public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo, EchoBuilder>
+    [CustomPropertyDrawer(typeof(FlowBuilder))]
+    public class FlowBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Flow, FlowBuilder>
     {
         private float previewTime;
+
+        protected override List<string> VisibleProperties => new List<string>{
+            "options",
+            "events",
+            "queues",
+        };
 
         protected override void DrawControls(Rect position, SerializedProperty property)
         {
@@ -14,8 +21,8 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUI.LabelField(FlowEntEditorGUILayout.GetIndentedRect(position, buttonsWidth), "Time elapsed", previewTime.ToString());
         }
 
-        protected override Echo Build(SerializedProperty property)
-            => property.GetValue<EchoBuilder>().Build(FlowEntEditorController.Instance);
+        protected override Flow Build(SerializedProperty property)
+            => property.GetValue<FlowBuilder>().Build(FlowEntEditorController.Instance);
 
         protected override void OnAnimationUpdated(float t)
         {

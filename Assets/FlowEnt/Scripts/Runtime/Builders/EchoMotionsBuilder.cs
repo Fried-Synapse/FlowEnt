@@ -19,14 +19,9 @@ namespace FriedSynapse.FlowEnt
     }
 
     [Serializable]
-    public class EchoMotionsBuilder : AbstractBuilder<List<IEchoMotion>>
+    public class EchoMotionsBuilder : AbstractListBuilder<AbstractEchoMotionBuilder>, IBuilder<List<IEchoMotion>>
     {
-#pragma warning disable IDE0044, RCS1169
-        [SerializeReference]
-        private List<AbstractEchoMotionBuilder> motions = new List<AbstractEchoMotionBuilder>();
-#pragma warning restore IDE0044, RCS1169
-
-        public override List<IEchoMotion> Build()
-            => motions.FindAll(m => m.IsEnabled).ConvertAll(m => m.Build());
+        public List<IEchoMotion> Build()
+            => Items.FindAll(m => m.IsEnabled).ConvertAll(m => m.Build());
     }
 }

@@ -3,7 +3,7 @@ using System;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class FLowOptionsBuilder : AbstractAnimationOptionsBuilder<FlowOptions>
+    public class FlowOptionsBuilder : AbstractAnimationOptionsBuilder<FlowOptions>
     {
     }
 }

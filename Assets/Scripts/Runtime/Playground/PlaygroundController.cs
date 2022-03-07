@@ -28,21 +28,15 @@ namespace FriedSynapse.FlowEnt.Builder
         [SerializeField]
         private EchoBuilder echo;
         private EchoBuilder Echo => echo;
+        [SerializeField]
+        private FlowBuilder flow;
+        private FlowBuilder Flow => flow;
 #pragma warning restore RCS1169, IDE0044
 
 #pragma warning disable IDE0051, RCS1213
         private void Start()
         {
             Tween.Build().Start();
-        }
-
-        private void OnDrawGizmos()
-        {
-        }
-
-        public void Log(Vector3 x)
-        {
-            Debug.Log($"{x}");
         }
 #pragma warning restore IDE0051, RCS1213
     }

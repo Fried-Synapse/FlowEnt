@@ -1,10 +1,16 @@
 using System;
+using System.Collections;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
+    internal interface ICrudable<T>
+    {
+        public T Clipboard { get; set; }
+    }
+
     internal static class FlowEntEditorGUILayout
     {
         private static GUIStyle labelStyle;
@@ -71,7 +77,7 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUILayout.LabelField(content, LabelStyle, options);
         }
 
-        public static void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
+        internal static void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
         {
             int baseDepth = property.depth;
             property.NextVisible(true);
@@ -85,6 +91,32 @@ namespace FriedSynapse.FlowEnt.Editor
                 predicate(property);
             }
             while (property.NextVisible(false));
+        }
+
+        internal static void ShowCrud<T>(GenericMenu context, IList list, T item, string name, ICrudable<T> copyPastable)
+        {
+            if (list != null)
+            {
+                context.AddItem(new GUIContent($"Remove {name}"), () => list.Remove(item));
+            }
+            void copyMotion()
+            {
+                copyPastable.Clipboard = (T)Activator.CreateInstance(item.GetType());
+                EditorUtility.CopySerializedManagedFieldsOnly(item, copyPastable.Clipboard);
+            }
+            context.AddItem(new GUIContent($"Copy {name}"), copyMotion);
+            context.AddItem(new GUIContent($"Paste {name} Values"), () => EditorUtility.CopySerializedManagedFieldsOnly(copyPastable.Clipboard, item), copyPastable.Clipboard == null || item.GetType() != copyPastable.Clipboard.GetType());
+            if (list != null)
+            {
+                context.AddItem(new GUIContent($"Paste {name} as new"), () => list.Add(copyPastable.Clipboard), copyPastable.Clipboard == null);
+            }
+        }
+
+        internal static Rect GetIndentedRect(Rect position, float indent)
+        {
+            position.width -= indent;
+            position.x += indent;
+            return position;
         }
 
         internal static Rect GetRect(Rect position, int index)

@@ -8,41 +8,61 @@ namespace FriedSynapse.FlowEnt
     public class FlowBuilder : AbstractAnimationBuilder<Flow>
     {
         [Serializable]
-        public class Queue
+        public class QueueList : AbstractListBuilder<QueueList.Queue>
         {
-#pragma warning disable IDE0044, RCS1169
-            [SerializeField]
-            private float startTime;
-            public float StartTime => startTime;
-            [SerializeReference]
-            private List<IAbstractAnimationBuilder> animations;
-            public List<IAbstractAnimationBuilder> Animations => animations;
-#pragma warning restore IDE0044, RCS1169
+            [Serializable]
+            public class Queue : AbstractListBuilder<IAbstractAnimationBuilder>, IBuilderListItem
+            {
+#pragma warning disable IDE0044, RCS1169, RCS1213, IDE0051, CS0414
+                [SerializeField]
+                private string displayName;
+                public string DisplayName => displayName;
+                [SerializeField]
+                private bool isDisplayNameEnabled;
+                [SerializeField]
+                private bool isEnabled = true;
+                public bool IsEnabled => isEnabled;
+                [SerializeField]
+                private float startTime;
+                public float StartTime => startTime;
+#pragma warning restore IDE0044, RCS1169, RCS1213, IDE0051, CS0414
+            }
         }
+
 #pragma warning disable IDE0044, RCS1169
         [SerializeField]
-        private FLowOptionsBuilder options;
-        public FLowOptionsBuilder Options => options;
-        [SerializeReference]
-        private List<Queue> queues;
-        public List<Queue> Queues => queues;
+        private FlowOptionsBuilder options;
+        public FlowOptionsBuilder Options => options;
+        [SerializeField]
+        private FlowEventsBuilder events;
+        public FlowEventsBuilder Events => events;
+        [SerializeField]
+        private QueueList queues;
+        public QueueList Queues => queues;
 #pragma warning restore IDE0044, RCS1169
 
         public override Flow Build()
+            => SetAll(new Flow());
+
+        public Flow Build(IUpdateController updateController)
+            => SetAll(new Flow(updateController));
+
+        private Flow SetAll(Flow flow)
         {
-            Flow flow = new Flow(Options.Build());
-            foreach (Queue queue in Queues)
+            flow.SetOptions(Options.Build());
+            flow.SetEvents(Events.Build());
+            foreach (QueueList.Queue queue in Queues.Items)
             {
-                int animationCount = queue.Animations.Count;
-                if (animationCount == 0)
+                int animationCount = queue.Items.Count;
+                if (!queue.IsEnabled || animationCount == 0)
                 {
                     continue;
                 }
 
-                flow.At(queue.StartTime, queue.Animations[0].Build());
-                for (int i = 1; i < queue.Animations.Count; i++)
+                flow.At(queue.StartTime, queue.Items[0].Build());
+                for (int i = 1; i < queue.Items.Count; i++)
                 {
-                    flow.Queue(queue.Animations[i].Build());
+                    flow.Queue(queue.Items[i].Build());
                 }
             }
             return flow;
