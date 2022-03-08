@@ -14,6 +14,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         public EchoBuilder Echo => echo;
 
         [SerializeField]
+        private FlowBuilder flow;
+        public FlowBuilder Flow => flow;
+
+        [SerializeField]
         private Transform target;
         public Transform Target => target;
 

@@ -142,10 +142,9 @@ namespace FriedSynapse.FlowEnt.Editor
             menuPosition.height = EditorGUIUtility.singleLineHeight;
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
-                TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
                 SerializedProperty parentProperty = property.GetParentArray();
                 GenericMenu context = new GenericMenu();
-                FlowEntEditorGUILayout.ShowCrud(context, parentProperty?.GetValue<IList>(), animation, "Animation", this);
+                FlowEntEditorGUILayout.ShowCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Animation", this);
                 context.ShowAsContext();
             }
         }

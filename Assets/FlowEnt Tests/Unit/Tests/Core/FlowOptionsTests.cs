@@ -14,6 +14,37 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         protected override Flow CreateAnimation(float testTime, FlowOptions options)
             => new Flow().SetOptions(options).Queue(new Tween(testTime));
 
+        #region Builder
+
+        [UnityTest]
+        public IEnumerator Builder()
+        {
+            FlowOptions flowOptions = default;
+
+            yield return CreateTester()
+                .Act(() => flowOptions = Variables.Flow.Options.Build())
+                .Assert(() =>
+                {
+                    Assert.AreEqual(Variables.Flow.Options.Name, flowOptions.Name);
+                    Assert.AreEqual(Variables.Flow.Options.UpdateType, flowOptions.UpdateType);
+                    Assert.AreEqual(Variables.Flow.Options.AutoStart, flowOptions.AutoStart);
+                    Assert.AreEqual(Variables.Flow.Options.SkipFrames, flowOptions.SkipFrames);
+                    Assert.AreEqual(Variables.Flow.Options.Delay, flowOptions.Delay);
+                    Assert.AreEqual(Variables.Flow.Options.TimeScale, flowOptions.TimeScale);
+                    if (Variables.Flow.Options.IsLoopCountInfinite)
+                    {
+                        Assert.AreEqual(null, flowOptions.LoopCount);
+                    }
+                    else
+                    {
+                        Assert.AreEqual(Variables.Flow.Options.LoopCount, flowOptions.LoopCount);
+                    }
+                })
+                .Run();
+        }
+
+        #endregion
+
         #region Time
 
         private IEnumerator Time_ForAnimation(Func<float, AbstractAnimation> createAnimation, string name)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FriedSynapse.FlowEnt.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -12,6 +13,28 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
     {
         protected override Flow CreateAnimation(float testTime)
             => new Flow().Queue(new Tween(testTime));
+
+        [UnityTest]
+        public IEnumerator Builder()
+        {
+            Flow flow = default;
+            yield return CreateTester()
+                .Act(() =>
+                //HACK It think this returns something for some fucking reason
+#pragma warning disable RCS1021 
+                {
+                    flow = Variables.Flow.Build();
+                })
+#pragma warning restore RCS1021
+                .Assert(() =>
+                {
+                    IList updatableWrappers = flow.GetFieldValue<IList>("updatableWrappersQueue");
+                    Assert.AreEqual(2, updatableWrappers.Count);
+                    Assert.IsTrue(updatableWrappers[0].GetFieldValue<AbstractUpdatable>("updatable") is Tween);
+                    Assert.IsTrue(updatableWrappers[1].GetFieldValue<AbstractUpdatable>("updatable") is Echo);
+                })
+                .Run();
+        }
 
         [UnityTest]
         public IEnumerator Conditional()

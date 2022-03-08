@@ -93,11 +93,12 @@ namespace FriedSynapse.FlowEnt.Editor
             while (property.NextVisible(false));
         }
 
-        internal static void ShowCrud<T>(GenericMenu context, IList list, T item, string name, ICrudable<T> copyPastable)
+        internal static void ShowCrud<T>(GenericMenu context, SerializedProperty list, int index, string name, ICrudable<T> copyPastable)
         {
+            object item = list.GetArrayElementAtIndex(index).GetValue<object>();
             if (list != null)
             {
-                context.AddItem(new GUIContent($"Remove {name}"), () => list.Remove(item));
+                context.AddItem(new GUIContent($"Remove {name}"), () => list.PersistentDeleteArrayElementAtIndex(index));
             }
             void copyMotion()
             {
@@ -105,10 +106,22 @@ namespace FriedSynapse.FlowEnt.Editor
                 EditorUtility.CopySerializedManagedFieldsOnly(item, copyPastable.Clipboard);
             }
             context.AddItem(new GUIContent($"Copy {name}"), copyMotion);
-            context.AddItem(new GUIContent($"Paste {name} Values"), () => EditorUtility.CopySerializedManagedFieldsOnly(copyPastable.Clipboard, item), copyPastable.Clipboard == null || item.GetType() != copyPastable.Clipboard.GetType());
+            void pasteMotionValues()
+            {
+                object copy = (T)Activator.CreateInstance(copyPastable.Clipboard.GetType());
+                EditorUtility.CopySerializedManagedFieldsOnly(copyPastable.Clipboard, copy);
+                list.PersistentSetArrayElementAtIndex(index, copy);
+            }
+            context.AddItem(new GUIContent($"Paste {name} Values"), pasteMotionValues, copyPastable.Clipboard == null || item.GetType() != copyPastable.Clipboard.GetType());
             if (list != null)
             {
-                context.AddItem(new GUIContent($"Paste {name} as new"), () => list.Add(copyPastable.Clipboard), copyPastable.Clipboard == null);
+                void pasteMotionAsNew()
+                {
+                    object copy = (T)Activator.CreateInstance(copyPastable.Clipboard.GetType());
+                    EditorUtility.CopySerializedManagedFieldsOnly(copyPastable.Clipboard, copy);
+                    list.PersistentInsertArrayElementAtIndex(list.arraySize, copy);
+                }
+                context.AddItem(new GUIContent($"Paste {name} as new"), pasteMotionAsNew, copyPastable.Clipboard == null);
             }
         }
 

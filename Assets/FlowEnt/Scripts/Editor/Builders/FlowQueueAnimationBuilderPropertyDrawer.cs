@@ -50,11 +50,9 @@ namespace FriedSynapse.FlowEnt.Editor
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
                 SerializedProperty parentProperty = property.GetParentArray();
-                IList queues = parentProperty.GetValue<IList>();
-                Queue queue = property.GetValue<Queue>();
 
                 GenericMenu context = new GenericMenu();
-                FlowEntEditorGUILayout.ShowCrud(context, queues, queue, "Queue", this);
+                FlowEntEditorGUILayout.ShowCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Queue", this);
                 context.AddSeparator(string.Empty);
                 SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled);
                 void showRename()

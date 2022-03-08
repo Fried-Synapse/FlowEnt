@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Assert(() =>
                 {
                     ITweenMotion[] motions = tween.GetFieldValue<ITweenMotion[]>("motions");
-                    Assert.AreEqual(motions.Length, 2);
+                    Assert.AreEqual(2, motions.Length);
                     Assert.IsTrue(motions[0] is MoveVectorMotion);
                     Assert.IsTrue(motions[1] is DebugMotion);
                 })

@@ -63,11 +63,10 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             Data data = GetData(property);
             SerializedProperty listProperty = property.FindPropertyRelative("items");
-            List<TListItem> list = listProperty.GetValue<List<TListItem>>();
 
             while (data.AddedItemTypes.Count > 0)
             {
-                list.Add(data.AddedItemTypes.Dequeue());
+                listProperty.PersistentInsertArrayElementAtIndex(listProperty.arraySize, data.AddedItemTypes.Dequeue());
             }
 
             for (int i = 0; i < listProperty.arraySize; i++)
