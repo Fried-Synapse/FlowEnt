@@ -4,21 +4,16 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     /// <summary>
-    /// A singleton monobehaviour that is the core of the FlowEnt library. Hold the main update method and a handful of global parameters.
+    /// A singleton that is the core of the FlowEnt library. Hold the main update method and a handful of global parameters.
     /// The script automatically attaches itself to an object in the scene called FlowEnt(created by this script).
     /// Make sure not to delete this object because the library will not work without this script attached to an object in the scene.
     /// </summary>
-    [ExecuteInEditMode]
-    public class FlowEntController : MonoBehaviour,
+    public class FlowEntController :
         IUpdateController,
         IControllable
     {
-        private static FlowEntController instance;
         private static readonly object lockObject = new object();
-
-        /// <summary>
-        /// The instance of <see cref="FlowEntController"/>.
-        /// </summary>
+        private static FlowEntController instance;
         public static FlowEntController Instance
         {
             get
@@ -27,48 +22,40 @@ namespace FriedSynapse.FlowEnt
                 {
                     if (instance == null)
                     {
-                        GameObject gameObject = new GameObject("FlowEnt");
-                        gameObject.hideFlags = HideFlags.HideInHierarchy;
-                        instance = gameObject.AddComponent<FlowEntController>();
+                        instance = new FlowEntController();
+
+                        static void initRuntime()
+                        {
+                            GameObject gameObject = new GameObject("FlowEnt");
+                            gameObject.hideFlags = HideFlags.HideInHierarchy;
+                            gameObject.AddComponent<FlowEntRuntimeController>().Controller = instance;
+                        }
+#if UNITY_EDITOR
+                        if (Application.isPlaying)
+                        {
+                            initRuntime();
+                        }
+                        else
+                        {
+                            new FlowEntEditorController(instance);
+                        }
+#else
+                        initRuntime();
+#endif
                     }
                 }
                 return instance;
             }
         }
 
-        private static IUpdateController updateControllerInstance;
-        internal static IUpdateController UpdateControllerInstance
-        {
-            get
-            {
-                lock (lockObject)
-                {
-                    if (updateControllerInstance == null)
-                    {
-#if UNITY_EDITOR
-#pragma warning disable IDE0004 //HACK unity is dum-dum. Doesn't know how to cast.
-                        updateControllerInstance = Application.isPlaying ? (IUpdateController)Instance : Editor.FlowEntEditorController.Instance;
-#pragma warning restore IDE0004
-#else
-                        updateControllerInstance = Instance;
-#endif
-                    }
-                }
-                return updateControllerInstance;
-            }
-        }
-
-        /// <summary>
-        /// Returns weather the <see cref="FlowEntController"/> has an instance or not.
-        /// </summary>
         public static bool HasInstance => instance != null;
 
-        private readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
-        private readonly UpdatablesFastList<AbstractUpdatable> smoothUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        private readonly UpdatablesFastList<AbstractUpdatable> lateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        private readonly UpdatablesFastList<AbstractUpdatable> smoothLateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        private readonly UpdatablesFastList<AbstractUpdatable> fixedUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        private readonly UpdatablesFastList<AbstractUpdatable> customUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        internal readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
+        internal readonly UpdatablesFastList<AbstractUpdatable> smoothUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        internal readonly UpdatablesFastList<AbstractUpdatable> lateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        internal readonly UpdatablesFastList<AbstractUpdatable> smoothLateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        internal readonly UpdatablesFastList<AbstractUpdatable> fixedUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        internal readonly UpdatablesFastList<AbstractUpdatable> customUpdatables = new UpdatablesFastList<AbstractUpdatable>();
 
         private float timeScale = 1f;
 
@@ -96,41 +83,37 @@ namespace FriedSynapse.FlowEnt
         public PlayState PlayState { get => playState; }
 
 #pragma warning disable IDE0051, RCS1213
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
 
-        private void Update()
+        internal void Update(float deltaTime, float smoothDeltaTime)
         {
             if (playState != PlayState.Playing)
             {
                 return;
             }
-            Update(updatables, Time.deltaTime * timeScale);
-            Update(smoothUpdatables, Time.smoothDeltaTime * timeScale);
+            Update(updatables, deltaTime * timeScale);
+            Update(smoothUpdatables, smoothDeltaTime * timeScale);
         }
 
-        private void LateUpdate()
+        internal void LateUpdate(float deltaTime, float smoothDeltaTime)
         {
             if (playState != PlayState.Playing)
             {
                 return;
             }
-            Update(lateUpdatables, Time.deltaTime * timeScale);
-            Update(smoothLateUpdatables, Time.smoothDeltaTime * timeScale);
+            Update(lateUpdatables, deltaTime * timeScale);
+            Update(smoothLateUpdatables, smoothDeltaTime * timeScale);
         }
 
-        private void FixedUpdate()
+        internal void FixedUpdate(float fixedDeltaTime)
         {
             if (playState != PlayState.Playing)
             {
                 return;
             }
-            Update(fixedUpdatables, Time.fixedDeltaTime * timeScale);
+            Update(fixedUpdatables, fixedDeltaTime * timeScale);
         }
 
-        public void CustomUpdate(float deltaTime)
+        internal void CustomUpdate(float deltaTime)
         {
             if (playState != PlayState.Playing)
             {
@@ -244,6 +227,16 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="triggerOnCompleted">If set to true will trigger the "OnCompleted" event on all animations.</param>
         public void Stop(bool triggerOnCompleted = false)
+        {
+            Stop(updatables, triggerOnCompleted);
+            Stop(smoothUpdatables, triggerOnCompleted);
+            Stop(lateUpdatables, triggerOnCompleted);
+            Stop(smoothLateUpdatables, triggerOnCompleted);
+            Stop(fixedUpdatables, triggerOnCompleted);
+            Stop(customUpdatables, triggerOnCompleted);
+        }
+
+        private static void Stop(UpdatablesFastList<AbstractUpdatable> updatables, bool triggerOnCompleted)
         {
             AbstractUpdatable index = updatables.anchor.next;
 

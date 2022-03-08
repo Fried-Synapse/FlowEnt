@@ -37,10 +37,6 @@ namespace FriedSynapse.FlowEnt.Editor
         private static TAnimationBuilder clipboard;
         public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
 
-        public SerializedObject SerializedObject => throw new NotImplementedException();
-
-        public AbstractAnimation PreviewAnimation => throw new NotImplementedException();
-
         protected abstract void DrawControls(Rect position, SerializedProperty property);
         protected abstract TAnimation Build(SerializedProperty property);
         protected abstract void OnAnimationUpdated(Data data, float t);
@@ -62,7 +58,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                 }
             });
-            FlowEntEditorController.Instance.StartPreview(data);
+            PreviewController.StartPreview(data);
             try
             {
                 data.PreviewAnimation.Start();
@@ -73,7 +69,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     $"<color={FlowEntConstants.Red}><b>Exception on starting animation</b></color>\n" +
                     $"<color={FlowEntConstants.Orange}><b>The preview animation is throwing an exception</b></color>:\n\n" +
                     $"<b>Exception</b>:\n{ex}");
-                FlowEntEditorController.Instance.StopPreview();
+                PreviewController.StopPreview();
             }
         }
 
@@ -130,7 +126,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
                 if (data.IsInPreview && check.changed)
                 {
-                    FlowEntEditorController.Instance.StopPreview();
+                    PreviewController.StopPreview();
                 }
             }
 
@@ -177,7 +173,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                     else
                     {
-                        FlowEntEditorController.Instance.StopPreview();
+                        PreviewController.StopPreview();
                         StartPreview(property);
                     }
                 }
@@ -185,7 +181,7 @@ namespace FriedSynapse.FlowEnt.Editor
             position.x += EditorGUIUtility.singleLineHeight;
             if (GUI.Button(position, Icon.Stop, Icon.Style))
             {
-                FlowEntEditorController.Instance.StopPreview();
+                PreviewController.StopPreview();
             }
             return EditorGUIUtility.singleLineHeight * 2;
         }

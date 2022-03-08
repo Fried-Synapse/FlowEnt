@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Creates a new instance using <see cref="FlowEntController"/>.
         /// </summary>
-        protected AbstractUpdatable() : this(FlowEntController.UpdateControllerInstance)
+        protected AbstractUpdatable() : this(FlowEntController.Instance)
         {
         }
 
