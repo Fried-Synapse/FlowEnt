@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
+    internal interface IFlowEntUpdater
+    {
+        public void SetController(FlowEntController controller);
+    }
+
     /// <summary>
     /// A singleton that is the core of the FlowEnt library. Hold the main update method and a handful of global parameters.
     /// The script automatically attaches itself to an object in the scene called FlowEnt(created by this script).
@@ -13,6 +18,7 @@ namespace FriedSynapse.FlowEnt
         IControllable
     {
         private static readonly object lockObject = new object();
+        private static IFlowEntUpdater updater;
         private static FlowEntController instance;
         public static FlowEntController Instance
         {
@@ -28,7 +34,7 @@ namespace FriedSynapse.FlowEnt
                         {
                             GameObject gameObject = new GameObject("FlowEnt");
                             gameObject.hideFlags = HideFlags.HideInHierarchy;
-                            gameObject.AddComponent<FlowEntRuntimeController>().Controller = instance;
+                            updater = gameObject.AddComponent<FlowEntRuntimeUpdater>();
                         }
 #if UNITY_EDITOR
                         if (Application.isPlaying)
@@ -37,11 +43,12 @@ namespace FriedSynapse.FlowEnt
                         }
                         else
                         {
-                            new FlowEntEditorController(instance);
+                            updater = new FlowEntEditorUpdater();
                         }
 #else
                         initRuntime();
 #endif
+                        updater.SetController(instance);
                     }
                 }
                 return instance;

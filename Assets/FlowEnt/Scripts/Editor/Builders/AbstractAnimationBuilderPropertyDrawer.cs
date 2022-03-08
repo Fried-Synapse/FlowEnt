@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Editor
         public class Data : IPreviewable
         {
             public TAnimation PreviewAnimation { get; set; }
-            AbstractAnimation IPreviewable.PreviewAnimation => PreviewAnimation;
+            AbstractAnimation IPreviewable.Animation => PreviewAnimation;
             public float PreviewTime { get; set; }
             public bool IsInPreview => PreviewAnimation != null;
             public SerializedObject SerializedObject { get; set; }

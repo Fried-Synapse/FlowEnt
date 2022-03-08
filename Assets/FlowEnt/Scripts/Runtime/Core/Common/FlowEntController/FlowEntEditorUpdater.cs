@@ -4,19 +4,25 @@ using UnityEditor;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class FlowEntEditorController
+    /// <summary>
+    /// Editor updater for the <see cref="FlowEntController" />.
+    /// </summary>
+    public class FlowEntEditorUpdater : IFlowEntUpdater
     {
-        public FlowEntEditorController(FlowEntController controller)
+        public FlowEntEditorUpdater()
         {
-            this.controller = controller;
             lastTimeSinceStartup = (float)EditorApplication.timeSinceStartup;
             EditorApplication.update += Update;
         }
-
-        private readonly FlowEntController controller;
+        private FlowEntController controller;
         private float lastTimeSinceStartup;
         private float editorDeltaTime;
         public static Action OnException { get; set; }
+
+        public void SetController(FlowEntController controller)
+        {
+            this.controller = controller;
+        }
 
         private void Update()
         {

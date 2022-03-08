@@ -13,6 +13,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private int flowCount;
         private string search;
 
+#pragma warning disable IDE0051, RCS1213
         private void Update()
         {
             Repaint();
@@ -23,14 +24,6 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             FlowEntEditorGUILayout.Header("FlowEnt Inspector");
 
-            if (!FlowEntController.HasInstance)
-            {
-                EditorGUILayout.HelpBox("Inspector only available in play mode when animations are playing.", MessageType.Info);
-                search = null;
-                controllableSection = null;
-                return;
-            }
-
             controllableSection ??= new ControllableSection<FlowEntController>(FlowEntController.Instance);
             controllableSection.ShowControls();
 
@@ -38,6 +31,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             ShowMotionList();
         }
+#pragma warning restore IDE0051, RCS1213
 
         private void ShowMotionList()
         {
