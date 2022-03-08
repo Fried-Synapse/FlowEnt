@@ -13,12 +13,12 @@ namespace FriedSynapse.FlowEnt.Editor
         public static AbstractUpdatable GetUpdatableIndex(this Flow flow)
             => GetUpdatableIndexForObject(flow);
 
-        public static AbstractUpdatable GetUpdatableIndex(this FlowEntController controller)
-            => GetUpdatableIndexForObject(controller);
+        public static AbstractUpdatable GetUpdatableIndex(this FlowEntController controller, string fieldName)
+            => GetUpdatableIndexForObject(controller, fieldName);
 
-        private static AbstractUpdatable GetUpdatableIndexForObject(object updateController)
+        private static AbstractUpdatable GetUpdatableIndexForObject(object updateController, string fieldName = "updatables")
         {
-            object updatables = updateController.GetFieldValue<object>("updatables");
+            object updatables = updateController.GetFieldValue<object>(fieldName);
             object anchor = updatables.GetFieldValue<object>("anchor");
             return anchor.GetFieldValue<AbstractUpdatable>("next");
         }

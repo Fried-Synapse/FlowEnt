@@ -63,7 +63,12 @@ namespace FriedSynapse.FlowEnt.Editor
             flowCount = 0;
 
             motionListScrollPosition = EditorGUILayout.BeginScrollView(motionListScrollPosition, GUILayout.Height(position.height - 150f));
-            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex());
+            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("updatables"));
+            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("smoothUpdatables"));
+            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("lateUpdatables"));
+            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("smoothLateUpdatables"));
+            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("fixedUpdatables"));
+            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("customUpdatables"));
             EditorGUILayout.EndScrollView();
         }
 

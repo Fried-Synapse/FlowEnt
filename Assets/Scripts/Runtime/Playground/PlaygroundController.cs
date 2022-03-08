@@ -36,6 +36,8 @@ namespace FriedSynapse.FlowEnt.Builder
 #pragma warning disable IDE0051, RCS1213
         private void Start()
         {
+            Echo.Build().Start();
+            Tween.Build().Start();
             Flow.Build().Start();
         }
 #pragma warning restore IDE0051, RCS1213
