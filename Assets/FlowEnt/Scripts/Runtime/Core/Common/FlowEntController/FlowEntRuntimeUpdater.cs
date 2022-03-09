@@ -34,11 +34,6 @@ namespace FriedSynapse.FlowEnt
         {
             controller.FixedUpdate(Time.fixedDeltaTime);
         }
-
-        public void CustomUpdate(float deltaTime)
-        {
-            controller.CustomUpdate(deltaTime);
-        }
 #pragma warning restore IDE0051, RCS1213
     }
 }
