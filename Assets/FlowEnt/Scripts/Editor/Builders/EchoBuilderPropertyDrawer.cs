@@ -6,31 +6,18 @@ namespace FriedSynapse.FlowEnt.Editor
     [CustomPropertyDrawer(typeof(EchoBuilder))]
     public class EchoBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Echo, EchoBuilder>
     {
-        private float previewTime;
-
         protected override void DrawControls(Rect position, SerializedProperty property)
         {
-            DrawControlButtons(position, property);
-
-            Rect progressPosition = position;
-            float buttonsWidth = EditorGUIUtility.singleLineHeight * 2;
-            progressPosition.width -= buttonsWidth;
-            progressPosition.x += buttonsWidth;
-            EditorGUI.LabelField(progressPosition, "Time elapsed", previewTime.ToString());
+            float buttonsWidth = DrawControlButtons(position, property);
+            EditorGUI.LabelField(FlowEntEditorGUILayout.GetIndentedRect(position, buttonsWidth), "Time elapsed", GetData(property).PreviewTime.ToString());
         }
 
         protected override Echo Build(SerializedProperty property)
-            => property.GetValue<EchoBuilder>().Build(FlowEntEditorController.Instance);
+            => property.GetValue<EchoBuilder>().Build();
 
-        protected override void OnAnimationUpdated(float t)
+        protected override void OnAnimationUpdated(Data data, float t)
         {
-            previewTime += t;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            previewTime = 0;
+            data.PreviewTime += t;
         }
     }
 }

@@ -14,14 +14,6 @@ namespace FriedSynapse.FlowEnt
         IFluentControllable<Echo>
     {
         /// <summary>
-        /// Creates a new echo with the specified <see cref="IUpdateController"/>.
-        /// </summary>
-        /// <param name="updateController"></param>
-        public Echo(IUpdateController updateController) : base(updateController)
-        {
-        }
-
-        /// <summary>
         /// Creates a new echo using the options provided.
         /// </summary>
         /// <param name="options"></param>

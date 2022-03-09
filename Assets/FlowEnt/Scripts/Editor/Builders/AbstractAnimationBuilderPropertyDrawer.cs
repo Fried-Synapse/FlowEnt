@@ -1,50 +1,53 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer, IPreviewable
+    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer<AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder>.Data>,
+        ICrudable<TAnimationBuilder>
         where TAnimation : AbstractAnimation
-        where TAnimationBuilder : AbstractBuilder<TAnimation>
+        where TAnimationBuilder : AbstractAnimationBuilder<TAnimation>
     {
-        protected static class Icon
+        public class Data : IPreviewable
         {
-            public static GUIContent Menu = EditorGUIUtility.IconContent("_Menu@2x", "Menu");
-            public static GUIContent Play = EditorGUIUtility.IconContent("PlayButton@2x", "Play");
-            public static GUIContent Pause = EditorGUIUtility.IconContent("PauseButton@2x", "Pause");
-            public static GUIContent Stop = EditorGUIUtility.IconContent("PreMatQuad@2x", "Pause");
-            public static GUIStyle Style = new GUIStyle(EditorStyles.miniButton) { padding = new RectOffset(2, 2, 2, 2) };
+            public TAnimation PreviewAnimation { get; set; }
+            AbstractAnimation IPreviewable.Animation => PreviewAnimation;
+            public float PreviewTime { get; set; }
+            public bool IsInPreview => PreviewAnimation != null;
+            public SerializedObject SerializedObject { get; set; }
+
+            public void Reset()
+            {
+                PreviewTime = 0;
+                PreviewAnimation?.Stop();
+                PreviewAnimation = null;
+            }
         }
 
-        private readonly List<string> visibleProperties = new List<string>{
+        protected virtual List<string> VisibleProperties => new List<string>{
             "options",
             "events",
             "motions",
         };
 
-        protected TAnimation previewAnimation;
-        public AbstractAnimation PreviewAnimation => previewAnimation;
-        public SerializedObject SerializedObject { get; private set; }
-        protected virtual bool IsInPreview => previewAnimation != null;
+        private static TAnimationBuilder clipboard;
+        public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
+
         protected abstract void DrawControls(Rect position, SerializedProperty property);
         protected abstract TAnimation Build(SerializedProperty property);
-        protected abstract void OnAnimationUpdated(float t);
-        private static TAnimationBuilder clipboard;
-
-        public virtual void Reset()
-        {
-            previewAnimation?.Stop();
-            previewAnimation = null;
-        }
+        protected abstract void OnAnimationUpdated(Data data, float t);
 
         protected void StartPreview(SerializedProperty property)
         {
-            previewAnimation = Build(property);
-            previewAnimation.OnUpdated(t =>
+            Data data = GetData(property);
+            data.PreviewAnimation = Build(property);
+            data.PreviewAnimation.OnUpdated(t =>
             {
-                OnAnimationUpdated(t);
+                OnAnimationUpdated(data, t);
 
                 foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
                 {
@@ -55,10 +58,10 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                 }
             });
-            FlowEntEditorController.Instance.StartPreview(this);
+            PreviewController.StartPreview(data);
             try
             {
-                previewAnimation.Start();
+                data.PreviewAnimation.Start();
             }
             catch (Exception ex)
             {
@@ -66,7 +69,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     $"<color={FlowEntConstants.Red}><b>Exception on starting animation</b></color>\n" +
                     $"<color={FlowEntConstants.Orange}><b>The preview animation is throwing an exception</b></color>:\n\n" +
                     $"<b>Exception</b>:\n{ex}");
-                FlowEntEditorController.Instance.StopPreview();
+                PreviewController.StopPreview();
             }
         }
 
@@ -84,11 +87,17 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SerializedObject = property.serializedObject;
+            Data data = GetData(property);
+            data.SerializedObject = property.serializedObject;
+
+            TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
+            SerializedProperty parentProperty = property.GetParentArray();
+            string name = animation.GetPropertyValue<object>("Options").GetPropertyValue<string>("Name");
+            label.text = $"{(parentProperty == null ? label.text : "")} [{animation.GetType().Name.Replace("Builder", "")}{(string.IsNullOrEmpty(name) ? "" : $" - {name}")}]";
 
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
-            if (IsInPreview)
+            if (data.IsInPreview)
             {
                 EditorGUI.DrawRect(position, new Color(1f, 0f, 0f, 0.2f));
             }
@@ -103,6 +112,7 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUI.indentLevel++;
 
             DrawControls(FlowEntEditorGUILayout.GetRect(position, 1), property);
+
             using (EditorGUI.ChangeCheckScope check = new EditorGUI.ChangeCheckScope())
             {
                 position.y += FlowEntConstants.SpacedSingleLineHeight + EditorGUIUtility.singleLineHeight;
@@ -114,9 +124,9 @@ namespace FriedSynapse.FlowEnt.Editor
                     position.y += height;
                 });
 
-                if (check.changed)
+                if (data.IsInPreview && check.changed)
                 {
-                    FlowEntEditorController.Instance.StopPreview();
+                    PreviewController.StopPreview();
                 }
             }
 
@@ -132,41 +142,37 @@ namespace FriedSynapse.FlowEnt.Editor
             menuPosition.height = EditorGUIUtility.singleLineHeight;
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
-                TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
+                SerializedProperty parentProperty = property.GetParentArray();
                 GenericMenu context = new GenericMenu();
-                void copyMotion()
-                {
-                    clipboard = (TAnimationBuilder)Activator.CreateInstance(animation.GetType());
-                    EditorUtility.CopySerializedManagedFieldsOnly(animation, clipboard);
-                }
-                context.AddItem(new GUIContent("Copy"), copyMotion);
-                context.AddItem(new GUIContent("Paste Values"), () => EditorUtility.CopySerializedManagedFieldsOnly(clipboard, animation), clipboard == null || animation.GetType() != clipboard.GetType());
+                FlowEntEditorGUILayout.ShowCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Animation", this);
                 context.ShowAsContext();
             }
         }
 
-        protected void DrawControlButtons(Rect position, SerializedProperty property)
+        protected float DrawControlButtons(Rect position, SerializedProperty property)
         {
+            Data data = GetData(property);
+            position = EditorGUI.IndentedRect(position);
+            position.x -= 10f;
             position.width = EditorGUIUtility.singleLineHeight;
-            position.x += 5;
-            if (previewAnimation?.PlayState == PlayState.Playing)
+            if (data.PreviewAnimation?.PlayState == PlayState.Playing)
             {
                 if (GUI.Button(position, Icon.Pause, Icon.Style))
                 {
-                    previewAnimation.Pause();
+                    data.PreviewAnimation.Pause();
                 }
             }
             else
             {
                 if (GUI.Button(position, Icon.Play, Icon.Style))
                 {
-                    if (previewAnimation?.PlayState == PlayState.Paused)
+                    if (data.PreviewAnimation?.PlayState == PlayState.Paused)
                     {
-                        previewAnimation.Resume();
+                        data.PreviewAnimation.Resume();
                     }
                     else
                     {
-                        FlowEntEditorController.Instance.StopPreview();
+                        PreviewController.StopPreview();
                         StartPreview(property);
                     }
                 }
@@ -174,15 +180,16 @@ namespace FriedSynapse.FlowEnt.Editor
             position.x += EditorGUIUtility.singleLineHeight;
             if (GUI.Button(position, Icon.Stop, Icon.Style))
             {
-                FlowEntEditorController.Instance.StopPreview();
+                PreviewController.StopPreview();
             }
+            return EditorGUIUtility.singleLineHeight * 2;
         }
 
         private void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
         {
             FlowEntEditorGUILayout.ForEachVisibleProperty(property, p =>
             {
-                if (visibleProperties.Contains(p.name))
+                if (VisibleProperties.Contains(p.name))
                 {
                     predicate(p);
                 }

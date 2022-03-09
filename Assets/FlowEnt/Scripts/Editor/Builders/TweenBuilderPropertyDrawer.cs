@@ -8,51 +8,39 @@ namespace FriedSynapse.FlowEnt.Editor
     public class TweenBuilderPropertyDrawer : AbstractAnimationBuilderPropertyDrawer<Tween, TweenBuilder>
     {
         private const PlayState Started = PlayState.Playing | PlayState.Paused;
-        private float previewTime;
 
         protected override void DrawControls(Rect position, SerializedProperty property)
         {
-            DrawControlButtons(position, property);
-
-            Rect progressPosition = position;
-            float buttonsWidth = EditorGUIUtility.singleLineHeight * 2;
-            progressPosition.width -= buttonsWidth;
-            progressPosition.x += buttonsWidth;
-
-            float editedPreviewTime = EditorGUI.Slider(progressPosition, previewTime, 0f, 1f);
-            if (editedPreviewTime != previewTime)
+            float buttonsWidth = DrawControlButtons(position, property);
+            Data data = GetData(property);
+            float editedPreviewTime = EditorGUI.Slider(FlowEntEditorGUILayout.GetIndentedRect(position, buttonsWidth), data.PreviewTime, 0f, 1f);
+            if (editedPreviewTime != data.PreviewTime)
             {
-                if (previewAnimation == null)
+                if (data.PreviewAnimation == null)
                 {
                     StartPreview(property);
-                    previewAnimation.Pause();
+                    data.PreviewAnimation.Pause();
                 }
                 else
                 {
-                    if ((previewAnimation.PlayState & Started) != 0)
+                    if ((data.PreviewAnimation.PlayState & Started) != 0)
                     {
-                        previewAnimation.Pause();
+                        data.PreviewAnimation.Pause();
                     }
                 }
 
-                float delta = (editedPreviewTime - previewTime) * previewAnimation.Time;
-                previewAnimation.GetType().GetMethod("UpdateInternal", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(previewAnimation, new object[1] { delta });
-                previewTime = editedPreviewTime;
+                float delta = (editedPreviewTime - data.PreviewTime) * data.PreviewAnimation.Time;
+                data.PreviewAnimation.GetType().GetMethod("UpdateInternal", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(data.PreviewAnimation, new object[1] { delta });
+                data.PreviewTime = editedPreviewTime;
             }
         }
 
         protected override Tween Build(SerializedProperty property)
-            => property.GetValue<TweenBuilder>().Build(FlowEntEditorController.Instance);
+            => property.GetValue<TweenBuilder>().Build();
 
-        protected override void OnAnimationUpdated(float t)
+        protected override void OnAnimationUpdated(Data data, float t)
         {
-            previewTime = t;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            previewTime = 0;
+            data.PreviewTime = t;
         }
     }
 }

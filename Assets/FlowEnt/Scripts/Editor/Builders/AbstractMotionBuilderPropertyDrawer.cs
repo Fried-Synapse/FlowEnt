@@ -11,14 +11,8 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(IMotionBuilder), true)]
-    public class AbstractMotionBuilderPropertyDrawer : PropertyDrawer
+    public class AbstractMotionBuilderPropertyDrawer : PropertyDrawer, ICrudable<IMotionBuilder>
     {
-        protected static class Icon
-        {
-            public static GUIContent Menu = EditorGUIUtility.IconContent("_Menu@2x", "Menu");
-            public static GUIStyle Style = new GUIStyle(EditorStyles.miniButton) { padding = new RectOffset(2, 2, 2, 2) };
-        }
-
         private static class ControlFields
         {
             public const string DisplayName = "displayName";
@@ -33,6 +27,7 @@ namespace FriedSynapse.FlowEnt.Editor
             ControlFields.IsEnabled,
         };
         private static IMotionBuilder clipboard;
+        public IMotionBuilder Clipboard { get => clipboard; set => clipboard = value; }
         private static readonly Regex nestedRegEx = new Regex("\\+");
         private static readonly Regex prettyNameRegEx = new Regex("[A-Z]");
 
@@ -73,7 +68,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
             EditorGUI.indentLevel++;
             position.y += FlowEntConstants.SpacedSingleLineHeight;
-            var x = property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled);
             if (property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled).boolValue)
             {
                 position.height = EditorGUIUtility.singleLineHeight;
@@ -99,20 +93,10 @@ namespace FriedSynapse.FlowEnt.Editor
             menuPosition.height = EditorGUIUtility.singleLineHeight;
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
-                SerializedProperty motionsProperty = property.GetParentArray();
-                IList motions = motionsProperty.GetValue<IList>();
-                IMotionBuilder motion = property.GetValue<IMotionBuilder>();
+                SerializedProperty parentProperty = property.GetParentArray();
 
                 GenericMenu context = new GenericMenu();
-                context.AddItem(new GUIContent("Remove Motion"), () => motions.Remove(motion));
-                void copyMotion()
-                {
-                    clipboard = (IMotionBuilder)Activator.CreateInstance(motion.GetType());
-                    EditorUtility.CopySerializedManagedFieldsOnly(motion, clipboard);
-                }
-                context.AddItem(new GUIContent("Copy Motion"), copyMotion);
-                context.AddItem(new GUIContent("Paste Motion Values"), () => EditorUtility.CopySerializedManagedFieldsOnly(clipboard, motion), clipboard == null || motion.GetType() != clipboard.GetType());
-                context.AddItem(new GUIContent("Paste Motion as new"), () => motions.Add(clipboard), clipboard == null);
+                FlowEntEditorGUILayout.ShowCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);
                 SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled);
                 void showRename()

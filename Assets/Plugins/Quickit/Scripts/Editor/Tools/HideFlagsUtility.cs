@@ -5,6 +5,7 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public static class HideFlagsUtility
     {
+        [MenuItem("Tools/Quickit/Editor/Hide Flags/Show All Objects", false, 100)]
         [MenuItem("Help/Hide Flags/Show All Objects")]
         private static void ShowAll()
         {

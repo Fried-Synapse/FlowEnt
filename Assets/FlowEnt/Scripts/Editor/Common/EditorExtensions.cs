@@ -13,12 +13,12 @@ namespace FriedSynapse.FlowEnt.Editor
         public static AbstractUpdatable GetUpdatableIndex(this Flow flow)
             => GetUpdatableIndexForObject(flow);
 
-        public static AbstractUpdatable GetUpdatableIndex(this FlowEntController controller)
-            => GetUpdatableIndexForObject(controller);
+        public static AbstractUpdatable GetUpdatableIndex(this FlowEntController controller, string fieldName)
+            => GetUpdatableIndexForObject(controller, fieldName);
 
-        private static AbstractUpdatable GetUpdatableIndexForObject(object updateController)
+        private static AbstractUpdatable GetUpdatableIndexForObject(object updateController, string fieldName = "updatables")
         {
-            object updatables = updateController.GetFieldValue<object>("updatables");
+            object updatables = updateController.GetFieldValue<object>(fieldName);
             object anchor = updatables.GetFieldValue<object>("anchor");
             return anchor.GetFieldValue<AbstractUpdatable>("next");
         }
@@ -32,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     return null;
                 }
                 Type type = source.GetType();
-                FieldInfo fieldInfo = type.GetField(name, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+                FieldInfo fieldInfo = type.GetField(name, ReflectionExtensions.DefaultBindingFlags);
                 return fieldInfo.GetValue(source);
             }
 
@@ -76,8 +76,68 @@ namespace FriedSynapse.FlowEnt.Editor
         public static SerializedProperty GetParentArray(this SerializedProperty property)
         {
             string path = property.propertyPath;
-            int index = path.LastIndexOf('.', path.LastIndexOf('.') - 1);
-            return index < 0 ? null : property.serializedObject.FindProperty(path.Substring(0, index));
+            int index = path.LastIndexOf('.') - 1;
+            if (index < 0)
+            {
+                return null;
+            }
+            index = path.LastIndexOf('.', index);
+            if (index < 0)
+            {
+                return null;
+            }
+            SerializedProperty parentProperty = property.serializedObject.FindProperty(path.Substring(0, index));
+            return parentProperty.isArray ? parentProperty : null;
+        }
+
+        public static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
+        {
+            if (!listProperty.isArray)
+            {
+                throw new ArgumentException($"{nameof(listProperty)} is not an array.");
+            }
+            listProperty.serializedObject.Update();
+            listProperty.InsertArrayElementAtIndex(index);
+            listProperty.GetArrayElementAtIndex(index).managedReferenceValue = item;
+            listProperty.serializedObject.ApplyModifiedProperties();
+        }
+
+        public static void PersistentSetArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
+        {
+            if (!listProperty.isArray)
+            {
+                throw new ArgumentException($"{nameof(listProperty)} is not an array.");
+            }
+            listProperty.serializedObject.Update();
+            listProperty.GetArrayElementAtIndex(index).managedReferenceValue = item;
+            listProperty.serializedObject.ApplyModifiedProperties();
+        }
+
+        public static void PersistentDeleteArrayElementAtIndex(this SerializedProperty listProperty, int index)
+        {
+            if (!listProperty.isArray)
+            {
+                throw new ArgumentException($"{nameof(listProperty)} is not an array.");
+            }
+            listProperty.serializedObject.Update();
+            listProperty.DeleteArrayElementAtIndex(index);
+            listProperty.serializedObject.ApplyModifiedProperties();
+        }
+
+        public static int GetArrayElementIndex(this SerializedProperty listProperty, SerializedProperty item)
+        {
+            if (!listProperty.isArray)
+            {
+                throw new ArgumentException($"{nameof(listProperty)} is not an array.");
+            }
+            for (int i = 0; i < listProperty.arraySize; i++)
+            {
+                if (listProperty.GetArrayElementAtIndex(i).propertyPath == item.propertyPath)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         public static void AddItem(this GenericMenu menu, GUIContent content, GenericMenu.MenuFunction callback, bool isDisabled = false, bool isOn = false)
