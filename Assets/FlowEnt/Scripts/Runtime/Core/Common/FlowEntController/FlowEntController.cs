@@ -120,7 +120,7 @@ namespace FriedSynapse.FlowEnt
             Update(fixedUpdatables, fixedDeltaTime * timeScale);
         }
 
-        internal void CustomUpdate(float deltaTime)
+        public void CustomUpdate(float deltaTime)
         {
             if (playState != PlayState.Playing)
             {
