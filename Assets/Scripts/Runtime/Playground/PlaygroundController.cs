@@ -41,5 +41,17 @@ namespace FriedSynapse.FlowEnt.Builder
             Flow.Build().Start();
         }
 #pragma warning restore IDE0051, RCS1213
+
+        public void ResetMob()
+        {
+            static void reset(Transform transform, Vector3 position)
+            {
+                transform.localPosition = position;
+            }
+
+            reset(Green, new Vector3(-2f, 0f, 0f));
+            reset(Yellow, new Vector3(0f, 0f, 0f));
+            reset(Red, new Vector3(2f, 0f, 0f));
+        }
     }
 }

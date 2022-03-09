@@ -5,6 +5,7 @@ using System.Linq;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -20,33 +21,52 @@ namespace FriedSynapse.FlowEnt.Editor
         static PreviewController()
         {
             EditorApplication.update += Update;
-            Undo.postprocessModifications += PostprocessModificationsCallback;
             FlowEntEditorUpdater.OnException += StopPreview;
         }
 
         private static int? undoGroupId;
+        private static List<UnityEngine.Object> previewObjects;
         private static IPreviewable preview;
 
-        private static UndoPropertyModification[] PostprocessModificationsCallback(UndoPropertyModification[] modifications)
+        public static void StartPreview(IPreviewable preview)
         {
-            return modifications;
+            PreviewController.preview = preview;
+
+            previewObjects = GetObjects(preview.Animation).ToList();
+            if (previewObjects.Count > 0)
+            {
+                undoGroupId = Undo.GetCurrentGroup();
+                Undo.IncrementCurrentGroup();
+                Undo.RecordObjects(previewObjects.ToArray(), "FlowEnt Animation Preview");
+            }
+        }
+
+        public static void StopPreview()
+        {
+            preview?.Reset();
+            preview = null;
+
+            if (undoGroupId != null)
+            {
+                Undo.RevertAllDownToGroup(undoGroupId.Value);
+                undoGroupId = null;
+                GUIUtility.ExitGUI();
+            }
         }
 
         private static void Update()
         {
-            if (preview == null)
+            if (preview != null)
             {
-                return;
-            }
-
-            foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
-            {
-                if (item.serializedObject == preview?.SerializedObject)
+                foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
                 {
-                    return;
+                    if (item.serializedObject == preview?.SerializedObject)
+                    {
+                        return;
+                    }
                 }
+                StopPreview();
             }
-            StopPreview();
         }
 
         private static IEnumerable<UnityEngine.Object> GetObjects(AbstractAnimation animation)
@@ -105,32 +125,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
                 result.AddRange(objects);
             }
+
             return result;
-        }
-
-        public static void StartPreview(IPreviewable preview)
-        {
-            PreviewController.preview = preview;
-
-            UnityEngine.Object[] objects = GetObjects(preview.Animation).ToArray();
-            if (objects?.Length > 0)
-            {
-                undoGroupId = Undo.GetCurrentGroup();
-                Undo.IncrementCurrentGroup();
-                Undo.RecordObjects(objects, "Animation Preview");
-            }
-        }
-
-        public static void StopPreview()
-        {
-            preview?.Reset();
-            preview = null;
-
-            if (undoGroupId != null)
-            {
-                Undo.RevertAllDownToGroup(undoGroupId.Value);
-                undoGroupId = null;
-            }
         }
     }
 }

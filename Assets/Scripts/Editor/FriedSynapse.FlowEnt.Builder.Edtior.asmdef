@@ -1,0 +1,18 @@
+{
+    "name": "FriedSynapse.FlowEnt.Builder.Edtior",
+    "rootNamespace": "FriedSynapse.FlowEnt.Builder.Edtior",
+    "references": [
+        "GUID:abc4d702d10bd43db97c457f476c9063"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
