@@ -21,27 +21,24 @@ namespace FriedSynapse.FlowEnt.Editor
         static PreviewController()
         {
             EditorApplication.update += Update;
-            FlowEntEditorUpdater.OnException += StopPreview;
+            FlowEntEditorUpdater.OnException += () => StopPreview();
         }
 
         private static int? undoGroupId;
-        private static List<UnityEngine.Object> previewObjects;
         private static IPreviewable preview;
 
         public static void StartPreview(IPreviewable preview)
         {
             PreviewController.preview = preview;
 
-            previewObjects = GetObjects(preview.Animation).ToList();
-            if (previewObjects.Count > 0)
+            if (RecordObjects(preview.Animation))
             {
                 undoGroupId = Undo.GetCurrentGroup();
                 Undo.IncrementCurrentGroup();
-                Undo.RecordObjects(previewObjects.ToArray(), "FlowEnt Animation Preview");
             }
         }
 
-        public static void StopPreview()
+        public static void StopPreview(bool exitGui = true)
         {
             preview?.Reset();
             preview = null;
@@ -50,7 +47,10 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 Undo.RevertAllDownToGroup(undoGroupId.Value);
                 undoGroupId = null;
-                GUIUtility.ExitGUI();
+                if (exitGui)
+                {
+                    GUIUtility.ExitGUI();
+                }
             }
         }
 
@@ -65,24 +65,25 @@ namespace FriedSynapse.FlowEnt.Editor
                         return;
                     }
                 }
-                StopPreview();
+                StopPreview(false);
             }
         }
 
-        private static IEnumerable<UnityEngine.Object> GetObjects(AbstractAnimation animation)
-            => animation is Flow flow ? GetFlowObjects(flow) : GetAnimationObjects(animation);
+        private static bool RecordObjects(AbstractAnimation animation)
+            => animation is Flow flow ? RecordFlowObjects(flow) : RecordAnimationObjects(animation);
 
-        private static IEnumerable<UnityEngine.Object> GetFlowObjects(Flow flow)
+        private static bool RecordFlowObjects(Flow flow)
         {
+            bool hasRecordedObjects = false;
+
             IList updatableWrappers = flow.GetFieldValue<IList>("updatableWrappersQueue");
-            List<UnityEngine.Object> result = new List<UnityEngine.Object>();
 
             void addObjects(object updatableWrapper)
             {
                 AbstractUpdatable updatable = updatableWrapper.GetFieldValue<AbstractUpdatable>("updatable");
                 if (updatable != null && updatable is AbstractAnimation animation)
                 {
-                    result.AddRange(GetObjects(animation));
+                    hasRecordedObjects = RecordObjects(animation);
                 }
                 object next = updatableWrapper.GetFieldValue<object>("next");
                 if (next != null)
@@ -95,38 +96,54 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 addObjects(updatableWrapper);
             }
-
-            return result;
+            return hasRecordedObjects;
         }
 
-        private static IEnumerable<UnityEngine.Object> GetAnimationObjects(AbstractAnimation animation)
+        private static bool RecordAnimationObjects(AbstractAnimation animation)
         {
+            bool hasRecordedObjects = false;
             IMotion[] motions = animation.GetFieldValue<IMotion[]>("motions");
-            List<UnityEngine.Object> result = new List<UnityEngine.Object>();
             Type type = typeof(UnityEngine.Object);
             foreach (IMotion motion in motions)
             {
-                List<UnityEngine.Object> allObjects = motion
+                List<UnityEngine.Object> objects = motion
                     .GetType()
                     .GetFields()
                     .Where(fi => type.IsAssignableFrom(fi.FieldType))
                     .Select(fi => (UnityEngine.Object)fi.GetValue(motion))
                     .ToList();
 
-                allObjects.AddRange(motion
+                objects.AddRange(motion
                     .GetType()
                     .GetProperties()
                     .Where(pi => type.IsAssignableFrom(pi.PropertyType))
                     .Select(pi => (UnityEngine.Object)pi.GetValue(motion)));
 
-                IEnumerable<UnityEngine.Object> objects = allObjects
+                objects = objects
                     .Distinct()
-                    .Where(o => o != null);
+                    .Where(o => o != null)
+                    .ToList();
 
-                result.AddRange(objects);
+                if (objects.Count > 0)
+                {
+                    hasRecordedObjects = true;
+                    void record()
+                    {
+                        Undo.RegisterCompleteObjectUndo(objects.ToArray(), "FlowEnt Animation Preview");
+                    }
+
+                    switch (animation)
+                    {
+                        case Echo echo:
+                            echo.OnStarting(record);
+                            break;
+                        case Tween tween:
+                            tween.OnStarting(record);
+                            break;
+                    }
+                }
             }
-
-            return result;
+            return hasRecordedObjects;
         }
     }
 }
