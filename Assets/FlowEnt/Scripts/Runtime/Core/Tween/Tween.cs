@@ -92,7 +92,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc AbstractUpdatable.Stop
         public new Tween Stop(bool triggerOnCompleted = false)
         {
-            base.Stop(triggerOnCompleted);
+            StopInternal(triggerOnCompleted);
             return this;
         }
 
@@ -102,9 +102,6 @@ namespace FriedSynapse.FlowEnt
         public new Tween Reset()
         {
             ResetInternal();
-            loopDirection = LoopDirection.Forward;
-            remainingLoops = 0;
-            remainingTime = 0f;
             return this;
         }
 
@@ -149,7 +146,7 @@ namespace FriedSynapse.FlowEnt
 
             if (remainingTime < 0)
             {
-                overdraft = -remainingTime;
+                overdraft = -remainingTime / timeScale;
                 remainingTime = 0;
             }
 
@@ -211,6 +208,14 @@ namespace FriedSynapse.FlowEnt
             {
                 parentFlow.CompleteUpdatable(this);
             }
+        }
+
+        protected override void ResetInternal()
+        {
+            base.ResetInternal();
+            loopDirection = LoopDirection.Forward;
+            remainingLoops = 0;
+            remainingTime = 0f;
         }
 
         #endregion

@@ -8,48 +8,54 @@ namespace FriedSynapse.FlowEnt
     {
         #region Utils
 
-        private void InitAnimation(AbstractAnimation animation)
+        private void InitUpdatable(AbstractUpdatable updatable)
         {
-            if (animation.PlayState != PlayState.Building)
+            if (updatable is AbstractAnimation animation)
             {
-                throw new AnimationException(this, ErrorAnimationAlreadyStarted);
+                if (animation.PlayState != PlayState.Building)
+                {
+                    throw new AnimationException(this, ErrorAnimationAlreadyStarted);
+                }
+
+                if (animation.AutoStart)
+                {
+                    animation.CancelAutoStart();
+                }
             }
 
-            if (animation.AutoStart)
-            {
-                animation.CancelAutoStart();
-            }
-            animation.updateController = this;
+            updatable.updateController = this;
         }
 
-        private void AddOrQueue(AbstractUpdatable updatable)
+        private void AddOrQueue(AbstractUpdatableWrapper updatableWrapper, bool forceAdd = false)
         {
-            if (lastQueuedUpdatableWrapper == null)
+            if (lastQueuedUpdatableWrapper == null || forceAdd)
             {
-                lastQueuedUpdatableWrapper = new UpdatableWrapper(updatable, updatableWrappersQueue.Count, 0);
+                lastQueuedUpdatableWrapper = updatableWrapper;
                 updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
             }
             else
             {
-                UpdatableWrapper animationWrapper = new UpdatableWrapper(updatable, lastQueuedUpdatableWrapper.index);
-                lastQueuedUpdatableWrapper.next = animationWrapper;
-                lastQueuedUpdatableWrapper = animationWrapper;
+                lastQueuedUpdatableWrapper.next = updatableWrapper;
+                lastQueuedUpdatableWrapper = updatableWrapper;
             }
         }
 
-        private void AddOrQueue(Func<AbstractUpdatable> updatableGetter)
+        private void AddOrQueue(AbstractUpdatable updatable, bool forceAdd = false)
         {
-            if (lastQueuedUpdatableWrapper == null)
+            InitUpdatable(updatable);
+            AddOrQueue(new UpdatableWrapperDirect(updatable), forceAdd);
+        }
+
+        private void AddOrQueue(Func<AbstractUpdatable> updatableBuilder, bool forceAdd = false)
+        {
+            AbstractUpdatable createUpdatable()
             {
-                lastQueuedUpdatableWrapper = new UpdatableWrapper(updatableGetter, updatableWrappersQueue.Count, 0);
-                updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
+                AbstractUpdatable updatable = updatableBuilder();
+                InitUpdatable(updatable);
+                return updatable;
             }
-            else
-            {
-                UpdatableWrapper animationWrapper = new UpdatableWrapper(updatableGetter, lastQueuedUpdatableWrapper.index);
-                lastQueuedUpdatableWrapper.next = animationWrapper;
-                lastQueuedUpdatableWrapper = animationWrapper;
-            }
+
+            AddOrQueue(new UpdatableWrapperCallback(createUpdatable), forceAdd);
         }
 
         /// <summary>
@@ -77,10 +83,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="animation"></param>
         public Flow Queue(AbstractAnimation animation)
         {
-            InitAnimation(animation);
-
             AddOrQueue(animation);
-
             return this;
         }
 
@@ -99,25 +102,21 @@ namespace FriedSynapse.FlowEnt
             => Queue(flowBuilder(new Flow()));
 
         /// <summary>
-        /// Queues a delay in the current sequence.
-        /// </summary>
-        /// <param name="delay"></param>
-        public Flow QueueDelay(float delay)
-            => Queue(new Tween(delay));
-
-        /// <summary>
         /// Queues an awaiter in the current sequence.
         /// </summary>
         /// <param name="flowAwaiter"></param>
         public Flow QueueAwaiter(AbstractFlowAwaiter flowAwaiter)
         {
-            flowAwaiter.updateType = updateType;
-            flowAwaiter.updateController = this;
-
             AddOrQueue(flowAwaiter);
-
             return this;
         }
+
+        /// <summary>
+        /// Queues a delay in the current sequence.
+        /// </summary>
+        /// <param name="delay"></param>
+        public Flow QueueDelay(float delay)
+            => QueueAwaiter(new DelayFlowAwaiter(delay));
 
         /// <summary>
         /// Queues a callback as an awaiter in the current sequence.
@@ -144,17 +143,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="animationBuilder"></param>
         public Flow QueueDeferred(Func<AbstractAnimation> animationBuilder)
         {
-            AbstractAnimation createAnimation()
-            {
-                AbstractAnimation animation = animationBuilder();
-
-                InitAnimation(animation);
-
-                return animation;
-            }
-
-            AddOrQueue(createAnimation);
-
+            AddOrQueue(animationBuilder);
             return this;
         }
 
@@ -190,10 +179,15 @@ namespace FriedSynapse.FlowEnt
                 throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
             }
 
-            InitAnimation(animation);
-
-            lastQueuedUpdatableWrapper = new UpdatableWrapper(animation, updatableWrappersQueue.Count, timeIndex);
-            updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
+            if (timeIndex == 0)
+            {
+                AddOrQueue(animation, true);
+            }
+            else
+            {
+                AddOrQueue(new DelayFlowAwaiter(timeIndex), true);
+                AddOrQueue(animation);
+            }
 
             return this;
         }
@@ -226,22 +220,20 @@ namespace FriedSynapse.FlowEnt
         /// <param name="animationBuilder"></param>
         public Flow AtDeferred(float timeIndex, Func<AbstractAnimation> animationBuilder)
         {
-            AbstractAnimation createAnimation()
+            if (timeIndex < 0)
             {
-                AbstractAnimation animation = animationBuilder();
-
-                if (timeIndex < 0)
-                {
-                    throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
-                }
-
-                InitAnimation(animation);
-
-                return animation;
+                throw new ArgumentException($"Time index cannot be negative. Value: {timeIndex}");
             }
 
-            lastQueuedUpdatableWrapper = new UpdatableWrapper(createAnimation, updatableWrappersQueue.Count, timeIndex);
-            updatableWrappersQueue.Add(lastQueuedUpdatableWrapper);
+            if (timeIndex == 0)
+            {
+                AddOrQueue(animationBuilder, true);
+            }
+            else
+            {
+                AddOrQueue(new DelayFlowAwaiter(timeIndex), true);
+                AddOrQueue(animationBuilder);
+            }
 
             return this;
         }

@@ -81,7 +81,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc AbstractUpdatable.Stop
         public new Echo Stop(bool triggerOnCompleted = false)
         {
-            base.Stop(triggerOnCompleted);
+            StopInternal(triggerOnCompleted);
             return this;
         }
 
@@ -91,8 +91,6 @@ namespace FriedSynapse.FlowEnt
         public new Echo Reset()
         {
             ResetInternal();
-            remainingLoops = 0;
-            time = 0f;
             return this;
         }
 
@@ -135,9 +133,14 @@ namespace FriedSynapse.FlowEnt
             float scaledDeltaTime = deltaTime * timeScale;
             time += scaledDeltaTime;
 
-            if (time > timeout || stopCondition?.Invoke(time) == true)
+            if (time > timeout)
             {
-                overdraft = timeout == null ? 0 : time - timeout.Value;
+                overdraft = (time - timeout.Value) / timeScale;
+            }
+
+            if (stopCondition?.Invoke(time) == true)
+            {
+                overdraft = 0f;
             }
 
             onUpdating?.Invoke(scaledDeltaTime);
@@ -191,6 +194,13 @@ namespace FriedSynapse.FlowEnt
             {
                 parentFlow.CompleteUpdatable(this);
             }
+        }
+
+        protected override void ResetInternal()
+        {
+            base.ResetInternal();
+            remainingLoops = 0;
+            time = 0f;
         }
 
         #endregion

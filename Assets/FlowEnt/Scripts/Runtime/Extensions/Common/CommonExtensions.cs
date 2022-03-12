@@ -5,6 +5,18 @@ namespace FriedSynapse.FlowEnt
 {
     public static class CommonExtensions
     {
+        #region Animation
+
+        /// <summary>
+        /// Restarts the animation by calling <see cref="AbstractAnimation.Stop" />, <see cref="AbstractAnimation.Reset" />, <see cref="AbstractAnimation.Start" /> in this order.
+        /// </summary>
+        /// <param name="animation"></param>
+        public static TAnimation Restart<TAnimation>(this TAnimation animation)
+            where TAnimation : AbstractAnimation
+            => (TAnimation)animation.Stop().Reset().Start();
+
+        #endregion
+
         #region Tween
 
         /// <summary>
@@ -27,13 +39,6 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotionProxy<TItem> Tween<TItem>(this TItem item, TweenOptions options)
             where TItem : class
             => new Tween(options).For(item);
-
-        /// <summary>
-        /// Restarts the tween by calling <see cref="Tween.Stop" />, <see cref="Tween.Reset" />, <see cref="Tween.Start" /> in this order.
-        /// </summary>
-        /// <param name="tween"></param>
-        public static Tween Restart(this Tween tween)
-            => tween.Stop().Reset().Start();
 
         /// <summary>
         /// Applies a <see cref="DebugMotion" /> to the tween.
@@ -69,30 +74,12 @@ namespace FriedSynapse.FlowEnt
             => new Echo(options).For(item);
 
         /// <summary>
-        /// Restarts the echo by calling <see cref="Echo.Stop" />, <see cref="Echo.Reset" />, <see cref="Echo.Start" /> in this order.
-        /// </summary>
-        /// <param name="echo"></param>
-        public static Echo Restart(this Echo echo)
-            => echo.Stop().Reset().Start();
-
-        /// <summary>
         /// Applies a <see cref="DebugMotion" /> to the echo.
         /// </summary>
         /// <param name="echo"></param>
         /// <param name="name">If name is null, it will use the echo's name. Make you it's set.</param>
         public static Echo Debug(this Echo echo, string name = null)
             => echo.Apply(new EchoDebugMotion(name ?? echo.Name));
-
-        #endregion
-
-        #region Flow
-
-        /// <summary>
-        /// Restards the flow by calling <see cref="Flow.Stop" />, <see cref="Flow.Reset" />, <see cref="Flow.Start" /> in this order.
-        /// </summary>
-        /// <param name="flow"></param>
-        public static Flow Restart(this Flow flow)
-            => flow.Stop().Reset().Start();
 
         #endregion
     }

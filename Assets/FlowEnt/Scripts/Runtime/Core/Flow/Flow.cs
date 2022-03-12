@@ -34,15 +34,10 @@ namespace FriedSynapse.FlowEnt
         #region Internal Members
 
         private readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
-        private readonly List<UpdatableWrapper> updatableWrappersQueue = new List<UpdatableWrapper>(2);
-        private UpdatableWrapper lastQueuedUpdatableWrapper;
-        private UpdatableWrapper[] updatableWrappersOrderedByTimeIndexed;
-        private int nextTimeIndexedUpdatableWrapperIndex;
-        private UpdatableWrapper nextTimeIndexedUpdatableWrapper;
-        private readonly Dictionary<ulong, UpdatableWrapper> runningUpdatableWrappers = new Dictionary<ulong, UpdatableWrapper>(2);
+        private readonly List<AbstractUpdatableWrapper> updatableWrappersQueue = new List<AbstractUpdatableWrapper>(2);
+        private AbstractUpdatableWrapper lastQueuedUpdatableWrapper;
+        private readonly Dictionary<ulong, AbstractUpdatableWrapper> runningUpdatableWrappers = new Dictionary<ulong, AbstractUpdatableWrapper>(2);
         private int runningUpdatableWrappersCount;
-
-        private float time;
         private int? remainingLoops;
 
         #endregion
@@ -87,7 +82,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc AbstractUpdatable.Stop
         public new Flow Stop(bool triggerOnCompleted = false)
         {
-            base.Stop(triggerOnCompleted);
+            StopInternal(triggerOnCompleted);
             return this;
         }
 
@@ -97,11 +92,6 @@ namespace FriedSynapse.FlowEnt
         public new Flow Reset()
         {
             ResetInternal();
-            time = 0;
-            remainingLoops = 0;
-            runningUpdatableWrappersCount = 0;
-            runningUpdatableWrappers.Clear();
-            updatables.Clear();
             return this;
         }
 
@@ -146,35 +136,36 @@ namespace FriedSynapse.FlowEnt
 
             remainingLoops = loopCount;
 
-            Init();
-
             updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
             onStarted?.Invoke();
 
-            UpdateInternal(deltaTime);
+            StartUpdatables(deltaTime);
+            FirstUpdateInternal(deltaTime);
         }
 
-        private void Init()
+        private void StartUpdatables(float deltaTime)
         {
-            time = 0;
-
-            if (updatableWrappersOrderedByTimeIndexed == null)
+            for (int i = 0; i < updatableWrappersQueue.Count; i++)
             {
-                updatableWrappersOrderedByTimeIndexed = updatableWrappersQueue.ToArray();
-                QuickSortByTimeIndex(updatableWrappersOrderedByTimeIndexed, 0, updatableWrappersOrderedByTimeIndexed.Length - 1);
+                AbstractUpdatableWrapper updatableWrapper = updatableWrappersQueue[i];
+                AbstractUpdatable updatable = updatableWrapper.GetUpdatable();
+                runningUpdatableWrappers.Add(updatable.Id, updatableWrapper);
+                updatable.StartInternal(deltaTime);
             }
+            runningUpdatableWrappersCount = updatableWrappersQueue.Count;
+        }
 
-            nextTimeIndexedUpdatableWrapperIndex = 0;
-            nextTimeIndexedUpdatableWrapper = updatableWrappersOrderedByTimeIndexed[nextTimeIndexedUpdatableWrapperIndex++];
+        private void FirstUpdateInternal(float deltaTime)
+        {
+            float scaledDeltaTime = deltaTime * timeScale;
+
+            onUpdated?.Invoke(scaledDeltaTime);
         }
 
         internal override void UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
-            time += scaledDeltaTime;
-
-            #region Updating animations
 
             AbstractUpdatable index = updatables.anchor.next;
 
@@ -183,28 +174,6 @@ namespace FriedSynapse.FlowEnt
                 index.UpdateInternal(scaledDeltaTime);
                 index = index.next;
             }
-
-            #endregion
-
-            #region TimeBased start
-
-            while (nextTimeIndexedUpdatableWrapper != null && time >= nextTimeIndexedUpdatableWrapper.timeIndex)
-            {
-                ++runningUpdatableWrappersCount;
-                AbstractUpdatable updatable = nextTimeIndexedUpdatableWrapper.GetUpdatable();
-                runningUpdatableWrappers.Add(updatable.Id, nextTimeIndexedUpdatableWrapper);
-                updatable.StartInternal(time - nextTimeIndexedUpdatableWrapper.timeIndex.Value);
-                if (nextTimeIndexedUpdatableWrapperIndex < updatableWrappersOrderedByTimeIndexed.Length)
-                {
-                    nextTimeIndexedUpdatableWrapper = updatableWrappersOrderedByTimeIndexed[nextTimeIndexedUpdatableWrapperIndex++];
-                }
-                else
-                {
-                    nextTimeIndexedUpdatableWrapper = null;
-                }
-            }
-
-            #endregion
 
             onUpdated?.Invoke(scaledDeltaTime);
         }
@@ -216,8 +185,9 @@ namespace FriedSynapse.FlowEnt
             if (!(remainingLoops <= 0))
             {
                 onLoopCompleted?.Invoke(remainingLoops);
-                Init();
-                UpdateInternal(overdraft.Value);
+                ResetUpdatables();
+                StartUpdatables(overdraft.Value);
+                FirstUpdateInternal(overdraft.Value);
                 return;
             }
 
@@ -240,19 +210,19 @@ namespace FriedSynapse.FlowEnt
 
         internal void CompleteUpdatable(AbstractUpdatable updatable)
         {
-            float overdraft = 0;
-            if (updatable is AbstractAnimation animation)
+            float overdraft = updatable switch
             {
-                overdraft = animation.OverDraft.Value;
-                animation.OverDraft = null;
-            }
+                AbstractAnimation animation => animation.Overdraft.Value,
+                DelayFlowAwaiter delayAwaiter => delayAwaiter.Overdraft,
+                _ => 0f
+            };
 
-            UpdatableWrapper nextAnimationWrapper = runningUpdatableWrappers[updatable.Id].next;
+            AbstractUpdatableWrapper nextAnimationWrapper = runningUpdatableWrappers[updatable.Id].next;
             runningUpdatableWrappers.Remove(updatable.Id);
             if (nextAnimationWrapper == null)
             {
                 --runningUpdatableWrappersCount;
-                if (runningUpdatableWrappersCount == 0 && nextTimeIndexedUpdatableWrapper == null)
+                if (runningUpdatableWrappersCount == 0)
                 {
                     this.overdraft = overdraft;
                     CompleteLoop();
@@ -265,46 +235,29 @@ namespace FriedSynapse.FlowEnt
             updatable.StartInternal(overdraft);
         }
 
-        #endregion
-
-        #region QuickSort TimeIndex
-
-        private void QuickSortByTimeIndex(UpdatableWrapper[] arr, int start, int end)
+        protected override void ResetInternal()
         {
-            if (start >= end)
-            {
-                return;
-            }
-
-            int i = Partition(arr, start, end);
-            QuickSortByTimeIndex(arr, start, i - 1);
-            QuickSortByTimeIndex(arr, i + 1, end);
+            base.ResetInternal();
+            remainingLoops = 0;
+            runningUpdatableWrappersCount = 0;
+            runningUpdatableWrappers.Clear();
+            updatables.Clear();
+            ResetUpdatables();
         }
 
-        private int Partition(UpdatableWrapper[] arr, int start, int end)
+        private void ResetUpdatables()
         {
-            UpdatableWrapper temp;
-            float p = arr[end].timeIndex.Value;
-            int i = start - 1;
-
-            for (int j = start; j <= end - 1; j++)
+            for (int i = 0; i < updatableWrappersQueue.Count; i++)
             {
-                if (arr[j].timeIndex < p)
+                AbstractUpdatableWrapper updatableWrapper = updatableWrappersQueue[i];
+                do
                 {
-                    i++;
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
+                    updatableWrapper.GetUpdatable().Reset();
+                    updatableWrapper = updatableWrapper.next;
+                } while (updatableWrapper != null);
             }
-
-            temp = arr[i + 1];
-            arr[i + 1] = arr[end];
-            arr[end] = temp;
-            return i + 1;
         }
 
         #endregion
-
     }
 }

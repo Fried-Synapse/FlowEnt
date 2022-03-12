@@ -87,12 +87,29 @@ namespace FriedSynapse.FlowEnt
         /// Stops the animation.
         /// </summary>
         /// <param name="triggerOnCompleted">If set to true will trigger the "OnCompleted" event on the animation</param>
-        public virtual void Stop(bool triggerOnCompleted = false)
+        public void Stop(bool triggerOnCompleted = false)
+        {
+            StopInternal(triggerOnCompleted);
+        }
+
+        protected virtual void StopInternal(bool triggerOnCompleted)
+        {
+        }
+
+        /// <summary>
+        /// Resets the animation.
+        /// </summary>
+        public void Reset()
+        {
+            ResetInternal();
+        }
+
+        protected virtual void ResetInternal()
         {
         }
 
         public override string ToString()
-            => $"[Id: {Id}{(Name == null ? string.Empty : $", Name: \"{Name}\"")}]";
+            => $"{GetType().Name} [Id: {Id}{(Name == null ? string.Empty : $", Name: \"{Name}\"")}]";
     }
 
     internal class UpdatableAnchor : AbstractUpdatable
