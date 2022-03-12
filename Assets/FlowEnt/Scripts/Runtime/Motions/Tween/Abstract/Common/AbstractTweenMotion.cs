@@ -10,6 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     {
         public virtual void OnStart() { }
         public abstract void OnUpdate(float t);
+        public virtual void OnLoopStart() { }
         public virtual void OnLoopComplete() { }
         public virtual void OnComplete() { }
     }

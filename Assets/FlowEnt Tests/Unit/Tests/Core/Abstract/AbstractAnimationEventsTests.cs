@@ -56,6 +56,31 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
+        public IEnumerator OnLoopStarted()
+        {
+            const int expectedLoopCount = 2;
+            int loopCount = 0;
+            float controlTracker = 0;
+            float control = 0;
+            const float expected = 1f;
+
+            yield return CreateTester()
+                .Act(() =>
+                    CreateAnimation(TestTime / expectedLoopCount)
+                        .SetLoopCount(expectedLoopCount)
+                        .OnUpdated(t => controlTracker = UpdatedControlOperation(controlTracker, t))
+                        .OnLoopStarted((_) => { loopCount++; control = controlTracker; })
+                        .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(expectedLoopCount, loopCount);
+                    Assert.GreaterOrEqual(expected, control);
+                })
+                .Run();
+        }
+
+        [UnityTest]
         public IEnumerator OnLoopCompleted()
         {
             const int expectedLoopCount = 2;

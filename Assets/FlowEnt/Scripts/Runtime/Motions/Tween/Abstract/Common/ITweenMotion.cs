@@ -6,6 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     {
         public void OnStart();
         public void OnUpdate(float t);
+        public void OnLoopStart();
         public void OnLoopComplete();
         public void OnComplete();
     }

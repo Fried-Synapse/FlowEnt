@@ -139,6 +139,7 @@ namespace FriedSynapse.FlowEnt
             updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
             onStarted?.Invoke();
+            onLoopStarted?.Invoke(remainingLoops);
 
             StartUpdatables(deltaTime);
             FirstUpdateInternal(deltaTime);
@@ -186,6 +187,7 @@ namespace FriedSynapse.FlowEnt
             {
                 onLoopCompleted?.Invoke(remainingLoops);
                 ResetUpdatables();
+                onLoopStarted?.Invoke(remainingLoops);
                 StartUpdatables(overdraft.Value);
                 FirstUpdateInternal(overdraft.Value);
                 return;

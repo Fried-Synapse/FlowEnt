@@ -2,11 +2,6 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
 {
-    [System.Serializable]
-    public class Test
-    {
-        public int x;
-    }
     public class PlaygroundController : MonoBehaviour
     {
 #pragma warning disable RCS1169, IDE0044
