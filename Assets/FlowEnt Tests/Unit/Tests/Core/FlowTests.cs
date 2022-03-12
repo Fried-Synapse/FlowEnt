@@ -131,7 +131,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     tween.OnCompleted(() =>
                     {
                         wait = false;
-                        actualWaitTime = HalfTestTime + tween.OverDraft.Value;
+                        actualWaitTime = HalfTestTime + tween.Overdraft.Value;
                     });
                     tween.Start();
                     return new Flow()
@@ -167,7 +167,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     tween.OnCompleted(() =>
                     {
                         wait = false;
-                        actualWaitTime = HalfTestTime + tween.OverDraft.Value;
+                        actualWaitTime = HalfTestTime + tween.Overdraft.Value;
                     });
                     tween.Start();
                     return new Flow()

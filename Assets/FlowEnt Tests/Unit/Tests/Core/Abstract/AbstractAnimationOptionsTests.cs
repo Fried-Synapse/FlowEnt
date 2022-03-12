@@ -286,7 +286,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return animation;
                 })
-                .AssertTime((stopwatch) => FlowEntAssert.Time(QuarterTestTime + controlAnimation.OverDraft.Value, (float)stopwatch.Elapsed.TotalSeconds))
+                .AssertTime((stopwatch) => FlowEntAssert.Time(QuarterTestTime + controlAnimation.Overdraft.Value, (float)stopwatch.Elapsed.TotalSeconds))
                 .Assert(() => Assert.False(onStartedCalled))
                 .Run();
         }
@@ -360,7 +360,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return animation;
                 })
-                .AssertTime((stopwatch) => FlowEntAssert.Time(time + controlAnimation.OverDraft.Value, (float)stopwatch.Elapsed.TotalSeconds))
+                .AssertTime((stopwatch) => FlowEntAssert.Time(time + controlAnimation.Overdraft.Value, (float)stopwatch.Elapsed.TotalSeconds))
                 .Assert(() => Assert.False(onStartedCalled))
                 .Run();
         }

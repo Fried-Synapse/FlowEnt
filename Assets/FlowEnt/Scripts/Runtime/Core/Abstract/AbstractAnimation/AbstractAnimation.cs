@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// THe amount of scaled time unconsumed by this animation from the last frame.
         /// </summary>
-        public float? OverDraft { get => overdraft; internal set => overdraft = value; }
+        public float? Overdraft { get => overdraft; internal set => overdraft = value; }
 
         #endregion
 
@@ -89,72 +89,20 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="AbstractUpdatable.Stop(bool)"/>
         /// \copydoc AbstractUpdatable.Stop
-        //TODO make this return AbstractAnimation.
-        public override void Stop(bool triggerOnCompleted = false)
+        public new AbstractAnimation Stop(bool triggerOnCompleted = false)
         {
-            switch (playState)
-            {
-                case PlayState.Building:
-                case PlayState.Finished:
-                    break;
-                case PlayState.Waiting:
-                    if (startHelper != null)
-                    {
-                        updateController.UnsubscribeFromUpdate(startHelper);
-                    }
-                    break;
-                case PlayState.Playing:
-                case PlayState.Paused:
-                    updateController.UnsubscribeFromUpdate(this);
-                    break;
-            }
-
-            playState = PlayState.Finished;
-
-            if (triggerOnCompleted)
-            {
-                onCompleted?.Invoke();
-            }
-        }
-
-        //TODO this should be implemented by the default stop.
-        AbstractAnimation IFluentControllable<AbstractAnimation>.Stop(bool triggerOnCompleted)
-        {
-            Stop(triggerOnCompleted);
+            StopInternal(triggerOnCompleted);
             return this;
         }
 
         /// <summary>
         /// Resets the animation so in can be replayed.
         /// </summary>
-        public AbstractAnimation Reset()
+        /// <exception cref="AnimationException">If the animation is not finished.</exception>
+        public new AbstractAnimation Reset()
         {
-            switch (this)
-            {
-                case Tween tween:
-                    tween.Reset();
-                    return this;
-                case Echo echo:
-                    echo.Reset();
-                    return this;
-                case Flow flow:
-                    flow.Reset();
-                    return this;
-            }
+            ResetInternal();
             return this;
-        }
-
-        protected void ResetInternal()
-        {
-            if (playState != PlayState.Finished)
-            {
-                throw new AnimationException(this, "Can only reset a finished animation. Use Stop() to ensure animation finished when resetting.");
-            }
-
-            startHelper = null;
-            autoStartHelper = null;
-            playState = PlayState.Building;
-            overdraft = null;
         }
 
         /// <summary>
@@ -224,6 +172,48 @@ namespace FriedSynapse.FlowEnt
         internal void OnCompletedInternal(Action callback)
         {
             onCompleted += callback;
+        }
+
+        protected override void StopInternal(bool triggerOnCompleted)
+        {
+            base.StopInternal(triggerOnCompleted);
+            switch (playState)
+            {
+                case PlayState.Building:
+                case PlayState.Finished:
+                    break;
+                case PlayState.Waiting:
+                    if (startHelper != null)
+                    {
+                        updateController.UnsubscribeFromUpdate(startHelper);
+                    }
+                    break;
+                case PlayState.Playing:
+                case PlayState.Paused:
+                    updateController.UnsubscribeFromUpdate(this);
+                    break;
+            }
+
+            playState = PlayState.Finished;
+
+            if (triggerOnCompleted)
+            {
+                onCompleted?.Invoke();
+            }
+        }
+
+        protected override void ResetInternal()
+        {
+            if (playState != PlayState.Finished)
+            {
+                throw new AnimationException(this, "Can only reset a finished animation. Use Stop() to ensure animation finished when resetting.");
+            }
+
+            base.ResetInternal();
+            startHelper = null;
+            autoStartHelper = null;
+            playState = PlayState.Building;
+            overdraft = null;
         }
 
         #endregion

@@ -345,6 +345,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                                 .At(0, Rigidbody.Tween(TestTime).MoveYTo(from, to))
                                 .OnUpdated((_) =>
                                 {
+                                    Debug.Log($"{Rigidbody.position.x}");
                                     startingFromX ??= Rigidbody.position.x;
                                     startingFromY ??= Rigidbody.position.y;
                                 })

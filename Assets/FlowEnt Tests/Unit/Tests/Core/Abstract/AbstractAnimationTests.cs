@@ -255,19 +255,19 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator ResetUsingFlow()
         {
-            TAnimation animations = null;
+            TAnimation animation = null;
 
             yield return CreateTester()
                 .Act(() =>
                 {
-                    animations = CreateAnimation(TestTime / 2f);
+                    animation = CreateAnimation(TestTime / 2f);
                     return new Flow()
-                        .Queue(animations)
-                        .QueueDeferred(() => animations.Reset())
+                        .Queue(animation)
+                        .QueueDeferred(() => animation.Reset())
                         .Start();
                 })
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(PlayState.Finished, animations.PlayState))
+                .Assert(() => Assert.AreEqual(PlayState.Finished, animation.PlayState))
                 .Run();
         }
     }

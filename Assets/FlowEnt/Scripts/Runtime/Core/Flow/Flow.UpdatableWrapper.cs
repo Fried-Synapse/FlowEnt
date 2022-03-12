@@ -4,50 +4,32 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class Flow
     {
-        private enum UpdatableWrapperType
+        private abstract class AbstractUpdatableWrapper
         {
-            Updatable,
-            UpdatableGetter
+            public AbstractUpdatableWrapper next;
+            public abstract AbstractUpdatable GetUpdatable();
         }
 
-        private class UpdatableWrapper
+        private class UpdatableWrapperDirect : AbstractUpdatableWrapper
         {
-            private UpdatableWrapper(int index, float? timeIndex = null)
+            public UpdatableWrapperDirect(AbstractUpdatable updatable)
             {
-                this.index = index;
-                this.timeIndex = timeIndex;
-            }
-            public UpdatableWrapper(AbstractUpdatable updatable, int index, float? timeIndex = null) : this(index, timeIndex)
-            {
-                type = UpdatableWrapperType.Updatable;
                 this.updatable = updatable;
             }
 
-            public UpdatableWrapper(Func<AbstractUpdatable> updatableGetter, int index, float? timeIndex = null) : this(index, timeIndex)
+            private readonly AbstractUpdatable updatable;
+            public override AbstractUpdatable GetUpdatable() => updatable;
+        }
+
+        private class UpdatableWrapperCallback : AbstractUpdatableWrapper
+        {
+            public UpdatableWrapperCallback(Func<AbstractUpdatable> updatableGetter)
             {
-                type = UpdatableWrapperType.UpdatableGetter;
                 this.updatableGetter = updatableGetter;
             }
 
-            private readonly UpdatableWrapperType type;
-            private readonly AbstractUpdatable updatable;
             private readonly Func<AbstractUpdatable> updatableGetter;
-            public readonly int index;
-            public float? timeIndex;
-            public UpdatableWrapper next;
-
-            public AbstractUpdatable GetUpdatable()
-            {
-                switch (type)
-                {
-                    case UpdatableWrapperType.Updatable:
-                        return updatable;
-                    case UpdatableWrapperType.UpdatableGetter:
-                        return updatableGetter.Invoke();
-                    default:
-                        throw new ArgumentException("Unknown updatable type found.");
-                }
-            }
+            public override AbstractUpdatable GetUpdatable() => updatableGetter.Invoke();
         }
     }
 }

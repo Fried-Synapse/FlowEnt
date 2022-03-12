@@ -84,7 +84,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public AnimationTester AssertTime(Func<float> getTime)
         {
-            AssertTime((stopwatch) => FlowEntAssert.Time(getTime() + ControlAnimation.OverDraft.Value, (float)stopwatch.Elapsed.TotalSeconds));
+            AssertTime((stopwatch) => FlowEntAssert.Time(getTime() + ControlAnimation.Overdraft.Value, (float)stopwatch.Elapsed.TotalSeconds));
             return this;
         }
 
