@@ -177,59 +177,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        #region ShadowRadius
-#if !UNITY_WEBGL
-
-        [UnityTest]
-        public IEnumerator ShadowRadius()
-        {
-            const float value = 0.75f;
-
-            yield return CreateTester()
-                .Arrange(() => Component.shadowRadius = 0f)
-                .Act(() => Component.Tween(TestTime).ShadowRadius(value).Start())
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, Component.shadowRadius))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator ShadowRadiusTo()
-        {
-            const float to = 0.75f;
-
-            yield return CreateTester()
-                .Arrange(() => Component.shadowRadius = 0f)
-                .Act(() => Component.Tween(TestTime).ShadowRadiusTo(to).Start())
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.shadowRadius))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator ShadowRadiusFromTo()
-        {
-            const float from = 0.25f;
-            const float to = 0.75f;
-            float? startingValue = null;
-
-            yield return CreateTester()
-                .Arrange(() => Component.shadowRadius = 0f)
-                .Act(() => Component.Tween(TestTime).ShadowRadiusTo(from, to)
-                                    .OnUpdated(_ => startingValue ??= Component.shadowRadius)
-                                    .Start())
-                .AssertTime(TestTime)
-                .Assert(() =>
-                {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.shadowRadius);
-                })
-                .Run();
-        }
-        
-#endif
-        #endregion
-
         #region ShadowStrength
 
         [UnityTest]
