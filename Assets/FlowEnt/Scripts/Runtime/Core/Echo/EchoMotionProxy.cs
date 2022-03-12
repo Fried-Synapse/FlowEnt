@@ -163,6 +163,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnLoopStarted
+        public EchoMotionProxy<TItem> OnLoopStarted(Action<int?> callback)
+        {
+            Echo.OnLoopStarted(callback);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationEventable.OnLoopCompleted
         public EchoMotionProxy<TItem> OnLoopCompleted(Action<int?> callback)
         {

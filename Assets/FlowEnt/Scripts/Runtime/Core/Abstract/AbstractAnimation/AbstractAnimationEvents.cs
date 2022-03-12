@@ -16,6 +16,10 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public Action<float> OnUpdatedEvent { get; set; }
         /// <summary>
+        /// The event called when an animation loop has started.
+        /// </summary>
+        public Action<int?> OnLoopStartedEvent { get; set; }
+        /// <summary>
         /// The event called when an animation loop has completed.
         /// </summary>
         public Action<int?> OnLoopCompletedEvent { get; set; }
@@ -37,6 +41,14 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimationEvents OnUpdated(Action<float> callback)
         {
             OnUpdatedEvent += callback;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnLoopStarted
+        public AbstractAnimationEvents OnLoopStarted(Action<int?> callback)
+        {
+            OnLoopStartedEvent += callback;
             return this;
         }
 

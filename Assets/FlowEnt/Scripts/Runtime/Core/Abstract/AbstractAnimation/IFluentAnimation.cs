@@ -66,6 +66,12 @@ namespace FriedSynapse.FlowEnt
         T OnUpdated(Action<float> callback);
 
         /// <summary>
+        /// Adds an event called when a loop started.
+        /// </summary>
+        /// <param name="callback">The event. The parameter represents the number of loops left. If there are infinite loops it'll send a null param.</param>
+        T OnLoopStarted(Action<int?> callback);
+
+        /// <summary>
         /// Adds an event called when a loop completed.
         /// </summary>
         /// <param name="callback">The event. The parameter represents the number of loops left. If there are infinite loops it'll send a null param.</param>

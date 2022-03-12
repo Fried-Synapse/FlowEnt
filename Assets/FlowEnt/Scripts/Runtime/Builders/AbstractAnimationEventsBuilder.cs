@@ -18,6 +18,10 @@ namespace FriedSynapse.FlowEnt
         public UnityEvent<float> OnUpdated => onUpdated;
 
         [SerializeField]
+        private UnityEvent<int?> onLoopStarted;
+        public UnityEvent<int?> OnLoopStarted => onLoopStarted;
+
+        [SerializeField]
         private UnityEvent<int?> onLoopCompleted;
         public UnityEvent<int?> OnLoopCompleted => onLoopCompleted;
 
@@ -36,6 +40,10 @@ namespace FriedSynapse.FlowEnt
             if (onUpdated?.GetPersistentEventCount() > 0)
             {
                 events.OnUpdated((t) => onUpdated.Invoke(t));
+            }
+            if (onLoopStarted?.GetPersistentEventCount() > 0)
+            {
+                events.OnLoopStarted((t) => onLoopStarted.Invoke(t));
             }
             if (onLoopCompleted?.GetPersistentEventCount() > 0)
             {

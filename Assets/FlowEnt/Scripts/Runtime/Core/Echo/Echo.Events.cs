@@ -61,6 +61,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnLoopStarted
+        public new Echo OnLoopStarted(Action<int?> callback)
+        {
+            base.OnLoopStarted(callback);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationEventable.OnLoopCompleted
         public new Echo OnLoopCompleted(Action<int?> callback)
         {

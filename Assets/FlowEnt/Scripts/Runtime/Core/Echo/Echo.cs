@@ -124,7 +124,7 @@ namespace FriedSynapse.FlowEnt
             updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
             onStarted?.Invoke();
-
+            StartLoop();
             UpdateInternal(deltaTime);
         }
 
@@ -156,6 +156,15 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
+        private void StartLoop()
+        {
+            for (int i = 0; i < motions.Length; i++)
+            {
+                motions[i].OnLoopStart();
+            }
+            onLoopStarted?.Invoke(remainingLoops);
+        }
+
         private void CompleteLoop()
         {
             time = 0;
@@ -171,6 +180,7 @@ namespace FriedSynapse.FlowEnt
                 onLoopCompleted?.Invoke(remainingLoops);
                 float overdraft = this.overdraft.Value;
                 this.overdraft = null;
+                StartLoop();
                 UpdateInternal(overdraft);
                 return;
             }

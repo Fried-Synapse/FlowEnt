@@ -10,6 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
     {
         public virtual void OnStart() { }
         public abstract void OnUpdate(float deltaTime);
+        public virtual void OnLoopStart() { }
         public virtual void OnLoopComplete() { }
         public virtual void OnComplete() { }
     }

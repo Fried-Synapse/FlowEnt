@@ -165,6 +165,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnLoopStarted
+        public TweenMotionProxy<TItem> OnLoopStarted(Action<int?> callback)
+        {
+            Tween.OnLoopStarted(callback);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationEventable.OnLoopCompleted
         public TweenMotionProxy<TItem> OnLoopCompleted(Action<int?> callback)
         {
