@@ -4,18 +4,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 {
     public abstract class AbstractEngineTests : AbstractTests<EngineVariables>
     {
-        protected readonly Vector3 scale = Vector3.one * 0.9f;
-        protected readonly PrimitiveType PrimitiveType = PrimitiveType.Cube;
-        protected virtual void PrepareObject(GameObject gameObject) { }
+        protected virtual GameObject CreateObject()
+            => GameObject.CreatePrimitive(PrimitiveType.Cube);
+
         public override void CreateObjects(int count)
         {
             for (int i = 0; i < count; i++)
             {
-                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType);
+                GameObject gameObject = CreateObject();
                 gameObject.name = $"Test game object {i}";
                 gameObject.transform.position = new Vector3(0, 0, i);
                 gameObject.transform.localScale = Vector3.one * 0.9f;
-                PrepareObject(gameObject);
                 GameObjects.Add(gameObject);
             }
         }
@@ -25,7 +24,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         where TComponent : Component
     {
         private TComponent component;
-        protected TComponent Component => component ??= GameObject.AddComponent<TComponent>();
+        protected virtual TComponent Component => component ??= GameObject.AddComponent<TComponent>();
 
         protected override void OnTeardown()
         {
