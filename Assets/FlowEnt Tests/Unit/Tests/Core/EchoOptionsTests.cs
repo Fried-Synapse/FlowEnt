@@ -30,22 +30,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     Assert.AreEqual(Variables.Echo.Options.SkipFrames, echoOptions.SkipFrames);
                     Assert.AreEqual(Variables.Echo.Options.Delay, echoOptions.Delay);
                     Assert.AreEqual(Variables.Echo.Options.TimeScale, echoOptions.TimeScale);
-                    if (Variables.Echo.Options.HasTimeout)
-                    {
-                        Assert.AreEqual(Variables.Echo.Options.Timeout, echoOptions.Timeout);
-                    }
-                    else
-                    {
-                        Assert.AreEqual(null, echoOptions.Timeout);
-                    }
-                    if (Variables.Echo.Options.IsLoopCountInfinite)
-                    {
-                        Assert.AreEqual(null, echoOptions.LoopCount);
-                    }
-                    else
-                    {
-                        Assert.AreEqual(Variables.Echo.Options.LoopCount, echoOptions.LoopCount);
-                    }
+                    Assert.AreEqual(Variables.Echo.Options.Timeout, echoOptions.Timeout);
+                    Assert.AreEqual(Variables.Echo.Options.LoopCount, echoOptions.LoopCount);
                 })
                 .Run();
         }

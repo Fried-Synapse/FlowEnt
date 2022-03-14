@@ -15,6 +15,7 @@ namespace FriedSynapse.FlowEnt.Editor
             delay,
             timeScale,
             time,
+            easingType,
             easing,
             loopCount,
             loopType
@@ -32,6 +33,16 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     case PropertiesEnum.loopCount:
                         DrawNullable(propertyPosition, property, nameof(PropertiesEnum.loopCount), "isLoopCountInfinite", true);
+                        break;
+                    case PropertiesEnum.easing:
+                        TweenOptionsBuilder.EasingType easingType = (TweenOptionsBuilder.EasingType)property.FindPropertyRelative(nameof(PropertiesEnum.easingType)).enumValueIndex;
+                        string propertyName = easingType switch
+                        {
+                            TweenOptionsBuilder.EasingType.Predefined => nameof(PropertiesEnum.easing),
+                            TweenOptionsBuilder.EasingType.AnimationCurve => "easingCurve",
+                            _ => throw new System.NotImplementedException(),
+                        };
+                        EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(propertyName));
                         break;
                     default:
                         EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(prop.ToString()));

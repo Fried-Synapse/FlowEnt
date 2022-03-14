@@ -75,7 +75,7 @@ namespace FriedSynapse.FlowEnt.Easings
                 case Easing.Shake:
                     return new ShakeEasing();
                 default:
-                    throw new ArgumentException($"Unknown easing {easing}");
+                    throw new ArgumentException($"Unknown easing {easing}.");
             }
         }
     }

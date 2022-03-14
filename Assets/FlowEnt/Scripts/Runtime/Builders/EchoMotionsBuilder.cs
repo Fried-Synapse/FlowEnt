@@ -16,6 +16,7 @@ namespace FriedSynapse.FlowEnt
     {
         [SerializeField]
         protected TItem item;
+        public TItem Item => item;
     }
 
     [Serializable]

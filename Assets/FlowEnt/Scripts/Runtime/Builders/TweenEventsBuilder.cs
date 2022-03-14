@@ -25,17 +25,17 @@ namespace FriedSynapse.FlowEnt
         public override TweenEvents Build()
         {
             TweenEvents events = base.Build();
-            if (onStarting?.GetPersistentEventCount() > 0)
+            if (OnStarting?.GetPersistentEventCount() > 0)
             {
-                events.OnStarting(() => onStarting.Invoke());
+                events.OnStarting(() => OnStarting.Invoke());
             }
-            if (onUpdating?.GetPersistentEventCount() > 0)
+            if (OnUpdating?.GetPersistentEventCount() > 0)
             {
-                events.OnUpdating((t) => onUpdating.Invoke(t));
+                events.OnUpdating((t) => OnUpdating.Invoke(t));
             }
-            if (onCompleting?.GetPersistentEventCount() > 0)
+            if (OnCompleting?.GetPersistentEventCount() > 0)
             {
-                events.OnCompleting(() => onCompleting.Invoke());
+                events.OnCompleting(() => OnCompleting.Invoke());
             }
             return events;
         }

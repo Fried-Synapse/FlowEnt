@@ -180,16 +180,62 @@ MonoBehaviour:
       skipFrames: 0
       delay: 0
       timeScale: 1
-      loopCount: 1
       isLoopCountInfinite: 0
+      loopCount: 1
       time: 2
+      easingType: 1
       easing: 1
+      easingCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.024644315
+          value: 0.84119475
+          inSlope: 1.4992919
+          outSlope: 1.4992919
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.39918914
+          value: 0.18245745
+          inSlope: -0.57443225
+          outSlope: -0.57443225
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
       loopType: 0
     events:
       onStarted:
         m_PersistentCalls:
           m_Calls: []
       onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopStarted:
         m_PersistentCalls:
           m_Calls: []
       onLoopCompleted:
@@ -218,15 +264,18 @@ MonoBehaviour:
       skipFrames: 0
       delay: 0
       timeScale: 1
-      loopCount: 1
       isLoopCountInfinite: 0
-      timeout: 0
+      loopCount: 1
       hasTimeout: 0
+      timeout: 0
     events:
       onStarted:
         m_PersistentCalls:
           m_Calls: []
       onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopStarted:
         m_PersistentCalls:
           m_Calls: []
       onLoopCompleted:
@@ -255,13 +304,16 @@ MonoBehaviour:
       skipFrames: 0
       delay: 0
       timeScale: 1
-      loopCount: 1
       isLoopCountInfinite: 0
+      loopCount: 1
     events:
       onStarted:
         m_PersistentCalls:
           m_Calls: []
       onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopStarted:
         m_PersistentCalls:
           m_Calls: []
       onLoopCompleted:
@@ -320,16 +372,26 @@ MonoBehaviour:
           skipFrames: 0
           delay: 0
           timeScale: 1
-          loopCount: 1
           isLoopCountInfinite: 0
+          loopCount: 1
           time: 1
+          easingType: 0
           easing: 0
+          easingCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
           loopType: 0
         events:
           onStarted:
             m_PersistentCalls:
               m_Calls: []
           onUpdated:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopStarted:
             m_PersistentCalls:
               m_Calls: []
           onLoopCompleted:
@@ -360,16 +422,26 @@ MonoBehaviour:
           skipFrames: 0
           delay: 0
           timeScale: 1
-          loopCount: 1
           isLoopCountInfinite: 0
+          loopCount: 1
           time: 1
+          easingType: 0
           easing: 0
+          easingCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
           loopType: 0
         events:
           onStarted:
             m_PersistentCalls:
               m_Calls: []
           onUpdated:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopStarted:
             m_PersistentCalls:
               m_Calls: []
           onLoopCompleted:
@@ -400,16 +472,26 @@ MonoBehaviour:
           skipFrames: 0
           delay: 0
           timeScale: 1
-          loopCount: 1
           isLoopCountInfinite: 0
+          loopCount: 1
           time: 1
+          easingType: 0
           easing: 0
+          easingCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
           loopType: 0
         events:
           onStarted:
             m_PersistentCalls:
               m_Calls: []
           onUpdated:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopStarted:
             m_PersistentCalls:
               m_Calls: []
           onLoopCompleted:
