@@ -33,7 +33,6 @@ namespace FriedSynapse.FlowEnt
                 controller.Update(editorDeltaTime, editorDeltaTime);
                 controller.LateUpdate(editorDeltaTime, editorDeltaTime);
                 controller.FixedUpdate(editorDeltaTime);
-                //TODO this should be custom
                 controller.CustomUpdate(editorDeltaTime);
             }
             catch (Exception ex)

@@ -27,23 +27,22 @@ namespace FriedSynapse.FlowEnt
         private float timeScale = AbstractAnimationOptions.DefaultTimeScale;
         public float TimeScale => timeScale;
         [SerializeField]
-        private int loopCount = 1;
-        public int LoopCount => loopCount;
-        [SerializeField]
         private bool isLoopCountInfinite;
-        public bool IsLoopCountInfinite => isLoopCountInfinite;
+        [SerializeField]
+        private int loopCount = 1;
+        public int? LoopCount => isLoopCountInfinite ? default(int?) : loopCount;
 #pragma warning restore RCS1169, RCS1085, IDE0044
 
         public override TAnimationOptions Build()
             => new TAnimationOptions()
             {
-                Name = name,
-                UpdateType = updateType,
-                AutoStart = autoStart,
-                SkipFrames = skipFrames,
-                Delay = delay,
-                TimeScale = timeScale,
-                LoopCount = isLoopCountInfinite ? default(int?) : loopCount,
+                Name = Name,
+                UpdateType = UpdateType,
+                AutoStart = AutoStart,
+                SkipFrames = SkipFrames,
+                Delay = Delay,
+                TimeScale = TimeScale,
+                LoopCount = LoopCount
             };
     }
 }

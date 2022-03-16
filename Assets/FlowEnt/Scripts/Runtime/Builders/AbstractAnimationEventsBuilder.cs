@@ -33,25 +33,25 @@ namespace FriedSynapse.FlowEnt
         public override TAnimationEvents Build()
         {
             TAnimationEvents events = new TAnimationEvents();
-            if (onStarted?.GetPersistentEventCount() > 0)
+            if (OnStarted?.GetPersistentEventCount() > 0)
             {
-                events.OnStarted(() => onStarted.Invoke());
+                events.OnStarted(() => OnStarted.Invoke());
             }
-            if (onUpdated?.GetPersistentEventCount() > 0)
+            if (OnUpdated?.GetPersistentEventCount() > 0)
             {
-                events.OnUpdated((t) => onUpdated.Invoke(t));
+                events.OnUpdated((t) => OnUpdated.Invoke(t));
             }
-            if (onLoopStarted?.GetPersistentEventCount() > 0)
+            if (OnLoopStarted?.GetPersistentEventCount() > 0)
             {
-                events.OnLoopStarted((t) => onLoopStarted.Invoke(t));
+                events.OnLoopStarted((t) => OnLoopStarted.Invoke(t));
             }
-            if (onLoopCompleted?.GetPersistentEventCount() > 0)
+            if (OnLoopCompleted?.GetPersistentEventCount() > 0)
             {
-                events.OnLoopCompleted((t) => onLoopCompleted.Invoke(t));
+                events.OnLoopCompleted((t) => OnLoopCompleted.Invoke(t));
             }
-            if (onCompleted?.GetPersistentEventCount() > 0)
+            if (OnCompleted?.GetPersistentEventCount() > 0)
             {
-                events.OnCompleted(() => onCompleted.Invoke());
+                events.OnCompleted(() => OnCompleted.Invoke());
             }
             return events;
         }

@@ -83,7 +83,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type)).Select(t => new TypeInfo() { Type = t, Names = AbstractMotionBuilderPropertyDrawer.GetNames(t) }));
+                objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type)).Select(t => new TypeInfo() { Type = t, Names = MotionNameGetter.GetNames(t) }));
             }
             return objects;
         }

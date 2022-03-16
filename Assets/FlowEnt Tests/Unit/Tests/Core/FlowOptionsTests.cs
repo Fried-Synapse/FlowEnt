@@ -31,14 +31,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     Assert.AreEqual(Variables.Flow.Options.SkipFrames, flowOptions.SkipFrames);
                     Assert.AreEqual(Variables.Flow.Options.Delay, flowOptions.Delay);
                     Assert.AreEqual(Variables.Flow.Options.TimeScale, flowOptions.TimeScale);
-                    if (Variables.Flow.Options.IsLoopCountInfinite)
-                    {
-                        Assert.AreEqual(null, flowOptions.LoopCount);
-                    }
-                    else
-                    {
-                        Assert.AreEqual(Variables.Flow.Options.LoopCount, flowOptions.LoopCount);
-                    }
+                    Assert.AreEqual(Variables.Flow.Options.LoopCount, flowOptions.LoopCount);
                 })
                 .Run();
         }

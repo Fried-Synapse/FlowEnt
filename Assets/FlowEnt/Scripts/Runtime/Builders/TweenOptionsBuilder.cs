@@ -7,13 +7,28 @@ namespace FriedSynapse.FlowEnt
     [Serializable]
     public class TweenOptionsBuilder : AbstractAnimationOptionsBuilder<TweenOptions>
     {
+        public enum EasingType
+        {
+            Predefined,
+            AnimationCurve,
+        }
+
 #pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]
         private float time = TweenOptions.DefaultTime;
         public float Time => time;
         [SerializeField]
+        private EasingType easingType = EasingType.Predefined;
+        [SerializeField]
         private Easing easing = TweenOptions.DefaultEasing;
-        public Easing Easing => easing;
+        public IEasing Easing => easingType switch
+        {
+            EasingType.Predefined => EasingFactory.Create(easing),
+            EasingType.AnimationCurve => new AnimationCurveEasing(easingCurve),
+            _ => throw new NotImplementedException(),
+        };
+        [SerializeField]
+        private AnimationCurve easingCurve;
         [SerializeField]
         private LoopType loopType;
         public LoopType LoopType => loopType;
@@ -23,9 +38,9 @@ namespace FriedSynapse.FlowEnt
         public override TweenOptions Build()
         {
             TweenOptions options = base.Build();
-            options.Time = time;
-            options.Easing = EasingFactory.Create(easing);
-            options.LoopType = loopType;
+            options.Time = Time;
+            options.Easing = Easing;
+            options.LoopType = LoopType;
             return options;
         }
     }

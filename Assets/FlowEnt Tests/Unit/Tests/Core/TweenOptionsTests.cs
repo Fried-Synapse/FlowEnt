@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using FriedSynapse.FlowEnt.Easings;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
@@ -34,15 +33,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     Assert.AreEqual(Variables.Tween.Options.Delay, tweenOptions.Delay);
                     Assert.AreEqual(Variables.Tween.Options.TimeScale, tweenOptions.TimeScale);
                     Assert.AreEqual(Variables.Tween.Options.Time, tweenOptions.Time);
-                    Assert.AreEqual(EasingFactory.Create(Variables.Tween.Options.Easing).GetType().FullName, tweenOptions.Easing.GetType().FullName);
-                    if (Variables.Tween.Options.IsLoopCountInfinite)
-                    {
-                        Assert.AreEqual(null, tweenOptions.LoopCount);
-                    }
-                    else
-                    {
-                        Assert.AreEqual(Variables.Tween.Options.LoopCount, tweenOptions.LoopCount);
-                    }
+                    Assert.AreEqual(Variables.Tween.Options.Easing.GetType().FullName, tweenOptions.Easing.GetType().FullName);
+                    Assert.AreEqual(Variables.Tween.Options.LoopCount, tweenOptions.LoopCount);
                     Assert.AreEqual(Variables.Tween.Options.LoopType, tweenOptions.LoopType);
                 })
                 .Run();
