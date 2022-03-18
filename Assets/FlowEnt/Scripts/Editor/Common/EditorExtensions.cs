@@ -90,6 +90,13 @@ namespace FriedSynapse.FlowEnt.Editor
             return parentProperty.isArray ? parentProperty : null;
         }
 
+        public static void PersistentSetValue(this SerializedProperty property, object item)
+        {
+            property.serializedObject.Update();
+            property.managedReferenceValue = item;
+            property.serializedObject.ApplyModifiedProperties();
+        }
+
         public static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
         {
             if (!listProperty.isArray)
