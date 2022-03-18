@@ -17,18 +17,18 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private bool autoStart;
         public bool AutoStart => autoStart;
-        [SerializeField]
+        [SerializeField, Min(0)]
         private int skipFrames;
         public int SkipFrames => skipFrames;
-        [SerializeField]
+        [SerializeField, Min(0f)]
         private float delay;
         public float Delay => delay;
-        [SerializeField]
+        [SerializeField, Min(0f)]
         private float timeScale = AbstractAnimationOptions.DefaultTimeScale;
         public float TimeScale => timeScale;
         [SerializeField]
         private bool isLoopCountInfinite;
-        [SerializeField]
+        [SerializeField, Min(1)]
         private int loopCount = 1;
         public int? LoopCount => isLoopCountInfinite ? default(int?) : loopCount;
 #pragma warning restore RCS1169, RCS1085, IDE0044

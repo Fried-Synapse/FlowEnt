@@ -9,7 +9,7 @@ namespace FriedSynapse.FlowEnt
 #pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]
         private bool hasTimeout;
-        [SerializeField]
+        [SerializeField, Min(0f)]
         private float timeout;
         public float? Timeout => hasTimeout ? timeout : default(float?);
 #pragma warning restore RCS1169, RCS1085, IDE0044

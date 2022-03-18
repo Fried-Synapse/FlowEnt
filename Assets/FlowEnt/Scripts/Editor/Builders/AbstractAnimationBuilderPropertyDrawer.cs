@@ -144,7 +144,14 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 SerializedProperty parentProperty = property.GetParentArray();
                 GenericMenu context = new GenericMenu();
-                FlowEntEditorGUILayout.ShowCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Animation", this);
+                if (parentProperty == null)
+                {
+                    FlowEntEditorGUILayout.ShowCrud(context, property, "Animation", this);
+                }
+                else
+                {
+                    FlowEntEditorGUILayout.ShowListCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Animation", this);
+                }
                 context.ShowAsContext();
             }
         }

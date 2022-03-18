@@ -143,7 +143,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 SerializedProperty parentProperty = property.GetParentArray();
 
                 GenericMenu context = new GenericMenu();
-                FlowEntEditorGUILayout.ShowCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Motion", this);
+                FlowEntEditorGUILayout.ShowListCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);
                 SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled);
                 void showRename()

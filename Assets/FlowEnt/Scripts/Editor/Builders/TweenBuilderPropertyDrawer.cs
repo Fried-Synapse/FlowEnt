@@ -1,4 +1,5 @@
 using System.Reflection;
+using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,7 +41,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void OnAnimationUpdated(Data data, float t)
         {
-            data.PreviewTime = t;
+            data.PreviewTime = data.PreviewAnimation.GetPropertyValue<float>("CurrentLoopRatio");
         }
     }
 }
