@@ -93,7 +93,11 @@ namespace FriedSynapse.FlowEnt.Editor
         public static void PersistentSetValue(this SerializedProperty property, object item)
         {
             property.serializedObject.Update();
-            property.managedReferenceValue = item;
+            SerializedProperty parentProperty = property.GetParent();
+            object parent = (parentProperty == null) ? property.serializedObject.targetObject : parentProperty.GetValue<object>();
+            FieldInfo field = parent.GetType().GetField(property.name, ReflectionExtensions.DefaultBindingFlags);
+            field.SetValue(parent, item);
+            EditorUtility.SetDirty(property.serializedObject.targetObject);
             property.serializedObject.ApplyModifiedProperties();
         }
 
