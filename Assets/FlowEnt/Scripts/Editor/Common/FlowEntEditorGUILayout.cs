@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEditor;
 using UnityEngine;
@@ -93,10 +92,11 @@ namespace FriedSynapse.FlowEnt.Editor
             while (property.NextVisible(false));
         }
 
-        internal static void ShowListCrud<T>(GenericMenu context, SerializedProperty list, int index, string name, ICrudable<T> crudable)
+        internal static void ShowListCrud<T>(GenericMenu context, SerializedProperty listProperty, int index, string name, ICrudable<T> crudable)
         {
-            object item = list.GetArrayElementAtIndex(index).GetValue<object>();
-            context.AddItem(new GUIContent($"Remove {name}"), () => list.PersistentDeleteArrayElementAtIndex(index));
+            SerializedProperty target = listProperty.Copy();
+            object item = target.GetArrayElementAtIndex(index).GetValue<object>();
+            context.AddItem(new GUIContent($"Remove {name}"), () => target.PersistentDeleteArrayElementAtIndex(index));
             void copyMotion()
             {
                 crudable.Clipboard = (T)Activator.CreateInstance(item.GetType());
@@ -107,21 +107,22 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 object copy = (T)Activator.CreateInstance(crudable.Clipboard.GetType());
                 EditorUtility.CopySerializedManagedFieldsOnly(crudable.Clipboard, copy);
-                list.PersistentSetArrayElementAtIndex(index, copy);
+                target.PersistentSetArrayElementAtIndex(index, copy);
             }
             context.AddItem(new GUIContent($"Paste {name} Values"), pasteMotionValues, crudable.Clipboard == null || item.GetType() != crudable.Clipboard.GetType());
             void pasteMotionAsNew()
             {
                 object copy = (T)Activator.CreateInstance(crudable.Clipboard.GetType());
                 EditorUtility.CopySerializedManagedFieldsOnly(crudable.Clipboard, copy);
-                list.PersistentInsertArrayElementAtIndex(list.arraySize, copy);
+                target.PersistentInsertArrayElementAtIndex(target.arraySize, copy);
             }
             context.AddItem(new GUIContent($"Paste {name} as new"), pasteMotionAsNew, crudable.Clipboard == null);
         }
 
         internal static void ShowCrud<T>(GenericMenu context, SerializedProperty property, string name, ICrudable<T> crudable)
         {
-            object item = property.GetValue<object>();
+            SerializedProperty target = property.Copy();
+            object item = target.GetValue<object>();
             void copyMotion()
             {
                 crudable.Clipboard = (T)Activator.CreateInstance(item.GetType());
@@ -132,7 +133,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 object copy = (T)Activator.CreateInstance(crudable.Clipboard.GetType());
                 EditorUtility.CopySerializedManagedFieldsOnly(crudable.Clipboard, copy);
-                property.PersistentSetValue(copy);
+                target.PersistentSetValue(copy);
             }
             context.AddItem(new GUIContent($"Paste {name} Values"), pasteMotionValues, crudable.Clipboard == null || item.GetType() != crudable.Clipboard.GetType());
         }

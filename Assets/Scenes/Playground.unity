@@ -258,20 +258,56 @@ MonoBehaviour:
       - id: 0
   tween1:
     options:
-      name: 
-      updateType: 0
+      name: test
+      updateType: 4
       autoStart: 0
       skipFrames: 0
       delay: 0
       timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
-      time: 1
+      time: 2
       easingType: 0
-      easing: 0
+      easing: 24
       easingCurve:
         serializedVersion: 2
-        m_Curve: []
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.19131225
+          value: 1.0723273
+          inSlope: 1.4992919
+          outSlope: 1.4992919
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.39918914
+          value: 0.18245745
+          inSlope: -0.57443225
+          outSlope: -0.57443225
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -302,7 +338,8 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     motions:
-      items: []
+      items:
+      - id: 1
   echo:
     options:
       name: 
@@ -342,7 +379,7 @@ MonoBehaviour:
           m_Calls: []
     motions:
       items:
-      - id: 1
+      - id: 2
   flow:
     options:
       name: 
@@ -371,8 +408,8 @@ MonoBehaviour:
           m_Calls: []
     queues:
       items:
-      - id: 2
       - id: 3
+      - id: 4
   references:
     version: 1
     00000000:
@@ -384,80 +421,39 @@ MonoBehaviour:
         item: {fileID: 1726780655}
         value: {x: 0, y: 2, z: 0}
     00000001:
+      type: {class: MoveVectorMotion/ValueBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
+      data:
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 1726780655}
+        value: {x: 0, y: 2, z: 0}
+    00000002:
       type: {class: DebugMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Echo, asm: FriedSynapse.FlowEnt}
       data:
         displayName: 
         isDisplayNameEnabled: 0
         isEnabled: 1
         name: echo
-    00000002:
-      type: {class: FlowBuilder/QueueList/Queue, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
-      data:
-        items:
-        - id: 4
-        displayName: 
-        isDisplayNameEnabled: 0
-        isEnabled: 1
-        startTime: 0
     00000003:
       type: {class: FlowBuilder/QueueList/Queue, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
       data:
         items:
         - id: 5
+        - id: 6
         displayName: 
         isDisplayNameEnabled: 0
         isEnabled: 1
         startTime: 0
     00000004:
-      type: {class: TweenBuilder, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
+      type: {class: FlowBuilder/QueueList/Queue, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
       data:
-        options:
-          name: 
-          updateType: 0
-          autoStart: 0
-          skipFrames: 0
-          delay: 0
-          timeScale: 1
-          isLoopCountInfinite: 0
-          loopCount: 1
-          time: 1
-          easingType: 0
-          easing: 0
-          easingCurve:
-            serializedVersion: 2
-            m_Curve: []
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-          loopType: 0
-        events:
-          onStarted:
-            m_PersistentCalls:
-              m_Calls: []
-          onUpdated:
-            m_PersistentCalls:
-              m_Calls: []
-          onLoopStarted:
-            m_PersistentCalls:
-              m_Calls: []
-          onLoopCompleted:
-            m_PersistentCalls:
-              m_Calls: []
-          onCompleted:
-            m_PersistentCalls:
-              m_Calls: []
-          onStarting:
-            m_PersistentCalls:
-              m_Calls: []
-          onUpdating:
-            m_PersistentCalls:
-              m_Calls: []
-          onCompleting:
-            m_PersistentCalls:
-              m_Calls: []
-        motions:
-          items:
-          - id: 6
+        items:
+        - id: 7
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        startTime: 0
     00000005:
       type: {class: TweenBuilder, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
       data:
@@ -486,6 +482,130 @@ MonoBehaviour:
               m_Calls: []
           onUpdated:
             m_PersistentCalls:
+              m_Calls:
+              - m_Target: {fileID: 0}
+                m_TargetAssemblyTypeName: 
+                m_MethodName: 
+                m_Mode: 1
+                m_Arguments:
+                  m_ObjectArgument: {fileID: 0}
+                  m_ObjectArgumentAssemblyTypeName: 
+                  m_IntArgument: 0
+                  m_FloatArgument: 0
+                  m_StringArgument: 
+                  m_BoolArgument: 0
+                m_CallState: 2
+          onLoopStarted:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopCompleted:
+            m_PersistentCalls:
+              m_Calls: []
+          onCompleted:
+            m_PersistentCalls:
+              m_Calls: []
+          onStarting:
+            m_PersistentCalls:
+              m_Calls: []
+          onUpdating:
+            m_PersistentCalls:
+              m_Calls: []
+          onCompleting:
+            m_PersistentCalls:
+              m_Calls: []
+        motions:
+          items:
+          - id: 8
+    00000006:
+      type: {class: TweenBuilder, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
+      data:
+        options:
+          name: 
+          updateType: 0
+          autoStart: 0
+          skipFrames: 0
+          delay: 0
+          timeScale: 1
+          isLoopCountInfinite: 0
+          loopCount: 1
+          time: 1
+          easingType: 0
+          easing: 0
+          easingCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          loopType: 0
+        events:
+          onStarted:
+            m_PersistentCalls:
+              m_Calls: []
+          onUpdated:
+            m_PersistentCalls:
+              m_Calls:
+              - m_Target: {fileID: 0}
+                m_TargetAssemblyTypeName: 
+                m_MethodName: 
+                m_Mode: 1
+                m_Arguments:
+                  m_ObjectArgument: {fileID: 0}
+                  m_ObjectArgumentAssemblyTypeName: 
+                  m_IntArgument: 0
+                  m_FloatArgument: 0
+                  m_StringArgument: 
+                  m_BoolArgument: 0
+                m_CallState: 2
+          onLoopStarted:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopCompleted:
+            m_PersistentCalls:
+              m_Calls: []
+          onCompleted:
+            m_PersistentCalls:
+              m_Calls: []
+          onStarting:
+            m_PersistentCalls:
+              m_Calls: []
+          onUpdating:
+            m_PersistentCalls:
+              m_Calls: []
+          onCompleting:
+            m_PersistentCalls:
+              m_Calls: []
+        motions:
+          items:
+          - id: 9
+    00000007:
+      type: {class: TweenBuilder, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
+      data:
+        options:
+          name: 
+          updateType: 0
+          autoStart: 0
+          skipFrames: 0
+          delay: 0
+          timeScale: 1
+          isLoopCountInfinite: 0
+          loopCount: 1
+          time: 1
+          easingType: 0
+          easing: 0
+          easingCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          loopType: 0
+        events:
+          onStarted:
+            m_PersistentCalls:
+              m_Calls: []
+          onUpdated:
+            m_PersistentCalls:
               m_Calls: []
           onLoopStarted:
             m_PersistentCalls:
@@ -507,8 +627,8 @@ MonoBehaviour:
               m_Calls: []
         motions:
           items:
-          - id: 7
-    00000006:
+          - id: 10
+    00000008:
       type: {class: MoveVectorMotion/ValueBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
       data:
         displayName: 
@@ -516,7 +636,15 @@ MonoBehaviour:
         isEnabled: 1
         item: {fileID: 1168015055}
         value: {x: 0, y: 2, z: 0}
-    00000007:
+    00000009:
+      type: {class: MoveVectorMotion/ValueBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
+      data:
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 1168015055}
+        value: {x: 0, y: 2, z: 0}
+    0000000A:
       type: {class: MoveVectorMotion/ValueBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
       data:
         displayName: 

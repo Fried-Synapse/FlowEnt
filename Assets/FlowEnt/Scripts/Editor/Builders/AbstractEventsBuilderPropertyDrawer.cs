@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Editor
             for (int i = 0; i < Properties.Count; i++)
             {
                 TPropertiesEnum prop = Properties[i];
-                Rect propertyPosition = FlowEntEditorGUILayout.GetRect(position, i, PropertyHeight, PropertyHeight);
+                Rect propertyPosition = FlowEntEditorGUILayout.GetRect(EditorGUI.IndentedRect(position), i, PropertyHeight, PropertyHeight);
                 EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(prop.ToString()));
             }
         }
