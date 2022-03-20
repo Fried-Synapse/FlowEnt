@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the alpha for the specified shader property using a gradient.
     /// </summary>
-    public class ColorGradientPropertyIdMotion : AbstractGradientMotion<Material>
+    public class ColorGradientPropertyIdMotion : AbstractColorGradientMotion<Material>
     {
         public ColorGradientPropertyIdMotion(Material item, int propertyId, Gradient gradient) : base(item, gradient)
         {

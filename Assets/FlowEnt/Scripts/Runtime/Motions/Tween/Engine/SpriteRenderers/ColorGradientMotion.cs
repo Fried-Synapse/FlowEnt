@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers
     /// <summary>
     /// Lerps the <see cref="SpriteRenderer.color" /> value using a gradient.
     /// </summary>
-    public class ColorGradientMotion : AbstractGradientMotion<SpriteRenderer>
+    public class ColorGradientMotion : AbstractColorGradientMotion<SpriteRenderer>
     {
         [Serializable]
         public class Builder : AbstractGradientBuilder

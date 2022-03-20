@@ -3,21 +3,18 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
-    public abstract class AbstractGradientMotion<TItem> : AbstractTweenMotion<TItem>
+    public abstract class AbstractGradientMotion<TItem> : AbstractValueMotion<TItem, Gradient>
         where TItem : class
     {
-        [Serializable]
-        public abstract class AbstractGradientBuilder : AbstractBuilder
+        protected AbstractGradientMotion(TItem item, Gradient value) : base(item, value)
         {
-            [SerializeField]
-            protected Gradient gradient;
         }
 
-        protected AbstractGradientMotion(TItem item, Gradient gradient) : base(item)
+        protected AbstractGradientMotion(TItem item, Gradient from, Gradient to) : base(item, from, to)
         {
-            this.gradient = gradient;
         }
 
-        protected readonly Gradient gradient;
+        protected override Func<Gradient, Gradient, float, Gradient> LerpFunction => Color.LerpUnclamped;
+        protected override Gradient GetTo(Gradient from, Gradient value) => from + value;
     }
 }

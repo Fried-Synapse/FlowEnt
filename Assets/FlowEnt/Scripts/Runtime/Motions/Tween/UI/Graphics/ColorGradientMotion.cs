@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
     /// Lerps the <see cref="Graphic.color" /> value using a gradient.
     /// </summary>
     /// <typeparam name="TGraphic"></typeparam>
-    public class ColorGradientMotion<TGraphic> : AbstractGradientMotion<TGraphic>
+    public class ColorGradientMotion<TGraphic> : AbstractColorGradientMotion<TGraphic>
         where TGraphic : Graphic
     {
         public ColorGradientMotion(TGraphic item, Gradient gradient) : base(item, gradient)
