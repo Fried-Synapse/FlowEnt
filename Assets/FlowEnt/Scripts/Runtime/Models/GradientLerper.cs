@@ -5,13 +5,16 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public struct GradientLerper
+    public class GradientOperation
     {
         private const int MaxKeys = 8;
-        public GradientLerper(Gradient a, Gradient b)
+
+        private Gradient a;
+        private Gradient b;
+        private List<float> keys;
+
+        private void Init(Gradient a, Gradient b)
         {
-            this.a = a;
-            this.b = b;
             List<float> keys = new List<float>();
             void tryAddKey(float key)
             {
@@ -43,26 +46,25 @@ namespace FriedSynapse.FlowEnt
             {
                 throw new InvalidOperationException($"The two gradients cannot have more than {MaxKeys} keys in total.");
             }
+            this.a = a;
+            this.b = b;
             this.keys = keys.Take(Math.Min(keys.Count, MaxKeys)).ToList();
         }
 
-#pragma warning disable RCS1085
-        private Gradient a;
-        public Gradient A { get => a; set => a = value; }
-        private Gradient b;
-        public Gradient B { get => b; set => b = value; }
-#pragma warning restore RCS1085
-        private readonly List<float> keys;
-
-        public Gradient Lerp(float t)
+        private Gradient RunOperation(Gradient a, Gradient b, Func<float, Color> operation)
         {
+            if (this.a != a || this.b != b)
+            {
+                Init(a, b);
+            }
+
             GradientColorKey[] colours = new GradientColorKey[keys.Count];
             GradientAlphaKey[] alphas = new GradientAlphaKey[keys.Count];
 
             for (int i = 0; i < keys.Count; i++)
             {
                 float key = keys[i];
-                Color colour = Color.Lerp(a.Evaluate(key), b.Evaluate(key), t);
+                Color colour = operation(key);
                 colours[i] = new GradientColorKey(colour, key);
                 alphas[i] = new GradientAlphaKey(colour.a, key);
             }
@@ -72,5 +74,17 @@ namespace FriedSynapse.FlowEnt
 
             return gradient;
         }
+
+        public Gradient Addition(Gradient a, Gradient b)
+            => RunOperation(a, b, (key) => a.Evaluate(key) + b.Evaluate(key));
+
+        public Gradient Difference(Gradient a, Gradient b)
+            => RunOperation(a, b, (key) => a.Evaluate(key) - b.Evaluate(key));
+
+        public Gradient Lerp(Gradient a, Gradient b, float t)
+                => RunOperation(a, b, (key) => Color.Lerp(a.Evaluate(key), b.Evaluate(key), t));
+
+        public Gradient LerpUnclamped(Gradient a, Gradient b, float t)
+                => RunOperation(a, b, (key) => Color.LerpUnclamped(a.Evaluate(key), b.Evaluate(key), t));
     }
 }

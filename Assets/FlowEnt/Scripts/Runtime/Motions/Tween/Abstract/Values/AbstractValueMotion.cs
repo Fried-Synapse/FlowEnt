@@ -3,9 +3,34 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
-    public abstract class AbstractValueMotion<TItem, TValue> : AbstractTweenMotion<TItem>
+    public abstract class AbstractStructValueMotion<TItem, TValue> : AbstractValueMotion<TItem, TValue>
         where TItem : class
         where TValue : struct
+    {
+        protected AbstractStructValueMotion(TItem item, TValue value) : base(item, value)
+        {
+        }
+
+        protected AbstractStructValueMotion(TItem item, TValue? from, TValue to) : base(item, from != null, from ?? default, to)
+        {
+        }
+    }
+
+    public abstract class AbstractClassValueMotion<TItem, TValue> : AbstractValueMotion<TItem, TValue>
+        where TItem : class
+        where TValue : class
+    {
+        protected AbstractClassValueMotion(TItem item, TValue value) : base(item, value)
+        {
+        }
+
+        protected AbstractClassValueMotion(TItem item, TValue from, TValue to) : base(item, from != null, from ?? default, to)
+        {
+        }
+    }
+
+    public abstract class AbstractValueMotion<TItem, TValue> : AbstractTweenMotion<TItem>
+        where TItem : class
     {
         [Serializable]
         public abstract class AbstractValueBuilder : AbstractBuilder
@@ -29,12 +54,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
             lerpFunction = LerpFunction;
         }
 
-        protected AbstractValueMotion(TItem item, TValue? from, TValue to) : base(item)
+        protected AbstractValueMotion(TItem item, bool hasFrom, TValue from, TValue to) : base(item)
         {
-            hasFrom = from != null;
+            this.hasFrom = hasFrom;
             if (hasFrom)
             {
-                this.from = from.Value;
+                this.from = from;
             }
             hasTo = true;
             this.to = to;
