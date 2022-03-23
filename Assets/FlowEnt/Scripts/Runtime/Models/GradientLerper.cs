@@ -11,6 +11,7 @@ namespace FriedSynapse.FlowEnt
 
         private Gradient a;
         private Gradient b;
+        private readonly Gradient result = new Gradient();
         private List<float> keys;
 
         private void Init(Gradient a, Gradient b)
@@ -69,10 +70,9 @@ namespace FriedSynapse.FlowEnt
                 alphas[i] = new GradientAlphaKey(colour.a, key);
             }
 
-            Gradient gradient = new Gradient();
-            gradient.SetKeys(colours, alphas);
+            result.SetKeys(colours, alphas);
 
-            return gradient;
+            return result;
         }
 
         public Gradient Addition(Gradient a, Gradient b)
