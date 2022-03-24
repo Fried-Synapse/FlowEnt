@@ -14,9 +14,9 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
         }
 
-        private readonly GradientOperation lerper = new GradientOperation();
+        private readonly GradientOperations lerper = new GradientOperations();
 
         protected override Func<Gradient, Gradient, float, Gradient> LerpFunction => lerper.LerpUnclamped;
-        protected override Gradient GetTo(Gradient from, Gradient value) => new GradientOperation().Addition(from, value);
+        protected override Gradient GetTo(Gradient from, Gradient value) => GradientOperations.Add(from, value);
     }
 }

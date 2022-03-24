@@ -8,7 +8,7 @@ using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 {
-    public class RigidbodyTests : AbstractEngineTests
+    public class RigidbodyTests : AbstractEngineTests<Rigidbody>
     {
         #region Constants
 
@@ -38,25 +38,25 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        private Rigidbody rigidbody;
+        private Rigidbody component;
 
-        private Rigidbody Rigidbody
+        protected override Rigidbody Component
         {
             get
             {
-                if (rigidbody == null)
+                if (component == null)
                 {
-                    rigidbody = GameObject.AddComponent<Rigidbody>();
-                    rigidbody.isKinematic = true;
+                    component = GameObject.AddComponent<Rigidbody>();
+                    component.isKinematic = true;
                 }
-                return rigidbody;
+                return component;
             }
         }
 
         private void ArrangeForVelocity()
         {
-            Rigidbody.mass = 0;
-            Rigidbody.isKinematic = false;
+            Component.mass = 0;
+            Component.isKinematic = false;
         }
 
         #region Move
@@ -69,9 +69,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3 value = new Vector3(MoveValue, MoveValue, MoveValue);
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).Move(value).Start())
+                .Act(() => Component.Tween(TestTime).Move(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, Rigidbody.position))
+                .Assert(() => Assert.AreEqual(value, Component.position))
                 .Run();
         }
 
@@ -81,9 +81,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3 to = new Vector3(MoveToValue, MoveToValue, MoveToValue);
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveTo(to).Start())
+                .Act(() => Component.Tween(TestTime).MoveTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Rigidbody.position))
+                .Assert(() => Assert.AreEqual(to, Component.position))
                 .Run();
         }
 
@@ -95,14 +95,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.position)
+                .Act(() => Component.Tween(TestTime).MoveTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Component.position)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, Rigidbody.position);
+                    Assert.AreEqual(to, Component.position);
                 })
                 .Run();
         }
@@ -116,14 +116,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             Vector3? actualFrom = null;
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime)
-                    .OnUpdated((_) => actualFrom ??= Rigidbody.position)
+                .Act(() => Component.Tween(TestTime)
+                    .OnUpdated((_) => actualFrom ??= Component.position)
                     .MoveTo(Variables.AnimationCurve).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(Variables.AnimationCurve.Evaluate(0f), actualFrom);
-                    Assert.AreEqual(Variables.AnimationCurve.Evaluate(1f), Rigidbody.position);
+                    Assert.AreEqual(Variables.AnimationCurve.Evaluate(1f), Component.position);
                 })
                 .Run();
         }
@@ -138,9 +138,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float value = MoveValue;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveX(value).Start())
+                .Act(() => Component.Tween(TestTime).MoveX(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(value, 0, 0), Rigidbody.position))
+                .Assert(() => Assert.AreEqual(new Vector3(value, 0, 0), Component.position))
                 .Run();
         }
 
@@ -150,9 +150,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveXTo(to).Start())
+                .Act(() => Component.Tween(TestTime).MoveXTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Rigidbody.position.x))
+                .Assert(() => Assert.AreEqual(to, Component.position.x))
                 .Run();
         }
 
@@ -164,14 +164,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveXTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.position.x)
+                .Act(() => Component.Tween(TestTime).MoveXTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Component.position.x)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, Rigidbody.position.x);
+                    Assert.AreEqual(to, Component.position.x);
                 })
                 .Run();
         }
@@ -182,9 +182,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float value = MoveValue;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveY(value).Start())
+                .Act(() => Component.Tween(TestTime).MoveY(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(0, value, 0), Rigidbody.position))
+                .Assert(() => Assert.AreEqual(new Vector3(0, value, 0), Component.position))
                 .Run();
         }
 
@@ -194,9 +194,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveYTo(to).Start())
+                .Act(() => Component.Tween(TestTime).MoveYTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Rigidbody.position.y))
+                .Assert(() => Assert.AreEqual(to, Component.position.y))
                 .Run();
         }
 
@@ -208,14 +208,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveYTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.position.y)
+                .Act(() => Component.Tween(TestTime).MoveYTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Component.position.y)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, Rigidbody.position.y);
+                    Assert.AreEqual(to, Component.position.y);
                 })
                 .Run();
         }
@@ -226,9 +226,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float value = MoveValue;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveZ(value).Start())
+                .Act(() => Component.Tween(TestTime).MoveZ(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(0, 0, value), Rigidbody.position))
+                .Assert(() => Assert.AreEqual(new Vector3(0, 0, value), Component.position))
                 .Run();
         }
 
@@ -238,9 +238,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveZTo(to).Start())
+                .Act(() => Component.Tween(TestTime).MoveZTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Rigidbody.position.z))
+                .Assert(() => Assert.AreEqual(to, Component.position.z))
                 .Run();
         }
 
@@ -252,14 +252,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveZTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.position.z)
+                .Act(() => Component.Tween(TestTime).MoveZTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Component.position.z)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, Rigidbody.position.z);
+                    Assert.AreEqual(to, Component.position.z);
                 })
                 .Run();
         }
@@ -270,12 +270,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion(Rigidbody, Axis.XY, to)).Start())
+                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion(Component, Axis.XY, to)).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(to, Rigidbody.position.x);
-                    Assert.AreEqual(to, Rigidbody.position.y);
+                    Assert.AreEqual(to, Component.position.x);
+                    Assert.AreEqual(to, Component.position.y);
                 })
                 .Run();
         }
@@ -289,11 +289,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFromY = null;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).For(Rigidbody).Apply(new MoveAxisMotion(Rigidbody, Axis.XY, from, to))
+                .Act(() => new Tween(TestTime).For(Component).Apply(new MoveAxisMotion(Component, Axis.XY, from, to))
                                     .OnUpdated((_) =>
                                     {
-                                        startingFromX ??= Rigidbody.position.x;
-                                        startingFromY ??= Rigidbody.position.y;
+                                        startingFromX ??= Component.position.x;
+                                        startingFromY ??= Component.position.y;
                                     })
                                     .Start())
                 .AssertTime(TestTime)
@@ -301,8 +301,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 {
                     Assert.AreEqual(from, startingFromX);
                     Assert.AreEqual(from, startingFromY);
-                    Assert.AreEqual(to, Rigidbody.position.x);
-                    Assert.AreEqual(to, Rigidbody.position.y);
+                    Assert.AreEqual(to, Component.position.x);
+                    Assert.AreEqual(to, Component.position.y);
                 })
                 .Run();
         }
@@ -316,15 +316,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() =>
                 {
                     return new Flow()
-                                .Queue(Rigidbody.Tween(TestTime).MoveXTo(to))
-                                .At(0, Rigidbody.Tween(TestTime).MoveYTo(to))
+                                .Queue(Component.Tween(TestTime).MoveXTo(to))
+                                .At(0, Component.Tween(TestTime).MoveYTo(to))
                                 .Start();
                 })
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(to, Rigidbody.position.x);
-                    Assert.AreEqual(to, Rigidbody.position.y);
+                    Assert.AreEqual(to, Component.position.x);
+                    Assert.AreEqual(to, Component.position.y);
                 })
                 .Run();
         }
@@ -341,13 +341,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() =>
                 {
                     return new Flow()
-                                .Queue(Rigidbody.Tween(TestTime).MoveXTo(from, to))
-                                .At(0, Rigidbody.Tween(TestTime).MoveYTo(from, to))
+                                .Queue(Component.Tween(TestTime).MoveXTo(from, to))
+                                .At(0, Component.Tween(TestTime).MoveYTo(from, to))
                                 .OnUpdated((_) =>
                                 {
-                                    Debug.Log($"{Rigidbody.position.x}");
-                                    startingFromX ??= Rigidbody.position.x;
-                                    startingFromY ??= Rigidbody.position.y;
+                                    Debug.Log($"{Component.position.x}");
+                                    startingFromX ??= Component.position.x;
+                                    startingFromY ??= Component.position.y;
                                 })
                                 .Start();
                 })
@@ -356,8 +356,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 {
                     Assert.AreEqual(from, startingFromX);
                     Assert.AreEqual(from, startingFromY);
-                    Assert.AreEqual(to, Rigidbody.position.x);
-                    Assert.AreEqual(to, Rigidbody.position.y);
+                    Assert.AreEqual(to, Component.position.x);
+                    Assert.AreEqual(to, Component.position.y);
                 })
                 .Run();
         }
@@ -372,9 +372,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3 to = new Vector3(MoveToSplineValue, MoveToSplineValue, MoveToSplineValue);
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveTo(new LinearSpline(GetSpline(to))).Start())
+                .Act(() => Component.Tween(TestTime).MoveTo(new LinearSpline(GetSpline(to))).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.position))
+                .Assert(() => FlowEntAssert.AreEqual(to, Component.position))
                 .Run();
         }
 
@@ -384,9 +384,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3 to = new Vector3(MoveToSplineValue, MoveToSplineValue, MoveToSplineValue);
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MoveTo(new BSpline(GetSpline(to))).Start())
+                .Act(() => Component.Tween(TestTime).MoveTo(new BSpline(GetSpline(to))).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.position))
+                .Assert(() => FlowEntAssert.AreEqual(to, Component.position))
                 .Run();
         }
 
@@ -406,10 +406,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Quaternion to = from * value;
 
             yield return CreateTester()
-                .Arrange(() => Rigidbody.rotation = from)
-                .Act(() => Rigidbody.Tween(TestTime).Rotate(value).Start())
+                .Arrange(() => Component.rotation = from)
+                .Act(() => Component.Tween(TestTime).Rotate(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.rotation))
+                .Assert(() => FlowEntAssert.AreEqual(to, Component.rotation))
                 .Run();
         }
 
@@ -419,9 +419,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Quaternion to = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, RotateZValue));
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).RotateTo(to).Start())
+                .Act(() => Component.Tween(TestTime).RotateTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.rotation))
+                .Assert(() => FlowEntAssert.AreEqual(to, Component.rotation))
                 .Run();
         }
 
@@ -433,14 +433,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Quaternion? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).RotateTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.rotation)
+                .Act(() => Component.Tween(TestTime).RotateTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Component.rotation)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     FlowEntAssert.AreEqual(from, startingFrom.Value);
-                    FlowEntAssert.AreEqual(to, Rigidbody.rotation);
+                    FlowEntAssert.AreEqual(to, Component.rotation);
                 })
                 .Run();
         }
@@ -457,10 +457,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3 to = from + value;
 
             yield return CreateTester()
-                .Arrange(() => Rigidbody.rotation = Quaternion.Euler(from))
-                .Act(() => Rigidbody.Tween(TestTime).Rotate(value).Start())
+                .Arrange(() => Component.rotation = Quaternion.Euler(from))
+                .Act(() => Component.Tween(TestTime).Rotate(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.rotation.eulerAngles))
+                .Assert(() => FlowEntAssert.AreEqual(to, Component.rotation.eulerAngles))
                 .Run();
         }
 
@@ -470,9 +470,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3 to = new Vector3(RotateXValue, RotateYValue, RotateZValue);
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).RotateTo(to).Start())
+                .Act(() => Component.Tween(TestTime).RotateTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.rotation.eulerAngles))
+                .Assert(() => FlowEntAssert.AreEqual(to, Component.rotation.eulerAngles))
                 .Run();
         }
 
@@ -484,14 +484,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).RotateTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.rotation.eulerAngles)
+                .Act(() => Component.Tween(TestTime).RotateTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Component.rotation.eulerAngles)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     FlowEntAssert.AreEqual(from, startingFrom.Value);
-                    FlowEntAssert.AreEqual(to, Rigidbody.rotation.eulerAngles);
+                    FlowEntAssert.AreEqual(to, Component.rotation.eulerAngles);
                 })
                 .Run();
         }
@@ -507,10 +507,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             float initialMass = 0;
             yield return CreateTester()
-                .Arrange(() => initialMass = Rigidbody.mass)
-                .Act(() => Rigidbody.Tween(TestTime).Mass(MoveValue).Start())
+                .Arrange(() => initialMass = Component.mass)
+                .Act(() => Component.Tween(TestTime).Mass(MoveValue).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(MoveValue, Rigidbody.mass - initialMass))
+                .Assert(() => Assert.AreEqual(MoveValue, Component.mass - initialMass))
                 .Run();
         }
 
@@ -518,9 +518,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         public IEnumerator MassTo()
         {
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MassTo(MoveToValue).Start())
+                .Act(() => Component.Tween(TestTime).MassTo(MoveToValue).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(MoveToValue, Rigidbody.mass))
+                .Assert(() => Assert.AreEqual(MoveToValue, Component.mass))
                 .Run();
         }
 
@@ -530,14 +530,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => Rigidbody.Tween(TestTime).MassTo(MoveFromValue, MoveToValue)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.mass)
+                .Act(() => Component.Tween(TestTime).MassTo(MoveFromValue, MoveToValue)
+                                    .OnUpdated((_) => startingFrom ??= Component.mass)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(MoveFromValue, startingFrom);
-                    Assert.AreEqual(MoveToValue, Rigidbody.mass);
+                    Assert.AreEqual(MoveToValue, Component.mass);
                 })
                 .Run();
         }
@@ -553,9 +553,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
-                .Act(() => Rigidbody.Tween(TestTime).Velocity(value).Start())
+                .Act(() => Component.Tween(TestTime).Velocity(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Rigidbody.velocity, VelocityErrorMargin))
+                .Assert(() => FlowEntAssert.AreEqual(value, Component.velocity, VelocityErrorMargin))
                 .Run();
         }
 
@@ -566,9 +566,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
-                .Act(() => Rigidbody.Tween(TestTime).VelocityTo(to).Start())
+                .Act(() => Component.Tween(TestTime).VelocityTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.velocity, VelocityErrorMargin))
+                .Assert(() => FlowEntAssert.AreEqual(to, Component.velocity, VelocityErrorMargin))
                 .Run();
         }
 
@@ -581,14 +581,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
-                .Act(() => Rigidbody.Tween(TestTime).VelocityTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.velocity)
+                .Act(() => Component.Tween(TestTime).VelocityTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Component.velocity)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingFrom);
-                    FlowEntAssert.AreEqual(to, Rigidbody.velocity, VelocityErrorMargin);
+                    FlowEntAssert.AreEqual(to, Component.velocity, VelocityErrorMargin);
                 })
                 .Run();
         }
@@ -604,9 +604,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
-                .Act(() => Rigidbody.Tween(TestTime).AngularVelocity(value).Start())
+                .Act(() => Component.Tween(TestTime).AngularVelocity(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Rigidbody.angularVelocity, VelocityErrorMargin))
+                .Assert(() => FlowEntAssert.AreEqual(value, Component.angularVelocity, VelocityErrorMargin))
                 .Run();
         }
 
@@ -617,9 +617,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
-                .Act(() => Rigidbody.Tween(TestTime).AngularVelocityTo(to).Start())
+                .Act(() => Component.Tween(TestTime).AngularVelocityTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, Rigidbody.angularVelocity, VelocityErrorMargin))
+                .Assert(() => FlowEntAssert.AreEqual(to, Component.angularVelocity, VelocityErrorMargin))
                 .Run();
         }
 
@@ -632,14 +632,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
-                .Act(() => Rigidbody.Tween(TestTime).AngularVelocityTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Rigidbody.angularVelocity)
+                .Act(() => Component.Tween(TestTime).AngularVelocityTo(from, to)
+                                    .OnUpdated((_) => startingFrom ??= Component.angularVelocity)
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingFrom);
-                    FlowEntAssert.AreEqual(to, Rigidbody.angularVelocity, VelocityErrorMargin);
+                    FlowEntAssert.AreEqual(to, Component.angularVelocity, VelocityErrorMargin);
                 })
                 .Run();
         }
