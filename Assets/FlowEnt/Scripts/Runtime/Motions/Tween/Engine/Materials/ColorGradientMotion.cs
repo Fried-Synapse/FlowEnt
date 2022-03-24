@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the <see cref="Material.color" /> value using a gradient.
     /// </summary>
-    public class ColorGradientMotion : AbstractGradientMotion<Material>
+    public class ColorGradientMotion : AbstractColorGradientMotion<Material>
     {
         [Serializable]
         public class Builder : AbstractGradientBuilder

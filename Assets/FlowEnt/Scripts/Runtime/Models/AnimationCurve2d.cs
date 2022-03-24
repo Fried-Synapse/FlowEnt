@@ -4,26 +4,31 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class AnimationCurve2d
+    public struct AnimationCurve2d
     {
+        public AnimationCurve2d(AnimationCurve x, AnimationCurve y)
+        {
+            this.x = x;
+            this.y = y;
+            cache = Vector3.zero;
+        }
+
         [SerializeField]
-        protected AnimationCurve x;
-#pragma warning disable RCS1085 
+        private AnimationCurve x;
         public AnimationCurve X { get => x; set => x = value; }
-#pragma warning restore RCS1085
 
         [SerializeField]
-        protected AnimationCurve y;
-#pragma warning disable RCS1085
+        private AnimationCurve y;
         public AnimationCurve Y { get => y; set => y = value; }
-#pragma warning restore RCS1085
 
-        private Vector2 cache2d;
+        private Vector2 cache;
         public Vector2 Evaluate(float t)
         {
-            cache2d.x = x.Evaluate(t);
-            cache2d.x = y.Evaluate(t);
-            return cache2d;
+            cache.x = x.Evaluate(t);
+            cache.x = y.Evaluate(t);
+            return cache;
         }
+
+        public static implicit operator AnimationCurve3d(AnimationCurve2d curve) => new AnimationCurve3d(curve.x, curve.y, new AnimationCurve());
     }
 }

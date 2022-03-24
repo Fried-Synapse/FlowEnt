@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
-    public abstract class AbstractVector3Motion<TItem> : AbstractValueMotion<TItem, Vector3>
+    public abstract class AbstractVector3Motion<TItem> : AbstractStructValueMotion<TItem, Vector3>
         where TItem : class
     {
         protected AbstractVector3Motion(TItem item, Vector3 value) : base(item, value)

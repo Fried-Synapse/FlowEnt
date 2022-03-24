@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Cameras
     /// <summary>
     /// Lerps the <see cref="Camera.backgroundColor" /> value using a gradient.
     /// </summary>
-    public class BackgroundColorGradientMotion : AbstractGradientMotion<Camera>
+    public class BackgroundColorGradientMotion : AbstractColorGradientMotion<Camera>
     {
         [Serializable]
         public class Builder : AbstractGradientBuilder
