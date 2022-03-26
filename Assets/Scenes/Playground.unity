@@ -218,8 +218,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     motions:
-      items:
-      - id: 0
+      items: []
   echo:
     options:
       name: 
@@ -289,16 +288,6 @@ MonoBehaviour:
       items: []
   references:
     version: 1
-    00000000:
-      type: {class: RotateAxisMotion/FromToBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
-      data:
-        displayName: 
-        isDisplayNameEnabled: 0
-        isEnabled: 1
-        item: {fileID: 1168015055}
-        from: 0
-        to: 360
-        axis: 3
 --- !u!1 &494542730
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +932,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168015054}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
