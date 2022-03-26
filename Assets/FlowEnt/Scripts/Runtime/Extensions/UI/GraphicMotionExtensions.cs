@@ -16,7 +16,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TGraphic"></typeparam>
         public static TweenMotionProxy<TGraphic> Alpha<TGraphic>(this TweenMotionProxy<TGraphic> proxy, float value)
             where TGraphic : Graphic
-            => proxy.Apply(new AlphaMotion<TGraphic>(proxy.Item, value));
+            => proxy.Apply(new AlphaMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="AlphaMotion" /> to the tween.
@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TGraphic"></typeparam>
         public static TweenMotionProxy<TGraphic> AlphaTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, float to)
             where TGraphic : Graphic
-            => proxy.Apply(new AlphaMotion<TGraphic>(proxy.Item, default, to));
+            => proxy.Apply(new AlphaMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="AlphaMotion" /> to the tween.
@@ -37,7 +37,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TGraphic"></typeparam>
         public static TweenMotionProxy<TGraphic> AlphaTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, float from, float to)
             where TGraphic : Graphic
-            => proxy.Apply(new AlphaMotion<TGraphic>(proxy.Item, from, to));
+            => proxy.Apply(new AlphaMotion(proxy.Item, from, to));
 
         #endregion
 
@@ -51,7 +51,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TGraphic"></typeparam>
         public static TweenMotionProxy<TGraphic> Color<TGraphic>(this TweenMotionProxy<TGraphic> proxy, Color value)
             where TGraphic : Graphic
-            => proxy.Apply(new ColorMotion<TGraphic>(proxy.Item, value));
+            => proxy.Apply(new ColorMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.
@@ -61,7 +61,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TGraphic"></typeparam>
         public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, Color to)
             where TGraphic : Graphic
-            => proxy.Apply(new ColorMotion<TGraphic>(proxy.Item, default, to));
+            => proxy.Apply(new ColorMotion(proxy.Item, default, to));
 
         /// <summary>
         /// Applies a <see cref="ColorMotion" /> to the tween.
@@ -72,7 +72,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TGraphic"></typeparam>
         public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, Color from, Color to)
             where TGraphic : Graphic
-            => proxy.Apply(new ColorMotion<TGraphic>(proxy.Item, from, to));
+            => proxy.Apply(new ColorMotion(proxy.Item, from, to));
 
         /// <summary>
         /// Applies a <see cref="ColorGradientMotion" /> to the tween.
@@ -82,7 +82,7 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TGraphic"></typeparam>
         public static TweenMotionProxy<TGraphic> ColorTo<TGraphic>(this TweenMotionProxy<TGraphic> proxy, Gradient gradient)
             where TGraphic : Graphic
-            => proxy.Apply(new ColorGradientMotion<TGraphic>(proxy.Item, gradient));
+            => proxy.Apply(new ColorGradientMotion(proxy.Item, gradient));
 
         #endregion
     }

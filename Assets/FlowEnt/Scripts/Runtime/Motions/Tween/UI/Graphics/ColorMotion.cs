@@ -7,15 +7,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
     /// <summary>
     /// Lerps the <see cref="Graphic.color" /> value.
     /// </summary>
-    /// <typeparam name="TGraphic"></typeparam>
-    public class ColorMotion<TGraphic> : AbstractColorMotion<TGraphic>
-        where TGraphic : Graphic
+    public class ColorMotion : AbstractColorMotion<Graphic>
     {
-        public ColorMotion(TGraphic item, Color value) : base(item, value)
+        public ColorMotion(Graphic item, Color value) : base(item, value)
         {
         }
 
-        public ColorMotion(TGraphic item, Color? from, Color to) : base(item, from, to)
+        public ColorMotion(Graphic item, Color? from, Color to) : base(item, from, to)
         {
         }
 
