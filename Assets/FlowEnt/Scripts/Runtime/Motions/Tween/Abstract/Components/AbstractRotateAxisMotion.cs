@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
@@ -5,7 +6,19 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     public abstract class AbstractRotateAxisMotion<TTransform> : AbstractFloatMotion<TTransform>
             where TTransform : Transform
     {
-        //TODO add builders
+        [Serializable]
+        public abstract class AbstractRotateAxisValueBuilder : AbstractValueBuilder
+        {
+            [SerializeField]
+            protected Axis axis;
+        }
+
+        [Serializable]
+        public abstract class AbstractRotateAxisFromToBuilder : AbstractFromToBuilder
+        {
+            [SerializeField]
+            protected Axis axis;
+        }
 
         protected AbstractRotateAxisMotion(TTransform item, Axis axis, float value) : base(item, value)
         {
