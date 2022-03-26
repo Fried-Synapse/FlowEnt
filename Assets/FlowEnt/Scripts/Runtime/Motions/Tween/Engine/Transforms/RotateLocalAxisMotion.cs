@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -8,7 +9,19 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// </summary>
     public class RotateLocalAxisMotion : AbstractRotateAxisMotion<Transform>
     {
-        //TODO add builders
+        [Serializable]
+        public class ValueBuilder : AbstractRotateAxisValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new RotateLocalAxisMotion(item, axis, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractRotateAxisFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new RotateLocalAxisMotion(item, axis, from, to);
+        }
 
         public RotateLocalAxisMotion(Transform item, Axis axis, float value) : base(item, axis, value)
         {

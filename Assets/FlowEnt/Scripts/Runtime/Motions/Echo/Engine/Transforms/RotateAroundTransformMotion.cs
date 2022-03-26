@@ -1,3 +1,5 @@
+using System;
+using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
@@ -7,7 +9,19 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
     /// </summary>
     public class RotateAroundTransformMotion : RotateAroundVectorMotion
     {
-        //TODO add builders
+        [Serializable]
+        public new class Builder : AbstractRotateAroundBuilder
+        {
+#pragma warning disable IDE0044, RCS1169
+            [SerializeField]
+            private Transform point;
+#pragma warning restore IDE0044, RCS1169
+
+            public override IEchoMotion Build()
+            {
+                return new RotateAroundTransformMotion(item, point, axis, speed);
+            }
+        }
 
         public RotateAroundTransformMotion(Transform item, Transform point, Vector3 axis, float speed) : base(item, point.position, axis, speed)
         {

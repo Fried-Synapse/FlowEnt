@@ -1,3 +1,5 @@
+using System;
+using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
@@ -7,7 +9,19 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// </summary>
     public class RotateAroundTransformMotion : RotateAroundVectorMotion
     {
-        //TODO add builders
+        [Serializable]
+        public new class Builder : AbstractRotateAroundBuilder
+        {
+#pragma warning disable IDE0044, RCS1169
+            [SerializeField]
+            private Transform point;
+#pragma warning restore IDE0044, RCS1169
+
+            public override ITweenMotion Build()
+            {
+                return new RotateAroundTransformMotion(item, point, axis, toAngle);
+            }
+        }
 
         public RotateAroundTransformMotion(Transform item, Transform point, Vector3 axis, float toAngle) : base(item, point.position, axis, toAngle)
         {
