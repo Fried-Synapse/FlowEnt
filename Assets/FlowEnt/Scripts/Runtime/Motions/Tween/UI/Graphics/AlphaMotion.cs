@@ -6,15 +6,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
     /// <summary>
     /// Lerps the alpha for <see cref="Graphic.color" /> value.
     /// </summary>
-    /// <typeparam name="TGraphic"></typeparam>
-    public class AlphaMotion<TGraphic> : AbstractAlphaMotion<TGraphic>
-        where TGraphic : Graphic
+    public class AlphaMotion : AbstractAlphaMotion<Graphic>
     {
-        public AlphaMotion(TGraphic item, float value) : base(item, value)
+        public AlphaMotion(Graphic item, float value) : base(item, value)
         {
         }
 
-        public AlphaMotion(TGraphic item, float? from, float to) : base(item, from, to)
+        public AlphaMotion(Graphic item, float? from, float to) : base(item, from, to)
         {
         }
 
