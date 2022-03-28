@@ -180,11 +180,11 @@ namespace FriedSynapse.FlowEnt
 
         private void CompleteLoop()
         {
-            remainingTime = time;
             remainingLoops--;
 
             if (!(remainingLoops <= 0))
             {
+                remainingTime = time;
                 for (int i = 0; i < motions.Length; i++)
                 {
                     motions[i].OnLoopComplete();
