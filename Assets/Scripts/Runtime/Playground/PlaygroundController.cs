@@ -33,7 +33,7 @@ namespace FriedSynapse.FlowEnt.Builder
         {
             Echo.Build().Start();
             Tween.Build().Start();
-            Flow.Build().Start();
+            //Flow.Build().Start();
         }
 #pragma warning restore IDE0051, RCS1213
 

@@ -21,11 +21,11 @@ namespace FriedSynapse.Release
         private float LabelContentWidth => position.width - (2 * Margin) - LabelWidth;
 
 #pragma warning disable IDE0051, RCS1213
-        [MenuItem("FriedSynapse/Release", true, 1)]
+        [MenuItem("Fried Synapse/Release", true, 1)]
         private static bool ValidateOpen()
             => File.Exists(ConfigPath);
 
-        [MenuItem("FriedSynapse/Release", false, 1)]
+        [MenuItem("Fried Synapse/Release", false, 1)]
         private static void Open()
         {
             ReleaseWindow window = GetWindow<ReleaseWindow>("Release");

@@ -17,6 +17,8 @@ namespace FriedSynapse.FlowEnt
         IUpdateController,
         IControllable
     {
+        #region Singleton
+
         private static readonly object lockObject = new object();
         private static IFlowEntUpdater updater;
         private static FlowEntController instance;
@@ -57,6 +59,15 @@ namespace FriedSynapse.FlowEnt
 
         public static bool HasInstance => instance != null;
 
+        internal void ResetInstance()
+        {
+            instance = null;
+        }
+
+        #endregion
+
+        #region Members
+
         internal readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
         internal readonly UpdatablesFastList<AbstractUpdatable> smoothUpdatables = new UpdatablesFastList<AbstractUpdatable>();
         internal readonly UpdatablesFastList<AbstractUpdatable> lateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
@@ -76,7 +87,7 @@ namespace FriedSynapse.FlowEnt
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Value cannot be less than 0");
+                    throw new ArgumentException("Value cannot be less than 0.");
                 }
                 timeScale = value;
             }
@@ -89,7 +100,9 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public PlayState PlayState { get => playState; }
 
-#pragma warning disable IDE0051, RCS1213
+        #endregion
+
+        #region Update
 
         internal void Update(float deltaTime, float smoothDeltaTime)
         {
@@ -129,8 +142,6 @@ namespace FriedSynapse.FlowEnt
             Update(customUpdatables, deltaTime * timeScale);
         }
 
-#pragma warning restore IDE0051, RCS1213
-
         internal static void Update(UpdatablesFastList<AbstractUpdatable> updatables, float scaledDeltaTime)
         {
             AbstractUpdatable index = updatables.anchor.next;
@@ -156,6 +167,8 @@ namespace FriedSynapse.FlowEnt
                 index = index.next;
             }
         }
+
+        #endregion
 
         #region IUpdateController
 
