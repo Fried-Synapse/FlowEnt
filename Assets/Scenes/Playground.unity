@@ -218,7 +218,8 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     motions:
-      items: []
+      items:
+      - id: 0
   echo:
     options:
       name: 
@@ -288,6 +289,14 @@ MonoBehaviour:
       items: []
   references:
     version: 1
+    00000000:
+      type: {class: MoveVectorMotion/ValueBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
+      data:
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 1168015055}
+        value: {x: 0, y: 3, z: 0}
 --- !u!1 &494542730
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 {
-    "name": "FriedSynapse.FlowEnt.Builder.Edtior",
-    "rootNamespace": "FriedSynapse.FlowEnt.Builder.Edtior",
+    "name": "FriedSynapse.FlowEnt.Builder.Editor",
+    "rootNamespace": "FriedSynapse.FlowEnt.Builder.Editor",
     "references": [
         "GUID:abc4d702d10bd43db97c457f476c9063"
     ],

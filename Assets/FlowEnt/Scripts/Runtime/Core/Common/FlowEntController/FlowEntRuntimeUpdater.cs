@@ -34,6 +34,11 @@ namespace FriedSynapse.FlowEnt
         {
             controller.FixedUpdate(Time.fixedDeltaTime);
         }
+
+        private void OnDestroy()
+        {
+            controller.ResetInstance();
+        }
 #pragma warning restore IDE0051, RCS1213
     }
 }
