@@ -6,7 +6,8 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public class FlowEntInspectorWindow : EditorWindow
     {
-        private ControllableSection<FlowEntController> controllableSection;
+        private ControllableSection controllableSection;
+        bool? showScriptedPreview;
         private Vector2 motionListScrollPosition;
         private int tweenCount;
         private int echoCount;
@@ -17,24 +18,44 @@ namespace FriedSynapse.FlowEnt.Editor
         private void Update()
         {
             Repaint();
-            controllableSection?.Update();
         }
 
         private void OnGUI()
         {
             FlowEntEditorGUILayout.Header("FlowEnt Inspector");
-
-            controllableSection ??= new ControllableSection<FlowEntController>(FlowEntController.Instance);
+            Debug.Log($"{FlowEntController.Instance}");
+            if (controllableSection == null || controllableSection.Controllable != FlowEntController.Instance)
+            {
+                controllableSection = new ControllableSection(FlowEntController.Instance);
+            }
             controllableSection.ShowControls();
 
-            EditorGUILayout.Space(20f);
+            ShowScriptedPreview();
 
             ShowMotionList();
         }
 #pragma warning restore IDE0051, RCS1213
 
+        private void ShowScriptedPreview()
+        {
+            if (!(Selection.activeObject is GameObject activeObject))
+            {
+                return;
+            }
+            EditorGUILayout.Space(20f);
+
+            showScriptedPreview = EditorGUILayout.Foldout(showScriptedPreview ?? false, "Selected Animations");
+            if (showScriptedPreview.Value)
+            {
+                string name = activeObject.name;
+                EditorGUILayout.LabelField(name, GUILayout.Width(70f));
+            }
+        }
+
         private void ShowMotionList()
         {
+            EditorGUILayout.Space(20f);
+
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Search", GUILayout.Width(70f));
             search = EditorGUILayout.TextField(search);
@@ -57,13 +78,19 @@ namespace FriedSynapse.FlowEnt.Editor
             flowCount = 0;
 
             motionListScrollPosition = EditorGUILayout.BeginScrollView(motionListScrollPosition, GUILayout.Height(position.height - 150f));
-            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("updatables"));
-            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("smoothUpdatables"));
-            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("lateUpdatables"));
-            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("smoothLateUpdatables"));
-            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("fixedUpdatables"));
-            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex("customUpdatables"));
+            ShowAnimationList("updatables");
+            ShowAnimationList("smoothUpdatables");
+            ShowAnimationList("lateUpdatables");
+            ShowAnimationList("smoothLateUpdatables");
+            ShowAnimationList("fixedUpdatables");
+            ShowAnimationList("customUpdatables");
             EditorGUILayout.EndScrollView();
+        }
+
+        private void ShowAnimationList(string group)
+        {
+            //TODO put a header in here - we have the name
+            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex(group));
         }
 
         private void ShowAnimationList(AbstractUpdatable index)

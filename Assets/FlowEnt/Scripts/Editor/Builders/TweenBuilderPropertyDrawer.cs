@@ -36,9 +36,6 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        protected override Tween Build(SerializedProperty property)
-            => property.GetValue<TweenBuilder>().Build();
-
         protected override void OnAnimationUpdated(Data data, float t)
         {
             data.PreviewTime = data.PreviewAnimation.GetPropertyValue<float>("CurrentLoopRatio");

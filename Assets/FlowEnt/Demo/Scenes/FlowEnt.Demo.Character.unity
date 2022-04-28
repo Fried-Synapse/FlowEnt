@@ -193,15 +193,18 @@ MonoBehaviour:
       skipFrames: 0
       delay: 0
       timeScale: 1
-      loopCount: 1
       isLoopCountInfinite: 0
-      timeout: 0
+      loopCount: 1
       hasTimeout: 0
+      timeout: 0
     events:
       onStarted:
         m_PersistentCalls:
           m_Calls: []
       onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopStarted:
         m_PersistentCalls:
           m_Calls: []
       onLoopCompleted:

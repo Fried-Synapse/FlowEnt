@@ -152,7 +152,7 @@ namespace FriedSynapse.FlowEnt
                 try
                 {
 #endif
-                index.UpdateInternal(scaledDeltaTime);
+                    index.UpdateInternal(scaledDeltaTime);
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
                 }
                 catch (Exception ex)
@@ -242,6 +242,11 @@ namespace FriedSynapse.FlowEnt
             playState = PlayState.Playing;
         }
 
+        public void NextFrame()
+        {
+            throw new NotImplementedException("next frame not implemented");
+        }
+
         /// <summary>
         /// Stops all animations.
         /// </summary>
@@ -256,6 +261,9 @@ namespace FriedSynapse.FlowEnt
             Stop(customUpdatables, triggerOnCompleted);
         }
 
+        void IControllable.Stop()
+            => Stop();
+
         private static void Stop(UpdatablesFastList<AbstractUpdatable> updatables, bool triggerOnCompleted)
         {
             AbstractUpdatable index = updatables.anchor.next;
@@ -269,5 +277,8 @@ namespace FriedSynapse.FlowEnt
         }
 
         #endregion
+
+        public override string ToString()
+            => $"{base.ToString()} - updater: {updater}";
     }
 }

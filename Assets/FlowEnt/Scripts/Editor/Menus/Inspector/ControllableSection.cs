@@ -3,68 +3,53 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public class ControllableSection<TControllable>
-        where TControllable : IControllable
+    public class ControllableSection
     {
-        public ControllableSection(TControllable controllable)
+        public ControllableSection(IControllable controllable)
         {
-            this.controllable = controllable;
+            this.Controllable = controllable;
         }
 
-        private readonly TControllable controllable;
+        public IControllable Controllable { get; }
         private float? timeScale;
         private float? maxTimeScale;
-        private int skipFrames;
-
-        internal void Update()
-        {
-            if (skipFrames > 0)
-            {
-                skipFrames--;
-                if (skipFrames == 0)
-                {
-                    FlowEntController.Instance.Pause();
-                }
-            }
-        }
 
         internal void ShowControls()
         {
             EditorGUILayout.BeginHorizontal();
 
-            if (controllable.PlayState == PlayState.Playing)
+            if (Controllable.PlayState == PlayState.Playing)
             {
-                if (GUILayout.Button("Pause"))
+                if (GUILayout.Button(Icon.Pause, Icon.Style))
                 {
-                    controllable.Pause();
+                    Controllable.Pause();
                 }
             }
             else
             {
-                if (GUILayout.Button("Resume"))
+                if (GUILayout.Button(Icon.Play, Icon.Style))
                 {
-                    controllable.Resume();
+                    Controllable.Resume();
                 }
             }
 
-            GUI.enabled = controllable.PlayState == PlayState.Paused;
-            if (GUILayout.Button("Skip"))
+            GUI.enabled = Controllable.PlayState == PlayState.Paused;
+            if (GUILayout.Button(Icon.NextFrame, Icon.Style))
             {
-                controllable.Resume();
-                skipFrames = 2;
+                Controllable.NextFrame();
             }
             GUI.enabled = true;
 
-            if (GUILayout.Button("Stop"))
+            if (GUILayout.Button(Icon.Stop, Icon.Style))
             {
-                controllable.Stop();
+                Controllable.Stop();
             }
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
             if (timeScale == null)
             {
-                timeScale = controllable.TimeScale;
+                timeScale = Controllable.TimeScale;
             }
             if (maxTimeScale == null)
             {
@@ -74,7 +59,7 @@ namespace FriedSynapse.FlowEnt.Editor
             timeScale = EditorGUILayout.Slider(timeScale.Value, 0f, maxTimeScale.Value);
             EditorGUILayout.LabelField("Max", GUILayout.Width(30f));
             maxTimeScale = EditorGUILayout.FloatField(maxTimeScale.Value, GUILayout.Width(50f));
-            controllable.TimeScale = timeScale.Value;
+            Controllable.TimeScale = timeScale.Value;
             EditorGUILayout.EndHorizontal();
         }
     }

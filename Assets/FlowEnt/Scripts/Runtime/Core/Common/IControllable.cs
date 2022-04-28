@@ -8,7 +8,8 @@ namespace FriedSynapse.FlowEnt
         PlayState PlayState { get; }
         void Resume();
         void Pause();
-        void Stop(bool triggerOnCompleted = false);
+        void NextFrame();
+        void Stop();
     }
 
     internal interface IFluentControllable<TType>

@@ -87,6 +87,11 @@ namespace FriedSynapse.FlowEnt
         void IControllable.Pause()
             => Pause();
 
+        public void NextFrame()
+        {
+            throw new NotImplementedException("next frame not implemented");
+        }
+
         /// <inheritdoc cref="AbstractUpdatable.Stop(bool)"/>
         /// \copydoc AbstractUpdatable.Stop
         public new AbstractAnimation Stop(bool triggerOnCompleted = false)
@@ -94,6 +99,9 @@ namespace FriedSynapse.FlowEnt
             StopInternal(triggerOnCompleted);
             return this;
         }
+
+        void IControllable.Stop()
+            => Stop();
 
         /// <summary>
         /// Resets the animation so in can be replayed.

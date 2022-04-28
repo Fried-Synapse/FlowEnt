@@ -38,13 +38,12 @@ namespace FriedSynapse.FlowEnt.Editor
         public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
 
         protected abstract void DrawControls(Rect position, SerializedProperty property);
-        protected abstract TAnimation Build(SerializedProperty property);
         protected abstract void OnAnimationUpdated(Data data, float t);
 
         protected void StartPreview(SerializedProperty property)
         {
             Data data = GetData(property);
-            data.PreviewAnimation = Build(property);
+            data.PreviewAnimation = property.GetValue<TAnimationBuilder>().Build();
             data.PreviewAnimation.OnUpdated(t =>
             {
                 OnAnimationUpdated(data, t);
