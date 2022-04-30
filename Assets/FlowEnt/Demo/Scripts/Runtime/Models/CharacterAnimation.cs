@@ -22,6 +22,7 @@ namespace FriedSynapse.FlowEnt.Demo
         private List<Vector3> SplinePoints => splinePoints;
 #pragma warning restore RCS1169, IDE0044
 
+        public AbstractAnimation Test => new Tween().For(Character).MoveYTo(10);
         private ISpline GetSpline() => new BSpline(SplinePoints).Normalise();
 
         public override AbstractAnimation GetAnimation()

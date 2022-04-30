@@ -56,7 +56,7 @@ namespace FriedSynapse.FlowEnt.Demo
 #endif
             ReplayButton.onClick.AddListener(Replay);
         }
-
+        public AbstractAnimation Test => CharacterAnimation.Test;
         private void Start()
         {
             new Flow()

@@ -5,20 +5,25 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public static class FlowEntMenu
     {
-        [MenuItem("Tools/FlowEnt/Settings", false, 100)]
-        public static void ShowSettings()
+        private static void ShowWindow<TEditorWindow>(string name)
+            where TEditorWindow : EditorWindow
         {
-            FlowEntSettingsWindow window = EditorWindow.GetWindow<FlowEntSettingsWindow>("FlowEnt Settings");
+            TEditorWindow window = EditorWindow.GetWindow<TEditorWindow>(name);
+            window.titleContent = new GUIContent(name, Resources.Load<Texture2D>("Logo"));
             window.Show();
         }
 
-        [MenuItem("Tools/FlowEnt/Inspector", false, 101)]
+        [MenuItem("Tools/FlowEnt/Settings", false, 100)]
+        public static void ShowSettings()
+            => ShowWindow<FlowEntSettingsWindow>("FlowEnt Settings");
+
+        [MenuItem("Tools/FlowEnt/Previewer", false, 101)]
+        public static void ShowPreviewer()
+            => ShowWindow<FlowEntPreviewerWindow>("FlowEnt Previewer");
+
+        [MenuItem("Tools/FlowEnt/Inspector", false, 102)]
         public static void ShowInspector()
-        {
-            FlowEntInspectorWindow window = EditorWindow.GetWindow<FlowEntInspectorWindow>("FlowEnt Inspector");
-            window.titleContent = new GUIContent("FlowEnt Inspector", Resources.Load<Texture2D>("Logo"));
-            window.Show();
-        }
+            => ShowWindow<FlowEntInspectorWindow>("FlowEnt Inspector");
 
         [MenuItem("Tools/FlowEnt/Website", false, 200)]
         public static void GoToWebsite()

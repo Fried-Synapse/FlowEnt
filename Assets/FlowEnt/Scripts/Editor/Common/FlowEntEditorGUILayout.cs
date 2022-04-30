@@ -53,6 +53,7 @@ namespace FriedSynapse.FlowEnt.Editor
             headStyle.alignment = TextAnchor.MiddleCenter;
             GUIContent content = new GUIContent(name, Resources.Load<Texture2D>("Logo"));
             EditorGUILayout.LabelField(content, headStyle, GUILayout.Height(fontSize + 20f));
+            EditorGUILayout.Space(10f);
         }
 
         internal static void LabelField(string text, string colour = FlowEntConstants.Grey, params GUILayoutOption[] options)

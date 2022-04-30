@@ -1,6 +1,3 @@
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -10,7 +7,6 @@ namespace FriedSynapse.FlowEnt.Editor
     public class FlowEntInspectorWindow : EditorWindow
     {
         private ControllableSection controllableSection;
-        bool? showScriptedPreview;
         private Vector2 motionListScrollPosition;
         private int tweenCount;
         private int echoCount;
@@ -38,27 +34,9 @@ namespace FriedSynapse.FlowEnt.Editor
             }
             controllableSection.ShowControls();
 
-            ShowScriptedPreview();
-
             ShowMotionList();
         }
 #pragma warning restore IDE0051, RCS1213
-
-        private void ShowScriptedPreview()
-        {
-            if (!(Selection.activeObject is GameObject activeObject))
-            {
-                return;
-            }
-            EditorGUILayout.Space(20f);
-
-            showScriptedPreview = EditorGUILayout.Foldout(showScriptedPreview ?? false, "Selected Animations");
-            if (showScriptedPreview.Value)
-            {
-                string name = activeObject.name;
-                EditorGUILayout.LabelField(name, GUILayout.Width(70f));
-            }
-        }
 
         private void ShowMotionList()
         {
