@@ -9,10 +9,20 @@ namespace FriedSynapse.FlowEnt
     {
         private FlowEntController controller;
 
-        public void SetController(FlowEntController controller)
+        void IFlowEntUpdater.SetController(FlowEntController controller)
         {
             this.controller = controller;
         }
+
+        DeltaTimes IFlowEntUpdater.GetDeltaTimes()
+            => new DeltaTimes()
+            {
+                deltaTime = Time.deltaTime,
+                smoothDeltaTime = Time.smoothDeltaTime,
+                lateDeltaTime = Time.deltaTime,
+                lateSmoothDeltaTime = Time.smoothDeltaTime,
+                fixedDeltaTime = Time.fixedDeltaTime,
+            };
 
 #pragma warning disable IDE0051, RCS1213
         private void Awake()

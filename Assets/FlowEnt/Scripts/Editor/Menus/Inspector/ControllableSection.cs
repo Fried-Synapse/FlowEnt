@@ -18,6 +18,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             EditorGUILayout.BeginHorizontal();
 
+            //TODO maybe disable the buttons if they can't be used?
             if (Controllable.PlayState == PlayState.Playing)
             {
                 if (GUILayout.Button(Icon.Pause, Icon.Style))
@@ -33,12 +34,10 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
             }
 
-            GUI.enabled = Controllable.PlayState == PlayState.Paused;
             if (GUILayout.Button(Icon.NextFrame, Icon.Style))
             {
                 Controllable.NextFrame();
             }
-            GUI.enabled = true;
 
             if (GUILayout.Button(Icon.Stop, Icon.Style))
             {

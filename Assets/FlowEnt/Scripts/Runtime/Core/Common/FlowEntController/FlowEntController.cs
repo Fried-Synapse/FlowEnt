@@ -3,9 +3,18 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
+    internal struct DeltaTimes
+    {
+        public float deltaTime;
+        public float smoothDeltaTime;
+        public float lateDeltaTime;
+        public float lateSmoothDeltaTime;
+        public float fixedDeltaTime;
+    }
     internal interface IFlowEntUpdater
     {
-        public void SetController(FlowEntController controller);
+        internal void SetController(FlowEntController controller);
+        internal DeltaTimes GetDeltaTimes();
     }
 
     /// <summary>
@@ -124,13 +133,13 @@ namespace FriedSynapse.FlowEnt
             Update(smoothLateUpdatables, smoothDeltaTime * timeScale);
         }
 
-        internal void FixedUpdate(float fixedDeltaTime)
+        internal void FixedUpdate(float deltaTime)
         {
             if (playState != PlayState.Playing)
             {
                 return;
             }
-            Update(fixedUpdatables, fixedDeltaTime * timeScale);
+            Update(fixedUpdatables, deltaTime * timeScale);
         }
 
         public void CustomUpdate(float deltaTime)
@@ -242,9 +251,19 @@ namespace FriedSynapse.FlowEnt
             playState = PlayState.Playing;
         }
 
-        public void NextFrame()
+        void IControllable.NextFrame()
         {
-            throw new NotImplementedException("next frame not implemented");
+            if (playState == PlayState.Playing)
+            {
+                Pause();
+            }
+            DeltaTimes deltaTimes = updater.GetDeltaTimes();
+            Update(updatables, deltaTimes.deltaTime * timeScale);
+            Update(smoothUpdatables, deltaTimes.smoothDeltaTime * timeScale);
+            Update(lateUpdatables, deltaTimes.lateDeltaTime * timeScale);
+            Update(smoothLateUpdatables, deltaTimes.lateSmoothDeltaTime * timeScale);
+            Update(fixedUpdatables, deltaTimes.fixedDeltaTime * timeScale);
+            Update(customUpdatables, deltaTimes.fixedDeltaTime * timeScale);
         }
 
         /// <summary>
@@ -277,8 +296,5 @@ namespace FriedSynapse.FlowEnt
         }
 
         #endregion
-
-        public override string ToString()
-            => $"{base.ToString()} - updater: {updater}";
     }
 }

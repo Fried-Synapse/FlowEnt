@@ -1,3 +1,6 @@
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -23,7 +26,12 @@ namespace FriedSynapse.FlowEnt.Editor
         private void OnGUI()
         {
             FlowEntEditorGUILayout.Header("FlowEnt Inspector");
-            Debug.Log($"{FlowEntController.Instance}");
+
+#if FlowEnt_Builder
+            object updater = FlowEntController.Instance.GetFieldValue<object>("updater", BindingFlags.NonPublic | BindingFlags.Static);
+            EditorGUILayout.LabelField("Active Controller:", updater is FlowEntRuntimeUpdater ? "Runtime" : "Editor");
+#endif
+
             if (controllableSection == null || controllableSection.Controllable != FlowEntController.Instance)
             {
                 controllableSection = new ControllableSection(FlowEntController.Instance);
@@ -88,10 +96,7 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         private void ShowAnimationList(string group)
-        {
-            //TODO put a header in here - we have the name
-            ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex(group));
-        }
+            => ShowAnimationList(FlowEntController.Instance.GetUpdatableIndex(group));
 
         private void ShowAnimationList(AbstractUpdatable index)
         {

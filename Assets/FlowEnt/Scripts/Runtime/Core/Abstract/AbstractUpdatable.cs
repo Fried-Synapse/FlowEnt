@@ -70,6 +70,13 @@ namespace FriedSynapse.FlowEnt
 
         internal UpdateType updateType;
 
+        internal UpdateType UpdateType
+        {
+            get => updateController == FlowEntController.Instance
+                ? updateType
+                : ((AbstractUpdatable)updateController).UpdateType;
+        }
+
         internal IUpdateController updateController;
 
         #region Events

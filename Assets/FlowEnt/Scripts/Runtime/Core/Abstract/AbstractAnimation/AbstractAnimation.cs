@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -87,9 +88,24 @@ namespace FriedSynapse.FlowEnt
         void IControllable.Pause()
             => Pause();
 
-        public void NextFrame()
+        void IControllable.NextFrame()
         {
-            throw new NotImplementedException("next frame not implemented");
+            if (playState == PlayState.Playing)
+            {
+                Pause();
+            }
+            float deltaTime = updateType switch
+            {
+                UpdateType.Update => Time.deltaTime,
+                UpdateType.SmoothUpdate => Time.smoothDeltaTime,
+                UpdateType.LateUpdate => Time.deltaTime,
+                UpdateType.SmoothLateUpdate => Time.smoothDeltaTime,
+                UpdateType.FixedUpdate => Time.fixedDeltaTime,
+                UpdateType.Custom => Time.fixedDeltaTime,
+                _ => throw new NotImplementedException(),
+            };
+
+            UpdateInternal(deltaTime * FlowEntController.Instance.TimeScale);
         }
 
         /// <inheritdoc cref="AbstractUpdatable.Stop(bool)"/>
