@@ -88,12 +88,13 @@ namespace FriedSynapse.FlowEnt
         void IControllable.Pause()
             => Pause();
 
-        void IControllable.NextFrame()
+        void IControllable.ChangeFrame(float modifier)
         {
             if (playState == PlayState.Playing)
             {
                 Pause();
             }
+
             float deltaTime = updateType switch
             {
                 UpdateType.Update => Time.deltaTime,
@@ -104,8 +105,7 @@ namespace FriedSynapse.FlowEnt
                 UpdateType.Custom => Time.fixedDeltaTime,
                 _ => throw new NotImplementedException(),
             };
-
-            UpdateInternal(deltaTime * FlowEntController.Instance.TimeScale);
+            UpdateInternal(modifier * deltaTime * FlowEntController.Instance.TimeScale);
         }
 
         /// <inheritdoc cref="AbstractUpdatable.Stop(bool)"/>

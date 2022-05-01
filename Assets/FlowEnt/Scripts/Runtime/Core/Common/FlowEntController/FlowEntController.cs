@@ -251,13 +251,14 @@ namespace FriedSynapse.FlowEnt
             playState = PlayState.Playing;
         }
 
-        void IControllable.NextFrame()
+        void IControllable.ChangeFrame(float modifier)
         {
             if (playState == PlayState.Playing)
             {
                 Pause();
             }
             DeltaTimes deltaTimes = updater.GetDeltaTimes();
+            float timeScale = this.timeScale * modifier;
             Update(updatables, deltaTimes.deltaTime * timeScale);
             Update(smoothUpdatables, deltaTimes.smoothDeltaTime * timeScale);
             Update(lateUpdatables, deltaTimes.lateDeltaTime * timeScale);

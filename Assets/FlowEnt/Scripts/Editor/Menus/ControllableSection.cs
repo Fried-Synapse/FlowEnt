@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,11 +16,35 @@ namespace FriedSynapse.FlowEnt.Editor
         private float? timeScale;
         private float? maxTimeScale;
 
-        internal void ShowControls()
+        internal void ShowControls(bool isPreview = false)
         {
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.Space(EditorGUI.indentLevel * EditorGUIUtility.singleLineHeight + 10);
-            {//TODO maybe disable the buttons if they can't be used?
+            float indent = EditorGUI.indentLevel * EditorGUIUtility.singleLineHeight;
+            Rect rect = EditorGUILayout.BeginHorizontal();
+            if (isPreview)
+            {
+                if (!(Controllable is AbstractAnimation animation))
+                {
+                    throw new ArgumentException("Preview can only be applied to animations.");
+                }
+                isPreview = animation.PlayState == PlayState.Waiting
+                    || animation.PlayState == PlayState.Playing
+                    || animation.PlayState == PlayState.Paused;
+
+                rect.height = FlowEntConstants.RectLineHeight;
+                rect.xMin += indent;
+                ColorUtility.TryParseHtmlString(FlowEntConstants.Preview, out Color previewColour);
+                EditorGUI.DrawRect(rect, previewColour);
+            }
+
+            {
+                GUILayout.Space(indent + 10);
+                //TODO maybe disable the buttons if they can't be used?
+
+                if (GUILayout.Button(Icon.PrevFrame, Icon.Style, ButtonWidth))
+                {
+                    Controllable.ChangeFrame(-1);
+                }
+
                 if (Controllable.PlayState == PlayState.Playing)
                 {
                     if (GUILayout.Button(Icon.Pause, Icon.Style, ButtonWidth))
@@ -31,19 +56,30 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     if (GUILayout.Button(Icon.Play, Icon.Style, ButtonWidth))
                     {
-                        Controllable.Resume();
+                        void play()
+                        {
+                            if (!isPreview)
+                            {
+                                animation.Start();
+                                return;
+                            }
+                            Controllable.Resume();
+                        }
+                        play();
                     }
                 }
 
                 if (GUILayout.Button(Icon.NextFrame, Icon.Style, ButtonWidth))
                 {
-                    Controllable.NextFrame();
+                    Controllable.ChangeFrame(1);
                 }
 
+                GUI.enabled = isPreview;
                 if (GUILayout.Button(Icon.Stop, Icon.Style, ButtonWidth))
                 {
                     Controllable.Stop();
                 }
+                GUI.enabled = true;
 
                 if (timeScale == null)
                 {

@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt
         PlayState PlayState { get; }
         void Resume();
         void Pause();
-        void NextFrame();
+        void ChangeFrame(float modifier);
         void Stop();
     }
 

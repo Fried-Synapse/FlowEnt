@@ -29,6 +29,7 @@ namespace FriedSynapse.FlowEnt.Builder
 #pragma warning restore RCS1169, IDE0044
 
 #pragma warning disable IDE0051, RCS1213
+        public AbstractAnimation Test => new Tween(5).For(Green).MoveLocalY(0.5f);
         private void Start()
         {
             Echo.Build().Start();

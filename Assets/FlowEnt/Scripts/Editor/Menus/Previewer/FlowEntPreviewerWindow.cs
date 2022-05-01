@@ -15,14 +15,21 @@ namespace FriedSynapse.FlowEnt.Editor
         }
         private class AnimationInfo
         {
-            public AbstractAnimation animation;
+            public AnimationInfo(string name, AbstractAnimation animation)
+            {
+                this.name = name;
+                this.animation = animation;
+                controllableSection = new ControllableSection(this.animation);
+            }
             public string name;
+            public AbstractAnimation animation;
+            public ControllableSection controllableSection;
         }
         private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
         private static readonly object[] emptyArray = { };
-        private readonly Dictionary<object, bool> scriptedPreviewFoldouts = new Dictionary<object, bool>();
-        private readonly Dictionary<AbstractAnimation, ControllableSection> controlableSections = new Dictionary<AbstractAnimation, ControllableSection>();
+        private Transform transform;
+        private List<AnimationInfo> animations;
 
 #pragma warning disable IDE0051, RCS1213
         private void Update()
@@ -41,49 +48,42 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
             EditorGUILayout.Space(20f);
-            foreach (Transform transform in Selection.transforms)
+            bool shouldReadAnimations = animations == null;
+            if (transform != Selection.activeTransform)
             {
-                ShowFor(transform);
+                transform = Selection.activeTransform;
+                shouldReadAnimations = true;
             }
+            if (shouldReadAnimations)
+            {
+                ReadAnimations();
+            }
+            ShowAnimations();
         }
 #pragma warning restore IDE0051, RCS1213
 
-        private void ShowFor(Transform transform)
+        private void ShowAnimations()
         {
-            if (!scriptedPreviewFoldouts.ContainsKey(transform))
+            EditorGUILayout.LabelField(transform.name);
+            EditorGUI.indentLevel++;
+            if (animations?.Count == 0)
             {
-                scriptedPreviewFoldouts.Add(transform, false);
-            }
-
-            List<AnimationInfo> animations = GetAnimations(transform);
-
-            if (animations.Count == 0)
-            {
-                EditorGUILayout.LabelField(transform.name);
+                EditorGUILayout.LabelField("No available animations to preview.");
             }
             else
             {
-                scriptedPreviewFoldouts[transform] = EditorGUILayout.Foldout(scriptedPreviewFoldouts[transform], transform.name);
-                if (scriptedPreviewFoldouts[transform])
+                foreach (AnimationInfo animationInfo in animations)
                 {
-                    EditorGUI.indentLevel++;
-                    foreach (AnimationInfo animationInfo in animations)
-                    {
-                        EditorGUILayout.LabelField(animationInfo.name);
-                        if (!controlableSections.TryGetValue(animationInfo.animation, out ControllableSection controllableSection))
-                        {
-                            controllableSection = new ControllableSection(animationInfo.animation);
-                        }
-                        controllableSection.ShowControls();
-                    }
-                    EditorGUI.indentLevel--;
+                    EditorGUILayout.LabelField(animationInfo.name);
+                    animationInfo.controllableSection.ShowControls();
                 }
             }
+            EditorGUI.indentLevel--;
         }
 
-        private List<AnimationInfo> GetAnimations(Transform transform)
+        private void ReadAnimations()
         {
-            List<AnimationInfo> animations = new List<AnimationInfo>();
+            animations = new List<AnimationInfo>();
             foreach (MonoBehaviour behaviour in transform.GetComponents<MonoBehaviour>())
             {
                 animations.AddRange(
@@ -91,18 +91,20 @@ namespace FriedSynapse.FlowEnt.Editor
                     .GetType()
                     .GetProperties(DefaultBindingFlags)
                     .Where(pi => abstractAnimationType.IsAssignableFrom(pi.PropertyType))
-                    .Select(pi => new AnimationInfo() { animation = (AbstractAnimation)pi.GetValue(behaviour), name = pi.Name })
+                    .Select(pi => new AnimationInfo(pi.Name, (AbstractAnimation)pi.GetValue(behaviour)))
                     .ToList());
 
                 animations.AddRange(
                     behaviour
                     .GetType()
                     .GetMethods(DefaultBindingFlags)
-                    .Where(mi => abstractAnimationType.IsAssignableFrom(mi.ReturnType))
-                    .Select(mi => new AnimationInfo() { animation = (AbstractAnimation)mi.Invoke(behaviour, emptyArray), name = mi.Name })
+                    .Where(mi
+                        => !mi.IsSpecialName
+                        && abstractAnimationType.IsAssignableFrom(mi.ReturnType)
+                        && mi.GetParameters().Length == 0)
+                    .Select(mi => new AnimationInfo(mi.Name, (AbstractAnimation)mi.Invoke(behaviour, emptyArray)))
                     .ToList());
             }
-            return animations;
         }
     }
 }

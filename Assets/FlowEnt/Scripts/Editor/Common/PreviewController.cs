@@ -11,7 +11,6 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public interface IPreviewable
     {
-        public SerializedObject SerializedObject { get; }
         public AbstractAnimation Animation { get; }
         public void Reset();
     }
@@ -26,10 +25,12 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static int? undoGroupId;
         private static IPreviewable preview;
+        private static Action onUpdate;
 
-        public static void StartPreview(IPreviewable preview)
+        public static void StartPreview(IPreviewable preview, Action onUpdate)
         {
             PreviewController.preview = preview;
+            PreviewController.onUpdate = onUpdate;
 
             if (RecordObjects(preview.Animation))
             {
@@ -40,6 +41,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public static void StopPreview(bool exitGui = true)
         {
+            onUpdate = null;
             preview?.Reset();
             preview = null;
 
@@ -56,17 +58,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static void Update()
         {
-            if (preview != null)
-            {
-                foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
-                {
-                    if (item.serializedObject == preview?.SerializedObject)
-                    {
-                        return;
-                    }
-                }
-                StopPreview(false);
-            }
+            onUpdate?.Invoke();
         }
 
         private static bool RecordObjects(AbstractAnimation animation)

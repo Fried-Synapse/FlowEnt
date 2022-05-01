@@ -18,7 +18,6 @@ namespace FriedSynapse.FlowEnt.Editor
             AbstractAnimation IPreviewable.Animation => PreviewAnimation;
             public float PreviewTime { get; set; }
             public bool IsInPreview => PreviewAnimation != null;
-            public SerializedObject SerializedObject { get; set; }
 
             public void Reset()
             {
@@ -40,24 +39,25 @@ namespace FriedSynapse.FlowEnt.Editor
         protected abstract void DrawControls(Rect position, SerializedProperty property);
         protected abstract void OnAnimationUpdated(Data data, float t);
 
+        private void OnPreviewUpdate(SerializedProperty property)
+        {
+            foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
+            {
+                if (item.serializedObject == property?.serializedObject)
+                {
+                    item.Repaint();
+                    return;
+                }
+            }
+            PreviewController.StopPreview(false);
+        }
+
         protected void StartPreview(SerializedProperty property)
         {
             Data data = GetData(property);
             data.PreviewAnimation = property.GetValue<TAnimationBuilder>().Build();
-            data.PreviewAnimation.OnUpdated(t =>
-            {
-                OnAnimationUpdated(data, t);
-
-                foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
-                {
-                    if (item.serializedObject == property?.serializedObject)
-                    {
-                        item.Repaint();
-                        break;
-                    }
-                }
-            });
-            PreviewController.StartPreview(data);
+            data.PreviewAnimation.OnUpdated(t => OnAnimationUpdated(data, t));
+            PreviewController.StartPreview(data, () => OnPreviewUpdate(property));
             try
             {
                 data.PreviewAnimation.Start();
@@ -86,9 +86,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Data data = GetData(property);
-            data.SerializedObject = property.serializedObject;
-
             TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
             SerializedProperty parentProperty = property.GetParentArray();
             string name = animation.GetPropertyValue<object>("Options").GetPropertyValue<string>("Name");
@@ -96,9 +93,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
+            Data data = GetData(property);
             if (data.IsInPreview)
             {
-                EditorGUI.DrawRect(position, new Color(1f, 0f, 0f, 0.2f));
+                ColorUtility.TryParseHtmlString(FlowEntConstants.Preview, out Color previewColour);
+                EditorGUI.DrawRect(position, previewColour);
             }
 
             DrawMenu(position, property);
