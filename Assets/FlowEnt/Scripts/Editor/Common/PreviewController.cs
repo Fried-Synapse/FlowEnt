@@ -34,7 +34,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public static void Start(PreviewOptions options)
         {
-            Stop();
             PreviewController.options = options;
 
             if (RecordObjects(PreviewController.options.Animation))
@@ -52,6 +51,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     $"<color={FlowEntConstants.Red}><b>Exception on starting animation</b></color>\n" +
                     $"<color={FlowEntConstants.Orange}><b>The preview animation is throwing an exception</b></color>:\n\n" +
                     $"<b>Exception</b>:\n{ex}");
+                Debug.LogException(ex);
                 Stop();
             }
         }
@@ -70,6 +70,23 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     GUIUtility.ExitGUI();
                 }
+            }
+        }
+
+        public static void Reset()
+        {
+            static void nextFrame()
+            {
+                EditorApplication.update -= nextFrame;
+                Start(options);
+            }
+            EditorApplication.update += nextFrame;
+            options?.Animation?.Stop().Reset();
+            if (undoGroupId != null)
+            {
+                Undo.RevertAllDownToGroup(undoGroupId.Value);
+                undoGroupId = null;
+                GUIUtility.ExitGUI();
             }
         }
 

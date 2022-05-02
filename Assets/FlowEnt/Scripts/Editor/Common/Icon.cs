@@ -7,6 +7,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         public static GUIContent Menu = EditorGUIUtility.IconContent("_Menu@2x", "Menu");
         public static GUIContent Play = EditorGUIUtility.IconContent("Animation.Play", "Play");
+        public static GUIContent Replay = EditorGUIUtility.IconContent("d_preAudioAutoPlayOff", "Replay");
         public static GUIContent Pause = EditorGUIUtility.IconContent("PauseButton On@2x", "Pause");
         public static GUIContent PrevFrame = EditorGUIUtility.IconContent("Animation.PrevKey", "Previous Frame");
         public static GUIContent NextFrame = EditorGUIUtility.IconContent("Animation.NextKey", "Next Frame");

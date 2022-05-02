@@ -152,46 +152,56 @@ namespace FriedSynapse.FlowEnt.Editor
             position.x -= 10f;
             position.width = EditorGUIUtility.singleLineHeight;
 
-            IControllable controllable = data.PreviewAnimation;
-
-            GUI.enabled = controllable != null;
+            GUI.enabled = data.PreviewAnimation != null;
             if (GUI.Button(position, Icon.PrevFrame, Icon.Style))
             {
-                controllable.ChangeFrame(-1);
+                ((IControllable)data.PreviewAnimation).ChangeFrame(-1);
             }
             position.x += EditorGUIUtility.singleLineHeight;
             GUI.enabled = true;
 
-            if (controllable?.PlayState == PlayState.Playing)
+            switch (data.PreviewAnimation?.PlayState)
             {
-                if (GUI.Button(position, Icon.Pause, Icon.Style))
-                {
-                    controllable.Pause();
-                }
-            }
-            else
-            {
-                if (GUI.Button(position, Icon.Play, Icon.Style))
-                {
-                    if (controllable != null)
+                case PlayState.Playing:
+                    if (GUI.Button(position, Icon.Pause, Icon.Style))
                     {
-                        controllable.Resume();
+                        data.PreviewAnimation.Pause();
                     }
-                    else
+                    break;
+                case PlayState.Finished:
+                    if (GUI.Button(position, Icon.Replay, Icon.Style))
                     {
-                        StartPreview(property);
+                        PreviewController.Reset();
                     }
-                }
+                    break;
+                default:
+                    if (GUI.Button(position, Icon.Play, Icon.Style))
+                    {
+                        if (data.PreviewAnimation == null)
+                        {
+                            StartPreview(property);
+                        }
+                        else
+                        {
+                            data.PreviewAnimation.Resume();
+                        }
+                    }
+                    break;
             }
             position.x += EditorGUIUtility.singleLineHeight;
 
-            GUI.enabled = controllable != null;
             if (GUI.Button(position, Icon.NextFrame, Icon.Style))
             {
-                controllable.ChangeFrame(1);
+                if (data.PreviewAnimation == null)
+                {
+                    StartPreview(property);
+                    data.PreviewAnimation.Pause();
+                }
+                ((IControllable)data.PreviewAnimation).ChangeFrame(1);
             }
             position.x += EditorGUIUtility.singleLineHeight;
 
+            GUI.enabled = data.PreviewAnimation != null;
             if (GUI.Button(position, Icon.Stop, Icon.Style))
             {
                 PreviewController.Stop();

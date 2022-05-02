@@ -15,6 +15,11 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 this.name = name;
                 this.animation = animation;
+                if (animation.PlayState != PlayState.Building)
+                {
+                    animation.Stop();
+                    animation.Reset();
+                }
                 controllableSection = new PreviewControllableSection(this.animation);
             }
             public string name;

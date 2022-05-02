@@ -4,25 +4,115 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal abstract class AbstractControllableSection
+    internal class InspectorControllableSection
     {
-        protected AbstractControllableSection(IControllable controllable)
+        public InspectorControllableSection(IControllable controllable)
         {
             Controllable = controllable;
         }
 
+        protected const float SideSpacing = 5f;
         protected static GUILayoutOption ButtonWidth { get; } = GUILayout.Width(EditorGUIUtility.singleLineHeight);
         public IControllable Controllable { get; }
         protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
         protected float? timeScale;
         protected float? maxTimeScale;
         protected float Indent => EditorGUI.indentLevel * EditorGUIUtility.singleLineHeight;
+        protected float PreviewTime { get; set; }
 
         protected virtual void OnPrevFrame() => Controllable.ChangeFrame(-1);
         protected virtual void OnPlay() => Controllable.Resume();
         protected virtual void OnPause() => Controllable.Pause();
         protected virtual void OnNextFrame() => Controllable.ChangeFrame(1);
         protected virtual void OnStop() => Controllable.Stop();
+        protected virtual void ShowExtraControls() { }
+
+
+        public virtual void Show()
+        {
+            ShowControls();
+            ShowTimeScale();
+        }
+
+        private void ShowControls()
+        {
+            EditorGUILayout.BeginHorizontal();
+            {
+                GUILayout.Space(Indent + 10);
+
+                GUI.enabled = !IsBuilding;
+                if (GUILayout.Button(Icon.PrevFrame, Icon.Style, ButtonWidth))
+                {
+                    OnPrevFrame();
+                }
+                GUI.enabled = true;
+
+                switch (Controllable.PlayState)
+                {
+                    case PlayState.Playing:
+                        if (GUILayout.Button(Icon.Pause, Icon.Style, ButtonWidth))
+                        {
+                            OnPause();
+                        }
+                        break;
+                    case PlayState.Finished:
+                        if (GUILayout.Button(Icon.Replay, Icon.Style, ButtonWidth))
+                        {
+                            PreviewController.Reset();
+                        }
+                        break;
+                    default:
+                        if (GUILayout.Button(Icon.Play, Icon.Style, ButtonWidth))
+                        {
+                            OnPlay();
+                        }
+                        break;
+                }
+
+                if (GUILayout.Button(Icon.NextFrame, Icon.Style, ButtonWidth))
+                {
+                    OnNextFrame();
+                }
+
+                GUI.enabled = !IsBuilding;
+                if (GUILayout.Button(Icon.Stop, Icon.Style, ButtonWidth))
+                {
+                    OnStop();
+                }
+                GUI.enabled = true;
+
+                ShowExtraControls();
+            }
+            EditorGUILayout.EndHorizontal();
+        }
+
+        protected void ShowTimeScale()
+        {
+            EditorGUILayout.BeginHorizontal();
+            {
+                GUILayout.Space(Indent + 10);
+                int indentLevel = EditorGUI.indentLevel;
+                EditorGUI.indentLevel = 0;
+
+                if (timeScale == null)
+                {
+                    timeScale = Controllable.TimeScale;
+                }
+                if (maxTimeScale == null)
+                {
+                    maxTimeScale = timeScale * 2f;
+                }
+                EditorGUILayout.LabelField("Time scale", GUILayout.ExpandWidth(false), GUILayout.Width(70f));
+                timeScale = EditorGUILayout.Slider(timeScale.Value, 0f, maxTimeScale.Value);
+                EditorGUILayout.LabelField("Max", GUILayout.ExpandWidth(false), GUILayout.Width(30f));
+                maxTimeScale = EditorGUILayout.FloatField(maxTimeScale.Value, GUILayout.ExpandWidth(false), GUILayout.Width(30f));
+                Controllable.TimeScale = timeScale.Value;
+
+                EditorGUILayout.Space(SideSpacing, false);
+                EditorGUI.indentLevel = indentLevel;
+            }
+            EditorGUILayout.EndHorizontal();
+        }
     }
 
     internal class PreviewControllableSection : InspectorControllableSection
@@ -34,110 +124,92 @@ namespace FriedSynapse.FlowEnt.Editor
                 throw new ArgumentException("Preview can only be applied to animations.");
             }
             this.animation = animation;
+            this.animation.OnUpdated(OnAnimationUpdated);
+        }
+
+        private void OnAnimationUpdated(float t)
+        {
+            PreviewTime += t;
         }
 
         protected readonly AbstractAnimation animation;
 
-        internal override void Show()
+        private void StartPreview()
+        {
+            PreviewController.Start(new PreviewOptions(animation)
+            {
+                OnStop = () => PreviewTime = 0
+            });
+        }
+
+        public override void Show()
         {
             if (!IsBuilding)
             {
+                //HACK this creates the red space
                 Rect rect = GUILayoutUtility.GetRect(new GUIContent(""), GUIStyle.none, GUILayout.Height(0));
                 rect.height = FlowEntConstants.RectLineHeight;
-                rect.xMin += Indent;
+                rect.xMin += Indent + SideSpacing;
+                rect.xMax -= SideSpacing;
                 ColorUtility.TryParseHtmlString(FlowEntConstants.Preview, out Color previewColour);
                 EditorGUI.DrawRect(rect, previewColour);
             }
+            else
+            {
+                //HACK this adds extra space because of the red space
+                EditorGUILayout.Space(0, false);
+            }
 
             base.Show();
+        }
 
-            //TODO add controls for tween and info for others
+        protected override void ShowExtraControls()
+        {
+            switch (Controllable)
+            {
+                case Tween tween:
+                    ShowControls(tween);
+                    break;
+                default:
+                    ShowControls((AbstractAnimation)Controllable);
+                    break;
+            }
+        }
+
+        private void ShowControls(Tween tween)
+        {
+        }
+
+        private void ShowControls(AbstractAnimation animation)
+        {
+            EditorGUILayout.LabelField("Time elapsed", PreviewTime.ToString());
         }
 
         protected override void OnPlay()
         {
-            if (!IsBuilding)
+            if (IsBuilding)
             {
-                animation.Resume();
+                StartPreview();
             }
             else
             {
-                PreviewController.Start(new PreviewOptions(animation));
+                animation.Resume();
             }
         }
+
+        protected override void OnNextFrame()
+        {
+            if (IsBuilding)
+            {
+                StartPreview();
+                animation.Pause();
+            }
+            base.OnNextFrame();
+        }
+
         protected override void OnStop()
         {
             PreviewController.Stop();
-        }
-    }
-
-    internal class InspectorControllableSection : AbstractControllableSection
-    {
-        public InspectorControllableSection(IControllable controllable) : base(controllable)
-        {
-        }
-
-        internal virtual void Show()
-        {
-            EditorGUILayout.BeginHorizontal();
-            {
-                GUILayout.Space(Indent + 10);
-                //TODO maybe disable the buttons if they can't be used?
-
-                GUI.enabled = !IsBuilding;
-                if (GUILayout.Button(Icon.PrevFrame, Icon.Style, ButtonWidth))
-                {
-                    OnPrevFrame();
-                }
-                GUI.enabled = true;
-
-                if (Controllable.PlayState == PlayState.Playing)
-                {
-                    if (GUILayout.Button(Icon.Pause, Icon.Style, ButtonWidth))
-                    {
-                        OnPause();
-                    }
-                }
-                else
-                {
-                    if (GUILayout.Button(Icon.Play, Icon.Style, ButtonWidth))
-                    {
-                        OnPlay();
-                    }
-                }
-
-                GUI.enabled = !IsBuilding;
-                if (GUILayout.Button(Icon.NextFrame, Icon.Style, ButtonWidth))
-                {
-                    OnNextFrame();
-                }
-
-                if (GUILayout.Button(Icon.Stop, Icon.Style, ButtonWidth))
-                {
-                    OnStop();
-                }
-                GUI.enabled = true;
-
-                if (timeScale == null)
-                {
-                    timeScale = Controllable.TimeScale;
-                }
-                if (maxTimeScale == null)
-                {
-                    maxTimeScale = timeScale * 2f;
-                }
-
-                int indentLevel = EditorGUI.indentLevel;
-                EditorGUI.indentLevel = 0;
-                EditorGUILayout.LabelField("Time scale", GUILayout.ExpandWidth(false), GUILayout.Width(70f));
-                timeScale = EditorGUILayout.Slider(timeScale.Value, 0f, maxTimeScale.Value);
-                EditorGUILayout.LabelField("Max", GUILayout.ExpandWidth(false), GUILayout.Width(30f));
-                maxTimeScale = EditorGUILayout.FloatField(maxTimeScale.Value, GUILayout.ExpandWidth(false), GUILayout.Width(30f));
-                Controllable.TimeScale = timeScale.Value;
-                EditorGUILayout.Space(5);
-                EditorGUI.indentLevel = indentLevel;
-            }
-            EditorGUILayout.EndHorizontal();
         }
     }
 }
