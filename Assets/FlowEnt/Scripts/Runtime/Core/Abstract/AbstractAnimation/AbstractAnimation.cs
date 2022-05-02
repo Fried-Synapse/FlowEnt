@@ -95,14 +95,16 @@ namespace FriedSynapse.FlowEnt
                 Pause();
             }
 
+            DeltaTimes deltaTimes = FlowEntController.Updater.GetDeltaTimes();
+
             float deltaTime = updateType switch
             {
-                UpdateType.Update => Time.deltaTime,
-                UpdateType.SmoothUpdate => Time.smoothDeltaTime,
-                UpdateType.LateUpdate => Time.deltaTime,
-                UpdateType.SmoothLateUpdate => Time.smoothDeltaTime,
-                UpdateType.FixedUpdate => Time.fixedDeltaTime,
-                UpdateType.Custom => Time.fixedDeltaTime,
+                UpdateType.Update => deltaTimes.deltaTime,
+                UpdateType.SmoothUpdate => deltaTimes.smoothDeltaTime,
+                UpdateType.LateUpdate => deltaTimes.deltaTime,
+                UpdateType.SmoothLateUpdate => deltaTimes.smoothDeltaTime,
+                UpdateType.FixedUpdate => deltaTimes.fixedDeltaTime,
+                UpdateType.Custom => deltaTimes.fixedDeltaTime,
                 _ => throw new NotImplementedException(),
             };
             UpdateInternal(modifier * deltaTime * FlowEntController.Instance.TimeScale);

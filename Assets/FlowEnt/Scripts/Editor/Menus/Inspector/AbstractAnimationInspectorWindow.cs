@@ -16,7 +16,7 @@ namespace FriedSynapse.FlowEnt.Editor
         where TWindow : AbstractAnimationInspectorWindow<TWindow, TAnimation>
         where TAnimation : AbstractAnimation
     {
-        private ControllableSection controllableSection;
+        private InspectorControllableSection controllableSection;
         private Vector2 scrollPosition;
         protected TAnimation Animation { get; private set; }
         private static Type[] types;
@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
             TWindow window = CreateWindow<TWindow>(animation.ToString(), types);
             window.Animation = animation;
-            window.controllableSection = new ControllableSection(animation);
+            window.controllableSection = new InspectorControllableSection(animation);
             window.Show();
         }
 
@@ -53,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Editor
             FlowEntEditorGUILayout.LabelField(Animation, Animation.GetType().Name);
             EditorGUILayout.LabelField("Update Type:", Animation.GetPropertyValue<UpdateType>("UpdateType").ToString());
 
-            controllableSection.ShowControls();
+            controllableSection.Show();
 
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 

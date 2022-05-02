@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -16,5 +17,22 @@ namespace FriedSynapse.FlowEnt.Editor
         internal const string Red = "#F06D35";
         internal const string Grey = "#DEDEDE";
         internal const string Preview = "#FF000030";
+
+        private static GUIStyle foldoutHeader;
+        public static GUIStyle FoldoutHeader
+        {
+            get
+            {
+                if (foldoutHeader == null)
+                {
+                    foldoutHeader = new GUIStyle(EditorStyles.foldoutHeader);
+                    Texture2D texture = new Texture2D(1, 1);
+                    texture.SetPixel(0, 0, Color.clear);
+                    texture.Apply();
+                    foldoutHeader.normal.background = texture;
+                }
+                return foldoutHeader;
+            }
+        }
     }
 }

@@ -9,21 +9,17 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public class FlowEntPreviewerWindow : EditorWindow
     {
-        private class Foldouts
-        {
-            public bool animations;
-        }
         private class AnimationInfo
         {
             public AnimationInfo(string name, AbstractAnimation animation)
             {
                 this.name = name;
                 this.animation = animation;
-                controllableSection = new ControllableSection(this.animation);
+                controllableSection = new PreviewControllableSection(this.animation);
             }
             public string name;
             public AbstractAnimation animation;
-            public ControllableSection controllableSection;
+            public PreviewControllableSection controllableSection;
         }
         private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
@@ -40,11 +36,14 @@ namespace FriedSynapse.FlowEnt.Editor
         private void OnGUI()
         {
             FlowEntEditorGUILayout.Header("FlowEnt Previewer");
-
+            GUIStyle errorStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
+            if (Application.isPlaying)
+            {
+                EditorGUILayout.LabelField("Not available in play mode.", errorStyle);
+            }
             if (Selection.gameObjects.Length == 0)
             {
-                GUIStyle style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
-                EditorGUILayout.LabelField("Select an object from the hierarchy first.", style);
+                EditorGUILayout.LabelField("Select an object from the hierarchy first.", errorStyle);
                 return;
             }
             EditorGUILayout.Space(20f);
@@ -75,7 +74,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 foreach (AnimationInfo animationInfo in animations)
                 {
                     EditorGUILayout.LabelField(animationInfo.name);
-                    animationInfo.controllableSection.ShowControls();
+                    animationInfo.controllableSection.Show();
                 }
             }
             EditorGUI.indentLevel--;

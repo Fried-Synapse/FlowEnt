@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public class FlowEntInspectorWindow : EditorWindow
     {
-        private ControllableSection controllableSection;
+        private InspectorControllableSection controllableSection;
         private Vector2 motionListScrollPosition;
         private int tweenCount;
         private int echoCount;
@@ -30,9 +30,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
             if (controllableSection == null || controllableSection.Controllable != FlowEntController.Instance)
             {
-                controllableSection = new ControllableSection(FlowEntController.Instance);
+                controllableSection = new InspectorControllableSection(FlowEntController.Instance);
             }
-            controllableSection.ShowControls();
+            controllableSection.Show();
 
             ShowMotionList();
         }

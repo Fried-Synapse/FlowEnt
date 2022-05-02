@@ -52,7 +52,7 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        private protected PlayState playState;
+        private protected PlayState playState = PlayState.Building;
         /// <summary>
         /// The current state of the animation.
         /// </summary>

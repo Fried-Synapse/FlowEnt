@@ -30,6 +30,7 @@ namespace FriedSynapse.FlowEnt
 
         private static readonly object lockObject = new object();
         private static IFlowEntUpdater updater;
+        internal static IFlowEntUpdater Updater => updater;
         private static FlowEntController instance;
         public static FlowEntController Instance
         {

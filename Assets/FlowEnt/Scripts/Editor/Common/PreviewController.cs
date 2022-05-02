@@ -9,10 +9,16 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public interface IPreviewable
+    public class PreviewOptions
     {
+        public PreviewOptions(AbstractAnimation animation)
+        {
+            Animation = animation;
+        }
+
         public AbstractAnimation Animation { get; }
-        public void Reset();
+        public Action OnUpdate { get; set; }
+        public Action OnStop { get; set; }
     }
 
     public static class PreviewController
@@ -20,30 +26,41 @@ namespace FriedSynapse.FlowEnt.Editor
         static PreviewController()
         {
             EditorApplication.update += Update;
-            FlowEntEditorUpdater.OnException += () => StopPreview();
+            FlowEntEditorUpdater.OnException += () => Stop();
         }
 
         private static int? undoGroupId;
-        private static IPreviewable preview;
-        private static Action onUpdate;
+        private static PreviewOptions options;
 
-        public static void StartPreview(IPreviewable preview, Action onUpdate)
+        public static void Start(PreviewOptions options)
         {
-            PreviewController.preview = preview;
-            PreviewController.onUpdate = onUpdate;
+            Stop();
+            PreviewController.options = options;
 
-            if (RecordObjects(preview.Animation))
+            if (RecordObjects(PreviewController.options.Animation))
             {
                 undoGroupId = Undo.GetCurrentGroup();
                 Undo.IncrementCurrentGroup();
             }
+            try
+            {
+                options.Animation.Start();
+            }
+            catch (Exception ex)
+            {
+                FlowEntDebug.LogError(
+                    $"<color={FlowEntConstants.Red}><b>Exception on starting animation</b></color>\n" +
+                    $"<color={FlowEntConstants.Orange}><b>The preview animation is throwing an exception</b></color>:\n\n" +
+                    $"<b>Exception</b>:\n{ex}");
+                Stop();
+            }
         }
 
-        public static void StopPreview(bool exitGui = true)
+        public static void Stop(bool exitGui = true)
         {
-            onUpdate = null;
-            preview?.Reset();
-            preview = null;
+            options?.Animation?.Stop().Reset();
+            options?.OnStop?.Invoke();
+            options = null;
 
             if (undoGroupId != null)
             {
@@ -58,7 +75,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static void Update()
         {
-            onUpdate?.Invoke();
+            options?.OnUpdate?.Invoke();
         }
 
         private static bool RecordObjects(AbstractAnimation animation)

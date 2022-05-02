@@ -38,7 +38,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void OnAnimationUpdated(Data data, float t)
         {
-            data.PreviewTime = data.PreviewAnimation.GetPropertyValue<float>("CurrentLoopRatio");
+            const int LoopDirectionForward = 0;
+            int loopDirection = data.PreviewAnimation.GetFieldValue<int>(nameof(loopDirection));
+            float time = data.PreviewAnimation.GetFieldValue<float>(nameof(time));
+            float remainingTime = data.PreviewAnimation.GetFieldValue<float>(nameof(remainingTime));
+            data.PreviewTime = (loopDirection == LoopDirectionForward ? time - remainingTime : remainingTime) / time;
         }
     }
 }
