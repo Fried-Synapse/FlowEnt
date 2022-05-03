@@ -34,10 +34,11 @@ namespace FriedSynapse.FlowEnt.Editor
         public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
 
         protected abstract void DrawControls(Rect position, SerializedProperty property);
-        protected abstract void OnAnimationUpdated(Data data, float t);
 
         private void OnPreviewUpdate(SerializedProperty property)
         {
+            Data data = GetData(property);
+            data.PreviewTime = data.PreviewAnimation.GetTime();
             foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
             {
                 if (item.serializedObject == property?.serializedObject)
@@ -53,7 +54,6 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             Data data = GetData(property);
             data.PreviewAnimation = property.GetValue<TAnimationBuilder>().Build();
-            data.PreviewAnimation.OnUpdated(t => OnAnimationUpdated(data, t));
             PreviewController.Start(
                 new PreviewOptions(data.PreviewAnimation)
                 {

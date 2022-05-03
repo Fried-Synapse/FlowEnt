@@ -16,6 +16,7 @@ namespace FriedSynapse.FlowEnt
                 }
             }
         }
+
         public bool AutoStart
         {
             get => autoStartHelper != null;
@@ -61,7 +62,7 @@ namespace FriedSynapse.FlowEnt
         protected void SetOptions(AbstractAnimationOptions options)
         {
             Name = options.Name;
-            UpdateType = options.UpdateType;
+            updateType = options.UpdateType;
             AutoStart = options.AutoStart;
             skipFrames = options.SkipFrames;
             delay = options.Delay;

@@ -11,10 +11,5 @@ namespace FriedSynapse.FlowEnt.Editor
             float buttonsWidth = DrawControlButtons(position, property);
             EditorGUI.LabelField(FlowEntEditorGUILayout.GetIndentedRect(position, buttonsWidth), "Time elapsed", GetData(property).PreviewTime.ToString());
         }
-
-        protected override void OnAnimationUpdated(Data data, float t)
-        {
-            data.PreviewTime += t;
-        }
     }
 }

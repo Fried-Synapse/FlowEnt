@@ -167,7 +167,6 @@ namespace FriedSynapse.FlowEnt
 
         private void CompleteLoop()
         {
-            time = 0;
             remainingLoops--;
 
             if (!(remainingLoops <= 0))
@@ -177,6 +176,7 @@ namespace FriedSynapse.FlowEnt
                     motions[i].OnLoopComplete();
                 }
 
+                time = 0;
                 onLoopCompleted?.Invoke(remainingLoops);
                 float overdraft = this.overdraft.Value;
                 this.overdraft = null;

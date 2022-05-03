@@ -42,10 +42,6 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             FlowEntEditorGUILayout.Header("FlowEnt Previewer");
             GUIStyle errorStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
-            if (Application.isPlaying)
-            {
-                EditorGUILayout.LabelField("Not available in play mode.", errorStyle);
-            }
             if (Selection.gameObjects.Length == 0)
             {
                 EditorGUILayout.LabelField("Select an object from the hierarchy first.", errorStyle);

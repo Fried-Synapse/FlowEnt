@@ -51,7 +51,8 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             FlowEntEditorGUILayout.LabelField(Animation, Animation.GetType().Name);
-            EditorGUILayout.LabelField("Update Type:", Animation.GetPropertyValue<UpdateType>("UpdateType").ToString());
+            //TODO get update type
+            //EditorGUILayout.LabelField("Update Type:", Animation.GetPropertyValue<UpdateType>("UpdateType").ToString());
 
             controllableSection.Show();
 

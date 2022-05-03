@@ -23,10 +23,10 @@ namespace FriedSynapse.FlowEnt.Editor
         protected virtual void OnPrevFrame() => Controllable.ChangeFrame(-1);
         protected virtual void OnPlay() => Controllable.Resume();
         protected virtual void OnPause() => Controllable.Pause();
+        protected virtual void OnReplay() => ((AbstractAnimation)Controllable).Restart();
         protected virtual void OnNextFrame() => Controllable.ChangeFrame(1);
         protected virtual void OnStop() => Controllable.Stop();
         protected virtual void ShowExtraControls() { }
-
 
         public virtual void Show()
         {
@@ -58,7 +58,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     case PlayState.Finished:
                         if (GUILayout.Button(Icon.Replay, Icon.Style, ButtonWidth))
                         {
-                            PreviewController.Reset();
+                            OnReplay();
                         }
                         break;
                     default:
@@ -124,20 +124,47 @@ namespace FriedSynapse.FlowEnt.Editor
                 throw new ArgumentException("Preview can only be applied to animations.");
             }
             this.animation = animation;
-            this.animation.OnUpdated(OnAnimationUpdated);
-        }
-
-        private void OnAnimationUpdated(float t)
-        {
-            PreviewTime += t;
         }
 
         protected readonly AbstractAnimation animation;
+
+        protected override void OnPlay()
+        {
+            if (IsBuilding)
+            {
+                StartPreview();
+            }
+            else
+            {
+                animation.Resume();
+            }
+        }
+
+        protected override void OnReplay()
+        {
+            PreviewController.Reset();
+        }
+
+        protected override void OnNextFrame()
+        {
+            if (IsBuilding)
+            {
+                StartPreview();
+                animation.Pause();
+            }
+            base.OnNextFrame();
+        }
+
+        protected override void OnStop()
+        {
+            PreviewController.Stop();
+        }
 
         private void StartPreview()
         {
             PreviewController.Start(new PreviewOptions(animation)
             {
+                OnUpdate = () => PreviewTime = animation.GetTime(),
                 OnStop = () => PreviewTime = 0
             });
         }
@@ -148,7 +175,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 //HACK this creates the red space
                 Rect rect = GUILayoutUtility.GetRect(new GUIContent(""), GUIStyle.none, GUILayout.Height(0));
-                rect.height = FlowEntConstants.RectLineHeight;
+                rect.height = FlowEntConstants.RectLineHeight * 2;
                 rect.xMin += Indent + SideSpacing;
                 rect.xMax -= SideSpacing;
                 ColorUtility.TryParseHtmlString(FlowEntConstants.Preview, out Color previewColour);
@@ -167,48 +194,12 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             if (Controllable is Tween tween)
             {
-                ShowControls(tween);
+                EditorGUILayout.LabelField("Time elapsed", PreviewTime.ToString());
             }
             else
             {
-                ShowControls();
+                EditorGUILayout.LabelField("Time elapsed", PreviewTime.ToString());
             }
-        }
-
-        private void ShowControls(Tween tween)
-        {
-        }
-
-        private void ShowControls()
-        {
-            EditorGUILayout.LabelField("Time elapsed", PreviewTime.ToString());
-        }
-
-        protected override void OnPlay()
-        {
-            if (IsBuilding)
-            {
-                StartPreview();
-            }
-            else
-            {
-                animation.Resume();
-            }
-        }
-
-        protected override void OnNextFrame()
-        {
-            if (IsBuilding)
-            {
-                StartPreview();
-                animation.Pause();
-            }
-            base.OnNextFrame();
-        }
-
-        protected override void OnStop()
-        {
-            PreviewController.Stop();
         }
     }
 }

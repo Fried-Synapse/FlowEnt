@@ -1,5 +1,4 @@
 using System.Reflection;
-using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -34,15 +33,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 data.PreviewAnimation.GetType().GetMethod("UpdateInternal", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(data.PreviewAnimation, new object[1] { delta });
                 data.PreviewTime = editedPreviewTime;
             }
-        }
-
-        protected override void OnAnimationUpdated(Data data, float t)
-        {
-            const int LoopDirectionForward = 0;
-            int loopDirection = data.PreviewAnimation.GetFieldValue<int>(nameof(loopDirection));
-            float time = data.PreviewAnimation.GetFieldValue<float>(nameof(time));
-            float remainingTime = data.PreviewAnimation.GetFieldValue<float>(nameof(remainingTime));
-            data.PreviewTime = (loopDirection == LoopDirectionForward ? time - remainingTime : remainingTime) / time;
         }
     }
 }

@@ -230,8 +230,8 @@ MonoBehaviour:
       timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
-      hasTimeout: 0
-      timeout: 0
+      hasTimeout: 1
+      timeout: 1
     events:
       onStarted:
         m_PersistentCalls:
