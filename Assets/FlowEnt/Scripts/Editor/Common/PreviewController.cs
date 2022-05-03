@@ -75,19 +75,14 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public static void Reset()
         {
-            static void nextFrame()
+            PreviewOptions currentOptions = options;
+            void nextFrame()
             {
                 EditorApplication.update -= nextFrame;
-                Start(options);
+                Start(currentOptions);
             }
             EditorApplication.update += nextFrame;
-            options?.Animation?.Stop().Reset();
-            if (undoGroupId != null)
-            {
-                Undo.RevertAllDownToGroup(undoGroupId.Value);
-                undoGroupId = null;
-                GUIUtility.ExitGUI();
-            }
+            Stop();
         }
 
         private static void Update()

@@ -29,8 +29,8 @@ namespace FriedSynapse.FlowEnt.Builder
 #pragma warning restore RCS1169, IDE0044
 
 #pragma warning disable IDE0051, RCS1213
-        public AbstractAnimation TweenTest => new Tween(1).For(Green).MoveLocalY(3.5f);
-        public Flow FlowTest => new Flow().Queue(new Tween(5).For(Green).MoveLocalY(0.5f)).Start();
+        public AbstractAnimation TweeHAnTest => new Tween(1).For(Green).MoveLocalY(3.5f);
+        public Flow FlowTest => new Flow().Queue(new Tween(1).For(Green).MoveLocalY(2.5f)).Start();
         private void Start()
         {
             Echo.Build().Start();

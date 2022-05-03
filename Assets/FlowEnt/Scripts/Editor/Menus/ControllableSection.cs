@@ -165,14 +165,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void ShowExtraControls()
         {
-            switch (Controllable)
+            if (Controllable is Tween tween)
             {
-                case Tween tween:
-                    ShowControls(tween);
-                    break;
-                default:
-                    ShowControls((AbstractAnimation)Controllable);
-                    break;
+                ShowControls(tween);
+            }
+            else
+            {
+                ShowControls();
             }
         }
 
@@ -180,7 +179,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
         }
 
-        private void ShowControls(AbstractAnimation animation)
+        private void ShowControls()
         {
             EditorGUILayout.LabelField("Time elapsed", PreviewTime.ToString());
         }
