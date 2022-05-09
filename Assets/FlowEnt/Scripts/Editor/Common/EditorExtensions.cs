@@ -27,12 +27,8 @@ namespace FriedSynapse.FlowEnt.Editor
                     float time = tween.GetFieldValue<float>(nameof(time));
                     float remainingTime = tween.GetFieldValue<float>(nameof(remainingTime));
                     return (loopDirection == LoopDirectionForward ? time - remainingTime : remainingTime) / time;
-                case Echo echo:
-                    return echo.GetFieldValue<float>("time");
-                case Flow flow:
-                    return 0f;
                 default:
-                    return 0f;
+                    return animation.GetFieldValue<float>("time");
             }
         }
 

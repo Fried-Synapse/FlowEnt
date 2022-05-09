@@ -28,6 +28,7 @@ namespace FriedSynapse.FlowEnt.Editor
         }
         private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
+        private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
         private static readonly object[] emptyArray = { };
         private Transform transform;
         private List<AnimationInfo> animations;
@@ -62,6 +63,11 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 #pragma warning restore IDE0051, RCS1213
 
+        internal void ResetAnimations()
+        {
+            animations = null;
+        }
+
         private void ShowAnimations()
         {
             EditorGUILayout.LabelField(transform.name);
@@ -86,6 +92,14 @@ namespace FriedSynapse.FlowEnt.Editor
             animations = new List<AnimationInfo>();
             foreach (MonoBehaviour behaviour in transform.GetComponents<MonoBehaviour>())
             {
+                animations.AddRange(
+                    behaviour
+                    .GetType()
+                    .GetFields(DefaultBindingFlags)
+                    .Where(fi => abstractAnimationBuilderType.IsAssignableFrom(fi.FieldType))
+                    .Select(fi => new AnimationInfo(fi.Name, ((IAbstractAnimationBuilder)fi.GetValue(behaviour)).Build()))
+                    .ToList());
+
                 animations.AddRange(
                     behaviour
                     .GetType()

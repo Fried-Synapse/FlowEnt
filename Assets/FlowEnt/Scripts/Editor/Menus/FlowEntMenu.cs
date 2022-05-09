@@ -27,14 +27,10 @@ namespace FriedSynapse.FlowEnt.Editor
 
         [MenuItem("Tools/FlowEnt/Website", false, 200)]
         public static void GoToWebsite()
-        {
-            Application.OpenURL("https://flowent.friedsynapse.com/");
-        }
+            => Application.OpenURL("https://flowent.friedsynapse.com/");
 
         [MenuItem("Tools/FlowEnt/Documentation", false, 201)]
         public static void GoToDocumentation()
-        {
-            Application.OpenURL("https://docs.flowent.friedsynapse.com/");
-        }
+            => Application.OpenURL("https://docs.flowent.friedsynapse.com/");
     }
 }

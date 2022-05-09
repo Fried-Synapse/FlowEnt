@@ -39,6 +39,9 @@ namespace FriedSynapse.FlowEnt
         private readonly Dictionary<ulong, AbstractUpdatableWrapper> runningUpdatableWrappers = new Dictionary<ulong, AbstractUpdatableWrapper>(2);
         private int runningUpdatableWrappersCount;
         private int? remainingLoops;
+#pragma warning disable IDE0052 //HACK not used at the moment directly. The usage is for the editor scripts.
+        private float time;
+#pragma warning restore IDE0052
 
         #endregion
 
@@ -160,6 +163,7 @@ namespace FriedSynapse.FlowEnt
         private void FirstUpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
+            time += scaledDeltaTime;
 
             onUpdated?.Invoke(scaledDeltaTime);
         }
@@ -167,6 +171,7 @@ namespace FriedSynapse.FlowEnt
         internal override void UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
+            time += scaledDeltaTime;
 
             AbstractUpdatable index = updatables.anchor.next;
 
@@ -190,6 +195,7 @@ namespace FriedSynapse.FlowEnt
                 onLoopStarted?.Invoke(remainingLoops);
                 StartUpdatables(overdraft.Value);
                 FirstUpdateInternal(overdraft.Value);
+                time = 0;
                 return;
             }
 

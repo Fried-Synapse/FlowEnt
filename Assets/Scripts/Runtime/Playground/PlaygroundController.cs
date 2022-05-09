@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt.Builder
 
 #pragma warning disable IDE0051, RCS1213
 
-        public AbstractAnimation TweenTest => new Tween(1).For(Green).MoveLocalY(3.5f);
+        public AbstractAnimation TweenTest => new Tween(1).SetTimeScale(3).SetLoopCount(3).For(Green).MoveLocalYTo(3.5f);
         public AbstractAnimation EchoTest => new Echo(1).For(Green).MoveY(3.5f);
         public Flow FlowTest => new Flow().Queue(new Tween(1).For(Green).MoveLocalY(2.5f)).Start();
 
