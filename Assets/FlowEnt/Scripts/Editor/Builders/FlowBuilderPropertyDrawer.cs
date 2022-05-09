@@ -12,11 +12,5 @@ namespace FriedSynapse.FlowEnt.Editor
             "events",
             "queues",
         };
-
-        protected override void DrawControls(Rect position, SerializedProperty property)
-        {
-            float buttonsWidth = DrawControlButtons(position, property);
-            EditorGUI.LabelField(FlowEntEditorGUILayout.GetIndentedRect(position, buttonsWidth), "Time elapsed", GetData(property).PreviewTime.ToString());
-        }
     }
 }

@@ -177,7 +177,7 @@ MonoBehaviour:
       name: 
       updateType: 0
       autoStart: 0
-      skipFrames: 0
+      skipFrames: 1
       delay: 0
       timeScale: 1
       isLoopCountInfinite: 0

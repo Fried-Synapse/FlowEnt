@@ -26,6 +26,8 @@ namespace FriedSynapse.FlowEnt.Editor
             public AbstractAnimation animation;
             public PreviewControllableSection controllableSection;
         }
+
+        internal static FlowEntPreviewerWindow Instance { get; private set; }
         private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
         private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
@@ -34,9 +36,19 @@ namespace FriedSynapse.FlowEnt.Editor
         private List<AnimationInfo> animations;
 
 #pragma warning disable IDE0051, RCS1213
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         private void Update()
         {
             Repaint();
+        }
+
+        private void OnDestroy()
+        {
+            Instance = default;
         }
 
         private void OnGUI()
@@ -65,7 +77,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal void ResetAnimations()
         {
-            animations = null;
+            if (Instance == null)
+            {
+                return;
+            }
+            Instance.animations = null;
         }
 
         private void ShowAnimations()

@@ -5,12 +5,13 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public static class FlowEntMenu
     {
-        private static void ShowWindow<TEditorWindow>(string name)
+        private static TEditorWindow ShowWindow<TEditorWindow>(string name)
             where TEditorWindow : EditorWindow
         {
             TEditorWindow window = EditorWindow.GetWindow<TEditorWindow>(name);
             window.titleContent = new GUIContent(name, Resources.Load<Texture2D>("Logo"));
             window.Show();
+            return window;
         }
 
         [MenuItem("Tools/FlowEnt/Settings", false, 100)]

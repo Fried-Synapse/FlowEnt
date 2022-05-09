@@ -6,24 +6,11 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer<AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder>.Data>,
+    public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer,
         ICrudable<TAnimationBuilder>
         where TAnimation : AbstractAnimation
         where TAnimationBuilder : AbstractAnimationBuilder<TAnimation>
     {
-        public class Data
-        {
-            public TAnimation PreviewAnimation { get; set; }
-            public float PreviewTime { get; set; }
-            public bool IsInPreview => PreviewAnimation != null;
-
-            public void Reset()
-            {
-                PreviewTime = 0;
-                PreviewAnimation = null;
-            }
-        }
-
         protected virtual List<string> VisibleProperties => new List<string>{
             "options",
             "events",
@@ -33,35 +20,6 @@ namespace FriedSynapse.FlowEnt.Editor
         private static TAnimationBuilder clipboard;
         public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
 
-        protected abstract void DrawControls(Rect position, SerializedProperty property);
-
-        private void OnPreviewUpdate(SerializedProperty property)
-        {
-            Data data = GetData(property);
-            data.PreviewTime = data.PreviewAnimation.GetTime();
-            foreach (UnityEditor.Editor item in ActiveEditorTracker.sharedTracker.activeEditors)
-            {
-                if (item.serializedObject == property?.serializedObject)
-                {
-                    item.Repaint();
-                    return;
-                }
-            }
-            PreviewController.Stop(false);
-        }
-
-        protected void StartPreview(SerializedProperty property)
-        {
-            Data data = GetData(property);
-            data.PreviewAnimation = property.GetValue<TAnimationBuilder>().Build();
-            PreviewController.Start(
-                new PreviewOptions(data.PreviewAnimation)
-                {
-                    OnUpdate = () => OnPreviewUpdate(property),
-                    OnStop = data.Reset,
-                });
-        }
-
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             if (!property.isExpanded)
@@ -69,27 +27,19 @@ namespace FriedSynapse.FlowEnt.Editor
                 return EditorGUIUtility.singleLineHeight;
             }
 
-            float height = (FlowEntConstants.SpacedSingleLineHeight * 2) + FlowEntConstants.DrawerSpacing;
+            float height = FlowEntConstants.SpacedSingleLineHeight + FlowEntConstants.DrawerSpacing;
             ForEachVisibleProperty(property, p => height += EditorGUI.GetPropertyHeight(p, true));
             return height;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Data data = GetData(property);
-
             TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
             SerializedProperty parentProperty = property.GetParentArray();
             string name = animation.GetPropertyValue<object>("Options").GetPropertyValue<string>("Name");
             label.text = $"{(parentProperty == null ? label.text : "")} [{animation.GetType().Name.Replace("Builder", "")}{(string.IsNullOrEmpty(name) ? "" : $" - {name}")}]";
 
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
-
-            if (data.IsInPreview)
-            {
-                ColorUtility.TryParseHtmlString(FlowEntConstants.Preview, out Color previewColour);
-                EditorGUI.DrawRect(position, previewColour);
-            }
 
             DrawMenu(position, property);
 
@@ -100,11 +50,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
             EditorGUI.indentLevel++;
 
-            DrawControls(FlowEntEditorGUILayout.GetRect(position, 1), property);
-
             using (EditorGUI.ChangeCheckScope check = new EditorGUI.ChangeCheckScope())
             {
-                position.y += FlowEntConstants.SpacedSingleLineHeight + EditorGUIUtility.singleLineHeight;
+                position.y += EditorGUIUtility.singleLineHeight;
                 ForEachVisibleProperty(property, p =>
                 {
                     float height = EditorGUI.GetPropertyHeight(p, true) + FlowEntConstants.DrawerSpacing;
@@ -113,9 +61,9 @@ namespace FriedSynapse.FlowEnt.Editor
                     position.y += height;
                 });
 
-                if (data.IsInPreview && check.changed)
+                if (check.changed)
                 {
-                    PreviewController.Stop();
+                    FlowEntPreviewerWindow.Instance?.ResetAnimations();
                 }
             }
 
@@ -124,11 +72,23 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void DrawMenu(Rect position, SerializedProperty property)
         {
-            Rect menuPosition = position;
+            const float previewWidth = 60f;
             const float menuWidth = 20f;
-            menuPosition.x = position.xMax - (menuWidth / 2f) - 10;
+            position.height = EditorGUIUtility.singleLineHeight;
+
+            Rect previewPosition = position;
+            previewPosition.x = position.xMax - menuWidth - previewWidth;
+            previewPosition.width = previewWidth;
+
+            if (GUI.Button(previewPosition, "Preview"))
+            {
+                FlowEntMenu.ShowPreviewer();
+            }
+
+            Rect menuPosition = position;
+            menuPosition.x = position.xMax - menuWidth;
             menuPosition.width = menuWidth;
-            menuPosition.height = EditorGUIUtility.singleLineHeight;
+
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
                 SerializedProperty parentProperty = property.GetParentArray();
@@ -143,72 +103,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
                 context.ShowAsContext();
             }
-        }
-
-        protected float DrawControlButtons(Rect position, SerializedProperty property)
-        {
-            Data data = GetData(property);
-            position = EditorGUI.IndentedRect(position);
-            position.x -= 10f;
-            position.width = EditorGUIUtility.singleLineHeight;
-
-            GUI.enabled = data.PreviewAnimation != null;
-            if (GUI.Button(position, Icon.PrevFrame, Icon.Style))
-            {
-                ((IControllable)data.PreviewAnimation).ChangeFrame(-1);
-            }
-            position.x += EditorGUIUtility.singleLineHeight;
-            GUI.enabled = true;
-
-            switch (data.PreviewAnimation?.PlayState)
-            {
-                case PlayState.Playing:
-                    if (GUI.Button(position, Icon.Pause, Icon.Style))
-                    {
-                        data.PreviewAnimation.Pause();
-                    }
-                    break;
-                case PlayState.Finished:
-                    if (GUI.Button(position, Icon.Replay, Icon.Style))
-                    {
-                        PreviewController.Reset();
-                    }
-                    break;
-                default:
-                    if (GUI.Button(position, Icon.Play, Icon.Style))
-                    {
-                        if (data.PreviewAnimation == null)
-                        {
-                            StartPreview(property);
-                        }
-                        else
-                        {
-                            data.PreviewAnimation.Resume();
-                        }
-                    }
-                    break;
-            }
-            position.x += EditorGUIUtility.singleLineHeight;
-
-            if (GUI.Button(position, Icon.NextFrame, Icon.Style))
-            {
-                if (data.PreviewAnimation == null)
-                {
-                    StartPreview(property);
-                    data.PreviewAnimation.Pause();
-                }
-                ((IControllable)data.PreviewAnimation).ChangeFrame(1);
-            }
-            position.x += EditorGUIUtility.singleLineHeight;
-
-            GUI.enabled = data.PreviewAnimation != null;
-            if (GUI.Button(position, Icon.Stop, Icon.Style))
-            {
-                PreviewController.Stop();
-            }
-            GUI.enabled = true;
-
-            return EditorGUIUtility.singleLineHeight * 4;
         }
 
         private void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
