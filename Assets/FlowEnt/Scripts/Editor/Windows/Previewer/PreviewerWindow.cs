@@ -21,11 +21,9 @@ namespace FriedSynapse.FlowEnt.Editor
                     animation.Stop();
                     animation.Reset();
                 }
-                controllableSection = new PreviewControllableSection(this.animation);
             }
             public string name;
             public AbstractAnimation animation;
-            public PreviewControllableSection controllableSection;
         }
 
         private const string BaseAssetPath = "Assets/FlowEnt/Scripts/Editor/Menus/Previewer/" + nameof(PreviewerWindow);
@@ -47,6 +45,23 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void Update()
         {
+            if (animations != null && transform == Selection.activeTransform)
+            {
+                return;
+            }
+
+            if (Selection.activeTransform == null)
+            {
+                transform = null;
+                animations = null;
+            }
+            else
+            {
+                transform = Selection.activeTransform;
+                ReadAnimations();
+            }
+            Render();
+
             //TODO do we need this?
             //Repaint();
         }
@@ -56,16 +71,38 @@ namespace FriedSynapse.FlowEnt.Editor
             Instance = default;
         }
 
+        private TextElement Label { get; set; }
+        private VisualElement Animations { get; set; }
+
         public void CreateGUI()
         {
-            // VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(VisualTreePath);
-            // VisualElement labelFromUXML = visualTree.Instantiate();
-            // rootVisualElement.Add(labelFromUXML);
-            rootVisualElement.Add(new Header("FlowEnt Previewer"));
-
-            //TODO do we actually need this?
-            StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(StyleSheetPath);
+            this.LoadUxml();
+            rootVisualElement.Query<VisualElement>("head").First().Add(new Header("FlowEnt Previewer"));
+            Label = rootVisualElement.Query<TextElement>("name").First();
+            Animations = rootVisualElement.Query<VisualElement>("animations").First();
+            Render();
         }
+
+        private void Render()
+        {
+            Label.text = transform == null ? "Select an object from the hierarchy first." : transform.name;
+            if (animations?.Count == 0)
+            {
+                Animations.Clear();
+            }
+            else
+            {
+                foreach (AnimationInfo animationInfo in animations)
+                {
+                    Animations.Add(new TextElement()
+                    {
+                        text = animationInfo.name
+                    });
+                    Animations.Add(new ControllableSection(animationInfo.animation));
+                }
+            }
+        }
+
 #pragma warning restore IDE0051, RCS1213
 
         internal void ResetAnimations()
@@ -76,26 +113,6 @@ namespace FriedSynapse.FlowEnt.Editor
             }
             Instance.animations = null;
         }
-
-        private void ShowAnimations()
-        {
-            EditorGUILayout.LabelField(transform.name);
-            EditorGUI.indentLevel++;
-            if (animations?.Count == 0)
-            {
-                EditorGUILayout.LabelField("No available animations to preview.");
-            }
-            else
-            {
-                foreach (AnimationInfo animationInfo in animations)
-                {
-                    EditorGUILayout.LabelField(animationInfo.name);
-                    animationInfo.controllableSection.Show();
-                }
-            }
-            EditorGUI.indentLevel--;
-        }
-
         private void ReadAnimations()
         {
             animations = new List<AnimationInfo>();

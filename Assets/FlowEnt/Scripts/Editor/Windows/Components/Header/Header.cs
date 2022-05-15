@@ -2,25 +2,13 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public class Header : VisualElement
+    public class Header : AbstractComponent
     {
+        protected override bool HasUxml => true;
+
         public Header(string text)
         {
-            this.LoadUss();
-
-            VisualElement wrapper = new VisualElement();
-            wrapper.name = nameof(wrapper);
-            Add(wrapper);
-
-            Image logo = new Image();
-            logo.name = nameof(logo);
-            wrapper.Add(logo);
-
-            TextElement textElement = new TextElement();
-            textElement.name = "text";
-            textElement.text = text;
-            wrapper.Add(textElement);
+            this.Query<TextElement>("text").First().text = text;
         }
-
     }
 }
