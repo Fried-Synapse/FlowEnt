@@ -4,10 +4,11 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public class FlowEntPreviewerWindow : EditorWindow
+    public class PreviewerWindow : EditorWindow
     {
         private class AnimationInfo
         {
@@ -27,11 +28,14 @@ namespace FriedSynapse.FlowEnt.Editor
             public PreviewControllableSection controllableSection;
         }
 
-        internal static FlowEntPreviewerWindow Instance { get; private set; }
+        private const string BaseAssetPath = "Assets/FlowEnt/Scripts/Editor/Menus/Previewer/" + nameof(PreviewerWindow);
+        private const string VisualTreePath = BaseAssetPath + ".uxml";
+        private const string StyleSheetPath = BaseAssetPath + ".uss";
         private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
         private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
         private static readonly object[] emptyArray = { };
+        internal static PreviewerWindow Instance { get; private set; }
         private Transform transform;
         private List<AnimationInfo> animations;
 
@@ -43,7 +47,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void Update()
         {
-            Repaint();
+            //TODO do we need this?
+            //Repaint();
         }
 
         private void OnDestroy()
@@ -51,27 +56,15 @@ namespace FriedSynapse.FlowEnt.Editor
             Instance = default;
         }
 
-        private void OnGUI()
+        public void CreateGUI()
         {
-            FlowEntEditorGUILayout.Header("FlowEnt Previewer");
-            GUIStyle errorStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
-            if (Selection.gameObjects.Length == 0)
-            {
-                EditorGUILayout.LabelField("Select an object from the hierarchy first.", errorStyle);
-                return;
-            }
-            EditorGUILayout.Space(20f);
-            bool shouldReadAnimations = animations == null;
-            if (transform != Selection.activeTransform)
-            {
-                transform = Selection.activeTransform;
-                shouldReadAnimations = true;
-            }
-            if (shouldReadAnimations)
-            {
-                ReadAnimations();
-            }
-            ShowAnimations();
+            // VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(VisualTreePath);
+            // VisualElement labelFromUXML = visualTree.Instantiate();
+            // rootVisualElement.Add(labelFromUXML);
+            rootVisualElement.Add(new Header("FlowEnt Previewer"));
+
+            //TODO do we actually need this?
+            StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(StyleSheetPath);
         }
 #pragma warning restore IDE0051, RCS1213
 

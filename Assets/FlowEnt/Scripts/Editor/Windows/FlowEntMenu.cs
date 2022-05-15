@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         [MenuItem("Tools/FlowEnt/Previewer", false, 101)]
         public static void ShowPreviewer()
-            => ShowWindow<FlowEntPreviewerWindow>("FlowEnt Previewer");
+            => ShowWindow<PreviewerWindow>("FlowEnt Previewer");
 
         [MenuItem("Tools/FlowEnt/Inspector", false, 102)]
         public static void ShowInspector()
