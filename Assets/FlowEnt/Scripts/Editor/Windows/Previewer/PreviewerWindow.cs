@@ -37,6 +37,9 @@ namespace FriedSynapse.FlowEnt.Editor
         private Transform transform;
         private List<AnimationInfo> animations;
 
+        private TextElement label;
+        private VisualElement animationsElement;
+
 #pragma warning disable IDE0051, RCS1213
         private void Awake()
         {
@@ -71,35 +74,33 @@ namespace FriedSynapse.FlowEnt.Editor
             Instance = default;
         }
 
-        private TextElement Label { get; set; }
-        private VisualElement Animations { get; set; }
-
         public void CreateGUI()
         {
             this.LoadUxml();
             rootVisualElement.Query<VisualElement>("head").First().Add(new Header("FlowEnt Previewer"));
-            Label = rootVisualElement.Query<TextElement>("name").First();
-            Animations = rootVisualElement.Query<VisualElement>("animations").First();
+            label = rootVisualElement.Query<TextElement>("name").First();
+            animationsElement = rootVisualElement.Query<VisualElement>("animations").First();
             Render();
         }
 
         private void Render()
         {
-            Label.text = transform == null ? "Select an object from the hierarchy first." : transform.name;
-            if (animations?.Count == 0)
+            label.text = transform == null ? "Select an object from the hierarchy first." : transform.name;
+
+            animationsElement.Clear();
+
+            if (animations == null)
             {
-                Animations.Clear();
+                return;
             }
-            else
+
+            foreach (AnimationInfo animationInfo in animations)
             {
-                foreach (AnimationInfo animationInfo in animations)
+                animationsElement.Add(new TextElement()
                 {
-                    Animations.Add(new TextElement()
-                    {
-                        text = animationInfo.name
-                    });
-                    Animations.Add(new ControllableSection(animationInfo.animation));
-                }
+                    text = animationInfo.name
+                });
+                animationsElement.Add(new ControllableSection(animationInfo.animation));
             }
         }
 

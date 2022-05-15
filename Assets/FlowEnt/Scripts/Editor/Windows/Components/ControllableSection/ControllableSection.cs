@@ -11,11 +11,18 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             Controllable = controllable;
 
-            this.Query<Button>("prevFrame").First().style.backgroundImage = new StyleBackground((Texture2D)Icon.PrevFrame.image);
-            this.Query<Button>("play").First().style.backgroundImage = new StyleBackground((Texture2D)Icon.Play.image);
-            this.Query<Button>("nextFrame").First().style.backgroundImage = new StyleBackground((Texture2D)Icon.NextFrame.image);
-            this.Query<Button>("stop").First().style.backgroundImage = new StyleBackground((Texture2D)Icon.Stop.image);
+            SetIcon("prevFrame", Icon.PrevFrame);
+            SetIcon("play", Icon.Play);
+            SetIcon("nextFrame", Icon.NextFrame);
+            SetIcon("stop", Icon.Stop);
+
         }
+
+        private void SetIcon(string selector, GUIContent icon)
+            => this
+                .Query<Button>(selector).First()
+                .Query<VisualElement>("icon").First()
+                .style.backgroundImage = new StyleBackground((Texture2D)icon.image);
 
         private IControllable Controllable { get; }
     }
