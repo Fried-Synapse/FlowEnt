@@ -10,11 +10,3 @@
     padding-top: 0;
     padding-bottom: 0;
 }
-
-.button .icon {
-    flex-grow: 1;
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-}

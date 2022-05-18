@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public class PreviewerWindow : EditorWindow
+    internal class PreviewerWindow : EditorWindow
     {
         private class AnimationInfo
         {
@@ -22,13 +22,10 @@ namespace FriedSynapse.FlowEnt.Editor
                     animation.Reset();
                 }
             }
-            public string name;
-            public AbstractAnimation animation;
+            internal string name;
+            internal AbstractAnimation animation;
         }
 
-        private const string BaseAssetPath = "Assets/FlowEnt/Scripts/Editor/Menus/Previewer/" + nameof(PreviewerWindow);
-        private const string VisualTreePath = BaseAssetPath + ".uxml";
-        private const string StyleSheetPath = BaseAssetPath + ".uss";
         private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
         private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
@@ -64,9 +61,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 ReadAnimations();
             }
             Render();
-
-            //TODO do we need this?
-            //Repaint();
         }
 
         private void OnDestroy()
@@ -74,10 +68,9 @@ namespace FriedSynapse.FlowEnt.Editor
             Instance = default;
         }
 
-        public void CreateGUI()
+        internal void CreateGUI()
         {
             this.LoadUxml();
-            rootVisualElement.Query<VisualElement>("head").First().Add(new Header("FlowEnt Previewer"));
             label = rootVisualElement.Query<TextElement>("name").First();
             animationsElement = rootVisualElement.Query<VisualElement>("animations").First();
             Render();
@@ -100,7 +93,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     text = animationInfo.name
                 });
-                animationsElement.Add(new ControllableSection(animationInfo.animation));
+                animationsElement.Add(new ControlSection(animationInfo.animation));
             }
         }
 

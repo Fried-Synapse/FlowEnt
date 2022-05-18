@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -14,5 +15,8 @@ namespace FriedSynapse.FlowEnt.Editor
         public static GUIContent Stop = EditorGUIUtility.IconContent("d_PreMatQuad@2x", "Stop");
 
         public static GUIStyle Style = new GUIStyle(EditorStyles.miniButton) { padding = new RectOffset(2, 2, 2, 2) };
+
+        public static void SetIcon(this VisualElement visualElement, GUIContent icon)
+            => visualElement.style.backgroundImage = new StyleBackground((Texture2D)icon?.image);
     }
 }
