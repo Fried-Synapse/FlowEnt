@@ -10,11 +10,18 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     internal class PreviewerWindow : EditorWindow
     {
+        private enum MemberType
+        {
+            Field,
+            Property,
+            Method
+        }
         private class AnimationInfo
         {
-            public AnimationInfo(string name, AbstractAnimation animation)
+            public AnimationInfo(string name, MemberType type, AbstractAnimation animation)
             {
                 this.name = name;
+                this.type = type;
                 this.animation = animation;
                 if (animation.PlayState != PlayState.Building)
                 {
@@ -23,6 +30,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
             }
             internal string name;
+            internal MemberType type;
             internal AbstractAnimation animation;
         }
 
@@ -89,12 +97,26 @@ namespace FriedSynapse.FlowEnt.Editor
 
             foreach (AnimationInfo animationInfo in animations)
             {
-                animationsElement.Add(new TextElement()
-                {
-                    text = animationInfo.name
-                });
-                animationsElement.Add(new ControlSection(animationInfo.animation));
+                animationsElement.Add(CreateLabel(animationInfo));
+                animationsElement.Add(new PreviewableControlSection(animationInfo.animation));
             }
+        }
+
+        private TextElement CreateLabel(AnimationInfo animationInfo)
+        {
+            TextElement label = new TextElement();
+            label.text = $"{animationInfo.name} [{animationInfo.animation.GetType().Name}]";
+            Color? color = animationInfo.type switch
+            {
+                MemberType.Property => new Color(0.45f, 0.81f, 1f),
+                MemberType.Method => new Color(0.86f, 0.86f, 0.34f),
+                _ => null,
+            };
+            if (color != null)
+            {
+                label.style.color = new StyleColor(color.Value);
+            }
+            return label;
         }
 
 #pragma warning restore IDE0051, RCS1213
@@ -117,7 +139,10 @@ namespace FriedSynapse.FlowEnt.Editor
                     .GetType()
                     .GetFields(DefaultBindingFlags)
                     .Where(fi => abstractAnimationBuilderType.IsAssignableFrom(fi.FieldType))
-                    .Select(fi => new AnimationInfo(fi.Name, ((IAbstractAnimationBuilder)fi.GetValue(behaviour)).Build()))
+                    .Select(fi => new AnimationInfo(
+                        char.ToUpper(fi.Name[0]) + fi.Name.Substring(1),
+                        MemberType.Field,
+                        ((IAbstractAnimationBuilder)fi.GetValue(behaviour)).Build()))
                     .ToList());
 
                 animations.AddRange(
@@ -125,7 +150,9 @@ namespace FriedSynapse.FlowEnt.Editor
                     .GetType()
                     .GetProperties(DefaultBindingFlags)
                     .Where(pi => abstractAnimationType.IsAssignableFrom(pi.PropertyType))
-                    .Select(pi => new AnimationInfo(pi.Name, (AbstractAnimation)pi.GetValue(behaviour)))
+                    .Select(pi => new AnimationInfo(pi.Name,
+                        MemberType.Property,
+                        (AbstractAnimation)pi.GetValue(behaviour)))
                     .ToList());
 
                 animations.AddRange(
@@ -136,7 +163,9 @@ namespace FriedSynapse.FlowEnt.Editor
                         => !mi.IsSpecialName
                         && abstractAnimationType.IsAssignableFrom(mi.ReturnType)
                         && mi.GetParameters().Length == 0)
-                    .Select(mi => new AnimationInfo(mi.Name, (AbstractAnimation)mi.Invoke(behaviour, emptyArray)))
+                    .Select(mi => new AnimationInfo(mi.Name,
+                        MemberType.Method,
+                        (AbstractAnimation)mi.Invoke(behaviour, emptyArray)))
                     .ToList());
             }
         }

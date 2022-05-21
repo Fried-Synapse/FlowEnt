@@ -6,48 +6,51 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         internal ControlSection(IControllable controllable)
         {
-            this.LoadUxml();
-            this.LoadUss();
+            this.LoadUxml<ControlSection>();
+            this.LoadUss<ControlSection>();
             Controllable = controllable;
             PrevFrame = this.Query<ControlButton>("prevFrame").First();
             PlayPause = this.Query<ControlButton>("playPause").First();
             NextFrame = this.Query<ControlButton>("nextFrame").First();
             Stop = this.Query<ControlButton>("stop").First();
+            Timeline = this.Query<ControlBar>("timeline").First();
             Init();
             Bind();
         }
 
-        private IControllable Controllable { get; }
-        private bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
-        private ControlButton PrevFrame { get; }
-        private ControlButton PlayPause { get; }
-        private ControlButton NextFrame { get; }
-        private ControlButton Stop { get; }
+        protected IControllable Controllable { get; }
+        protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
+        protected ControlButton PrevFrame { get; }
+        protected ControlButton PlayPause { get; }
+        protected ControlButton NextFrame { get; }
+        protected ControlButton Stop { get; }
+        protected ControlBar Timeline { get; }
 
-        private void Init()
+        protected virtual void Init()
         {
             UpdatePlayState();
         }
 
-        private void Bind()
+        protected virtual void Bind()
         {
+            PrevFrame.clicked += OnPrevFrame;
+            PlayPause.clicked += OnPlayPause;
+            NextFrame.clicked += OnNextFrame;
+            Stop.clicked += OnStop;
+
             foreach (Button button in new[] { PrevFrame, PlayPause, NextFrame, Stop })
             {
                 button.clicked += UpdatePlayState;
             }
-            PrevFrame.clicked += () => Controllable.ChangeFrame(-1);
-            PlayPause.clicked += () => OnPlayPause();
-            NextFrame.clicked += () => Controllable.ChangeFrame(1);
-            Stop.clicked += () => Controllable.Stop();
         }
 
-        private void UpdatePlayState()
+        protected virtual void UpdatePlayState()
         {
             UpdateButtonsState();
             //TODO add the red background
         }
 
-        private void UpdateButtonsState()
+        protected virtual void UpdateButtonsState()
         {
             PlayPause.Type = Controllable.PlayState switch
             {
@@ -60,9 +63,33 @@ namespace FriedSynapse.FlowEnt.Editor
             Stop.SetEnabled(!IsBuilding);
         }
 
-        private void OnPlayPause()
+        protected virtual void OnPrevFrame()
         {
+            Controllable.ChangeFrame(-1);
+        }
 
+        protected virtual void OnNextFrame()
+        {
+            Controllable.ChangeFrame(1);
+        }
+
+        protected virtual void OnPlayPause()
+        {
+            switch (Controllable.PlayState)
+            {
+                case PlayState.Playing:
+                    Controllable.Pause();
+                    break;
+                default:
+                    Controllable.Resume();
+                    break;
+            }
+            UpdatePlayState();
+        }
+
+        protected virtual void OnStop()
+        {
+            Controllable.Stop();
         }
     }
 }

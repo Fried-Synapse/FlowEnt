@@ -31,6 +31,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static int? undoGroupId;
         private static PreviewOptions options;
+        private static bool IsRunning => options != null;
 
         public static void Start(PreviewOptions options)
         {
@@ -88,6 +89,10 @@ namespace FriedSynapse.FlowEnt.Editor
         private static void Update()
         {
             options?.OnUpdate?.Invoke();
+            if (!UnityEditorInternal.InternalEditorUtility.isApplicationActive && IsRunning)
+            {
+                Stop(false);
+            }
         }
 
         private static bool RecordObjects(AbstractAnimation animation)

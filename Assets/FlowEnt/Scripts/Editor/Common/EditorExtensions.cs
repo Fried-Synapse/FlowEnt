@@ -22,11 +22,9 @@ namespace FriedSynapse.FlowEnt.Editor
             switch (animation)
             {
                 case Tween tween:
-                    const int LoopDirectionForward = 0;
-                    int loopDirection = tween.GetFieldValue<int>(nameof(loopDirection));
                     float time = tween.GetFieldValue<float>(nameof(time));
                     float remainingTime = tween.GetFieldValue<float>(nameof(remainingTime));
-                    return (loopDirection == LoopDirectionForward ? time - remainingTime : remainingTime) / time;
+                    return (time - remainingTime) / time;
                 default:
                     return animation.GetFieldValue<float>("time");
             }

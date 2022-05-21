@@ -37,10 +37,6 @@ namespace FriedSynapse.FlowEnt
             return AssetDatabase.LoadAssetAtPath<T>(Path.ChangeExtension(AssetDatabase.GUIDToAssetPath(assetGuid), extension));
         }
 
-        private static T Get<T>(object obj, string extension)
-            where T : UnityEngine.Object
-            => Get<T>(obj.GetType().Name, extension);
-
         internal static void AddAll(this VisualElement visualElement, IEnumerable<VisualElement> items)
         {
             foreach (VisualElement item in items)
@@ -49,16 +45,22 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
+        internal static void LoadUxml<T>(this VisualElement visualElement)
+            => visualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(typeof(T).Name, "uxml").CloneTree().Children()));
+
         internal static void LoadUxml(this VisualElement visualElement)
-            => visualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(visualElement, "uxml").CloneTree().Children()));
+            => visualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(visualElement.GetType().Name, "uxml").CloneTree().Children()));
 
         internal static void LoadUxml(this EditorWindow editorWindow)
-            => editorWindow.rootVisualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(editorWindow, "uxml").CloneTree().Children()));
+            => editorWindow.rootVisualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(editorWindow.GetType().Name, "uxml").CloneTree().Children()));
+
+        internal static void LoadUss<T>(this VisualElement visualElement)
+            => visualElement.styleSheets.Add(Get<StyleSheet>(typeof(T).Name, "uss"));
 
         internal static void LoadUss(this VisualElement visualElement)
-            => visualElement.styleSheets.Add(Get<StyleSheet>(visualElement, "uss"));
+            => visualElement.styleSheets.Add(Get<StyleSheet>(visualElement.GetType().Name, "uss"));
 
         internal static void LoadUss(this EditorWindow editorWindow)
-            => editorWindow.rootVisualElement.styleSheets.Add(Get<StyleSheet>(editorWindow, "uss"));
+            => editorWindow.rootVisualElement.styleSheets.Add(Get<StyleSheet>(editorWindow.GetType().Name, "uss"));
     }
 }
