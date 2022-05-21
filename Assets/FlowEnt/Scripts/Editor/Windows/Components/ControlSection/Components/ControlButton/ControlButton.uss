@@ -1,0 +1,31 @@
+.icon {
+    flex-grow: 1;
+    margin: 4px;
+    align-items: center;
+    justify-content: center;
+    -unity-background-image-tint-color: var(--unity-colors-button-text);
+}
+
+.icon.play {
+    background-image: url('Content/play.png');
+}
+
+.icon.replay {
+    background-image: url('Content/replay.png');
+}
+
+.icon.pause {
+    background-image: url('Content/pause.png');
+}
+
+.icon.prevFrame {
+    background-image: url('Content/prevFrame.png');
+}
+
+.icon.nextFrame {
+    background-image: url('Content/nextFrame.png');
+}
+
+.icon.stop {
+    background-image: url('Content/stop.png');
+}

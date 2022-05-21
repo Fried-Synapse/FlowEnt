@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine.UIElements;
@@ -37,15 +39,21 @@ namespace FriedSynapse.FlowEnt
 
         private static T Get<T>(object obj, string extension)
             where T : UnityEngine.Object
+            => Get<T>(obj.GetType().Name, extension);
+
+        internal static void AddAll(this VisualElement visualElement, IEnumerable<VisualElement> items)
         {
-            return Get<T>(obj.GetType().Name, extension);
+            foreach (VisualElement item in items)
+            {
+                visualElement.Add(item);
+            }
         }
 
         internal static void LoadUxml(this VisualElement visualElement)
-            => visualElement.Add(Get<VisualTreeAsset>(visualElement, "uxml").Instantiate());
+            => visualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(visualElement, "uxml").CloneTree().Children()));
 
         internal static void LoadUxml(this EditorWindow editorWindow)
-            => editorWindow.rootVisualElement.Add(Get<VisualTreeAsset>(editorWindow, "uxml").Instantiate());
+            => editorWindow.rootVisualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(editorWindow, "uxml").CloneTree().Children()));
 
         internal static void LoadUss(this VisualElement visualElement)
             => visualElement.styleSheets.Add(Get<StyleSheet>(visualElement, "uss"));

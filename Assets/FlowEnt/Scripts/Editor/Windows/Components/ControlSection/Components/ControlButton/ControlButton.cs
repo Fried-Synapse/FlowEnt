@@ -1,9 +1,18 @@
-using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.Scripting;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
+    internal static class ControlTypeExtensions
+    {
+        public static string ToClassName(this ControlButton.ControlType type)
+        {
+            string typeName = type.ToString();
+            return char.ToLower(typeName[0]) + typeName.Substring(1);
+        }
+    }
+
     internal class ControlButton : Button
     {
         public enum ControlType
@@ -16,6 +25,7 @@ namespace FriedSynapse.FlowEnt.Editor
             NextFrame,
             Stop
         }
+
         [Preserve]
         public new class UxmlFactory : UxmlFactory<ControlButton, UxmlTraits> { }
         [Preserve]
@@ -34,6 +44,7 @@ namespace FriedSynapse.FlowEnt.Editor
         public ControlButton()
         {
             this.LoadUxml();
+            this.LoadUss();
             IconElement = this.Query<VisualElement>("icon").First();
         }
 
@@ -44,18 +55,9 @@ namespace FriedSynapse.FlowEnt.Editor
             get => type;
             set
             {
+                IconElement.RemoveFromClassList(type.ToClassName());
                 type = value;
-                GUIContent icon = type switch
-                {
-                    ControlType.Play => Icon.Play,
-                    ControlType.Replay => Icon.Replay,
-                    ControlType.Pause => Icon.Pause,
-                    ControlType.PrevFrame => Icon.PrevFrame,
-                    ControlType.NextFrame => Icon.NextFrame,
-                    ControlType.Stop => Icon.Stop,
-                    _ => null,
-                };
-                IconElement.SetIcon(icon);
+                IconElement.AddToClassList(type.ToClassName());
             }
         }
     }

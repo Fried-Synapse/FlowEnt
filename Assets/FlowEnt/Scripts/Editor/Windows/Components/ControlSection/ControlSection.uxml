@@ -1,9 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="ControlSection.uss" />
     <ui:VisualElement name="wrapper" style="flex-direction: row;">
-        <FriedSynapse.FlowEnt.Editor.ControlButton name="prevFrame" type="Replay" class="button" />
-        <FriedSynapse.FlowEnt.Editor.ControlButton name="playPause" class="button" />
-        <FriedSynapse.FlowEnt.Editor.ControlButton name="nextFrame" class="button" />
-        <FriedSynapse.FlowEnt.Editor.ControlButton name="stop" class="button" />
+        <FriedSynapse.FlowEnt.Editor.ControlButton name="prevFrame" type="PrevFrame" class="button" />
+        <FriedSynapse.FlowEnt.Editor.ControlButton name="playPause" type="Play" class="button" />
+        <FriedSynapse.FlowEnt.Editor.ControlButton name="nextFrame" type="NextFrame" class="button" />
+        <FriedSynapse.FlowEnt.Editor.ControlButton name="stop" type="Stop" class="button" />
+        <FriedSynapse.FlowEnt.Editor.ControlBar value="0" name="timeline" style="flex-grow: 1;" />
     </ui:VisualElement>
 </ui:UXML>

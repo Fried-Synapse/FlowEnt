@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -8,6 +7,7 @@ namespace FriedSynapse.FlowEnt.Editor
         internal ControlSection(IControllable controllable)
         {
             this.LoadUxml();
+            this.LoadUss();
             Controllable = controllable;
             PrevFrame = this.Query<ControlButton>("prevFrame").First();
             PlayPause = this.Query<ControlButton>("playPause").First();
