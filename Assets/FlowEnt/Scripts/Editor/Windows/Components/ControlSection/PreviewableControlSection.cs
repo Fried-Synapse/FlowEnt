@@ -55,12 +55,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void StartPreview()
         {
+            //TODO update the correct value
             PreviewController.Start(new PreviewOptions(Animation)
             {
-                OnUpdate = () => Timeline.Value = Animation.GetTime(),
+                OnUpdate = () => ControlBar.Value = Animation.GetTime(),
                 OnStop = () =>
                 {
-                    Timeline.Value = 0;
+                    ControlBar.Value = 0;
                     UpdatePlayState();
                 }
             });

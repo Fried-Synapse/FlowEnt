@@ -13,7 +13,10 @@ namespace FriedSynapse.FlowEnt.Editor
             PlayPause = this.Query<ControlButton>("playPause").First();
             NextFrame = this.Query<ControlButton>("nextFrame").First();
             Stop = this.Query<ControlButton>("stop").First();
-            Timeline = this.Query<ControlBar>("timeline").First();
+            //TODO improve these selectors
+            ControlBar = this.Query<ControlBar>("controlBar").First();
+            TimelineInfo = this.Query<VisualElement>("info").First();
+            TimelineInfoTime = this.Query<TextElement>("time").First();
             Init();
             Bind();
         }
@@ -24,10 +27,22 @@ namespace FriedSynapse.FlowEnt.Editor
         protected ControlButton PlayPause { get; }
         protected ControlButton NextFrame { get; }
         protected ControlButton Stop { get; }
-        protected ControlBar Timeline { get; }
+        protected ControlBar ControlBar { get; }
+        protected VisualElement TimelineInfo { get; }
+        protected TextElement TimelineInfoTime { get; }
 
         protected virtual void Init()
         {
+            switch (Controllable)
+            {
+                case Tween _:
+                    ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
+                    break;
+                case Echo _:
+                case Flow _:
+                    TimelineInfo.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
+                    break;
+            }
             UpdatePlayState();
         }
 

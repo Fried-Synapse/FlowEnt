@@ -6,5 +6,19 @@
 }
 
 #timeline {
+    flex-grow: 1;
     margin: 5px 0px 5px 10px;
+}
+
+#timeline #controlBar {
+    display: none;
+    flex-grow: 1;
+}
+
+#timeline #info {
+    display: none;
+}
+
+#timeline #info #label {
+    margin-right: 5px;
 }

@@ -5,6 +5,12 @@
         <FriedSynapse.FlowEnt.Editor.ControlButton name="playPause" type="Play" class="button" />
         <FriedSynapse.FlowEnt.Editor.ControlButton name="nextFrame" type="NextFrame" class="button" />
         <FriedSynapse.FlowEnt.Editor.ControlButton name="stop" type="Stop" class="button" />
-        <FriedSynapse.FlowEnt.Editor.ControlBar value="0" name="timeline" style="flex-grow: 1;" />
+        <ui:VisualElement name="timeline">
+            <FriedSynapse.FlowEnt.Editor.ControlBar value="0" name="controlBar" />
+            <ui:VisualElement name="info" style="flex-direction: row;">
+                <ui:Label text="Time elapsed:" name="label" />
+                <ui:Label name="time" />
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
