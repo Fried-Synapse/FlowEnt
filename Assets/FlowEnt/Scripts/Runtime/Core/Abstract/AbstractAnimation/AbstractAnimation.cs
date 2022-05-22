@@ -17,6 +17,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Properties       
 
+        private protected float elapsedTime;
         private protected AbstractStartHelper startHelper;
         private protected AutoStartHelper autoStartHelper;
 
@@ -235,6 +236,7 @@ namespace FriedSynapse.FlowEnt
             }
 
             base.ResetInternal();
+            elapsedTime = 0f;
             startHelper = null;
             autoStartHelper = null;
             playState = PlayState.Building;

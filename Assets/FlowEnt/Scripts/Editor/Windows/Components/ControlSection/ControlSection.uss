@@ -1,24 +1,43 @@
-.button {
+#controls {
+    align-items: center;
+}
+
+#controls .button {
     width: 24px;
     height: 24px;
     margin: 1px;
     padding: 0;
 }
 
-#timeline {
+#controls #timeScale {
     flex-grow: 1;
-    margin: 5px 0px 5px 10px;
+    margin-left: 10px;
+    height: 18px;
+}
+
+#controls #timeScale #background {
+    height: 4px;
+}
+
+#timeline {
+    height: 20px;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+}
+
+#timeline #info #label {
+    margin-right: 5px;
+}
+
+#timeline #info #time {
+    min-width: 60px;
+    max-width: 60px;
+    -unity-text-align: middle-left;
 }
 
 #timeline #controlBar {
     display: none;
     flex-grow: 1;
-}
-
-#timeline #info {
-    display: none;
-}
-
-#timeline #info #label {
-    margin-right: 5px;
+    height: 8px;
 }

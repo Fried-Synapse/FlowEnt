@@ -164,7 +164,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             PreviewController.Start(new PreviewOptions(animation)
             {
-                OnUpdate = () => PreviewTime = animation.GetTime(),
+                OnUpdate = () => PreviewTime = animation.GetElapsedTime(),
                 OnStop = () => PreviewTime = 0
             });
         }

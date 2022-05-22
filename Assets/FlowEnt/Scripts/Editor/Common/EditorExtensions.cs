@@ -10,24 +10,27 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     internal static class EditorExtensions
     {
-        public static AbstractUpdatable GetUpdatableIndex(this IUpdateController updateController, string fieldName = "updatables")
+        internal static AbstractUpdatable GetUpdatableIndex(this IUpdateController updateController, string fieldName = "updatables")
         {
             object updatables = updateController.GetFieldValue<object>(fieldName);
             object anchor = updatables.GetFieldValue<object>(nameof(anchor));
             return anchor.GetFieldValue<AbstractUpdatable>("next");
         }
 
-        internal static float GetTime(this AbstractAnimation animation)
+        internal static float GetRatio(this Tween tween)
         {
-            switch (animation)
-            {
-                case Tween tween:
-                    float time = tween.GetFieldValue<float>(nameof(time));
-                    float remainingTime = tween.GetFieldValue<float>(nameof(remainingTime));
-                    return (time - remainingTime) / time;
-                default:
-                    return animation.GetFieldValue<float>("time");
-            }
+            float time = tween.GetFieldValue<float>(nameof(time));
+            float remainingTime = tween.GetFieldValue<float>(nameof(remainingTime));
+            return (time - remainingTime) / time;
+        }
+
+        internal static float GetElapsedTime(this AbstractAnimation animation)
+            => animation.GetFieldValue<float>("elapsedTime");
+
+        internal static string ToClassName(this Enum @enum)
+        {
+            string typeName = @enum.ToString();
+            return char.ToLower(typeName[0]) + typeName.Substring(1);
         }
 
         internal static T GetValue<T>(this SerializedProperty prop)

@@ -43,7 +43,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private List<AnimationInfo> animations;
 
         private TextElement label;
-        private VisualElement animationsElement;
+        private ScrollView animationsElement;
 
 #pragma warning disable IDE0051, RCS1213
         private void Awake()
@@ -80,7 +80,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             this.LoadUxml();
             label = rootVisualElement.Query<TextElement>("name").First();
-            animationsElement = rootVisualElement.Query<VisualElement>("animations").First();
+            animationsElement = rootVisualElement.Query<ScrollView>("animations").First();
             Render();
         }
 
@@ -97,26 +97,18 @@ namespace FriedSynapse.FlowEnt.Editor
 
             foreach (AnimationInfo animationInfo in animations)
             {
-                animationsElement.Add(CreateLabel(animationInfo));
-                animationsElement.Add(new PreviewableControlSection(animationInfo.animation));
+                VisualElement animationElement = new VisualElement();
+                animationElement.AddToClassList("animation");
+                animationElement.AddToClassList(animationInfo.type.ToClassName());
+                TextElement label = new TextElement
+                {
+                    text = $"{animationInfo.name} [{animationInfo.animation.GetType().Name}]",
+                };
+                label.AddToClassList("label");
+                animationElement.Add(label);
+                animationElement.Add(new PreviewableControlSection(animationInfo.animation));
+                animationsElement.contentContainer.Add(animationElement);
             }
-        }
-
-        private TextElement CreateLabel(AnimationInfo animationInfo)
-        {
-            TextElement label = new TextElement();
-            label.text = $"{animationInfo.name} [{animationInfo.animation.GetType().Name}]";
-            Color? color = animationInfo.type switch
-            {
-                MemberType.Property => new Color(0.45f, 0.81f, 1f),
-                MemberType.Method => new Color(0.86f, 0.86f, 0.34f),
-                _ => null,
-            };
-            if (color != null)
-            {
-                label.style.color = new StyleColor(color.Value);
-            }
-            return label;
         }
 
 #pragma warning restore IDE0051, RCS1213

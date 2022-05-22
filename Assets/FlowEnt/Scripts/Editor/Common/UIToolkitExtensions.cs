@@ -37,7 +37,7 @@ namespace FriedSynapse.FlowEnt
             return AssetDatabase.LoadAssetAtPath<T>(Path.ChangeExtension(AssetDatabase.GUIDToAssetPath(assetGuid), extension));
         }
 
-        internal static void AddAll(this VisualElement visualElement, IEnumerable<VisualElement> items)
+        internal static void AddRange(this VisualElement visualElement, IEnumerable<VisualElement> items)
         {
             foreach (VisualElement item in items)
             {
@@ -45,14 +45,28 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
+        internal static void AddRange(this VisualElementStyleSheetSet styleSheets, IEnumerable<StyleSheet> items)
+        {
+            foreach (StyleSheet item in items)
+            {
+                styleSheets.Add(item);
+            }
+        }
+
+        private static void LoadUxml(VisualElement visualElement, VisualTreeAsset visualTreeAsset)
+        {
+            visualElement.AddRange(new List<VisualElement>(visualTreeAsset.CloneTree().Children()));
+            visualElement.styleSheets.AddRange(visualTreeAsset.stylesheets);
+        }
+
         internal static void LoadUxml<T>(this VisualElement visualElement)
-            => visualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(typeof(T).Name, "uxml").CloneTree().Children()));
+            => LoadUxml(visualElement, Get<VisualTreeAsset>(typeof(T).Name, "uxml"));
 
         internal static void LoadUxml(this VisualElement visualElement)
-            => visualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(visualElement.GetType().Name, "uxml").CloneTree().Children()));
+            => LoadUxml(visualElement, Get<VisualTreeAsset>(visualElement.GetType().Name, "uxml"));
 
         internal static void LoadUxml(this EditorWindow editorWindow)
-            => editorWindow.rootVisualElement.AddAll(new List<VisualElement>(Get<VisualTreeAsset>(editorWindow.GetType().Name, "uxml").CloneTree().Children()));
+            => LoadUxml(editorWindow.rootVisualElement, Get<VisualTreeAsset>(editorWindow.GetType().Name, "uxml"));
 
         internal static void LoadUss<T>(this VisualElement visualElement)
             => visualElement.styleSheets.Add(Get<StyleSheet>(typeof(T).Name, "uss"));

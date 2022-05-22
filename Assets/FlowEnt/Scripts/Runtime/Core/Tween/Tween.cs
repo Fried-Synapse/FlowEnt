@@ -145,7 +145,9 @@ namespace FriedSynapse.FlowEnt
 
         internal override void UpdateInternal(float deltaTime)
         {
-            remainingTime -= deltaTime * timeScale;
+            float scaledDeltaTime = deltaTime * timeScale;
+            remainingTime -= scaledDeltaTime;
+            elapsedTime += scaledDeltaTime;
 
             if (remainingTime < 0)
             {
@@ -185,6 +187,8 @@ namespace FriedSynapse.FlowEnt
             if (!(remainingLoops <= 0))
             {
                 remainingTime = time;
+                elapsedTime = 0;
+
                 for (int i = 0; i < motions.Length; i++)
                 {
                     motions[i].OnLoopComplete();

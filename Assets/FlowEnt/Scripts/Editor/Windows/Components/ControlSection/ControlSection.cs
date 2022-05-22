@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -7,42 +8,45 @@ namespace FriedSynapse.FlowEnt.Editor
         internal ControlSection(IControllable controllable)
         {
             this.LoadUxml<ControlSection>();
-            this.LoadUss<ControlSection>();
             Controllable = controllable;
             PrevFrame = this.Query<ControlButton>("prevFrame").First();
             PlayPause = this.Query<ControlButton>("playPause").First();
             NextFrame = this.Query<ControlButton>("nextFrame").First();
             Stop = this.Query<ControlButton>("stop").First();
-            //TODO improve these selectors
-            ControlBar = this.Query<ControlBar>("controlBar").First();
-            TimelineInfo = this.Query<VisualElement>("info").First();
+            TimeScale = this.Query<AutoScalableSlider>("timeScale").First();
+            Timeline = this.Query<VisualElement>("timeline").First();
+            ControlBar = this.Query<UnitSlider>("controlBar").First();
             TimelineInfoTime = this.Query<TextElement>("time").First();
             Init();
             Bind();
         }
 
         protected IControllable Controllable { get; }
+        private AbstractAnimation Animation { get; set; }
         protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
         protected ControlButton PrevFrame { get; }
         protected ControlButton PlayPause { get; }
         protected ControlButton NextFrame { get; }
         protected ControlButton Stop { get; }
-        protected ControlBar ControlBar { get; }
-        protected VisualElement TimelineInfo { get; }
+        protected AutoScalableSlider TimeScale { get; }
+        protected VisualElement Timeline { get; }
+        protected UnitSlider ControlBar { get; }
         protected TextElement TimelineInfoTime { get; }
 
         protected virtual void Init()
         {
-            switch (Controllable)
+            if (Controllable is AbstractAnimation animation)
             {
-                case Tween _:
-                    ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
-                    break;
-                case Echo _:
-                case Flow _:
-                    TimelineInfo.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
-                    break;
+                Animation = animation;
+                Timeline.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
+                Animation.OnUpdated(_ => UpdateTime());
             }
+
+            if (Controllable is Tween)
+            {
+                ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
+            }
+
             UpdatePlayState();
         }
 
@@ -62,10 +66,11 @@ namespace FriedSynapse.FlowEnt.Editor
         protected virtual void UpdatePlayState()
         {
             UpdateButtonsState();
+            UpdateTime();
             //TODO add the red background
         }
 
-        protected virtual void UpdateButtonsState()
+        protected void UpdateButtonsState()
         {
             PlayPause.Type = Controllable.PlayState switch
             {
@@ -76,6 +81,12 @@ namespace FriedSynapse.FlowEnt.Editor
 
             PrevFrame.SetEnabled(!IsBuilding);
             Stop.SetEnabled(!IsBuilding);
+            TimeScale.Value = Controllable.TimeScale;
+        }
+
+        protected void UpdateTime()
+        {
+            TimelineInfoTime.text = Animation.GetElapsedTime().ToString("F4");
         }
 
         protected virtual void OnPrevFrame()

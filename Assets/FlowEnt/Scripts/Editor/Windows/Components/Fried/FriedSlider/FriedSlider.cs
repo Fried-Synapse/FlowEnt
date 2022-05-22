@@ -5,11 +5,10 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class ControlBar : VisualElement
+    internal class FriedSlider : VisualElement
     {
-
         [Preserve]
-        public new class UxmlFactory : UxmlFactory<ControlBar, UxmlTraits> { }
+        public new class UxmlFactory : UxmlFactory<FriedSlider, UxmlTraits> { }
         [Preserve]
         public new class UxmlTraits : VisualElement.UxmlTraits
         {
@@ -18,53 +17,58 @@ namespace FriedSynapse.FlowEnt.Editor
             public override void Init(VisualElement visualElement, IUxmlAttributes bag, CreationContext context)
             {
                 base.Init(visualElement, bag, context);
-                ControlBar bar = visualElement as ControlBar;
-                bar.Value = value.GetValueFromBag(bag, context);
+                FriedSlider slider = visualElement as FriedSlider;
+                slider.Value = value.GetValueFromBag(bag, context);
             }
         }
 
-        public ControlBar()
+        public FriedSlider()
         {
             this.LoadUxml();
-            this.LoadUss();
+            Background = this.Query<VisualElement>("background").First();
             Fill = this.Query<VisualElement>("fill").First();
             Init();
             Bind();
         }
 
+        private VisualElement Background { get; }
         private VisualElement Fill { get; }
         private float value;
-        public float Value
+        public virtual float Value
         {
             get => value;
             set
             {
-                this.value = Mathf.Clamp01(value);
+                this.value = value;
                 Fill.style.width = new StyleLength(new Length(this.value * 100f, LengthUnit.Percent));
+                OnValueChanged?.Invoke();
             }
         }
+
+        public Action OnValueChanged { get; set; }
+
         private void Init() { }
 
         private void Bind()
         {
-            RegisterCallback<PointerDownEvent>(StartValueChange);
+            Background.RegisterCallback<PointerDownEvent>(StartValueChange);
         }
 
         private void StartValueChange(PointerDownEvent evt)
         {
-            Value = (evt.position.x - worldBound.xMin) / worldBound.width;
+            OnPointerMove(evt);
             this.CaptureMouse();
-            RegisterCallback<PointerMoveEvent>(OnValueChanged);
-            RegisterCallback<PointerUpEvent>((_) =>
+            Background.RegisterCallback<PointerMoveEvent>(OnPointerMove);
+            Background.RegisterCallback<PointerUpEvent>((_) =>
             {
                 this.ReleaseMouse();
-                UnregisterCallback<PointerMoveEvent>(OnValueChanged);
+                Background.UnregisterCallback<PointerMoveEvent>(OnPointerMove);
             });
         }
 
-        private void OnValueChanged(PointerMoveEvent evt)
+        private void OnPointerMove(IPointerEvent evt)
         {
-            Value = (evt.position.x - worldBound.xMin) / worldBound.width;
+            Value = (evt.position.x - Background.worldBound.xMin) / Background.worldBound.width;
         }
     }
 }

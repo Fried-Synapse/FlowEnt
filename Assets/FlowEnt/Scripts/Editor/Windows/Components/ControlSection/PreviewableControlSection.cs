@@ -30,7 +30,6 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                     break;
             }
-            UpdatePlayState();
         }
 
         protected override void OnNextFrame()
@@ -58,7 +57,7 @@ namespace FriedSynapse.FlowEnt.Editor
             //TODO update the correct value
             PreviewController.Start(new PreviewOptions(Animation)
             {
-                OnUpdate = () => ControlBar.Value = Animation.GetTime(),
+                OnUpdate = () => ControlBar.Value = Animation.GetElapsedTime(),
                 OnStop = () =>
                 {
                     ControlBar.Value = 0;

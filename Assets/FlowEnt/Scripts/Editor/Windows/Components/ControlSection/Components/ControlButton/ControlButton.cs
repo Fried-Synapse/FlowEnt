@@ -4,15 +4,6 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal static class ControlTypeExtensions
-    {
-        public static string ToClassName(this ControlButton.ControlType type)
-        {
-            string typeName = type.ToString();
-            return char.ToLower(typeName[0]) + typeName.Substring(1);
-        }
-    }
-
     internal class ControlButton : Button
     {
         public enum ControlType
@@ -44,7 +35,6 @@ namespace FriedSynapse.FlowEnt.Editor
         public ControlButton()
         {
             this.LoadUxml();
-            this.LoadUss();
             IconElement = this.Query<VisualElement>("icon").First();
         }
 

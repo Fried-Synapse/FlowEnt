@@ -2,12 +2,14 @@
     flex-direction: row;
     height: 100%;
     background-color: rgb(137, 137, 137);
+    border-radius: 4px;
+    flex-grow: 1;
 }
 
 #fill {
     flex-direction: row-reverse;
     height: 100%;
-    background-color: rgb(31, 113, 25);
+    border-radius: 4px 0 0 4px;
 }
 
 #knob {
@@ -15,6 +17,6 @@
     border-width: 1px;
     border-color: rgb(87, 87, 87);
     border-radius: 5px;
-    margin: -4px -5px -4px 0px;
+    margin: -4px -5px -4px 0;
     background-color: rgb(205, 205, 205);
 }

@@ -39,7 +39,6 @@ namespace FriedSynapse.FlowEnt
 
         private IEchoMotion[] motions = new IEchoMotion[0];
         private int? remainingLoops;
-        private float time;
 
         #region Controls
 
@@ -131,14 +130,14 @@ namespace FriedSynapse.FlowEnt
         internal override void UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
-            time += scaledDeltaTime;
+            elapsedTime += scaledDeltaTime;
 
-            if (time > timeout)
+            if (elapsedTime > timeout)
             {
-                overdraft = (time - timeout.Value) / timeScale;
+                overdraft = (elapsedTime - timeout.Value) / timeScale;
             }
 
-            if (stopCondition?.Invoke(time) == true)
+            if (stopCondition?.Invoke(elapsedTime) == true)
             {
                 overdraft = 0f;
             }
@@ -171,12 +170,13 @@ namespace FriedSynapse.FlowEnt
 
             if (!(remainingLoops <= 0))
             {
+                elapsedTime = 0;
+
                 for (int i = 0; i < motions.Length; i++)
                 {
                     motions[i].OnLoopComplete();
                 }
 
-                time = 0;
                 onLoopCompleted?.Invoke(remainingLoops);
                 float overdraft = this.overdraft.Value;
                 this.overdraft = null;
@@ -210,7 +210,6 @@ namespace FriedSynapse.FlowEnt
         {
             base.ResetInternal();
             remainingLoops = 0;
-            time = 0f;
         }
 
         #endregion

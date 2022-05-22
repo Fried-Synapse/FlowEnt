@@ -1,0 +1,17 @@
+#wrapper {
+    flex-direction: row;
+    -unity-text-align: middle-left;
+    align-items: center;
+}
+
+#background {
+    flex-grow: 1;
+    margin: 0;
+}
+
+#value {
+    margin-left: 8px;
+    width: 42px;
+    min-height: auto;
+    justify-content: flex-start;
+}

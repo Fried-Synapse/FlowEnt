@@ -1,11 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="root" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+    <Style src="PreviewerWindow.uss" />
+    <ui:VisualElement name="root">
         <ui:VisualElement name="head">
             <FriedSynapse.FlowEnt.Editor.Header text="FlowEnt Previewer" />
         </ui:VisualElement>
         <ui:VisualElement name="body">
-            <ui:Label display-tooltip-when-elided="true" name="name" style="align-items: stretch; -unity-text-align: upper-center; -unity-font-style: bold;" />
-            <ui:VisualElement name="animations" text="FlowEnt Previewer" />
+            <ui:Label display-tooltip-when-elided="true" name="name" class="dd" />
+            <ui:ScrollView name="animations" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
