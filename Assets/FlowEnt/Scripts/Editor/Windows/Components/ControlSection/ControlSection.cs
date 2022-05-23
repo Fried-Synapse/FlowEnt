@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Editor
             Stop = this.Query<ControlButton>("stop").First();
             TimeScale = this.Query<AutoScalableSlider>("timeScale").First();
             Timeline = this.Query<VisualElement>("timeline").First();
-            ControlBar = this.Query<UnitSlider>("controlBar").First();
+            ControlBar = this.Query<FriedSlider>("controlBar").First();
             TimelineInfoTime = this.Query<TextElement>("time").First();
             Init();
             Bind();
@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt.Editor
         protected ControlButton Stop { get; }
         protected AutoScalableSlider TimeScale { get; }
         protected VisualElement Timeline { get; }
-        protected UnitSlider ControlBar { get; }
+        protected FriedSlider ControlBar { get; }
         protected TextElement TimelineInfoTime { get; }
 
         protected virtual void Init()
@@ -81,6 +81,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             PrevFrame.SetEnabled(!IsBuilding);
             Stop.SetEnabled(!IsBuilding);
+            TimeScale.MaxValue = Controllable.TimeScale * 2f;
             TimeScale.Value = Controllable.TimeScale;
         }
 

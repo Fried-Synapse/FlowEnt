@@ -115,12 +115,14 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal void ResetAnimations()
         {
+            //TODO this doesn't properly work
             if (Instance == null)
             {
                 return;
             }
             Instance.animations = null;
         }
+
         private void ReadAnimations()
         {
             animations = new List<AnimationInfo>();

@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="/Assets/FlowEnt/Scripts/Editor/Windows/Components/Fried/FriedSlider/FriedSlider.uss" />
+    <Style src="../Fried/FriedSlider/FriedSlider.uss" />
     <Style src="AutoScalableSlider.uss" />
     <ui:VisualElement name="wrapper">
         <ui:VisualElement name="background">
@@ -7,6 +7,6 @@
                 <ui:VisualElement name="knob" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:TextField name="value" text="2222" />
+        <ui:TextField name="value" />
     </ui:VisualElement>
 </ui:UXML>

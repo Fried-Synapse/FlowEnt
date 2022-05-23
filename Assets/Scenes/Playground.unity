@@ -179,7 +179,7 @@ MonoBehaviour:
       autoStart: 0
       skipFrames: 1
       delay: 0
-      timeScale: 1
+      timeScale: 2.82
       isLoopCountInfinite: 0
       loopCount: 1
       time: 1

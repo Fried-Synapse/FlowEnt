@@ -12,6 +12,6 @@
             <ui:Label text="Time elapsed:" name="label" />
             <ui:Label name="time" text="0.0000" />
         </ui:VisualElement>
-        <FriedSynapse.FlowEnt.Editor.UnitSlider name="controlBar" />
+        <FriedSynapse.FlowEnt.Editor.FriedSlider name="controlBar" maxValue="1" />
     </ui:VisualElement>
 </ui:UXML>
