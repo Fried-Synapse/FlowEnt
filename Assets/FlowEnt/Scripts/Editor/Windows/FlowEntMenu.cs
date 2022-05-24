@@ -10,7 +10,6 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             TEditorWindow window = EditorWindow.GetWindow<TEditorWindow>(name);
             window.titleContent = new GUIContent(name, Resources.Load<Texture2D>("Logo"));
-            window.Show();
             return window;
         }
 
@@ -20,7 +19,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         [MenuItem("Tools/FlowEnt/Previewer", false, 101)]
         public static void ShowPreviewer()
-            => ShowWindow<PreviewerWindow>("FlowEnt Previewer");
+            => PreviewerWindow.ShowWindow();
 
         [MenuItem("Tools/FlowEnt/Inspector", false, 102)]
         public static void ShowInspector()

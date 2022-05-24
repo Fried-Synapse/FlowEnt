@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class PreviewerWindow : EditorWindow
+    internal class PreviewerWindow : FlowEntWindow<PreviewerWindow>
     {
         private enum MemberType
         {
@@ -16,6 +16,7 @@ namespace FriedSynapse.FlowEnt.Editor
             Property,
             Method
         }
+
         private class AnimationInfo
         {
             public AnimationInfo(string name, MemberType type, AbstractAnimation animation)
@@ -34,11 +35,11 @@ namespace FriedSynapse.FlowEnt.Editor
             internal AbstractAnimation animation;
         }
 
+        internal override string Name => "FlowEnt Previewer";
         private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
         private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
         private static readonly object[] emptyArray = { };
-        internal static PreviewerWindow Instance { get; private set; }
         private Transform transform;
         private List<AnimationInfo> animations;
 
@@ -46,10 +47,6 @@ namespace FriedSynapse.FlowEnt.Editor
         private ScrollView animationsElement;
 
 #pragma warning disable IDE0051, RCS1213
-        private void Awake()
-        {
-            Instance = this;
-        }
 
         private void Update()
         {
@@ -69,11 +66,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 ReadAnimations();
             }
             Render();
-        }
-
-        private void OnDestroy()
-        {
-            Instance = default;
         }
 
         internal void CreateGUI()
