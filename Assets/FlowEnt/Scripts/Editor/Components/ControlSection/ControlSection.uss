@@ -1,3 +1,7 @@
+.playing {
+    background-color: rgba(127, 0, 0, 0.33);
+}
+
 #controls {
     align-items: center;
 }

@@ -1,5 +1,3 @@
-
-using System;
 using UnityEngine.Scripting;
 using UnityEngine.UIElements;
 
@@ -14,17 +12,9 @@ namespace FriedSynapse.FlowEnt.Editor
         {
         }
 
-        public override float Value
+        protected override void OnValueManuallyChanging(float newValue)
         {
-            get => base.Value;
-            set
-            {
-                if (value > MaxValue)
-                {
-                    MaxValue = value * 2;
-                }
-                base.Value = value;
-            }
+            maxValue = newValue * 2;
         }
     }
 }

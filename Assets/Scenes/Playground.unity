@@ -177,12 +177,12 @@ MonoBehaviour:
       name: 
       updateType: 0
       autoStart: 0
-      skipFrames: 1
+      skipFrames: 0
       delay: 0
-      timeScale: 2.82
+      timeScale: 2
       isLoopCountInfinite: 0
       loopCount: 1
-      time: 1
+      time: 50
       easingType: 0
       easing: 0
       easingCurve:

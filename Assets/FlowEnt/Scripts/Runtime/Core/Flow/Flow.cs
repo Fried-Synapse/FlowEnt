@@ -120,8 +120,6 @@ namespace FriedSynapse.FlowEnt
                 throw new AnimationException(this, "Cannot start empty flow.");
             }
 
-            playState = PlayState.Waiting;
-
             if (skipFrames > 0)
             {
                 StartSkipFrames();

@@ -161,6 +161,7 @@ namespace FriedSynapse.FlowEnt
 
         private protected void StartSkipFrames()
         {
+            playState = PlayState.Waiting;
             //NOTE autostart already skips one frame, so we're skipping it
             if (autoStartHelper != null)
             {
@@ -175,6 +176,7 @@ namespace FriedSynapse.FlowEnt
 
         private protected void StartDelay()
         {
+            playState = PlayState.Waiting;
             startHelper = new DelayedStartHelper(updateController, updateType, delay, (deltaTime) =>
             {
                 delay = -1f;

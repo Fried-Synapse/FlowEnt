@@ -1,4 +1,4 @@
-using System;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -9,6 +9,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             this.LoadUxml<ControlSection>();
             Controllable = controllable;
+            //PrevFrame = this.Query<VisualElement>("background").First();
             PrevFrame = this.Query<ControlButton>("prevFrame").First();
             PlayPause = this.Query<ControlButton>("playPause").First();
             NextFrame = this.Query<ControlButton>("nextFrame").First();
@@ -47,6 +48,9 @@ namespace FriedSynapse.FlowEnt.Editor
                 ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
             }
 
+            TimeScale.MaxValue = Mathf.Max(1f, Controllable.TimeScale * 2f);
+            TimeScale.Value = Controllable.TimeScale;
+
             UpdatePlayState();
         }
 
@@ -61,19 +65,29 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 button.clicked += UpdatePlayState;
             }
+
+            TimeScale.OnValueChanged += (value) => Controllable.TimeScale = value;
         }
 
         protected virtual void UpdatePlayState()
         {
+            if (!IsBuilding)
+            {
+                AddToClassList("playing");
+            }
+            else
+            {
+                RemoveFromClassList("playing");
+            }
             UpdateButtonsState();
             UpdateTime();
-            //TODO add the red background
         }
 
-        protected void UpdateButtonsState()
+        private void UpdateButtonsState()
         {
             PlayPause.Type = Controllable.PlayState switch
             {
+                PlayState.Waiting => ControlButton.ControlType.Pause,
                 PlayState.Playing => ControlButton.ControlType.Pause,
                 PlayState.Finished => ControlButton.ControlType.Replay,
                 _ => ControlButton.ControlType.Play,
@@ -81,13 +95,16 @@ namespace FriedSynapse.FlowEnt.Editor
 
             PrevFrame.SetEnabled(!IsBuilding);
             Stop.SetEnabled(!IsBuilding);
-            TimeScale.MaxValue = Controllable.TimeScale * 2f;
-            TimeScale.Value = Controllable.TimeScale;
         }
 
-        protected void UpdateTime()
+        private void UpdateTime()
         {
-            TimelineInfoTime.text = Animation.GetElapsedTime().ToString("F4");
+            float elapsedTime = Animation.GetElapsedTime();
+            TimelineInfoTime.text = elapsedTime.ToString("F4");
+            if (Controllable is Tween tween)
+            {
+                ControlBar.Value = elapsedTime / tween.Time;
+            }
         }
 
         protected virtual void OnPrevFrame()

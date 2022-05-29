@@ -35,7 +35,7 @@ namespace FriedSynapse.FlowEnt.Editor
             internal AbstractAnimation animation;
         }
 
-        internal override string Name => "FlowEnt Previewer";
+        protected override string Name => "FlowEnt Previewer";
         private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
         private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
@@ -68,9 +68,9 @@ namespace FriedSynapse.FlowEnt.Editor
             Render();
         }
 
-        internal void CreateGUI()
+        internal override void CreateGUI()
         {
-            this.LoadUxml();
+            base.CreateGUI();
             label = rootVisualElement.Query<TextElement>("name").First();
             animationsElement = rootVisualElement.Query<ScrollView>("animations").First();
             Render();
@@ -105,14 +105,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
 #pragma warning restore IDE0051, RCS1213
 
-        internal void ResetAnimations()
+        internal void SetDirty()
         {
-            //TODO this doesn't properly work
-            if (Instance == null)
-            {
-                return;
-            }
-            Instance.animations = null;
+            animations = null;
         }
 
         private void ReadAnimations()

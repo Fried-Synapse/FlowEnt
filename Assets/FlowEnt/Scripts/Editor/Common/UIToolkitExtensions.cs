@@ -1,40 +1,22 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using UnityEditor;
+using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace FriedSynapse.FlowEnt
+namespace FriedSynapse.FlowEnt.Editor
 {
     internal static class UIToolkitExtensions
     {
-        private static T Get<T>(string name, string extension)
-            where T : UnityEngine.Object
+        private static ComponentsContainer componentsContainer;
+        private static ComponentsContainer ComponentsContainer
         {
-            string[] guids = AssetDatabase.FindAssets($"{name} t:script");
-
-            string filterGuids()
+            get
             {
-                foreach (string guid in guids)
+                if (componentsContainer == null)
                 {
-                    string assetPath = AssetDatabase.GUIDToAssetPath(guid);
-                    if (Path.GetFileNameWithoutExtension(assetPath) == name)
-                    {
-                        return guid;
-                    }
+                    componentsContainer = Resources.Load<ComponentsContainer>("ComponentsContainer");
                 }
-                return string.Empty;
+                return componentsContainer;
             }
-
-            string assetGuid = guids.Length switch
-            {
-                0 => throw new ArgumentException($"{name} could not be found."),
-                1 => guids[0],
-                _ => filterGuids()
-            };
-
-            return AssetDatabase.LoadAssetAtPath<T>(Path.ChangeExtension(AssetDatabase.GUIDToAssetPath(assetGuid), extension));
         }
 
         internal static void AddRange(this VisualElement visualElement, IEnumerable<VisualElement> items)
@@ -53,28 +35,22 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        private static void LoadUxml(VisualElement visualElement, VisualTreeAsset visualTreeAsset)
+        internal static void LoadUxml(this VisualElement visualElement, VisualTreeAsset visualTreeAsset)
         {
             visualElement.AddRange(new List<VisualElement>(visualTreeAsset.CloneTree().Children()));
             visualElement.styleSheets.AddRange(visualTreeAsset.stylesheets);
         }
 
         internal static void LoadUxml<T>(this VisualElement visualElement)
-            => LoadUxml(visualElement, Get<VisualTreeAsset>(typeof(T).Name, "uxml"));
+            => LoadUxml(visualElement, ComponentsContainer.GetUxml(typeof(T).Name));
 
         internal static void LoadUxml(this VisualElement visualElement)
-            => LoadUxml(visualElement, Get<VisualTreeAsset>(visualElement.GetType().Name, "uxml"));
-
-        internal static void LoadUxml(this EditorWindow editorWindow)
-            => LoadUxml(editorWindow.rootVisualElement, Get<VisualTreeAsset>(editorWindow.GetType().Name, "uxml"));
+            => LoadUxml(visualElement, ComponentsContainer.GetUxml(visualElement.GetType().Name));
 
         internal static void LoadUss<T>(this VisualElement visualElement)
-            => visualElement.styleSheets.Add(Get<StyleSheet>(typeof(T).Name, "uss"));
+            => visualElement.styleSheets.Add(ComponentsContainer.GetUss(typeof(T).Name));
 
         internal static void LoadUss(this VisualElement visualElement)
-            => visualElement.styleSheets.Add(Get<StyleSheet>(visualElement.GetType().Name, "uss"));
-
-        internal static void LoadUss(this EditorWindow editorWindow)
-            => editorWindow.rootVisualElement.styleSheets.Add(Get<StyleSheet>(editorWindow.GetType().Name, "uss"));
+            => visualElement.styleSheets.Add(ComponentsContainer.GetUss(visualElement.GetType().Name));
     }
 }

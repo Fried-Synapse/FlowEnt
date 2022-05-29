@@ -113,8 +113,6 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            playState = PlayState.Waiting;
-
             if (skipFrames > 0)
             {
                 StartSkipFrames();

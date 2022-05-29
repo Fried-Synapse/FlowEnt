@@ -33,7 +33,7 @@ namespace FriedSynapse.FlowEnt.Builder
         public AbstractAnimation TweenProp => new Tween(1).SetTimeScale(1).SetEasing(Easing.EaseInOutCubic).SetLoopCount(3).SetLoopType(LoopType.PingPong).For(Green).MoveLocalYTo(3.5f);
         public AbstractAnimation EchoProp => new Echo(1).For(Green).MoveY(3.5f);
         public Flow FlowProp => new Flow().Queue(new Tween(1).For(Green).MoveLocalY(2.5f)).Start();
-        public AbstractAnimation TweenMethod() => new Tween(1).SetTimeScale(3).SetLoopCount(3).For(Green).MoveLocalYTo(3.5f);
+        private AbstractAnimation GetTween() => new Tween(1).SetTimeScale(3).SetLoopCount(3).For(Green).MoveLocalYTo(3.5f);
 
         private void Start()
         {

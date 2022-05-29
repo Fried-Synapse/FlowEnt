@@ -13,6 +13,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             switch (Animation.PlayState)
             {
+                case PlayState.Waiting:
                 case PlayState.Playing:
                     Animation.Pause();
                     break;
@@ -30,6 +31,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                     break;
             }
+            UpdatePlayState();
         }
 
         protected override void OnNextFrame()
@@ -54,15 +56,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void StartPreview()
         {
-            //TODO update the correct value
             PreviewController.Start(new PreviewOptions(Animation)
             {
-                OnUpdate = () => ControlBar.Value = Animation.GetElapsedTime(),
-                OnStop = () =>
-                {
-                    ControlBar.Value = 0;
-                    UpdatePlayState();
-                }
+                OnStop = () => UpdatePlayState()
             });
         }
     }

@@ -32,16 +32,15 @@ namespace FriedSynapse.FlowEnt.Editor
             Background = this.Query<VisualElement>("background").First();
             Fill = this.Query<VisualElement>("fill").First();
             ValueText = this.Query<TextField>("value").First();
-            Init();
             Bind();
         }
 
-        private VisualElement Background { get; }
-        private VisualElement Fill { get; }
-        private TextField ValueText { get; }
+        protected VisualElement Background { get; }
+        protected VisualElement Fill { get; }
+        protected TextField ValueText { get; }
 
-        private float minValue;
-        public float MinValue
+        protected float minValue;
+        internal float MinValue
         {
             get => minValue;
             set
@@ -51,8 +50,8 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        private float maxValue;
-        public float MaxValue
+        protected float maxValue;
+        internal float MaxValue
         {
             get => maxValue;
             set
@@ -62,25 +61,25 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        private float value;
-        public virtual float Value
+        protected float value;
+        internal virtual float Value
         {
             get => value;
             set => SetValue(value);
         }
 
-        public Action OnValueChanged { get; set; }
+        internal Action<float> OnValueChanging { get; set; }
+        internal Action<float> OnValueChanged { get; set; }
 
-        private void Init() { }
-
-        private void Bind()
+        protected virtual void Bind()
         {
             Background.RegisterCallback<PointerDownEvent>(StartValueChange);
             ValueText.RegisterValueChangedCallback(e =>
             {
-                if (float.TryParse(e.newValue, out float result))
+                if (float.TryParse(e.newValue, out float newValue))
                 {
-                    Value = result;
+                    //TODO OnValueManuallyChanging(newValue);
+                    Value = newValue;
                 }
                 else
                 {
@@ -89,12 +88,17 @@ namespace FriedSynapse.FlowEnt.Editor
             });
         }
 
+        protected virtual void OnValueManuallyChanging(float newValue)
+        {
+        }
+
         private void SetValue(float newValue)
         {
+            OnValueChanging?.Invoke(value);
             value = Mathf.Clamp(newValue, MinValue, MaxValue);
             Fill.style.width = new StyleLength(new Length(Mathf.InverseLerp(MinValue, MaxValue, value) * 100f, LengthUnit.Percent));
             ValueText.value = value.ToString("0.###");
-            OnValueChanged?.Invoke();
+            OnValueChanged?.Invoke(value);
         }
 
         private void StartValueChange(PointerDownEvent evt)
