@@ -17,8 +17,8 @@ namespace FriedSynapse.FlowEnt.Reflection
         public static T GetPropertyValue<T>(this object obj, string name, BindingFlags bindingFlags = DefaultBindingFlags)
             => (T)obj.GetType().GetProperty(name, bindingFlags)?.GetValue(obj);
 
-        public static void InvokeMethod(this object obj, string name, BindingFlags bindingFlags = DefaultBindingFlags)
-            => obj.GetType().GetMethod(name, bindingFlags)?.Invoke(obj, new object[0]);
+        public static void InvokeMethod(this object obj, string name, object[] data = null, BindingFlags bindingFlags = DefaultBindingFlags)
+            => obj.GetType().GetMethod(name, bindingFlags)?.Invoke(obj, data ?? new object[0]);
 
         internal static string PrettyfyMemberName(this string name)
         {

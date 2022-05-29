@@ -105,7 +105,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
 #pragma warning restore IDE0051, RCS1213
 
-        internal void SetDirty()
+        internal new void SetDirty()
         {
             animations = null;
         }

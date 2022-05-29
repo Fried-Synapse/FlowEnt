@@ -9,6 +9,22 @@ namespace FriedSynapse.FlowEnt.Editor
         }
         private AbstractAnimation Animation { get; }
 
+        protected override void Bind()
+        {
+            string s = "";
+            if (Controllable is Tween tween)
+            {
+                ControlBar.OnValueChanging += (_) =>
+                {
+                    if (IsBuilding)
+                    {
+                        StartPreview();
+                    }
+                };
+            }
+            base.Bind();
+        }
+
         protected override void OnPlayPause()
         {
             switch (Animation.PlayState)

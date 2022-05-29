@@ -35,6 +35,7 @@ namespace FriedSynapse.FlowEnt.Editor
             Bind();
         }
 
+        private bool wasValueTextInternallyChanged;
         protected VisualElement Background { get; }
         protected VisualElement Fill { get; }
         protected TextField ValueText { get; }
@@ -62,7 +63,7 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         protected float value;
-        internal virtual float Value
+        internal float Value
         {
             get => value;
             set => SetValue(value);
@@ -76,15 +77,21 @@ namespace FriedSynapse.FlowEnt.Editor
             Background.RegisterCallback<PointerDownEvent>(StartValueChange);
             ValueText.RegisterValueChangedCallback(e =>
             {
-                if (float.TryParse(e.newValue, out float newValue))
+                if (wasValueTextInternallyChanged)
                 {
-                    //TODO OnValueManuallyChanging(newValue);
-                    Value = newValue;
+                    wasValueTextInternallyChanged = false;
+                    e.StopPropagation();
+                    return;
                 }
-                else
+
+                if (!float.TryParse(e.newValue, out float newValue))
                 {
-                    e.PreventDefault();
+                    e.StopPropagation();
+                    return;
                 }
+
+                OnValueManuallyChanging(newValue);
+                Value = newValue;
             });
         }
 
@@ -97,6 +104,7 @@ namespace FriedSynapse.FlowEnt.Editor
             OnValueChanging?.Invoke(value);
             value = Mathf.Clamp(newValue, MinValue, MaxValue);
             Fill.style.width = new StyleLength(new Length(Mathf.InverseLerp(MinValue, MaxValue, value) * 100f, LengthUnit.Percent));
+            wasValueTextInternallyChanged = true;
             ValueText.value = value.ToString("0.###");
             OnValueChanged?.Invoke(value);
         }

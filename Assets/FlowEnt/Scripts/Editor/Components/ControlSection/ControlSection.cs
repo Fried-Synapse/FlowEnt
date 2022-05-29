@@ -1,3 +1,5 @@
+using System.Reflection;
+using FriedSynapse.FlowEnt.Reflection;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -67,6 +69,17 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             TimeScale.OnValueChanged += (value) => Controllable.TimeScale = value;
+            if (Controllable is Tween tween)
+            {
+                float beforeChange = 0;
+                ControlBar.OnValueChanging += (value) =>
+                {
+                    tween.Pause();
+                    beforeChange = value;
+                };
+                ControlBar.OnValueChanged += (value)
+                    => tween.InvokeMethod("UpdateIntersnal", new object[1] { tween.Time * (value - beforeChange) });
+            }
         }
 
         protected virtual void UpdatePlayState()
@@ -101,7 +114,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             float elapsedTime = Animation.GetElapsedTime();
             TimelineInfoTime.text = elapsedTime.ToString("F4");
-            if (Controllable is Tween tween)
+            if (Controllable.PlayState == PlayState.Playing && Controllable is Tween tween)
             {
                 ControlBar.Value = elapsedTime / tween.Time;
             }
