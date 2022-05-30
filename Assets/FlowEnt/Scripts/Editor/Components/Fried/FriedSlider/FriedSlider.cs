@@ -25,25 +25,16 @@ namespace FriedSynapse.FlowEnt.Editor
                 slider.Value = value.GetValueFromBag(bag, context);
             }
         }
-
-        public enum EventType
-        {
-            UserInput,
-            Script
-        }
-
         public class EventData
         {
-            public EventData(float oldValue, float newValue, EventType type)
+            public EventData(float oldValue, float newValue)
             {
                 OldValue = oldValue;
                 NewValue = newValue;
-                Type = type;
             }
 
             public float OldValue { get; }
             public float NewValue { get; }
-            public EventType Type { get; }
         }
 
         public FriedSlider()
@@ -55,7 +46,6 @@ namespace FriedSynapse.FlowEnt.Editor
             Bind();
         }
 
-        private bool wasValueTextInternallyChanged;
         protected VisualElement Background { get; }
         protected VisualElement Fill { get; }
         protected TextField ValueText { get; }
@@ -67,7 +57,7 @@ namespace FriedSynapse.FlowEnt.Editor
             set
             {
                 minValue = value;
-                SetValue(this.value, EventType.Script);
+                SetValue(this.value);
             }
         }
 
@@ -78,7 +68,7 @@ namespace FriedSynapse.FlowEnt.Editor
             set
             {
                 maxValue = value;
-                SetValue(this.value, EventType.Script);
+                SetValue(this.value);
             }
         }
 
@@ -86,7 +76,7 @@ namespace FriedSynapse.FlowEnt.Editor
         internal float Value
         {
             get => value;
-            set => SetValue(value, EventType.Script);
+            set => SetValue(value);
         }
 
         internal Action<EventData> OnValueChanging { get; set; }
@@ -97,32 +87,34 @@ namespace FriedSynapse.FlowEnt.Editor
             Background.RegisterCallback<PointerDownEvent>(StartValueChange);
             ValueText.RegisterValueChangedCallback(e =>
             {
-                if (wasValueTextInternallyChanged)
-                {
-                    wasValueTextInternallyChanged = false;
-                    e.StopPropagation();
-                    return;
-                }
-
                 if (!float.TryParse(e.newValue, out float newValue))
                 {
                     e.StopPropagation();
                     return;
                 }
 
-                SetValue(newValue, EventType.UserInput);
+                OnTextValueChaging(newValue);
+                SetValue(newValue);
             });
         }
 
-        private void SetValue(float newValue, EventType type)
+        protected virtual void OnTextValueChaging(float newValue)
+        {
+        }
+
+        private void SetValue(float newValue)
         {
             float oldValue = value;
-            OnValueChanging?.Invoke(new EventData(oldValue, newValue, type));
+            OnValueChanging?.Invoke(new EventData(oldValue, newValue));
+            SetValueWithoutNotify(newValue);
+            OnValueChanged?.Invoke(new EventData(oldValue, value));
+        }
+
+        public void SetValueWithoutNotify(float newValue)
+        {
             value = Mathf.Clamp(newValue, MinValue, MaxValue);
             Fill.style.width = new StyleLength(new Length(Mathf.InverseLerp(MinValue, MaxValue, value) * 100f, LengthUnit.Percent));
-            wasValueTextInternallyChanged = true;
-            ValueText.value = value.ToString("0.###");
-            OnValueChanged?.Invoke(new EventData(oldValue, value, type));
+            ValueText.SetValueWithoutNotify(value.ToString("0.###"));
         }
 
         private void StartValueChange(PointerDownEvent evt)
@@ -140,7 +132,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private void OnPointerMove(IPointerEvent evt)
         {
             float unitValue = Mathf.Clamp01((evt.position.x - Background.worldBound.xMin) / Background.worldBound.width);
-            SetValue(Mathf.Lerp(MinValue, MaxValue, unitValue), EventType.UserInput);
+            SetValue(Mathf.Lerp(MinValue, MaxValue, unitValue));
         }
     }
 }

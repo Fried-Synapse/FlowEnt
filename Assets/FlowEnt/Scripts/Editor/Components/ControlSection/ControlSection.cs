@@ -75,10 +75,6 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 ControlBar.OnValueChanged += (data) =>
                 {
-                    if (data.Type == FriedSlider.EventType.Script)
-                    {
-                        return;
-                    }
                     tween.Pause();
                     tween.InvokeMethod("UpdateInternal", new object[1] { tween.Time * (data.NewValue - data.OldValue) });
                     UpdatePlayState();
@@ -122,7 +118,7 @@ namespace FriedSynapse.FlowEnt.Editor
             TimelineInfoTime.text = elapsedTime.ToString("F4");
             if (Controllable.PlayState != PlayState.Paused && Controllable is Tween tween)
             {
-                ControlBar.Value = elapsedTime / tween.Time;
+                ControlBar.SetValueWithoutNotify(elapsedTime / tween.Time);
             }
         }
 

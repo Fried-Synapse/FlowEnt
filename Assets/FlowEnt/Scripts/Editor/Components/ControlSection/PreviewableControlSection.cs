@@ -14,11 +14,6 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 ControlBar.OnValueChanging += (data) =>
                 {
-                    if (data.Type == FriedSlider.EventType.Script)
-                    {
-                        return;
-                    }
-
                     if (IsBuilding)
                     {
                         StartPreview();

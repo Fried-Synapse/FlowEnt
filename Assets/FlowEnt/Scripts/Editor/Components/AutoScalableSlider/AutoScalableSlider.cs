@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UIElements;
 
@@ -12,10 +13,9 @@ namespace FriedSynapse.FlowEnt.Editor
         {
         }
 
-        protected override void Bind()
+        protected override void OnTextValueChaging(float newValue)
         {
-            base.Bind();
-            OnValueChanging += data => maxValue = data.NewValue * 2;
+            maxValue = Mathf.Max(1f, newValue * 2f);
         }
     }
 }
