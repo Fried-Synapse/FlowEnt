@@ -10,10 +10,6 @@
     background-image: url('Content/play.png');
 }
 
-.icon.replay {
-    background-image: url('Content/replay.png');
-}
-
 .icon.pause {
     background-image: url('Content/pause.png');
 }

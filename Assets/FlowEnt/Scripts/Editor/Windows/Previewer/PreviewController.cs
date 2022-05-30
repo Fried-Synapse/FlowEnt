@@ -17,7 +17,9 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         public AbstractAnimation Animation { get; }
+        [Obsolete]
         public Action OnUpdate { get; set; }
+        [Obsolete]
         public Action OnStop { get; set; }
     }
 
@@ -33,6 +35,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private static PreviewOptions options;
         private static bool IsRunning => options != null;
 
+        [Obsolete("remove the options param and have only the animation")]
         public static void Start(PreviewOptions options)
         {
             PreviewController.options = options;
@@ -57,23 +60,21 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        public static void Stop(bool exitGui = true)
+        public static void Stop()
         {
-            options?.Animation?.Stop().Reset();
+            options?.Animation?.Stop(true).Reset();
             options?.OnStop?.Invoke();
             options = null;
+            UnityEngine.Debug.Log($"xxx");
 
             if (undoGroupId != null)
             {
                 Undo.RevertAllDownToGroup(undoGroupId.Value);
                 undoGroupId = null;
-                if (exitGui)
-                {
-                    GUIUtility.ExitGUI();
-                }
             }
         }
 
+        [Obsolete("No longer needed")]
         public static void Reset()
         {
             PreviewOptions currentOptions = options;
@@ -91,7 +92,7 @@ namespace FriedSynapse.FlowEnt.Editor
             options?.OnUpdate?.Invoke();
             if (!UnityEditorInternal.InternalEditorUtility.isApplicationActive && IsRunning)
             {
-                Stop(false);
+                Stop();
             }
         }
 

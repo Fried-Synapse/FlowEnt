@@ -5,17 +5,20 @@ namespace FriedSynapse.FlowEnt.Editor
         public PreviewableControlSection(AbstractAnimation animation) : base(animation)
         {
             Animation = animation;
-            Animation.OnCompleted(OnCompleted);
         }
         private AbstractAnimation Animation { get; }
 
         protected override void Bind()
         {
-            string s = "";
             if (Controllable is Tween tween)
             {
-                ControlBar.OnValueChanging += (_) =>
+                ControlBar.OnValueChanging += (data) =>
                 {
+                    if (data.Type == FriedSlider.EventType.Script)
+                    {
+                        return;
+                    }
+
                     if (IsBuilding)
                     {
                         StartPreview();
@@ -33,9 +36,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 case PlayState.Playing:
                     Animation.Pause();
                     break;
-                case PlayState.Finished:
-                    PreviewController.Reset();
-                    break;
                 default:
                     if (IsBuilding)
                     {
@@ -47,7 +47,6 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                     break;
             }
-            UpdatePlayState();
         }
 
         protected override void OnNextFrame()
@@ -65,17 +64,9 @@ namespace FriedSynapse.FlowEnt.Editor
             PreviewController.Stop();
         }
 
-        private void OnCompleted()
-        {
-            UpdatePlayState();
-        }
-
         private void StartPreview()
         {
-            PreviewController.Start(new PreviewOptions(Animation)
-            {
-                OnStop = () => UpdatePlayState()
-            });
+            PreviewController.Start(new PreviewOptions(Animation));
         }
     }
 }

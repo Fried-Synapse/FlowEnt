@@ -10,7 +10,6 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             None,
             Play,
-            Replay,
             Pause,
             PrevFrame,
             NextFrame,

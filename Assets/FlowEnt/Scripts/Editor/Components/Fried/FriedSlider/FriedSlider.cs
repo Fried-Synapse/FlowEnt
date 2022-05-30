@@ -26,6 +26,26 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
+        public enum EventType
+        {
+            UserInput,
+            Script
+        }
+
+        public class EventData
+        {
+            public EventData(float oldValue, float newValue, EventType type)
+            {
+                OldValue = oldValue;
+                NewValue = newValue;
+                Type = type;
+            }
+
+            public float OldValue { get; }
+            public float NewValue { get; }
+            public EventType Type { get; }
+        }
+
         public FriedSlider()
         {
             this.LoadUxml();
@@ -47,7 +67,7 @@ namespace FriedSynapse.FlowEnt.Editor
             set
             {
                 minValue = value;
-                SetValue(this.value);
+                SetValue(this.value, EventType.Script);
             }
         }
 
@@ -58,7 +78,7 @@ namespace FriedSynapse.FlowEnt.Editor
             set
             {
                 maxValue = value;
-                SetValue(this.value);
+                SetValue(this.value, EventType.Script);
             }
         }
 
@@ -66,11 +86,11 @@ namespace FriedSynapse.FlowEnt.Editor
         internal float Value
         {
             get => value;
-            set => SetValue(value);
+            set => SetValue(value, EventType.Script);
         }
 
-        internal Action<float> OnValueChanging { get; set; }
-        internal Action<float> OnValueChanged { get; set; }
+        internal Action<EventData> OnValueChanging { get; set; }
+        internal Action<EventData> OnValueChanged { get; set; }
 
         protected virtual void Bind()
         {
@@ -90,23 +110,19 @@ namespace FriedSynapse.FlowEnt.Editor
                     return;
                 }
 
-                OnValueManuallyChanging(newValue);
-                Value = newValue;
+                SetValue(newValue, EventType.UserInput);
             });
         }
 
-        protected virtual void OnValueManuallyChanging(float newValue)
+        private void SetValue(float newValue, EventType type)
         {
-        }
-
-        private void SetValue(float newValue)
-        {
-            OnValueChanging?.Invoke(value);
+            float oldValue = value;
+            OnValueChanging?.Invoke(new EventData(oldValue, newValue, type));
             value = Mathf.Clamp(newValue, MinValue, MaxValue);
             Fill.style.width = new StyleLength(new Length(Mathf.InverseLerp(MinValue, MaxValue, value) * 100f, LengthUnit.Percent));
             wasValueTextInternallyChanged = true;
             ValueText.value = value.ToString("0.###");
-            OnValueChanged?.Invoke(value);
+            OnValueChanged?.Invoke(new EventData(oldValue, value, type));
         }
 
         private void StartValueChange(PointerDownEvent evt)
@@ -124,7 +140,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private void OnPointerMove(IPointerEvent evt)
         {
             float unitValue = Mathf.Clamp01((evt.position.x - Background.worldBound.xMin) / Background.worldBound.width);
-            Value = Mathf.Lerp(MinValue, MaxValue, unitValue);
+            SetValue(Mathf.Lerp(MinValue, MaxValue, unitValue), EventType.UserInput);
         }
     }
 }

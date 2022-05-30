@@ -12,9 +12,10 @@ namespace FriedSynapse.FlowEnt.Editor
         {
         }
 
-        protected override void OnValueManuallyChanging(float newValue)
+        protected override void Bind()
         {
-            maxValue = newValue * 2;
+            base.Bind();
+            OnValueChanging += data => maxValue = data.NewValue * 2;
         }
     }
 }

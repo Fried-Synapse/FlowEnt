@@ -1,4 +1,3 @@
-using System.Reflection;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -25,7 +24,6 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         protected IControllable Controllable { get; }
-        private AbstractAnimation Animation { get; set; }
         protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
         protected ControlButton PrevFrame { get; }
         protected ControlButton PlayPause { get; }
@@ -40,9 +38,13 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             if (Controllable is AbstractAnimation animation)
             {
-                Animation = animation;
                 Timeline.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
-                Animation.OnUpdated(_ => UpdateTime());
+                animation.OnUpdated(t =>
+                {
+                    // Debug.Log($"{t}");
+                    UpdateAnimationTime(animation);
+                });
+                animation.OnCompleted(UpdatePlayState);
             }
 
             if (Controllable is Tween)
@@ -68,17 +70,19 @@ namespace FriedSynapse.FlowEnt.Editor
                 button.clicked += UpdatePlayState;
             }
 
-            TimeScale.OnValueChanged += (value) => Controllable.TimeScale = value;
+            TimeScale.OnValueChanged += (data) => Controllable.TimeScale = data.NewValue;
             if (Controllable is Tween tween)
             {
-                float beforeChange = 0;
-                ControlBar.OnValueChanging += (value) =>
+                ControlBar.OnValueChanged += (data) =>
                 {
+                    if (data.Type == FriedSlider.EventType.Script)
+                    {
+                        return;
+                    }
                     tween.Pause();
-                    beforeChange = value;
+                    tween.InvokeMethod("UpdateInternal", new object[1] { tween.Time * (data.NewValue - data.OldValue) });
+                    UpdatePlayState();
                 };
-                ControlBar.OnValueChanged += (value)
-                    => tween.InvokeMethod("UpdateIntersnal", new object[1] { tween.Time * (value - beforeChange) });
             }
         }
 
@@ -93,7 +97,10 @@ namespace FriedSynapse.FlowEnt.Editor
                 RemoveFromClassList("playing");
             }
             UpdateButtonsState();
-            UpdateTime();
+            if (Controllable is AbstractAnimation animation)
+            {
+                UpdateAnimationTime(animation);
+            }
         }
 
         private void UpdateButtonsState()
@@ -102,7 +109,6 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 PlayState.Waiting => ControlButton.ControlType.Pause,
                 PlayState.Playing => ControlButton.ControlType.Pause,
-                PlayState.Finished => ControlButton.ControlType.Replay,
                 _ => ControlButton.ControlType.Play,
             };
 
@@ -110,11 +116,11 @@ namespace FriedSynapse.FlowEnt.Editor
             Stop.SetEnabled(!IsBuilding);
         }
 
-        private void UpdateTime()
+        private void UpdateAnimationTime(AbstractAnimation animation)
         {
-            float elapsedTime = Animation.GetElapsedTime();
+            float elapsedTime = animation.GetElapsedTime();
             TimelineInfoTime.text = elapsedTime.ToString("F4");
-            if (Controllable.PlayState == PlayState.Playing && Controllable is Tween tween)
+            if (Controllable.PlayState != PlayState.Paused && Controllable is Tween tween)
             {
                 ControlBar.Value = elapsedTime / tween.Time;
             }
@@ -141,7 +147,6 @@ namespace FriedSynapse.FlowEnt.Editor
                     Controllable.Resume();
                     break;
             }
-            UpdatePlayState();
         }
 
         protected virtual void OnStop()
