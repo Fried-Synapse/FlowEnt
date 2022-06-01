@@ -180,8 +180,9 @@ namespace FriedSynapse.FlowEnt
             switch (playState)
             {
                 case PlayState.Building:
-                case PlayState.Finished:
                     break;
+                case PlayState.Finished:
+                    return;
                 case PlayState.Waiting:
                     if (startHelper != null)
                     {
