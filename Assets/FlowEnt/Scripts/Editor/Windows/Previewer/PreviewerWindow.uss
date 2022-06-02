@@ -1,7 +1,3 @@
-#content {
-    margin: 0 10px 0 10px;
-}
-
 #name {
     align-items: stretch;
     font-size: 16px;

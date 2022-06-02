@@ -2,6 +2,10 @@
     margin-top: 10px;
 }
 
+#content {
+    margin: 0 5px 0 5px;
+}
+
 #search Label {
     min-width: 70px;
     width: 70px;
