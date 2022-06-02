@@ -5,8 +5,8 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public interface IUpdateController
     {
-        public void SubscribeToUpdate(AbstractUpdatable updatable);
+        internal void SubscribeToUpdate(AbstractUpdatable updatable);
 
-        public void UnsubscribeFromUpdate(AbstractUpdatable updatable);
+        internal void UnsubscribeFromUpdate(AbstractUpdatable updatable);
     }
 }

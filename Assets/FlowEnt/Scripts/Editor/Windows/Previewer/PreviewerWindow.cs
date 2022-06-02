@@ -40,54 +40,34 @@ namespace FriedSynapse.FlowEnt.Editor
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
         private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
         private static readonly object[] emptyArray = { };
-        private Transform transform;
-        private List<AnimationInfo> animations;
 
         private TextElement label;
         private ScrollView animationsElement;
 
 #pragma warning disable IDE0051, RCS1213
 
-        private void Update()
-        {
-            if (animations != null && transform == Selection.activeTransform)
-            {
-                return;
-            }
-
-            if (Selection.activeTransform == null)
-            {
-                transform = null;
-                animations = null;
-            }
-            else
-            {
-                transform = Selection.activeTransform;
-                ReadAnimations();
-            }
-            Render();
-        }
-
         internal override void CreateGUI()
         {
             base.CreateGUI();
-            label = rootVisualElement.Query<TextElement>("name").First();
-            animationsElement = rootVisualElement.Query<ScrollView>("animations").First();
-            Render();
+            label = Content.Query<TextElement>("name").First();
+            animationsElement = Content.Query<ScrollView>("animations").First();
+            Selection.selectionChanged += RenderAnimations;
+            EditorApplication.playModeStateChanged += _ => RenderAnimations();
+            RenderAnimations();
         }
 
-        private void Render()
+        private void RenderAnimations()
         {
+            Transform transform = Selection.activeTransform;
             label.text = transform == null ? "Select an object from the hierarchy first." : transform.name;
 
             animationsElement.Clear();
-
-            if (animations == null)
+            if (transform == null)
             {
                 return;
             }
 
-            foreach (AnimationInfo animationInfo in animations)
+            foreach (AnimationInfo animationInfo in GetAnimations(transform))
             {
                 VisualElement animationElement = new VisualElement();
                 animationElement.AddToClassList("animation");
@@ -105,14 +85,14 @@ namespace FriedSynapse.FlowEnt.Editor
 
 #pragma warning restore IDE0051, RCS1213
 
-        internal new void SetDirty()
+        internal void Reset()
         {
-            animations = null;
+            RenderAnimations();
         }
 
-        private void ReadAnimations()
+        private List<AnimationInfo> GetAnimations(Transform transform)
         {
-            animations = new List<AnimationInfo>();
+            List<AnimationInfo> animations = new List<AnimationInfo>();
             foreach (MonoBehaviour behaviour in transform.GetComponents<MonoBehaviour>())
             {
                 animations.AddRange(
@@ -149,6 +129,7 @@ namespace FriedSynapse.FlowEnt.Editor
                         (AbstractAnimation)mi.Invoke(behaviour, emptyArray)))
                     .ToList());
             }
+            return animations;
         }
     }
 }

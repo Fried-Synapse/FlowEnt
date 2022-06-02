@@ -30,6 +30,11 @@ namespace FriedSynapse.FlowEnt.Editor
             TextElement = this.Query<TextElement>("text").First();
         }
 
+        public Header(string text) : this()
+        {
+            TextElement.text = text;
+        }
+
         private TextElement TextElement { get; }
 
         public string Text

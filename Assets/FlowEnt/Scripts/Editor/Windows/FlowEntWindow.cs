@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Editor
 #pragma warning restore IDE0044, RCS1169
         protected abstract string Name { get; }
         internal static TEditorWindow Instance { get; private set; }
-
+        protected VisualElement Content { get; private set; }
 #pragma warning disable RCS1158
         internal static void ShowWindow()
         {
@@ -45,7 +45,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal virtual void CreateGUI()
         {
+            rootVisualElement.Add(new Header(Name));
             rootVisualElement.LoadUxml(content);
+            Content = rootVisualElement.Query("content");
         }
     }
 }

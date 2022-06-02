@@ -182,9 +182,9 @@ MonoBehaviour:
       timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
-      time: 5
+      time: 20
       easingType: 0
-      easing: 0
+      easing: 11
       easingCurve:
         serializedVersion: 2
         m_Curve: []

@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt
         /// Creates a new instance using the specified <see cref="IUpdateController"/>.
         /// </summary>
         /// <param name="updateController"></param>
-        protected AbstractUpdatable(IUpdateController updateController)
+        private protected AbstractUpdatable(IUpdateController updateController)
         {
             Id = lastId;
             ++lastId;

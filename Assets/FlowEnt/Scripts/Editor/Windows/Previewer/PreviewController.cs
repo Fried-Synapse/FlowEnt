@@ -65,7 +65,6 @@ namespace FriedSynapse.FlowEnt.Editor
             options?.Animation?.Stop(true).Reset();
             options?.OnStop?.Invoke();
             options = null;
-            UnityEngine.Debug.Log($"xxx");
 
             if (undoGroupId != null)
             {

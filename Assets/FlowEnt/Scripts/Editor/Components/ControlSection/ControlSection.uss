@@ -24,6 +24,7 @@
 }
 
 #timeline {
+    display: none;
     height: 20px;
     flex-grow: 1;
     flex-direction: row;

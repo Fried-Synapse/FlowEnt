@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         [MenuItem("Tools/FlowEnt/Settings", false, 100)]
         public static void ShowSettings()
-            => ShowWindow<FlowEntSettingsWindow>("FlowEnt Settings");
+            => SettingsWindow.ShowWindow();
 
         [MenuItem("Tools/FlowEnt/Previewer", false, 101)]
         public static void ShowPreviewer()
@@ -23,7 +23,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
         [MenuItem("Tools/FlowEnt/Inspector", false, 102)]
         public static void ShowInspector()
-            => ShowWindow<FlowEntInspectorWindow>("FlowEnt Inspector");
+            => InspectorWindow.ShowWindow();
+
+        [MenuItem("Tools/FlowEnt/old Inspector", false, 103)]
+        public static void ShowOldInspector()
+            => ShowWindow<FlowEntInspectorWindow>("FlowEnt Old Inspector");
 
         [MenuItem("Tools/FlowEnt/Website", false, 200)]
         public static void GoToWebsite()

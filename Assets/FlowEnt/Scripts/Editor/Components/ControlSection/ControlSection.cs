@@ -31,19 +31,15 @@ namespace FriedSynapse.FlowEnt.Editor
         protected ControlButton Stop { get; }
         protected AutoScalableSlider TimeScale { get; }
         protected VisualElement Timeline { get; }
-        protected FriedSlider ControlBar { get; }
         protected TextElement TimelineInfoTime { get; }
+        protected FriedSlider ControlBar { get; }
 
         protected virtual void Init()
         {
             if (Controllable is AbstractAnimation animation)
             {
                 Timeline.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
-                animation.OnUpdated(t =>
-                {
-                    // Debug.Log($"{t}");
-                    UpdateAnimationTime(animation);
-                });
+                animation.OnUpdated(t => UpdateAnimationTime(animation));
                 animation.OnCompleted(UpdatePlayState);
             }
 

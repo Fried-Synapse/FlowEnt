@@ -1,19 +1,19 @@
-#root {
-    padding: 10px 0 10px 0;
+#content {
+    margin: 0 10px 0 10px;
 }
 
-#body #name {
+#name {
     align-items: stretch;
     font-size: 16px;
     -unity-text-align: middle-center;
     -unity-font-style: bold;
 }
 
-#body #animations #unity-content-container {
+#animations #unity-content-container {
     padding: 0 10px 0 10px;
 }
 
-#body #animations .animation {
+#animations .animation {
     flex-grow: 1;
     border-color: rgba(127, 127, 127, 255);
     border-bottom-width: 1px;
@@ -21,15 +21,15 @@
     padding-bottom: 5px;
 }
 
-#body #animations .animation.property {
+#animations .animation.property {
     color: rgb(67, 135, 174);
 }
 
-#body #animations .animation.method {
+#animations .animation.method {
     color: rgb(161, 161, 68);
 }
 
-#body #animations .animation .label {
+#animations .animation .label {
     font-size: 14px;
     margin: 5px 0 5px 0;
     -unity-font-style: bold;
