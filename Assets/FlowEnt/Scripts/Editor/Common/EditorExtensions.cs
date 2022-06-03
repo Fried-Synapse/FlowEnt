@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     internal static class EditorExtensions
     {
-        internal static AbstractUpdatable GetUpdatableIndex(this IUpdateController updateController, string fieldName = "updatables")
+        internal static AbstractUpdatable GetUpdatableIndex(this IUpdateController updateController, string fieldName)
         {
             object updatables = updateController.GetFieldValue<object>(fieldName);
             object anchor = updatables.GetFieldValue<object>(nameof(anchor));

@@ -6,24 +6,24 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         protected override string Name => "FlowEnt Inspector";
         private TextField Search { get; set; }
-        private VisualElement AnimationsContainer { get; set; }
+        private ScrollView AnimationsScroll { get; set; }
+        private AnimationInfoList AnimationList { get; set; }
         internal override void CreateGUI()
         {
             base.CreateGUI();
             Content.Query<VisualElement>("mainControl").First().Add(new ControlSection(FlowEntController.Instance));
             Search = Content.Query<TextField>("search").First();
-            AnimationsContainer = Content.Query<VisualElement>("animations").First();
-            AnimationsContainer.Add(new AnimationInfoList(FlowEntController.Instance));
+            AnimationsScroll = Content.Query<ScrollView>("animations").First();
+            AnimationList = new AnimationInfoList(FlowEntController.Instance);
+            AnimationsScroll.contentContainer.Add(AnimationList);
             Bind();
         }
 
         private void Bind()
         {
-            Search.RegisterValueChangedCallback(eventData =>
-            {
-                //TODO do the search
-                UnityEngine.Debug.Log($"{eventData.newValue}");
-            });
+            //TODO apply search term on newly created games
+            //TODO remove all animations on ExitPlayMode
+            Search.RegisterValueChangedCallback(eventData => AnimationList.Search(eventData.newValue.ToLower()));
         }
     }
 }

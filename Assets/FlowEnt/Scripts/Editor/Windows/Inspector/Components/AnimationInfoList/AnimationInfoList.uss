@@ -1,5 +1,6 @@
 #count {
-    -unity-text-align: upper-center;
+    display: none;
+    -unity-text-align: middle-center;
 }
 
 #count #content {
@@ -9,8 +10,7 @@
 
 #count .countInfo {
     width: 33%;
-}
-
-#count .countInfo #name {
+    flex-direction: row;
+    justify-content: center;
     -unity-font-style: bold;
 }

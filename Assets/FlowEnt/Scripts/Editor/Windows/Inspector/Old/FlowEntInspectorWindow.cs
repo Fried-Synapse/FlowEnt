@@ -121,7 +121,7 @@ namespace FriedSynapse.FlowEnt.Editor
                             EditorGUILayout.EndHorizontal();
                         }
                         EditorGUI.indentLevel++;
-                        ShowAnimationList(flow.GetUpdatableIndex());
+                        ShowAnimationList(flow.GetUpdatableIndex("updatables"));
                         EditorGUI.indentLevel--;
                         break;
                 }

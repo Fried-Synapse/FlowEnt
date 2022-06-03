@@ -3,6 +3,6 @@
     <ui:VisualElement name="content">
         <ui:VisualElement name="mainControl" />
         <ui:TextField picking-mode="Ignore" label="Search" name="search" class="mt-10" />
-        <ui:VisualElement name="animations" class="mt-10" />
+        <ui:ScrollView name="animations" class="mt-10" />
     </ui:VisualElement>
 </ui:UXML>

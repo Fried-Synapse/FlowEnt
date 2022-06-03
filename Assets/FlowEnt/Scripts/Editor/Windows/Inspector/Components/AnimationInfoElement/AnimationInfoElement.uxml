@@ -3,6 +3,9 @@
     <ui:VisualElement name="root" style="flex-direction: row;">
         <ui:VisualElement name="icon" />
         <ui:Label display-tooltip-when-elided="true" name="name" />
-        <ui:Button text="ⓘ" display-tooltip-when-elided="true" name="open" />
+        <ui:VisualElement name="menu">
+            <ui:Toggle name="showCount" tooltip="Show Count" />
+            <ui:Button text="ⓘ" display-tooltip-when-elided="true" name="open" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

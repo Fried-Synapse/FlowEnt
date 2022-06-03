@@ -52,5 +52,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal static void LoadUss(this VisualElement visualElement)
             => visualElement.styleSheets.Add(ComponentsContainer.GetUss(visualElement.GetType().Name));
+
+        internal static void SetVisible(this VisualElement visualElement, bool isVisible)
+            => visualElement.style.display = new StyleEnum<DisplayStyle>(isVisible ? DisplayStyle.Flex : DisplayStyle.None);
     }
 }
