@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Editor
             Bind();
         }
 
-        private AbstractAnimation Animation { get; }
+        public AbstractAnimation Animation { get; }
         private VisualElement Icon { get; }
         private Label Name { get; }
         private Button Open { get; }

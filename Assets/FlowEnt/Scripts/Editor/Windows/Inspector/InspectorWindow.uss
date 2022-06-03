@@ -10,25 +10,3 @@
     min-width: 70px;
     width: 70px;
 }
-
-#count {
-    -unity-text-align: upper-center;
-}
-
-#count #title {
-    font-size: 16px;
-    -unity-font-style: bold;
-}
-
-#count #content {
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-#count .countInfo {
-    width: 33%;
-}
-
-#count .countInfo #name {
-    -unity-font-style: bold;
-}

@@ -18,4 +18,6 @@ MonoBehaviour:
   - {fileID: 9197481963319205126, guid: 45a96e9db32f940a3af5500c65de5e65, type: 3}
   - {fileID: 9197481963319205126, guid: 77400f00604704fba933ea266a292d28, type: 3}
   - {fileID: 9197481963319205126, guid: bbb089d125d6943b293b93f0f0a2be9f, type: 3}
+  - {fileID: 9197481963319205126, guid: db6f0fed246aa4f5787654fc2a1c9333, type: 3}
+  - {fileID: 9197481963319205126, guid: 563b8b8b6247942d4add1a22dde51085, type: 3}
   styleSheets: []

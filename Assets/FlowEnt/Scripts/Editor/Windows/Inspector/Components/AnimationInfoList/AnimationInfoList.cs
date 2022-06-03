@@ -15,13 +15,15 @@ namespace FriedSynapse.FlowEnt.Editor
             FlowCount = this.Query<Label>("flow").First();
         }
 
-        public AnimationInfoList(FlowEntController controller) : this()
+        public AnimationInfoList(FlowEntController _) : this()
         {
-            EditorApplication.update += Render;
+            EditorApplication.update += RenderController;
         }
 
         public AnimationInfoList(Flow flow) : this()
         {
+            Flow = flow;
+            EditorApplication.update += RenderFlow;
         }
 
         private readonly SortedList<ulong, AbstractAnimation> animations = new SortedList<ulong, AbstractAnimation>();
@@ -29,21 +31,23 @@ namespace FriedSynapse.FlowEnt.Editor
         private Label TweenCount { get; }
         private Label EchoCount { get; }
         private Label FlowCount { get; }
+        private Flow Flow { get; }
 
-        private void Render()
+        private void ReadAnimations(AbstractUpdatable index)
         {
-            void readAnimations(string group) => readAnimations1(FlowEntController.Instance.GetUpdatableIndex(group));
-            void readAnimations1(AbstractUpdatable index)
+            while (index != null)
             {
-                while (index != null)
+                if (index is AbstractAnimation animation && !animations.ContainsKey(animation.Id))
                 {
-                    if (index is AbstractAnimation animation && !animations.ContainsKey(animation.Id))
-                    {
-                        animations.Add(animation.Id, animation);
-                    }
-                    index = index.GetFieldValue<AbstractUpdatable>("next");
+                    animations.Add(animation.Id, animation);
                 }
+                index = index.GetFieldValue<AbstractUpdatable>("next");
             }
+        }
+
+        private void RenderController()
+        {
+            void readAnimations(string group) => ReadAnimations(FlowEntController.Instance.GetUpdatableIndex(group));
 
             animations.Clear();
             readAnimations("updatables");
@@ -53,10 +57,36 @@ namespace FriedSynapse.FlowEnt.Editor
             readAnimations("fixedUpdatables");
             readAnimations("customUpdatables");
 
-            Clear();
+            Render();
+        }
+
+        private void RenderFlow()
+        {
+            animations.Clear();
+            ReadAnimations(Flow);
+            Render();
+        }
+
+        private void Render()
+        {
+            List<ulong> oldElementKeys = animationElements.Keys.ToList();
             foreach (AbstractAnimation animation in animations.Values)
             {
-                Add(new AnimationInfoElement(animation));
+                if (animationElements.ContainsKey(animation.Id))
+                {
+                    oldElementKeys.Remove(animation.Id);
+                    continue;
+                }
+
+                AnimationInfoElement element = new AnimationInfoElement(animation);
+                animationElements.Add(animation.Id, element);
+                Add(element);
+            }
+
+            foreach (ulong oldElementKey in oldElementKeys)
+            {
+                Remove(animationElements[oldElementKey]);
+                animationElements.Remove(oldElementKey);
             }
         }
     }

@@ -1,1 +1,16 @@
-VisualElement {}
+#count {
+    -unity-text-align: upper-center;
+}
+
+#count #content {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#count .countInfo {
+    width: 33%;
+}
+
+#count .countInfo #name {
+    -unity-font-style: bold;
+}

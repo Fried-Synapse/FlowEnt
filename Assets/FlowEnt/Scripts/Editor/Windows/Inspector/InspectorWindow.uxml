@@ -3,23 +3,6 @@
     <ui:VisualElement name="content">
         <ui:VisualElement name="mainControl" />
         <ui:TextField picking-mode="Ignore" label="Search" name="search" class="mt-10" />
-        <ui:VisualElement name="count" class="mt-10">
-            <ui:Label text="Count" display-tooltip-when-elided="true" name="title" />
-            <ui:VisualElement name="content">
-                <ui:VisualElement name="tween" class="countInfo">
-                    <ui:Label text="Tweens" display-tooltip-when-elided="true" name="name" />
-                    <ui:Label display-tooltip-when-elided="true" name="value" text="0" />
-                </ui:VisualElement>
-                <ui:VisualElement name="echo" class="countInfo">
-                    <ui:Label text="Echoes" display-tooltip-when-elided="true" name="name" />
-                    <ui:Label display-tooltip-when-elided="true" name="value" text="0" />
-                </ui:VisualElement>
-                <ui:VisualElement name="flow" class="countInfo">
-                    <ui:Label text="Flows" display-tooltip-when-elided="true" name="name" />
-                    <ui:Label display-tooltip-when-elided="true" name="value" text="0" />
-                </ui:VisualElement>
-            </ui:VisualElement>
-        </ui:VisualElement>
         <ui:VisualElement name="animations" class="mt-10" />
     </ui:VisualElement>
 </ui:UXML>

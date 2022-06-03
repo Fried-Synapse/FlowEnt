@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using FriedSynapse.FlowEnt.Reflection;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -24,7 +21,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             Search.RegisterValueChangedCallback(eventData =>
             {
-                //TODO
+                //TODO do the search
                 UnityEngine.Debug.Log($"{eventData.newValue}");
             });
         }

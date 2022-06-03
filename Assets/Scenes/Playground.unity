@@ -182,7 +182,7 @@ MonoBehaviour:
       timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
-      time: 20
+      time: 5
       easingType: 0
       easing: 11
       easingCurve:
@@ -231,7 +231,7 @@ MonoBehaviour:
       isLoopCountInfinite: 0
       loopCount: 1
       hasTimeout: 1
-      timeout: 1
+      timeout: 3
     events:
       onStarted:
         m_PersistentCalls:
@@ -286,7 +286,8 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     queues:
-      items: []
+      items:
+      - id: 1
   references:
     version: 1
     00000000:
@@ -297,6 +298,64 @@ MonoBehaviour:
         isEnabled: 1
         item: {fileID: 1168015055}
         value: {x: 0, y: 3, z: 0}
+    00000001:
+      type: {class: FlowBuilder/QueueList/Queue, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
+      data:
+        items:
+        - id: 2
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        startTime: 0
+    00000002:
+      type: {class: TweenBuilder, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
+      data:
+        options:
+          name: 
+          updateType: 0
+          autoStart: 0
+          skipFrames: 0
+          delay: 0
+          timeScale: 1
+          isLoopCountInfinite: 0
+          loopCount: 1
+          time: 2
+          easingType: 0
+          easing: 0
+          easingCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          loopType: 0
+        events:
+          onStarted:
+            m_PersistentCalls:
+              m_Calls: []
+          onUpdated:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopStarted:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopCompleted:
+            m_PersistentCalls:
+              m_Calls: []
+          onCompleted:
+            m_PersistentCalls:
+              m_Calls: []
+          onStarting:
+            m_PersistentCalls:
+              m_Calls: []
+          onUpdating:
+            m_PersistentCalls:
+              m_Calls: []
+          onCompleting:
+            m_PersistentCalls:
+              m_Calls: []
+        motions:
+          items: []
 --- !u!1 &494542730
 GameObject:
   m_ObjectHideFlags: 0
