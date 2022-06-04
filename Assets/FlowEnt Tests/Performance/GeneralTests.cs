@@ -32,13 +32,13 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
 
 #pragma warning disable IDE0052, RCS1213
 #if ProperTests
-        private static readonly (int, float)[] emptyTweenValues = new (int, float)[] { (64000, 110f), (128000, 90f), (256000, 60f) };
+        private static readonly (int, float)[] emptyTweenParams = new (int, float)[] { (64000, 110f), (128000, 90f), (256000, 60f) };
 #else
-        private static readonly (int, float)[] emptyTweenValues = new (int, float)[] { (32000, 100f), (64000, 80f), (128000, 40f) };
+        private static readonly (int, float)[] emptyTweenParams = new (int, float)[] { (32000, 100f), (64000, 80f), (128000, 40f) };
 #endif
 #pragma warning restore IDE0052, RCS1213
         [UnityTest, Performance]
-        public IEnumerator EmptyTween([ValueSource("emptyTweenValues")] (int Count, float Fps) data)
+        public IEnumerator EmptyTween([ValueSource(nameof(emptyTweenParams))] (int Count, float Fps) data)
         {
             void aniamtionCreation()
             {
@@ -57,11 +57,9 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
 
 #if ProperTests
 
-#pragma warning disable IDE0052, RCS1213
-        private static readonly (int, float)[] basicTweenValues = new (int, float)[] { (2000, 100f), (4000, 80f), (8000, 40f) };
-#pragma warning restore IDE0052, RCS1213
+        private static readonly (int, float)[] basicTweenParams = new (int, float)[] { (2000, 100f), (4000, 80f), (8000, 40f) };
         [UnityTest, Performance]
-        public IEnumerator BasicTween([ValueSource("basicTweenValues")] (int Count, float Fps) data)
+        public IEnumerator BasicTween([ValueSource(nameof(basicTweenParams))] (int Count, float Fps) data)
         {
             yield return CreateObjects(data.Count);
 
@@ -83,11 +81,9 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
             AssertPerformance(UsageName, data.Fps);
         }
 
-#pragma warning disable IDE0052, RCS1213
-        private static readonly (int, float)[] basicTweenBezierValues = new (int, float)[] { (2000, 100f), (4000, 80f), (8000, 40f) };
-#pragma warning restore IDE0052, RCS1213
+        private static readonly (int, float)[] basicTweenBezierParams = new (int, float)[] { (2000, 100f), (4000, 80f), (8000, 40f) };
         [UnityTest, Performance]
-        public IEnumerator BasicTweenBezier([ValueSource("basicTweenBezierValues")] (int Count, float Fps) data)
+        public IEnumerator BasicTweenBezier([ValueSource(nameof(basicTweenBezierParams))] (int Count, float Fps) data)
         {
             yield return CreateObjects(data.Count);
 
