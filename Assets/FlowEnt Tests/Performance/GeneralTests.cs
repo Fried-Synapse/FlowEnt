@@ -1,10 +1,14 @@
+//#define ProperTests
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
-using UnityEngine;
 using UnityEngine.TestTools;
+
+#if ProperTests
+using System.Collections.Generic;
+using UnityEngine;
+#endif
 
 namespace FriedSynapse.FlowEnt.Tests.Performance
 {
@@ -15,6 +19,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
         private const string UsageName = "Usage";
         private const float TestLength = 1f;
 
+#if ProperTests
         private List<Vector3> SplinePoints { get; } = new List<Vector3>()
         {
             new Vector3(0,0,0),
@@ -23,9 +28,14 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
             new Vector3(5,4,3),
             new Vector3(0,6,0),
         };
+#endif
 
 #pragma warning disable IDE0052, RCS1213
+#if ProperTests
         private static readonly (int, float)[] emptyTweenValues = new (int, float)[] { (64000, 110f), (128000, 90f), (256000, 60f) };
+#else
+        private static readonly (int, float)[] emptyTweenValues = new (int, float)[] { (32000, 110f), (64000, 90f), (128000, 60f) };
+#endif
 #pragma warning restore IDE0052, RCS1213
         [UnityTest, Performance]
         public IEnumerator EmptyTween([ValueSource("emptyTweenValues")] (int Count, float Fps) data)
@@ -44,6 +54,8 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
             yield return CreateAndPlay(data.Count, aniamtionCreation);
             AssertPerformance(UsageName, data.Fps);
         }
+
+#if ProperTests
 
 #pragma warning disable IDE0052, RCS1213
         private static readonly (int, float)[] basicTweenValues = new (int, float)[] { (2000, 100f), (4000, 80f), (8000, 40f) };
@@ -96,6 +108,8 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
             yield return CreateAndPlay(data.Count, aniamtionCreation);
             AssertPerformance(UsageName, data.Fps);
         }
+
+#endif
 
         protected override IEnumerator CreateObjects(int count)
         {
