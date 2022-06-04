@@ -9,34 +9,20 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
     public class AbstractTest
     {
         protected List<List<GameObject>> GameObjects { get; set; } = new List<List<GameObject>>();
-        protected int CompletedFlows { get; set; } = 0;
+        protected int CompletedAnimations { get; set; } = 0;
 
-        protected virtual IEnumerator CreateObjects(int count, int innerCount)
+        protected virtual IEnumerator CreateObjects(int count)
         {
-            Vector3 scale = Vector3.one * 0.9f;
-
             for (int i = 0; i < count; i++)
             {
-                List<GameObject> innerGameObjects = new List<GameObject>();
-                GameObject parent = new GameObject($"Parent {i}");
-                parent.transform.position = new Vector3(0, 0, i);
-
-                for (int j = 0; j < innerCount; j++)
-                {
-                    GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    gameObject.transform.parent = parent.transform;
-                    gameObject.name = $"Test game object {i}-{j}";
-                    gameObject.transform.localPosition = new Vector3(j, 0, 0);
-                    gameObject.transform.localScale = scale;
-                    innerGameObjects.Add(gameObject);
-                }
-                GameObjects.Add(innerGameObjects);
+                GameObject gameObject = new GameObject($"Test game object {i}");
+                gameObject.transform.position = new Vector3(0, 0, i);
             }
             yield return null;
         }
 
-        protected void OnFlowComplete()
-            => CompletedFlows++;
+        protected void OnAnimationComplete()
+            => CompletedAnimations++;
 
         protected virtual void OnSetUp()
         {
@@ -67,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
                 }
             }
             GameObjects = new List<List<GameObject>>();
-            CompletedFlows = 0;
+            CompletedAnimations = 0;
             System.GC.Collect();
         }
     }
