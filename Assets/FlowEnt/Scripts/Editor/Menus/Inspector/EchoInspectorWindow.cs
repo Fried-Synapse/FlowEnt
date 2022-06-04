@@ -11,7 +11,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             GUILayout.Space(10);
 
-            FlowEntEditorGUILayout.LabelFieldBold("Motions:");
+            FlowEntEditorGUILayout.LabelFieldBold("sMotions:");
             EditorGUI.indentLevel++;
             foreach (IEchoMotion motion in Animation.GetFieldValue<IEchoMotion[]>("motions"))
             {
