@@ -17,7 +17,7 @@ jobs:
       - name: Cache Ligrary
         uses: actions/cache@v2
         with:
-          path: Library
+          path: FlowEnt/Library
           key: Library-FlowEnt
           restore-keys: |
             Library-
