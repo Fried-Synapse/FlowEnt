@@ -14,9 +14,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          submodules: true
-          token: ${{ secrets.ACCESS_TOKEN }}
       - name: Cache Ligrary
         uses: actions/cache@v2
         with:
