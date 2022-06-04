@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,15 +7,17 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
 {
     public class AbstractTest
     {
-        protected List<List<GameObject>> GameObjects { get; set; } = new List<List<GameObject>>();
+        protected GameObject[] GameObjects { get; set; }
         protected int CompletedAnimations { get; set; } = 0;
 
         protected virtual IEnumerator CreateObjects(int count)
         {
+            GameObjects = new GameObject[count];
             for (int i = 0; i < count; i++)
             {
                 GameObject gameObject = new GameObject($"Test game object {i}");
                 gameObject.transform.position = new Vector3(0, 0, i);
+                GameObjects[i] = gameObject;
             }
             yield return null;
         }
@@ -45,14 +46,15 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
         {
             OnTeardown();
 
-            foreach (List<GameObject> gameObjects in GameObjects)
+            if (GameObjects != null)
             {
-                foreach (GameObject gameObject in gameObjects)
+                foreach (GameObject gameObject in GameObjects)
                 {
                     Object.Destroy(gameObject);
                 }
+
+                GameObjects = null;
             }
-            GameObjects = new List<List<GameObject>>();
             CompletedAnimations = 0;
             System.GC.Collect();
         }

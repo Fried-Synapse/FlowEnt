@@ -57,7 +57,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
             {
                 for (int i = 0; i < data.Count; i++)
                 {
-                    GameObject gameObject = GameObjects[i][0];
+                    GameObject gameObject = GameObjects[i];
                     gameObject.transform
                         .Tween(TestLength)
                             .MoveLocalTo(Vector3.one)
@@ -83,7 +83,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
             {
                 for (int i = 0; i < data.Count; i++)
                 {
-                    GameObject gameObject = GameObjects[i][0];
+                    GameObject gameObject = GameObjects[i];
                     gameObject.transform
                         .Tween(TestLength)
                             .MoveLocalTo(new BSpline(SplinePoints))
