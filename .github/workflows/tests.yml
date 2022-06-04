@@ -13,15 +13,12 @@ jobs:
           - playmode
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          submodules: true
-          token: ${{ secrets.ACCESS_TOKEN }}
+        uses: actions/checkout@v3
       - name: Cache Ligrary
         uses: actions/cache@v2
         with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          path: FlowEnt/Library
+          key: Library-FlowEnt
           restore-keys: |
             Library-
       - name: Run Tests
