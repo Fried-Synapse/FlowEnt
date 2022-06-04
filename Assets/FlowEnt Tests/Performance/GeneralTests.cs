@@ -34,7 +34,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
 #if ProperTests
         private static readonly (int, float)[] emptyTweenValues = new (int, float)[] { (64000, 110f), (128000, 90f), (256000, 60f) };
 #else
-        private static readonly (int, float)[] emptyTweenValues = new (int, float)[] { (32000, 110f), (64000, 90f), (128000, 45f) };
+        private static readonly (int, float)[] emptyTweenValues = new (int, float)[] { (32000, 110f), (64000, 90f), (128000, 40f) };
 #endif
 #pragma warning restore IDE0052, RCS1213
         [UnityTest, Performance]
