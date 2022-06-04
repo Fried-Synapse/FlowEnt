@@ -7,6 +7,11 @@ using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
+    public static class AbstractAnimationTestsValues
+    {
+        public readonly static bool[] stopValues = new bool[] { false, true };
+    }
+
     public abstract class AbstractAnimationTests<TAnimation> : AbstractEngineTests
         where TAnimation : AbstractAnimation
     {
@@ -177,46 +182,29 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
-        public IEnumerator Stop()
+        public IEnumerator Stop([ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))] bool triggerOnCompleted)
         {
+            TAnimation animation = null;
             Stopwatch stopwatch = new Stopwatch();
             bool hasFinished = false;
 
             yield return CreateTester()
                 .Act(() =>
                 {
-                    TAnimation animation = CreateAnimation(HalfTestTime)
-                                    .OnCompleted(() => hasFinished = true)
-                                    .Start() as TAnimation;
+                    animation = CreateAnimation(HalfTestTime)
+                                   .OnCompleted(() => hasFinished = true) as TAnimation;
+                    _ = animation.StartAsync();
 
                     return new Flow()
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Stop()))
+                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Stop(triggerOnCompleted)))
                                     .Queue(new Tween(QuarterTestTime))
                                     .Start();
                 })
-                .Assert(() => Assert.AreEqual(false, hasFinished))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator Stop_TriggerOnCompleted()
-        {
-            Stopwatch stopwatch = new Stopwatch();
-            bool hasFinished = false;
-
-            yield return CreateTester()
-                .Act(() =>
+                .Assert(() =>
                 {
-                    TAnimation animation = CreateAnimation(HalfTestTime)
-                                        .OnCompleted(() => hasFinished = true)
-                                        .Start() as TAnimation;
-
-                    return new Flow()
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Stop(true)))
-                                    .Queue(new Tween(QuarterTestTime))
-                                    .Start();
+                    Assert.AreEqual(triggerOnCompleted, hasFinished);
+                    Assert.DoesNotThrow(() => animation.Stop(triggerOnCompleted));
                 })
-                .Assert(() => Assert.AreEqual(true, hasFinished))
                 .Run();
         }
 

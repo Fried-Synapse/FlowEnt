@@ -179,10 +179,10 @@ namespace FriedSynapse.FlowEnt
             base.StopInternal(triggerOnCompleted);
             switch (playState)
             {
-                case PlayState.Building:
-                    break;
                 case PlayState.Finished:
                     return;
+                case PlayState.Building:
+                    break;
                 case PlayState.Waiting:
                     if (startHelper != null)
                     {
