@@ -58,21 +58,6 @@ namespace FriedSynapse.FlowEnt
             AddOrQueue(new UpdatableWrapperCallback(createUpdatable), forceAdd);
         }
 
-        /// <summary>
-        /// Executes the <paramref name="onConditionTrue"/> if <paramref name="condition"/> returns true.
-        /// </summary>
-        /// <param name="condition">The condition.</param>
-        /// <param name="onConditionTrue">The callback. The flow object represents the current flow.</param>
-        public Flow Conditional(Func<bool> condition, Action<Flow> onConditionTrue)
-        {
-            if (condition?.Invoke() == true)
-            {
-                onConditionTrue?.Invoke(this);
-            }
-
-            return this;
-        }
-
         #endregion
 
         #region Queue
@@ -87,19 +72,21 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        /// <summary>
-        /// Creates a tween and provides a context to build it and then queues the built animation in the current sequence.
-        /// </summary>
-        /// <param name="tweenBuilder"></param>
-        public Flow Queue(Func<Tween, Tween> tweenBuilder)
-            => Queue(tweenBuilder(new Tween()));
+        /// <inheritdoc cref="Queue(AbstractAnimation)" />
+        /// \copydoc At
+        /// <param name="builder">Callback to build the animation.</param>
+        public Flow Queue(Func<Tween, AbstractAnimation> builder)
+            => Queue(builder(new Tween()));
 
-        /// <summary>
-        /// Creates a flow and provides a context to build it and then queues the built animation in the current sequence.
-        /// </summary>
-        /// <param name="flowBuilder"></param>
-        public Flow Queue(Func<Flow, Flow> flowBuilder)
-            => Queue(flowBuilder(new Flow()));
+        /// <inheritdoc cref="Queue(Func{Tween, AbstractAnimation})" />
+        /// \copydoc Queue
+        public Flow Queue(Func<Echo, AbstractAnimation> builder)
+            => Queue(builder(new Echo()));
+
+        /// <inheritdoc cref="Queue(Func{Tween, AbstractAnimation})" />
+        /// \copydoc Queue
+        public Flow Queue(Func<Flow, AbstractAnimation> builder)
+            => Queue(builder(new Flow()));
 
         /// <summary>
         /// Queues an awaiter in the current sequence.
@@ -140,28 +127,27 @@ namespace FriedSynapse.FlowEnt
         /// Queues a callback for the animation builder in the current sequence.
         /// This is useful when you need to create an animation after the current flow has started.
         /// </summary>
-        /// <param name="animationBuilder"></param>
-        public Flow QueueDeferred(Func<AbstractAnimation> animationBuilder)
+        /// <param name="builder">Callback to build the animation.</param>
+        public Flow QueueDeferred(Func<AbstractAnimation> builder)
         {
-            AddOrQueue(animationBuilder);
+            AddOrQueue(builder);
             return this;
         }
 
-        /// <summary>
-        /// Queues a callback, that creates a tween and provides a context to build it, in the current sequence.
-        /// This is useful when you need to create an animation after the current flow has started.
-        /// </summary>
-        /// <param name="tweenBuilder"></param>
-        public Flow QueueDeferred(Func<Tween, Tween> tweenBuilder)
-            => QueueDeferred(() => tweenBuilder(new Tween()));
+        /// <inheritdoc cref="QueueDeferred(Func{AbstractAnimation})" />
+        /// \copydoc QueueDeferred
+        public Flow QueueDeferred(Func<Tween, AbstractAnimation> builder)
+            => QueueDeferred(() => builder(new Tween()));
 
-        /// <summary>
-        /// Queues a callback, that creates a flow and provides a context to build it, in the current sequence.
-        /// This is useful when you need to create an animation after the current flow has started.
-        /// </summary>
-        /// <param name="flowBuilder"></param>
-        public Flow QueueDeferred(Func<Flow, Flow> flowBuilder)
-            => QueueDeferred(() => flowBuilder(new Flow()));
+        /// <inheritdoc cref="QueueDeferred(Func{AbstractAnimation})" />
+        /// \copydoc QueueDeferred
+        public Flow QueueDeferred(Func<Echo, AbstractAnimation> builder)
+            => QueueDeferred(() => builder(new Echo()));
+
+        /// <inheritdoc cref="QueueDeferred(Func{AbstractAnimation})" />
+        /// \copydoc QueueDeferred
+        public Flow QueueDeferred(Func<Flow, AbstractAnimation> builder)
+            => QueueDeferred(() => builder(new Flow()));
 
         #endregion
 
@@ -192,21 +178,21 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        /// <summary>
-        /// Creates a tween and provides a context to build it and then starts a new sequence at the <paramref name="timeIndex"/> provided.
-        /// </summary>
-        /// <param name="timeIndex">Time index for the sequence to start.</param>
-        /// <param name="tweenBuilder"></param>
-        public Flow At(float timeIndex, Func<Tween, Tween> tweenBuilder)
-            => At(timeIndex, tweenBuilder(new Tween(new TweenOptions())));
+        /// <inheritdoc cref="At(float, AbstractAnimation)" />
+        /// \copydoc At
+        /// <param name="builder">Callback to build the animation.</param>
+        public Flow At(float timeIndex, Func<Tween, AbstractAnimation> builder)
+            => At(timeIndex, builder(new Tween()));
 
-        /// <summary>
-        /// Creates a flow and provides a context to build it and then starts a new sequence at the <paramref name="timeIndex"/> provided.
-        /// </summary>
-        /// <param name="timeIndex">Time index for the sequence to start.</param>
-        /// <param name="flowBuilder"></param>
-        public Flow At(float timeIndex, Func<Flow, Flow> flowBuilder)
-            => At(timeIndex, flowBuilder(new Flow()));
+        /// <inheritdoc cref="At(float, Func{Tween, AbstractAnimation})" />
+        /// \copydoc At
+        public Flow At(float timeIndex, Func<Echo, AbstractAnimation> builder)
+            => At(timeIndex, builder(new Echo()));
+
+        /// <inheritdoc cref="At(float, Func{Tween, AbstractAnimation})" />
+        /// \copydoc At
+        public Flow At(float timeIndex, Func<Flow, AbstractAnimation> builder)
+            => At(timeIndex, builder(new Flow()));
 
         #endregion
 
@@ -217,8 +203,8 @@ namespace FriedSynapse.FlowEnt
         /// This is useful when you need to create an animation after the current flow has started.
         /// </summary>
         /// <param name="timeIndex">Time index for the sequence to start.</param>
-        /// <param name="animationBuilder"></param>
-        public Flow AtDeferred(float timeIndex, Func<AbstractAnimation> animationBuilder)
+        /// <param name="builder">Callback to build the animation.</param>
+        public Flow AtDeferred(float timeIndex, Func<AbstractAnimation> builder)
         {
             if (timeIndex < 0)
             {
@@ -227,34 +213,31 @@ namespace FriedSynapse.FlowEnt
 
             if (timeIndex == 0)
             {
-                AddOrQueue(animationBuilder, true);
+                AddOrQueue(builder, true);
             }
             else
             {
                 AddOrQueue(new DelayFlowAwaiter(timeIndex), true);
-                AddOrQueue(animationBuilder);
+                AddOrQueue(builder);
             }
 
             return this;
         }
 
-        /// <summary>
-        /// Starts a new sequence at the <paramref name="timeIndex"/> provided and uses the callback for the animation builder to add an animation to the sequence.
-        /// This is useful when you need to create an animation after the current flow has started.
-        /// </summary>
-        /// <param name="timeIndex">Time index for the sequence to start.</param>
-        /// <param name="tweenBuilder"></param>
-        public Flow AtDeferred(float timeIndex, Func<Tween, Tween> tweenBuilder)
-            => AtDeferred(timeIndex, () => tweenBuilder(new Tween()));
+        /// <inheritdoc cref="AtDeferred(float, Func{AbstractAnimation})" />
+        /// \copydoc AtDeferred
+        public Flow AtDeferred(float timeIndex, Func<Tween, AbstractAnimation> builder)
+            => AtDeferred(timeIndex, () => builder(new Tween()));
 
-        /// <summary>
-        /// Starts a new sequence at the <paramref name="timeIndex"/> provided and uses the callback for the animation builder to add an animation to the sequence.
-        /// This is useful when you need to create an animation after the current flow has started.
-        /// </summary>
-        /// <param name="timeIndex">Time index for the sequence to start.</param>
-        /// <param name="flowBuilder"></param>
-        public Flow AtDeferred(float timeIndex, Func<Flow, Flow> flowBuilder)
-            => AtDeferred(timeIndex, () => flowBuilder(new Flow()));
+        /// <inheritdoc cref="AtDeferred(float, Func{AbstractAnimation})" />
+        /// \copydoc AtDeferred
+        public Flow AtDeferred(float timeIndex, Func<Echo, AbstractAnimation> builder)
+            => AtDeferred(timeIndex, () => builder(new Echo()));
+
+        /// <inheritdoc cref="AtDeferred(float, Func{AbstractAnimation})" />
+        /// \copydoc AtDeferred
+        public Flow AtDeferred(float timeIndex, Func<Flow, AbstractAnimation> builder)
+            => AtDeferred(timeIndex, () => builder(new Flow()));
 
         #endregion
     }

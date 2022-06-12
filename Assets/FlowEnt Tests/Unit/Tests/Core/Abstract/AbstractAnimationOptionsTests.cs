@@ -7,6 +7,11 @@ using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
+    public static class AbstractAnimationOptionsTestsValues
+    {
+        public readonly static bool[] conditional = new bool[] { false, true };
+    }
+
     public abstract class AbstractAnimationOptionsTests<TAnimation, TAnimationOptions> : AbstractEngineTests
         where TAnimation : AbstractAnimation
         where TAnimationOptions : AbstractAnimationOptions, new()
@@ -15,6 +20,22 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         protected abstract TAnimation CreateAnimation(float testTime, TAnimationOptions options);
         private TAnimation CreateAnimationInternal(float testTime, AbstractAnimationOptions options)
             => CreateAnimation(testTime, (TAnimationOptions)options);
+
+        #region Conditional
+
+        [UnityTest]
+        public IEnumerator Conditional([ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))] bool isDefaultTime)
+        {
+            float time = isDefaultTime ? TestTime : HalfTestTime;
+            yield return CreateTester()
+                .Act(() => CreateAnimation(TestTime)
+                            .Conditional(() => !isDefaultTime, a => a.SetTimeScale(2))
+                            .Start())
+                .AssertTime(isDefaultTime ? TestTime : HalfTestTime)
+                .Run();
+        }
+
+        #endregion
 
         #region TimeScale
 

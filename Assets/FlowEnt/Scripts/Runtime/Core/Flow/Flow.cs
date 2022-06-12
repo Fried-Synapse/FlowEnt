@@ -79,7 +79,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.Stop(bool)" />
-        /// \copydoc AbstractUpdatable.Stop
+        /// \copydoc AbstractUpdatable.Stop(bool)
         public new Flow Stop(bool triggerOnCompleted = false)
         {
             StopInternal(triggerOnCompleted);
