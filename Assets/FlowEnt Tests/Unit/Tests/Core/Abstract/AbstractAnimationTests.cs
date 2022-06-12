@@ -182,6 +182,25 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
+        public IEnumerator PauseWhileWaiting()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    TAnimation animation = CreateAnimation(QuarterTestTime).SetDelay(HalfTestTime).Start() as TAnimation;
+                    Flow flowControl = new Flow()
+                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Pause()))
+                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Resume()))
+                                    .Start();
+                    return animation;
+                })
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
         public IEnumerator Stop([ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))] bool triggerOnCompleted)
         {
             TAnimation animation = null;
