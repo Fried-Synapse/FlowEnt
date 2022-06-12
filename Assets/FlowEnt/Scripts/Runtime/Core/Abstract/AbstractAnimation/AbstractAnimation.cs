@@ -60,9 +60,18 @@ namespace FriedSynapse.FlowEnt
             {
                 return this;
             }
+
             playState = PlayState.Playing;
 
-            updateController.SubscribeToUpdate(this);
+            if (startHelper != null)
+            {
+                startHelper.Resume();
+            }
+            else
+            {
+                updateController.SubscribeToUpdate(this);
+            }
+
             return this;
         }
 
@@ -74,13 +83,18 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public AbstractAnimation Pause()
         {
-            if (PlayState != PlayState.Playing)
+            switch (PlayState)
             {
-                return this;
+                case PlayState.Waiting:
+                    playState = PlayState.Paused;
+                    startHelper.Pause();
+                    break;
+                case PlayState.Playing:
+                    playState = PlayState.Paused;
+                    updateController.UnsubscribeFromUpdate(this);
+                    break;
             }
-            playState = PlayState.Paused;
 
-            updateController.UnsubscribeFromUpdate(this);
             return this;
         }
 
@@ -143,6 +157,7 @@ namespace FriedSynapse.FlowEnt
             startHelper = new SkipFramesStartHelper(updateController, updateType, skipFrames, (deltaTime) =>
             {
                 skipFrames = 0;
+                //startHelper = null;
                 StartInternal(deltaTime);
             });
         }
@@ -152,6 +167,7 @@ namespace FriedSynapse.FlowEnt
             startHelper = new DelayedStartHelper(updateController, updateType, delay, (deltaTime) =>
             {
                 delay = -1f;
+                //startHelper = null;
                 StartInternal(deltaTime);
             });
         }
