@@ -13,6 +13,11 @@ namespace FriedSynapse.FlowEnt
         private LoopType loopType;
         public LoopType LoopType => loopType;
 
+        /// <inheritdoc cref="AbstractAnimation.ConditionalInternal{TAnimation}(Func{bool}, Action{TAnimation})" />
+        /// \copydoc AbstractAnimation.ConditionalInternal{TAnimation}(Func{bool}, Action{TAnimation})
+        public Tween Conditional(Func<bool> condition, Action<Tween> onConditionTrue)
+            => ConditionalInternal(condition, onConditionTrue);
+
         /// <summary>
         /// Sets all the options for this tween.
         /// </summary>

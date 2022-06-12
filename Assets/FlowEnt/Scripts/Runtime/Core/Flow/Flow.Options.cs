@@ -4,6 +4,11 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class Flow : IFluentFlowOptionable<Flow>
     {
+        /// <inheritdoc cref="AbstractAnimation.ConditionalInternal{TAnimation}(Func{bool}, Action{TAnimation})" />
+        /// \copydoc AbstractAnimation.ConditionalInternal{TAnimation}(Func{bool}, Action{TAnimation})
+        public Flow Conditional(Func<bool> condition, Action<Flow> onConditionTrue)
+            => ConditionalInternal(condition, onConditionTrue);
+
         /// <summary>
         /// Sets all the options for this flow.
         /// </summary>

@@ -1,0 +1,4 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_move_spline_motion_1_1_builder =
+[
+    [ "Build", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_move_spline_motion_1_1_builder.html#a404825100223c4ab8320fa055a04e6ae", null ]
+];

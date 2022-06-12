@@ -1,0 +1,4 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_sprite_renderers_1_1_color_gradient_motion_1_1_builder =
+[
+    [ "Build", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_sprite_renderers_1_1_color_gradient_motion_1_1_builder.html#a5cb3b502def58b40110cac9365730a68", null ]
+];
