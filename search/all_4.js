@@ -48,5 +48,6 @@ var searchData=
   ['echooptions_45',['EchoOptions',['../class_fried_synapse_1_1_flow_ent_1_1_echo_options.html#a4719794b3585efdc1e537a84f492ae38',1,'FriedSynapse.FlowEnt.EchoOptions.EchoOptions()'],['../class_fried_synapse_1_1_flow_ent_1_1_echo_options.html',1,'FriedSynapse.FlowEnt.EchoOptions']]],
   ['echooptionsbuilder_46',['EchoOptionsBuilder',['../class_fried_synapse_1_1_flow_ent_1_1_echo_options_builder.html',1,'FriedSynapse::FlowEnt']]],
   ['echooptionsbuilderpropertydrawer_47',['EchoOptionsBuilderPropertyDrawer',['../class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_echo_options_builder_property_drawer.html',1,'FriedSynapse::FlowEnt::Editor']]],
-  ['editorextensions_48',['EditorExtensions',['../class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_editor_extensions.html',1,'FriedSynapse::FlowEnt::Editor']]]
+  ['editorextensions_48',['EditorExtensions',['../class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_editor_extensions.html',1,'FriedSynapse::FlowEnt::Editor']]],
+  ['emptyupdatable_49',['EmptyUpdatable',['../class_fried_synapse_1_1_flow_ent_1_1_empty_updatable.html',1,'FriedSynapse::FlowEnt']]]
 ];

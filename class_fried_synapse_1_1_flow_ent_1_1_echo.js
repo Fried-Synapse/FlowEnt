@@ -4,6 +4,7 @@ var class_fried_synapse_1_1_flow_ent_1_1_echo =
     [ "Echo", "class_fried_synapse_1_1_flow_ent_1_1_echo.html#a0947d238c3b2ff8d00702fc6661426d8", null ],
     [ "Apply", "class_fried_synapse_1_1_flow_ent_1_1_echo.html#a0c96e75f076d509ad3a1cfb073fc8472", null ],
     [ "Apply", "class_fried_synapse_1_1_flow_ent_1_1_echo.html#a2a21a3c98487b7e8429dacf036ec7160", null ],
+    [ "Conditional", "class_fried_synapse_1_1_flow_ent_1_1_echo.html#ab8c9add1104246a4b9750a957517e0fb", null ],
     [ "For< TItem >", "class_fried_synapse_1_1_flow_ent_1_1_echo.html#ad7e2efbcf996380f5bbb745a0b73ad7d", null ],
     [ "For< TItem >", "class_fried_synapse_1_1_flow_ent_1_1_echo.html#a0b63c6db8ebb00ff091d5b0775ee2495", null ],
     [ "ForAll< TItem >", "class_fried_synapse_1_1_flow_ent_1_1_echo.html#a825d21b464affe99a17e3252ade787bc", null ],

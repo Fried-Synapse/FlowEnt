@@ -1,0 +1,4 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_materials_1_1_alpha_motion_1_1_value_builder =
+[
+    [ "Build", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_materials_1_1_alpha_motion_1_1_value_builder.html#ab983c815741c1fbc105f2caba624d683", null ]
+];

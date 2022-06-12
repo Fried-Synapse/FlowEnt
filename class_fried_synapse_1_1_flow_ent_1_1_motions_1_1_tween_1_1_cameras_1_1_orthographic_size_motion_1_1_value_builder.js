@@ -1,0 +1,4 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_orthographic_size_motion_1_1_value_builder =
+[
+    [ "Build", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_orthographic_size_motion_1_1_value_builder.html#a664fae06ae4f40f46c4f858483ea01f0", null ]
+];

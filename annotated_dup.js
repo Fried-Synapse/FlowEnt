@@ -327,6 +327,7 @@ var annotated_dup =
         [ "EchoMotionsBuilder", "class_fried_synapse_1_1_flow_ent_1_1_echo_motions_builder.html", null ],
         [ "EchoOptions", "class_fried_synapse_1_1_flow_ent_1_1_echo_options.html", "class_fried_synapse_1_1_flow_ent_1_1_echo_options" ],
         [ "EchoOptionsBuilder", "class_fried_synapse_1_1_flow_ent_1_1_echo_options_builder.html", null ],
+        [ "EmptyUpdatable", "class_fried_synapse_1_1_flow_ent_1_1_empty_updatable.html", null ],
         [ "FastList", "class_fried_synapse_1_1_flow_ent_1_1_fast_list.html", null ],
         [ "FastListItem", "class_fried_synapse_1_1_flow_ent_1_1_fast_list_item.html", null ],
         [ "Flow", "class_fried_synapse_1_1_flow_ent_1_1_flow.html", "class_fried_synapse_1_1_flow_ent_1_1_flow" ],

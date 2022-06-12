@@ -1,0 +1,4 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_move_local_spline_motion_1_1_builder =
+[
+    [ "Build", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_move_local_spline_motion_1_1_builder.html#a62435eae7b7d70e034c6dc3326de56e2", null ]
+];

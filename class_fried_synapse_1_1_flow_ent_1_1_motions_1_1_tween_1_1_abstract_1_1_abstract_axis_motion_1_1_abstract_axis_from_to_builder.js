@@ -1,0 +1,4 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_from_to_builder =
+[
+    [ "axis", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_from_to_builder.html#af9f01757c2740313946de3c12cb8a02b", null ]
+];

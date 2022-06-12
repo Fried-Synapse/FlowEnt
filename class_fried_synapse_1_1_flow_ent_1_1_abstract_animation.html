@@ -42,6 +42,11 @@
                                     text-decoration: none !important;">
                                     FlowEnt
                                 </a>
+                                <a href="https://docs.flowent.friedsynapse.com/" style="
+                                    color: var(--header-foreground) !important;
+                                    text-decoration: none !important;">
+                                    Docs
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -161,6 +166,8 @@ async Task&#160;</td><td class="memItemRight" valign="bottom"><b>AsAsync</b> ()<
 <tr class="separator:a0770a96749330741c61afe85c3c7906f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1e4dcd5fb23a23f0025aa3ba1eb3456"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">AbstractAnimation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html#ac1e4dcd5fb23a23f0025aa3ba1eb3456">OnCompleted</a> (Action callback)</td></tr>
 <tr class="separator:ac1e4dcd5fb23a23f0025aa3ba1eb3456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ff79e2506ab2ee7b75d9752af786523"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">AbstractAnimation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html#a5ff79e2506ab2ee7b75d9752af786523">Conditional</a> (Func&lt; bool &gt; condition, Action&lt; <a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">AbstractAnimation</a> &gt; onConditionTrue)</td></tr>
+<tr class="separator:a5ff79e2506ab2ee7b75d9752af786523"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af78adcfb659cb1931cfd6ef220ee3a3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">AbstractAnimation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html#af78adcfb659cb1931cfd6ef220ee3a3d">SetName</a> (string name)</td></tr>
 <tr class="separator:af78adcfb659cb1931cfd6ef220ee3a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26c6d504a529f7fbfb94fee28f1cad6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">AbstractAnimation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html#a26c6d504a529f7fbfb94fee28f1cad6f">SetUpdateType</a> (UpdateType updateType)</td></tr>
@@ -259,6 +266,9 @@ override void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetInterna
 <tr class="memitem:aa6f91f9606cade9fe818ddef877e8736"><td class="memItemLeft" align="right" valign="top"><a id="aa6f91f9606cade9fe818ddef877e8736" name="aa6f91f9606cade9fe818ddef877e8736"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetEvents</b> (<a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation_events.html">AbstractAnimationEvents</a> events)</td></tr>
 <tr class="separator:aa6f91f9606cade9fe818ddef877e8736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d3819ee3e135453fba5c3da1bdca482"><td class="memItemLeft" align="right" valign="top">TAnimation&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html#a7d3819ee3e135453fba5c3da1bdca482">ConditionalInternal&lt; TAnimation &gt;</a> (Func&lt; bool &gt; condition, Action&lt; TAnimation &gt; onConditionTrue)</td></tr>
+<tr class="memdesc:a7d3819ee3e135453fba5c3da1bdca482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the <em>onConditionTrue</em>  if <em>condition</em>  returns true.  <a href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html#a7d3819ee3e135453fba5c3da1bdca482">More...</a><br /></td></tr>
+<tr class="separator:a7d3819ee3e135453fba5c3da1bdca482"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a473df6a3c0e3d149f3782ec84d857610"><td class="memItemLeft" align="right" valign="top"><a id="a473df6a3c0e3d149f3782ec84d857610" name="a473df6a3c0e3d149f3782ec84d857610"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOptions</b> (<a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation_options.html">AbstractAnimationOptions</a> options)</td></tr>
 <tr class="separator:a473df6a3c0e3d149f3782ec84d857610"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -331,6 +341,87 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>AutoStart</b><code> [
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Provides animation specific behaviour </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5ff79e2506ab2ee7b75d9752af786523" name="a5ff79e2506ab2ee7b75d9752af786523"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ff79e2506ab2ee7b75d9752af786523">&#9670;&nbsp;</a></span>Conditional()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">AbstractAnimation</a> FriedSynapse.FlowEnt.AbstractAnimation.Conditional </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; bool &gt;&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; <a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">AbstractAnimation</a> &gt;&#160;</td>
+          <td class="paramname"><em>onConditionTrue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d3819ee3e135453fba5c3da1bdca482" name="a7d3819ee3e135453fba5c3da1bdca482"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d3819ee3e135453fba5c3da1bdca482">&#9670;&nbsp;</a></span>ConditionalInternal&lt; TAnimation &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TAnimation FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal&lt; TAnimation &gt; </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; bool &gt;&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; TAnimation &gt;&#160;</td>
+          <td class="paramname"><em>onConditionTrue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Executes the <em>onConditionTrue</em>  if <em>condition</em>  returns true. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">condition</td><td>The condition.</td></tr>
+    <tr><td class="paramname">onConditionTrue</td><td>The callback.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>TAnimation</em></td><td>&#160;:</td><td valign="top"><em>AbstractAnimation</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
 <a id="ac1e4dcd5fb23a23f0025aa3ba1eb3456" name="ac1e4dcd5fb23a23f0025aa3ba1eb3456"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1e4dcd5fb23a23f0025aa3ba1eb3456">&#9670;&nbsp;</a></span>OnCompleted()</h2>
 

@@ -4,6 +4,7 @@ var class_fried_synapse_1_1_flow_ent_1_1_tween =
     [ "Tween", "class_fried_synapse_1_1_flow_ent_1_1_tween.html#adc7ef8aaec915df9d4fb3f9e83e2416f", null ],
     [ "Apply", "class_fried_synapse_1_1_flow_ent_1_1_tween.html#ac5f7700a3fb87af723e463238f7630a8", null ],
     [ "Apply", "class_fried_synapse_1_1_flow_ent_1_1_tween.html#a95666df6447ecfec1b0a604d859a2ed4", null ],
+    [ "Conditional", "class_fried_synapse_1_1_flow_ent_1_1_tween.html#a3da11d5fd8517c3f84d4bf3f54b0281e", null ],
     [ "For< TItem >", "class_fried_synapse_1_1_flow_ent_1_1_tween.html#a8316928f1f147535457e9b7c4eefa8e1", null ],
     [ "For< TItem >", "class_fried_synapse_1_1_flow_ent_1_1_tween.html#a8c54d0de113ce0716e7a2fa2305c163e", null ],
     [ "ForAll< TItem >", "class_fried_synapse_1_1_flow_ent_1_1_tween.html#a393be9eb6c56768318e5fa881c1176ee", null ],

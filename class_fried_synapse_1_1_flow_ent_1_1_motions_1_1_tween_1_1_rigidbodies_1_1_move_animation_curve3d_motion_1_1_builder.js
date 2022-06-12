@@ -1,0 +1,4 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_move_animation_curve3d_motion_1_1_builder =
+[
+    [ "Build", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_move_animation_curve3d_motion_1_1_builder.html#adcf8bd32a4b3e708a2d0731387cbfc0b", null ]
+];

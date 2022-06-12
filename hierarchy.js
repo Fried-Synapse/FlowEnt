@@ -492,7 +492,8 @@ var hierarchy =
         [ "FriedSynapse.FlowEnt.AutoStartHelper", "class_fried_synapse_1_1_flow_ent_1_1_auto_start_helper.html", null ],
         [ "FriedSynapse.FlowEnt.DelayedStartHelper", "class_fried_synapse_1_1_flow_ent_1_1_delayed_start_helper.html", null ],
         [ "FriedSynapse.FlowEnt.SkipFramesStartHelper", "class_fried_synapse_1_1_flow_ent_1_1_skip_frames_start_helper.html", null ]
-      ] ]
+      ] ],
+      [ "FriedSynapse.FlowEnt.EmptyUpdatable", "class_fried_synapse_1_1_flow_ent_1_1_empty_updatable.html", null ]
     ] ],
     [ "AbstractValueBuilder", null, [
       [ "FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion< TItem >.AbstractAxisValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_value_builder.html", null ],

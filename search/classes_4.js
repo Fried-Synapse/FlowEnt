@@ -46,5 +46,6 @@ var searchData=
   ['echooptions_43',['EchoOptions',['../class_fried_synapse_1_1_flow_ent_1_1_echo_options.html',1,'FriedSynapse::FlowEnt']]],
   ['echooptionsbuilder_44',['EchoOptionsBuilder',['../class_fried_synapse_1_1_flow_ent_1_1_echo_options_builder.html',1,'FriedSynapse::FlowEnt']]],
   ['echooptionsbuilderpropertydrawer_45',['EchoOptionsBuilderPropertyDrawer',['../class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_echo_options_builder_property_drawer.html',1,'FriedSynapse::FlowEnt::Editor']]],
-  ['editorextensions_46',['EditorExtensions',['../class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_editor_extensions.html',1,'FriedSynapse::FlowEnt::Editor']]]
+  ['editorextensions_46',['EditorExtensions',['../class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_editor_extensions.html',1,'FriedSynapse::FlowEnt::Editor']]],
+  ['emptyupdatable_47',['EmptyUpdatable',['../class_fried_synapse_1_1_flow_ent_1_1_empty_updatable.html',1,'FriedSynapse::FlowEnt']]]
 ];

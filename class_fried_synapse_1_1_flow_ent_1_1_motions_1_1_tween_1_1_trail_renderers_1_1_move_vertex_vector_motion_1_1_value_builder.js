@@ -1,0 +1,4 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_move_vertex_vector_motion_1_1_value_builder =
+[
+    [ "Build", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_move_vertex_vector_motion_1_1_value_builder.html#a13e5ab963282d5d12855a603b4f6c6cb", null ]
+];
