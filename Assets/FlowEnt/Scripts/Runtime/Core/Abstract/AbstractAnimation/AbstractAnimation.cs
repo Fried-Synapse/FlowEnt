@@ -157,7 +157,7 @@ namespace FriedSynapse.FlowEnt
             startHelper = new SkipFramesStartHelper(updateController, updateType, skipFrames, (deltaTime) =>
             {
                 skipFrames = 0;
-                //startHelper = null;
+                startHelper = null;
                 StartInternal(deltaTime);
             });
         }
@@ -167,7 +167,7 @@ namespace FriedSynapse.FlowEnt
             startHelper = new DelayedStartHelper(updateController, updateType, delay, (deltaTime) =>
             {
                 delay = -1f;
-                //startHelper = null;
+                startHelper = null;
                 StartInternal(deltaTime);
             });
         }

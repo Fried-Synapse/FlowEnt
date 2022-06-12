@@ -17,12 +17,12 @@ namespace FriedSynapse.FlowEnt
 
         internal void Pause()
         {
-            //updateController.UnsubscribeFromUpdate(this);
+            updateController.UnsubscribeFromUpdate(this);
         }
 
         internal void Resume()
         {
-            // updateController.SubscribeToUpdate(this);
+            updateController.SubscribeToUpdate(this);
         }
 
         protected Action<float> callback;
