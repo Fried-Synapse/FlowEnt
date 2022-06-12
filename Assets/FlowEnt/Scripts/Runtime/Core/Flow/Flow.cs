@@ -255,7 +255,12 @@ namespace FriedSynapse.FlowEnt
                 AbstractUpdatableWrapper updatableWrapper = updatableWrappersQueue[i];
                 do
                 {
-                    updatableWrapper.GetUpdatable().Reset();
+                    AbstractUpdatable updatable = updatableWrapper.GetUpdatable();
+                    if (updatable is AbstractAnimation animation)
+                    {
+                        animation.Stop();
+                    }
+                    updatable.Reset();
                     updatableWrapper = updatableWrapper.next;
                 } while (updatableWrapper != null);
             }

@@ -236,20 +236,21 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Arrange(() => animation = (TAnimation)CreateAnimation(TestTime / runs).Start())
-                .SetActDelay(10)
                 .Act(() =>
                 {
-                    animation.Stop().Reset()
-                            .OnCompleted(() =>
+                    animation
+                        .Stop()
+                        .Reset()
+                        .OnCompleted(() =>
+                        {
+                            animation.Reset();
+                            ran++;
+                            if (ran < runs)
                             {
-                                animation.Reset();
-                                ran++;
-                                if (ran < runs)
-                                {
-                                    animation.Start();
-                                }
-                            })
-                            .Start();
+                                animation.Start();
+                            }
+                        })
+                        .Start();
                     return new Tween(TestTime).Start();
                 })
                 .AssertTime(TestTime)
