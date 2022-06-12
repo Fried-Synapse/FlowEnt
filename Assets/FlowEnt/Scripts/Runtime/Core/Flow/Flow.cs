@@ -147,14 +147,15 @@ namespace FriedSynapse.FlowEnt
 
         private void StartUpdatables(float deltaTime)
         {
-            for (int i = 0; i < updatableWrappersQueue.Count; i++)
+            int count = updatableWrappersQueue.Count;
+            runningUpdatableWrappersCount = count;
+            for (int i = 0; i < count; i++)
             {
                 AbstractUpdatableWrapper updatableWrapper = updatableWrappersQueue[i];
                 AbstractUpdatable updatable = updatableWrapper.GetUpdatable();
                 runningUpdatableWrappers.Add(updatable.Id, updatableWrapper);
                 updatable.StartInternal(deltaTime);
             }
-            runningUpdatableWrappersCount = updatableWrappersQueue.Count;
         }
 
         private void FirstUpdateInternal(float deltaTime)

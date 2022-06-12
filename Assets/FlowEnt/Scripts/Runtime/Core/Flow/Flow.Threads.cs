@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt
     {
         #region Utils
 
-        private void InitUpdatable(AbstractUpdatable updatable)
+        private void InitUpdatable(ref AbstractUpdatable updatable)
         {
             if (updatable is AbstractAnimation animation)
             {
@@ -23,6 +23,7 @@ namespace FriedSynapse.FlowEnt
                 }
             }
 
+            updatable ??= new EmptyUpdatable();
             updatable.updateController = this;
         }
 
@@ -42,7 +43,7 @@ namespace FriedSynapse.FlowEnt
 
         private void AddOrQueue(AbstractUpdatable updatable, bool forceAdd = false)
         {
-            InitUpdatable(updatable);
+            InitUpdatable(ref updatable);
             AddOrQueue(new UpdatableWrapperDirect(updatable), forceAdd);
         }
 
@@ -51,7 +52,7 @@ namespace FriedSynapse.FlowEnt
             AbstractUpdatable createUpdatable()
             {
                 AbstractUpdatable updatable = updatableBuilder();
-                InitUpdatable(updatable);
+                InitUpdatable(ref updatable);
                 return updatable;
             }
 

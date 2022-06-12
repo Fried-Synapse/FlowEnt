@@ -236,7 +236,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Arrange(() => animation = (TAnimation)CreateAnimation(TestTime / runs).Start())
-                .SetActDelay(5)
+                .SetActDelay(10)
                 .Act(() =>
                 {
                     animation.Stop().Reset()
