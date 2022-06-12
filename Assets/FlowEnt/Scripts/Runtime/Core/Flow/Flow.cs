@@ -79,7 +79,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc cref="AbstractAnimation.Stop(bool)" />
-        /// \copydoc AbstractUpdatable.Stop
+        /// \copydoc AbstractUpdatable.Stop(bool)
         public new Flow Stop(bool triggerOnCompleted = false)
         {
             StopInternal(triggerOnCompleted);
@@ -147,14 +147,15 @@ namespace FriedSynapse.FlowEnt
 
         private void StartUpdatables(float deltaTime)
         {
-            for (int i = 0; i < updatableWrappersQueue.Count; i++)
+            int count = updatableWrappersQueue.Count;
+            runningUpdatableWrappersCount = count;
+            for (int i = 0; i < count; i++)
             {
                 AbstractUpdatableWrapper updatableWrapper = updatableWrappersQueue[i];
                 AbstractUpdatable updatable = updatableWrapper.GetUpdatable();
                 runningUpdatableWrappers.Add(updatable.Id, updatableWrapper);
                 updatable.StartInternal(deltaTime);
             }
-            runningUpdatableWrappersCount = updatableWrappersQueue.Count;
         }
 
         private void FirstUpdateInternal(float deltaTime)
@@ -254,7 +255,12 @@ namespace FriedSynapse.FlowEnt
                 AbstractUpdatableWrapper updatableWrapper = updatableWrappersQueue[i];
                 do
                 {
-                    updatableWrapper.GetUpdatable().Reset();
+                    AbstractUpdatable updatable = updatableWrapper.GetUpdatable();
+                    if (updatable is AbstractAnimation animation)
+                    {
+                        animation.Stop();
+                    }
+                    updatable.Reset();
                     updatableWrapper = updatableWrapper.next;
                 } while (updatableWrapper != null);
             }

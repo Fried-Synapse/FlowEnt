@@ -1,0 +1,7 @@
+var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_transforms_1_1_rotate_to_quaternion_motion =
+[
+    [ "Builder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_transforms_1_1_rotate_to_quaternion_motion_1_1_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_transforms_1_1_rotate_to_quaternion_motion_1_1_builder" ],
+    [ "RotateToQuaternionMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_transforms_1_1_rotate_to_quaternion_motion.html#af75ace12178155897b9c7d7f832769f8", null ],
+    [ "OnUpdate", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_transforms_1_1_rotate_to_quaternion_motion.html#ac4a8b03dc461a4e09a805ebfb5760ee5", null ],
+    [ "target", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_transforms_1_1_rotate_to_quaternion_motion.html#af62b64320a6bcae197076c4ae9541a6f", null ]
+];

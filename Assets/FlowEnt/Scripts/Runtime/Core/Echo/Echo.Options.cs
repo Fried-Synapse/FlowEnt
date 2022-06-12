@@ -9,6 +9,11 @@ namespace FriedSynapse.FlowEnt
         private Func<float, bool> stopCondition;
         public Func<float, bool> StopCondition => stopCondition;
 
+        /// <inheritdoc cref="AbstractAnimation.ConditionalInternal{TAnimation}(Func{bool}, Action{TAnimation})" />
+        /// \copydoc AbstractAnimation.ConditionalInternal{TAnimation}(Func{bool}, Action{TAnimation})
+        public Echo Conditional(Func<bool> condition, Action<Echo> onConditionTrue)
+            => ConditionalInternal(condition, onConditionTrue);
+
         /// <summary>
         /// Sets all the options for this tween.
         /// </summary>

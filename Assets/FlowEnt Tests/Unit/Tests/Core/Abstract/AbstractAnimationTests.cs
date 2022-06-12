@@ -235,46 +235,31 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             TAnimation animation = null;
 
             yield return CreateTester()
+                .Arrange(() => animation = (TAnimation)CreateAnimation(TestTime / runs).Start())
                 .Act(() =>
                 {
-                    animation = CreateAnimation(TestTime / runs)
-                            .OnCompleted(() =>
+                    animation
+                        .Stop()
+                        .Reset()
+                        .OnCompleted(() =>
+                        {
+                            animation.Reset();
+                            ran++;
+                            if (ran < runs)
                             {
-                                ran++;
-                                if (ran < runs)
-                                {
-                                    animation.Reset().Start();
-                                }
-                            })
-                            .Start() as TAnimation;
+                                animation.Start();
+                            }
+                        })
+                        .Start();
                     return new Tween(TestTime).Start();
                 })
-                .SetAssertDelay(10)
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(PlayState.Finished, animation.PlayState);
+                    Assert.AreEqual(PlayState.Building, animation.PlayState);
+                    Assert.AreEqual(null, animation.Overdraft);
                     Assert.AreEqual(runs, ran);
                 })
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator ResetUsingFlow()
-        {
-            TAnimation animation = null;
-
-            yield return CreateTester()
-                .Act(() =>
-                {
-                    animation = CreateAnimation(TestTime / 2f);
-                    return new Flow()
-                        .Queue(animation)
-                        .QueueDeferred(() => animation.Reset())
-                        .Start();
-                })
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(PlayState.Finished, animation.PlayState))
                 .Run();
         }
     }
