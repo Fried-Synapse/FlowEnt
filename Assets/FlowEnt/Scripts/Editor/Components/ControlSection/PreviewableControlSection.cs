@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             if (Controllable is Tween tween)
             {
-                ControlBar.OnValueChanging += (data) =>
+                ControlBar.OnValueChanging += (_) =>
                 {
                     if (IsBuilding)
                     {

@@ -33,7 +33,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static int? undoGroupId;
         private static PreviewOptions options;
-        private static bool IsRunning => options != null;
+        public static bool IsRunning => options != null;
 
         [Obsolete("remove the options param and have only the animation")]
         public static void Start(PreviewOptions options)

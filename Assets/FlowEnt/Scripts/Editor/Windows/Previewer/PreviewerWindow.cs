@@ -58,6 +58,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void RenderAnimations()
         {
+            if (PreviewController.IsRunning)
+            {
+                PreviewController.Stop();
+            }
+
             Transform transform = Selection.activeTransform;
             label.text = transform == null ? "Select an object from the hierarchy first." : transform.name;
 
