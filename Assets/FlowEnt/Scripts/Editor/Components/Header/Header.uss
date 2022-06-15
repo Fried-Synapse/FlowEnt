@@ -1,0 +1,30 @@
+.header-wrapper {
+    min-height: 68px;
+}
+
+#header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 58px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 68px;
+}
+
+#header #logo {
+    background-image: url('/Assets/FlowEnt/Scripts/Editor/Components/Header/Content/Logo.png');
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+    min-width: 48px;
+    min-height: 48px;
+    margin-left: -48px;
+}
+
+#header #text {
+    font-size: 20px;
+    -unity-font-style: bold;
+    overflow: hidden;
+}

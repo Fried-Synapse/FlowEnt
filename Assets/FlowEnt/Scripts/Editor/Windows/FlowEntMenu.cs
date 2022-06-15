@@ -15,15 +15,15 @@ namespace FriedSynapse.FlowEnt.Editor
 
         [MenuItem("Tools/FlowEnt/Settings", false, 100)]
         public static void ShowSettings()
-            => SettingsWindow.ShowWindow();
+            => SettingsWindow.ShowSingleton();
 
         [MenuItem("Tools/FlowEnt/Previewer", false, 101)]
         public static void ShowPreviewer()
-            => PreviewerWindow.ShowWindow();
+            => PreviewerWindow.ShowSingleton();
 
         [MenuItem("Tools/FlowEnt/Inspector", false, 102)]
         public static void ShowInspector()
-            => InspectorWindow.ShowWindow();
+            => InspectorWindow.ShowSingleton();
 
         [MenuItem("Tools/FlowEnt/old Inspector", false, 103)]
         public static void ShowOldInspector()

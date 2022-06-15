@@ -44,6 +44,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 ShowCount.RegisterValueChangedCallback(eventData => List.ToggleCount(eventData.newValue));
             }
+            Open.clicked += () => AnimationInspectorWindow.ShowGrouped(Animation);
         }
 
         internal bool Search(string term)

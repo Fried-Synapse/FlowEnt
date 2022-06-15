@@ -8,9 +8,10 @@ namespace FriedSynapse.FlowEnt.Editor
         private TextField Search { get; set; }
         private ScrollView AnimationsScroll { get; set; }
         private AnimationInfoList AnimationList { get; set; }
-        internal override void CreateGUI()
+        protected override void CreateGUI()
         {
-            base.CreateGUI();
+            LoadHeader();
+            LoadContent();
             Content.Query<VisualElement>("mainControl").First().Add(new ControlSection(FlowEntController.Instance));
             Search = Content.Query<TextField>("search").First();
             AnimationsScroll = Content.Query<ScrollView>("animations").First();

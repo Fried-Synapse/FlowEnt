@@ -63,7 +63,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
                 if (check.changed)
                 {
-                    PreviewerWindow.Instance.Reset();
+                    PreviewerWindow.Instance.RenderAnimations();
                 }
             }
 

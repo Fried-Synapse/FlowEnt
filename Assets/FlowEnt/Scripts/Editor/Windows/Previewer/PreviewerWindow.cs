@@ -46,9 +46,10 @@ namespace FriedSynapse.FlowEnt.Editor
 
 #pragma warning disable IDE0051, RCS1213
 
-        internal override void CreateGUI()
+        protected override void CreateGUI()
         {
-            base.CreateGUI();
+            LoadHeader();
+            LoadContent();
             label = Content.Query<TextElement>("name").First();
             animationsElement = Content.Query<ScrollView>("animations").First();
             Selection.selectionChanged += RenderAnimations;
@@ -56,7 +57,7 @@ namespace FriedSynapse.FlowEnt.Editor
             RenderAnimations();
         }
 
-        private void RenderAnimations()
+        internal void RenderAnimations()
         {
             if (PreviewController.IsRunning)
             {
@@ -89,11 +90,6 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
 #pragma warning restore IDE0051, RCS1213
-
-        internal void Reset()
-        {
-            RenderAnimations();
-        }
 
         private List<AnimationInfo> GetAnimations(Transform transform)
         {
