@@ -84,7 +84,9 @@ namespace FriedSynapse.FlowEnt.Editor
                 };
                 label.AddToClassList("label");
                 animationElement.Add(label);
-                animationElement.Add(new PreviewableControlSection(animationInfo.animation));
+                PreviewableControlSection controlSection = new PreviewableControlSection();
+                controlSection.Init(animationInfo.animation);
+                animationElement.Add(controlSection);
                 animationsElement.contentContainer.Add(animationElement);
             }
         }

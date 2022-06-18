@@ -9,20 +9,6 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public class PreviewOptions
-    {
-        public PreviewOptions(AbstractAnimation animation)
-        {
-            Animation = animation;
-        }
-
-        public AbstractAnimation Animation { get; }
-        [Obsolete]
-        public Action OnUpdate { get; set; }
-        [Obsolete]
-        public Action OnStop { get; set; }
-    }
-
     public static class PreviewController
     {
         static PreviewController()
@@ -32,22 +18,21 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         private static int? undoGroupId;
-        private static PreviewOptions options;
-        public static bool IsRunning => options != null;
+        private static AbstractAnimation animation;
+        public static bool IsRunning => animation != null;
 
-        [Obsolete("remove the options param and have only the animation")]
-        public static void Start(PreviewOptions options)
+        public static void Start(AbstractAnimation animation)
         {
-            PreviewController.options = options;
+            PreviewController.animation = animation;
 
-            if (RecordObjects(PreviewController.options.Animation))
+            if (RecordObjects(PreviewController.animation))
             {
                 undoGroupId = Undo.GetCurrentGroup();
                 Undo.IncrementCurrentGroup();
             }
             try
             {
-                options.Animation.Start();
+                animation.Start();
             }
             catch (Exception ex)
             {
@@ -62,9 +47,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public static void Stop()
         {
-            options?.Animation?.Stop(true).Reset();
-            options?.OnStop?.Invoke();
-            options = null;
+            animation?.Stop(true).Reset();
+            animation = null;
 
             if (undoGroupId != null)
             {
@@ -73,22 +57,8 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        [Obsolete("No longer needed")]
-        public static void Reset()
-        {
-            PreviewOptions currentOptions = options;
-            void nextFrame()
-            {
-                EditorApplication.update -= nextFrame;
-                Start(currentOptions);
-            }
-            EditorApplication.update += nextFrame;
-            Stop();
-        }
-
         private static void Update()
         {
-            options?.OnUpdate?.Invoke();
             if (!UnityEditorInternal.InternalEditorUtility.isApplicationActive && IsRunning)
             {
                 Stop();

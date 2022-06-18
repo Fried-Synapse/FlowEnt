@@ -1,12 +1,20 @@
+using System;
+
 namespace FriedSynapse.FlowEnt.Editor
 {
     internal class PreviewableControlSection : ControlSection
     {
-        public PreviewableControlSection(AbstractAnimation animation) : base(animation)
+        private AbstractAnimation Animation => (AbstractAnimation)Controllable;
+
+        public override void Init(IControllable controllable)
         {
-            Animation = animation;
+            throw new InvalidOperationException($"Use the other {nameof(Init)}");
         }
-        private AbstractAnimation Animation { get; }
+
+        public void Init(AbstractAnimation animation)
+        {
+            base.Init(animation);
+        }
 
         protected override void Bind()
         {
@@ -61,7 +69,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void StartPreview()
         {
-            PreviewController.Start(new PreviewOptions(Animation));
+            PreviewController.Start(Animation);
         }
     }
 }

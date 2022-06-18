@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -23,7 +24,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             LoadHeader();
             LoadContent();
-            Content.Query<VisualElement>("mainControl").First().Add(new ControlSection(FlowEntController.Instance));
+            Content.Query<ControlSection>("control").First().Init(FlowEntController.Instance);
             search = Content.Query<TextField>("search").First();
             animationsScroll = Content.Query<ScrollView>("animations").First();
             animationList = new AnimationInfoList(FlowEntController.Instance);
@@ -33,7 +34,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void Bind()
         {
-            //TODO remove all animations on ExitPlayMode
+            EditorApplication.playModeStateChanged += _ => animationList.Clear();
             animationList.OnChanged += TriggerSearch;
             search.RegisterValueChangedCallback(eventData => SearchTerm = eventData.newValue.ToLower());
         }

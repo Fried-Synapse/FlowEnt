@@ -533,7 +533,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: 
+    1: FlowEnt_Debug_Editor
     13: FlowEnt_Debug_Editor
   additionalCompilerArguments: {}
   platformArchitecture: {}

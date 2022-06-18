@@ -1,0 +1,18 @@
+#menu {
+    position: absolute;
+    right: 0;
+    -unity-font-style: bold;
+    font-size: 14px;
+    flex-direction: row;
+}
+
+#menu #showCount {
+    display: none;
+}
+
+#sublist {
+    margin-left: 10px;
+    border-color: #808080;
+    border-left-width: 2px;
+    padding-left: 10px;
+}

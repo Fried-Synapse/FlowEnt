@@ -231,7 +231,7 @@ MonoBehaviour:
       isLoopCountInfinite: 0
       loopCount: 1
       hasTimeout: 1
-      timeout: 3
+      timeout: 30
     events:
       onStarted:
         m_PersistentCalls:

@@ -21,6 +21,7 @@ namespace FriedSynapse.FlowEnt.Editor
         public AnimationInfoList(FlowEntController flowEntController) : this()
         {
             updateController = flowEntController;
+            //TODO fix this update. It's not cleaned up
             EditorApplication.update += RenderController;
             ToggleCount(true);
         }
@@ -28,11 +29,12 @@ namespace FriedSynapse.FlowEnt.Editor
         public AnimationInfoList(Flow flow) : this()
         {
             updateController = flow;
+            //TODO fix this update. It's not cleaned up
             EditorApplication.update += RenderFlow;
         }
 
         private readonly SortedList<ulong, AbstractAnimation> animations = new SortedList<ulong, AbstractAnimation>();
-        private readonly SortedList<ulong, AnimationInfoElement> animationElements = new SortedList<ulong, AnimationInfoElement>();
+        private readonly SortedList<ulong, AnimationInfoListItem> animationElements = new SortedList<ulong, AnimationInfoListItem>();
         private readonly VisualElement count;
         private readonly Label tweenCount;
         private readonly Label echoCount;
@@ -47,7 +49,7 @@ namespace FriedSynapse.FlowEnt.Editor
         internal bool Search(string searchTerm)
         {
             bool isMatching = false;
-            foreach (AnimationInfoElement animationElement in animationElements.Values)
+            foreach (AnimationInfoListItem animationElement in animationElements.Values)
             {
                 isMatching = animationElement.Search(searchTerm) || isMatching;
             }
@@ -114,7 +116,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     continue;
                 }
 
-                AnimationInfoElement element = new AnimationInfoElement(animation);
+                AnimationInfoListItem element = new AnimationInfoListItem(animation);
                 if (element.List != null && OnChanged != null)
                 {
                     element.List.OnChanged += OnChanged.Invoke;

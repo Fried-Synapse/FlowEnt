@@ -25,10 +25,6 @@ namespace FriedSynapse.FlowEnt.Editor
         public static void ShowInspector()
             => InspectorWindow.ShowSingleton();
 
-        [MenuItem("Tools/FlowEnt/old Inspector", false, 103)]
-        public static void ShowOldInspector()
-            => ShowWindow<FlowEntInspectorWindow>("FlowEnt Old Inspector");
-
         [MenuItem("Tools/FlowEnt/Website", false, 200)]
         public static void GoToWebsite()
             => Application.OpenURL("https://flowent.friedsynapse.com/");

@@ -17,13 +17,6 @@ namespace FriedSynapse.FlowEnt.Editor
             return anchor.GetFieldValue<AbstractUpdatable>("next");
         }
 
-        internal static float GetRatio(this Tween tween)
-        {
-            float time = tween.GetFieldValue<float>(nameof(time));
-            float remainingTime = tween.GetFieldValue<float>(nameof(remainingTime));
-            return (time - remainingTime) / time;
-        }
-
         internal static float GetElapsedTime(this AbstractAnimation animation)
             => animation.GetFieldValue<float>("elapsedTime");
 

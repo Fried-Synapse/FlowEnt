@@ -7,7 +7,6 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         internal const float DrawerSpacing = 2f;
         internal static float SpacedSingleLineHeight => EditorGUIUtility.singleLineHeight + DrawerSpacing;
-        internal static float RectLineHeight => EditorGUIUtility.singleLineHeight + (2 * DrawerSpacing);
 
         internal const string FlowEnt = "#3065ba";
         internal const string Blue = "#4871F3";

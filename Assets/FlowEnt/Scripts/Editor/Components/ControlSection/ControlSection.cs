@@ -1,16 +1,26 @@
+using System;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
     internal class ControlSection : VisualElement
     {
-        internal ControlSection(IControllable controllable)
+        [Preserve]
+        public new class UxmlFactory : UxmlFactory<ControlSection, UxmlTraits>
+        {
+        }
+
+        [Preserve]
+        public new class UxmlTraits : VisualElement.UxmlTraits
+        {
+        }
+
+        public ControlSection()
         {
             this.LoadUxml<ControlSection>();
-            Controllable = controllable;
-            //PrevFrame = this.Query<VisualElement>("background").First();
             PrevFrame = this.Query<ControlButton>("prevFrame").First();
             PlayPause = this.Query<ControlButton>("playPause").First();
             NextFrame = this.Query<ControlButton>("nextFrame").First();
@@ -19,11 +29,9 @@ namespace FriedSynapse.FlowEnt.Editor
             Timeline = this.Query<VisualElement>("timeline").First();
             ControlBar = this.Query<FriedSlider>("controlBar").First();
             TimelineInfoTime = this.Query<TextElement>("time").First();
-            Init();
-            Bind();
         }
 
-        protected IControllable Controllable { get; }
+        protected IControllable Controllable { get; private set; }
         protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
         protected ControlButton PrevFrame { get; }
         protected ControlButton PlayPause { get; }
@@ -34,8 +42,13 @@ namespace FriedSynapse.FlowEnt.Editor
         protected TextElement TimelineInfoTime { get; }
         protected FriedSlider ControlBar { get; }
 
-        protected virtual void Init()
+        public virtual void Init(IControllable controllable)
         {
+            if (Controllable != null)
+            {
+                throw new InvalidOperationException("The controllable has already been set.");
+            }
+            Controllable = controllable;
             if (Controllable is AbstractAnimation animation)
             {
                 Timeline.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
@@ -52,6 +65,7 @@ namespace FriedSynapse.FlowEnt.Editor
             TimeScale.Value = Controllable.TimeScale;
 
             UpdatePlayState();
+            Bind();
         }
 
         protected virtual void Bind()

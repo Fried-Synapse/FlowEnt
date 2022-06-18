@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="AnimationInfoElement.uss" />
+    <Style src="AnimationInfoListItem.uss" />
+    <Style src="../AnimationNameElement/AnimationNameElement.uss" />
     <ui:VisualElement name="root" style="flex-direction: row;">
         <ui:VisualElement name="icon" />
         <ui:Label display-tooltip-when-elided="true" name="name" />
