@@ -7,52 +7,52 @@ namespace FriedSynapse.FlowEnt.Editor
         public AnimationInfoElement(AbstractAnimation animation)
         {
             this.LoadUxml();
-            Animation = animation;
-            Icon = this.Query<VisualElement>("icon").First();
-            Name = this.Query<Label>("name").First();
-            Open = this.Query<Button>("open").First();
-            if (Animation is Flow flow)
+            this.animation = animation;
+            icon = this.Query<VisualElement>("icon").First();
+            name = this.Query<Label>("name").First();
+            open = this.Query<Button>("open").First();
+            if (this.animation is Flow flow)
             {
                 List = new AnimationInfoList(flow)
                 {
                     name = "sublist"
                 };
-                ShowCount = this.Query<Toggle>("showCount").First();
-                ShowCount.SetVisible(true);
+                showCount = this.Query<Toggle>("showCount").First();
+                showCount.SetVisible(true);
                 Add(List);
             }
             Init();
             Bind();
         }
 
-        internal AbstractAnimation Animation { get; }
-        private VisualElement Icon { get; }
-        private Label Name { get; }
-        private Toggle ShowCount { get; }
-        private Button Open { get; }
-        private AnimationInfoList List { get; }
+        internal readonly AbstractAnimation animation;
+        private readonly VisualElement icon;
+        private readonly new Label name;
+        private readonly Toggle showCount;
+        private readonly Button open;
+        internal AnimationInfoList List { get; }
 
         private void Init()
         {
-            Icon.AddToClassList(Animation.GetType().Name.ToLower());
-            Name.text = Animation.ToString();
+            icon.AddToClassList(animation.GetType().Name.ToLower());
+            name.text = animation.ToString();
         }
 
         private void Bind()
         {
-            if (Animation is Flow _)
+            if (animation is Flow _)
             {
-                ShowCount.RegisterValueChangedCallback(eventData => List.ToggleCount(eventData.newValue));
+                showCount.RegisterValueChangedCallback(eventData => List.ToggleCount(eventData.newValue));
             }
-            Open.clicked += () => AnimationInspectorWindow.ShowGrouped(Animation);
+            open.clicked += () => AnimationInspectorWindow.ShowGrouped(animation);
         }
 
         internal bool Search(string term)
         {
             bool isMatching = string.IsNullOrEmpty(term)
-                || Animation.Name?.ToLower().Contains(term) == true
-                || Animation.GetType().Name.ToLower().Contains(term);
-            if (Animation is Flow _)
+                || animation.Name?.ToLower().Contains(term) == true
+                || animation.GetType().Name.ToLower().Contains(term);
+            if (animation is Flow _)
             {
                 isMatching = List.Search(term) || isMatching;
             }

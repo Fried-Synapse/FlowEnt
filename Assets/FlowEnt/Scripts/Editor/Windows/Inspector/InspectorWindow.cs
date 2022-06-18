@@ -5,26 +5,42 @@ namespace FriedSynapse.FlowEnt.Editor
     internal class InspectorWindow : FlowEntWindow<InspectorWindow>
     {
         protected override string Name => "FlowEnt Inspector";
-        private TextField Search { get; set; }
-        private ScrollView AnimationsScroll { get; set; }
-        private AnimationInfoList AnimationList { get; set; }
+        private TextField search;
+        private ScrollView animationsScroll;
+        private AnimationInfoList animationList;
+        private string searchTerm;
+
+        internal string SearchTerm
+        {
+            get => searchTerm;
+            private set
+            {
+                searchTerm = value;
+                TriggerSearch();
+            }
+        }
         protected override void CreateGUI()
         {
             LoadHeader();
             LoadContent();
             Content.Query<VisualElement>("mainControl").First().Add(new ControlSection(FlowEntController.Instance));
-            Search = Content.Query<TextField>("search").First();
-            AnimationsScroll = Content.Query<ScrollView>("animations").First();
-            AnimationList = new AnimationInfoList(FlowEntController.Instance);
-            AnimationsScroll.contentContainer.Add(AnimationList);
+            search = Content.Query<TextField>("search").First();
+            animationsScroll = Content.Query<ScrollView>("animations").First();
+            animationList = new AnimationInfoList(FlowEntController.Instance);
+            animationsScroll.contentContainer.Add(animationList);
             Bind();
         }
 
         private void Bind()
         {
-            //TODO apply search term on newly created games
             //TODO remove all animations on ExitPlayMode
-            Search.RegisterValueChangedCallback(eventData => AnimationList.Search(eventData.newValue.ToLower()));
+            animationList.OnChanged += TriggerSearch;
+            search.RegisterValueChangedCallback(eventData => SearchTerm = eventData.newValue.ToLower());
+        }
+
+        private void TriggerSearch()
+        {
+            animationList.Search(searchTerm);
         }
     }
 }

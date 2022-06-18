@@ -12,49 +12,51 @@ namespace FriedSynapse.FlowEnt.Editor
         private AnimationInfoList()
         {
             this.LoadUxml();
-            Count = this.Query<VisualElement>("count").First();
-            TweenCount = this.Query<VisualElement>("tween").First().Query<Label>("value").First();
-            EchoCount = this.Query<VisualElement>("echo").First().Query<Label>("value").First();
+            count = this.Query<VisualElement>("count").First();
+            tweenCount = this.Query<VisualElement>("tween").First().Query<Label>("value").First();
+            echoCount = this.Query<VisualElement>("echo").First().Query<Label>("value").First();
             FlowCount = this.Query<VisualElement>("flow").First().Query<Label>("value").First();
         }
 
         public AnimationInfoList(FlowEntController flowEntController) : this()
         {
-            UpdateController = flowEntController;
+            updateController = flowEntController;
             EditorApplication.update += RenderController;
             ToggleCount(true);
         }
 
         public AnimationInfoList(Flow flow) : this()
         {
-            UpdateController = flow;
+            updateController = flow;
             EditorApplication.update += RenderFlow;
         }
 
         private readonly SortedList<ulong, AbstractAnimation> animations = new SortedList<ulong, AbstractAnimation>();
         private readonly SortedList<ulong, AnimationInfoElement> animationElements = new SortedList<ulong, AnimationInfoElement>();
-        private VisualElement Count { get; }
-        private Label TweenCount { get; }
-        private Label EchoCount { get; }
-        private Label FlowCount { get; }
-        private IUpdateController UpdateController { get; }
+        private readonly VisualElement count;
+        private readonly Label tweenCount;
+        private readonly Label echoCount;
+        private readonly Label FlowCount;
+        private readonly IUpdateController updateController;
+
+        internal Action OnChanged { get; set; }
 
         internal void ToggleCount(bool isVisible)
-            => Count.SetVisible(isVisible);
+            => count.SetVisible(isVisible);
 
-        internal bool Search(string term)
+        internal bool Search(string searchTerm)
         {
             bool isMatching = false;
             foreach (AnimationInfoElement animationElement in animationElements.Values)
             {
-                isMatching = animationElement.Search(term) || isMatching;
+                isMatching = animationElement.Search(searchTerm) || isMatching;
             }
             return isMatching;
         }
 
         private void ReadAnimations(string field)
         {
-            var index = UpdateController.GetUpdatableIndex(field);
+            AbstractUpdatable index = updateController.GetUpdatableIndex(field);
             while (index != null)
             {
                 if (index is AbstractAnimation animation && !animations.ContainsKey(animation.Id))
@@ -90,6 +92,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             List<ulong> oldElementKeys = animationElements.Keys.ToList();
             int tweenCount = 0, echoCount = 0, flowCount = 0;
+            bool hasChanged = false;
             foreach (AbstractAnimation animation in animations.Values)
             {
                 switch (animation)
@@ -112,19 +115,30 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
 
                 AnimationInfoElement element = new AnimationInfoElement(animation);
+                if (element.List != null && OnChanged != null)
+                {
+                    element.List.OnChanged += OnChanged.Invoke;
+                }
                 animationElements.Add(animation.Id, element);
                 Add(element);
+                hasChanged = true;
             }
 
             foreach (ulong oldElementKey in oldElementKeys)
             {
                 Remove(animationElements[oldElementKey]);
                 animationElements.Remove(oldElementKey);
+                hasChanged = true;
             }
 
-            TweenCount.text = tweenCount.ToString();
-            EchoCount.text = echoCount.ToString();
+            this.tweenCount.text = tweenCount.ToString();
+            this.echoCount.text = echoCount.ToString();
             FlowCount.text = flowCount.ToString();
+
+            if (hasChanged)
+            {
+                OnChanged?.Invoke();
+            }
         }
     }
 }
