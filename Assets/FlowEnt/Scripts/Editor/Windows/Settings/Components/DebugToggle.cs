@@ -9,49 +9,50 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         public DebugToggle(string name, string symbol, string warning = null)
         {
-            Symbol = symbol;
-            Toggle = new Toggle(name);
-            Add(Toggle);
+            this.symbol = symbol;
+            toggle = new Toggle(name);
+            toggle.tooltip = "Compilation symbols are platform specific.";
+            Add(toggle);
             if (!string.IsNullOrEmpty(warning))
             {
-                Warning = new HelpBox(warning, HelpBoxMessageType.Warning);
-                Add(Warning);
+                this.warning = new HelpBox(warning, HelpBoxMessageType.Warning);
+                Add(this.warning);
             }
             Init();
             Bind();
         }
 
-        private string Symbol { get; }
-        private Toggle Toggle { get; }
-        private HelpBox Warning { get; }
+        private readonly string symbol;
+        private readonly Toggle toggle;
+        private readonly HelpBox warning;
 
         private void Init()
         {
-            bool isActive = GetSymbols().Contains(Symbol);
-            Toggle.SetEnabled(!EditorApplication.isPlayingOrWillChangePlaymode);
-            Toggle.SetValueWithoutNotify(isActive);
-            Warning?.SetEnabled(isActive);
+            bool isActive = GetSymbols().Contains(symbol);
+            toggle.SetEnabled(!EditorApplication.isPlayingOrWillChangePlaymode);
+            toggle.SetValueWithoutNotify(isActive);
+            warning?.SetEnabled(isActive);
         }
 
         private void Bind()
         {
-            EditorApplication.playModeStateChanged += playModeStateChange => Toggle.SetEnabled(playModeStateChange == PlayModeStateChange.EnteredEditMode);
+            EditorApplication.playModeStateChanged += playModeStateChange => toggle.SetEnabled(playModeStateChange == PlayModeStateChange.EnteredEditMode);
 
-            Toggle.RegisterValueChangedCallback(eventData =>
+            toggle.RegisterValueChangedCallback(eventData =>
             {
                 List<string> symbols = GetSymbols();
                 bool isActive = eventData.newValue;
                 if (isActive)
                 {
-                    symbols.Add(Symbol);
+                    symbols.Add(symbol);
                 }
                 else
                 {
-                    symbols.Remove(Symbol);
+                    symbols.Remove(symbol);
                 }
 
                 SetSymbols(symbols);
-                Warning?.SetEnabled(isActive);
+                warning?.SetEnabled(isActive);
             });
         }
 
@@ -66,5 +67,4 @@ namespace FriedSynapse.FlowEnt.Editor
             PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, symbols.ToArray());
         }
     }
-
 }
