@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -39,6 +40,14 @@ namespace FriedSynapse.FlowEnt
         private readonly Dictionary<ulong, AbstractUpdatableWrapper> runningUpdatableWrappers = new Dictionary<ulong, AbstractUpdatableWrapper>(2);
         private int runningUpdatableWrappersCount;
         private int? remainingLoops;
+
+        #endregion
+
+        #region IManuallyUpdatable
+
+        private protected override float TotalTime => throw new NotImplementedException();
+        private protected override float GetDeltaTimeFromRatio(float ratio)
+            => throw new NotImplementedException();
 
         #endregion
 

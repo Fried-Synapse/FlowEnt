@@ -17,9 +17,6 @@ namespace FriedSynapse.FlowEnt.Editor
             return anchor.GetFieldValue<AbstractUpdatable>("next");
         }
 
-        internal static float GetElapsedTime(this AbstractAnimation animation)
-            => animation.GetFieldValue<float>("elapsedTime");
-
         internal static string ToClassName(this Enum @enum)
         {
             string typeName = @enum.ToString();

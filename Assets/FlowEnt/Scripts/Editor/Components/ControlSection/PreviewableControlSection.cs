@@ -1,24 +1,10 @@
-using System;
-
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class PreviewableControlSection : ControlSection
+    internal class PreviewableControlSection : AbstractControlSection<AbstractAnimation>
     {
-        private AbstractAnimation Animation => (AbstractAnimation)Controllable;
-
-        public override void Init(IControllable controllable)
-        {
-            throw new InvalidOperationException($"Use the other {nameof(Init)}");
-        }
-
-        public void Init(AbstractAnimation animation)
-        {
-            base.Init(animation);
-        }
-
         protected override void Bind()
         {
-            if (Controllable is Tween tween)
+            if (IsManuallyUpdatable)
             {
                 ControlBar.OnValueChanging += (_) =>
                 {
@@ -33,11 +19,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void OnPlayPause()
         {
-            switch (Animation.PlayState)
+            switch (Controllable.PlayState)
             {
                 case PlayState.Waiting:
                 case PlayState.Playing:
-                    Animation.Pause();
+                    Controllable.Pause();
                     break;
                 default:
                     if (IsBuilding)
@@ -46,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                     else
                     {
-                        Animation.Resume();
+                        Controllable.Resume();
                     }
                     break;
             }
@@ -57,7 +43,7 @@ namespace FriedSynapse.FlowEnt.Editor
             if (IsBuilding)
             {
                 StartPreview();
-                Animation.Pause();
+                Controllable.Pause();
             }
             base.OnNextFrame();
         }
@@ -69,7 +55,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void StartPreview()
         {
-            PreviewController.Start(Animation);
+            PreviewController.Start(Controllable);
         }
     }
 }

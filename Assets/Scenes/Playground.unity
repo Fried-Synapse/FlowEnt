@@ -179,7 +179,7 @@ MonoBehaviour:
       autoStart: 0
       skipFrames: 0
       delay: 0
-      timeScale: 1
+      timeScale: 5
       isLoopCountInfinite: 0
       loopCount: 1
       time: 5
@@ -227,7 +227,7 @@ MonoBehaviour:
       autoStart: 0
       skipFrames: 0
       delay: 0
-      timeScale: 1
+      timeScale: 3
       isLoopCountInfinite: 0
       loopCount: 1
       hasTimeout: 1
@@ -258,7 +258,8 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     motions:
-      items: []
+      items:
+      - id: 1
   flow:
     options:
       name: 
@@ -287,7 +288,7 @@ MonoBehaviour:
           m_Calls: []
     queues:
       items:
-      - id: 1
+      - id: 2
   references:
     version: 1
     00000000:
@@ -299,15 +300,23 @@ MonoBehaviour:
         item: {fileID: 1168015055}
         value: {x: 0, y: 3, z: 0}
     00000001:
+      type: {class: MoveVectorMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Echo.Transforms, asm: FriedSynapse.FlowEnt}
+      data:
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        item: {fileID: 1726780655}
+        speed: {x: 0, y: 1, z: 0}
+    00000002:
       type: {class: FlowBuilder/QueueList/Queue, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
       data:
         items:
-        - id: 2
+        - id: 3
         displayName: 
         isDisplayNameEnabled: 0
         isEnabled: 1
         startTime: 0
-    00000002:
+    00000003:
       type: {class: TweenBuilder, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
       data:
         options:

@@ -11,7 +11,8 @@ namespace FriedSynapse.FlowEnt
     /// For more information please go to https://flowent.friedsynapse.com/echo
     /// </summary>
     public sealed partial class Echo : AbstractAnimation,
-        IFluentControllable<Echo>
+        IFluentControllable<Echo>,
+        IManuallyUpdatable
     {
         /// <summary>
         /// Creates a new echo using the options provided.
@@ -39,6 +40,14 @@ namespace FriedSynapse.FlowEnt
 
         private IEchoMotion[] motions = new IEchoMotion[0];
         private int? remainingLoops;
+
+        #region IManuallyUpdatable
+
+        private protected override float TotalTime => timeout ?? 0;
+        private protected override float GetDeltaTimeFromRatio(float ratio)
+            => ((ratio * timeout ?? 0) - elapsedTime) / timeScale;
+
+        #endregion
 
         #region Controls
 

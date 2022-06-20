@@ -54,6 +54,14 @@ namespace FriedSynapse.FlowEnt
 
         internal float CurrentLoopRatio => (loopDirection == LoopDirection.Forward ? time - remainingTime : remainingTime) / time;
 
+        #region IManuallyUpdatable
+
+        private protected override float TotalTime => time;
+        private protected override float GetDeltaTimeFromRatio(float ratio)
+            => ((ratio * time) - elapsedTime) / timeScale;
+
+        #endregion
+
         #region Controls
 
         /// <inheritdoc cref="AbstractAnimation.Start" />

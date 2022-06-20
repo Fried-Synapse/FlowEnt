@@ -8,7 +8,8 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public abstract partial class AbstractAnimation : AbstractUpdatable,
         IFluentControllable<AbstractAnimation>,
-        IControllable
+        IControllable,
+        IManuallyUpdatable
     {
         /// <inheritdoc cref="AbstractUpdatable()"/>
         protected AbstractAnimation()
@@ -26,6 +27,37 @@ namespace FriedSynapse.FlowEnt
         /// THe amount of scaled time unconsumed by this animation from the last frame.
         /// </summary>
         public float? Overdraft { get => overdraft; internal set => overdraft = value; }
+
+        #endregion
+
+        #region IManuallyUpdatable
+
+        float IManuallyUpdatable.ElapsedTime => elapsedTime;
+        float IManuallyUpdatable.TotalTime => TotalTime;
+        private protected abstract float TotalTime { get; }
+        float IManuallyUpdatable.Ratio
+        {
+            get => elapsedTime / TotalTime;
+            set
+            {
+                switch (playState)
+                {
+                    case PlayState.Building:
+                    case PlayState.Waiting:
+                    case PlayState.Finished:
+                        throw new InvalidOperationException("Only a running tween can be manually updated");
+                    case PlayState.Playing:
+                        Pause();
+                        break;
+                    case PlayState.Paused:
+                        break;
+                }
+
+                UpdateInternal(GetDeltaTimeFromRatio(value));
+            }
+        }
+
+        private protected abstract float GetDeltaTimeFromRatio(float ratio);
 
         #endregion
 
