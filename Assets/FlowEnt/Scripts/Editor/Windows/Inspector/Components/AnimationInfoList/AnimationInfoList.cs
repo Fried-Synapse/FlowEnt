@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Editor
             count = this.Query<VisualElement>("count").First();
             tweenCount = this.Query<VisualElement>("tween").First().Query<Label>("value").First();
             echoCount = this.Query<VisualElement>("echo").First().Query<Label>("value").First();
-            FlowCount = this.Query<VisualElement>("flow").First().Query<Label>("value").First();
+            flowCount = this.Query<VisualElement>("flow").First().Query<Label>("value").First();
         }
 
         public AnimationInfoList(FlowEntController flowEntController) : this()
@@ -36,20 +36,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private readonly VisualElement count;
         private readonly Label tweenCount;
         private readonly Label echoCount;
-
-        internal void Deinit()
-        {
-            if (updateController is FlowEntController)
-            {
-                EditorApplication.update -= RenderController;
-            }
-            else
-            {
-                EditorApplication.update -= RenderFlow;
-            }
-        }
-
-        private readonly Label FlowCount;
+        private readonly Label flowCount;
         private readonly IUpdateController updateController;
 
         internal Action OnChanged { get; set; }
@@ -149,11 +136,23 @@ namespace FriedSynapse.FlowEnt.Editor
 
             this.tweenCount.text = tweenCount.ToString();
             this.echoCount.text = echoCount.ToString();
-            FlowCount.text = flowCount.ToString();
+            this.flowCount.text = flowCount.ToString();
 
             if (hasChanged)
             {
                 OnChanged?.Invoke();
+            }
+        }
+
+        internal void Deinit()
+        {
+            if (updateController is FlowEntController)
+            {
+                EditorApplication.update -= RenderController;
+            }
+            else
+            {
+                EditorApplication.update -= RenderFlow;
             }
         }
     }
