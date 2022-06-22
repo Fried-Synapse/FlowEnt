@@ -61,9 +61,11 @@ namespace FriedSynapse.FlowEnt.Editor
                     position.y += height;
                 });
 
-                if (check.changed)
+                if (check.changed && PreviewerWindow.Instance != null)
                 {
+                    property.serializedObject.ApplyModifiedProperties();
                     PreviewerWindow.Instance.RenderAnimations();
+                    GUIUtility.ExitGUI();
                 }
             }
 
