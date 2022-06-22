@@ -21,7 +21,6 @@ namespace FriedSynapse.FlowEnt.Editor
         public AnimationInfoList(FlowEntController flowEntController) : this()
         {
             updateController = flowEntController;
-            //TODO fix this update. It's not cleaned up
             EditorApplication.update += RenderController;
             ToggleCount(true);
         }
@@ -29,7 +28,6 @@ namespace FriedSynapse.FlowEnt.Editor
         public AnimationInfoList(Flow flow) : this()
         {
             updateController = flow;
-            //TODO fix this update. It's not cleaned up
             EditorApplication.update += RenderFlow;
         }
 
@@ -38,6 +36,19 @@ namespace FriedSynapse.FlowEnt.Editor
         private readonly VisualElement count;
         private readonly Label tweenCount;
         private readonly Label echoCount;
+
+        internal void Deinit()
+        {
+            if (updateController is FlowEntController)
+            {
+                EditorApplication.update -= RenderController;
+            }
+            else
+            {
+                EditorApplication.update -= RenderFlow;
+            }
+        }
+
         private readonly Label FlowCount;
         private readonly IUpdateController updateController;
 
@@ -84,6 +95,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void RenderFlow()
         {
+            UnityEngine.Debug.Log($"xxxx");
+
             animations.Clear();
             ReadAnimations("updatables");
 
@@ -128,6 +141,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             foreach (ulong oldElementKey in oldElementKeys)
             {
+                animationElements[oldElementKey].List?.Deinit();
                 Remove(animationElements[oldElementKey]);
                 animationElements.Remove(oldElementKey);
                 hasChanged = true;
