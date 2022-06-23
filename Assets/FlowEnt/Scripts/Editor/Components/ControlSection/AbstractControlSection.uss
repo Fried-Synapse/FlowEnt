@@ -1,0 +1,56 @@
+.playing {
+    background-color: rgba(127, 0, 0, 0.33);
+}
+
+#controls {
+    align-items: center;
+}
+
+#controls .button {
+    width: 24px;
+    height: 24px;
+    margin: 1px;
+    padding: 0;
+}
+
+#controls #timeScale {
+    flex-grow: 1;
+    margin-left: 10px;
+    height: 18px;
+}
+
+#controls #timeScale #background {
+    height: 4px;
+}
+
+#timeline {
+    display: none;
+    height: 20px;
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+}
+
+#timeline #info #label {
+    margin-right: 5px;
+}
+
+#timeline #info #time {
+    min-width: 60px;
+    max-width: 60px;
+    -unity-text-align: middle-left;
+}
+
+#timeline #controlBar {
+    display: none;
+    flex-grow: 1;
+    height: 18px;
+}
+
+#timeline #controlBar #background {
+    height: 8px;
+}
+
+#timeline #controlBar #fill {
+    background-color: rgb(92, 150, 78);
+}

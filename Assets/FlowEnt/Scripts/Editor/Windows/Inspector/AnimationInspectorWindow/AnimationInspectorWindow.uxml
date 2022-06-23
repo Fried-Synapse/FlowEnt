@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="/Assets/FlowEnt/Scripts/Editor/Common/Bootstrap.uss" />
+    <Style src="AnimationInspectorWindow.uss" />
+    <ui:VisualElement name="content" class="m-5 mt-10">
+        <ui:VisualElement name="fixed">
+            <ui:VisualElement name="nameWrapper">
+                <FriedSynapse.FlowEnt.Editor.AnimationNameElement name="name" />
+            </ui:VisualElement>
+            <FriedSynapse.FlowEnt.Editor.ControlSection name="control" class="mt-5" />
+            <ui:VisualElement name="updateType" class="mt-10">
+                <ui:Label text="Update Type:" display-tooltip-when-elided="true" name="label" />
+                <ui:Label display-tooltip-when-elided="true" name="value" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="motions" class="mt-10">
+            <ui:Label text="Motions" display-tooltip-when-elided="true" name="label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="stackTrace" class="mt-10">
+            <ui:Label text="Stack Trace" display-tooltip-when-elided="true" name="label" />
+            <ui:VisualElement name="content" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

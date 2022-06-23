@@ -1,0 +1,16 @@
+#count {
+    display: none;
+    -unity-text-align: middle-center;
+}
+
+#count #content {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#count .countInfo {
+    width: 33%;
+    flex-direction: row;
+    justify-content: center;
+    -unity-font-style: bold;
+}

@@ -8,7 +8,16 @@ namespace FriedSynapse.FlowEnt
         PlayState PlayState { get; }
         void Resume();
         void Pause();
-        void Stop(bool triggerOnCompleted = false);
+        void ChangeFrame(float modifier);
+        void Stop();
+    }
+
+    public interface ISeekable
+    {
+        //NOTE this should not be here, but for the life of me I don't know where to put it...
+        public float ElapsedTime { get; }
+        public bool IsSeekable { get; }
+        public float Ratio { get; set; }
     }
 
     internal interface IFluentControllable<TType>

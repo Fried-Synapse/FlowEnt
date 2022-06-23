@@ -54,6 +54,15 @@ namespace FriedSynapse.FlowEnt
 
         internal float CurrentLoopRatio => (loopDirection == LoopDirection.Forward ? time - remainingTime : remainingTime) / time;
 
+        #region ISeekable
+
+        private protected override bool IsSeekable => true;
+        private protected override float TotalSeekTime => time;
+        private protected override float GetDeltaTimeFromRatio(float ratio)
+            => ((ratio * time) - elapsedTime) / timeScale;
+
+        #endregion
+
         #region Controls
 
         /// <inheritdoc cref="AbstractAnimation.Start" />
@@ -113,8 +122,6 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            playState = PlayState.Waiting;
-
             if (skipFrames > 0)
             {
                 StartSkipFrames();
@@ -145,7 +152,9 @@ namespace FriedSynapse.FlowEnt
 
         internal override void UpdateInternal(float deltaTime)
         {
-            remainingTime -= deltaTime * timeScale;
+            float scaledDeltaTime = deltaTime * timeScale;
+            remainingTime -= scaledDeltaTime;
+            elapsedTime += scaledDeltaTime;
 
             if (remainingTime < 0)
             {
@@ -185,6 +194,8 @@ namespace FriedSynapse.FlowEnt
             if (!(remainingLoops <= 0))
             {
                 remainingTime = time;
+                elapsedTime = 0;
+
                 for (int i = 0; i < motions.Length; i++)
                 {
                     motions[i].OnLoopComplete();

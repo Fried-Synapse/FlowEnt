@@ -8,19 +8,19 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public static class EditorExtensions
+    internal static class EditorExtensions
     {
-        public static AbstractUpdatable GetUpdatableIndex(this Flow flow)
-            => GetUpdatableIndexForObject(flow);
-
-        public static AbstractUpdatable GetUpdatableIndex(this FlowEntController controller, string fieldName)
-            => GetUpdatableIndexForObject(controller, fieldName);
-
-        private static AbstractUpdatable GetUpdatableIndexForObject(object updateController, string fieldName = "updatables")
+        internal static AbstractUpdatable GetUpdatableIndex(this IUpdateController updateController, string fieldName)
         {
             object updatables = updateController.GetFieldValue<object>(fieldName);
-            object anchor = updatables.GetFieldValue<object>("anchor");
+            object anchor = updatables.GetFieldValue<object>(nameof(anchor));
             return anchor.GetFieldValue<AbstractUpdatable>("next");
+        }
+
+        internal static string ToClassName(this Enum @enum)
+        {
+            string typeName = @enum.ToString();
+            return char.ToLower(typeName[0]) + typeName.Substring(1);
         }
 
         internal static T GetValue<T>(this SerializedProperty prop)
@@ -66,14 +66,14 @@ namespace FriedSynapse.FlowEnt.Editor
             return (T)obj;
         }
 
-        public static SerializedProperty GetParent(this SerializedProperty property)
+        internal static SerializedProperty GetParent(this SerializedProperty property)
         {
             string path = property.propertyPath;
             int index = path.LastIndexOf('.');
             return index < 0 ? null : property.serializedObject.FindProperty(path.Substring(0, index));
         }
 
-        public static SerializedProperty GetParentArray(this SerializedProperty property)
+        internal static SerializedProperty GetParentArray(this SerializedProperty property)
         {
             string path = property.propertyPath;
             int index = path.LastIndexOf('.') - 1;
@@ -90,7 +90,7 @@ namespace FriedSynapse.FlowEnt.Editor
             return parentProperty.isArray ? parentProperty : null;
         }
 
-        public static void PersistentSetValue(this SerializedProperty property, object item)
+        internal static void PersistentSetValue(this SerializedProperty property, object item)
         {
             property.serializedObject.Update();
             SerializedProperty parentProperty = property.GetParent();
@@ -101,7 +101,7 @@ namespace FriedSynapse.FlowEnt.Editor
             property.serializedObject.ApplyModifiedProperties();
         }
 
-        public static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
+        internal static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
         {
             if (!listProperty.isArray)
             {
@@ -113,7 +113,7 @@ namespace FriedSynapse.FlowEnt.Editor
             listProperty.serializedObject.ApplyModifiedProperties();
         }
 
-        public static void PersistentSetArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
+        internal static void PersistentSetArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
         {
             if (!listProperty.isArray)
             {
@@ -124,7 +124,7 @@ namespace FriedSynapse.FlowEnt.Editor
             listProperty.serializedObject.ApplyModifiedProperties();
         }
 
-        public static void PersistentDeleteArrayElementAtIndex(this SerializedProperty listProperty, int index)
+        internal static void PersistentDeleteArrayElementAtIndex(this SerializedProperty listProperty, int index)
         {
             if (!listProperty.isArray)
             {
@@ -135,7 +135,7 @@ namespace FriedSynapse.FlowEnt.Editor
             listProperty.serializedObject.ApplyModifiedProperties();
         }
 
-        public static int GetArrayElementIndex(this SerializedProperty listProperty, SerializedProperty item)
+        internal static int GetArrayElementIndex(this SerializedProperty listProperty, SerializedProperty item)
         {
             if (!listProperty.isArray)
             {
@@ -151,7 +151,7 @@ namespace FriedSynapse.FlowEnt.Editor
             return -1;
         }
 
-        public static void AddItem(this GenericMenu menu, GUIContent content, GenericMenu.MenuFunction callback, bool isDisabled = false, bool isOn = false)
+        internal static void AddItem(this GenericMenu menu, GUIContent content, GenericMenu.MenuFunction callback, bool isDisabled = false, bool isOn = false)
         {
             if (isDisabled)
             {

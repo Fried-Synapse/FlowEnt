@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="AnimationInfoList.uss" />
+    <ui:VisualElement name="count">
+        <ui:VisualElement name="content">
+            <ui:VisualElement name="tween" class="countInfo">
+                <ui:Label text="Tweens:" display-tooltip-when-elided="true" name="name" />
+                <ui:Label display-tooltip-when-elided="true" name="value" text="0" />
+            </ui:VisualElement>
+            <ui:VisualElement name="echo" class="countInfo">
+                <ui:Label text="Echoes:" display-tooltip-when-elided="true" name="name" />
+                <ui:Label display-tooltip-when-elided="true" name="value" text="0" />
+            </ui:VisualElement>
+            <ui:VisualElement name="flow" class="countInfo">
+                <ui:Label text="Flows:" display-tooltip-when-elided="true" name="name" />
+                <ui:Label display-tooltip-when-elided="true" name="value" text="0" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="animations" />
+</ui:UXML>

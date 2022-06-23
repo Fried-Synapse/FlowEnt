@@ -16,6 +16,7 @@ namespace FriedSynapse.FlowEnt
                 }
             }
         }
+
         public bool AutoStart
         {
             get => autoStartHelper != null;
@@ -52,7 +53,7 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        private protected PlayState playState;
+        private protected PlayState playState = PlayState.Building;
         /// <summary>
         /// The current state of the animation.
         /// </summary>
@@ -83,7 +84,7 @@ namespace FriedSynapse.FlowEnt
         protected void SetOptions(AbstractAnimationOptions options)
         {
             Name = options.Name;
-            UpdateType = options.UpdateType;
+            updateType = options.UpdateType;
             AutoStart = options.AutoStart;
             skipFrames = options.SkipFrames;
             delay = options.Delay;

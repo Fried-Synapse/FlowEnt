@@ -19,10 +19,20 @@ namespace FriedSynapse.FlowEnt
         private float editorDeltaTime;
         public static Action OnException { get; set; }
 
-        public void SetController(FlowEntController controller)
+        void IFlowEntUpdater.SetController(FlowEntController controller)
         {
             this.controller = controller;
         }
+
+        DeltaTimes IFlowEntUpdater.GetDeltaTimes()
+            => new DeltaTimes()
+            {
+                deltaTime = editorDeltaTime,
+                smoothDeltaTime = editorDeltaTime,
+                lateDeltaTime = editorDeltaTime,
+                lateSmoothDeltaTime = editorDeltaTime,
+                fixedDeltaTime = editorDeltaTime,
+            };
 
         private void Update()
         {

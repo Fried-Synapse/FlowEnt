@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="Header.uss" />
+    <ui:VisualElement name="header">
+        <ui:VisualElement name="logo" style="width: 32px;" />
+        <ui:Label display-tooltip-when-elided="true" name="text" />
+    </ui:VisualElement>
+</ui:UXML>

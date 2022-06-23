@@ -1,5 +1,4 @@
 using System;
-using FriedSynapse.FlowEnt.Motions.Abstract;
 using UnityEditor;
 using UnityEngine;
 
@@ -27,53 +26,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
                 return labelStyle;
             }
-        }
-
-        private static GUIStyle foldoutStyle;
-        internal static GUIStyle FoldoutStyle
-        {
-            get
-            {
-                if (foldoutStyle == null)
-                {
-                    foldoutStyle = new GUIStyle(EditorStyles.label)
-                    {
-                        richText = true,
-                    };
-                }
-                return foldoutStyle;
-            }
-        }
-
-        internal static void Header(string name, int fontSize = 30)
-        {
-            GUIStyle headStyle = new GUIStyle(EditorStyles.largeLabel);
-            headStyle.fontSize = fontSize;
-            headStyle.fontStyle = FontStyle.Bold;
-            headStyle.alignment = TextAnchor.MiddleCenter;
-            GUIContent content = new GUIContent(name, Resources.Load<Texture2D>("Logo"));
-            EditorGUILayout.LabelField(content, headStyle, GUILayout.Height(fontSize + 20f));
-        }
-
-        internal static void LabelField(string text, string colour = FlowEntConstants.Grey, params GUILayoutOption[] options)
-        {
-            EditorGUILayout.LabelField($"<color={colour}>{text}</color>", LabelStyle, options);
-        }
-
-        internal static void LabelFieldBold(string text, string colour = FlowEntConstants.Grey, params GUILayoutOption[] options)
-        {
-            EditorGUILayout.LabelField($"<color={colour}><b>{text}</b></color>", LabelStyle, options);
-        }
-
-        internal static void LabelField(AbstractUpdatable updatable, string name, params GUILayoutOption[] options)
-        {
-            EditorGUILayout.LabelField($"<color={FlowEntConstants.Grey}><b>{name}</b> {updatable}</color>", LabelStyle, options);
-        }
-
-        internal static void LabelField(IMotion motion, params GUILayoutOption[] options)
-        {
-            GUIContent content = new GUIContent($"<color={FlowEntConstants.Grey}><b>{motion.GetType().Name}</b></color>", motion.GetType().FullName);
-            EditorGUILayout.LabelField(content, LabelStyle, options);
         }
 
         internal static void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
@@ -136,13 +88,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 target.PersistentSetValue(copy);
             }
             context.AddItem(new GUIContent($"Paste {name} Values"), pasteMotionValues, crudable.Clipboard == null || item.GetType() != crudable.Clipboard.GetType());
-        }
-
-        internal static Rect GetIndentedRect(Rect position, float indent)
-        {
-            position.width -= indent;
-            position.x += indent;
-            return position;
         }
 
         internal static Rect GetRect(Rect position, int index)

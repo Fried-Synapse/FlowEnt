@@ -5,9 +5,7 @@ namespace FriedSynapse.FlowEnt
     public class FastListItem<T>
         where T : FastListItem<T>
     {
-        //HACK I know these should be properties and not public fields, but heck this saves 20fps(from 80 to 100) for 128k tweens...
         internal T previous;
-
         internal T next;
     }
 

@@ -1,0 +1,35 @@
+#wrapper {
+    flex-direction: row;
+    -unity-text-align: middle-left;
+    align-items: center;
+}
+
+#background {
+    flex-direction: row;
+    height: 100%;
+    background-color: rgb(137, 137, 137);
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+#fill {
+    flex-direction: row-reverse;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+}
+
+#knob {
+    min-width: 10px;
+    border-width: 1px;
+    border-color: rgb(87, 87, 87);
+    border-radius: 5px;
+    margin: -4px -5px -4px 0;
+    background-color: rgb(205, 205, 205);
+}
+
+#value {
+    margin-left: 8px;
+    width: 42px;
+    min-height: auto;
+    justify-content: flex-start;
+}

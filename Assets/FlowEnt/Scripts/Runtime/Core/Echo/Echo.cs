@@ -39,7 +39,15 @@ namespace FriedSynapse.FlowEnt
 
         private IEchoMotion[] motions = new IEchoMotion[0];
         private int? remainingLoops;
-        private float time;
+
+        #region ISeekable
+
+        private protected override bool IsSeekable => timeout != null;
+        private protected override float TotalSeekTime => timeout ?? 0;
+        private protected override float GetDeltaTimeFromRatio(float ratio)
+            => ((ratio * timeout ?? 0) - elapsedTime) / timeScale;
+
+        #endregion
 
         #region Controls
 
@@ -100,8 +108,6 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            playState = PlayState.Waiting;
-
             if (skipFrames > 0)
             {
                 StartSkipFrames();
@@ -131,14 +137,14 @@ namespace FriedSynapse.FlowEnt
         internal override void UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
-            time += scaledDeltaTime;
+            elapsedTime += scaledDeltaTime;
 
-            if (time > timeout)
+            if (elapsedTime > timeout)
             {
-                overdraft = (time - timeout.Value) / timeScale;
+                overdraft = (elapsedTime - timeout.Value) / timeScale;
             }
 
-            if (stopCondition?.Invoke(time) == true)
+            if (stopCondition?.Invoke(elapsedTime) == true)
             {
                 overdraft = 0f;
             }
@@ -167,11 +173,12 @@ namespace FriedSynapse.FlowEnt
 
         private void CompleteLoop()
         {
-            time = 0;
             remainingLoops--;
 
             if (!(remainingLoops <= 0))
             {
+                elapsedTime = 0;
+
                 for (int i = 0; i < motions.Length; i++)
                 {
                     motions[i].OnLoopComplete();
@@ -210,7 +217,6 @@ namespace FriedSynapse.FlowEnt
         {
             base.ResetInternal();
             remainingLoops = 0;
-            time = 0f;
         }
 
         #endregion

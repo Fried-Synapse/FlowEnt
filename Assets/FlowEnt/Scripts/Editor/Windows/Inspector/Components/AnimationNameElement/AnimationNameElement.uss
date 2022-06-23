@@ -1,0 +1,21 @@
+#icon {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+}
+
+#icon.tween {
+    background-image: url('Content/tween.png');
+}
+
+#icon.echo {
+    background-image: url('Content/echo.png');
+}
+
+#icon.flow {
+    background-image: url('Content/flow.png');
+}
+
+#root #name {
+    -unity-text-align: middle-left;
+}

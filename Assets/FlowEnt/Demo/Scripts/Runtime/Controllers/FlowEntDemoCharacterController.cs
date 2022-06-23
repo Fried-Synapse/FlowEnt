@@ -28,7 +28,7 @@ namespace FriedSynapse.FlowEnt.Demo
             {
                 if (Input.GetKeyDown(KeyCode.Return) && controlEcho.PlayState == PlayState.Finished)
                 {
-                    controlEcho.Reset().Start();
+                    controlEcho.Restart();
                 }
             }).Start();
         }

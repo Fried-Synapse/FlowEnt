@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -39,6 +40,15 @@ namespace FriedSynapse.FlowEnt
         private readonly Dictionary<ulong, AbstractUpdatableWrapper> runningUpdatableWrappers = new Dictionary<ulong, AbstractUpdatableWrapper>(2);
         private int runningUpdatableWrappersCount;
         private int? remainingLoops;
+
+        #endregion
+
+        #region ISeekable
+
+        private protected override bool IsSeekable => false;
+        private protected override float TotalSeekTime => throw new NotImplementedException();
+        private protected override float GetDeltaTimeFromRatio(float ratio)
+            => throw new NotImplementedException();
 
         #endregion
 
@@ -120,8 +130,6 @@ namespace FriedSynapse.FlowEnt
                 throw new AnimationException(this, "Cannot start empty flow.");
             }
 
-            playState = PlayState.Waiting;
-
             if (skipFrames > 0)
             {
                 StartSkipFrames();
@@ -161,6 +169,7 @@ namespace FriedSynapse.FlowEnt
         private void FirstUpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
+            elapsedTime += scaledDeltaTime;
 
             onUpdated?.Invoke(scaledDeltaTime);
         }
@@ -168,6 +177,7 @@ namespace FriedSynapse.FlowEnt
         internal override void UpdateInternal(float deltaTime)
         {
             float scaledDeltaTime = deltaTime * timeScale;
+            elapsedTime += scaledDeltaTime;
 
             AbstractUpdatable index = updatables.anchor.next;
 
@@ -186,6 +196,7 @@ namespace FriedSynapse.FlowEnt
 
             if (!(remainingLoops <= 0))
             {
+                elapsedTime = 0;
                 onLoopCompleted?.Invoke(remainingLoops);
                 ResetUpdatables();
                 onLoopStarted?.Invoke(remainingLoops);
@@ -256,7 +267,7 @@ namespace FriedSynapse.FlowEnt
                 do
                 {
                     AbstractUpdatable updatable = updatableWrapper.GetUpdatable();
-                    if (updatable is AbstractAnimation animation)
+                    if (updatable is AbstractAnimation animation && animation.PlayState != PlayState.Finished)
                     {
                         animation.Stop();
                     }

@@ -1,0 +1,28 @@
+#fixed {
+    min-height: 101px;
+    height: 101px;
+}
+
+#nameWrapper {
+    align-items: center;
+}
+
+#updateType {
+    flex-direction: row;
+}
+
+#updateType #value {
+    -unity-font-style: bold;
+}
+
+#motions #label {
+    -unity-font-style: bold;
+}
+
+#stackTrace #label {
+    -unity-font-style: bold;
+}
+
+#stackTrace TextElement {
+    color: rgb(243, 198, 72);
+}

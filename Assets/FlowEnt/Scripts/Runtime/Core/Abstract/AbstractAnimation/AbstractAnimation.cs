@@ -8,7 +8,8 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public abstract partial class AbstractAnimation : AbstractUpdatable,
         IFluentControllable<AbstractAnimation>,
-        IControllable
+        IControllable,
+        ISeekable
     {
         /// <inheritdoc cref="AbstractUpdatable()"/>
         protected AbstractAnimation()
@@ -17,6 +18,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Properties       
 
+        private protected float elapsedTime;
         private protected AbstractStartHelper startHelper;
         private protected AutoStartHelper autoStartHelper;
 
@@ -25,6 +27,38 @@ namespace FriedSynapse.FlowEnt
         /// THe amount of scaled time unconsumed by this animation from the last frame.
         /// </summary>
         public float? Overdraft { get => overdraft; internal set => overdraft = value; }
+
+        #endregion
+
+        #region ISeekable
+
+        private protected abstract bool IsSeekable { get; }
+        bool ISeekable.IsSeekable => IsSeekable;
+        float ISeekable.ElapsedTime => elapsedTime;
+        private protected abstract float TotalSeekTime { get; }
+        float ISeekable.Ratio
+        {
+            get => elapsedTime / TotalSeekTime;
+            set
+            {
+                switch (playState)
+                {
+                    case PlayState.Building:
+                    case PlayState.Waiting:
+                        throw new InvalidOperationException("Start the animation first.");
+                    case PlayState.Playing:
+                        Pause();
+                        break;
+                    case PlayState.Paused:
+                    case PlayState.Finished:
+                        break;
+                }
+
+                UpdateInternal(GetDeltaTimeFromRatio(value));
+            }
+        }
+
+        private protected abstract float GetDeltaTimeFromRatio(float ratio);
 
         #endregion
 
@@ -101,6 +135,28 @@ namespace FriedSynapse.FlowEnt
         void IControllable.Pause()
             => Pause();
 
+        void IControllable.ChangeFrame(float modifier)
+        {
+            if (playState == PlayState.Playing)
+            {
+                Pause();
+            }
+
+            DeltaTimes deltaTimes = FlowEntController.Updater.GetDeltaTimes();
+
+            float deltaTime = updateType switch
+            {
+                UpdateType.Update => deltaTimes.deltaTime,
+                UpdateType.SmoothUpdate => deltaTimes.smoothDeltaTime,
+                UpdateType.LateUpdate => deltaTimes.deltaTime,
+                UpdateType.SmoothLateUpdate => deltaTimes.smoothDeltaTime,
+                UpdateType.FixedUpdate => deltaTimes.fixedDeltaTime,
+                UpdateType.Custom => deltaTimes.fixedDeltaTime,
+                _ => throw new NotImplementedException(),
+            };
+            UpdateInternal(modifier * deltaTime * FlowEntController.Instance.TimeScale);
+        }
+
         /// <inheritdoc cref="AbstractUpdatable.Stop(bool)"/>
         /// \copydoc AbstractUpdatable.Stop
         public new AbstractAnimation Stop(bool triggerOnCompleted = false)
@@ -108,6 +164,9 @@ namespace FriedSynapse.FlowEnt
             StopInternal(triggerOnCompleted);
             return this;
         }
+
+        void IControllable.Stop()
+            => Stop();
 
         /// <summary>
         /// Resets the animation so in can be replayed.
@@ -149,6 +208,7 @@ namespace FriedSynapse.FlowEnt
 
         private protected void StartSkipFrames()
         {
+            playState = PlayState.Waiting;
             //NOTE autostart already skips one frame, so we're skipping it
             if (autoStartHelper != null)
             {
@@ -164,6 +224,7 @@ namespace FriedSynapse.FlowEnt
 
         private protected void StartDelay()
         {
+            playState = PlayState.Waiting;
             startHelper = new DelayedStartHelper(updateController, updateType, delay, (deltaTime) =>
             {
                 delay = -1f;
@@ -195,8 +256,6 @@ namespace FriedSynapse.FlowEnt
             base.StopInternal(triggerOnCompleted);
             switch (playState)
             {
-                case PlayState.Finished:
-                    return;
                 case PlayState.Building:
                     break;
                 case PlayState.Waiting:
@@ -206,9 +265,13 @@ namespace FriedSynapse.FlowEnt
                     }
                     break;
                 case PlayState.Playing:
-                case PlayState.Paused:
                     updateController.UnsubscribeFromUpdate(this);
                     break;
+                case PlayState.Paused:
+                    updateController.UnsubscribeFromUpdate((AbstractUpdatable)startHelper ?? this);
+                    break;
+                case PlayState.Finished:
+                    return;
             }
 
             playState = PlayState.Finished;
@@ -227,6 +290,7 @@ namespace FriedSynapse.FlowEnt
             }
 
             base.ResetInternal();
+            elapsedTime = 0f;
             startHelper = null;
             autoStartHelper = null;
             playState = PlayState.Building;

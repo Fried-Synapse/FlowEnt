@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="AbstractControlSection.uss" />
+    <ui:VisualElement name="controls" style="flex-direction: row;">
+        <FriedSynapse.FlowEnt.Editor.ControlButton name="prevFrame" type="PrevFrame" class="button" />
+        <FriedSynapse.FlowEnt.Editor.ControlButton name="playPause" type="Play" class="button" />
+        <FriedSynapse.FlowEnt.Editor.ControlButton name="nextFrame" type="NextFrame" class="button" />
+        <FriedSynapse.FlowEnt.Editor.ControlButton name="stop" type="Stop" class="button" />
+        <FriedSynapse.FlowEnt.Editor.AutoScalableSlider name="timeScale" tooltip="Time Scale" />
+    </ui:VisualElement>
+    <ui:VisualElement name="timeline">
+        <ui:VisualElement name="info" style="flex-direction: row;">
+            <ui:Label text="Time elapsed:" name="label" />
+            <ui:Label name="time" text="0.0000" />
+        </ui:VisualElement>
+        <FriedSynapse.FlowEnt.Editor.FriedSlider name="controlBar" maxValue="1" />
+    </ui:VisualElement>
+</ui:UXML>
