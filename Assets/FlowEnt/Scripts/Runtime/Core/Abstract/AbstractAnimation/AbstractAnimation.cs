@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region IManuallyUpdatable
+        #region ISeekable
 
         private protected abstract bool IsSeekable { get; }
         bool ISeekable.IsSeekable => IsSeekable;
