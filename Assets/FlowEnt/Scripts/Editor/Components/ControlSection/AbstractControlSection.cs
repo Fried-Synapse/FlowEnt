@@ -20,6 +20,7 @@ namespace FriedSynapse.FlowEnt.Editor
             PlayPause = this.Query<ControlButton>("playPause").First();
             NextFrame = this.Query<ControlButton>("nextFrame").First();
             Stop = this.Query<ControlButton>("stop").First();
+            Buttons = new[] { PrevFrame, PlayPause, NextFrame, Stop };
             TimeScale = this.Query<AutoScalableSlider>("timeScale").First();
             Timeline = this.Query<VisualElement>("timeline").First();
             ControlBar = this.Query<FriedSlider>("controlBar").First();
@@ -27,13 +28,13 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         protected TControllable Controllable { get; private set; }
-        protected IManuallyUpdatable ManuallyUpdatable { get; private set; }
-        protected bool IsManuallyUpdatable { get; private set; }
+        protected ISeekable Seekable { get; private set; }
         protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
         protected ControlButton PrevFrame { get; }
         protected ControlButton PlayPause { get; }
         protected ControlButton NextFrame { get; }
         protected ControlButton Stop { get; }
+        protected ControlButton[] Buttons { get; }
         protected AutoScalableSlider TimeScale { get; }
         protected VisualElement Timeline { get; }
         protected TextElement TimelineInfoTime { get; }
@@ -46,15 +47,17 @@ namespace FriedSynapse.FlowEnt.Editor
                 throw new InvalidOperationException("The controllable has already been set.");
             }
             Controllable = controllable;
-            InitManuallyUpdatable();
             if (Controllable is AbstractAnimation animation)
             {
                 Timeline.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
-                animation.OnUpdated(_ => UpdateAnimationTime());
+                animation.OnUpdated(_ => UpdateSeekable());
                 animation.OnCompleted(UpdatePlayState);
             }
-
-            if (IsManuallyUpdatable)
+            if (Controllable is ISeekable result)
+            {
+                Seekable = result;
+            }
+            if (Seekable?.IsSeekable == true)
             {
                 ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
             }
@@ -66,18 +69,6 @@ namespace FriedSynapse.FlowEnt.Editor
             Bind();
         }
 
-        protected void InitManuallyUpdatable()
-        {
-            if (!(Controllable is IManuallyUpdatable result))
-            {
-                IsManuallyUpdatable = false;
-                return;
-            }
-            ManuallyUpdatable = result;
-            IsManuallyUpdatable = !(Controllable is Echo echo && echo.Timeout == null)
-                && !(Controllable is Flow);
-        }
-
         protected virtual void Bind()
         {
             PrevFrame.clicked += OnPrevFrame;
@@ -85,17 +76,17 @@ namespace FriedSynapse.FlowEnt.Editor
             NextFrame.clicked += OnNextFrame;
             Stop.clicked += OnStop;
 
-            foreach (Button button in new[] { PrevFrame, PlayPause, NextFrame, Stop })
+            foreach (Button button in Buttons)
             {
                 button.clicked += UpdatePlayState;
             }
 
             TimeScale.OnValueChanged += (data) => Controllable.TimeScale = data.NewValue;
-            if (IsManuallyUpdatable)
+            if (Seekable?.IsSeekable == true)
             {
                 ControlBar.OnValueChanged += (data) =>
                 {
-                    ManuallyUpdatable.Ratio = data.NewValue;
+                    Seekable.Ratio = data.NewValue;
                     UpdatePlayState();
                 };
             }
@@ -112,10 +103,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 RemoveFromClassList("playing");
             }
             UpdateButtonsState();
-            if (Controllable is AbstractAnimation)
-            {
-                UpdateAnimationTime();
-            }
+            UpdateSeekable();
         }
 
         private void UpdateButtonsState()
@@ -131,12 +119,28 @@ namespace FriedSynapse.FlowEnt.Editor
             Stop.SetEnabled(!IsBuilding);
         }
 
-        private void UpdateAnimationTime()
+        private void UpdateSeekable()
         {
-            TimelineInfoTime.text = ManuallyUpdatable.ElapsedTime.ToString("F4");
-            if (Controllable.PlayState != PlayState.Paused && IsManuallyUpdatable)
+            if (Seekable == null)
             {
-                ControlBar.SetValueWithoutNotify(ManuallyUpdatable.Ratio);
+                return;
+            }
+            if (Controllable.PlayState == PlayState.Waiting)
+            {
+                ControlBar.SetEnabled(false);
+                TimelineInfoTime.text = "Waiting";
+                TimelineInfoTime.tooltip = "Animation is either delayed or skipping frames.";
+            }
+            else
+            {
+                ControlBar.SetEnabled(true);
+                TimelineInfoTime.text = Seekable.ElapsedTime.ToString("F4");
+                TimelineInfoTime.tooltip = string.Empty;
+            }
+
+            if (Controllable.PlayState != PlayState.Paused && Seekable.IsSeekable)
+            {
+                ControlBar.SetValueWithoutNotify(Seekable.Ratio);
             }
         }
 

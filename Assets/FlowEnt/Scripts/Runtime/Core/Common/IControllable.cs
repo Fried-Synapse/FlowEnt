@@ -12,6 +12,14 @@ namespace FriedSynapse.FlowEnt
         void Stop();
     }
 
+    public interface ISeekable
+    {
+        //NOTE this should not be here, but for the life of me I don't know where to put it...
+        public float ElapsedTime { get; }
+        public bool IsSeekable { get; }
+        public float Ratio { get; set; }
+    }
+
     internal interface IFluentControllable<TType>
     {
         TType Start();

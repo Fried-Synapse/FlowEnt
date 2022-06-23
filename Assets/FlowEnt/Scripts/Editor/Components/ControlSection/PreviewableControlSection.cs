@@ -4,7 +4,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         protected override void Bind()
         {
-            if (IsManuallyUpdatable)
+            if (Seekable?.IsSeekable == true)
             {
                 ControlBar.OnValueChanging += (_) =>
                 {
