@@ -48,7 +48,7 @@ namespace FriedSynapse.FlowEnt.Editor
 #pragma warning disable IDE0051, RCS1213
         private void OnDestroy()
         {
-            animationList.Deinit();
+            animationList?.Deinit();
         }
 #pragma warning restore IDE0051, RCS1213
     }
