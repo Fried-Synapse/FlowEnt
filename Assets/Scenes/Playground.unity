@@ -179,7 +179,7 @@ MonoBehaviour:
       autoStart: 0
       skipFrames: 0
       delay: 0
-      timeScale: 6.31
+      timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
       time: 5
@@ -230,8 +230,8 @@ MonoBehaviour:
       timeScale: 1.49
       isLoopCountInfinite: 0
       loopCount: 1
-      hasTimeout: 0
-      timeout: 30
+      hasTimeout: 1
+      timeout: 3
     events:
       onStarted:
         m_PersistentCalls:
