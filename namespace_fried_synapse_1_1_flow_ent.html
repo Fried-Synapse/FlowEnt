@@ -183,6 +183,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_delay_flow_awaiter.html">DelayFlowAwaiter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_flow.html" title="Provides functionality to create a sequence or multiple sequences of animations. For more information...">Flow</a> awaiter that uses a will delay for a certain amount of time.  <a href="class_fried_synapse_1_1_flow_ent_1_1_delay_flow_awaiter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_fried_synapse_1_1_flow_ent_1_1_delta_times.html">DeltaTimes</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_echo.html">Echo</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An echo is a simple update loop that provides a delta time and other settings for custom animation For more information please go to <a href="https://flowent.friedsynapse.com/echo">https://flowent.friedsynapse.com/echo</a>  <a href="class_fried_synapse_1_1_flow_ent_1_1_echo.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -273,6 +275,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_input_motion_extensions.html">InputMotionExtensions</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_seekable.html">ISeekable</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_spline.html">ISpline</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_update_controller.html">IUpdateController</a></td></tr>
@@ -346,6 +350,22 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a326a79ccd6ddc6c94654f9a2eab9468d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a326a79ccd6ddc6c94654f9a2eab9468d">LoopType</a> { <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a326a79ccd6ddc6c94654f9a2eab9468da526d688f37a86d3c3f27d0c5016eb71d">Reset</a>
+, <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a326a79ccd6ddc6c94654f9a2eab9468da99e52704462d3580db3528cad7ea9660">PingPong</a>
+ }</td></tr>
+<tr class="memdesc:a326a79ccd6ddc6c94654f9a2eab9468d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of loop.  <a href="namespace_fried_synapse_1_1_flow_ent.html#a326a79ccd6ddc6c94654f9a2eab9468d">More...</a><br /></td></tr>
+<tr class="separator:a326a79ccd6ddc6c94654f9a2eab9468d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a998831611d3a383c660f90f8222278a3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3">PlayState</a> { <br />
+&#160;&#160;<a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3ac39b56d4489fb2507289e7ae19567b80">Building</a> = 1 &lt;&lt; 0
+, <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3a5706de961fb376d701be6e7762d8b09c">Waiting</a> = 1 &lt;&lt; 1
+, <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3ac9dbb2b7c84159b632d71e512eba8428">Playing</a> = 1 &lt;&lt; 2
+, <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3ae99180abf47a8b3a856e0bcb2656990a">Paused</a> = 1 &lt;&lt; 3
+, <br />
+&#160;&#160;<a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3a8f3d10eb21bd36347c258679eba9e92b">Finished</a> = 1 &lt;&lt; 4
+<br />
+ }</td></tr>
+<tr class="memdesc:a998831611d3a383c660f90f8222278a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum used to set the state of an animation.  <a href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3">More...</a><br /></td></tr>
+<tr class="separator:a998831611d3a383c660f90f8222278a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a747e732113ceb2b3d6d7a0f9a8742ca8"><td class="memItemLeft" align="right" valign="top"><a id="a747e732113ceb2b3d6d7a0f9a8742ca8" name="a747e732113ceb2b3d6d7a0f9a8742ca8"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>UpdateType</b> { <br />
 &#160;&#160;<b>Update</b>
 , <b>SmoothUpdate</b>
@@ -357,22 +377,6 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a747e732113ceb2b3d6d7a0f9a8742ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a326a79ccd6ddc6c94654f9a2eab9468d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a326a79ccd6ddc6c94654f9a2eab9468d">LoopType</a> { <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a326a79ccd6ddc6c94654f9a2eab9468da526d688f37a86d3c3f27d0c5016eb71d">Reset</a>
-, <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a326a79ccd6ddc6c94654f9a2eab9468da99e52704462d3580db3528cad7ea9660">PingPong</a>
- }</td></tr>
-<tr class="memdesc:a326a79ccd6ddc6c94654f9a2eab9468d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of loop.  <a href="namespace_fried_synapse_1_1_flow_ent.html#a326a79ccd6ddc6c94654f9a2eab9468d">More...</a><br /></td></tr>
-<tr class="separator:a326a79ccd6ddc6c94654f9a2eab9468d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a998831611d3a383c660f90f8222278a3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3">PlayState</a> { <br />
-&#160;&#160;<a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3ac39b56d4489fb2507289e7ae19567b80">Building</a> = 0x00
-, <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3a5706de961fb376d701be6e7762d8b09c">Waiting</a> = 0x01
-, <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3ac9dbb2b7c84159b632d71e512eba8428">Playing</a> = 0x02
-, <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3ae99180abf47a8b3a856e0bcb2656990a">Paused</a> = 0x04
-, <br />
-&#160;&#160;<a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3a8f3d10eb21bd36347c258679eba9e92b">Finished</a> = 0x08
-<br />
- }</td></tr>
-<tr class="memdesc:a998831611d3a383c660f90f8222278a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum used to set the state of an animation.  <a href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3">More...</a><br /></td></tr>
-<tr class="separator:a998831611d3a383c660f90f8222278a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ff0fcd8028217a733ba19a90a05d06"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a63ff0fcd8028217a733ba19a90a05d06">Easing</a> { <br />
 &#160;&#160;<b>Linear</b>
 , <b>EaseInSine</b>

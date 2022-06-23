@@ -120,14 +120,15 @@ Inheritance diagram for FriedSynapse.FlowEnt.Echo:</div>
  <div class="center">
   <img src="class_fried_synapse_1_1_flow_ent_1_1_echo.png" usemap="#FriedSynapse.FlowEnt.Echo_map" alt=""/>
   <map id="FriedSynapse.FlowEnt.Echo_map" name="FriedSynapse.FlowEnt.Echo_map">
-<area href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html" title="Provides animation specific behaviour" alt="FriedSynapse.FlowEnt.AbstractAnimation" shape="rect" coords="868,56,1292,80"/>
-<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_controllable.html" alt="FriedSynapse.FlowEnt.IFluentControllable&lt; Echo &gt;" shape="rect" coords="1302,56,1726,80"/>
-<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_echo_eventable.html" alt="FriedSynapse.FlowEnt.IFluentEchoEventable&lt; Echo &gt;" shape="rect" coords="1736,56,2160,80"/>
-<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_echo_optionable.html" alt="FriedSynapse.FlowEnt.IFluentEchoOptionable&lt; Echo &gt;" shape="rect" coords="2170,56,2594,80"/>
+<area href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html" title="Provides animation specific behaviour" alt="FriedSynapse.FlowEnt.AbstractAnimation" shape="rect" coords="1085,56,1509,80"/>
+<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_controllable.html" alt="FriedSynapse.FlowEnt.IFluentControllable&lt; Echo &gt;" shape="rect" coords="1519,56,1943,80"/>
+<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_echo_eventable.html" alt="FriedSynapse.FlowEnt.IFluentEchoEventable&lt; Echo &gt;" shape="rect" coords="1953,56,2377,80"/>
+<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_echo_optionable.html" alt="FriedSynapse.FlowEnt.IFluentEchoOptionable&lt; Echo &gt;" shape="rect" coords="2387,56,2811,80"/>
 <area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_controllable.html" alt="FriedSynapse.FlowEnt.IFluentControllable&lt; AbstractAnimation &gt;" shape="rect" coords="434,0,858,24"/>
 <area href="interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html" alt="FriedSynapse.FlowEnt.IControllable" shape="rect" coords="868,0,1292,24"/>
-<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable.html" alt="FriedSynapse.FlowEnt.IFluentAnimationEventable&lt; AbstractAnimation &gt;" shape="rect" coords="1302,0,1726,24"/>
-<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_optionable.html" alt="FriedSynapse.FlowEnt.IFluentAnimationOptionable&lt; AbstractAnimation &gt;" shape="rect" coords="1736,0,2160,24"/>
+<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_seekable.html" alt="FriedSynapse.FlowEnt.ISeekable" shape="rect" coords="1302,0,1726,24"/>
+<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable.html" alt="FriedSynapse.FlowEnt.IFluentAnimationEventable&lt; AbstractAnimation &gt;" shape="rect" coords="1736,0,2160,24"/>
+<area href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_optionable.html" alt="FriedSynapse.FlowEnt.IFluentAnimationOptionable&lt; AbstractAnimation &gt;" shape="rect" coords="2170,0,2594,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -286,8 +287,12 @@ TType&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></t
 <tr class="separator:a3933df11f453a9cb13fa3363b74b15fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42ce6f018a00687ec91100cb476deb77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a42ce6f018a00687ec91100cb476deb77">Pause</a> ()</td></tr>
 <tr class="separator:a42ce6f018a00687ec91100cb476deb77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf0a7bfab3163a8e1ce0694a959c4341"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#aaf0a7bfab3163a8e1ce0694a959c4341">Stop</a> (bool triggerOnCompleted=false)</td></tr>
-<tr class="separator:aaf0a7bfab3163a8e1ce0694a959c4341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a916f3f181c68eaf7fc23a2d816f4e982"><td class="memItemLeft" align="right" valign="top"><a id="a916f3f181c68eaf7fc23a2d816f4e982" name="a916f3f181c68eaf7fc23a2d816f4e982"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ChangeFrame</b> (float modifier)</td></tr>
+<tr class="separator:a916f3f181c68eaf7fc23a2d816f4e982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9957e31b6c3095e84b6bbeac8abf98b8"><td class="memItemLeft" align="right" valign="top"><a id="a9957e31b6c3095e84b6bbeac8abf98b8" name="a9957e31b6c3095e84b6bbeac8abf98b8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
+<tr class="separator:a9957e31b6c3095e84b6bbeac8abf98b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable.html">FriedSynapse.FlowEnt.IFluentAnimationEventable&lt; AbstractAnimation &gt;</a></td></tr>
 <tr class="memitem:aad308bcc66754cd8ae02f9ed8b2c8f92 inherit pub_methods_interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable.html#aad308bcc66754cd8ae02f9ed8b2c8f92">OnStarted</a> (Action callback)</td></tr>
 <tr class="memdesc:aad308bcc66754cd8ae02f9ed8b2c8f92 inherit pub_methods_interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an event called when the animation started.  <a href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_animation_eventable.html#aad308bcc66754cd8ae02f9ed8b2c8f92">More...</a><br /></td></tr>
@@ -365,6 +370,8 @@ TType&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></t
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a7bbf61cb03c9a0fc119de166d7e1aaa1"><td class="memItemLeft" align="right" valign="top">override float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_echo.html#a7bbf61cb03c9a0fc119de166d7e1aaa1">GetDeltaTimeFromRatio</a> (float ratio)</td></tr>
+<tr class="separator:a7bbf61cb03c9a0fc119de166d7e1aaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95ce4a68497e17fe70781fc51741af42"><td class="memItemLeft" align="right" valign="top"><a id="a95ce4a68497e17fe70781fc51741af42" name="a95ce4a68497e17fe70781fc51741af42"></a>
 override void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetInternal</b> ()</td></tr>
 <tr class="separator:a95ce4a68497e17fe70781fc51741af42"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -372,6 +379,9 @@ override void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetInterna
 <tr class="memitem:a95b6b62cb96f7f7205890425c0daae01 inherit pro_methods_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top"><a id="a95b6b62cb96f7f7205890425c0daae01" name="a95b6b62cb96f7f7205890425c0daae01"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>AbstractAnimation</b> ()</td></tr>
 <tr class="separator:a95b6b62cb96f7f7205890425c0daae01 inherit pro_methods_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab955bb9d22c421e6b717d894ebef3772 inherit pro_methods_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top"><a id="ab955bb9d22c421e6b717d894ebef3772" name="ab955bb9d22c421e6b717d894ebef3772"></a>
+abstract float&#160;</td><td class="memItemRight" valign="bottom"><b>GetDeltaTimeFromRatio</b> (float ratio)</td></tr>
+<tr class="separator:ab955bb9d22c421e6b717d894ebef3772 inherit pro_methods_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c8bc6412f20d3695ce6a7dd41601999 inherit pro_methods_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top"><a id="a0c8bc6412f20d3695ce6a7dd41601999" name="a0c8bc6412f20d3695ce6a7dd41601999"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>StartSkipFrames</b> ()</td></tr>
 <tr class="separator:a0c8bc6412f20d3695ce6a7dd41601999 inherit pro_methods_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -412,6 +422,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>OnCompletedInternal</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a2835dcbb205cbf64f29cb0be7759783f"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_echo.html#a2835dcbb205cbf64f29cb0be7759783f">IsSeekable</a><code> [get]</code></td></tr>
+<tr class="separator:a2835dcbb205cbf64f29cb0be7759783f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39b03dc9c8415f9638785978b6098838"><td class="memItemLeft" align="right" valign="top"><a id="a39b03dc9c8415f9638785978b6098838" name="a39b03dc9c8415f9638785978b6098838"></a>
+override float&#160;</td><td class="memItemRight" valign="bottom"><b>TotalSeekTime</b><code> [get]</code></td></tr>
+<tr class="separator:a39b03dc9c8415f9638785978b6098838"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2d83ba87ff75caebe71517948c96076"><td class="memItemLeft" align="right" valign="top"><a id="af2d83ba87ff75caebe71517948c96076" name="af2d83ba87ff75caebe71517948c96076"></a>
 float?&#160;</td><td class="memItemRight" valign="bottom"><b>Timeout</b><code> [get]</code></td></tr>
 <tr class="separator:af2d83ba87ff75caebe71517948c96076"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -423,6 +438,11 @@ Func&lt; float, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>
 float?&#160;</td><td class="memItemRight" valign="bottom"><b>Overdraft</b><code> [get, set]</code></td></tr>
 <tr class="memdesc:a56a42ce94b96336223fdf9fb08d09450 inherit properties_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="mdescLeft">&#160;</td><td class="mdescRight">THe amount of scaled time unconsumed by this animation from the last frame. <br /></td></tr>
 <tr class="separator:a56a42ce94b96336223fdf9fb08d09450 inherit properties_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f5ecbe702d19dac67642d1b2c72f22e inherit properties_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top">abstract bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html#a4f5ecbe702d19dac67642d1b2c72f22e">IsSeekable</a><code> [get]</code></td></tr>
+<tr class="separator:a4f5ecbe702d19dac67642d1b2c72f22e inherit properties_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a3364f8407d3181fa15cdd11c4130c inherit properties_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top"><a id="a78a3364f8407d3181fa15cdd11c4130c" name="a78a3364f8407d3181fa15cdd11c4130c"></a>
+abstract float&#160;</td><td class="memItemRight" valign="bottom"><b>TotalSeekTime</b><code> [get]</code></td></tr>
+<tr class="separator:a78a3364f8407d3181fa15cdd11c4130c inherit properties_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd0e2efc9cd724de8908a11bde076421 inherit properties_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top"><a id="afd0e2efc9cd724de8908a11bde076421" name="afd0e2efc9cd724de8908a11bde076421"></a>
 UpdateType&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateType</b><code> [get, set]</code></td></tr>
 <tr class="separator:afd0e2efc9cd724de8908a11bde076421 inherit properties_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -439,10 +459,23 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>AutoStart</b><code> [
 <tr class="separator:ab7045baca2b4c46db8318fbe3ee78726 inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_controllable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7198e4903ae6a5a2395f08f9ac30dc45 inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_controllable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3">PlayState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a7198e4903ae6a5a2395f08f9ac30dc45">PlayState</a><code> [get]</code></td></tr>
 <tr class="separator:a7198e4903ae6a5a2395f08f9ac30dc45 inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_controllable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interface_fried_synapse_1_1_flow_ent_1_1_i_seekable"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_fried_synapse_1_1_flow_ent_1_1_i_seekable')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_seekable.html">FriedSynapse.FlowEnt.ISeekable</a></td></tr>
+<tr class="memitem:a9741a2a024043f7599e03a7429c01767 inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_seekable"><td class="memItemLeft" align="right" valign="top"><a id="a9741a2a024043f7599e03a7429c01767" name="a9741a2a024043f7599e03a7429c01767"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>ElapsedTime</b><code> [get]</code></td></tr>
+<tr class="separator:a9741a2a024043f7599e03a7429c01767 inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_seekable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f28670dd1ba5de9247174700a42823c inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_seekable"><td class="memItemLeft" align="right" valign="top"><a id="a2f28670dd1ba5de9247174700a42823c" name="a2f28670dd1ba5de9247174700a42823c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsSeekable</b><code> [get]</code></td></tr>
+<tr class="separator:a2f28670dd1ba5de9247174700a42823c inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_seekable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb97fc6a1ba829453f9dffe7b041175 inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_seekable"><td class="memItemLeft" align="right" valign="top"><a id="adeb97fc6a1ba829453f9dffe7b041175" name="adeb97fc6a1ba829453f9dffe7b041175"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>Ratio</b><code> [get, set]</code></td></tr>
+<tr class="separator:adeb97fc6a1ba829453f9dffe7b041175 inherit properties_interface_fried_synapse_1_1_flow_ent_1_1_i_seekable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">FriedSynapse.FlowEnt.AbstractAnimation</a></td></tr>
+<tr class="memitem:a2a98f01ef530fdf4237613985b64ef17 inherit pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top"><a id="a2a98f01ef530fdf4237613985b64ef17" name="a2a98f01ef530fdf4237613985b64ef17"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>elapsedTime</b></td></tr>
+<tr class="separator:a2a98f01ef530fdf4237613985b64ef17 inherit pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2420960986a6fd5b4d22b70010f905cb inherit pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top"><a id="a2420960986a6fd5b4d22b70010f905cb" name="a2420960986a6fd5b4d22b70010f905cb"></a>
 <a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_start_helper.html">AbstractStartHelper</a>&#160;</td><td class="memItemRight" valign="bottom"><b>startHelper</b></td></tr>
 <tr class="separator:a2420960986a6fd5b4d22b70010f905cb inherit pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -471,7 +504,7 @@ int?&#160;</td><td class="memItemRight" valign="bottom"><b>loopCount</b> = Abstr
 float&#160;</td><td class="memItemRight" valign="bottom"><b>timeScale</b> = AbstractAnimationOptions.DefaultTimeScale</td></tr>
 <tr class="separator:a7b3d44c39b1f09299a16ebf7bea598ba inherit pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07a66b7e999421d182872fabda1407d7 inherit pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memItemLeft" align="right" valign="top"><a id="a07a66b7e999421d182872fabda1407d7" name="a07a66b7e999421d182872fabda1407d7"></a>
-<a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3">PlayState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>playState</b></td></tr>
+<a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3">PlayState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>playState</b> = <a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a998831611d3a383c660f90f8222278a3ac39b56d4489fb2507289e7ae19567b80">PlayState.Building</a></td></tr>
 <tr class="separator:a07a66b7e999421d182872fabda1407d7 inherit pro_attribs_class_fried_synapse_1_1_flow_ent_1_1_abstract_animation"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -738,6 +771,34 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>timeScale</b> = Abst
 </dd>
 </dl>
 </div>
+
+</div>
+</div>
+<a id="a7bbf61cb03c9a0fc119de166d7e1aaa1" name="a7bbf61cb03c9a0fc119de166d7e1aaa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bbf61cb03c9a0fc119de166d7e1aaa1">&#9670;&nbsp;</a></span>GetDeltaTimeFromRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override float FriedSynapse.FlowEnt.Echo.GetDeltaTimeFromRatio </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ratio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_fried_synapse_1_1_flow_ent_1_1_abstract_animation.html">FriedSynapse.FlowEnt.AbstractAnimation</a>.</p>
 
 </div>
 </div>
@@ -1401,7 +1462,30 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>timeScale</b> = Abst
       </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html">FriedSynapse.FlowEnt.IControllable</a>.</p>
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a2835dcbb205cbf64f29cb0be7759783f" name="a2835dcbb205cbf64f29cb0be7759783f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2835dcbb205cbf64f29cb0be7759783f">&#9670;&nbsp;</a></span>IsSeekable</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool FriedSynapse.FlowEnt.Echo.IsSeekable</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_seekable.html">FriedSynapse.FlowEnt.ISeekable</a>.</p>
 
 </div>
 </div>
