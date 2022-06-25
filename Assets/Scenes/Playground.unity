@@ -182,9 +182,9 @@ MonoBehaviour:
       timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
-      time: 5
+      time: 1
       easingType: 0
-      easing: 11
+      easing: 0
       easingCurve:
         serializedVersion: 2
         m_Curve: []
@@ -230,8 +230,8 @@ MonoBehaviour:
       timeScale: 1.49
       isLoopCountInfinite: 0
       loopCount: 1
-      hasTimeout: 1
-      timeout: 3
+      hasTimeout: 0
+      timeout: 9
     events:
       onStarted:
         m_PersistentCalls:
@@ -292,13 +292,14 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: MoveVectorMotion/ValueBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
+      type: {class: MoveLocalAxisMotion/ValueBuilder, ns: FriedSynapse.FlowEnt.Motions.Tween.Transforms, asm: FriedSynapse.FlowEnt}
       data:
         displayName: 
         isDisplayNameEnabled: 0
         isEnabled: 1
         item: {fileID: 1168015055}
-        value: {x: 0, y: 3, z: 0}
+        value: 3
+        axis: 2
     00000001:
       type: {class: MoveVectorMotion/Builder, ns: FriedSynapse.FlowEnt.Motions.Echo.Transforms, asm: FriedSynapse.FlowEnt}
       data:

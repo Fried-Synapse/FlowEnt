@@ -11,6 +11,12 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     public static class PreviewController
     {
+        public class Options
+        {
+            public AbstractAnimation Animation { get; set; }
+            public Action OnStop { get; set; }
+        }
+
         static PreviewController()
         {
             EditorApplication.update += Update;
@@ -18,21 +24,26 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         private static int? undoGroupId;
-        private static AbstractAnimation animation;
-        public static bool IsRunning => animation != null;
+        private static Options options;
+        public static bool IsRunning => options != null;
 
-        public static void Start(AbstractAnimation animation)
+        public static void Start(Options options)
         {
-            PreviewController.animation = animation;
+            if (IsRunning)
+            {
+                Stop();
+            }
 
-            if (RecordObjects(PreviewController.animation))
+            PreviewController.options = options;
+
+            if (RecordObjects(PreviewController.options.Animation))
             {
                 undoGroupId = Undo.GetCurrentGroup();
                 Undo.IncrementCurrentGroup();
             }
             try
             {
-                animation.Start();
+                options.Animation.Start();
             }
             catch (Exception ex)
             {
@@ -47,8 +58,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public static void Stop()
         {
-            animation?.Stop(true).Reset();
-            animation = null;
+            options?.Animation?.Stop(true).Reset();
+            options?.OnStop?.Invoke();
+            options = null;
 
             if (undoGroupId != null)
             {

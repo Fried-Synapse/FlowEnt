@@ -82,8 +82,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void RenderFlow()
         {
-            UnityEngine.Debug.Log($"xxxx");
-
             animations.Clear();
             ReadAnimations("updatables");
 
@@ -153,6 +151,11 @@ namespace FriedSynapse.FlowEnt.Editor
             else
             {
                 EditorApplication.update -= RenderFlow;
+            }
+
+            foreach (AnimationInfoListItem element in animationElements.Values)
+            {
+                element.List?.Deinit();
             }
         }
     }
