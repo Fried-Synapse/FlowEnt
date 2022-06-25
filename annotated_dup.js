@@ -83,7 +83,7 @@ var annotated_dup =
           [ "MotionNameGetter", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_motion_name_getter.html", null ],
           [ "MotionPickerWindow", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_motion_picker_window.html", null ],
           [ "PreviewableControlSection", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_previewable_control_section.html", null ],
-          [ "PreviewController", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_preview_controller.html", null ],
+          [ "PreviewController", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_preview_controller.html", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_preview_controller" ],
           [ "PreviewerWindow", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_previewer_window.html", null ],
           [ "PropertyDrawer", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_property_drawer.html", null ],
           [ "SettingsWindow", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_settings_window.html", null ],

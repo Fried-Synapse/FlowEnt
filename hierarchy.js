@@ -914,6 +914,7 @@ var hierarchy =
       [ "FriedSynapse.FlowEnt.FlowEntRuntimeUpdater", "class_fried_synapse_1_1_flow_ent_1_1_flow_ent_runtime_updater.html", null ]
     ] ],
     [ "FriedSynapse.FlowEnt.Editor.MotionNameGetter", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_motion_name_getter.html", null ],
+    [ "FriedSynapse.FlowEnt.Editor.PreviewController.Options", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_preview_controller_1_1_options.html", null ],
     [ "FriedSynapse.FlowEnt.ParticleSystemMotionExtensions", "class_fried_synapse_1_1_flow_ent_1_1_particle_system_motion_extensions.html", null ],
     [ "FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPresetFactory", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_pivot_preset_factory.html", null ],
     [ "FriedSynapse.FlowEnt.Editor.PreviewController", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_preview_controller.html", null ],
