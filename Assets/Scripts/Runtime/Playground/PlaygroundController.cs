@@ -32,6 +32,7 @@ namespace FriedSynapse.FlowEnt.Builder
 
         public AbstractAnimation TweenProp
             => new Tween(1)
+                .SetName("tween name")
                 .SetTimeScale(1)
                 .SetEasing(Easing.EaseInOutCubic)
                 .SetLoopCount(3)

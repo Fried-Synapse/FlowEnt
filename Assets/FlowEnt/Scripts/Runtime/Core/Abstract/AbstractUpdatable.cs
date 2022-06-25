@@ -109,7 +109,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         public override string ToString()
-            => $"{GetType().Name} [Id: {Id}{(Name == null ? string.Empty : $", Name: \"{Name}\"")}]";
+            => $"{GetType().Name} [Id: {Id}{(string.IsNullOrEmpty(Name) ? string.Empty : $", Name: \"{Name}\"")}]";
     }
 
     internal class UpdatableAnchor : AbstractUpdatable

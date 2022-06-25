@@ -55,7 +55,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void StartPreview()
         {
-            PreviewController.Start(Controllable);
+            PreviewController.Start(new PreviewController.Options()
+            {
+                Animation = Controllable,
+                OnStop = UpdatePlayState
+            });
         }
     }
 }

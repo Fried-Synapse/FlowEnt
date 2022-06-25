@@ -10,6 +10,7 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     internal class PreviewerWindow : FlowEntWindow<PreviewerWindow>
     {
+        private const float DefaultTimelessEchoTimeout = 3f;
         private enum MemberType
         {
             Field,
@@ -80,7 +81,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 animationElement.AddToClassList(animationInfo.type.ToClassName());
                 TextElement label = new TextElement
                 {
-                    text = $"{animationInfo.name} [{animationInfo.animation.GetType().Name}]",
+                    text = $"{animationInfo.name} [{animationInfo.animation}]",
                 };
                 label.AddToClassList("label");
                 animationElement.Add(label);
@@ -131,6 +132,19 @@ namespace FriedSynapse.FlowEnt.Editor
                         MemberType.Method,
                         (AbstractAnimation)mi.Invoke(behaviour, emptyArray)))
                     .ToList());
+            }
+
+            foreach (AnimationInfo animationInfo in animations)
+            {
+                switch (animationInfo.animation)
+                {
+                    case Echo echo:
+                        if (echo.Timeout == null)
+                        {
+                            echo.SetTimeout(DefaultTimelessEchoTimeout);
+                        }
+                        break;
+                }
             }
             return animations;
         }

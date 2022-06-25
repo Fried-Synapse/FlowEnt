@@ -35,7 +35,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void Bind()
         {
-            EditorApplication.playModeStateChanged += _ => animationList.Clear();
+            EditorApplication.playModeStateChanged += _ =>
+            {
+                animationList?.Deinit();
+                animationList.Clear();
+            };
             animationList.OnChanged += TriggerSearch;
             search.RegisterValueChangedCallback(eventData => SearchTerm = eventData.newValue.ToLower());
         }
