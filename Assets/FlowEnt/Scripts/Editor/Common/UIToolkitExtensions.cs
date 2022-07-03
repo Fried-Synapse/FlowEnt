@@ -11,11 +11,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             get
             {
-                if (componentsContainer == null)
-                {
-                    componentsContainer = Resources.Load<ComponentsContainer>("ComponentsContainer");
-                }
-                return componentsContainer;
+                return componentsContainer ??= Resources.Load<ComponentsContainer>("ComponentsContainer");
             }
         }
 

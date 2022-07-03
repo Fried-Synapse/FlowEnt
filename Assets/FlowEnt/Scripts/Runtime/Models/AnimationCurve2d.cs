@@ -25,7 +25,7 @@ namespace FriedSynapse.FlowEnt
         public Vector2 Evaluate(float t)
         {
             cache.x = x.Evaluate(t);
-            cache.x = y.Evaluate(t);
+            cache.y = y.Evaluate(t);
             return cache;
         }
 

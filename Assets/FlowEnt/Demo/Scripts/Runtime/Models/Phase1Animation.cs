@@ -27,12 +27,12 @@ namespace FriedSynapse.FlowEnt.Demo
                                     t.Item.gameObject.SetActive(true);
                                     t.Item.localPosition = new Vector3(t.Item.localPosition.x, -0.5f, t.Item.localPosition.z);
                                 });
-                                t.ScaleYTo(1f).MoveLocalYTo(0f);
+                                t.ScaleLocalYTo(1f).MoveLocalYTo(0f);
                             }))
                 .Queue(new Tween(2f).SetEasing(new BounceEasing(5)).ForAll(Jumpers).Apply(t => t.MoveLocalYTo(Random.Range(2f, 5f))))
                 .QueueDelay(1.7f)
                 .Queue(new Tween(1f).SetEasing(Easing.EaseInCirc).ForAll(Jumpers).Apply(t => t.MoveLocalTo(Vector3.zero).OnCompleted(() => t.Item.gameObject.SetActive(false))))
-                .At(2f, new Tween(2f).SetEasing(Easing.EaseOutQuad).ForAll(Rotators).Apply(t => t.MoveLocalYTo(0f).ScaleTo(Vector3.one).RotateY(720f)))
+                .At(2f, new Tween(2f).SetEasing(Easing.EaseOutQuad).ForAll(Rotators).Apply(t => t.MoveLocalYTo(0f).ScaleLocalTo(Vector3.one).RotateY(720f)))
                 .Queue(new Tween(1f).SetEasing(Easing.EaseInCirc).ForAll(Rotators).Apply(t => t.MoveLocalTo(Vector3.zero).OnCompleted(() => t.Item.gameObject.SetActive(false))));
     }
 }
