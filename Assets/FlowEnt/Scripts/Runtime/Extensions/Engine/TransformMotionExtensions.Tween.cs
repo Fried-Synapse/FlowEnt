@@ -1,6 +1,5 @@
 using UnityEngine;
 using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
-using FriedSynapse.FlowEnt.Motions;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -8,7 +7,7 @@ namespace FriedSynapse.FlowEnt
     {
         #region Move
 
-        #region Move
+        #region Move Vector
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
@@ -100,6 +99,8 @@ namespace FriedSynapse.FlowEnt
 
         #region Move Axis
 
+        #region Move Axis X
+
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
         /// </summary>
@@ -162,6 +163,10 @@ namespace FriedSynapse.FlowEnt
             where TTransform : Transform
             => proxy.Apply(new MoveLocalAxisMotion(proxy.Item, Axis.X, from, to));
 
+        #endregion
+
+        #region Move Axis Y
+
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
         /// </summary>
@@ -223,6 +228,10 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotionProxy<TTransform> MoveLocalYTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float from, float to)
             where TTransform : Transform
             => proxy.Apply(new MoveLocalAxisMotion(proxy.Item, Axis.Y, from, to));
+
+        #endregion
+
+        #region Move Axis Z
 
         /// <summary>
         /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
@@ -288,6 +297,8 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
+        #endregion
+
         #region MoveTo Spline
 
         /// <summary>
@@ -316,7 +327,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Rotate
 
-        #region Rotate
+        #region Rotate Quaternion
 
         /// <summary>
         /// Applies a <see cref="RotateQuaternionMotion{TTransform}" /> to the tween.
@@ -348,6 +359,16 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotionProxy<TTransform> RotateTo<TTransform>(this TweenMotionProxy<TTransform> proxy, Quaternion from, Quaternion to)
             where TTransform : Transform
             => proxy.Apply(new RotateQuaternionMotion(proxy.Item, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalQuaternionMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotionProxy<TTransform> RotateLocal<TTransform>(this TweenMotionProxy<TTransform> proxy, Quaternion value)
+            where TTransform : Transform
+            => proxy.Apply(new RotateLocalQuaternionMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="RotateLocalQuaternionMotion{TTransform}" /> to the tween.
@@ -404,6 +425,16 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotionProxy<TTransform> RotateTo<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 from, Vector3 to)
             where TTransform : Transform
             => proxy.Apply(new RotateVectorMotion(proxy.Item, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="RotateLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotionProxy<TTransform> RotateLocal<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 value)
+            where TTransform : Transform
+            => proxy.Apply(new RotateLocalVectorMotion(proxy.Item, value));
 
         /// <summary>
         /// Applies a <see cref="RotateLocalVectorMotion{TTransform}" /> to the tween.
