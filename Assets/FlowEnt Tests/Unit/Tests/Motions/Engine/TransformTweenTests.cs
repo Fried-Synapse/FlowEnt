@@ -151,21 +151,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveX()
         {
+            const float from = MoveFromValue;
             const float value = MoveValue;
+            const float expected = from + value;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, 0, 0))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveX(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(value, 0, 0), GameObject.transform.position))
+                .Assert(() => Assert.AreEqual(new Vector3(expected, 0, 0), GameObject.transform.position))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveToX()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, 0, 0))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveXTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.position.x))
@@ -195,21 +200,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveLocalX()
         {
+            const float from = MoveFromValue;
             const float value = MoveValue;
+            const float expected = from + value;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, 0, 0))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveLocalX(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(value, 0, 0), GameObject.transform.localPosition))
+                .Assert(() => Assert.AreEqual(new Vector3(expected, 0, 0), GameObject.transform.localPosition))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveLocalToX()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, 0, 0))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveLocalXTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.localPosition.x))
@@ -243,21 +253,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveY()
         {
+            const float from = MoveFromValue;
             const float value = MoveValue;
+            const float expected = from + value;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(0, from, 0))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveY(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(0, value, 0), GameObject.transform.position))
+                .Assert(() => Assert.AreEqual(new Vector3(0, expected, 0), GameObject.transform.position))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveToY()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, 0, 0))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveYTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.position.y))
@@ -287,21 +302,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveLocalY()
         {
+            const float from = MoveFromValue;
             const float value = MoveValue;
+            const float expected = from + value;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(0, from, 0))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveLocalY(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(0, value, 0), GameObject.transform.localPosition))
+                .Assert(() => Assert.AreEqual(new Vector3(0, expected, 0), GameObject.transform.localPosition))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveLocalToY()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(0, from, 0))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveLocalYTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.localPosition.y))
@@ -335,21 +355,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveZ()
         {
+            const float from = MoveFromValue;
             const float value = MoveValue;
+            const float expected = from + value;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(0, 0, from))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveZ(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(0, 0, value), GameObject.transform.position))
+                .Assert(() => Assert.AreEqual(new Vector3(0, 0, expected), GameObject.transform.position))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveToZ()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(0, 0, from))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveZTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.position.z))
@@ -379,21 +404,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveLocalZ()
         {
+            const float from = MoveFromValue;
             const float value = MoveValue;
+            const float expected = from + value;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(0, 0, from))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveLocalZ(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector3(0, 0, value), GameObject.transform.localPosition))
+                .Assert(() => Assert.AreEqual(new Vector3(0, 0, expected), GameObject.transform.localPosition))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveLocalToZ()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(0, 0, from))
                 .Act(() => GameObject.transform.Tween(TestTime).MoveLocalZTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.localPosition.z))
@@ -446,10 +476,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveToXY()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion(GameObject.transform, Axis.XY, to)).Start())
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from, 0))
+                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion(GameObject.transform, Axis.XY, null, to)).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -468,7 +500,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFromY = null;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveAxisMotion(GameObject.transform, Axis.XY, from, to))
+                .Act(() => new Tween(TestTime).Apply(new MoveAxisMotion(GameObject.transform, Axis.XY, from, to))
                                     .OnUpdated((_) =>
                                     {
                                         startingFromX ??= GameObject.transform.position.x;
@@ -489,17 +521,31 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveLocalXY()
         {
-            //TODO
-            yield return null;
+            const float from = MoveFromValue;
+            const float value = MoveValue;
+            const float expected = from + value;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from, 0))
+                .Act(() => new Tween(TestTime).Apply(new MoveLocalAxisMotion(GameObject.transform, Axis.XY, value)).Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(expected, GameObject.transform.localPosition.x);
+                    Assert.AreEqual(expected, GameObject.transform.localPosition.y);
+                })
+                .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveLocalToXY()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveLocalAxisMotion(GameObject.transform, Axis.XY, to)).Start())
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from, 0))
+                .Act(() => new Tween(TestTime).Apply(new MoveLocalAxisMotion(GameObject.transform, Axis.XY, null, to)).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -518,7 +564,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFromY = null;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).For(GameObject.transform).Apply(new MoveLocalAxisMotion(GameObject.transform, Axis.XY, from, to))
+                .Act(() => new Tween(TestTime).Apply(new MoveLocalAxisMotion(GameObject.transform, Axis.XY, from, to))
                                     .OnUpdated((_) =>
                                     {
                                         startingFromX ??= GameObject.transform.localPosition.x;
@@ -543,16 +589,36 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveXY_Separated()
         {
-            //TODO
-            yield return null;
+            const float from = MoveFromValue;
+            const float value = MoveValue;
+            const float expected = from + value;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from, 0))
+                .Act(() =>
+                {
+                    return new Flow()
+                                .Queue(GameObject.transform.Tween(TestTime).MoveX(value))
+                                .At(0, GameObject.transform.Tween(TestTime).MoveY(value))
+                                .Start();
+                })
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    //Assert.AreEqual(expected, GameObject.transform.position.x);
+                    Assert.AreEqual(expected, GameObject.transform.position.y);
+                })
+                .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveToXY_Separated()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from, 0))
                 .Act(() =>
                 {
                     return new Flow()
@@ -604,16 +670,36 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveLocalXY_Separated()
         {
-            //TODO
-            yield return null;
+            const float from = MoveFromValue;
+            const float value = MoveValue;
+            const float expected = from + value;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from, 0))
+                .Act(() =>
+                {
+                    return new Flow()
+                            .Queue(GameObject.transform.Tween(TestTime).MoveLocalX(value))
+                            .At(0, GameObject.transform.Tween(TestTime).MoveLocalY(value))
+                            .Start();
+                })
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(expected, GameObject.transform.localPosition.x);
+                    Assert.AreEqual(expected, GameObject.transform.localPosition.y);
+                })
+                .Run();
         }
 
         [UnityTest]
         public IEnumerator MoveLocalToXY_Separated()
         {
+            const float from = MoveFromValue;
             const float to = MoveToValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from, 0))
                 .Act(() =>
                 {
                     return new Flow()
@@ -769,22 +855,24 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             Quaternion from = Quaternion.Euler(new Vector3(-RotateXValue, 0f, 0f));
             Quaternion value = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, 0f));
-            Quaternion to = from * value;
+            Quaternion expected = from * value;
 
             yield return CreateTester()
                 .Arrange(() => GameObject.transform.rotation = from)
                 .Act(() => GameObject.transform.Tween(TestTime).Rotate(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.rotation))
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.rotation))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator RotateToQuaternion()
         {
+            Quaternion from = Quaternion.Euler(new Vector3(-RotateXValue, 0f, 0f));
             Quaternion to = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, RotateZValue));
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = from)
                 .Act(() => GameObject.transform.Tween(TestTime).RotateTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.rotation))
@@ -816,22 +904,24 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             Quaternion from = Quaternion.Euler(new Vector3(-RotateXValue, 0f, 0f));
             Quaternion value = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, 0f));
-            Quaternion to = from * value;
+            Quaternion expected = from * value;
 
             yield return CreateTester()
                 .Arrange(() => GameObject.transform.rotation = from)
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocal(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.rotation))
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.rotation))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator RotateLocalToQuaternion()
         {
+            Quaternion from = Quaternion.Euler(new Vector3(-RotateXValue, 0f, 0f));
             Quaternion to = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, RotateZValue));
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.localRotation = from)
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocalTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.localRotation))
@@ -867,25 +957,27 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             Vector3 from = new Vector3(-RotateXValue, 0f, 0f);
             Vector3 value = new Vector3(RotateXValue, RotateYValue, 0f);
-            Vector3 to = from + value;
+            Vector3 expected = from + value;
 
             yield return CreateTester()
                 .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(from))
                 .Act(() => GameObject.transform.Tween(TestTime).Rotate(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.rotation.eulerAngles))
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.rotation.eulerAngles))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator RotateToVector()
         {
+            Vector3 from = new Vector3(-RotateXValue, 0f, 0f);
             Vector3 to = new Vector3(RotateXValue, RotateYValue, RotateZValue);
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(from))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.eulerAngles))
+                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.rotation.eulerAngles))
                 .Run();
         }
 
@@ -912,12 +1004,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator RotateLocalToVector()
         {
-            Vector3 to = new Vector3(RotateXValue, RotateYValue, RotateZValue);
+            Vector3 from = new Vector3(-RotateXValue, 0f, 0f);
+            Vector3 expected = new Vector3(RotateXValue, RotateYValue, RotateZValue);
 
             yield return CreateTester()
-                .Act(() => GameObject.transform.Tween(TestTime).RotateLocalTo(to).Start())
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(from))
+                .Act(() => GameObject.transform.Tween(TestTime).RotateLocalTo(expected).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.localRotation.eulerAngles))
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.localRotation.eulerAngles))
                 .Run();
         }
 
@@ -945,30 +1039,34 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #region Rotate Axis
 
+        #region Rotate Axis X
+
         [UnityTest]
         public IEnumerator RotateX()
         {
             const float from = -RotateXValue;
             const float value = (RotateXValue * 2) + FullCircle;
-            const float to = RotateXValue;
+            const float expected = RotateXValue;
 
             yield return CreateTester()
                 .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(from, 0f, 0f)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateX(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(new Vector3(to, 0f, 0f), GameObject.transform.rotation.eulerAngles))
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.rotation.eulerAngles.x))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator RotateToX()
         {
+            const float from = -RotateXValue;
             const float to = RotateXValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(from, 0f, 0f)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateXTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.eulerAngles.x))
+                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.rotation.eulerAngles.x))
                 .Run();
         }
 
@@ -993,11 +1091,28 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         }
 
         [UnityTest]
+        public IEnumerator RotateLocalX()
+        {
+            const float from = -RotateXValue;
+            const float value = (RotateXValue * 2) + FullCircle;
+            const float expected = RotateXValue;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(from, 0f, 0f)))
+                .Act(() => GameObject.transform.Tween(TestTime).RotateLocalX(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.localRotation.eulerAngles.x))
+                .Run();
+        }
+
+        [UnityTest]
         public IEnumerator RotateLocalToX()
         {
+            const float from = -RotateXValue;
             const float to = RotateXValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(from, 0f, 0f)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocalXTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.localRotation.eulerAngles.x))
@@ -1024,30 +1139,36 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Run();
         }
 
+        #endregion
+
+        #region Rotate Axis Y
+
         [UnityTest]
         public IEnumerator RotateY()
         {
             const float from = -RotateYValue;
             const float value = (RotateYValue * 2) + FullCircle;
-            const float to = RotateYValue;
+            const float expected = RotateYValue;
 
             yield return CreateTester()
                 .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, from, 0f)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateY(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(Quaternion.Euler(new Vector3(0f, to, 0f)), GameObject.transform.rotation))
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.rotation.eulerAngles.y))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator RotateToY()
         {
+            const float from = -RotateYValue;
             const float to = RotateYValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, from, 0f)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateYTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.eulerAngles.y))
+                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.rotation.eulerAngles.y))
                 .Run();
         }
 
@@ -1072,11 +1193,28 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         }
 
         [UnityTest]
+        public IEnumerator RotateLocalY()
+        {
+            const float from = -RotateYValue;
+            const float value = (RotateYValue * 2) + FullCircle;
+            const float expected = RotateYValue;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, from, 0f)))
+                .Act(() => GameObject.transform.Tween(TestTime).RotateLocalY(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.localRotation.eulerAngles.y))
+                .Run();
+        }
+
+        [UnityTest]
         public IEnumerator RotateLocalToY()
         {
+            const float from = -RotateYValue;
             const float to = RotateYValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, from, 0f)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocalYTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.localRotation.eulerAngles.y))
@@ -1103,30 +1241,36 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Run();
         }
 
+        #endregion
+
+        #region Rotate Axis Z
+
         [UnityTest]
         public IEnumerator RotateZ()
         {
             const float from = -RotateZValue;
             const float value = (RotateZValue * 2) + FullCircle;
-            const float to = RotateZValue;
+            const float expected = RotateZValue;
 
             yield return CreateTester()
                 .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, from)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateZ(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(Quaternion.Euler(new Vector3(0f, 0f, to)), GameObject.transform.rotation))
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.rotation.eulerAngles.z))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator RotateToZ()
         {
+            const float from = -RotateZValue;
             const float to = RotateZValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, from)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateZTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.eulerAngles.z))
+                .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.rotation.eulerAngles.z))
                 .Run();
         }
 
@@ -1151,11 +1295,28 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         }
 
         [UnityTest]
+        public IEnumerator RotateLocalZ()
+        {
+            const float from = -RotateZValue;
+            const float value = (RotateZValue * 2) + FullCircle;
+            const float expected = RotateZValue;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, from)))
+                .Act(() => GameObject.transform.Tween(TestTime).RotateLocalY(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => FlowEntAssert.AreEqual(expected, GameObject.transform.localRotation.eulerAngles.z))
+                .Run();
+        }
+
+        [UnityTest]
         public IEnumerator RotateLocalToZ()
         {
+            const float from = -RotateZValue;
             const float to = RotateZValue;
 
             yield return CreateTester()
+                .Arrange(() => GameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, from)))
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocalZTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => FlowEntAssert.AreEqual(to, GameObject.transform.localRotation.eulerAngles.z))
@@ -1181,6 +1342,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 })
                 .Run();
         }
+
+        #endregion
 
         #endregion
 
@@ -1242,67 +1405,22 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #region Scale
 
-        #region Scale
+        #region Scale Vector
 
         [UnityTest]
-        public IEnumerator Scale()
+        public IEnumerator ScaleLocal()
         {
+            Vector3 from = new Vector3(ScaleFrom, ScaleFrom, ScaleFrom);
             Vector3 value = new Vector3(ScaleValue, ScaleValue, ScaleValue);
-            Vector3 targetValue = Vector2.zero;
+            Vector3 expected = Vector3.Scale(from, value);
 
             yield return CreateTester()
-                .Arrange(() => targetValue = Vector3.Scale(GameObject.transform.localScale, value))
-                .Act(() => GameObject.transform.Tween(TestTime).Scale(value).Start())
+                .Arrange(() => GameObject.transform.localScale = from)
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocal(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(targetValue, GameObject.transform.localScale))
+                .Assert(() => Assert.AreEqual(expected, GameObject.transform.localScale))
                 .Run();
         }
-
-        [UnityTest]
-        public IEnumerator ScaleX()
-        {
-            const float value = ScaleValue;
-            float targetValue = 0;
-
-            yield return CreateTester()
-                .Arrange(() => targetValue = GameObject.transform.localScale.x * value)
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleX(value).Start())
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(targetValue, GameObject.transform.lossyScale.x))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator ScaleY()
-        {
-            const float value = ScaleValue;
-            float targetValue = 0;
-
-            yield return CreateTester()
-                .Arrange(() => targetValue = GameObject.transform.localScale.y * value)
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleY(value).Start())
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(targetValue, GameObject.transform.lossyScale.y))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator ScaleZ()
-        {
-            const float value = ScaleValue;
-            float targetValue = 0;
-
-            yield return CreateTester()
-                .Arrange(() => targetValue = GameObject.transform.localScale.z * value)
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleZ(value).Start())
-                .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(targetValue, GameObject.transform.lossyScale.z))
-                .Run();
-        }
-
-        #endregion
-
-        #region ScaleLocalTo
 
         [UnityTest]
         public IEnumerator ScaleLocalTo()
@@ -1312,7 +1430,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Arrange(() => GameObject.transform.localScale = from)
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleTo(to).Start())
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.localScale))
                 .Run();
@@ -1326,7 +1444,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleTo(from, to)
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalTo(from, to)
                     .OnUpdated((_) => startingFrom ??= GameObject.transform.localScale)
                     .Start())
                 .AssertTime(TestTime)
@@ -1340,39 +1458,34 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        #region ScaleLocalTo AnimationCurve3d
+        #region Scale Axis
+
+        #region Scale Axis X
 
         [UnityTest]
-        public IEnumerator ScaleLocalToAnimationCurve3d()
+        public IEnumerator ScaleLocalX()
         {
-            Vector3? actualFrom = null;
+            const float from = ScaleFrom;
+            const float value = ScaleValue;
+            const float expected = ScaleFrom * ScaleValue;
 
             yield return CreateTester()
-                .Act(() => GameObject.transform.Tween(TestTime)
-                    .OnUpdated((_) => actualFrom ??= GameObject.transform.localScale)
-                    .ScaleTo(Variables.AnimationCurve).Start())
+                .Arrange(() => GameObject.transform.localScale = new Vector3(from, 1f, 1f))
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalX(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() =>
-                {
-                    Assert.AreEqual(Variables.AnimationCurve.Evaluate(0f), actualFrom);
-                    Assert.AreEqual(Variables.AnimationCurve.Evaluate(1f), GameObject.transform.localScale);
-                })
+                .Assert(() => Assert.AreEqual(expected, GameObject.transform.localScale.x))
                 .Run();
         }
-
-        #endregion
-
-        #region ScaleLocalTo Axis
 
         [UnityTest]
         public IEnumerator ScaleLocalToX()
         {
-            Vector3 from = new Vector3(ScaleFrom, ScaleFrom, ScaleFrom);
+            const float from = ScaleFrom;
             const float to = ScaleTo;
 
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = from)
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleXTo(to).Start())
+                .Arrange(() => GameObject.transform.localScale = new Vector3(from, 1f, 1f))
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalXTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.localScale.x))
                 .Run();
@@ -1386,7 +1499,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleXTo(from, to)
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalXTo(from, to)
                     .OnUpdated((_) => startingFrom ??= GameObject.transform.localScale.x)
                     .Start())
                 .AssertTime(TestTime)
@@ -1398,15 +1511,34 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Run();
         }
 
+        #endregion
+
+        #region Scale Axis Y
+
+        [UnityTest]
+        public IEnumerator ScaleLocalY()
+        {
+            const float from = ScaleFrom;
+            const float value = ScaleValue;
+            const float expected = ScaleFrom * ScaleValue;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.localScale = new Vector3(1f, from, 1f))
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalY(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.AreEqual(expected, GameObject.transform.localScale.y))
+                .Run();
+        }
+
         [UnityTest]
         public IEnumerator ScaleLocalToY()
         {
-            Vector3 from = new Vector3(ScaleFrom, ScaleFrom, ScaleFrom);
+            const float from = ScaleFrom;
             const float to = ScaleTo;
 
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = from)
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleYTo(to).Start())
+                .Arrange(() => GameObject.transform.localScale = new Vector3(1f, from, 1f))
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalYTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.localScale.y))
                 .Run();
@@ -1432,15 +1564,34 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Run();
         }
 
+        #endregion
+
+        #region Scale Axis Z
+
+        [UnityTest]
+        public IEnumerator ScaleLocalZ()
+        {
+            const float from = ScaleFrom;
+            const float value = ScaleValue;
+            const float expected = ScaleFrom * ScaleValue;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.localScale = new Vector3(1f, 1f, from))
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalZ(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.AreEqual(expected, GameObject.transform.localScale.z))
+                .Run();
+        }
+
         [UnityTest]
         public IEnumerator ScaleLocalToZ()
         {
-            Vector3 from = new Vector3(ScaleFrom, ScaleFrom, ScaleFrom);
+            const float from = ScaleFrom;
             const float to = ScaleTo;
 
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = from)
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleZTo(to).Start())
+                .Arrange(() => GameObject.transform.localScale = new Vector3(1f, 1f, from))
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalZTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Assert.AreEqual(to, GameObject.transform.localScale.z))
                 .Run();
@@ -1454,7 +1605,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFrom = null;
 
             yield return CreateTester()
-                .Act(() => GameObject.transform.Tween(TestTime).ScaleZTo(from, to)
+                .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalZTo(from, to)
                     .OnUpdated((_) => startingFrom ??= GameObject.transform.localScale.z)
                     .Start())
                 .AssertTime(TestTime)
@@ -1466,14 +1617,37 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Run();
         }
 
+        #endregion
+
+        #region Scale Axis Mixed
+
+        [UnityTest]
+        public IEnumerator ScaleLocalXY()
+        {
+            const float from = ScaleFrom;
+            const float value = ScaleValue;
+            const float expected = ScaleFrom * ScaleValue;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.localScale = new Vector3(from, from, 1f))
+                .Act(() => new Tween(TestTime).Apply(new ScaleLocalAxisMotion(GameObject.transform, Axis.XY, value)).Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(expected, GameObject.transform.localScale.x);
+                    Assert.AreEqual(expected, GameObject.transform.localScale.y);
+                })
+                .Run();
+        }
+
         [UnityTest]
         public IEnumerator ScaleLocalToXY()
         {
-            Vector3 from = new Vector3(ScaleFrom, ScaleFrom, ScaleFrom);
+            const float from = ScaleFrom;
             const float to = ScaleTo;
 
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = from)
+                .Arrange(() => GameObject.transform.localScale = new Vector3(from, from, 1f))
                 .Act(() => new Tween(TestTime).Apply(new ScaleLocalAxisMotion(GameObject.transform, Axis.XY, default, to)).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1511,17 +1685,43 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Run();
         }
 
+        #endregion
+
+        #region Scale Axis Separated
+
+        [UnityTest]
+        public IEnumerator ScaleLocalXY_Separated()
+        {
+            const float from = ScaleFrom;
+            const float value = ScaleValue;
+            const float expected = ScaleFrom * ScaleValue;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.localScale = new Vector3(from, from, 1f))
+                .Act(() => new Flow()
+                    .Queue(GameObject.transform.Tween(TestTime).ScaleLocalX(value))
+                    .At(0, GameObject.transform.Tween(TestTime).ScaleLocalY(value))
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(expected, GameObject.transform.localScale.x);
+                    Assert.AreEqual(expected, GameObject.transform.localScale.y);
+                })
+                .Run();
+        }
+
         [UnityTest]
         public IEnumerator ScaleLocalToXY_Separated()
         {
-            Vector3 from = new Vector3(ScaleFrom, ScaleFrom, ScaleFrom);
+            const float from = ScaleFrom;
             const float to = ScaleTo;
 
             yield return CreateTester()
-                .Arrange(() => GameObject.transform.localScale = from)
+                .Arrange(() => GameObject.transform.localScale = new Vector3(from, from, 1f))
                 .Act(() => new Flow()
-                    .Queue(GameObject.transform.Tween(TestTime).ScaleXTo(to))
-                    .At(0, GameObject.transform.Tween(TestTime).ScaleYTo(to))
+                    .Queue(GameObject.transform.Tween(TestTime).ScaleLocalXTo(to))
+                    .At(0, GameObject.transform.Tween(TestTime).ScaleLocalYTo(to))
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1542,7 +1742,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => new Flow()
-                    .Queue(GameObject.transform.Tween(TestTime).ScaleXTo(from, to))
+                    .Queue(GameObject.transform.Tween(TestTime).ScaleLocalXTo(from, to))
                     .At(0, GameObject.transform.Tween(TestTime).ScaleYTo(from, to))
                     .OnUpdated((_) =>
                     {
@@ -1557,6 +1757,30 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     Assert.AreEqual(from, startingFromY);
                     Assert.AreEqual(to, GameObject.transform.localScale.x);
                     Assert.AreEqual(to, GameObject.transform.localScale.y);
+                })
+                .Run();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Scale AnimationCurve3d
+
+        [UnityTest]
+        public IEnumerator ScaleLocalToAnimationCurve3d()
+        {
+            Vector3? actualFrom = null;
+
+            yield return CreateTester()
+                .Act(() => GameObject.transform.Tween(TestTime)
+                    .OnUpdated(_ => actualFrom ??= GameObject.transform.localScale)
+                    .ScaleLocalTo(Variables.AnimationCurve).Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(Variables.AnimationCurve.Evaluate(0f), actualFrom);
+                    Assert.AreEqual(Variables.AnimationCurve.Evaluate(1f), GameObject.transform.localScale);
                 })
                 .Run();
         }

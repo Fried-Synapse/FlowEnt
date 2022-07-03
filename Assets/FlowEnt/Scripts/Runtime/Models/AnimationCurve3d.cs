@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt
         public Vector3 Evaluate(float t)
         {
             cache.x = x.Evaluate(t);
-            cache.x = y.Evaluate(t);
+            cache.y = y.Evaluate(t);
             cache.z = z.Evaluate(t);
             return cache;
         }

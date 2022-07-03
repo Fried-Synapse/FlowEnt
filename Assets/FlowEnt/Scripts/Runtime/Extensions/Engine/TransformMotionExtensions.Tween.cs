@@ -102,14 +102,14 @@ namespace FriedSynapse.FlowEnt
         #region Move Axis X
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveX<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(value, 0f, 0f)));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.X, value));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
@@ -133,14 +133,14 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.X, from, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveLocalX<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new MoveLocalVectorMotion(proxy.Item, new Vector3(value, 0f, 0f)));
+            => proxy.Apply(new MoveLocalAxisMotion(proxy.Item, Axis.X, value));
 
         /// <summary>
         /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
@@ -168,14 +168,14 @@ namespace FriedSynapse.FlowEnt
         #region Move Axis Y
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveY<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, value, 0f)));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Y, value));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
@@ -199,14 +199,14 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Y, from, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveLocalY<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new MoveLocalVectorMotion(proxy.Item, new Vector3(0f, value, 0f)));
+            => proxy.Apply(new MoveLocalAxisMotion(proxy.Item, Axis.Y, value));
 
         /// <summary>
         /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
@@ -234,14 +234,14 @@ namespace FriedSynapse.FlowEnt
         #region Move Axis Z
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveZ<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, 0f, value)));
+            => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Z, value));
 
         /// <summary>
         /// Applies a <see cref="MoveAxisMotion{TTransform}" /> to the tween.
@@ -265,14 +265,14 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Z, from, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveLocalVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveLocalZ<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new MoveLocalVectorMotion(proxy.Item, new Vector3(0f, 0f, value)));
+            => proxy.Apply(new MoveLocalAxisMotion(proxy.Item, Axis.Z, value));
 
         /// <summary>
         /// Applies a <see cref="MoveLocalAxisMotion{TTransform}" /> to the tween.
@@ -461,6 +461,8 @@ namespace FriedSynapse.FlowEnt
 
         #region Rotate Axis
 
+        #region Rotate Axis X
+
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
         /// </summary>
@@ -493,6 +495,16 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateAxisMotion(proxy.Item, Axis.X, from, to));
 
         /// <summary>
+        /// Applies a <see cref="RotateLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotionProxy<TTransform> RotateLocalX<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
+            where TTransform : Transform
+            => proxy.Apply(new RotateLocalVectorMotion(proxy.Item, new Vector3(value, 0f, 0f)));
+
+        /// <summary>
         /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
@@ -512,6 +524,10 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotionProxy<TTransform> RotateLocalXTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float from, float to)
             where TTransform : Transform
             => proxy.Apply(new RotateLocalAxisMotion(proxy.Item, Axis.X, from, to));
+
+        #endregion
+
+        #region Rotate Axis Y
 
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
@@ -545,6 +561,16 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateAxisMotion(proxy.Item, Axis.Y, from, to));
 
         /// <summary>
+        /// Applies a <see cref="RotateLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotionProxy<TTransform> RotateLocalY<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
+            where TTransform : Transform
+            => proxy.Apply(new RotateLocalVectorMotion(proxy.Item, new Vector3(0f, value, 0f)));
+
+        /// <summary>
         /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
@@ -564,6 +590,10 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotionProxy<TTransform> RotateLocalYTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float from, float to)
             where TTransform : Transform
             => proxy.Apply(new RotateLocalAxisMotion(proxy.Item, Axis.Y, from, to));
+
+        #endregion
+
+        #region Rotate Axis Z
 
         /// <summary>
         /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the tween.
@@ -597,6 +627,16 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateAxisMotion(proxy.Item, Axis.Z, from, to));
 
         /// <summary>
+        /// Applies a <see cref="RotateLocalVectorMotion{TTransform}" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        /// <typeparam name="TTransform"></typeparam>
+        public static TweenMotionProxy<TTransform> RotateLocalZ<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
+            where TTransform : Transform
+            => proxy.Apply(new RotateLocalVectorMotion(proxy.Item, new Vector3(0f, 0f, value)));
+
+        /// <summary>
         /// Applies a <see cref="RotateLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
@@ -616,6 +656,8 @@ namespace FriedSynapse.FlowEnt
         public static TweenMotionProxy<TTransform> RotateLocalZTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float from, float to)
             where TTransform : Transform
             => proxy.Apply(new RotateLocalAxisMotion(proxy.Item, Axis.Z, from, to));
+
+        #endregion
 
         #endregion
 
@@ -696,7 +738,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> Scale<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 value)
+        public static TweenMotionProxy<TTransform> ScaleLocal<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 value)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalVectorMotion(proxy.Item, value));
 
@@ -706,7 +748,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleTo<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 to)
+        public static TweenMotionProxy<TTransform> ScaleLocalTo<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 to)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalVectorMotion(proxy.Item, default, to));
 
@@ -717,7 +759,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleTo<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 from, Vector3 to)
+        public static TweenMotionProxy<TTransform> ScaleLocalTo<TTransform>(this TweenMotionProxy<TTransform> proxy, Vector3 from, Vector3 to)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalVectorMotion(proxy.Item, from, to));
 
@@ -731,7 +773,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="animationCurve"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleTo<TTransform>(this TweenMotionProxy<TTransform> proxy, AnimationCurve3d animationCurve)
+        public static TweenMotionProxy<TTransform> ScaleLocalTo<TTransform>(this TweenMotionProxy<TTransform> proxy, AnimationCurve3d animationCurve)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalAnimationCurve3dMotion(proxy.Item, animationCurve));
 
@@ -740,14 +782,14 @@ namespace FriedSynapse.FlowEnt
         #region Scale Axis
 
         /// <summary>
-        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleX<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
+        public static TweenMotionProxy<TTransform> ScaleLocalX<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new ScaleLocalVectorMotion(proxy.Item, new Vector3(value, 1f, 1f)));
+            => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.X, value));
 
         /// <summary>
         /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
@@ -755,7 +797,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleXTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float to)
+        public static TweenMotionProxy<TTransform> ScaleLocalXTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float to)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.X, default, to));
 
@@ -766,19 +808,19 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleXTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float from, float to)
+        public static TweenMotionProxy<TTransform> ScaleLocalXTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float from, float to)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.X, from, to));
 
         /// <summary>
-        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleY<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
+        public static TweenMotionProxy<TTransform> ScaleLocalY<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new ScaleLocalVectorMotion(proxy.Item, new Vector3(1f, value, 1f)));
+            => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.Y, value));
 
         /// <summary>
         /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
@@ -786,7 +828,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleYTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float to)
+        public static TweenMotionProxy<TTransform> ScaleLocalYTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float to)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.Y, default, to));
 
@@ -802,14 +844,14 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.Y, from, to));
 
         /// <summary>
-        /// Applies a <see cref="ScaleLocalVectorMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleZ<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
+        public static TweenMotionProxy<TTransform> ScaleLocalZ<TTransform>(this TweenMotionProxy<TTransform> proxy, float value)
             where TTransform : Transform
-            => proxy.Apply(new ScaleLocalVectorMotion(proxy.Item, new Vector3(1f, 1f, value)));
+            => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.Z, value));
 
         /// <summary>
         /// Applies a <see cref="ScaleLocalAxisMotion{TTransform}" /> to the tween.
@@ -817,7 +859,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="proxy"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleZTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float to)
+        public static TweenMotionProxy<TTransform> ScaleLocalZTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float to)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.Z, default, to));
 
@@ -828,7 +870,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <typeparam name="TTransform"></typeparam>
-        public static TweenMotionProxy<TTransform> ScaleZTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float from, float to)
+        public static TweenMotionProxy<TTransform> ScaleLocalZTo<TTransform>(this TweenMotionProxy<TTransform> proxy, float from, float to)
             where TTransform : Transform
             => proxy.Apply(new ScaleLocalAxisMotion(proxy.Item, Axis.Z, from, to));
 
