@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
@@ -77,8 +78,19 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Starts the animation async(you can await this till the animation finishes).
         /// </summary>
-        public async Task<AbstractAnimation> StartAsync()
+        /// <param name="token"></param>
+        public async Task<AbstractAnimation> StartAsync(CancellationToken? token = null)
         {
+            if (token != null)
+            {
+                OnUpdated(_ =>
+                {
+                    if (token.Value.IsCancellationRequested)
+                    {
+                        Stop();
+                    }
+                });
+            }
             PreStart();
             StartInternal();
             await new AwaitableAnimation(this);

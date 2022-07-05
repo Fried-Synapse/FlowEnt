@@ -20,19 +20,15 @@ namespace FriedSynapse.FlowEnt
         public AnimationAwaiter(AbstractAnimation animation)
         {
             this.animation = animation;
-            this.animation.OnCompletedInternal(() => onCompletedCallback());
         }
 
         private readonly AbstractAnimation animation;
         public bool IsCompleted => animation.PlayState == PlayState.Finished;
-        private Action onCompletedCallback;
 
         public AbstractAnimation GetResult()
             => animation;
 
         public void OnCompleted(Action continuation)
-        {
-            onCompletedCallback = continuation;
-        }
+            => animation.OnCompletedInternal(continuation);
     }
 }

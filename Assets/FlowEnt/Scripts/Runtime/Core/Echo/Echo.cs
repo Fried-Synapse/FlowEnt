@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 
@@ -60,12 +61,12 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        /// <inheritdoc cref="AbstractAnimation.StartAsync" />
-        /// \copydoc AbstractAnimation.StartAsync
+        /// <inheritdoc cref="AbstractAnimation..StartAsync(CancellationToken?)" />
+        /// \copydoc AbstractAnimation..StartAsync(CancellationToken?)
         /// <exception cref="AnimationException">If the echo has already started.</exception>
-        public new async Task<Echo> StartAsync()
+        public new async Task<Echo> StartAsync(CancellationToken? token = null)
         {
-            await base.StartAsync();
+            await base.StartAsync(token);
             return this;
         }
 

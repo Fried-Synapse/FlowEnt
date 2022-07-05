@@ -1,3 +1,6 @@
+using System.Threading;
+using System.Threading.Tasks;
+using FriedSynapse.Quickit;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
@@ -60,11 +63,13 @@ namespace FriedSynapse.FlowEnt.Builder
                 .For(Green)
                     .MoveLocalYTo(3.5f);
 
-        private void Start()
+        private async void Start()
         {
-            Echo.Build().Start();
-            Tween.Build().Start();
-            Flow.Build().Start();
+            CancellationTokenSource source = new CancellationTokenSource();
+            source.CancelAfter(1000);
+            await Tween.Build().StartAsync(source.Token);
+            await Echo.Build().StartAsync();
+            //Flow.Build().Start();
         }
 #pragma warning restore IDE0051, RCS1213
 
