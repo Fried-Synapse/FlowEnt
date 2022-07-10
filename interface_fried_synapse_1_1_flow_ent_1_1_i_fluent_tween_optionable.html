@@ -129,6 +129,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2120ff5597de48df0bdfd52caa71cc3c"><td class="memItemLeft" align="right" valign="top">TTween&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_tween_optionable.html#a2120ff5597de48df0bdfd52caa71cc3c">SetEasing</a> (<a class="el" href="namespace_fried_synapse_1_1_flow_ent.html#a63ff0fcd8028217a733ba19a90a05d06">Easing</a> easing, bool reverse=TweenOptions.DefaultEasingReverse)</td></tr>
 <tr class="memdesc:a2120ff5597de48df0bdfd52caa71cc3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the easing of the tween using predefined values.  <a href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_tween_optionable.html#a2120ff5597de48df0bdfd52caa71cc3c">More...</a><br /></td></tr>
 <tr class="separator:a2120ff5597de48df0bdfd52caa71cc3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abac046d7b80e1519685f5a8886e46fed"><td class="memItemLeft" align="right" valign="top">TTween&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_tween_optionable.html#abac046d7b80e1519685f5a8886e46fed">SetEasing</a> (Func&lt; float, float &gt; easing, bool reverse=TweenOptions.DefaultEasingReverse)</td></tr>
+<tr class="memdesc:abac046d7b80e1519685f5a8886e46fed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the easing of the tween using a FunctionEasing.  <a href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_tween_optionable.html#abac046d7b80e1519685f5a8886e46fed">More...</a><br /></td></tr>
+<tr class="separator:abac046d7b80e1519685f5a8886e46fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8ea7dc657930dd6e588747951f553d4"><td class="memItemLeft" align="right" valign="top">TTween&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_tween_optionable.html#ae8ea7dc657930dd6e588747951f553d4">SetEasing</a> (AnimationCurve animationCurve, bool reverse=TweenOptions.DefaultEasingReverse)</td></tr>
 <tr class="memdesc:ae8ea7dc657930dd6e588747951f553d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the easing of the tween using an animation curve.  <a href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_tween_optionable.html#ae8ea7dc657930dd6e588747951f553d4">More...</a><br /></td></tr>
 <tr class="separator:ae8ea7dc657930dd6e588747951f553d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,7 +163,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae8ea7dc657930dd6e588747951f553d4" name="ae8ea7dc657930dd6e588747951f553d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8ea7dc657930dd6e588747951f553d4">&#9670;&nbsp;</a></span>SetEasing() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8ea7dc657930dd6e588747951f553d4">&#9670;&nbsp;</a></span>SetEasing() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,7 +200,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a2120ff5597de48df0bdfd52caa71cc3c" name="a2120ff5597de48df0bdfd52caa71cc3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2120ff5597de48df0bdfd52caa71cc3c">&#9670;&nbsp;</a></span>SetEasing() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2120ff5597de48df0bdfd52caa71cc3c">&#9670;&nbsp;</a></span>SetEasing() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,8 +236,45 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="abac046d7b80e1519685f5a8886e46fed" name="abac046d7b80e1519685f5a8886e46fed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abac046d7b80e1519685f5a8886e46fed">&#9670;&nbsp;</a></span>SetEasing() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TTween <a class="el" href="interface_fried_synapse_1_1_flow_ent_1_1_i_fluent_tween_optionable.html">FriedSynapse.FlowEnt.IFluentTweenOptionable</a>&lt; TTween &gt;.SetEasing </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; float, float &gt;&#160;</td>
+          <td class="paramname"><em>easing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>reverse</em> = <code>TweenOptions.DefaultEasingReverse</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the easing of the tween using a FunctionEasing. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">easing</td><td></td></tr>
+    <tr><td class="paramname">reverse</td><td>Will apply a reverse on the easing.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aec037faa1e298728193a0d7aa24ba403" name="aec037faa1e298728193a0d7aa24ba403"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec037faa1e298728193a0d7aa24ba403">&#9670;&nbsp;</a></span>SetEasing() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aec037faa1e298728193a0d7aa24ba403">&#9670;&nbsp;</a></span>SetEasing() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

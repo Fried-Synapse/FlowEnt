@@ -613,7 +613,6 @@ var hierarchy =
     [ "FriedSynapse.FlowEnt.AnimationCurve2d", "struct_fried_synapse_1_1_flow_ent_1_1_animation_curve2d.html", null ],
     [ "FriedSynapse.FlowEnt.AnimationCurve3d", "struct_fried_synapse_1_1_flow_ent_1_1_animation_curve3d.html", null ],
     [ "FriedSynapse.FlowEnt.AudioSourceMotionExtensions", "class_fried_synapse_1_1_flow_ent_1_1_audio_source_motion_extensions.html", null ],
-    [ "FriedSynapse.FlowEnt.AwaitableAnimation", "class_fried_synapse_1_1_flow_ent_1_1_awaitable_animation.html", null ],
     [ "Button", null, [
       [ "FriedSynapse.FlowEnt.Editor.ControlButton", "class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_control_button.html", null ]
     ] ],

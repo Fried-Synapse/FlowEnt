@@ -21,6 +21,7 @@ var class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy =
     [ "SetDelay", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#a42e7e817ff627958e4c669356c691742", null ],
     [ "SetEasing", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#ad555dd5121b0482422abd56c9b5edbb0", null ],
     [ "SetEasing", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#a9cd58ce5399d5fd00eb5fc779a82e918", null ],
+    [ "SetEasing", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#a385a84325269ab2d2ae84b314ab01f0e", null ],
     [ "SetEasing", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#ae105af4fa898690ebd98172bfd91264f", null ],
     [ "SetLoopCount", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#a2e64651358f02d2a64c56cf156bf693e", null ],
     [ "SetLoopType", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#a24738dd8e513b20415f36ffc67f801cb", null ],
@@ -30,6 +31,6 @@ var class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy =
     [ "SetTimeScale", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#a03e81add4861813666b230958e92d29d", null ],
     [ "SetUpdateType", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#a646e721c94003ea350e071cd64a5d1b8", null ],
     [ "Start", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#ad8f7ff81e3a5d22b7afb6184e7de0df2", null ],
-    [ "StartAsync", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#a84eceff74f99f5cd6a13e2a0244fd961", null ],
+    [ "StartAsync", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#ae8a3bd4d5416688846ffcc811d5f5632", null ],
     [ "Stop", "class_fried_synapse_1_1_flow_ent_1_1_tween_motion_proxy.html#abda9a0f2e6d2b279ec0cd6b2304b06ed", null ]
 ];

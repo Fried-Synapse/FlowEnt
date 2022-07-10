@@ -12,10 +12,13 @@ var class_fried_synapse_1_1_flow_ent_1_1_flow =
     [ "AtDeferred", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#af440481bbafae11d23dc5925921ac750", null ],
     [ "Conditional", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#aa27af90874906727beb8fdd980b58a2a", null ],
     [ "OnCompleted", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a2dc1555108b3066168b6ed6bf0f0326f", null ],
+    [ "OnCompleting", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#aa5c9c7890d55c2678476f9cda717c684", null ],
     [ "OnLoopCompleted", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a0955920ca60409f0c00568dbaa9c3d19", null ],
     [ "OnLoopStarted", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a6cc88b95cfe3a0467688e73a058ec612", null ],
     [ "OnStarted", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#ad8ad8a63d910fcc5a86efe369e815461", null ],
+    [ "OnStarting", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a33428228c25050d9a00336dc6a3150d2", null ],
     [ "OnUpdated", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#af373946d54cd460233be13fceca152df", null ],
+    [ "OnUpdating", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a69b8fe1aeeb87cb4177bf067c401af1d", null ],
     [ "Pause", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a7b7166718159daff87a7c4781f6e292b", null ],
     [ "Queue", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a06eb877ecd893f3186372cdb3273c46e", null ],
     [ "Queue", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#aab6cb7ebca09b73e76a526d56cf19edd", null ],
@@ -43,6 +46,6 @@ var class_fried_synapse_1_1_flow_ent_1_1_flow =
     [ "SetTimeScale", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a641eca9c02e86ab80b15b141b772ea93", null ],
     [ "SetUpdateType", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#abd0de1deca09c31ffb8b13d89cd579d0", null ],
     [ "Start", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a3cc7f070ff02b0c1167e463590c9da76", null ],
-    [ "StartAsync", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#ae09df817e94c180f544b4e5aa3cfd756", null ],
+    [ "StartAsync", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#ac83dade76e6733e70e8d4de14e2155b0", null ],
     [ "Stop", "class_fried_synapse_1_1_flow_ent_1_1_flow.html#a452820d5d2b62aba5712ac5c74536e88", null ]
 ];

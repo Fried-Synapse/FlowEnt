@@ -188,6 +188,5 @@ var searchData=
   ['animationnameelement_185',['AnimationNameElement',['../class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_animation_name_element.html',1,'FriedSynapse::FlowEnt::Editor']]],
   ['audiosourcemotionextensions_186',['AudioSourceMotionExtensions',['../class_fried_synapse_1_1_flow_ent_1_1_audio_source_motion_extensions.html',1,'FriedSynapse::FlowEnt']]],
   ['autoscalableslider_187',['AutoScalableSlider',['../class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_auto_scalable_slider.html',1,'FriedSynapse::FlowEnt::Editor']]],
-  ['autostarthelper_188',['AutoStartHelper',['../class_fried_synapse_1_1_flow_ent_1_1_auto_start_helper.html',1,'FriedSynapse::FlowEnt']]],
-  ['awaitableanimation_189',['AwaitableAnimation',['../class_fried_synapse_1_1_flow_ent_1_1_awaitable_animation.html',1,'FriedSynapse::FlowEnt']]]
+  ['autostarthelper_188',['AutoStartHelper',['../class_fried_synapse_1_1_flow_ent_1_1_auto_start_helper.html',1,'FriedSynapse::FlowEnt']]]
 ];
