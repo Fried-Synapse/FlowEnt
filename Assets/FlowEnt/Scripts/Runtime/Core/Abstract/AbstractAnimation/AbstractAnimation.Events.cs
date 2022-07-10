@@ -39,7 +39,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentAnimationEventable.OnUpdating
         public AbstractAnimation OnUpdating(Action<float> callback)
         {
-            onUpdated += callback;
+            onUpdating += callback;
             return this;
         }
 
@@ -71,7 +71,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentAnimationEventable.OnCompleting
         public AbstractAnimation OnCompleting(Action callback)
         {
-            onCompleted += callback;
+            onCompleting += callback;
             return this;
         }
 

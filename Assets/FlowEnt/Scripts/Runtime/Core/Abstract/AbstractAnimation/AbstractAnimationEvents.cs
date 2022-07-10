@@ -41,18 +41,18 @@ namespace FriedSynapse.FlowEnt
         public Action OnCompletedEvent { get; set; }
 
         /// <inheritdoc />
-        /// \copydoc IFluentAnimationEventable.OnStarted
-        public AbstractAnimationEvents OnStarted(Action callback)
-        {
-            OnStartedEvent += callback;
-            return this;
-        }
-
-        /// <inheritdoc />
         /// \copydoc IFluentAnimationEventable.OnStarting
         public AbstractAnimationEvents OnStarting(Action callback)
         {
             OnStartingEvent += callback;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnStarted
+        public AbstractAnimationEvents OnStarted(Action callback)
+        {
+            OnStartedEvent += callback;
             return this;
         }
 

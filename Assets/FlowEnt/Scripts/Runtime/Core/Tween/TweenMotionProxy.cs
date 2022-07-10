@@ -291,6 +291,14 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc />
         /// \copydoc IFluentTweenOptionable.SetEasing
+        public TweenMotionProxy<TItem> SetEasing(Func<float, float> easing, bool reverse = TweenOptions.DefaultEasingReverse)
+        {
+            Tween.SetEasing(easing, reverse);
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentTweenOptionable.SetEasing
         public TweenMotionProxy<TItem> SetEasing(AnimationCurve animationCurve, bool reverse = TweenOptions.DefaultEasingReverse)
         {
             Tween.SetEasing(animationCurve, reverse);

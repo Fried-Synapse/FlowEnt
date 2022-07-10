@@ -27,6 +27,13 @@ namespace FriedSynapse.FlowEnt
         TTween SetEasing(Easing easing, bool reverse = TweenOptions.DefaultEasingReverse);
 
         /// <summary>
+        /// Sets the easing of the tween using a <see cref="FunctionEasing"/>.
+        /// </summary>
+        /// <param name="easing"></param>
+        /// <param name="reverse">Will apply a reverse on the easing.</param>
+        TTween SetEasing(Func<float, float> easing, bool reverse = TweenOptions.DefaultEasingReverse);
+
+        /// <summary>
         /// Sets the easing of the tween using an animation curve.
         /// </summary>
         /// <param name="animationCurve"></param>

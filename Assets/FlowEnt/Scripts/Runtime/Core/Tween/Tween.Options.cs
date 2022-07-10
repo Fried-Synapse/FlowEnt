@@ -122,7 +122,7 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentTweenOptionable.SetEasing
         public Tween SetEasing(IEasing easing, bool reverse = TweenOptions.DefaultEasingReverse)
         {
-            this.easing = reverse ? easing.Reverse() : easing;
+            this.easing = reverse ? new ReverseEasing(easing) : easing;
             return this;
         }
 
@@ -130,6 +130,11 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentTweenOptionable.SetEasing
         public Tween SetEasing(Easing easing, bool reverse = TweenOptions.DefaultEasingReverse)
             => SetEasing(EasingFactory.Create(easing), reverse);
+
+        /// <inheritdoc />
+        /// \copydoc IFluentTweenOptionable.SetEasing
+        public Tween SetEasing(Func<float, float> easing, bool reverse = TweenOptions.DefaultEasingReverse)
+            => SetEasing(new FunctionEasing(easing), reverse);
 
         /// <inheritdoc />
         /// \copydoc IFluentTweenOptionable.SetEasing

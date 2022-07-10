@@ -20,12 +20,12 @@ namespace FriedSynapse.FlowEnt
         public void OnCompleted(Action continuation)
         {
             this.continuation = continuation;
-            animation.OnCompletedInternal(continuation);
+            animation.OnCompleted(continuation);
         }
 
         public void Complete()
         {
-            this.continuation?.Invoke();
+            continuation?.Invoke();
         }
 
         public AnimationAwaiter GetAwaiter()

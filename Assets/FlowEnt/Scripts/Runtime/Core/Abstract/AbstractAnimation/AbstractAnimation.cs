@@ -78,7 +78,7 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Starts the animation async(you can await this till the animation finishes).
         /// </summary>
-        /// <param name="token"></param>
+        /// <param name="token">The cancellation doesn't cancel the task, but rather terminates the animation. The task will be completed</param>
         public async Task<AbstractAnimation> StartAsync(CancellationToken? token = null)
         {
             AnimationAwaiter awaiter = new AnimationAwaiter(this);
@@ -259,11 +259,6 @@ namespace FriedSynapse.FlowEnt
             {
                 CancelAutoStart();
             }
-        }
-
-        internal void OnCompletedInternal(Action callback)
-        {
-            onCompleted += callback;
         }
 
         protected override void StopInternal(bool triggerOnCompleted)
