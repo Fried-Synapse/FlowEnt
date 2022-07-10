@@ -11,8 +11,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         protected override Echo CreateAnimation(float testTime)
             => new Echo(testTime);
 
-        protected override float UpdatedControlOperation(float controlTracker, float t)
-            => controlTracker + t;
+        protected override float GetUnitValue(float currentChange, float previousValue, float fullUnitValue)
+        {
+            float x = previousValue + (currentChange / fullUnitValue);
+            UnityEngine.Debug.Log(x);
+            return previousValue + (currentChange / fullUnitValue);
+        }
 
         #region Builder
 
