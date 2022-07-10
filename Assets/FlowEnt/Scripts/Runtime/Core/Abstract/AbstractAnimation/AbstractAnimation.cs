@@ -81,19 +81,16 @@ namespace FriedSynapse.FlowEnt
         /// <param name="token"></param>
         public async Task<AbstractAnimation> StartAsync(CancellationToken? token = null)
         {
-            if (token != null)
+            AnimationAwaiter awaiter = new AnimationAwaiter(this);
+            token?.Register(() =>
             {
-                OnUpdated(_ =>
-                {
-                    if (token.Value.IsCancellationRequested)
-                    {
-                        Stop();
-                    }
-                });
-            }
+                Stop();
+                awaiter.Complete();
+            });
             PreStart();
             StartInternal();
-            await new AwaitableAnimation(this);
+
+            await awaiter;
             return this;
         }
 
@@ -193,9 +190,15 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Provides a task that can be awaited. The task completes when the animation ends.
         /// </summary>
-        public async Task AsAsync()
+        public async Task AsAsync(CancellationToken? token = null)
         {
-            await new AwaitableAnimation(this);
+            AnimationAwaiter awaiter = new AnimationAwaiter(this);
+            token?.Register(() =>
+            {
+                Stop();
+                awaiter.Complete();
+            });
+            await awaiter;
         }
 
         #endregion

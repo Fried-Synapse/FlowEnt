@@ -66,7 +66,7 @@ namespace FriedSynapse.FlowEnt.Builder
         private async void Start()
         {
             CancellationTokenSource source = new CancellationTokenSource();
-            source.CancelAfter(1000);
+            source.CancelAfter(2000);
             await Tween.Build().StartAsync(source.Token);
             await Echo.Build().StartAsync();
             //Flow.Build().Start();

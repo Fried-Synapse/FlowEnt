@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine.TestTools;
@@ -83,7 +84,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
+#pragma warning disable RCS1047
         public IEnumerator StartAsync()
+#pragma warning restore RCS1047
         {
             Task task = null;
 
@@ -108,7 +111,36 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
+        public IEnumerator StartAsync_Cancel()
+        {
+            Task task = null;
+
+            IEnumerator customWaiter()
+            {
+                while (!task.IsCompleted)
+                {
+                    yield return null;
+                }
+            }
+
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    CancellationTokenSource source = new CancellationTokenSource();
+                    source.CancelAfter((int)(HalfTestTime * 1000));
+                    TAnimation animation = CreateAnimation(TestTime);
+                    task = animation.StartAsync(source.Token);
+                    return animation;
+                })
+                .SetCustomWaiter(customWaiter)
+                .AssertTime(HalfTestTime)
+                .Run();
+        }
+
+        [UnityTest]
+#pragma warning disable RCS1047
         public IEnumerator Start_WaitAsync()
+#pragma warning restore RCS1047
         {
             Task task = null;
 

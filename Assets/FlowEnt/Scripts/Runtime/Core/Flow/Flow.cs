@@ -144,6 +144,7 @@ namespace FriedSynapse.FlowEnt
             }
 
             remainingLoops = loopCount;
+            onStarting?.Invoke();
 
             updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
@@ -172,6 +173,7 @@ namespace FriedSynapse.FlowEnt
             float scaledDeltaTime = deltaTime * timeScale;
             elapsedTime += scaledDeltaTime;
 
+            onUpdating?.Invoke(scaledDeltaTime);
             onUpdated?.Invoke(scaledDeltaTime);
         }
 
@@ -179,6 +181,8 @@ namespace FriedSynapse.FlowEnt
         {
             float scaledDeltaTime = deltaTime * timeScale;
             elapsedTime += scaledDeltaTime;
+
+            onUpdating?.Invoke(scaledDeltaTime);
 
             AbstractUpdatable index = updatables.anchor.next;
 
@@ -212,6 +216,8 @@ namespace FriedSynapse.FlowEnt
             }
 
             updateController.UnsubscribeFromUpdate(this);
+
+            onCompleting?.Invoke();
 
             playState = PlayState.Finished;
 

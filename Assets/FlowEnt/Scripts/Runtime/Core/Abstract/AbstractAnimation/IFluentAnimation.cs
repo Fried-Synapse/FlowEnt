@@ -54,31 +54,49 @@ namespace FriedSynapse.FlowEnt
     internal interface IFluentAnimationEventable<T>
     {
         /// <summary>
-        /// Adds an event called when the animation started.
+        /// Adds an event called when the animation is starting.
+        /// </summary>
+        /// <param name="callback">The event.</param>
+        T OnStarting(Action callback);
+
+        /// <summary>
+        /// Adds an event called when the animation has started.
         /// </summary>
         /// <param name="callback">The event.</param>
         T OnStarted(Action callback);
 
         /// <summary>
-        /// Adds an event called when the animation updated.
+        /// Adds an event called when the animation is updating.
+        /// </summary>
+        /// <param name="callback">The event.</param>
+        T OnUpdating(Action<float> callback);
+
+        /// <summary>
+        /// Adds an event called when the animation has updated.
         /// </summary>
         /// <param name="callback">The event.</param>
         T OnUpdated(Action<float> callback);
 
         /// <summary>
-        /// Adds an event called when a loop started.
+        /// Adds an event called when the animation loop has started.
         /// </summary>
         /// <param name="callback">The event. The parameter represents the number of loops left. If there are infinite loops it'll send a null param.</param>
         T OnLoopStarted(Action<int?> callback);
 
         /// <summary>
-        /// Adds an event called when a loop completed.
+        /// Adds an event called when the animation loop has completed.
         /// </summary>
         /// <param name="callback">The event. The parameter represents the number of loops left. If there are infinite loops it'll send a null param.</param>
         T OnLoopCompleted(Action<int?> callback);
 
         /// <summary>
-        /// Adds an event called when the animation completed.
+        /// Adds an event called when the animation is completing.
+        /// </summary>
+        /// <param name="callback">The event.</param>
+        T OnCompleting(Action callback);
+
+        /// <summary>
+        /// Adds an event called when the animation has completed.
         /// </summary>
         /// <param name="callback">The event.</param>
         T OnCompleted(Action callback);

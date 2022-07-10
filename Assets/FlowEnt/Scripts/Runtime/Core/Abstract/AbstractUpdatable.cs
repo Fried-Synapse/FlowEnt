@@ -74,8 +74,11 @@ namespace FriedSynapse.FlowEnt
 
         #region Events
 
+        protected Action onStarting;
         private protected Action onStarted;
+        protected Action<float> onUpdating;
         private protected Action<float> onUpdated;
+        protected Action onCompleting;
         private protected Action onCompleted;
 
         #endregion

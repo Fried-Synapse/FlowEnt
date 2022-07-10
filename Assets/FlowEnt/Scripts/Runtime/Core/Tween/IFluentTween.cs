@@ -42,22 +42,5 @@ namespace FriedSynapse.FlowEnt
 
     internal interface IFluentTweenEventable<TTween> : IFluentAnimationEventable<TTween>
     {
-        /// <summary>
-        /// Adds an event called before the animation starts.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        TTween OnStarting(Action callback);
-
-        /// <summary>
-        /// Adds an event called before the animation updates.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        TTween OnUpdating(Action<float> callback);
-
-        /// <summary>
-        /// Adds an event called before the animation completes.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        TTween OnCompleting(Action callback);
     }
 }

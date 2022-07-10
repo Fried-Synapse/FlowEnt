@@ -9,11 +9,26 @@ namespace FriedSynapse.FlowEnt
         IFluentFlowEventable<FlowEvents>
     {
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnStarting
+        public new FlowEvents OnStarting(Action callback)
+        {
+            base.OnStarting(callback);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationEventable.OnStarted
         public new FlowEvents OnStarted(Action callback)
         {
             base.OnStarted(callback);
-            OnStartedEvent = callback;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnUpdating
+        public new FlowEvents OnUpdating(Action<float> callback)
+        {
+            base.OnUpdating(callback);
             return this;
         }
 
@@ -38,6 +53,14 @@ namespace FriedSynapse.FlowEnt
         public new FlowEvents OnLoopCompleted(Action<int?> callback)
         {
             base.OnLoopCompleted(callback);
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnCompleting
+        public new FlowEvents OnCompleting(Action callback)
+        {
+            base.OnCompleting(callback);
             return this;
         }
 

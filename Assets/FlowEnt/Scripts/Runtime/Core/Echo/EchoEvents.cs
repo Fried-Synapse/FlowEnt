@@ -8,24 +8,11 @@ namespace FriedSynapse.FlowEnt
     public class EchoEvents : AbstractAnimationEvents,
         IFluentEchoEventable<EchoEvents>
     {
-        /// <summary>
-        /// The event called when an animation is starting.
-        /// </summary>
-        public Action OnStartingEvent { get; set; }
-        /// <summary>
-        /// The event called when an animation is updating.
-        /// </summary>
-        public Action<float> OnUpdatingEvent { get; set; }
-        /// <summary>
-        /// The event called when an animation is completing.
-        /// </summary>
-        public Action OnCompletingEvent { get; set; }
-
         /// <inheritdoc />
-        /// \copydoc IFluentEchoEventable.OnStarting
-        public EchoEvents OnStarting(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnStarting
+        public new EchoEvents OnStarting(Action callback)
         {
-            OnStartingEvent += callback;
+            base.OnStarting(callback);
             return this;
         }
 
@@ -38,10 +25,10 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentEchoEventable.OnUpdating
-        public EchoEvents OnUpdating(Action<float> callback)
+        /// \copydoc IFluentAnimationEventable.OnUpdating
+        public new EchoEvents OnUpdating(Action<float> callback)
         {
-            OnUpdatingEvent += callback;
+            base.OnUpdating(callback);
             return this;
         }
 
@@ -70,10 +57,10 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentEchoEventable.OnCompleting
-        public EchoEvents OnCompleting(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnCompleting
+        public new EchoEvents OnCompleting(Action callback)
         {
-            OnCompletingEvent += callback;
+            base.OnCompleting(callback);
             return this;
         }
 
