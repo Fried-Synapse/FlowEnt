@@ -182,7 +182,7 @@ MonoBehaviour:
       timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
-      time: 1
+      time: 3
       easingType: 0
       easing: 0
       easingCurve:

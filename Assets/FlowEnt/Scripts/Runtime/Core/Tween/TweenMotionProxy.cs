@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using FriedSynapse.FlowEnt.Easings;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
@@ -73,8 +74,8 @@ namespace FriedSynapse.FlowEnt
 
         #region Controls
 
-        /// <inheritdoc cref="Tween.Start"/>
-        /// \copydoc Tween.Start
+        /// <inheritdoc cref="Tween.StartAsync(CancellationToken?)"/>
+        /// \copydoc Tween.StartAsync(CancellationToken?)
         public TweenMotionProxy<TItem> Start()
         {
             Tween.Start();
@@ -83,9 +84,9 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="Tween.StartAsync"/>
         /// \copydoc Tween.StartAsync
-        public async Task<TweenMotionProxy<TItem>> StartAsync()
+        public async Task<TweenMotionProxy<TItem>> StartAsync(CancellationToken? token = null)
         {
-            await Tween.StartAsync();
+            await Tween.StartAsync(token);
             return this;
         }
 
@@ -283,6 +284,14 @@ namespace FriedSynapse.FlowEnt
         /// <inheritdoc />
         /// \copydoc IFluentTweenOptionable.SetEasing
         public TweenMotionProxy<TItem> SetEasing(Easing easing, bool reverse = TweenOptions.DefaultEasingReverse)
+        {
+            Tween.SetEasing(easing, reverse);
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentTweenOptionable.SetEasing
+        public TweenMotionProxy<TItem> SetEasing(Func<float, float> easing, bool reverse = TweenOptions.DefaultEasingReverse)
         {
             Tween.SetEasing(easing, reverse);
             return this;

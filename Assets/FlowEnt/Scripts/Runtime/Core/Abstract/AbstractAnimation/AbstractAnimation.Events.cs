@@ -9,10 +9,22 @@ namespace FriedSynapse.FlowEnt
 
         protected void SetEvents(AbstractAnimationEvents events)
         {
+            onStarting = events.OnStartingEvent;
             onStarted = events.OnStartedEvent;
+            onUpdating = events.OnUpdatingEvent;
             onUpdated = events.OnUpdatedEvent;
+            onLoopStarted = events.OnLoopStartedEvent;
             onLoopCompleted = events.OnLoopCompletedEvent;
+            onCompleting = events.OnCompletingEvent;
             onCompleted = events.OnCompletedEvent;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnStarting
+        public AbstractAnimation OnStarting(Action callback)
+        {
+            onStarting += callback;
+            return this;
         }
 
         /// <inheritdoc />
@@ -20,6 +32,14 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimation OnStarted(Action callback)
         {
             onStarted += callback;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnUpdating
+        public AbstractAnimation OnUpdating(Action<float> callback)
+        {
+            onUpdating += callback;
             return this;
         }
 
@@ -44,6 +64,14 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimation OnLoopCompleted(Action<int?> callback)
         {
             onLoopCompleted += callback;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnCompleting
+        public AbstractAnimation OnCompleting(Action callback)
+        {
+            onCompleting += callback;
             return this;
         }
 

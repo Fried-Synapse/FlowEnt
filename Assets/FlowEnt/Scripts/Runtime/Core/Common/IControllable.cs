@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
@@ -23,7 +24,7 @@ namespace FriedSynapse.FlowEnt
     internal interface IFluentControllable<TType>
     {
         TType Start();
-        Task<TType> StartAsync();
+        Task<TType> StartAsync(CancellationToken? token = null);
         TType Resume();
         TType Pause();
         TType Stop(bool triggerOnCompleted = false);

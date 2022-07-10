@@ -27,6 +27,13 @@ namespace FriedSynapse.FlowEnt
         TTween SetEasing(Easing easing, bool reverse = TweenOptions.DefaultEasingReverse);
 
         /// <summary>
+        /// Sets the easing of the tween using a <see cref="FunctionEasing"/>.
+        /// </summary>
+        /// <param name="easing"></param>
+        /// <param name="reverse">Will apply a reverse on the easing.</param>
+        TTween SetEasing(Func<float, float> easing, bool reverse = TweenOptions.DefaultEasingReverse);
+
+        /// <summary>
         /// Sets the easing of the tween using an animation curve.
         /// </summary>
         /// <param name="animationCurve"></param>
@@ -42,22 +49,5 @@ namespace FriedSynapse.FlowEnt
 
     internal interface IFluentTweenEventable<TTween> : IFluentAnimationEventable<TTween>
     {
-        /// <summary>
-        /// Adds an event called before the animation starts.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        TTween OnStarting(Action callback);
-
-        /// <summary>
-        /// Adds an event called before the animation updates.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        TTween OnUpdating(Action<float> callback);
-
-        /// <summary>
-        /// Adds an event called before the animation completes.
-        /// </summary>
-        /// <param name="callback">The event.</param>
-        TTween OnCompleting(Action callback);
     }
 }

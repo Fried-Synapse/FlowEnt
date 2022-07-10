@@ -7,22 +7,9 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public class TweenEvents : AbstractAnimationEvents, IFluentTweenEventable<TweenEvents>
     {
-        /// <summary>
-        /// The event called when an animation is starting.
-        /// </summary>
-        public Action OnStartingEvent { get; set; }
-        /// <summary>
-        /// The event called when an animation is updating.
-        /// </summary>
-        public Action<float> OnUpdatingEvent { get; set; }
-        /// <summary>
-        /// The event called when an animation is completing.
-        /// </summary>
-        public Action OnCompletingEvent { get; set; }
-
         /// <inheritdoc />
-        /// \copydoc IFluentTweenEventable.OnStarting
-        public TweenEvents OnStarting(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnStarting
+        public new TweenEvents OnStarting(Action callback)
         {
             OnStartingEvent += callback;
             return this;
@@ -37,8 +24,8 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentTweenEventable.OnUpdating
-        public TweenEvents OnUpdating(Action<float> callback)
+        /// \copydoc IFluentAnimationEventable.OnUpdating
+        public new TweenEvents OnUpdating(Action<float> callback)
         {
             OnUpdatingEvent += callback;
             return this;
@@ -69,8 +56,8 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentTweenEventable.OnCompleting
-        public TweenEvents OnCompleting(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnCompleting
+        public new TweenEvents OnCompleting(Action callback)
         {
             OnCompletingEvent += callback;
             return this;

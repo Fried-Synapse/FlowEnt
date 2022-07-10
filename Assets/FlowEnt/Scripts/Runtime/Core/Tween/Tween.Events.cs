@@ -4,10 +4,6 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class Tween : IFluentTweenEventable<Tween>
     {
-        private Action onStarting;
-        private Action<float> onUpdating;
-        private Action onCompleting;
-
         /// <summary>
         /// Sets all the events for this tween.
         /// </summary>
@@ -15,9 +11,6 @@ namespace FriedSynapse.FlowEnt
         public Tween SetEvents(TweenEvents events)
         {
             base.SetEvents(events);
-            onStarting = events.OnStartingEvent;
-            onUpdating = events.OnUpdatingEvent;
-            onCompleting = events.OnCompletingEvent;
             return this;
         }
 
@@ -29,10 +22,10 @@ namespace FriedSynapse.FlowEnt
             => SetEvents(eventsBuilder(new TweenEvents()));
 
         /// <inheritdoc />
-        /// \copydoc IFluentTweenEventable.OnStarting
-        public Tween OnStarting(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnStarting
+        public new Tween OnStarting(Action callback)
         {
-            onStarting += callback;
+            base.OnStarting(callback);
             return this;
         }
 
@@ -45,10 +38,10 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentTweenEventable.OnUpdating
-        public Tween OnUpdating(Action<float> callback)
+        /// \copydoc IFluentAnimationEventable.OnUpdating
+        public new Tween OnUpdating(Action<float> callback)
         {
-            onUpdating += callback;
+            base.OnUpdating(callback);
             return this;
         }
 
@@ -77,10 +70,10 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentTweenEventable.OnCompleting
-        public Tween OnCompleting(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnCompleting
+        public new Tween OnCompleting(Action callback)
         {
-            onCompleting += callback;
+            base.OnCompleting(callback);
             return this;
         }
 

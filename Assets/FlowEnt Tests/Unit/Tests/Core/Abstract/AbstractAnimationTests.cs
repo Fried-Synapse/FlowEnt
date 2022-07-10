@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine.TestTools;
@@ -83,7 +84,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
+#pragma warning disable RCS1047
         public IEnumerator StartAsync()
+#pragma warning restore RCS1047
         {
             Task task = null;
 
@@ -108,7 +111,36 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
-        public IEnumerator Start_WaitAsync()
+        public IEnumerator StartAsync_Cancel()
+        {
+            Task task = null;
+
+            IEnumerator customWaiter()
+            {
+                while (!task.IsCompleted)
+                {
+                    yield return null;
+                }
+            }
+
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    CancellationTokenSource source = new CancellationTokenSource();
+                    source.CancelAfter((int)TimeSpan.FromSeconds(HalfTestTime).TotalMilliseconds);
+                    TAnimation animation = CreateAnimation(TestTime);
+                    task = animation.StartAsync(source.Token);
+                    return animation;
+                })
+                .SetCustomWaiter(customWaiter)
+                .AssertTime(HalfTestTime)
+                .Run();
+        }
+
+        [UnityTest]
+#pragma warning disable RCS1047
+        public IEnumerator AsAsync()
+#pragma warning restore RCS1047
         {
             Task task = null;
 
@@ -129,6 +161,33 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 })
                 .SetCustomWaiter(customWaiter)
                 .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator AsAsync_Cancel()
+        {
+            Task task = null;
+
+            IEnumerator customWaiter()
+            {
+                while (!task.IsCompleted)
+                {
+                    yield return null;
+                }
+            }
+
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    CancellationTokenSource source = new CancellationTokenSource();
+                    source.CancelAfter((int)TimeSpan.FromSeconds(HalfTestTime).TotalMilliseconds);
+                    TAnimation animation = CreateAnimation(TestTime).Start() as TAnimation;
+                    task = animation.AsAsync(source.Token);
+                    return animation;
+                })
+                .SetCustomWaiter(customWaiter)
+                .AssertTime(HalfTestTime)
                 .Run();
         }
 

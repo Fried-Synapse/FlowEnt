@@ -4,10 +4,6 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class Echo : IFluentEchoEventable<Echo>
     {
-        private Action onStarting;
-        private Action<float> onUpdating;
-        private Action onCompleting;
-
         /// <summary>
         /// Sets all the events for this echo.
         /// </summary>
@@ -15,9 +11,6 @@ namespace FriedSynapse.FlowEnt
         public Echo SetEvents(EchoEvents events)
         {
             base.SetEvents(events);
-            onStarting = events.OnStartingEvent;
-            onUpdating = events.OnUpdatingEvent;
-            onCompleting = events.OnCompletingEvent;
             return this;
         }
 
@@ -29,10 +22,10 @@ namespace FriedSynapse.FlowEnt
             => SetEvents(eventsBuilder(new EchoEvents()));
 
         /// <inheritdoc />
-        /// \copydoc IFluentEchoEventable.OnStarting
-        public Echo OnStarting(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnStarting
+        public new Echo OnStarting(Action callback)
         {
-            onStarting += callback;
+            base.OnStarting(callback);
             return this;
         }
 
@@ -45,10 +38,10 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentEchoEventable.OnUpdating
-        public Echo OnUpdating(Action<float> callback)
+        /// \copydoc IFluentAnimationEventable.OnUpdating
+        public new Echo OnUpdating(Action<float> callback)
         {
-            onUpdating += callback;
+            base.OnUpdating(callback);
             return this;
         }
 
@@ -77,10 +70,10 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentEchoEventable.OnCompleting
-        public Echo OnCompleting(Action callback)
+        /// \copydoc IFluentAnimationEventable.OnCompleting
+        public new Echo OnCompleting(Action callback)
         {
-            onCompleting += callback;
+            base.OnCompleting(callback);
             return this;
         }
 

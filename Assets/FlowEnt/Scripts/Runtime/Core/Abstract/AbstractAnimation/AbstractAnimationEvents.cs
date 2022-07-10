@@ -8,31 +8,59 @@ namespace FriedSynapse.FlowEnt
     public abstract class AbstractAnimationEvents : IFluentAnimationEventable<AbstractAnimationEvents>
     {
         /// <summary>
-        /// The event called when an animation has started.
+        /// The event called when the animation is starting.
+        /// </summary>
+        public Action OnStartingEvent { get; set; }
+        /// <summary>
+        /// The event called when the animation has started.
         /// </summary>
         public Action OnStartedEvent { get; set; }
         /// <summary>
-        /// The event called when an animation has updated.
+        /// The event called when the animation is updating.
+        /// </summary>
+        public Action<float> OnUpdatingEvent { get; set; }
+        /// <summary>
+        /// The event called when the animation has updated.
         /// </summary>
         public Action<float> OnUpdatedEvent { get; set; }
         /// <summary>
-        /// The event called when an animation loop has started.
+        /// The event called when the animation loop has started.
         /// </summary>
         public Action<int?> OnLoopStartedEvent { get; set; }
         /// <summary>
-        /// The event called when an animation loop has completed.
+        /// The event called when the animation loop has completed.
         /// </summary>
         public Action<int?> OnLoopCompletedEvent { get; set; }
         /// <summary>
-        /// The event called when an animation has completed.
+        /// The event called when the animation is completing.
+        /// </summary>
+        public Action OnCompletingEvent { get; set; }
+        /// <summary>
+        /// The event called when the animation has completed.
         /// </summary>
         public Action OnCompletedEvent { get; set; }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnStarting
+        public AbstractAnimationEvents OnStarting(Action callback)
+        {
+            OnStartingEvent += callback;
+            return this;
+        }
 
         /// <inheritdoc />
         /// \copydoc IFluentAnimationEventable.OnStarted
         public AbstractAnimationEvents OnStarted(Action callback)
         {
             OnStartedEvent += callback;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnUpdating
+        public AbstractAnimationEvents OnUpdating(Action<float> callback)
+        {
+            OnUpdatingEvent += callback;
             return this;
         }
 
@@ -57,6 +85,14 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimationEvents OnLoopCompleted(Action<int?> callback)
         {
             OnLoopCompletedEvent += callback;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationEventable.OnCompleting
+        public AbstractAnimationEvents OnCompleting(Action callback)
+        {
+            OnCompletingEvent += callback;
             return this;
         }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
@@ -63,12 +64,12 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        /// <inheritdoc cref="AbstractAnimation.StartAsync" />
-        /// \copydoc AbstractAnimation.StartAsync
+        /// <inheritdoc cref="AbstractAnimation.StartAsync(CancellationToken?)" />
+        /// \copydoc AbstractAnimation..StartAsync(CancellationToken?)
         /// <exception cref="AnimationException">If the flow has already started.</exception>
-        public new async Task<Flow> StartAsync()
+        public new async Task<Flow> StartAsync(CancellationToken? token = null)
         {
-            await base.StartAsync();
+            await base.StartAsync(token);
             return this;
         }
 
@@ -143,6 +144,7 @@ namespace FriedSynapse.FlowEnt
             }
 
             remainingLoops = loopCount;
+            onStarting?.Invoke();
 
             updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
@@ -171,6 +173,7 @@ namespace FriedSynapse.FlowEnt
             float scaledDeltaTime = deltaTime * timeScale;
             elapsedTime += scaledDeltaTime;
 
+            onUpdating?.Invoke(scaledDeltaTime);
             onUpdated?.Invoke(scaledDeltaTime);
         }
 
@@ -178,6 +181,8 @@ namespace FriedSynapse.FlowEnt
         {
             float scaledDeltaTime = deltaTime * timeScale;
             elapsedTime += scaledDeltaTime;
+
+            onUpdating?.Invoke(scaledDeltaTime);
 
             AbstractUpdatable index = updatables.anchor.next;
 
@@ -211,6 +216,8 @@ namespace FriedSynapse.FlowEnt
             }
 
             updateController.UnsubscribeFromUpdate(this);
+
+            onCompleting?.Invoke();
 
             playState = PlayState.Finished;
 

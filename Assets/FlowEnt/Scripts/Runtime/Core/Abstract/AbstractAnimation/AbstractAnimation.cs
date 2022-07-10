@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
@@ -77,11 +78,19 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Starts the animation async(you can await this till the animation finishes).
         /// </summary>
-        public async Task<AbstractAnimation> StartAsync()
+        /// <param name="token">The cancellation doesn't cancel the task, but rather terminates the animation. The task will be completed</param>
+        public async Task<AbstractAnimation> StartAsync(CancellationToken? token = null)
         {
+            AnimationAwaiter awaiter = new AnimationAwaiter(this);
+            token?.Register(() =>
+            {
+                Stop();
+                awaiter.Complete();
+            });
             PreStart();
             StartInternal();
-            await new AwaitableAnimation(this);
+
+            await awaiter;
             return this;
         }
 
@@ -181,9 +190,15 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Provides a task that can be awaited. The task completes when the animation ends.
         /// </summary>
-        public async Task AsAsync()
+        public async Task AsAsync(CancellationToken? token = null)
         {
-            await new AwaitableAnimation(this);
+            AnimationAwaiter awaiter = new AnimationAwaiter(this);
+            token?.Register(() =>
+            {
+                Stop();
+                awaiter.Complete();
+            });
+            await awaiter;
         }
 
         #endregion
@@ -244,11 +259,6 @@ namespace FriedSynapse.FlowEnt
             {
                 CancelAutoStart();
             }
-        }
-
-        internal void OnCompletedInternal(Action callback)
-        {
-            onCompleted += callback;
         }
 
         protected override void StopInternal(bool triggerOnCompleted)
