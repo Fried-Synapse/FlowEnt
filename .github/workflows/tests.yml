@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Cache Ligrary
         uses: actions/cache@v2
         with:
@@ -21,6 +22,7 @@ jobs:
           key: Library-FlowEnt
           restore-keys: |
             Library-
+
       - name: Run Tests
         uses: game-ci/unity-test-runner@v2
         id: testsRunner
@@ -30,8 +32,9 @@ jobs:
           testMode: ${{ matrix.testMode }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: ${{ matrix.testMode }} Test Results
-      - uses: actions/upload-artifact@v2
-        if: always()
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v2
         with:
           name: Test results for ${{ matrix.testMode }}
           path: ${{ steps.testsRunner.outputs.artifactsPath }}
