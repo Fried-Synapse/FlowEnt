@@ -17,34 +17,11 @@ jobs:
         with:
           submodules: true
           token: ${{ secrets.ACCESS_TOKEN }}
-      - name: Doxygen Action
+      - name: Run Doxygen
         uses: mattnotmitt/doxygen-action@v1.1.0
         with:
           working-directory: "Docs"
           doxyfile-path: "Doxyfile" 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: FlowEnt.Docs
-          path: Docs/html
-
-
-  deploy:
-    needs: build
-    name: Deploy Docs 🚀
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - uses: actions/download-artifact@v2
-        with:
-          name: FlowEnt.Docs
-          path: Docs/html
-
-      - name: Display structure of root files
-        run: ls -R
-        working-directory: Docs/html
-
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
