@@ -7,17 +7,14 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Provides animation specific behaviour
     /// </summary>
-    public abstract partial class AbstractAnimation : AbstractUpdatable,
-        IFluentControllable<AbstractAnimation>,
-        IControllable,
-        ISeekable
+    public abstract partial class AbstractAnimation : AbstractUpdatable, IFluentControllable<AbstractAnimation>
     {
         /// <inheritdoc cref="AbstractUpdatable()"/>
         protected AbstractAnimation()
         {
         }
 
-        #region Properties       
+        #region Members       
 
         private protected float elapsedTime;
         private protected AbstractStartHelper startHelper;
@@ -28,38 +25,6 @@ namespace FriedSynapse.FlowEnt
         /// THe amount of scaled time unconsumed by this animation from the last frame.
         /// </summary>
         public float? Overdraft { get => overdraft; internal set => overdraft = value; }
-
-        #endregion
-
-        #region ISeekable
-
-        private protected abstract bool IsSeekable { get; }
-        bool ISeekable.IsSeekable => IsSeekable;
-        float ISeekable.ElapsedTime => elapsedTime;
-        private protected abstract float TotalSeekTime { get; }
-        float ISeekable.Ratio
-        {
-            get => elapsedTime / TotalSeekTime;
-            set
-            {
-                switch (playState)
-                {
-                    case PlayState.Building:
-                    case PlayState.Waiting:
-                        throw new InvalidOperationException("Start the animation first.");
-                    case PlayState.Playing:
-                    case PlayState.Paused:
-                    case PlayState.Finished:
-                        break;
-                }
-
-                UpdateInternal(GetDeltaTimeFromRatio(value));
-            }
-        }
-
-        private protected abstract float GetDeltaTimeFromRatio(float ratio);
-
-        public ISeekable Seekable => this;
 
         #endregion
 
@@ -118,9 +83,6 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        void IControllable.Resume()
-            => Resume();
-
         /// <summary>
         /// Pauses the animation.
         /// </summary>
@@ -141,31 +103,6 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        void IControllable.Pause()
-            => Pause();
-
-        void IControllable.ChangeFrame(float modifier)
-        {
-            if (playState == PlayState.Playing)
-            {
-                Pause();
-            }
-
-            DeltaTimes deltaTimes = FlowEntController.Updater.GetDeltaTimes();
-
-            float deltaTime = updateType switch
-            {
-                UpdateType.Update => deltaTimes.deltaTime,
-                UpdateType.SmoothUpdate => deltaTimes.smoothDeltaTime,
-                UpdateType.LateUpdate => deltaTimes.deltaTime,
-                UpdateType.SmoothLateUpdate => deltaTimes.smoothDeltaTime,
-                UpdateType.FixedUpdate => deltaTimes.fixedDeltaTime,
-                UpdateType.Custom => deltaTimes.fixedDeltaTime,
-                _ => throw new NotImplementedException(),
-            };
-            UpdateInternal(modifier * deltaTime * FlowEntController.Instance.TimeScale);
-        }
-
         /// <inheritdoc cref="AbstractUpdatable.Stop(bool)"/>
         /// \copydoc AbstractUpdatable.Stop
         public new AbstractAnimation Stop(bool triggerOnCompleted = false)
@@ -173,9 +110,6 @@ namespace FriedSynapse.FlowEnt
             StopInternal(triggerOnCompleted);
             return this;
         }
-
-        void IControllable.Stop()
-            => Stop();
 
         /// <summary>
         /// Resets the animation so in can be replayed.

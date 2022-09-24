@@ -55,11 +55,11 @@ namespace FriedSynapse.FlowEnt
 
         internal float CurrentLoopRatio => (loopDirection == LoopDirection.Forward ? time - remainingTime : remainingTime) / time;
 
-        #region ISeekable
+        #region Seek
 
         private protected override bool IsSeekable => true;
         private protected override float TotalSeekTime => time;
-        private protected override float GetDeltaTimeFromRatio(float ratio)
+        private protected override float GetSeekingDeltaTimeFromRatio(float ratio)
             => ((ratio * time) - elapsedTime) / timeScale;
 
         #endregion

@@ -1,10 +1,10 @@
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class PreviewableControlSection : AbstractControlSection<AbstractAnimation>
+    internal class PreviewableControlSection : AbstractControlSection
     {
         protected override void Bind()
         {
-            if (Seekable?.IsSeekable == true)
+            if (Controllable.IsSeekable)
             {
                 ControlBar.OnValueChanging += (_) =>
                 {
@@ -57,7 +57,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             PreviewController.Start(new PreviewController.Options()
             {
-                Animation = Controllable,
+                Animation = (AbstractAnimation)Controllable,
                 OnStop = UpdatePlayState
             });
         }

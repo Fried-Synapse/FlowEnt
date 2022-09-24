@@ -9,13 +9,6 @@ namespace FriedSynapse.FlowEnt.Editor
         public AbstractControlSection()
         {
             this.LoadUxml<AbstractControlSection>();
-        }
-    }
-    internal class AbstractControlSection<TControllable> : AbstractControlSection
-            where TControllable : IControllable
-    {
-        public AbstractControlSection()
-        {
             PrevFrame = this.Query<ControlButton>("prevFrame").First();
             PlayPause = this.Query<ControlButton>("playPause").First();
             NextFrame = this.Query<ControlButton>("nextFrame").First();
@@ -27,8 +20,7 @@ namespace FriedSynapse.FlowEnt.Editor
             TimelineInfoTime = this.Query<TextElement>("time").First();
         }
 
-        protected TControllable Controllable { get; private set; }
-        protected ISeekable Seekable { get; private set; }
+        protected IControllable Controllable { get; private set; }
         protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
         protected ControlButton PrevFrame { get; }
         protected ControlButton PlayPause { get; }
@@ -40,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
         protected TextElement TimelineInfoTime { get; }
         protected FriedSlider ControlBar { get; }
 
-        public virtual void Init(TControllable controllable)
+        public virtual void Init(IControllable controllable)
         {
             if (Controllable != null)
             {
@@ -53,13 +45,9 @@ namespace FriedSynapse.FlowEnt.Editor
                 animation.OnUpdated(_ => UpdateSeekable());
                 animation.OnCompleted(UpdatePlayState);
             }
-            if (Controllable is ISeekable seekable)
+            if (Controllable.IsSeekable)
             {
-                Seekable = seekable;
-                if (Seekable.IsSeekable)
-                {
-                    ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
-                }
+                ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
             }
 
             TimeScale.MaxValue = Mathf.Max(1f, Controllable.TimeScale * 2f);
@@ -82,7 +70,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             TimeScale.OnValueChanged += (data) => Controllable.TimeScale = data.NewValue;
-            if (Seekable?.IsSeekable == true)
+            if (Controllable.IsSeekable)
             {
                 ControlBar.OnValueChanged += (data) =>
                 {
@@ -90,7 +78,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     {
                         Controllable.Pause();
                     }
-                    Seekable.Ratio = data.NewValue;
+                    Controllable.SeekRatio = data.NewValue;
                     UpdatePlayState();
                 };
             }
@@ -125,7 +113,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void UpdateSeekable()
         {
-            if (Seekable == null)
+            if (!Controllable.IsSeekable)
             {
                 return;
             }
@@ -138,13 +126,13 @@ namespace FriedSynapse.FlowEnt.Editor
             else
             {
                 ControlBar.SetEnabled(true);
-                TimelineInfoTime.text = Seekable.ElapsedTime.ToString("F4");
+                TimelineInfoTime.text = Controllable.ElapsedTime.ToString("F4");
                 TimelineInfoTime.tooltip = string.Empty;
             }
 
-            if (Controllable.PlayState != PlayState.Paused && Seekable.IsSeekable)
+            if (Controllable.PlayState != PlayState.Paused && Controllable.IsSeekable)
             {
-                ControlBar.SetValueWithoutNotify(Seekable.Ratio);
+                ControlBar.SetValueWithoutNotify(Controllable.SeekRatio);
             }
         }
 
