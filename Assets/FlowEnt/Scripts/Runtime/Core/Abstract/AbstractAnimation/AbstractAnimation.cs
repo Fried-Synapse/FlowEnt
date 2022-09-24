@@ -48,8 +48,6 @@ namespace FriedSynapse.FlowEnt
                     case PlayState.Waiting:
                         throw new InvalidOperationException("Start the animation first.");
                     case PlayState.Playing:
-                        Pause();
-                        break;
                     case PlayState.Paused:
                     case PlayState.Finished:
                         break;
@@ -60,6 +58,8 @@ namespace FriedSynapse.FlowEnt
         }
 
         private protected abstract float GetDeltaTimeFromRatio(float ratio);
+
+        public ISeekable Seekable => this;
 
         #endregion
 

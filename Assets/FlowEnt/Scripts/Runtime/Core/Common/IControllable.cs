@@ -13,6 +13,7 @@ namespace FriedSynapse.FlowEnt
         void Stop();
     }
 
+    //TODO Consider combining in some form with IControllable
     public interface ISeekable
     {
         //NOTE this should not be here, but for the life of me I don't know where to put it...

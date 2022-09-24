@@ -53,13 +53,13 @@ namespace FriedSynapse.FlowEnt.Editor
                 animation.OnUpdated(_ => UpdateSeekable());
                 animation.OnCompleted(UpdatePlayState);
             }
-            if (Controllable is ISeekable result)
+            if (Controllable is ISeekable seekable)
             {
-                Seekable = result;
-            }
-            if (Seekable?.IsSeekable == true)
-            {
-                ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
+                Seekable = seekable;
+                if (Seekable.IsSeekable)
+                {
+                    ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
+                }
             }
 
             TimeScale.MaxValue = Mathf.Max(1f, Controllable.TimeScale * 2f);
@@ -86,6 +86,10 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 ControlBar.OnValueChanged += (data) =>
                 {
+                    if (Controllable.PlayState == PlayState.Playing)
+                    {
+                        Controllable.Pause();
+                    }
                     Seekable.Ratio = data.NewValue;
                     UpdatePlayState();
                 };
