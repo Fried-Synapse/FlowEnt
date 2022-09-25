@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -224,8 +223,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator PauseResume()
         {
-            Stopwatch stopwatch = new Stopwatch();
-
             yield return CreateTester()
                 .Act(() =>
                 {
@@ -243,8 +240,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator PauseWhileWaiting()
         {
-            Stopwatch stopwatch = new Stopwatch();
-
             yield return CreateTester()
                 .Act(() =>
                 {
@@ -263,7 +258,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         public IEnumerator Stop([ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))] bool triggerOnCompleted)
         {
             TAnimation animation = null;
-            Stopwatch stopwatch = new Stopwatch();
             bool hasFinished = false;
 
             yield return CreateTester()
@@ -321,5 +315,58 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 })
                 .Run();
         }
+
+        #region IControllable
+
+        [UnityTest]
+        public IEnumerator IsSeekable()
+        {
+            TAnimation animation = null;
+
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    animation = CreateAnimation(0).Start() as TAnimation;
+                    return animation;
+                })
+                .Assert(() => Assert.AreEqual(typeof(TAnimation) != typeof(Flow), animation.Controllable.IsSeekable))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator SeekRatio()
+        {
+            if (typeof(TAnimation) == typeof(Flow))
+            {
+                //Flows can't be seeked
+                yield break;
+            }
+
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    TAnimation animation = CreateAnimation(TestTime).Start() as TAnimation;
+                    animation.Controllable.SeekRatio = 0.5f;
+                    return animation;
+                })
+                .AssertTime(HalfTestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator ManualUpdate()
+        {
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    TAnimation animation = CreateAnimation(TestTime).Start() as TAnimation;
+                    animation.Controllable.SimulateUpdate(HalfTestTime);
+                    return animation;
+                })
+                .AssertTime(HalfTestTime)
+                .Run();
+        }
+
+        #endregion
     }
 }

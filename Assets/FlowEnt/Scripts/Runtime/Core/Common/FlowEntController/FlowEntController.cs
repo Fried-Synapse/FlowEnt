@@ -26,6 +26,8 @@ namespace FriedSynapse.FlowEnt
         IUpdateController,
         IControllable
     {
+        private const string ErrorNotManipulable = "Only Playing or Paused engine can be manipulated.";
+
         #region Singleton
 
         private static readonly object lockObject = new object();
@@ -85,6 +87,7 @@ namespace FriedSynapse.FlowEnt
         internal readonly UpdatablesFastList<AbstractUpdatable> fixedUpdatables = new UpdatablesFastList<AbstractUpdatable>();
         internal readonly UpdatablesFastList<AbstractUpdatable> customUpdatables = new UpdatablesFastList<AbstractUpdatable>();
 
+        private static float elapsedTime;
         private float timeScale = 1f;
 
         /// <summary>
@@ -154,6 +157,7 @@ namespace FriedSynapse.FlowEnt
 
         internal static void Update(UpdatablesFastList<AbstractUpdatable> updatables, float scaledDeltaTime)
         {
+            elapsedTime += scaledDeltaTime;
             AbstractUpdatable index = updatables.anchor.next;
 
             while (index != null)
@@ -162,7 +166,7 @@ namespace FriedSynapse.FlowEnt
                 try
                 {
 #endif
-                    index.UpdateInternal(scaledDeltaTime);
+                index.UpdateInternal(scaledDeltaTime);
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
                 }
                 catch (Exception ex)
@@ -252,22 +256,6 @@ namespace FriedSynapse.FlowEnt
             playState = PlayState.Playing;
         }
 
-        void IControllable.ChangeFrame(float modifier)
-        {
-            if (playState == PlayState.Playing)
-            {
-                Pause();
-            }
-            DeltaTimes deltaTimes = updater.GetDeltaTimes();
-            float timeScale = this.timeScale * modifier;
-            Update(updatables, deltaTimes.deltaTime * timeScale);
-            Update(smoothUpdatables, deltaTimes.smoothDeltaTime * timeScale);
-            Update(lateUpdatables, deltaTimes.lateDeltaTime * timeScale);
-            Update(smoothLateUpdatables, deltaTimes.lateSmoothDeltaTime * timeScale);
-            Update(fixedUpdatables, deltaTimes.fixedDeltaTime * timeScale);
-            Update(customUpdatables, deltaTimes.fixedDeltaTime * timeScale);
-        }
-
         /// <summary>
         /// Stops all animations.
         /// </summary>
@@ -282,9 +270,6 @@ namespace FriedSynapse.FlowEnt
             Stop(customUpdatables, triggerOnCompleted);
         }
 
-        void IControllable.Stop()
-            => Stop();
-
         private static void Stop(UpdatablesFastList<AbstractUpdatable> updatables, bool triggerOnCompleted)
         {
             AbstractUpdatable index = updatables.anchor.next;
@@ -294,6 +279,53 @@ namespace FriedSynapse.FlowEnt
                 AbstractUpdatable temp = index;
                 index = index.next;
                 temp.Stop(triggerOnCompleted);
+            }
+        }
+
+        #endregion
+
+        #region IControllable
+
+        float IControllable.ElapsedTime => elapsedTime;
+        bool IControllable.IsSeekable => false;
+        float IControllable.SeekRatio { get => throw new NotSeekableException(); set => throw new NotSeekableException(); }
+
+        void IControllable.SimulateFrames(int frameCount)
+        {
+            HandleSimulationStates();
+            float scaledFrameCount = timeScale * frameCount;
+            DeltaTimes deltaTimes = updater.GetDeltaTimes();
+            Update(updatables, deltaTimes.deltaTime * scaledFrameCount);
+            Update(smoothUpdatables, deltaTimes.smoothDeltaTime * scaledFrameCount);
+            Update(lateUpdatables, deltaTimes.lateDeltaTime * scaledFrameCount);
+            Update(smoothLateUpdatables, deltaTimes.lateSmoothDeltaTime * scaledFrameCount);
+            Update(fixedUpdatables, deltaTimes.fixedDeltaTime * scaledFrameCount);
+            Update(customUpdatables, deltaTimes.fixedDeltaTime * scaledFrameCount);
+        }
+
+        void IControllable.SimulateUpdate(float deltaTime)
+        {
+            HandleSimulationStates();
+            float scaledDeltaTime = timeScale * deltaTime;
+            Update(updatables, scaledDeltaTime);
+            Update(smoothUpdatables, scaledDeltaTime);
+            Update(lateUpdatables, scaledDeltaTime);
+            Update(smoothLateUpdatables, scaledDeltaTime);
+            Update(fixedUpdatables, scaledDeltaTime);
+            Update(customUpdatables, scaledDeltaTime);
+        }
+
+        void IControllable.Stop()
+            => Stop();
+
+        private void HandleSimulationStates()
+        {
+            switch (playState)
+            {
+                case PlayState.Building:
+                case PlayState.Waiting:
+                case PlayState.Finished:
+                    throw new InvalidOperationException(ErrorNotManipulable);
             }
         }
 

@@ -9,13 +9,6 @@ namespace FriedSynapse.FlowEnt.Editor
         public AbstractControlSection()
         {
             this.LoadUxml<AbstractControlSection>();
-        }
-    }
-    internal class AbstractControlSection<TControllable> : AbstractControlSection
-            where TControllable : IControllable
-    {
-        public AbstractControlSection()
-        {
             PrevFrame = this.Query<ControlButton>("prevFrame").First();
             PlayPause = this.Query<ControlButton>("playPause").First();
             NextFrame = this.Query<ControlButton>("nextFrame").First();
@@ -27,9 +20,8 @@ namespace FriedSynapse.FlowEnt.Editor
             TimelineInfoTime = this.Query<TextElement>("time").First();
         }
 
-        protected TControllable Controllable { get; private set; }
-        protected ISeekable Seekable { get; private set; }
-        protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
+        protected IControllable Controllable { get; private set; }
+        protected bool IsRunning => (Controllable.PlayState & PlayState.Playing) != 0 || (Controllable.PlayState & PlayState.Paused) != 0;
         protected ControlButton PrevFrame { get; }
         protected ControlButton PlayPause { get; }
         protected ControlButton NextFrame { get; }
@@ -40,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
         protected TextElement TimelineInfoTime { get; }
         protected FriedSlider ControlBar { get; }
 
-        public virtual void Init(TControllable controllable)
+        public virtual void Init(IControllable controllable)
         {
             if (Controllable != null)
             {
@@ -53,11 +45,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 animation.OnUpdated(_ => UpdateSeekable());
                 animation.OnCompleted(UpdatePlayState);
             }
-            if (Controllable is ISeekable result)
-            {
-                Seekable = result;
-            }
-            if (Seekable?.IsSeekable == true)
+            if (Controllable.IsSeekable)
             {
                 ControlBar.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
             }
@@ -82,11 +70,15 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             TimeScale.OnValueChanged += (data) => Controllable.TimeScale = data.NewValue;
-            if (Seekable?.IsSeekable == true)
+            if (Controllable.IsSeekable)
             {
                 ControlBar.OnValueChanged += (data) =>
                 {
-                    Seekable.Ratio = data.NewValue;
+                    if (Controllable.PlayState == PlayState.Playing)
+                    {
+                        Controllable.Pause();
+                    }
+                    Controllable.SeekRatio = data.NewValue;
                     UpdatePlayState();
                 };
             }
@@ -94,13 +86,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected virtual void UpdatePlayState()
         {
-            if (!IsBuilding)
+            if (IsRunning)
             {
-                AddToClassList("playing");
+                AddToClassList("running");
             }
             else
             {
-                RemoveFromClassList("playing");
+                RemoveFromClassList("running");
             }
             UpdateButtonsState();
             UpdateSeekable();
@@ -115,13 +107,13 @@ namespace FriedSynapse.FlowEnt.Editor
                 _ => ControlButton.ControlType.Play,
             };
 
-            PrevFrame.SetEnabled(!IsBuilding);
-            Stop.SetEnabled(!IsBuilding);
+            PrevFrame.SetEnabled(IsRunning);
+            Stop.SetEnabled(IsRunning);
         }
 
         private void UpdateSeekable()
         {
-            if (Seekable == null)
+            if (!Controllable.IsSeekable)
             {
                 return;
             }
@@ -134,24 +126,24 @@ namespace FriedSynapse.FlowEnt.Editor
             else
             {
                 ControlBar.SetEnabled(true);
-                TimelineInfoTime.text = Seekable.ElapsedTime.ToString("F4");
+                TimelineInfoTime.text = Controllable.ElapsedTime.ToString("F4");
                 TimelineInfoTime.tooltip = string.Empty;
             }
 
-            if (Controllable.PlayState != PlayState.Paused && Seekable.IsSeekable)
+            if (Controllable.PlayState != PlayState.Paused && Controllable.IsSeekable)
             {
-                ControlBar.SetValueWithoutNotify(Seekable.Ratio);
+                ControlBar.SetValueWithoutNotify(Controllable.SeekRatio);
             }
         }
 
         protected virtual void OnPrevFrame()
         {
-            Controllable.ChangeFrame(-1);
+            Controllable.SimulateFrames(-1);
         }
 
         protected virtual void OnNextFrame()
         {
-            Controllable.ChangeFrame(1);
+            Controllable.SimulateFrames(1);
         }
 
         protected virtual void OnPlayPause()

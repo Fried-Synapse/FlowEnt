@@ -1,14 +1,14 @@
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class PreviewableControlSection : AbstractControlSection<AbstractAnimation>
+    internal class PreviewableControlSection : AbstractControlSection
     {
         protected override void Bind()
         {
-            if (Seekable?.IsSeekable == true)
+            if (Controllable.IsSeekable)
             {
                 ControlBar.OnValueChanging += (_) =>
                 {
-                    if (IsBuilding)
+                    if (!IsRunning)
                     {
                         StartPreview();
                     }
@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     Controllable.Pause();
                     break;
                 default:
-                    if (IsBuilding)
+                    if (!IsRunning)
                     {
                         StartPreview();
                     }
@@ -40,7 +40,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void OnNextFrame()
         {
-            if (IsBuilding)
+            if (!IsRunning)
             {
                 StartPreview();
                 Controllable.Pause();
@@ -57,7 +57,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             PreviewController.Start(new PreviewController.Options()
             {
-                Animation = Controllable,
+                Animation = (AbstractAnimation)Controllable,
                 OnStop = UpdatePlayState
             });
         }

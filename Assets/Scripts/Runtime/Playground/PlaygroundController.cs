@@ -1,6 +1,4 @@
-using System.Threading;
 using System.Threading.Tasks;
-using FriedSynapse.Quickit;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
@@ -65,12 +63,9 @@ namespace FriedSynapse.FlowEnt.Builder
 
         private async void Start()
         {
-            CancellationTokenSource source = new CancellationTokenSource();
-            source.CancelAfter(2000);
-            await Tween.Build().StartAsync(source.Token);
-            await Echo.Build().StartAsync();
-            //Flow.Build().Start();
+            await Task.Yield();
         }
+
 #pragma warning restore IDE0051, RCS1213
 
         public void ResetMob()

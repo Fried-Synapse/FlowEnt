@@ -1,7 +1,20 @@
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
 {
+    //TODO Consider better name for this
+    internal interface IFluentControllable<TType>
+    {
+        TType Start();
+        Task<TType> StartAsync(CancellationToken? token = null);
+        TType Resume();
+        TType Pause();
+        TType Stop(bool triggerOnCompleted = false);
+        TType Reset();
+    }
+
     internal interface IFluentAnimationOptionable<TAnimation>
     {
         /// <summary>

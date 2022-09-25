@@ -44,11 +44,11 @@ namespace FriedSynapse.FlowEnt
 
         #endregion
 
-        #region ISeekable
+        #region Seek
 
         private protected override bool IsSeekable => false;
         private protected override float TotalSeekTime => throw new NotImplementedException();
-        private protected override float GetDeltaTimeFromRatio(float ratio)
+        private protected override float GetSeekingDeltaTimeFromRatio(float ratio)
             => throw new NotImplementedException();
 
         #endregion

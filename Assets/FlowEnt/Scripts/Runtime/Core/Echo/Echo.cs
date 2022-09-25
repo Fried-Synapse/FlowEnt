@@ -41,11 +41,11 @@ namespace FriedSynapse.FlowEnt
         private IEchoMotion[] motions = new IEchoMotion[0];
         private int? remainingLoops;
 
-        #region ISeekable
+        #region Seek
 
         private protected override bool IsSeekable => timeout != null;
         private protected override float TotalSeekTime => timeout ?? 0;
-        private protected override float GetDeltaTimeFromRatio(float ratio)
+        private protected override float GetSeekingDeltaTimeFromRatio(float ratio)
             => ((ratio * timeout ?? 0) - elapsedTime) / timeScale;
 
         #endregion
