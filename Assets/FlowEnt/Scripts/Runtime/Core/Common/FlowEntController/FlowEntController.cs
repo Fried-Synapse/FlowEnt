@@ -26,6 +26,8 @@ namespace FriedSynapse.FlowEnt
         IUpdateController,
         IControllable
     {
+        private const string ErrorNotManipulable = "Only Playing or Paused engine can be manipulated.";
+
         #region Singleton
 
         private static readonly object lockObject = new object();
@@ -288,12 +290,9 @@ namespace FriedSynapse.FlowEnt
         bool IControllable.IsSeekable => false;
         float IControllable.SeekRatio { get => throw new NotSeekableException(); set => throw new NotSeekableException(); }
 
-        void IControllable.ChangeFrame(int frameCount)
+        void IControllable.SimulateFrames(int frameCount)
         {
-            if (playState == PlayState.Playing)
-            {
-                Pause();
-            }
+            HandleSimulationStates();
             float scaledFrameCount = timeScale * frameCount;
             DeltaTimes deltaTimes = updater.GetDeltaTimes();
             Update(updatables, deltaTimes.deltaTime * scaledFrameCount);
@@ -304,8 +303,9 @@ namespace FriedSynapse.FlowEnt
             Update(customUpdatables, deltaTimes.fixedDeltaTime * scaledFrameCount);
         }
 
-        void IControllable.ManualUpdate(float deltaTime)
+        void IControllable.SimulateUpdate(float deltaTime)
         {
+            HandleSimulationStates();
             float scaledDeltaTime = timeScale * deltaTime;
             Update(updatables, scaledDeltaTime);
             Update(smoothUpdatables, scaledDeltaTime);
@@ -317,6 +317,17 @@ namespace FriedSynapse.FlowEnt
 
         void IControllable.Stop()
             => Stop();
+
+        private void HandleSimulationStates()
+        {
+            switch (playState)
+            {
+                case PlayState.Building:
+                case PlayState.Waiting:
+                case PlayState.Finished:
+                    throw new InvalidOperationException(ErrorNotManipulable);
+            }
+        }
 
         #endregion
     }

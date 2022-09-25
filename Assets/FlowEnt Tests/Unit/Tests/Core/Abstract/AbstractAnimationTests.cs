@@ -360,7 +360,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     TAnimation animation = CreateAnimation(TestTime).Start() as TAnimation;
-                    animation.Controllable.ManualUpdate(HalfTestTime);
+                    animation.Controllable.SimulateUpdate(HalfTestTime);
                     return animation;
                 })
                 .AssertTime(HalfTestTime)

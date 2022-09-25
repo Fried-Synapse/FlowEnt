@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         protected IControllable Controllable { get; private set; }
-        protected bool IsBuilding => (Controllable.PlayState & PlayState.Building) == Controllable.PlayState;
+        protected bool IsRunning => (Controllable.PlayState & PlayState.Playing) != 0 || (Controllable.PlayState & PlayState.Paused) != 0;
         protected ControlButton PrevFrame { get; }
         protected ControlButton PlayPause { get; }
         protected ControlButton NextFrame { get; }
@@ -86,13 +86,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected virtual void UpdatePlayState()
         {
-            if (!IsBuilding)
+            if (IsRunning)
             {
-                AddToClassList("playing");
+                AddToClassList("running");
             }
             else
             {
-                RemoveFromClassList("playing");
+                RemoveFromClassList("running");
             }
             UpdateButtonsState();
             UpdateSeekable();
@@ -107,8 +107,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 _ => ControlButton.ControlType.Play,
             };
 
-            PrevFrame.SetEnabled(!IsBuilding);
-            Stop.SetEnabled(!IsBuilding);
+            PrevFrame.SetEnabled(IsRunning);
+            Stop.SetEnabled(IsRunning);
         }
 
         private void UpdateSeekable()
@@ -138,12 +138,12 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected virtual void OnPrevFrame()
         {
-            Controllable.ChangeFrame(-1);
+            Controllable.SimulateFrames(-1);
         }
 
         protected virtual void OnNextFrame()
         {
-            Controllable.ChangeFrame(1);
+            Controllable.SimulateFrames(1);
         }
 
         protected virtual void OnPlayPause()

@@ -4,6 +4,9 @@ namespace FriedSynapse.FlowEnt
 {
     public partial class AbstractAnimation : IControllable
     {
+        private const string ErrorNotManipulable = "Only Playing or Paused animations can be manipulated.";
+        private const string ErrorNotSeekable = "Animation is not seekable. Check IsSeekable member.";
+
         float IControllable.ElapsedTime => elapsedTime;
         private protected abstract bool IsSeekable { get; }
         bool IControllable.IsSeekable => IsSeekable;
@@ -14,7 +17,7 @@ namespace FriedSynapse.FlowEnt
             {
                 if (!IsSeekable)
                 {
-                    throw new NotSeekableException("Animation is not seekable. Check IsSeekable member.");
+                    throw new NotSeekableException(ErrorNotSeekable);
                 }
                 return elapsedTime / TotalSeekTime;
             }
@@ -23,19 +26,10 @@ namespace FriedSynapse.FlowEnt
             {
                 if (!IsSeekable)
                 {
-                    throw new NotSeekableException("Animation is not seekable. Check IsSeekable member.");
+                    throw new NotSeekableException(ErrorNotSeekable);
                 }
 
-                switch (playState)
-                {
-                    case PlayState.Building:
-                    case PlayState.Waiting:
-                        throw new NotSeekableException("Start the animation first.");
-                    case PlayState.Playing:
-                    case PlayState.Paused:
-                    case PlayState.Finished:
-                        break;
-                }
+                HandleSimulationStates();
 
                 UpdateInternal(GetSeekingDeltaTimeFromRatio(value));
             }
@@ -49,20 +43,15 @@ namespace FriedSynapse.FlowEnt
         public IControllable Controllable => this;
 
         void IControllable.Resume()
-            => Resume();
+           => Resume();
 
         void IControllable.Pause()
             => Pause();
 
-        void IControllable.ChangeFrame(int frameCount)
+        void IControllable.SimulateFrames(int frameCount)
         {
-            if (playState == PlayState.Playing)
-            {
-                Pause();
-            }
-
+            HandleSimulationStates();
             DeltaTimes deltaTimes = FlowEntController.Updater.GetDeltaTimes();
-
             float deltaTime = updateType switch
             {
                 UpdateType.Update => deltaTimes.deltaTime,
@@ -76,10 +65,27 @@ namespace FriedSynapse.FlowEnt
             UpdateInternal(frameCount * deltaTime * FlowEntController.Instance.TimeScale);
         }
 
-        void IControllable.ManualUpdate(float deltaTime)
-            => UpdateInternal(deltaTime * FlowEntController.Instance.TimeScale);
+        void IControllable.SimulateUpdate(float deltaTime)
+        {
+            HandleSimulationStates();
+            UpdateInternal(deltaTime * FlowEntController.Instance.TimeScale);
+        }
 
         void IControllable.Stop()
             => Stop();
+
+        private void HandleSimulationStates()
+        {
+            switch (playState)
+            {
+                case PlayState.Building:
+                case PlayState.Waiting:
+                    throw new InvalidOperationException(ErrorNotManipulable);
+                case PlayState.Finished:
+                    overdraft = null;
+                    playState = PlayState.Paused;
+                    break;
+            }
+        }
     }
 }

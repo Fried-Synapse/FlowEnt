@@ -14,10 +14,7 @@ namespace FriedSynapse.FlowEnt
         public bool IsCompleted => animation.PlayState == PlayState.Finished;
         private Action continuation;
 
-        public AbstractAnimation GetResult()
-            => animation;
-
-        public void OnCompleted(Action continuation)
+        void INotifyCompletion.OnCompleted(Action continuation)
         {
             this.continuation = continuation;
             animation.OnCompleted(continuation);
@@ -30,5 +27,8 @@ namespace FriedSynapse.FlowEnt
 
         public AnimationAwaiter GetAwaiter()
             => this;
+
+        public AbstractAnimation GetResult()
+            => animation;
     }
 }

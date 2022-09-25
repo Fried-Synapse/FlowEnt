@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 ControlBar.OnValueChanging += (_) =>
                 {
-                    if (IsBuilding)
+                    if (!IsRunning)
                     {
                         StartPreview();
                     }
@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     Controllable.Pause();
                     break;
                 default:
-                    if (IsBuilding)
+                    if (!IsRunning)
                     {
                         StartPreview();
                     }
@@ -40,7 +40,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void OnNextFrame()
         {
-            if (IsBuilding)
+            if (!IsRunning)
             {
                 StartPreview();
                 Controllable.Pause();
