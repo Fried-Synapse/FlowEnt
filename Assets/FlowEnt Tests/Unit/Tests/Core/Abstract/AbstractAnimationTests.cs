@@ -354,7 +354,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
-        public IEnumerator ManualUpdate()
+        public IEnumerator SimulateUpdate()
         {
             yield return CreateTester()
                 .Act(() =>

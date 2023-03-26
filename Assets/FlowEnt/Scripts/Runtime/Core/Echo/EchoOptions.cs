@@ -7,7 +7,10 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public class EchoOptions : AbstractAnimationOptions, IFluentEchoOptionable<EchoOptions>
     {
-        internal const string ErrorTimeoutNegative = "Value cannot be less than 0.";
+        //TODO use string interpolation
+        internal const string ErrorTimeoutMin = "Timeout cannot be 0.001 or less.";
+        internal const string ErrorTimeoutInfinity = "Timeout cannot be infinity.";
+        internal const float MinTime = 0.001f;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="EchoOptions"/> class.
@@ -25,9 +28,13 @@ namespace FriedSynapse.FlowEnt
             get { return timeout; }
             set
             {
-                if (value < 0)
+                if (value < MinTime)
                 {
-                    throw new ArgumentException(ErrorTimeoutNegative);
+                    throw new ArgumentException(ErrorTimeoutMin);
+                }
+                if (value != null && float.IsInfinity(value.Value))
+                {
+                    throw new ArgumentException(ErrorTimeoutInfinity);
                 }
                 timeout = value != null && float.IsInfinity(value.Value) ? null : value;
             }

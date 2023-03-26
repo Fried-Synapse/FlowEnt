@@ -59,7 +59,7 @@ namespace FriedSynapse.FlowEnt
                 UpdateType.LateUpdate => deltaTimes.deltaTime,
                 UpdateType.SmoothLateUpdate => deltaTimes.smoothDeltaTime,
                 UpdateType.FixedUpdate => deltaTimes.fixedDeltaTime,
-                UpdateType.Custom => deltaTimes.fixedDeltaTime,
+                UpdateType.Custom => deltaTimes.deltaTime,
                 _ => throw new NotImplementedException(),
             };
             UpdateInternal(frameCount * deltaTime * FlowEntController.Instance.TimeScale);
