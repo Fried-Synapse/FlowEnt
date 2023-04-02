@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 {
-    public class ValueTests : AbstractTests
+    public class ValueTests : AbstractEngineTests
     {
         public override void CreateObjects(int count)
         {
@@ -17,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             const float from = 2f;
             const float to = 5f;
-            List<float> values = new List<float>();
+            List<float> values = new();
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
@@ -27,7 +28,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from <= v && v <= to));
                         Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[values.Count - 1]);
+                        Assert.AreEqual(to, values[^1]);
                     })
                 .Run();
         }
@@ -37,7 +38,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             const int from = 2;
             const int to = 5;
-            List<int> values = new List<int>();
+            List<int> values = new();
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
@@ -47,7 +48,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from <= v && v <= to));
                         Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[values.Count - 1]);
+                        Assert.AreEqual(to, values[^1]);
                     })
                 .Run();
         }
@@ -55,9 +56,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator Vector2Value()
         {
-            Vector2 from = new Vector2(2f, 2f);
-            Vector2 to = new Vector2(5f, 5f);
-            List<Vector2> values = new List<Vector2>();
+            Vector2 from = new(2f, 2f);
+            Vector2 to = new(5f, 5f);
+            List<Vector2> values = new();
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
@@ -67,7 +68,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from.x <= v.x && v.x <= to.x));
                         Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[values.Count - 1]);
+                        Assert.AreEqual(to, values[^1]);
                     })
                 .Run();
         }
@@ -75,9 +76,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator Vector3Value()
         {
-            Vector3 from = new Vector3(2f, 2f, 2f);
-            Vector3 to = new Vector3(5f, 5f, 5f);
-            List<Vector3> values = new List<Vector3>();
+            Vector3 from = new(2f, 2f, 2f);
+            Vector3 to = new(5f, 5f, 5f);
+            List<Vector3> values = new();
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
@@ -87,7 +88,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from.x <= v.x && v.x <= to.x));
                         Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[values.Count - 1]);
+                        Assert.AreEqual(to, values[^1]);
                     })
                 .Run();
         }
@@ -95,9 +96,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator Vector4Value()
         {
-            Vector4 from = new Vector4(2f, 2f, 2f, 2f);
-            Vector4 to = new Vector4(5f, 5f, 5f, 5f);
-            List<Vector4> values = new List<Vector4>();
+            Vector4 from = new(2f, 2f, 2f, 2f);
+            Vector4 to = new(5f, 5f, 5f, 5f);
+            List<Vector4> values = new();
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
@@ -107,8 +108,59 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from.x <= v.x && v.x <= to.x));
                         Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[values.Count - 1]);
+                        Assert.AreEqual(to, values[^1]);
                     })
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator AnimationCurveValue()
+        {
+            AnimationCurve animationCurve = Variables.AnimationCurve;
+            Dictionary<float, float> values = new();
+            float lastKey = 0;
+
+            yield return CreateTester()
+                .Act(() => new Tween(TestTime)
+                    .OnUpdating(t => lastKey = t)
+                    .Value(animationCurve, (value) => values.Add(lastKey, value))
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.True(values.ToList().TrueForAll(v => animationCurve.Evaluate(v.Key) == v.Value)))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator AnimationCurve2dValue()
+        {
+            AnimationCurve2d animationCurve = Variables.AnimationCurve;
+            Dictionary<float, Vector2> values = new();
+            float lastKey = 0;
+
+            yield return CreateTester()
+                .Act(() => new Tween(TestTime)
+                    .OnUpdating(t => lastKey = t)
+                    .Value(animationCurve, (value) => values.Add(lastKey, value))
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.True(values.ToList().TrueForAll(v => animationCurve.Evaluate(v.Key) == v.Value)))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator AnimationCurve3dValue()
+        {
+            AnimationCurve3d animationCurve = Variables.AnimationCurve;
+            Dictionary<float, Vector3> values = new();
+            float lastKey = 0;
+
+            yield return CreateTester()
+                .Act(() => new Tween(TestTime)
+                    .OnUpdating(t => lastKey = t)
+                    .Value(animationCurve, (value) => values.Add(lastKey, value))
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() => Assert.True(values.ToList().TrueForAll(v => animationCurve.Evaluate(v.Key) == v.Value)))
                 .Run();
         }
 
@@ -129,7 +181,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from.x <= v.x && v.x <= to.x));
                         Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[values.Count - 1]);
+                        Assert.AreEqual(to, values[^1]);
                     })
                 .Run();
         }
@@ -149,7 +201,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from.eulerAngles.y <= v.eulerAngles.y && v.eulerAngles.y <= to.eulerAngles.y));
                         FlowEntAssert.AreEqual(from, values[0]);
-                        FlowEntAssert.AreEqual(to, values[values.Count - 1]);
+                        FlowEntAssert.AreEqual(to, values[^1]);
                     })
                 .Run();
         }
@@ -169,7 +221,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from.r <= v.r && v.r <= to.r));
                         Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[values.Count - 1]);
+                        Assert.AreEqual(to, values[^1]);
                     })
                 .Run();
         }
@@ -189,7 +241,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     {
                         Assert.True(values.TrueForAll(v => from.r <= v.r && v.r <= to.r));
                         Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[values.Count - 1]);
+                        Assert.AreEqual(to, values[^1]);
                     })
                 .Run();
         }

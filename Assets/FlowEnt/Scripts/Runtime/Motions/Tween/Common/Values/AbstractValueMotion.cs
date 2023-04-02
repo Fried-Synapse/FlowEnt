@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 {
-    public abstract class AbstractValueMotion<T> : AbstractTweenMotion
+    public abstract class AbstractEventMotion<T> : AbstractTweenMotion
     {
         [Serializable]
-        public abstract class AbstractEventBuilder : AbstractTweenMotionBuilder
+        public abstract class AbstractEventMotionBuilder : AbstractTweenMotionBuilder
         {
 #pragma warning disable IDE0044, RCS1169
             [SerializeField]
@@ -19,8 +19,18 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
                 => t => callback.Invoke(t);
         }
 
+        protected AbstractEventMotion(Action<T> onUpdated)
+        {
+            this.onUpdated = onUpdated;
+        }
+
+        protected readonly Action<T> onUpdated;
+    }
+
+    public abstract class AbstractValueMotion<T> : AbstractEventMotion<T>
+    {
         [Serializable]
-        public abstract class AbstractBuilder : AbstractEventBuilder
+        public abstract class AbstractValueMotionBuilder : AbstractEventMotionBuilder
         {
             [SerializeField]
             protected T from;
@@ -28,17 +38,15 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
             protected T to;
         }
 
-        protected AbstractValueMotion(T from, T to, Action<T> onUpdated)
+        protected AbstractValueMotion(T from, T to, Action<T> onUpdated) : base(onUpdated)
         {
             this.from = from;
             this.to = to;
-            this.onUpdated = onUpdated;
             lerpFunction = LerpFunction;
         }
 
         private readonly T from;
         private readonly T to;
-        private readonly Action<T> onUpdated;
         private readonly Func<T, T, float, T> lerpFunction;
         protected abstract Func<T, T, float, T> LerpFunction { get; }
 
