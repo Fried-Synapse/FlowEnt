@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
     public class IntValueMotion : AbstractTweenMotion
     {
         [Serializable]
-        public class Builder : AbstractValueMotion<int>.AbstractBuilder
+        public class Builder : AbstractValueMotion<int>.AbstractValueMotionBuilder
         {
             public override ITweenMotion Build()
                 => new IntValueMotion(from, to, GetCallback());

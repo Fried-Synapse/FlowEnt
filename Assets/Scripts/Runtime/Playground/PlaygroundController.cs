@@ -64,6 +64,7 @@ namespace FriedSynapse.FlowEnt.Builder
         private async void Start()
         {
             await Task.Yield();
+            Tween.Build().Start();
         }
 
 #pragma warning restore IDE0051, RCS1213
@@ -78,6 +79,21 @@ namespace FriedSynapse.FlowEnt.Builder
             reset(Green, new Vector3(-2f, 0f, 0f));
             reset(Yellow, new Vector3(0f, 0f, 0f));
             reset(Red, new Vector3(2f, 0f, 0f));
+        }
+
+        public void Log(float t)
+        {
+            Debug.Log($"{t}");
+        }
+
+        public void Log(Vector2 t)
+        {
+            Debug.Log($"{t}");
+        }
+
+        public void Log(Vector3 t)
+        {
+            Debug.Log($"{t}");
         }
     }
 }

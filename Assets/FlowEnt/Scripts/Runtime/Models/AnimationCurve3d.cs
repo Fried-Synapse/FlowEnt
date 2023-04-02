@@ -35,6 +35,7 @@ namespace FriedSynapse.FlowEnt
             return cache;
         }
 
+        public static implicit operator AnimationCurve(AnimationCurve3d curve) => curve.x;
         public static implicit operator AnimationCurve2d(AnimationCurve3d curve) => new AnimationCurve2d(curve.x, curve.y);
     }
 }

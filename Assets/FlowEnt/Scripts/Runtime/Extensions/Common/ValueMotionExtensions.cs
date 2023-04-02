@@ -57,6 +57,30 @@ namespace FriedSynapse.FlowEnt
             => tween.Apply(new Vector4ValueMotion(from, to, onUpdated));
 
         /// <summary>
+        /// Applies a <see cref="AnimationCurveValueMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tween"></param>
+        /// <param name="onUpdated"></param>
+        public static Tween Value(this Tween tween, AnimationCurve animationCurve, Action<float> onUpdated)
+            => tween.Apply(new AnimationCurveValueMotion(animationCurve, onUpdated));
+
+        /// <summary>
+        /// Applies a <see cref="AnimationCurve2dValueMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tween"></param>
+        /// <param name="onUpdated"></param>
+        public static Tween Value(this Tween tween, AnimationCurve2d animationCurve, Action<Vector2> onUpdated)
+            => tween.Apply(new AnimationCurve2dValueMotion(animationCurve, onUpdated));
+
+        /// <summary>
+        /// Applies a <see cref="AnimationCurve3dValueMotion" /> to the tween.
+        /// </summary>
+        /// <param name="tween"></param>
+        /// <param name="onUpdated"></param>
+        public static Tween Value(this Tween tween, AnimationCurve3d animationCurve, Action<Vector3> onUpdated)
+            => tween.Apply(new AnimationCurve3dValueMotion(animationCurve, onUpdated));
+
+        /// <summary>
         /// Applies a <see cref="SplineValueMotion" /> to the tween.
         /// </summary>
         /// <param name="tween"></param>

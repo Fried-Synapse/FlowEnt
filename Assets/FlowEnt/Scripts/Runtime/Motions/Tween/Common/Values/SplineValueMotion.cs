@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Values
 {
-    public class SplineValueMotion : AbstractTweenMotion
+    public class SplineValueMotion : AbstractEventMotion<Vector3>
     {
         [Serializable]
-        public class Builder : AbstractValueMotion<Vector3>.AbstractEventBuilder
+        public class Builder : AbstractEventMotionBuilder
         {
 #pragma warning disable IDE0044, RCS1169
             [SerializeField]
@@ -40,18 +40,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
         /// <summary>
         /// Lerps an <see cref="ISpline" />.
         /// </summary>
-        public SplineValueMotion(ISpline spline, Action<Vector3> callback)
+        public SplineValueMotion(ISpline spline, Action<Vector3> onUpdated) : base(onUpdated)
         {
             this.spline = spline;
-            this.callback = callback;
         }
 
         private readonly ISpline spline;
-        private readonly Action<Vector3> callback;
 
         public override void OnUpdate(float t)
         {
-            callback(spline.GetPoint(t));
+            onUpdated(spline.GetPoint(t));
         }
     }
 }
