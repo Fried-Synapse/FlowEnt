@@ -30,9 +30,13 @@ namespace FriedSynapse.FlowEnt
         /// <param name="autoStart">Whether the echo should start automatically or not.</param>
         public Echo(float? timeout = default, bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
         {
-            if (timeout < 0)
+            if (timeout < EchoOptions.MinTime)
             {
-                throw new ArgumentException(EchoOptions.ErrorTimeoutNegative);
+                throw new ArgumentException(EchoOptions.ErrorTimeoutMin);
+            }
+            if (timeout != null && float.IsInfinity(timeout.Value))
+            {
+                throw new ArgumentException(EchoOptions.ErrorTimeoutInfinity);
             }
             this.timeout = timeout != null && float.IsInfinity(timeout.Value) ? null : timeout;
             AutoStart = autoStart;

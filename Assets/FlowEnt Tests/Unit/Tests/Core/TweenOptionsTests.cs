@@ -75,16 +75,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Run();
         }
 
-        [UnityTest]
-        public IEnumerator Time_ZeroValue()
+        [Test]
+        public void Time_ZeroValue()
         {
             const float time = 0f;
 
-            yield return CreateTester()
-                .Act(() => CreateAnimation(time)
-                            .Start())
-                .AssertTime(time)
-                .Run();
+            Assert.Throws<ArgumentException>(() => new Tween(time));
+            Assert.Throws<ArgumentException>(() => new Tween().SetTime(time));
+            Assert.Throws<ArgumentException>(() => new Tween(new TweenOptions() { Time = time }));
+            Assert.Throws<ArgumentException>(() => new Tween(new TweenOptions().SetTime(time)));
         }
 
         [Test]

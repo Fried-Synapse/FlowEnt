@@ -93,9 +93,13 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentEchoOptionable.SetTimeout
         public Echo SetTimeout(float? timeout)
         {
-            if (timeout < 0)
+            if (timeout < EchoOptions.MinTime)
             {
-                throw new ArgumentException(EchoOptions.ErrorTimeoutNegative);
+                throw new ArgumentException(EchoOptions.ErrorTimeoutMin);
+            }
+            if (timeout != null && float.IsInfinity(timeout.Value))
+            {
+                throw new ArgumentException(EchoOptions.ErrorTimeoutInfinity);
             }
             this.timeout = timeout != null && float.IsInfinity(timeout.Value) ? null : timeout;
             return this;

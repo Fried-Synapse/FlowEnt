@@ -36,9 +36,9 @@ namespace FriedSynapse.FlowEnt
         /// <param name="autoStart">Whether the tween should start automatically or not.</param>
         public Tween(float time = TweenOptions.DefaultTime, bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
         {
-            if (time < 0)
+            if (time < TweenOptions.MinTime)
             {
-                throw new ArgumentException(TweenOptions.ErrorTimeNegative);
+                throw new ArgumentException(TweenOptions.ErrorTimeMin);
             }
             if (float.IsInfinity(time))
             {

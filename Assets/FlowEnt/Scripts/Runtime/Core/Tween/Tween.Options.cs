@@ -82,9 +82,9 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc IFluentTweenOptionable.SetTime
         public Tween SetTime(float time)
         {
-            if (time < 0)
+            if (time < TweenOptions.MinTime)
             {
-                throw new ArgumentException(TweenOptions.ErrorTimeNegative);
+                throw new ArgumentException(TweenOptions.ErrorTimeMin);
             }
             if (float.IsInfinity(time))
             {
