@@ -47,28 +47,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     return new Flow()
-                                .Queue(new Tween(TestTime).OnCompleted(() => hasCompleted = true))
-                                .Start();
-                })
-                .AssertTime(TestTime)
-                .Assert(() => Assert.True(hasCompleted))
-                .Run();
-        }
-
-        [UnityTest]
-        public IEnumerator QueueEmptyTween()
-        {
-            bool hasCompleted = false;
-
-            yield return CreateTester()
-                .Act(() =>
-                {
-                    return new Flow()
-                                .Queue(new Tween(HalfTestTime))
-                                .Queue(default(AbstractAnimation))
-                                .Queue(new Tween(0))
-                                .Queue(new Tween(HalfTestTime).OnCompleted(() => hasCompleted = true))
-                                .Start();
+                        .Queue(new Tween(TestTime).OnCompleted(() => hasCompleted = true))
+                        .Start();
                 })
                 .AssertTime(TestTime)
                 .Assert(() => Assert.True(hasCompleted))
@@ -84,10 +64,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     return new Flow()
-                                .Queue(new Tween(QuarterTestTime))
-                                .QueueDelay(QuarterTestTime)
-                                .Queue(new Tween(QuarterTestTime).OnCompleted(() => hasCompleted = true))
-                                .Start();
+                        .Queue(new Tween(QuarterTestTime))
+                        .QueueDelay(QuarterTestTime)
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => hasCompleted = true))
+                        .Start();
                 })
                 .AssertTime(ThreeQuartersTestTime)
                 .Assert(() => Assert.True(hasCompleted))
@@ -104,9 +84,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     return new Flow()
-                                .Conditional(() => true, flow => flow.Queue(new Tween(TestTime).OnCompleted(() => hasCompletedTrue = true)))
-                                .Conditional(() => false, flow => flow.Queue(new Tween(TestTime).OnCompleted(() => hasCompletedFalse = false)))
-                                .Start();
+                        .Conditional(() => true, flow => flow.Queue(new Tween(TestTime).OnCompleted(() => hasCompletedTrue = true)))
+                        .Conditional(() => false, flow => flow.Queue(new Tween(TestTime).OnCompleted(() => hasCompletedFalse = false)))
+                        .Start();
                 })
                 .AssertTime(TestTime)
                 .Assert(() => Assert.True(hasCompletedTrue))
@@ -136,12 +116,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     });
                     tween.Start();
                     return new Flow()
-                                .QueueAwaiter(new CallbackFlowAwaiter(() => wait)
-                                    .OnStarted(() => awaiterStartTime = Time.time)
-                                    .OnUpdated((_) => awaiterLastUpdateTime = Time.time)
-                                    .OnCompleted(() => awaiterCompleteTimeTime = Time.time))
-                                .Queue(new Tween(HalfTestTime).OnStarted(() => tweenStartTime = Time.time).OnCompleted(() => hasCompleted = true))
-                                .Start();
+                        .QueueAwaiter(new CallbackFlowAwaiter(() => wait)
+                            .OnStarted(() => awaiterStartTime = Time.time)
+                            .OnUpdated((_) => awaiterLastUpdateTime = Time.time)
+                            .OnCompleted(() => awaiterCompleteTimeTime = Time.time))
+                        .Queue(new Tween(HalfTestTime).OnStarted(() => tweenStartTime = Time.time).OnCompleted(() => hasCompleted = true))
+                        .Start();
                 })
                 .AssertTime(() => actualWaitTime + HalfTestTime)
                 .Assert(() =>
@@ -172,9 +152,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     });
                     tween.Start();
                     return new Flow()
-                                .QueueAwaiter(() => wait)
-                                .Queue(new Tween(HalfTestTime).OnCompleted(() => hasCompleted = true))
-                                .Start();
+                        .QueueAwaiter(() => wait)
+                        .Queue(new Tween(HalfTestTime).OnCompleted(() => hasCompleted = true))
+                        .Start();
                 })
                 .AssertTime(() => actualWaitTime + HalfTestTime)
                 .Assert(() => Assert.True(hasCompleted))
@@ -190,9 +170,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     return new Flow()
-                                .QueueAwaiter(Task.Delay((int)(HalfTestTime * 1000)))
-                                .Queue(new Tween(HalfTestTime).OnCompleted(() => hasCompleted = true))
-                                .Start();
+                        .QueueAwaiter(Task.Delay((int)(HalfTestTime * 1000)))
+                        .Queue(new Tween(HalfTestTime).OnCompleted(() => hasCompleted = true))
+                        .Start();
                 })
                 .AssertTime(() => TestTime)
                 .Assert(() => Assert.True(hasCompleted))

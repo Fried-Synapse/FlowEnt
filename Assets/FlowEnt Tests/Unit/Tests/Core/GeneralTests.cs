@@ -23,8 +23,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     FlowEntController.Instance.TimeScale = timeScale;
                     return new Flow()
-                            .Queue(new Tween().SetTime(TestTime))
-                            .Start();
+                        .Queue(new Tween().SetTime(TestTime))
+                        .Start();
                 })
                 .AssertTime(TestTime / timeScale)
                 .Abrogate(() => FlowEntController.Instance.TimeScale = 1f)
@@ -48,11 +48,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     tween1 = new Tween()
-                                .SetTime(HalfTestTime)
-                                .Start();
+                        .SetTime(HalfTestTime)
+                        .Start();
                     tween2 = new Tween()
-                                .SetTime(HalfTestTime * 2)
-                                .Start();
+                        .SetTime(HalfTestTime * 2)
+                        .Start();
                     Task.Delay((int)(HalfTestTime * 1000)).ContinueWith(_ => FlowEntController.Instance.Pause());
                     Task.Delay((int)(HalfTestTime * 2000)).ContinueWith(_ => FlowEntController.Instance.Resume());
                     return tween1;

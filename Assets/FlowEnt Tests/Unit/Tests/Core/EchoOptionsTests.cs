@@ -72,17 +72,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Run();
         }
 
-        [UnityTest]
-        public IEnumerator Timeout_ZeroValue()
+        [Test]
+        public void Timeout_ZeroValue()
         {
             const float timeout = 0f;
 
-            yield return CreateTester()
-                .Act(() => new Echo()
-                            .SetTimeout(timeout)
-                            .Start())
-                .AssertTime(timeout)
-                .Run();
+            Assert.Throws<ArgumentException>(() => new Echo(timeout));
+            Assert.Throws<ArgumentException>(() => new Echo().SetTimeout(timeout));
+            Assert.Throws<ArgumentException>(() => new Echo(new EchoOptions() { Timeout = timeout }));
+            Assert.Throws<ArgumentException>(() => new Echo(new EchoOptions().SetTimeout(timeout)));
         }
 
         [Test]

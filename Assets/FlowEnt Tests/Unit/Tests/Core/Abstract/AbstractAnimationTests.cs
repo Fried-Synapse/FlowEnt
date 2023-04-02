@@ -326,7 +326,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    animation = CreateAnimation(0).Start() as TAnimation;
+                    animation = CreateAnimation(TestTime).Start() as TAnimation;
                     return animation;
                 })
                 .Assert(() => Assert.AreEqual(typeof(TAnimation) != typeof(Flow), animation.Controllable.IsSeekable))
