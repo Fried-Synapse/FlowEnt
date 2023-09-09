@@ -779,10 +779,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector4 value = Vector4.one;
 
             yield return CreateTester()
-                .Arrange(() => Material.SetVector(MetallicPropertyName, Vector4.zero))
-                .Act(() => Material.Tween(TestTime).Vector(MetallicPropertyName, value).Start())
+                .Arrange(() => Material.SetVector(ColorPropertyName, Vector4.zero))
+                .Act(() => Material.Tween(TestTime).Vector(ColorPropertyName, value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, Material.GetVector(MetallicPropertyName)))
+                .Assert(() => Assert.AreEqual(value, Material.GetVector(ColorPropertyName)))
                 .Run();
         }
 
@@ -792,10 +792,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector4 to = Vector4.one;
 
             yield return CreateTester()
-                .Arrange(() => Material.SetVector(MetallicPropertyName, Vector4.zero))
-                .Act(() => Material.Tween(TestTime).VectorTo(MetallicPropertyName, to).Start())
+                .Arrange(() => Material.SetVector(ColorPropertyName, Vector4.zero))
+                .Act(() => Material.Tween(TestTime).VectorTo(ColorPropertyName, to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Material.GetVector(MetallicPropertyName)))
+                .Assert(() => Assert.AreEqual(to, Material.GetVector(ColorPropertyName)))
                 .Run();
         }
 
@@ -807,15 +807,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector4? startingValue = null;
 
             yield return CreateTester()
-                .Arrange(() => Material.SetVector(MetallicPropertyName, Vector4.zero))
-                .Act(() => Material.Tween(TestTime).VectorTo(MetallicPropertyName, from, to)
-                                    .OnUpdated(_ => startingValue ??= Material.GetVector(MetallicPropertyName))
+                .Arrange(() => Material.SetVector(ColorPropertyName, Vector4.zero))
+                .Act(() => Material.Tween(TestTime).VectorTo(ColorPropertyName, from, to)
+                                    .OnUpdated(_ => startingValue ??= Material.GetVector(ColorPropertyName))
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Material.GetVector(MetallicPropertyName));
+                    Assert.AreEqual(to, Material.GetVector(ColorPropertyName));
                 })
                 .Run();
         }
@@ -826,10 +826,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector4 value = Vector4.one;
 
             yield return CreateTester()
-                .Arrange(() => Material.SetVector(MetallicPropertyId, Vector4.zero))
-                .Act(() => Material.Tween(TestTime).Vector(MetallicPropertyId, value).Start())
+                .Arrange(() => Material.SetVector(ColorPropertyId, Vector4.zero))
+                .Act(() => Material.Tween(TestTime).Vector(ColorPropertyId, value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, Material.GetVector(MetallicPropertyId)))
+                .Assert(() => Assert.AreEqual(value, Material.GetVector(ColorPropertyId)))
                 .Run();
         }
 
@@ -839,10 +839,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector4 to = Vector4.one;
 
             yield return CreateTester()
-                .Arrange(() => Material.SetVector(MetallicPropertyId, Vector4.zero))
-                .Act(() => Material.Tween(TestTime).VectorTo(MetallicPropertyId, to).Start())
+                .Arrange(() => Material.SetVector(ColorPropertyId, Vector4.zero))
+                .Act(() => Material.Tween(TestTime).VectorTo(ColorPropertyId, to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Material.GetVector(MetallicPropertyId)))
+                .Assert(() => Assert.AreEqual(to, Material.GetVector(ColorPropertyId)))
                 .Run();
         }
 
@@ -854,15 +854,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector4? startingValue = null;
 
             yield return CreateTester()
-                .Arrange(() => Material.SetVector(MetallicPropertyId, Vector4.zero))
-                .Act(() => Material.Tween(TestTime).VectorTo(MetallicPropertyId, from, to)
-                                    .OnUpdated(_ => startingValue ??= Material.GetVector(MetallicPropertyId))
+                .Arrange(() => Material.SetVector(ColorPropertyId, Vector4.zero))
+                .Act(() => Material.Tween(TestTime).VectorTo(ColorPropertyId, from, to)
+                                    .OnUpdated(_ => startingValue ??= Material.GetVector(ColorPropertyId))
                                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Material.GetVector(MetallicPropertyId));
+                    Assert.AreEqual(to, Material.GetVector(ColorPropertyId));
                 })
                 .Run();
         }
