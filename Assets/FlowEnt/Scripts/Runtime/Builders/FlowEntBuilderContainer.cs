@@ -14,6 +14,7 @@ namespace FriedSynapse.FlowEnt
             Custom
         }
 
+        [Header("Settings")]
         [SerializeField]
         private StartTypeEnum startType;
 
@@ -25,7 +26,10 @@ namespace FriedSynapse.FlowEnt
         public float Delay => delay;
 
         [SerializeField]
-        private List<IAbstractAnimationBuilder> animations;
+        private List<IAbstractAnimationBuilder> animations = new List<IAbstractAnimationBuilder>();
+
+        [SerializeField]
+        private IAbstractAnimationBuilder test = new TweenBuilder();
 
         public List<IAbstractAnimationBuilder> Animations => animations;
 
