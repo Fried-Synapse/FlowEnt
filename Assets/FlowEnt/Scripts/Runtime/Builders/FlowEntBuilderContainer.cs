@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FriedSynapse.FlowEnt
 {
     public class FlowEntBuilderContainer : MonoBehaviour
     {
-        public enum StartTypeEnum
+        public enum StartModeEnum
         {
             Awake,
             Start,
@@ -16,9 +18,9 @@ namespace FriedSynapse.FlowEnt
 
         [Header("Settings")]
         [SerializeField]
-        private StartTypeEnum startType;
+        private StartModeEnum startMode;
 
-        public StartTypeEnum StartType => startType;
+        public StartModeEnum StartMode => startMode;
 
         [SerializeField]
         private float delay;
@@ -26,15 +28,82 @@ namespace FriedSynapse.FlowEnt
         public float Delay => delay;
 
         [SerializeField]
-        private List<IAbstractAnimationBuilder> animations = new List<IAbstractAnimationBuilder>();
+        private bool autoDestroy = true;
+
+        public bool AutoDestroy => autoDestroy;
+
+        [Header("Animations")]
+        [SerializeField]
+        private List<FlowBuilder> flowsBuilders;
+
+        public List<FlowBuilder> FlowsBuilders => flowsBuilders;
 
         [SerializeField]
-        private IAbstractAnimationBuilder test = new TweenBuilder();
+        private List<TweenBuilder> tweensBuilders;
 
-        public List<IAbstractAnimationBuilder> Animations => animations;
+        public List<TweenBuilder> TweensBuilders => tweensBuilders;
 
-        void Start()
+        [SerializeField]
+        private List<EchoBuilder> echoesBuilders;
+
+        public List<EchoBuilder> EchoesBuilders => echoesBuilders;
+
+        public List<AbstractAnimation> Animations { get; private set; }
+
+        public void StartCustomMode()
         {
+            if (StartMode == StartModeEnum.Custom)
+            {
+                StartAnimations();
+            }
+        }
+
+        private void Awake()
+        {
+            if (StartMode == StartModeEnum.Awake)
+            {
+                StartAnimations();
+            }
+        }
+
+        private void Start()
+        {
+            if (StartMode == StartModeEnum.Start)
+            {
+                StartAnimations();
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (StartMode == StartModeEnum.OnEnable)
+            {
+                StartAnimations();
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (StartMode == StartModeEnum.OnEnable)
+            {
+                Animations.Stop();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (autoDestroy)
+            {
+                Animations.Stop();
+            }
+        }
+
+        private void StartAnimations()
+        {
+            Animations = new List<AbstractAnimation>();
+            Animations.AddRange(FlowsBuilders.Build().Start());
+            Animations.AddRange(TweensBuilders.Build().Start());
+            Animations.AddRange(EchoesBuilders.Build().Start());
         }
     }
 }

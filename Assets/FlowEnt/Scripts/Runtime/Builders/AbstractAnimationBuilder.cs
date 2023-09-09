@@ -1,5 +1,3 @@
-using System;
-
 namespace FriedSynapse.FlowEnt
 {
     public interface IAbstractAnimationBuilder : IBuilderListItem
@@ -7,11 +5,9 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimation Build();
     }
 
-    public abstract class AbstractAnimationBuilder<TAnimation> : IAbstractAnimationBuilder
+    public abstract class AbstractAnimationBuilder<TAnimation> : AbstractBuilder<TAnimation>, IAbstractAnimationBuilder
         where TAnimation : AbstractAnimation
     {
-        public abstract TAnimation Build();
-
         AbstractAnimation IAbstractAnimationBuilder.Build()
             => Build();
     }
