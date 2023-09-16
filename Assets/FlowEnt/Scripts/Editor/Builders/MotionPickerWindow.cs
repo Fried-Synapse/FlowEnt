@@ -13,9 +13,16 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             public Type Type { get; set; }
             public List<string> Names { get; set; } = new List<string>();
+            public int SearchIndex { get; private set; }
+
+            public void ComputeSearchIndex(List<string> parts)
+            {
+                SearchIndex = parts.Count(sp => Names.Any(n => n.IndexOf(sp, StringComparison.OrdinalIgnoreCase) >= 0));
+            }
         }
 
         private static MotionPickerWindow instance;
+
         public static void Show<TMotionBuilder>(Action<TMotionBuilder> callback)
             where TMotionBuilder : IMotionBuilder
         {
@@ -33,6 +40,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private Vector2 scrollPosition;
         private GUIStyle button;
         private bool hadInitialFocus;
+
         private void Init()
         {
             button = new GUIStyle(GUI.skin.button);
@@ -50,12 +58,21 @@ namespace FriedSynapse.FlowEnt.Editor
                 EditorGUI.FocusTextInControl("SearchField");
             }
 
+
             List<TypeInfo> types = this.types;
             if (!string.IsNullOrEmpty(searchText))
             {
-                types = types.FindAll(t => t.Names.Any(n => n.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0));
+                List<string> searchParts = searchText
+                    .Split(" ")
+                    .Where(sp => !string.IsNullOrEmpty(sp))
+                    .ToList();
+
+                types.ForEach(t => t.ComputeSearchIndex(searchParts));
+                types = types.Where(t => t.SearchIndex > 0).OrderByDescending(t => t.SearchIndex).ToList();
             }
-            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Width(position.width), GUILayout.Height(position.height));
+
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Width(position.width),
+                GUILayout.Height(position.height));
 
             foreach (TypeInfo typeInfo in types)
             {
@@ -83,8 +100,10 @@ namespace FriedSynapse.FlowEnt.Editor
 
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type)).Select(t => new TypeInfo() { Type = t, Names = MotionNameGetter.GetNames(t) }));
+                objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type))
+                    .Select(t => new TypeInfo() { Type = t, Names = MotionNameGetter.GetNames(t) }));
             }
+
             return objects;
         }
     }
