@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TweenDebugMotion = FriedSynapse.FlowEnt.Motions.Tween.DebugMotion;
 using EchoDebugMotion = FriedSynapse.FlowEnt.Motions.Echo.DebugMotion;
 
@@ -41,7 +44,7 @@ namespace FriedSynapse.FlowEnt
             => new Tween(options).For(item);
 
         /// <summary>
-        /// Applies a <see cref="DebugMotion" /> to the tween.
+        /// Applies a <see cref="TweenDebugMotion" /> to the tween.
         /// </summary>
         /// <param name="tween"></param>
         /// <param name="name">If name is null, it will use the tween's name. Make you it's set.</param>
@@ -74,12 +77,83 @@ namespace FriedSynapse.FlowEnt
             => new Echo(options).For(item);
 
         /// <summary>
-        /// Applies a <see cref="DebugMotion" /> to the echo.
+        /// Applies a <see cref="EchoDebugMotion" /> to the echo.
         /// </summary>
         /// <param name="echo"></param>
         /// <param name="name">If name is null, it will use the echo's name. Make you it's set.</param>
         public static Echo Debug(this Echo echo, string name = null)
             => echo.Apply(new EchoDebugMotion(name ?? echo.Name));
+
+        #endregion
+
+        #region List
+
+        public static IEnumerable<AbstractAnimation> Build(
+            this IEnumerable<IAbstractAnimationBuilder> animationsBuilders)
+            => animationsBuilders.Select(animationBuilder => animationBuilder.Build());
+
+        public static IEnumerable<AbstractAnimation> Start(this IEnumerable<AbstractAnimation> animations)
+        {
+            foreach (AbstractAnimation animation in animations)
+            {
+                animation.Start();
+            }
+
+            return animations;
+        }
+
+        public static async Task<IEnumerable<AbstractAnimation>> StartAsync(
+            this IEnumerable<AbstractAnimation> animations)
+        {
+            List<Task> tasks = new List<Task>();
+            foreach (AbstractAnimation animation in animations)
+            {
+                tasks.Add(animation.StartAsync());
+            }
+
+            await Task.WhenAll(tasks);
+            return animations;
+        }
+
+        public static IEnumerable<AbstractAnimation> Pause(this IEnumerable<AbstractAnimation> animations)
+        {
+            foreach (AbstractAnimation animation in animations)
+            {
+                animation.Pause();
+            }
+
+            return animations;
+        }
+
+        public static IEnumerable<AbstractAnimation> Resume(this IEnumerable<AbstractAnimation> animations)
+        {
+            foreach (AbstractAnimation animation in animations)
+            {
+                animation.Resume();
+            }
+
+            return animations;
+        }
+
+        public static IEnumerable<AbstractAnimation> Stop(this IEnumerable<AbstractAnimation> animations)
+        {
+            foreach (AbstractAnimation animation in animations)
+            {
+                animation.Stop();
+            }
+
+            return animations;
+        }
+
+        public static IEnumerable<AbstractAnimation> Reset(this IEnumerable<AbstractAnimation> animations)
+        {
+            foreach (AbstractAnimation animation in animations)
+            {
+                animation.Reset();
+            }
+
+            return animations;
+        }
 
         #endregion
     }

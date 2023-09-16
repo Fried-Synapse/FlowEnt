@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private bool isLoopCountInfinite;
         [SerializeField, Min(1)]
-        private int loopCount = 1;
+        private int loopCount = AbstractAnimationOptions.DefaultLoopCount;
         public int? LoopCount => isLoopCountInfinite ? default(int?) : loopCount;
 #pragma warning restore RCS1169, RCS1085, IDE0044
 

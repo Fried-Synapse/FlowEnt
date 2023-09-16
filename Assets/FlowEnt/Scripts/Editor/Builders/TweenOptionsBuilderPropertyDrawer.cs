@@ -4,7 +4,8 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenOptionsBuilder))]
-    public class TweenOptionsBuilderPropertyDrawer : AbstractPropertiesBuilderPropertyDrawer<TweenOptionsBuilderPropertyDrawer.PropertiesEnum>
+    public class TweenOptionsBuilderPropertyDrawer : AbstractPropertiesBuilderPropertyDrawer<
+        TweenOptionsBuilderPropertyDrawer.PropertiesEnum>
     {
         public enum PropertiesEnum
         {
@@ -32,10 +33,13 @@ namespace FriedSynapse.FlowEnt.Editor
                 switch (prop)
                 {
                     case PropertiesEnum.loopCount:
-                        DrawNullable(propertyPosition, property, nameof(PropertiesEnum.loopCount), "isLoopCountInfinite", true);
+                        DrawNullable(propertyPosition, property, nameof(PropertiesEnum.loopCount),
+                            "isLoopCountInfinite", true);
                         break;
                     case PropertiesEnum.easing:
-                        TweenOptionsBuilder.EasingType easingType = (TweenOptionsBuilder.EasingType)property.FindPropertyRelative(nameof(PropertiesEnum.easingType)).enumValueIndex;
+                        TweenOptionsBuilder.EasingType easingType =
+                            (TweenOptionsBuilder.EasingType)property
+                                .FindPropertyRelative(nameof(PropertiesEnum.easingType)).enumValueIndex;
                         string propertyName = easingType switch
                         {
                             TweenOptionsBuilder.EasingType.Predefined => nameof(PropertiesEnum.easing),
@@ -49,6 +53,18 @@ namespace FriedSynapse.FlowEnt.Editor
                         break;
                 }
             }
+        }
+
+        protected override void Init(SerializedProperty property)
+        {
+            base.Init(property);
+            property.FindPropertyRelative(PropertiesEnum.timeScale.ToString()).floatValue =
+                AbstractAnimationOptions.DefaultTimeScale;
+            property.FindPropertyRelative(PropertiesEnum.time.ToString()).floatValue = TweenOptions.DefaultTime;
+            property.FindPropertyRelative(PropertiesEnum.loopCount.ToString()).intValue =
+                AbstractAnimationOptions.DefaultLoopCount;
+            property.FindPropertyRelative(PropertiesEnum.easingType.ToString()).enumValueIndex =
+                (int)TweenOptions.DefaultEasing;
         }
     }
 }

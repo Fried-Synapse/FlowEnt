@@ -19,13 +19,13 @@ namespace FriedSynapse.FlowEnt
         {
         }
 
-        private float? timeout = 1f;
+        private float? timeout;
         /// <summary>
         /// The amount of time in seconds that this echo will last.
         /// </summary>
         public float? Timeout
         {
-            get { return timeout; }
+            get => timeout;
             set
             {
                 if (value < MinTime)
