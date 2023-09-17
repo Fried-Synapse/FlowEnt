@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private static MotionPickerWindow instance;
 
         public static void Show<TMotionBuilder>(Action<TMotionBuilder> callback)
-            where TMotionBuilder : IIdentifiableBuilder
+            where TMotionBuilder : IMotionBuilder
         {
             instance?.Close();
             instance = CreateWindow<MotionPickerWindow>("Select animation");
@@ -93,7 +93,7 @@ namespace FriedSynapse.FlowEnt.Editor
 #pragma warning restore IDE0051, RCS1213
 
         private static List<TypeInfo> GetTypes<TMotionBuilder>()
-            where TMotionBuilder : IIdentifiableBuilder
+            where TMotionBuilder : IMotionBuilder
         {
             List<TypeInfo> objects = new List<TypeInfo>();
             Type type = typeof(TMotionBuilder);
