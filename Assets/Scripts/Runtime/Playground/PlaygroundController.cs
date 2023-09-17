@@ -95,5 +95,10 @@ namespace FriedSynapse.FlowEnt.Builder
         {
             Debug.Log($"{t}");
         }
+
+        public void Log(string name)
+        {
+            Debug.Log(name);
+        }
     }
 }

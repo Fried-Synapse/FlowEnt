@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework;
+using FluentAssertions;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
@@ -22,14 +22,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                     CreateAnimation(TestTime)
-                        .OnStarting(() => { wasCalled = true; control = controlTracker; })
+                        .OnStarting(() =>
+                        {
+                            wasCalled = true;
+                            control = controlTracker;
+                        })
                         .OnUpdated(t => controlTracker = GetUnitValue(t, controlTracker, TestTime))
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(wasCalled);
-                    Assert.AreEqual(expected, control);
+                    wasCalled.Should().BeTrue();
+                    control.Should().Be(expected);
                 })
                 .Run();
         }
@@ -45,14 +49,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                     CreateAnimation(TestTime)
-                        .OnStarted(() => { wasCalled = true; control = controlTracker; })
+                        .OnStarted(() =>
+                        {
+                            wasCalled = true;
+                            control = controlTracker;
+                        })
                         .OnUpdated(t => controlTracker = GetUnitValue(t, controlTracker, TestTime))
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(wasCalled);
-                    Assert.AreEqual(expected, control);
+                    wasCalled.Should().BeTrue();
+                    control.Should().Be(expected);
                 })
                 .Run();
         }
@@ -66,14 +74,20 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                     CreateAnimation(TestTime)
-                        .OnUpdating(t => { wasCalled = true; deltas.Add(t); })
+                        .OnUpdating(t =>
+                        {
+                            wasCalled = true;
+                            deltas.Add(t);
+                        })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(wasCalled);
-                    Assert.Greater(deltas.Count, 0);
-                    Assert.True(deltas.TrueForAll(t => 0 <= t && t <= 1));
+                    wasCalled.Should().BeTrue();
+                    deltas.Should().HaveCount(0);
+                    deltas.Should().AllSatisfy(t =>
+                        t.Should().BeGreaterOrEqualTo(0)
+                            .And.BeLessThanOrEqualTo(1));
                 })
                 .Run();
         }
@@ -87,14 +101,20 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                     CreateAnimation(TestTime)
-                        .OnUpdated(t => { wasCalled = true; deltas.Add(t); })
+                        .OnUpdated(t =>
+                        {
+                            wasCalled = true;
+                            deltas.Add(t);
+                        })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(wasCalled);
-                    Assert.Greater(deltas.Count, 0);
-                    Assert.True(deltas.TrueForAll(t => 0 <= t && t <= 1));
+                    wasCalled.Should().BeTrue();
+                    deltas.Should().HaveCount(0);
+                    deltas.Should().AllSatisfy(t =>
+                        t.Should().BeGreaterOrEqualTo(0)
+                            .And.BeLessThanOrEqualTo(1));
                 })
                 .Run();
         }
@@ -114,13 +134,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     CreateAnimation(time)
                         .SetLoopCount(expectedLoopCount)
                         .OnUpdated(t => controlTracker = GetUnitValue(t, controlTracker, time))
-                        .OnLoopStarted((_) => { loopCount++; control = controlTracker; })
+                        .OnLoopStarted((_) =>
+                        {
+                            loopCount++;
+                            control = controlTracker;
+                        })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(expectedLoopCount, loopCount);
-                    FlowEntAssert.AreEqual(expected, control);
+                    loopCount.Should().Be(expectedLoopCount);
+                    control.Should().BeApproximatelyFloat(expected);
                 })
                 .Run();
         }
@@ -140,13 +164,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     CreateAnimation(time)
                         .SetLoopCount(expectedLoopCount)
                         .OnUpdated(t => controlTracker = GetUnitValue(t, controlTracker, time))
-                        .OnLoopCompleted((_) => { loopCount++; control = controlTracker; })
+                        .OnLoopCompleted((_) =>
+                        {
+                            loopCount++;
+                            control = controlTracker;
+                        })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(expectedLoopCount, loopCount);
-                    FlowEntAssert.AreEqual(expected, control);
+                    loopCount.Should().Be(expectedLoopCount);
+                    control.Should().BeApproximatelyFloat(expected);
                 })
                 .Run();
         }
@@ -167,15 +195,19 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     TAnimation animation = (TAnimation)CreateAnimation(time)
                         .SetLoopCount(expectedLoopCount)
                         .OnUpdated(t => controlTracker = GetUnitValue(t, controlTracker, time))
-                        .OnLoopCompleted((_) => { loopCount++; control = controlTracker; })
+                        .OnLoopCompleted((_) =>
+                        {
+                            loopCount++;
+                            control = controlTracker;
+                        })
                         .Start();
                     return CreateAnimation(TestTime).OnCompleted(() => animation.Stop()).Start();
                 })
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(expectedLoopCount, loopCount);
-                    FlowEntAssert.AreEqual(expected, control);
+                    loopCount.Should().Be(expectedLoopCount);
+                    control.Should().BeApproximatelyFloat(expected);
                 })
                 .Run();
         }
@@ -192,13 +224,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                     CreateAnimation(TestTime)
                         .OnUpdated(t => controlTracker = GetUnitValue(t, controlTracker, TestTime))
-                        .OnCompleting(() => { wasCalled = true; control = controlTracker; })
+                        .OnCompleting(() =>
+                        {
+                            wasCalled = true;
+                            control = controlTracker;
+                        })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(wasCalled);
-                    FlowEntAssert.AreEqual(expected, control);
+                    wasCalled.Should().BeTrue();
+                    control.Should().Be(expected);
                 })
                 .Run();
         }
@@ -215,13 +251,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                     CreateAnimation(TestTime)
                         .OnUpdated(t => controlTracker = GetUnitValue(t, controlTracker, TestTime))
-                        .OnCompleted(() => { wasCalled = true; control = controlTracker; })
+                        .OnCompleted(() =>
+                        {
+                            wasCalled = true;
+                            control = controlTracker;
+                        })
                         .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(wasCalled);
-                    FlowEntAssert.AreEqual(expected, control);
+                    wasCalled.Should().BeTrue();
+                    control.Should().Be(expected);
                 })
                 .Run();
         }

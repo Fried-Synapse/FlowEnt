@@ -177,7 +177,7 @@ MonoBehaviour:
   tween:
     isInit: 0
     options:
-      isInit: 0
+      isInit: 1
       name: 
       updateType: 0
       autoStart: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
       timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
-      time: 3
+      time: 1
       easingType: 0
       easing: 0
       easingCurve:
@@ -197,7 +197,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       loopType: 0
     events:
-      isInit: 0
+      isInit: 1
       onStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -212,7 +212,20 @@ MonoBehaviour:
           m_Calls: []
       onCompleted:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 371499376}
+            m_TargetAssemblyTypeName: FriedSynapse.FlowEnt.AnimationBuilderContainer,
+              FriedSynapse.FlowEnt
+            m_MethodName: StartCustomMode
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       onStarting:
         m_PersistentCalls:
           m_Calls: []
@@ -228,19 +241,19 @@ MonoBehaviour:
   echo:
     isInit: 0
     options:
-      isInit: 0
+      isInit: 1
       name: 
       updateType: 0
       autoStart: 0
       skipFrames: 0
       delay: 0
-      timeScale: 1.49
+      timeScale: 1
       isLoopCountInfinite: 0
       loopCount: 1
       hasTimeout: 0
       timeout: 9
     events:
-      isInit: 0
+      isInit: 1
       onStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -398,12 +411,234 @@ MonoBehaviour:
   startMode: 0
   delay: 0
   autoDestroy: 1
-  tweensBuilders: []
-  echoesBuilders: []
-  flowsBuilders: []
+  triggerOnCompleted: 0
+  flowsBuilders:
+  - isInit: 0
+    options:
+      isInit: 1
+      name: 
+      updateType: 0
+      autoStart: 0
+      skipFrames: 0
+      delay: 0
+      timeScale: 1
+      isLoopCountInfinite: 0
+      loopCount: 1
+    events:
+      isInit: 1
+      onStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 371499375}
+            m_TargetAssemblyTypeName: FriedSynapse.FlowEnt.Builder.PlaygroundController,
+              FriedSynapse.FlowEnt.Builder
+            m_MethodName: Log
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: flow
+              m_BoolArgument: 0
+            m_CallState: 2
+    queues:
+      items:
+      - rid: 5232822510587740161
+  tweensBuilders:
+  - isInit: 0
+    options:
+      isInit: 1
+      name: 
+      updateType: 0
+      autoStart: 0
+      skipFrames: 0
+      delay: 0
+      timeScale: 1
+      isLoopCountInfinite: 0
+      loopCount: 1
+      time: 1
+      easingType: 0
+      easing: 0
+      easingCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      loopType: 0
+    events:
+      isInit: 1
+      onStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 371499375}
+            m_TargetAssemblyTypeName: FriedSynapse.FlowEnt.Builder.PlaygroundController,
+              FriedSynapse.FlowEnt.Builder
+            m_MethodName: Log
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: tween
+              m_BoolArgument: 0
+            m_CallState: 2
+      onStarting:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdating:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleting:
+        m_PersistentCalls:
+          m_Calls: []
+    motions:
+      items: []
+  echoesBuilders:
+  - isInit: 0
+    options:
+      isInit: 1
+      name: 
+      updateType: 0
+      autoStart: 0
+      skipFrames: 0
+      delay: 0
+      timeScale: 1
+      isLoopCountInfinite: 0
+      loopCount: 1
+      hasTimeout: 1
+      timeout: 1
+    events:
+      isInit: 1
+      onStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      onLoopCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 371499375}
+            m_TargetAssemblyTypeName: FriedSynapse.FlowEnt.Builder.PlaygroundController,
+              FriedSynapse.FlowEnt.Builder
+            m_MethodName: Log
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: echo
+              m_BoolArgument: 0
+            m_CallState: 2
+      onStarting:
+        m_PersistentCalls:
+          m_Calls: []
+      onUpdating:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleting:
+        m_PersistentCalls:
+          m_Calls: []
+    motions:
+      items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5232822510587740161
+      type: {class: FlowBuilder/QueueList/Queue, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
+      data:
+        items:
+        - rid: 5232822510587740162
+        displayName: 
+        isDisplayNameEnabled: 0
+        isEnabled: 1
+        startTime: 0
+    - rid: 5232822510587740162
+      type: {class: TweenBuilder, ns: FriedSynapse.FlowEnt, asm: FriedSynapse.FlowEnt}
+      data:
+        isInit: 0
+        options:
+          isInit: 1
+          name: 
+          updateType: 0
+          autoStart: 0
+          skipFrames: 0
+          delay: 0
+          timeScale: 1
+          isLoopCountInfinite: 0
+          loopCount: 1
+          time: 1
+          easingType: 0
+          easing: 0
+          easingCurve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          loopType: 0
+        events:
+          isInit: 1
+          onStarted:
+            m_PersistentCalls:
+              m_Calls: []
+          onUpdated:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopStarted:
+            m_PersistentCalls:
+              m_Calls: []
+          onLoopCompleted:
+            m_PersistentCalls:
+              m_Calls: []
+          onCompleted:
+            m_PersistentCalls:
+              m_Calls: []
+          onStarting:
+            m_PersistentCalls:
+              m_Calls: []
+          onUpdating:
+            m_PersistentCalls:
+              m_Calls: []
+          onCompleting:
+            m_PersistentCalls:
+              m_Calls: []
+        motions:
+          items: []
 --- !u!1 &494542730
 GameObject:
   m_ObjectHideFlags: 0

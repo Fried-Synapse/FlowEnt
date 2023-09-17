@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.boundfoxstudios.fluentassertions": {
+      "version": "https://github.com/BoundfoxStudios/fluentassertions-unity.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ac405b32a618bf9d9880e4fc1b63c5e45036c72c"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

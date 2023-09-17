@@ -29,7 +29,8 @@ namespace FriedSynapse.FlowEnt
         /// <param name="time"></param>
         /// <param name="autoStart"></param>
         /// <typeparam name="TItem"></typeparam>
-        public static TweenMotionProxy<TItem> Tween<TItem>(this TItem item, float time = TweenOptions.DefaultTime, bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
+        public static TweenMotionProxy<TItem> Tween<TItem>(this TItem item, float time = TweenOptions.DefaultTime,
+            bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
             where TItem : class
             => new Tween(time, autoStart).For(item);
 
@@ -62,7 +63,8 @@ namespace FriedSynapse.FlowEnt
         /// <param name="timeout"></param>
         /// <param name="autoStart"></param>
         /// <typeparam name="TItem"></typeparam>
-        public static EchoMotionProxy<TItem> Echo<TItem>(this TItem item, float? timeout = default, bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
+        public static EchoMotionProxy<TItem> Echo<TItem>(this TItem item, float? timeout = default,
+            bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
             where TItem : class
             => new Echo(timeout, autoStart).For(item);
 
@@ -90,7 +92,16 @@ namespace FriedSynapse.FlowEnt
 
         public static IEnumerable<AbstractAnimation> Build(
             this IEnumerable<IAbstractAnimationBuilder> animationsBuilders)
-            => animationsBuilders.Select(animationBuilder => animationBuilder.Build());
+        {
+            //NOTE if we don't convert to list here somehow it duplicates each built animation is it starts the first one, but returns the second one. Odd stuff.
+            List<AbstractAnimation> list = new List<AbstractAnimation>();
+            foreach (IAbstractAnimationBuilder animationBuilder in animationsBuilders)
+            {
+                list.Add(animationBuilder.Build());
+            }
+
+            return list;
+        }
 
         public static IEnumerable<AbstractAnimation> Start(this IEnumerable<AbstractAnimation> animations)
         {
@@ -135,11 +146,12 @@ namespace FriedSynapse.FlowEnt
             return animations;
         }
 
-        public static IEnumerable<AbstractAnimation> Stop(this IEnumerable<AbstractAnimation> animations)
+        public static IEnumerable<AbstractAnimation> Stop(this IEnumerable<AbstractAnimation> animations,
+            bool triggerOnCompleted = false)
         {
             foreach (AbstractAnimation animation in animations)
             {
-                animation.Stop();
+                animation.Stop(triggerOnCompleted);
             }
 
             return animations;

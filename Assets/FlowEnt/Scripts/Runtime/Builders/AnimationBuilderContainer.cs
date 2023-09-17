@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class FlowEntBuilderContainer : MonoBehaviour
+    public class AnimationBuilderContainer : MonoBehaviour
     {
         public enum StartModeEnum
         {
@@ -31,6 +28,11 @@ namespace FriedSynapse.FlowEnt
         private bool autoDestroy = true;
 
         public bool AutoDestroy => autoDestroy;
+
+        [SerializeField]
+        private bool triggerOnCompleted = false;
+
+        public bool TriggerOnCompleted => triggerOnCompleted;
 
         [Header("Animations")]
         [SerializeField]
@@ -86,24 +88,42 @@ namespace FriedSynapse.FlowEnt
         {
             if (StartMode == StartModeEnum.OnEnable)
             {
-                Animations.Stop();
+                StopAnimations();
             }
         }
 
         private void OnDestroy()
         {
-            if (autoDestroy)
+            if (AutoDestroy)
             {
-                Animations.Stop();
+                StopAnimations();
             }
         }
 
         private void StartAnimations()
         {
             Animations = new List<AbstractAnimation>();
-            Animations.AddRange(FlowsBuilders.Build().Start());
-            Animations.AddRange(TweensBuilders.Build().Start());
-            Animations.AddRange(EchoesBuilders.Build().Start());
+
+            void startAnimations()
+            {
+                Animations.AddRange(FlowsBuilders.Build().Start());
+                Animations.AddRange(TweensBuilders.Build().Start());
+                Animations.AddRange(EchoesBuilders.Build().Start());
+            }
+
+            if (Delay > 0)
+            {
+                Animations.Add(new Tween(Delay).OnCompleted(startAnimations).Start());
+            }
+            else
+            {
+                startAnimations();
+            }
+        }
+
+        private void StopAnimations()
+        {
+            Animations.Stop(triggerOnCompleted);
         }
     }
 }

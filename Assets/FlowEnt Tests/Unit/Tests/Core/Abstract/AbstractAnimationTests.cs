@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
@@ -64,11 +65,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(DoubleTestTime)
                 .Assert(() =>
                 {
-                    Assert.True(isBuilding);
-                    Assert.True(isWaiting);
-                    Assert.True(isPlaying);
-                    Assert.True(isPaused);
-                    Assert.True(animation.PlayState == PlayState.Finished);
+                    isBuilding.Should().BeTrue();
+                    isWaiting.Should().BeTrue();
+                    isPlaying.Should().BeTrue();
+                    isPaused.Should().BeTrue();
+                    animation.PlayState.Should().Be(PlayState.Finished);
                 })
                 .Run($"Testing different states on {nameof(PlayState_Values)}", DoubleTestTime);
         }
@@ -83,9 +84,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
-#pragma warning disable RCS1047
         public IEnumerator StartAsync()
-#pragma warning restore RCS1047
         {
             Task task = null;
 
@@ -137,9 +136,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
-#pragma warning disable RCS1047
         public IEnumerator AsAsync()
-#pragma warning restore RCS1047
         {
             Task task = null;
 
@@ -214,8 +211,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
+                    //TODO switch to fluent assertions
                     Assert.True(startException != null && startException is AnimationException animationException && animationException.Animation is TAnimation);
-                    Assert.Throws<AnimationException>(() => animation.Start());
+                    Action act = () => animation.Start();
+                    act.Should().Throw<AnimationException>();
                 })
                 .Run();
         }
@@ -274,8 +273,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 })
                 .Assert(() =>
                 {
-                    Assert.AreEqual(triggerOnCompleted, hasFinished);
-                    Assert.DoesNotThrow(() => animation.Stop(triggerOnCompleted));
+                    hasFinished.Should().Be(triggerOnCompleted);
+                    Action act = () => animation.Stop(triggerOnCompleted);
+                    act.Should().NotThrow();
                 })
                 .Run();
         }
@@ -309,9 +309,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(PlayState.Building, animation.PlayState);
-                    Assert.AreEqual(null, animation.Overdraft);
-                    Assert.AreEqual(runs, ran);
+                    animation.PlayState.Should().Be(PlayState.Building);
+                    animation.Overdraft.Should().Be(null);
+                    ran.Should().Be(runs);
                 })
                 .Run();
         }
@@ -329,7 +329,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     animation = CreateAnimation(TestTime).Start() as TAnimation;
                     return animation;
                 })
-                .Assert(() => Assert.AreEqual(typeof(TAnimation) != typeof(Flow), animation.Controllable.IsSeekable))
+                .Assert(() => animation.Controllable.IsSeekable.Should().Be(typeof(TAnimation) != typeof(Flow)))
                 .Run();
         }
 

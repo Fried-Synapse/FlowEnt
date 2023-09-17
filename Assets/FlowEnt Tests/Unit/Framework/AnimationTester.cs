@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Diagnostics;
+using FluentAssertions;
 using Debug = UnityEngine.Debug;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit
@@ -84,7 +85,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public AnimationTester AssertTime(Func<float> getTime)
         {
-            AssertTime((stopwatch) => FlowEntAssert.Time(getTime() + (ControlAnimation?.Overdraft ?? 0), (float)stopwatch.Elapsed.TotalSeconds));
+            AssertTime((stopwatch) => stopwatch.Elapsed.TotalSeconds.Should()
+                .BeApproximatelyTime(getTime() + (ControlAnimation?.Overdraft ?? 0)));
             return this;
         }
 
@@ -118,7 +120,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             {
                 if (string.IsNullOrEmpty(overtimeReason))
                 {
-                    throw new ArgumentException("You specified a different run time. You need to provide a reason for the overtime");
+                    throw new ArgumentException(
+                        "You specified a different run time. You need to provide a reason for the overtime");
                 }
                 else
                 {
@@ -133,6 +136,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             {
                 yield return WaitForFrames(ActDelay);
             }
+
             ControlAnimation = ActCallback.Invoke();
             Stopwatch.Start();
             if (CustomWaiterCallback != null)
@@ -147,22 +151,27 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
                     yield return WaitToCompleteAllTweens(Count);
                 }
             }
+
             Stopwatch.Stop();
             if (Stopwatch.Elapsed.TotalSeconds > internalMaxRunTime)
             {
-                throw new TimeoutException($"Test took too long. Expected: {internalMaxRunTime} but was {Stopwatch.Elapsed.TotalSeconds}.");
+                throw new TimeoutException(
+                    $"Test took too long. Expected: {internalMaxRunTime} but was {Stopwatch.Elapsed.TotalSeconds}.");
             }
             else
             {
                 if (Stopwatch.Elapsed.TotalSeconds > MaxRunTime)
                 {
-                    Debug.LogWarning($"Test went to overtime. Reason: {overtimeReason}. Time: {Stopwatch.Elapsed.TotalSeconds}");
+                    Debug.LogWarning(
+                        $"Test went to overtime. Reason: {overtimeReason}. Time: {Stopwatch.Elapsed.TotalSeconds}");
                 }
             }
+
             if (ActDelay > 0)
             {
                 yield return WaitForFrames(AssertDelay);
             }
+
             AssertCallback?.Invoke();
             AbrogateCallback?.Invoke();
         }
