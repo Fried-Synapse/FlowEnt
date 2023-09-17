@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public abstract class AbstractMotionBuilder<T> : AbstractBuilder<T>, IIdentifiableBuilder
+    public abstract class AbstractMotionBuilder<T> : AbstractBuilder<T>, IIdentifiableBuilder, IListBuilderItem
     {
         [SerializeField]
         private string displayName;

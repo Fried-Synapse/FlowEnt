@@ -3,16 +3,12 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public interface IBuilder
-    {
-    }
-
-    public interface IBuilder<TItem> : IBuilder
+    public interface IBuilder<TItem>
     {
         public TItem Build();
     }
-    
-    public interface IIdentifiableBuilder : IBuilder
+
+    public interface IIdentifiableBuilder
     {
         public string DisplayName { get; }
         public bool IsEnabled { get; }

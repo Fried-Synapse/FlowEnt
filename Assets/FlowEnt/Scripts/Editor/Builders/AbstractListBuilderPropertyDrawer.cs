@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     public abstract class AbstractListBuilderPropertyDrawer<TListItem> : PropertyDrawer<AbstractListBuilderPropertyDrawer<TListItem>.Data>
-        where TListItem : IBuilder
+        where TListItem : IListBuilderItem
     {
         public class Data
         {

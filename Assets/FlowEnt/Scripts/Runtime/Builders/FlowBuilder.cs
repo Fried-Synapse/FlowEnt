@@ -11,7 +11,8 @@ namespace FriedSynapse.FlowEnt
         public class QueueListBuilder : AbstractListBuilder<QueueListBuilder.QueueBuilder, List<AbstractAnimation>>
         {
             [Serializable]
-            public class QueueBuilder : AbstractListBuilder<IAbstractAnimationBuilder, AbstractAnimation>, IIdentifiableBuilder
+            public class QueueBuilder : AbstractListBuilder<IAbstractAnimationBuilder, AbstractAnimation>,
+                IIdentifiableBuilder, IListBuilderItem
             {
                 [SerializeField]
                 private string displayName;
