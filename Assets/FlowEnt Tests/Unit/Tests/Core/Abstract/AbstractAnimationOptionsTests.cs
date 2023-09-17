@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -18,19 +19,22 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
     {
         protected abstract TAnimation CreateAnimation(float testTime);
         protected abstract TAnimation CreateAnimation(float testTime, TAnimationOptions options);
+
         private TAnimation CreateAnimationInternal(float testTime, AbstractAnimationOptions options)
             => CreateAnimation(testTime, (TAnimationOptions)options);
 
         #region Conditional
 
         [UnityTest]
-        public IEnumerator Conditional([ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))] bool isDefaultTime)
+        public IEnumerator Conditional(
+            [ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))]
+            bool isDefaultTime)
         {
             float time = isDefaultTime ? TestTime : HalfTestTime;
             yield return CreateTester()
                 .Act(() => CreateAnimation(TestTime)
-                            .Conditional(() => !isDefaultTime, a => a.SetTimeScale(2))
-                            .Start())
+                    .Conditional(() => !isDefaultTime, a => a.SetTimeScale(2))
+                    .Start())
                 .AssertTime(isDefaultTime ? TestTime : HalfTestTime)
                 .Run();
         }
@@ -39,7 +43,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #region TimeScale
 
-        private IEnumerator UpdateTypeInternal(UpdateType type, Func<float, AbstractAnimation> getAnimation, Func<float> getDeltaTime)
+        private IEnumerator UpdateTypeInternal(UpdateType type, Func<float, AbstractAnimation> getAnimation,
+            Func<float> getDeltaTime)
         {
             List<float> values = new List<float>();
             UpdateTracker updateTracker = default;
@@ -51,11 +56,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(HalfTestTime)
                 .Assert(() =>
                 {
-                    Assert.GreaterOrEqual(values.Count, 5);
-                    foreach (float item in values)
-                    {
-                        Assert.Contains(item, updateTracker.Values[type]);
-                    }
+                    values.Should().HaveCountGreaterThan(5)
+                        .And.AllSatisfy(item => updateTracker.Values[type].Should().Contain(item));
                 })
                 .Run();
         }
@@ -84,7 +86,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             => UpdateTypeNormal(UpdateType.FixedUpdate, () => Time.fixedDeltaTime);
 
         private IEnumerator UpdateTypeOptions(UpdateType type, Func<float> getDeltaTime)
-            => UpdateTypeInternal(type, (time) => CreateAnimation(time, (TAnimationOptions)new TAnimationOptions().SetUpdateType(type)), getDeltaTime);
+            => UpdateTypeInternal(type,
+                (time) => CreateAnimation(time, (TAnimationOptions)new TAnimationOptions().SetUpdateType(type)),
+                getDeltaTime);
 
         [UnityTest]
         public IEnumerator UpdateType_OptionsUpdate()
@@ -117,8 +121,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => CreateAnimation(TestTime)
-                            .SetTimeScale(testTimeScale)
-                            .Start())
+                    .SetTimeScale(testTimeScale)
+                    .Start())
                 .AssertTime(TestTime / testTimeScale)
                 .Run();
         }
@@ -130,7 +134,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => CreateAnimationInternal(TestTime, new TAnimationOptions().SetTimeScale(testTimeScale))
-                            .Start())
+                    .Start())
                 .AssertTime(TestTime / testTimeScale)
                 .Run();
         }
@@ -140,9 +144,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             const float testTimeScale = -1f;
 
-            Assert.Throws<ArgumentException>(() => CreateAnimation(TestTime).SetTimeScale(testTimeScale));
-            Assert.Throws<ArgumentException>(() => CreateAnimationInternal(TestTime, new TAnimationOptions() { TimeScale = testTimeScale }));
-            Assert.Throws<ArgumentException>(() => CreateAnimationInternal(TestTime, new TAnimationOptions().SetTimeScale(testTimeScale)));
+            Action act = () => CreateAnimation(TestTime).SetTimeScale(testTimeScale);
+            act.Should().Throw<ArgumentException>();
+            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions() { TimeScale = testTimeScale });
+            act.Should().Throw<ArgumentException>();
+            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions().SetTimeScale(testTimeScale));
+            act.Should().Throw<ArgumentException>();
         }
 
         #endregion
@@ -156,8 +163,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => CreateAnimation(HalfTestTime)
-                            .SetLoopCount(loopCount)
-                            .Start())
+                    .SetLoopCount(loopCount)
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
@@ -169,7 +176,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => CreateAnimationInternal(HalfTestTime, new TAnimationOptions().SetLoopCount(loopCount))
-                            .Start())
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
@@ -197,7 +204,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return CreateAnimation(loopCountTries * QuarterTestTime).Start();
                 })
-                .Assert(() => Assert.AreEqual(loopCountTries, loopCountCounter))
+                .Assert(() => loopCountCounter.Should().Be(loopCountTries))
                 .AssertTime(loopCountTries * QuarterTestTime)
                 .Run();
         }
@@ -208,13 +215,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             const int loopCountZero = 0;
             const int loopCountNegative = -1;
 
-            Assert.Throws<ArgumentException>(() => CreateAnimation(TestTime).SetLoopCount(loopCountZero));
-            Assert.Throws<ArgumentException>(() => CreateAnimationInternal(TestTime, new TAnimationOptions() { LoopCount = loopCountZero }));
-            Assert.Throws<ArgumentException>(() => CreateAnimationInternal(TestTime, new TAnimationOptions().SetLoopCount(loopCountZero)));
-
-            Assert.Throws<ArgumentException>(() => CreateAnimation(TestTime).SetLoopCount(loopCountNegative));
-            Assert.Throws<ArgumentException>(() => CreateAnimationInternal(TestTime, new TAnimationOptions() { LoopCount = loopCountNegative }));
-            Assert.Throws<ArgumentException>(() => CreateAnimationInternal(TestTime, new TAnimationOptions().SetLoopCount(loopCountNegative)));
+            Action act = () => CreateAnimation(TestTime).SetLoopCount(loopCountZero);
+            act.Should().Throw<ArgumentException>();
+            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions() { LoopCount = loopCountZero });
+            act.Should().Throw<ArgumentException>();
+            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions().SetLoopCount(loopCountZero));
+            act.Should().Throw<ArgumentException>();
+            act = () => CreateAnimation(TestTime).SetLoopCount(loopCountNegative);
+            act.Should().Throw<ArgumentException>();
+            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions() { LoopCount = loopCountNegative });
+            act.Should().Throw<ArgumentException>();
+            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions().SetLoopCount(loopCountNegative));
+            act.Should().Throw<ArgumentException>();
         }
 
         #endregion
@@ -231,10 +243,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => CreateAnimation(HalfTestTime)
-                            .SetSkipFrames(skipFrames)
-                            .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
-                            .Start())
-                .Assert(() => Assert.AreEqual(skipFrames, frameCount))
+                    .SetSkipFrames(skipFrames)
+                    .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
+                    .Start())
+                .Assert(() => frameCount.Should().Be(skipFrames))
                 .Run();
         }
 
@@ -248,9 +260,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => CreateAnimationInternal(HalfTestTime, new TAnimationOptions().SetSkipFrames(skipFrames))
-                            .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
-                            .Start())
-                .Assert(() => Assert.AreEqual(skipFrames, frameCount))
+                    .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
+                    .Start())
+                .Assert(() => frameCount.Should().Be(skipFrames))
                 .Run();
         }
 
@@ -264,10 +276,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => CreateAnimation(HalfTestTime)
-                            .SetAutoStart(true)
-                            .SetSkipFrames(skipFrames)
-                            .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
-                .Assert(() => Assert.AreEqual(skipFrames, frameCount))
+                    .SetAutoStart(true)
+                    .SetSkipFrames(skipFrames)
+                    .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
+                .Assert(() => frameCount.Should().Be(skipFrames))
                 .Run();
         }
 
@@ -281,10 +293,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => CreateAnimation(HalfTestTime)
-                            .SetSkipFrames(skipFrames)
-                            .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
-                            .Start())
-                .Assert(() => Assert.AreEqual(0, frameCount))
+                    .SetSkipFrames(skipFrames)
+                    .OnStarted(() => frameCount = Time.frameCount - frameCountStart)
+                    .Start())
+                .Assert(() => frameCount.Should().Be(0))
                 .Run();
         }
 
@@ -299,16 +311,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     TAnimation animation = CreateAnimation(QuarterTestTime)
-                            .SetSkipFrames(skipFrames)
-                            .OnStarted(() => onStartedCalled = true)
-                            .Start() as TAnimation;
+                        .SetSkipFrames(skipFrames)
+                        .OnStarted(() => onStartedCalled = true)
+                        .Start() as TAnimation;
 
-                    controlAnimation = CreateAnimation(QuarterTestTime).OnCompleted(() => animation.Stop(true)).Start() as TAnimation;
+                    controlAnimation =
+                        CreateAnimation(QuarterTestTime).OnCompleted(() => animation.Stop(true)).Start() as TAnimation;
 
                     return animation;
                 })
-                .AssertTime((stopwatch) => FlowEntAssert.Time(QuarterTestTime + controlAnimation.Overdraft.Value, (float)stopwatch.Elapsed.TotalSeconds))
-                .Assert(() => Assert.False(onStartedCalled))
+                .AssertTime((stopwatch) => stopwatch.Elapsed.TotalSeconds.Should()
+                    .BeApproximatelyTime(QuarterTestTime + controlAnimation.Overdraft.Value))
+                .Assert(() => onStartedCalled.Should().BeFalse())
                 .Run();
         }
 
@@ -321,8 +335,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             yield return CreateTester()
                 .Act(() => CreateAnimation(HalfTestTime)
-                            .SetDelay(HalfTestTime)
-                            .Start())
+                    .SetDelay(HalfTestTime)
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
@@ -332,8 +346,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             yield return CreateTester()
                 .Act(() => CreateAnimation(HalfTestTime)
-                            .SetAutoStart(true)
-                            .SetDelay(HalfTestTime))
+                    .SetAutoStart(true)
+                    .SetDelay(HalfTestTime))
                 .AssertTime(TestTime)
                 .Run();
         }
@@ -343,7 +357,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             yield return CreateTester()
                 .Act(() => CreateAnimationInternal(HalfTestTime, new TAnimationOptions().SetDelay(HalfTestTime))
-                            .Start())
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
@@ -355,8 +369,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => CreateAnimation(TestTime)
-                            .SetDelay(delay)
-                            .Start())
+                    .SetDelay(delay)
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
@@ -373,16 +387,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     TAnimation animation = CreateAnimation(time)
-                            .OnStarted(() => onStartedCalled = true)
-                            .SetDelay(delay)
-                            .Start() as TAnimation;
+                        .OnStarted(() => onStartedCalled = true)
+                        .SetDelay(delay)
+                        .Start() as TAnimation;
 
-                    controlAnimation = CreateAnimation(time).OnCompleted(() => animation.Stop(true)).Start() as TAnimation;
+                    controlAnimation =
+                        CreateAnimation(time).OnCompleted(() => animation.Stop(true)).Start() as TAnimation;
 
                     return animation;
                 })
-                .AssertTime((stopwatch) => FlowEntAssert.Time(time + controlAnimation.Overdraft.Value, (float)stopwatch.Elapsed.TotalSeconds))
-                .Assert(() => Assert.False(onStartedCalled))
+                .AssertTime((stopwatch) => stopwatch.Elapsed.TotalSeconds.Should()
+                    .BeApproximatelyTime(time + controlAnimation.Overdraft.Value))
+                .Assert(() => onStartedCalled.Should().BeFalse())
                 .Run();
         }
 

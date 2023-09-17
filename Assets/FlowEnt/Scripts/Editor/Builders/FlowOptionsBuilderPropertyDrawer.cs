@@ -4,7 +4,8 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(FlowOptionsBuilder))]
-    public class FlowOptionsBuilderPropertyDrawer : AbstractPropertiesBuilderPropertyDrawer<FlowOptionsBuilderPropertyDrawer.PropertiesEnum>
+    public class FlowOptionsBuilderPropertyDrawer : AbstractPropertiesBuilderPropertyDrawer<
+        FlowOptionsBuilderPropertyDrawer.PropertiesEnum>
     {
         public enum PropertiesEnum
         {
@@ -28,13 +29,23 @@ namespace FriedSynapse.FlowEnt.Editor
                 switch (prop)
                 {
                     case PropertiesEnum.loopCount:
-                        DrawNullable(propertyPosition, property, nameof(PropertiesEnum.loopCount), "isLoopCountInfinite", true);
+                        DrawNullable(propertyPosition, property, nameof(PropertiesEnum.loopCount),
+                            "isLoopCountInfinite", true);
                         break;
                     default:
                         EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(prop.ToString()));
                         break;
                 }
             }
+        }
+
+        protected override void Init(SerializedProperty property)
+        {
+            base.Init(property);
+            property.FindPropertyRelative(PropertiesEnum.timeScale.ToString()).floatValue =
+                AbstractAnimationOptions.DefaultTimeScale;
+            property.FindPropertyRelative(PropertiesEnum.loopCount.ToString()).intValue =
+                AbstractAnimationOptions.DefaultLoopCount;
         }
     }
 }

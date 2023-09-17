@@ -19,12 +19,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             Echo echo = default;
             yield return CreateTester()
                 .Act(() =>
-                //HACK It think this returns something for some fucking reason
-#pragma warning disable RCS1021 
                 {
                     echo = Variables.Echo.Build();
                 })
-#pragma warning restore RCS1021
                 .Assert(() =>
                 {
                     IEchoMotion[] motions = echo.GetFieldValue<IEchoMotion[]>("motions");

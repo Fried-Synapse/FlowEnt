@@ -13,10 +13,10 @@ namespace FriedSynapse.FlowEnt
         internal const string ErrorTimeMin = "Time cannot be 0.001 or less.";
         internal const string ErrorTimeInfinity = "Time cannot be infinity.";
         internal const float MinTime = 0.001f;
-        internal const float DefaultTime = 1f;
-        internal const bool DefaultEasingReverse = false;
-        internal const Easing DefaultEasing = FlowEnt.Easing.Linear;
-        internal static readonly IEasing DefaultIEasing = EasingFactory.Create(DefaultEasing);
+        public const float DefaultTime = 1f;
+        public const bool DefaultEasingReverse = false;
+        public const Easing DefaultEasing = FlowEnt.Easing.Linear;
+        public static readonly IEasing DefaultIEasing = EasingFactory.Create(DefaultEasing);
 
         /// <summary>
         /// Initialises a new instance of the <see cref="TweenOptions"/> class.
@@ -31,7 +31,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public float Time
         {
-            get { return time; }
+            get => time;
             set
             {
                 if (value < MinTime)

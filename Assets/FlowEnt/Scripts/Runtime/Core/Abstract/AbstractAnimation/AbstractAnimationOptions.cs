@@ -7,11 +7,13 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public class AbstractAnimationOptions : IFluentAnimationOptionable<AbstractAnimationOptions>
     {
-        internal const string ErrorLoopCountNegative = "Value cannot be 0 or less. If you want to set an infinite loop set the value to null.";
+        internal const string ErrorLoopCountNegative =
+            "Value cannot be 0 or less. If you want to set an infinite loop set the value to null.";
+
         internal const string ErrorTimeScaleNegative = "Value cannot be less than 0.";
         internal const bool DefaultAutoStart = false;
-        internal const int DefaultLoopCount = 1;
-        internal const float DefaultTimeScale = 1f;
+        public const int DefaultLoopCount = 1;
+        public const float DefaultTimeScale = 1f;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="AbstractAnimationOptions"/> class.
@@ -48,19 +50,21 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public float Delay { get; set; }
 
-        private float timeScale = 1;
+        private float timeScale = DefaultTimeScale;
+
         /// <summary>
         /// The scale of the time that will be applied to the animation.
         /// </summary>
         public float TimeScale
         {
-            get { return timeScale; }
+            get => timeScale;
             set
             {
                 if (value < 0)
                 {
                     throw new ArgumentException(ErrorTimeScaleNegative);
                 }
+
                 timeScale = value;
             }
         }
@@ -72,13 +76,14 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public int? LoopCount
         {
-            get { return loopCount; }
+            get => loopCount;
             set
             {
                 if (value <= 0)
                 {
                     throw new ArgumentException(ErrorLoopCountNegative);
                 }
+
                 loopCount = value;
             }
         }

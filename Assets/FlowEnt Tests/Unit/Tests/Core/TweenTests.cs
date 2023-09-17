@@ -19,13 +19,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             Tween tween = default;
 
             yield return CreateTester()
-                .Act(() =>
-                //HACK It think this returns something for some fucking reason
-#pragma warning disable RCS1021 
-                {
-                    tween = Variables.Tween.Build();
-                })
-#pragma warning restore RCS1021
+                .Act(() => { tween = Variables.Tween.Build(); })
                 .Assert(() =>
                 {
                     ITweenMotion[] motions = tween.GetFieldValue<ITweenMotion[]>("motions");

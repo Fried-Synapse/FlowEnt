@@ -53,8 +53,6 @@ namespace FriedSynapse.FlowEnt
         private float remainingTime;
         private LoopDirection loopDirection;
 
-        internal float CurrentLoopRatio => (loopDirection == LoopDirection.Forward ? time - remainingTime : remainingTime) / time;
-
         #region Seek
 
         private protected override bool IsSeekable => true;

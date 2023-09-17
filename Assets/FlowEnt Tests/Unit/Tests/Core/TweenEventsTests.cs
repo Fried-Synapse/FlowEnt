@@ -11,8 +11,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         protected override Tween CreateAnimation(float testTime)
             => new Tween(testTime);
 
-        protected override float GetUnitValue(float currentChange, float previousValue, float fullUnitValue)
-            => currentChange;
+        protected override float GetTotalTimeFromUpdate(float t, float previousValue, float loopTime)
+            => previousValue + (t * loopTime - (previousValue % loopTime));
 
         #region Builder
 

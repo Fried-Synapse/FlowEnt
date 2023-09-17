@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt
         private float time = TweenOptions.DefaultTime;
         public float Time => time;
         [SerializeField]
-        private EasingType easingType = EasingType.Predefined;
+        private EasingType easingType;
         [SerializeField]
         private Easing easing = TweenOptions.DefaultEasing;
         public IEasing Easing => easingType switch

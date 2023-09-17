@@ -20,12 +20,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             Flow flow = default;
             yield return CreateTester()
                 .Act(() =>
-                //HACK It think this returns something for some fucking reason
-#pragma warning disable RCS1021 
                 {
                     flow = Variables.Flow.Build();
                 })
-#pragma warning restore RCS1021
                 .Assert(() =>
                 {
                     IList updatableWrappers = flow.GetFieldValue<IList>("updatableWrappersQueue");

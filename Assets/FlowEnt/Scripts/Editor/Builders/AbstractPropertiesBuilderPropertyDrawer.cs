@@ -9,16 +9,29 @@ namespace FriedSynapse.FlowEnt.Editor
     public abstract class AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum> : PropertyDrawer
         where TPropertiesEnum : Enum
     {
+        private static string isInitName = "isInit";
         protected abstract float PropertyHeight { get; }
         private List<TPropertiesEnum> properties;
-        protected List<TPropertiesEnum> Properties => properties ??= Enum.GetValues(typeof(TPropertiesEnum)).Cast<TPropertiesEnum>().ToList();
+
+        protected List<TPropertiesEnum> Properties =>
+            properties ??= Enum.GetValues(typeof(TPropertiesEnum)).Cast<TPropertiesEnum>().ToList();
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-            => property.isExpanded ? (PropertyHeight + FlowEntConstants.DrawerSpacing) * (Properties.Count + 1) : EditorGUIUtility.singleLineHeight;
+            => property.isExpanded
+                ? (PropertyHeight + FlowEntConstants.DrawerSpacing) * (Properties.Count + 1)
+                : EditorGUIUtility.singleLineHeight;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label, EditorStyles.foldoutHeader);
+            SerializedProperty isInit = property.FindPropertyRelative(isInitName);
+            if (!isInit.boolValue)
+            {
+                Init(property);
+                isInit.boolValue = true;
+            }
+
+            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded,
+                label, EditorStyles.foldoutHeader);
 
             if (!property.isExpanded)
             {
@@ -32,7 +45,12 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected abstract void DrawProperties(Rect position, SerializedProperty property);
 
-        protected void DrawNullable(Rect position, SerializedProperty property, string propertyName, string flagPropertyName, bool isInverted = false)
+        protected virtual void Init(SerializedProperty property)
+        {
+        }
+
+        protected void DrawNullable(Rect position, SerializedProperty property, string propertyName,
+            string flagPropertyName, bool isInverted = false)
         {
             position.width /= 2f;
 
