@@ -9,10 +9,10 @@
 <div align="center">
 
 [![Version](https://img.shields.io/github/v/release/Fried-Synapse/FlowEnt?include_prereleases)](https://github.com/Fried-Synapse/FlowEnt/releases)
-[![License](https://img.shields.io/github/license/Fried-Synapse/FlowEnt?color=41cf58)](https://github.com/Fried-Synapse/FlowEnt/blob/main/LICENSE.md)
-[![Language](https://img.shields.io/github/languages/top/Fried-Synapse/FlowEnt)](https://github.com/Fried-Synapse/FlowEnt#)
-[![FlowEnt tests runner](https://github.com/Fried-Synapse/FlowEnt/actions/workflows/Tests.yml/badge.svg)](https://github.com/Fried-Synapse/FlowEnt/actions/workflows/Tests.yml)
-[![Downloads](https://img.shields.io/github/downloads/Fried-Synapse/FlowEnt/total)](https://github.com/Fried-Synapse/FlowEnt/releases)
+[![License](https://img.shields.io/github/license/Fried-Synapse/FlowEnt?logo=gnu&color=41cf58)](https://github.com/Fried-Synapse/FlowEnt/blob/main/LICENSE.md)
+[![Language](https://img.shields.io/github/languages/top/Fried-Synapse/FlowEnt?logo=dotnet)](https://github.com/Fried-Synapse/FlowEnt#)
+[![Tests](https://github.com/Fried-Synapse/FlowEnt/actions/workflows/Tests.yml/badge.svg)](https://github.com/Fried-Synapse/FlowEnt/actions/workflows/Tests.yml)
+[![Downloads](https://img.shields.io/github/downloads/Fried-Synapse/FlowEnt/total?logo=unity)](https://github.com/Fried-Synapse/FlowEnt/releases)
   
 [![Website](https://img.shields.io/badge/-Website-blue)](https://flowent.friedsynapse.com)
 [![Email](https://img.shields.io/badge/-Support-blue)](mailto:flowent@friedsynapse.com)
