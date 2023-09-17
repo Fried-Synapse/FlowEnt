@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -7,44 +8,57 @@ namespace FriedSynapse.FlowEnt
     public class FlowBuilder : AbstractAnimationBuilder<Flow>
     {
         [Serializable]
-        public class QueueList : AbstractListBuilder<QueueList.Queue>
+        public class QueueListBuilder : AbstractListBuilder<QueueListBuilder.QueueBuilder, List<AbstractAnimation>>
         {
             [Serializable]
-            public class Queue : AbstractListBuilder<IAbstractAnimationBuilder>, IBuilderListItem
+            public class QueueBuilder : AbstractListBuilder<IAbstractAnimationBuilder, AbstractAnimation>, IIdentifiableBuilder
             {
-#pragma warning disable IDE0044, RCS1169, RCS1213, IDE0051, CS0414
                 [SerializeField]
                 private string displayName;
+
                 public string DisplayName => displayName;
+
                 [SerializeField]
                 private bool isDisplayNameEnabled;
+
                 [SerializeField]
                 private bool isEnabled = true;
+
                 public bool IsEnabled => isEnabled;
+
                 [SerializeField]
                 private float startTime;
+
                 public float StartTime => startTime;
-#pragma warning restore IDE0044, RCS1169, RCS1213, IDE0051, CS0414
+
+                public override List<AbstractAnimation> Build()
+                    => Items.ConvertAll(m => m.Build());
             }
+
+            public override List<List<AbstractAnimation>> Build()
+                => Items.ConvertAll(m => m.Build());
         }
 
-#pragma warning disable IDE0044, RCS1169
         [SerializeField]
         private FlowOptionsBuilder options;
+
         public FlowOptionsBuilder Options => options;
+
         [SerializeField]
         private FlowEventsBuilder events;
+
         public FlowEventsBuilder Events => events;
+
         [SerializeField]
-        private QueueList queues;
-        public QueueList Queues => queues;
-#pragma warning restore IDE0044, RCS1169
+        private QueueListBuilder queues;
+
+        public QueueListBuilder Queues => queues;
 
         public override Flow Build()
         {
             Flow flow = new Flow(Options.Build())
                 .SetEvents(Events.Build());
-            foreach (QueueList.Queue queue in Queues.Items)
+            foreach (QueueListBuilder.QueueBuilder queue in Queues.Items)
             {
                 int animationCount = queue.Items.Count;
                 if (!queue.IsEnabled || animationCount == 0)
@@ -58,6 +72,7 @@ namespace FriedSynapse.FlowEnt
                     flow.Queue(queue.Items[i].Build());
                 }
             }
+
             return flow;
         }
     }

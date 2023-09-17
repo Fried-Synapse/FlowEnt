@@ -1,12 +1,11 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
-using Queue = FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    [CustomPropertyDrawer(typeof(Queue))]
-    public class FlowQueueAnimationBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<IAbstractAnimationBuilder>, ICrudable<Queue>
+    [CustomPropertyDrawer(typeof(FlowBuilder.QueueListBuilder.QueueBuilder))]
+    public class FlowQueueAnimationBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<IAbstractAnimationBuilder>, ICrudable<FlowBuilder.QueueListBuilder.QueueBuilder>
     {
         private static class ControlFields
         {
@@ -15,8 +14,8 @@ namespace FriedSynapse.FlowEnt.Editor
             public const string IsEnabled = "isEnabled";
         }
 
-        private static Queue clipboard;
-        public Queue Clipboard { get => clipboard; set => clipboard = value; }
+        private static FlowBuilder.QueueListBuilder.QueueBuilder clipboard;
+        public FlowBuilder.QueueListBuilder.QueueBuilder Clipboard { get => clipboard; set => clipboard = value; }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -35,7 +34,7 @@ namespace FriedSynapse.FlowEnt.Editor
         protected override GUIContent GetLabel(SerializedProperty property, GUIContent label)
         {
             int index = int.Parse(label.text.Split(' ')[1]);
-            Queue queue = property.GetValue<Queue>();
+            FlowBuilder.QueueListBuilder.QueueBuilder queue = property.GetValue<FlowBuilder.QueueListBuilder.QueueBuilder>();
             label.text = $"Queue {index}{(string.IsNullOrEmpty(queue.DisplayName) ? "" : $" - {queue.DisplayName}")}";
             return label;
         }
@@ -79,7 +78,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void ShowAddAnimation(Rect position, SerializedProperty property)
         {
-            Queue queue = property.GetValue<Queue>();
+            FlowBuilder.QueueListBuilder.QueueBuilder queue = property.GetValue<FlowBuilder.QueueListBuilder.QueueBuilder>();
             GenericMenu context = new GenericMenu();
             context.AddItem(new GUIContent("Flow"), false, () => queue.Items.Add(new FlowBuilder()));
             context.AddItem(new GUIContent("Tween"), false, () =>

@@ -13,7 +13,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         private static readonly Regex nestedRegEx = new Regex("\\+");
         private static readonly Regex prettyNameRegEx = new Regex("[A-Z]");
-        public static List<string> GetNames(Type type, IMotionBuilder motionBuilder = null)
+        public static List<string> GetNames(Type type, IIdentifiableBuilder motionBuilder = null)
         {
             List<string> names = new List<string>();
             if (motionBuilder != null && !string.IsNullOrEmpty(motionBuilder.DisplayName))
@@ -57,8 +57,8 @@ namespace FriedSynapse.FlowEnt.Editor
         }
     }
 
-    [CustomPropertyDrawer(typeof(IMotionBuilder), true)]
-    public class AbstractMotionBuilderPropertyDrawer : PropertyDrawer, ICrudable<IMotionBuilder>
+    [CustomPropertyDrawer(typeof(IIdentifiableBuilder), true)]
+    public class AbstractMotionBuilderPropertyDrawer : PropertyDrawer, ICrudable<IIdentifiableBuilder>
     {
         private static class ControlFields
         {
@@ -73,8 +73,8 @@ namespace FriedSynapse.FlowEnt.Editor
             ControlFields.IsDisplayNameEnabled,
             ControlFields.IsEnabled,
         };
-        private static IMotionBuilder clipboard;
-        public IMotionBuilder Clipboard { get => clipboard; set => clipboard = value; }
+        private static IIdentifiableBuilder clipboard;
+        public IIdentifiableBuilder Clipboard { get => clipboard; set => clipboard = value; }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -95,7 +95,7 @@ namespace FriedSynapse.FlowEnt.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
-            IMotionBuilder motionBuilder = property.GetValue<IMotionBuilder>();
+            IIdentifiableBuilder motionBuilder = property.GetValue<IIdentifiableBuilder>();
             string name = MotionNameGetter.GetNames(motionBuilder.GetType(), motionBuilder)[0];
             label.text = name.PadLeft(name.Length + 8);
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label);
