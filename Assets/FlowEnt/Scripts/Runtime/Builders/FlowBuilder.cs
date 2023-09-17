@@ -37,7 +37,7 @@ namespace FriedSynapse.FlowEnt
             }
 
             public override List<List<AbstractAnimation>> Build()
-                => Items.ConvertAll(m => m.Build());
+                => Items.FindAll(m => m.IsEnabled).ConvertAll(m => m.Build());
         }
 
         [SerializeField]

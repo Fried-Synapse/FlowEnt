@@ -5,10 +5,16 @@ using Queue = FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(Queue))]
-    public class FlowQueueAnimationBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<IAbstractAnimationBuilder>, ICrudable<Queue>
+    public class FlowQueueAnimationBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<IAbstractAnimationBuilder>,
+        ICrudable<Queue>
     {
         private static Queue clipboard;
-        public Queue Clipboard { get => clipboard; set => clipboard = value; }
+
+        public Queue Clipboard
+        {
+            get => clipboard;
+            set => clipboard = value;
+        }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -18,12 +24,10 @@ namespace FriedSynapse.FlowEnt.Editor
                 return height;
             }
 
-            if (property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled).boolValue)
-            {
-                height += FlowEntConstants.SpacedSingleLineHeight;
-            }
+            height += IdentifiableBuilderFields.GetDisplayNameHeight(property);
             return height;
         }
+
         protected override GUIContent GetLabel(SerializedProperty property, GUIContent label)
         {
             int index = int.Parse(label.text.Split(' ')[1]);
@@ -44,27 +48,17 @@ namespace FriedSynapse.FlowEnt.Editor
                 SerializedProperty parentProperty = property.GetParentArray();
 
                 GenericMenu context = new GenericMenu();
-                FlowEntEditorGUILayout.ShowListCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Queue", this);
+                FlowEntEditorGUILayout.ShowListCrud(context, parentProperty,
+                    parentProperty.GetArrayElementIndex(property), "Queue", this);
                 context.AddSeparator(string.Empty);
-                SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled);
-                void showRename()
-                {
-                    isNameEnabledProperty.boolValue = !isNameEnabledProperty.boolValue;
-                    isNameEnabledProperty.serializedObject.ApplyModifiedProperties();
-                }
-                context.AddItem(new GUIContent("Show Rename"), showRename, false, isNameEnabledProperty.boolValue);
-                context.ShowAsContext();
+                IdentifiableBuilderFields.DrawShowRename(property, context);
             }
         }
 
         protected override Rect Draw(Rect position, SerializedProperty property)
         {
-            if (property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled).boolValue)
-            {
-                position.height = EditorGUIUtility.singleLineHeight;
-                EditorGUI.PropertyField(position, property.FindPropertyRelative(IdentifiableBuilderFields.DisplayName));
-                position.y += FlowEntConstants.SpacedSingleLineHeight;
-            }
+            IdentifiableBuilderFields.DrawDisplayName(ref position, property);
+
             DrawButton(position, "Add animation", () => ShowAddAnimation(EditorGUI.IndentedRect(position), property));
             return position;
         }
@@ -74,8 +68,7 @@ namespace FriedSynapse.FlowEnt.Editor
             Queue queue = property.GetValue<Queue>();
             GenericMenu context = new GenericMenu();
             context.AddItem(new GUIContent("Flow"), false, () => queue.Items.Add(new FlowBuilder()));
-            context.AddItem(new GUIContent("Tween"), false, () =>
-            queue.Items.Add(new TweenBuilder()));
+            context.AddItem(new GUIContent("Tween"), false, () => queue.Items.Add(new TweenBuilder()));
             context.AddItem(new GUIContent("Echo"), false, () => queue.Items.Add(new EchoBuilder()));
             position.y += 3f;
             context.DropDown(position);

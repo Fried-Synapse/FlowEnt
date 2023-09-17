@@ -92,10 +92,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             float height = FlowEntConstants.SpacedSingleLineHeight + 5;
-            if (property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled).boolValue)
-            {
-                height += FlowEntConstants.SpacedSingleLineHeight;
-            }
+            height += IdentifiableBuilderFields.GetDisplayNameHeight(property);
 
             ForEachVisibleProperty(property, p => height += EditorGUI.GetPropertyHeight(p, true));
             return height;
@@ -124,12 +121,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             EditorGUI.indentLevel++;
             position.y += FlowEntConstants.SpacedSingleLineHeight;
-            if (property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled).boolValue)
-            {
-                position.height = EditorGUIUtility.singleLineHeight;
-                EditorGUI.PropertyField(position, property.FindPropertyRelative(IdentifiableBuilderFields.DisplayName));
-                position.y += FlowEntConstants.SpacedSingleLineHeight;
-            }
+            IdentifiableBuilderFields.DrawDisplayName(ref position, property);
 
             ForEachVisibleProperty(property, p =>
             {
@@ -156,17 +148,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 FlowEntEditorGUILayout.ShowListCrud(context, parentProperty,
                     parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);
-                SerializedProperty isNameEnabledProperty =
-                    property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled);
-
-                void showRename()
-                {
-                    isNameEnabledProperty.boolValue = !isNameEnabledProperty.boolValue;
-                    isNameEnabledProperty.serializedObject.ApplyModifiedProperties();
-                }
-
-                context.AddItem(new GUIContent("Show Rename"), showRename, false, isNameEnabledProperty.boolValue);
-                context.ShowAsContext();
+                IdentifiableBuilderFields.DrawShowRename(property, context);
             }
         }
 
