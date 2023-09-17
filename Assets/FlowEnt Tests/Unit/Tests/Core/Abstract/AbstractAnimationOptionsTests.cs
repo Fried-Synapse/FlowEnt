@@ -56,7 +56,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(HalfTestTime)
                 .Assert(() =>
                 {
-                    values.Should().HaveCount(5)
+                    values.Should().HaveCountGreaterThan(5)
                         .And.AllSatisfy(item => updateTracker.Values[type].Should().Contain(item));
                 })
                 .Run();

@@ -11,10 +11,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         protected override Echo CreateAnimation(float testTime)
             => new Echo(testTime);
 
-        protected override float GetUnitValue(float currentChange, float previousValue, float fullUnitValue)
-        {
-            return previousValue + (currentChange / fullUnitValue);
-        }
+        protected override float GetTotalTimeFromUpdate(float t, float previousValue, float loopTime)
+            => previousValue + t;
 
         #region Builder
 
@@ -27,7 +25,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() => echoEvents = Variables.Echo.Events.Build())
                 .Assert(() =>
                 {
-                    static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
+                    static void assert(UnityEventBase unityEvent, Delegate action) =>
+                        Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
 
                     assert(Variables.Echo.Events.OnStarting, echoEvents.OnStartingEvent);
                     assert(Variables.Echo.Events.OnStarted, echoEvents.OnStartedEvent);

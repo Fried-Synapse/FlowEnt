@@ -18,6 +18,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             return parent.BeApproximately(expectedValue, Epsilon, because, becauseArgs);
         }
         
+        public static AndConstraint<NumericAssertions<float>> BeApproximatelyTime(
+            this NumericAssertions<float> parent,
+            float expectedValue, string because = "", params object[] becauseArgs)
+        {
+            return parent.BeApproximately(expectedValue, TimeEpsilon, because, becauseArgs);
+        }
+        
         public static AndConstraint<NumericAssertions<double>> BeApproximatelyTime(
             this NumericAssertions<double> parent,
             float expectedValue, string because = "", params object[] becauseArgs)
@@ -25,23 +32,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             return parent.BeApproximately(expectedValue, TimeEpsilon, because, becauseArgs);
         }
 
-        [Obsolete("Use FluentAssertions")]
+        [Obsolete("Use FluentAssertions. They are also wrong")]
         public static void AreEqual(float expected, float actual, float precision = Epsilon)
             => Assert.LessOrEqual(expected - actual, precision);
 
-        [Obsolete("Use FluentAssertions")]
+        [Obsolete("Use FluentAssertions. They are also wrong")]
         public static void AreEqual(Vector3 expected, Vector3 actual, float precision = Epsilon)
             => Assert.LessOrEqual((expected - actual).magnitude, precision);
 
-        [Obsolete("Use FluentAssertions")]
+        [Obsolete("Use FluentAssertions. They are also wrong")]
         public static void AreEqual(Quaternion expected, Quaternion actual, float precision = Epsilon)
             => Assert.LessOrEqual(Quaternion.Angle(expected, actual), precision);
-
-        [Obsolete("Use FluentAssertions")]
-        public static void Time(float expected, float actual, float errorMargin = 0.03f)
-        {
-            Assert.GreaterOrEqual(actual, expected - errorMargin);
-            Assert.Less(actual, expected + errorMargin);
-        }
     }
 }
