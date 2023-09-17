@@ -7,13 +7,6 @@ namespace FriedSynapse.FlowEnt.Editor
     [CustomPropertyDrawer(typeof(Queue))]
     public class FlowQueueAnimationBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<IAbstractAnimationBuilder>, ICrudable<Queue>
     {
-        private static class ControlFields
-        {
-            public const string DisplayName = "displayName";
-            public const string IsDisplayNameEnabled = "isDisplayNameEnabled";
-            public const string IsEnabled = "isEnabled";
-        }
-
         private static Queue clipboard;
         public Queue Clipboard { get => clipboard; set => clipboard = value; }
 
@@ -25,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 return height;
             }
 
-            if (property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled).boolValue)
+            if (property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled).boolValue)
             {
                 height += FlowEntConstants.SpacedSingleLineHeight;
             }
@@ -53,7 +46,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 GenericMenu context = new GenericMenu();
                 FlowEntEditorGUILayout.ShowListCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Queue", this);
                 context.AddSeparator(string.Empty);
-                SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled);
+                SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled);
                 void showRename()
                 {
                     isNameEnabledProperty.boolValue = !isNameEnabledProperty.boolValue;
@@ -66,10 +59,10 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override Rect Draw(Rect position, SerializedProperty property)
         {
-            if (property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled).boolValue)
+            if (property.FindPropertyRelative(IdentifiableBuilderFields.IsDisplayNameEnabled).boolValue)
             {
                 position.height = EditorGUIUtility.singleLineHeight;
-                EditorGUI.PropertyField(position, property.FindPropertyRelative(ControlFields.DisplayName));
+                EditorGUI.PropertyField(position, property.FindPropertyRelative(IdentifiableBuilderFields.DisplayName));
                 position.y += FlowEntConstants.SpacedSingleLineHeight;
             }
             DrawButton(position, "Add animation", () => ShowAddAnimation(EditorGUI.IndentedRect(position), property));
