@@ -13,8 +13,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         protected override float GetUnitValue(float currentChange, float previousValue, float fullUnitValue)
         {
-            float x = previousValue + (currentChange / fullUnitValue);
-            UnityEngine.Debug.Log(x);
             return previousValue + (currentChange / fullUnitValue);
         }
 
