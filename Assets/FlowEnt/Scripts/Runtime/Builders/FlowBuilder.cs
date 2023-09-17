@@ -8,10 +8,10 @@ namespace FriedSynapse.FlowEnt
     public class FlowBuilder : AbstractAnimationBuilder<Flow>
     {
         [Serializable]
-        public class QueueListBuilder : AbstractListBuilder<QueueListBuilder.QueueBuilder, List<AbstractAnimation>>
+        public class QueueList : AbstractListBuilder<QueueList.Queue, List<AbstractAnimation>>
         {
             [Serializable]
-            public class QueueBuilder : AbstractListBuilder<IAbstractAnimationBuilder, AbstractAnimation>,
+            public class Queue : AbstractListBuilder<IAbstractAnimationBuilder, AbstractAnimation>,
                 IIdentifiableBuilder, IListBuilderItem
             {
                 [SerializeField]
@@ -51,15 +51,15 @@ namespace FriedSynapse.FlowEnt
         public FlowEventsBuilder Events => events;
 
         [SerializeField]
-        private QueueListBuilder queues;
+        private QueueList queues;
 
-        public QueueListBuilder Queues => queues;
+        public QueueList Queues => queues;
 
         public override Flow Build()
         {
             Flow flow = new Flow(Options.Build())
                 .SetEvents(Events.Build());
-            foreach (QueueListBuilder.QueueBuilder queue in Queues.Items)
+            foreach (QueueList.Queue queue in Queues.Items)
             {
                 int animationCount = queue.Items.Count;
                 if (!queue.IsEnabled || animationCount == 0)

@@ -1,11 +1,11 @@
 using UnityEditor;
 using UnityEngine;
-using QueueBuilder = FriedSynapse.FlowEnt.FlowBuilder.QueueListBuilder.QueueBuilder;
+using Queue = FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    [CustomPropertyDrawer(typeof(QueueBuilder))]
-    public class FlowQueueAnimationBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<IAbstractAnimationBuilder>, ICrudable<QueueBuilder>
+    [CustomPropertyDrawer(typeof(Queue))]
+    public class FlowQueueAnimationBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<IAbstractAnimationBuilder>, ICrudable<Queue>
     {
         private static class ControlFields
         {
@@ -14,8 +14,8 @@ namespace FriedSynapse.FlowEnt.Editor
             public const string IsEnabled = "isEnabled";
         }
 
-        private static QueueBuilder clipboard;
-        public QueueBuilder Clipboard { get => clipboard; set => clipboard = value; }
+        private static Queue clipboard;
+        public Queue Clipboard { get => clipboard; set => clipboard = value; }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -34,7 +34,7 @@ namespace FriedSynapse.FlowEnt.Editor
         protected override GUIContent GetLabel(SerializedProperty property, GUIContent label)
         {
             int index = int.Parse(label.text.Split(' ')[1]);
-            QueueBuilder queue = property.GetValue<QueueBuilder>();
+            Queue queue = property.GetValue<Queue>();
             label.text = $"Queue {index}{(string.IsNullOrEmpty(queue.DisplayName) ? "" : $" - {queue.DisplayName}")}";
             return label;
         }
@@ -78,7 +78,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void ShowAddAnimation(Rect position, SerializedProperty property)
         {
-            QueueBuilder queue = property.GetValue<QueueBuilder>();
+            Queue queue = property.GetValue<Queue>();
             GenericMenu context = new GenericMenu();
             context.AddItem(new GUIContent("Flow"), false, () => queue.Items.Add(new FlowBuilder()));
             context.AddItem(new GUIContent("Tween"), false, () =>
