@@ -23,7 +23,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public abstract void CreateObjects(int count);
 
-        protected virtual string SceneName => "UnitTestsScene";
+        protected virtual string SceneName => "UnitTests";
 
         protected AnimationTester CreateTester(int count = 1)
             => new AnimationTester(this, count);

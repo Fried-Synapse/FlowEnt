@@ -5,7 +5,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 {
     public abstract class AbstractUITest : AbstractTests<UIVariables>
     {
-        protected override string SceneName => "UnitTestsUIScene";
+        protected override string SceneName => "UnitTestsUI";
 
         public RectTransform RectTransform => (RectTransform)GameObject.transform;
 
