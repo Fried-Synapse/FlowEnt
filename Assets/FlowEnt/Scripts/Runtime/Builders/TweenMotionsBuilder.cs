@@ -19,9 +19,9 @@ namespace FriedSynapse.FlowEnt
     }
 
     [Serializable]
-    public class TweenMotionsBuilder : AbstractListBuilder<AbstractTweenMotionBuilder>, IBuilder<List<ITweenMotion>>
+    public class TweenMotionsBuilder : AbstractListBuilder<AbstractTweenMotionBuilder, ITweenMotion>
     {
-        public List<ITweenMotion> Build()
+        public override List<ITweenMotion> Build()
             => Items.FindAll(m => m.IsEnabled).ConvertAll(m => m.Build());
     }
 }

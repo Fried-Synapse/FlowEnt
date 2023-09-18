@@ -20,9 +20,9 @@ namespace FriedSynapse.FlowEnt
     }
 
     [Serializable]
-    public class EchoMotionsBuilder : AbstractListBuilder<AbstractEchoMotionBuilder>, IBuilder<List<IEchoMotion>>
+    public class EchoMotionsBuilder : AbstractListBuilder<AbstractEchoMotionBuilder, IEchoMotion>
     {
-        public List<IEchoMotion> Build()
+        public override List<IEchoMotion> Build()
             => Items.FindAll(m => m.IsEnabled).ConvertAll(m => m.Build());
     }
 }

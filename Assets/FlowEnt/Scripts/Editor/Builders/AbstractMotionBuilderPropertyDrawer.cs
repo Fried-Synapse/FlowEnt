@@ -13,6 +13,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         private static readonly Regex nestedRegEx = new Regex("\\+");
         private static readonly Regex prettyNameRegEx = new Regex("[A-Z]");
+
         public static List<string> GetNames(Type type, IMotionBuilder motionBuilder = null)
         {
             List<string> names = new List<string>();
@@ -20,11 +21,13 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 names.Add(motionBuilder.DisplayName);
             }
+
             DisplayNameAttribute displayNameAttribute = type.GetCustomAttribute<DisplayNameAttribute>();
             if (displayNameAttribute != null)
             {
                 names.Add(displayNameAttribute.DisplayName);
             }
+
             static string getPrettyName(Type type)
             {
                 const string builder = "Builder";
@@ -37,21 +40,27 @@ namespace FriedSynapse.FlowEnt.Editor
                 string[] prettyParts = prettyName.Split(' ');
                 if (prettyParts[prettyParts.Length - 1] == builder)
                 {
-                    prettyName = Regex.Replace(prettyName, $"{(type.Name == builder ? $" - {builder}" : builder)}$", string.Empty);
+                    prettyName = Regex.Replace(prettyName, $"{(type.Name == builder ? $" - {builder}" : builder)}$",
+                        string.Empty);
                 }
+
                 if (type.Assembly.GetName().Name == flowEntAssembly)
                 {
                     prettyName = $"{type.Namespace.Split('.').Last()} -{prettyName}";
                 }
+
                 return prettyName.TrimStart();
             }
+
             names.Add(getPrettyName(type));
+
             static string getName(Type type)
             {
                 string[] nameParts = type.FullName.Split('.');
                 string name = nameParts[nameParts.Length - 1];
                 return nestedRegEx.Replace(name, "-");
             }
+
             names.Add(getName(type));
             return names;
         }
@@ -60,21 +69,20 @@ namespace FriedSynapse.FlowEnt.Editor
     [CustomPropertyDrawer(typeof(IMotionBuilder), true)]
     public class AbstractMotionBuilderPropertyDrawer : PropertyDrawer, ICrudable<IMotionBuilder>
     {
-        private static class ControlFields
-        {
-            public const string DisplayName = "displayName";
-            public const string IsDisplayNameEnabled = "isDisplayNameEnabled";
-            public const string IsEnabled = "isEnabled";
-        }
-
         private readonly List<string> hiddenProperties = new List<string>
         {
-            ControlFields.DisplayName,
-            ControlFields.IsDisplayNameEnabled,
-            ControlFields.IsEnabled,
+            IdentifiableBuilderFields.DisplayName,
+            IdentifiableBuilderFields.IsDisplayNameEnabled,
+            IdentifiableBuilderFields.IsEnabled,
         };
+
         private static IMotionBuilder clipboard;
-        public IMotionBuilder Clipboard { get => clipboard; set => clipboard = value; }
+
+        public IMotionBuilder Clipboard
+        {
+            get => clipboard;
+            set => clipboard = value;
+        }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -84,10 +92,8 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             float height = FlowEntConstants.SpacedSingleLineHeight + 5;
-            if (property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled).boolValue)
-            {
-                height += FlowEntConstants.SpacedSingleLineHeight;
-            }
+            height += IdentifiableBuilderFields.GetDisplayNameHeight(property);
+
             ForEachVisibleProperty(property, p => height += EditorGUI.GetPropertyHeight(p, true));
             return height;
         }
@@ -103,7 +109,8 @@ namespace FriedSynapse.FlowEnt.Editor
             Rect isEnabledPosition = headerPosition;
             isEnabledPosition.x = EditorGUIUtility.singleLineHeight * 1.2f;
             isEnabledPosition.width = EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(isEnabledPosition, property.FindPropertyRelative(ControlFields.IsEnabled), GUIContent.none);
+            EditorGUI.PropertyField(isEnabledPosition,
+                property.FindPropertyRelative(IdentifiableBuilderFields.IsEnabled), GUIContent.none);
 
             DrawMenu(headerPosition, property);
 
@@ -114,12 +121,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
             EditorGUI.indentLevel++;
             position.y += FlowEntConstants.SpacedSingleLineHeight;
-            if (property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled).boolValue)
-            {
-                position.height = EditorGUIUtility.singleLineHeight;
-                EditorGUI.PropertyField(position, property.FindPropertyRelative(ControlFields.DisplayName));
-                position.y += FlowEntConstants.SpacedSingleLineHeight;
-            }
+            IdentifiableBuilderFields.DrawDisplayName(ref position, property);
+
             ForEachVisibleProperty(property, p =>
             {
                 float height = EditorGUI.GetPropertyHeight(p, true) + FlowEntConstants.DrawerSpacing;
@@ -142,16 +145,10 @@ namespace FriedSynapse.FlowEnt.Editor
                 SerializedProperty parentProperty = property.GetParentArray();
 
                 GenericMenu context = new GenericMenu();
-                FlowEntEditorGUILayout.ShowListCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Motion", this);
+                FlowEntEditorGUILayout.ShowListCrud(context, parentProperty,
+                    parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);
-                SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(ControlFields.IsDisplayNameEnabled);
-                void showRename()
-                {
-                    isNameEnabledProperty.boolValue = !isNameEnabledProperty.boolValue;
-                    isNameEnabledProperty.serializedObject.ApplyModifiedProperties();
-                }
-                context.AddItem(new GUIContent("Show Rename"), showRename, false, isNameEnabledProperty.boolValue);
-                context.ShowAsContext();
+                IdentifiableBuilderFields.DrawShowRename(property, context);
             }
         }
 

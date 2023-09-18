@@ -4,14 +4,17 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    [Serializable]
-    public class AbstractListBuilder<TListItem>
-        where TListItem : IBuilderListItem
+    public interface IListBuilderItem
     {
-#pragma warning disable IDE0044, RCS1169
+    }
+
+    [Serializable]
+    public abstract class AbstractListBuilder<TBuilderItem, TBuiltItem> : AbstractBuilder<List<TBuiltItem>>
+        where TBuilderItem : IListBuilderItem
+    {
         [SerializeReference]
-        protected List<TListItem> items = new List<TListItem>();
-        public List<TListItem> Items => items;
-#pragma warning restore IDE0044, RCS1169
+        protected List<TBuilderItem> items = new List<TBuilderItem>();
+
+        public List<TBuilderItem> Items => items;
     }
 }

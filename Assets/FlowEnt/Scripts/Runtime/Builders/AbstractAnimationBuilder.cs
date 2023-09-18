@@ -1,6 +1,6 @@
 namespace FriedSynapse.FlowEnt
 {
-    public interface IAbstractAnimationBuilder : IBuilderListItem
+    public interface IAbstractAnimationBuilder : IListBuilderItem
     {
         public AbstractAnimation Build();
     }

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -7,7 +8,13 @@ namespace FriedSynapse.FlowEnt
         public TItem Build();
     }
 
-    public abstract class AbstractBuilder<TItem> : IBuilder<TItem>
+    public interface IIdentifiableBuilder
+    {
+        public string DisplayName { get; }
+        public bool IsEnabled { get; }
+    }
+
+    public abstract class AbstractBuilder
     {
 #if UNITY_EDITOR
         //HACK this is because there is a bug in editor lists that doesn't initialise the list item with default values
@@ -15,16 +22,10 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private bool isInit;
 #endif
+    }
+
+    public abstract class AbstractBuilder<TItem> : AbstractBuilder, IBuilder<TItem>
+    {
         public abstract TItem Build();
-    }
-
-    public interface IBuilderListItem
-    {
-    }
-
-    public interface IMotionBuilder : IBuilderListItem
-    {
-        public string DisplayName { get; }
-        public bool IsEnabled { get; }
     }
 }
