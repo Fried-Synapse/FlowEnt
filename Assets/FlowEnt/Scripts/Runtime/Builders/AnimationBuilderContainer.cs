@@ -30,27 +30,22 @@ namespace FriedSynapse.FlowEnt
         public bool AutoDestroy => autoDestroy;
 
         [SerializeField]
-        private bool triggerOnCompleted = false;
+        private bool triggerOnCompleted;
 
         public bool TriggerOnCompleted => triggerOnCompleted;
 
-        [Header("Animations")]
-        [SerializeField]
-        private List<FlowBuilder> flowsBuilders;
+        [SerializeReference]
+        private readonly List<IAbstractAnimationBuilder> animationsBuilders;
 
-        public List<FlowBuilder> FlowsBuilders => flowsBuilders;
+        public List<IAbstractAnimationBuilder> AnimationsBuilders => animationsBuilders;
 
-        [SerializeField]
-        private List<TweenBuilder> tweensBuilders;
+        private List<AbstractAnimation> animations;
 
-        public List<TweenBuilder> TweensBuilders => tweensBuilders;
-
-        [SerializeField]
-        private List<EchoBuilder> echoesBuilders;
-
-        public List<EchoBuilder> EchoesBuilders => echoesBuilders;
-
-        public List<AbstractAnimation> Animations { get; private set; }
+        public List<AbstractAnimation> Animations
+        {
+            get => animations;
+            private set => animations = value;
+        }
 
         public void StartCustomMode()
         {
@@ -106,9 +101,7 @@ namespace FriedSynapse.FlowEnt
 
             void startAnimations()
             {
-                Animations.AddRange(FlowsBuilders.Build().Start());
-                Animations.AddRange(TweensBuilders.Build().Start());
-                Animations.AddRange(EchoesBuilders.Build().Start());
+                Animations.AddRange(AnimationsBuilders.Build().Start());
             }
 
             if (Delay > 0)
@@ -123,7 +116,7 @@ namespace FriedSynapse.FlowEnt
 
         private void StopAnimations()
         {
-            Animations.Stop(triggerOnCompleted);
+            Animations.Stop(TriggerOnCompleted);
         }
     }
 }
