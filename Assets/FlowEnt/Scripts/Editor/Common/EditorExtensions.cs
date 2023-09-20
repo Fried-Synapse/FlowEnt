@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FriedSynapse.FlowEnt.Reflection;
@@ -111,20 +112,15 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index,
             object item)
-        {
-            if (!listProperty.isArray)
-            {
-                throw new ArgumentException($"{nameof(listProperty)} is not an array.");
-            }
-
-            listProperty.serializedObject.Update();
-            listProperty.InsertArrayElementAtIndex(index);
-            listProperty.GetArrayElementAtIndex(index).managedReferenceValue = item;
-            listProperty.serializedObject.ApplyModifiedProperties();
-        }
+            => PersistentSetArrayElementAtIndex(listProperty, index, item,
+                () =>
+                {
+                    listProperty.InsertArrayElementAtIndex(index);
+                    listProperty.serializedObject.ApplyModifiedProperties();
+                });
 
         internal static void PersistentSetArrayElementAtIndex(this SerializedProperty listProperty, int index,
-            object item)
+            object item, Action onSetting = null)
         {
             if (!listProperty.isArray)
             {
@@ -132,7 +128,17 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             listProperty.serializedObject.Update();
-            listProperty.GetArrayElementAtIndex(index).managedReferenceValue = item;
+            onSetting?.Invoke();
+            SerializedProperty listItemProperty = listProperty.GetArrayElementAtIndex(index);
+            if (listItemProperty.propertyType == SerializedPropertyType.ManagedReference)
+            {
+                listProperty.GetArrayElementAtIndex(index).managedReferenceValue = item;
+            }
+            else
+            {
+                listProperty.GetValue<IList>()[index] = item;
+            }
+
             listProperty.serializedObject.ApplyModifiedProperties();
         }
 
