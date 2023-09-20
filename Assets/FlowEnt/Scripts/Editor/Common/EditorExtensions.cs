@@ -113,7 +113,11 @@ namespace FriedSynapse.FlowEnt.Editor
         internal static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index,
             object item)
             => PersistentSetArrayElementAtIndex(listProperty, index, item,
-                () => { listProperty.InsertArrayElementAtIndex(index); });
+                () =>
+                {
+                    listProperty.InsertArrayElementAtIndex(index);
+                    listProperty.serializedObject.ApplyModifiedProperties();
+                });
 
         internal static void PersistentSetArrayElementAtIndex(this SerializedProperty listProperty, int index,
             object item, Action onSetting = null)
@@ -132,8 +136,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
             else
             {
-                listProperty.serializedObject.ApplyModifiedProperties();
-                listProperty.GetValue<IList>()[index] = (FlowBuilder)item;
+                listProperty.GetValue<IList>()[index] = item;
             }
 
             listProperty.serializedObject.ApplyModifiedProperties();
