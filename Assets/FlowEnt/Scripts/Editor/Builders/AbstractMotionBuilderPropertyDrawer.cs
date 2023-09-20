@@ -107,7 +107,7 @@ namespace FriedSynapse.FlowEnt.Editor
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label);
 
             Rect isEnabledPosition = headerPosition;
-            isEnabledPosition.x = EditorGUIUtility.singleLineHeight * 1.2f;
+            isEnabledPosition.x = EditorGUIUtility.singleLineHeight * 4.2f;
             isEnabledPosition.width = EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(isEnabledPosition,
                 property.FindPropertyRelative(IdentifiableBuilderFields.IsEnabled), GUIContent.none);
@@ -148,6 +148,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);
                 IdentifiableBuilderFields.DrawShowRename(property, context);
+                context.ShowAsContext();
             }
         }
 

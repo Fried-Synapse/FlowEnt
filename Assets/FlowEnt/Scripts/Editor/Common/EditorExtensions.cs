@@ -31,6 +31,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     return null;
                 }
+
                 Type type = source.GetType();
                 FieldInfo fieldInfo = type.GetField(name, ReflectionExtensions.DefaultBindingFlags);
                 return fieldInfo.GetValue(source);
@@ -44,6 +45,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     enumerator.MoveNext();
                 }
+
                 return enumerator.Current;
             }
 
@@ -55,7 +57,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 if (element.Contains("["))
                 {
                     string elementName = element.Substring(0, element.IndexOf("["));
-                    int index = Convert.ToInt32(element.Substring(element.IndexOf("[")).Replace("[", "").Replace("]", ""));
+                    int index = Convert.ToInt32(element.Substring(element.IndexOf("[")).Replace("[", "")
+                        .Replace("]", ""));
                     obj = getArrayValue(obj, elementName, index);
                 }
                 else
@@ -63,6 +66,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     obj = getValue(obj, element);
                 }
             }
+
             return (T)obj;
         }
 
@@ -81,11 +85,13 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 return null;
             }
+
             index = path.LastIndexOf('.', index);
             if (index < 0)
             {
                 return null;
             }
+
             SerializedProperty parentProperty = property.serializedObject.FindProperty(path.Substring(0, index));
             return parentProperty.isArray ? parentProperty : null;
         }
@@ -94,31 +100,37 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             property.serializedObject.Update();
             SerializedProperty parentProperty = property.GetParent();
-            object parent = (parentProperty == null) ? property.serializedObject.targetObject : parentProperty.GetValue<object>();
+            object parent = (parentProperty == null)
+                ? property.serializedObject.targetObject
+                : parentProperty.GetValue<object>();
             FieldInfo field = parent.GetType().GetField(property.name, ReflectionExtensions.DefaultBindingFlags);
             field.SetValue(parent, item);
             EditorUtility.SetDirty(property.serializedObject.targetObject);
             property.serializedObject.ApplyModifiedProperties();
         }
 
-        internal static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
+        internal static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index,
+            object item)
         {
             if (!listProperty.isArray)
             {
                 throw new ArgumentException($"{nameof(listProperty)} is not an array.");
             }
+
             listProperty.serializedObject.Update();
             listProperty.InsertArrayElementAtIndex(index);
             listProperty.GetArrayElementAtIndex(index).managedReferenceValue = item;
             listProperty.serializedObject.ApplyModifiedProperties();
         }
 
-        internal static void PersistentSetArrayElementAtIndex(this SerializedProperty listProperty, int index, object item)
+        internal static void PersistentSetArrayElementAtIndex(this SerializedProperty listProperty, int index,
+            object item)
         {
             if (!listProperty.isArray)
             {
                 throw new ArgumentException($"{nameof(listProperty)} is not an array.");
             }
+
             listProperty.serializedObject.Update();
             listProperty.GetArrayElementAtIndex(index).managedReferenceValue = item;
             listProperty.serializedObject.ApplyModifiedProperties();
@@ -130,8 +142,21 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 throw new ArgumentException($"{nameof(listProperty)} is not an array.");
             }
+
             listProperty.serializedObject.Update();
             listProperty.DeleteArrayElementAtIndex(index);
+            listProperty.serializedObject.ApplyModifiedProperties();
+        }
+
+        internal static void PersistentClearArray(this SerializedProperty listProperty)
+        {
+            if (!listProperty.isArray)
+            {
+                throw new ArgumentException($"{nameof(listProperty)} is not an array.");
+            }
+
+            listProperty.serializedObject.Update();
+            listProperty.ClearArray();
             listProperty.serializedObject.ApplyModifiedProperties();
         }
 
@@ -141,6 +166,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 throw new ArgumentException($"{nameof(listProperty)} is not an array.");
             }
+
             for (int i = 0; i < listProperty.arraySize; i++)
             {
                 if (listProperty.GetArrayElementAtIndex(i).propertyPath == item.propertyPath)
@@ -148,10 +174,12 @@ namespace FriedSynapse.FlowEnt.Editor
                     return i;
                 }
             }
+
             return -1;
         }
 
-        internal static void AddItem(this GenericMenu menu, GUIContent content, GenericMenu.MenuFunction callback, bool isDisabled = false, bool isOn = false)
+        internal static void AddItem(this GenericMenu menu, GUIContent content, GenericMenu.MenuFunction callback,
+            bool isDisabled = false, bool isOn = false)
         {
             if (isDisabled)
             {

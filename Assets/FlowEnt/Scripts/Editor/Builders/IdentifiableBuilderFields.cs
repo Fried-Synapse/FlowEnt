@@ -3,28 +3,27 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public class IdentifiableBuilderFields
+    internal static class IdentifiableBuilderFields
     {
-        public const string DisplayName = "displayName";
-        public const string IsDisplayNameEnabled = "isDisplayNameEnabled";
-        public const string IsEnabled = "isEnabled";
+        internal const string DisplayName = "displayName";
+        internal const string IsDisplayNameEnabled = "isDisplayNameEnabled";
+        internal const string IsEnabled = "isEnabled";
 
-        public static float GetDisplayNameHeight(SerializedProperty property)
+        internal static float GetDisplayNameHeight(SerializedProperty property)
             => property.FindPropertyRelative(IsDisplayNameEnabled).boolValue
                 ? FlowEntConstants.SpacedSingleLineHeight
                 : 0;
 
-        public static void DrawDisplayName(ref Rect position, SerializedProperty property)
+        internal static void DrawDisplayName(ref Rect position, SerializedProperty property)
         {
             if (property.FindPropertyRelative(IsDisplayNameEnabled).boolValue)
             {
-                position.height = EditorGUIUtility.singleLineHeight;
-                EditorGUI.PropertyField(position, property.FindPropertyRelative(DisplayName));
-                position.y += FlowEntConstants.SpacedSingleLineHeight;
+                FlowEntEditorGUILayout.PropertyFieldSingleLine(ref position,
+                    property.FindPropertyRelative(DisplayName));
             }
         }
 
-        public static void DrawShowRename(SerializedProperty property, GenericMenu context)
+        internal static void DrawShowRename(SerializedProperty property, GenericMenu context)
         {
             SerializedProperty isNameEnabledProperty = property.FindPropertyRelative(IsDisplayNameEnabled);
 
@@ -35,7 +34,6 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             context.AddItem(new GUIContent("Show Rename"), showRename, false, isNameEnabledProperty.boolValue);
-            context.ShowAsContext();
         }
     }
 }
