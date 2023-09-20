@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class AnimationBuilderContainerRunner : MonoBehaviour
+    public abstract class AbstractAuthoring : MonoBehaviour
     {
         public enum StartModeEnum
         {
@@ -13,7 +14,6 @@ namespace FriedSynapse.FlowEnt
             Custom
         }
 
-        [Header("Settings")]
         [SerializeField]
         private StartModeEnum startMode;
 
@@ -34,12 +34,8 @@ namespace FriedSynapse.FlowEnt
 
         public bool TriggerOnCompleted => triggerOnCompleted;
 
-        [SerializeField]
-        private AnimationBuilderContainer container;
-
-        public AnimationBuilderContainer Container => container;
-
-        public List<AbstractAnimation> Animations { get; set; }
+        protected abstract void StartAnimations();
+        protected abstract void StopAnimations();
 
         public void StartCustomMode()
         {
@@ -88,19 +84,31 @@ namespace FriedSynapse.FlowEnt
                 StopAnimations();
             }
         }
+    }
 
-        private void StartAnimations()
+    public class AbstractAuthoring<TAnimation, TAnimationBuilder> : AbstractAuthoring
+        where TAnimation : AbstractAnimation
+        where TAnimationBuilder : AbstractBuilder<TAnimation>
+    {
+        [SerializeField]
+        private protected TAnimationBuilder animationBuilder;
+
+        public TAnimationBuilder AnimationBuilder => animationBuilder;
+
+        public TAnimation Animation { get; set; }
+
+        private Tween DelayTween { get; set; }
+
+        protected override void StartAnimations()
         {
-            Animations = new List<AbstractAnimation>();
-
             void startAnimations()
             {
-                Animations.AddRange(Container.Build().Start());
+                Animation = (TAnimation)AnimationBuilder.Build().Start();
             }
 
             if (Delay > 0)
             {
-                Animations.Add(new Tween(Delay).OnCompleted(startAnimations).Start());
+                DelayTween = new Tween(Delay).OnCompleted(startAnimations).Start();
             }
             else
             {
@@ -108,9 +116,10 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        private void StopAnimations()
+        protected override void StopAnimations()
         {
-            Animations.Stop(TriggerOnCompleted);
+            DelayTween?.Stop();
+            Animation?.Stop(TriggerOnCompleted);
         }
     }
 }

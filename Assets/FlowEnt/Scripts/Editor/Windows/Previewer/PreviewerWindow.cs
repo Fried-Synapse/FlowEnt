@@ -11,6 +11,7 @@ namespace FriedSynapse.FlowEnt.Editor
     internal class PreviewerWindow : FlowEntWindow<PreviewerWindow>
     {
         private const float DefaultTimelessEchoTimeout = 3f;
+
         private enum MemberType
         {
             Field,
@@ -31,13 +32,17 @@ namespace FriedSynapse.FlowEnt.Editor
                     animation.Reset();
                 }
             }
+
             internal string name;
             internal MemberType type;
             internal AbstractAnimation animation;
         }
 
         protected override string Name => "FlowEnt Previewer";
-        private const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
+
+        private const BindingFlags DefaultBindingFlags =
+            BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
+
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
         private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
         private static readonly object[] emptyArray = { };
@@ -101,37 +106,44 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 animations.AddRange(
                     behaviour
-                    .GetType()
-                    .GetFields(DefaultBindingFlags)
-                    .Where(fi => abstractAnimationBuilderType.IsAssignableFrom(fi.FieldType))
-                    .Select(fi => new AnimationInfo(
-                        char.ToUpper(fi.Name[0]) + fi.Name.Substring(1),
-                        MemberType.Field,
-                        ((IAbstractAnimationBuilder)fi.GetValue(behaviour)).Build()))
-                    .ToList());
+                        .GetType()
+                        .GetFields(DefaultBindingFlags)
+                        .Where(fi => abstractAnimationBuilderType.IsAssignableFrom(fi.FieldType))
+                        .Select(fi => new AnimationInfo(
+                            char.ToUpper(fi.Name[0]) + fi.Name.Substring(1),
+                            MemberType.Field,
+                            ((IAbstractAnimationBuilder)fi.GetValue(behaviour)).Build()))
+                        .ToList());
 
                 animations.AddRange(
                     behaviour
-                    .GetType()
-                    .GetProperties(DefaultBindingFlags)
-                    .Where(pi => abstractAnimationType.IsAssignableFrom(pi.PropertyType))
-                    .Select(pi => new AnimationInfo(pi.Name,
-                        MemberType.Property,
-                        (AbstractAnimation)pi.GetValue(behaviour)))
-                    .ToList());
+                        .GetType()
+                        .GetProperties(DefaultBindingFlags)
+                        .Where(pi
+                            => abstractAnimationType.IsAssignableFrom(pi.PropertyType)
+                               && (AbstractAnimation)pi.GetValue(behaviour) != null)
+                        .Select(pi => new AnimationInfo(pi.Name,
+                            MemberType.Property,
+                            ((AbstractAnimation)pi.GetValue(behaviour)).Stop()))
+                        .ToList());
 
                 animations.AddRange(
                     behaviour
-                    .GetType()
-                    .GetMethods(DefaultBindingFlags)
-                    .Where(mi
-                        => !mi.IsSpecialName
-                        && abstractAnimationType.IsAssignableFrom(mi.ReturnType)
-                        && mi.GetParameters().Length == 0)
-                    .Select(mi => new AnimationInfo(mi.Name,
-                        MemberType.Method,
-                        (AbstractAnimation)mi.Invoke(behaviour, emptyArray)))
-                    .ToList());
+                        .GetType()
+                        .GetMethods(DefaultBindingFlags)
+                        .Where(mi
+                            => !mi.IsSpecialName
+                               && abstractAnimationType.IsAssignableFrom(mi.ReturnType)
+                               && mi.GetParameters().Length == 0
+                               && (AbstractAnimation)mi.Invoke(behaviour, emptyArray) != null) //This will create and run the animation...
+                        .Select(mi => new AnimationInfo(mi.Name,
+                            MemberType.Method,
+                            ((AbstractAnimation)mi.Invoke(behaviour, emptyArray)).Stop()))
+                        .ToList());
+                
+                //TODO add the range from animations authoring
+                //TODO fix the de-focus reset bug
+                //TODO fix when the animation is started in the prop or function. Maybe don't call invoke twice? line 138
             }
 
             foreach (AnimationInfo animationInfo in animations)
@@ -143,9 +155,11 @@ namespace FriedSynapse.FlowEnt.Editor
                         {
                             echo.SetTimeout(DefaultTimelessEchoTimeout);
                         }
+
                         break;
                 }
             }
+
             return animations;
         }
     }
