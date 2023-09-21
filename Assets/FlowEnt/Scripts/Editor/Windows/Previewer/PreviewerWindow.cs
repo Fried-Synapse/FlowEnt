@@ -121,7 +121,7 @@ namespace FriedSynapse.FlowEnt.Editor
                         .GetProperties(DefaultBindingFlags)
                         .Where(pi
                             => abstractAnimationType.IsAssignableFrom(pi.PropertyType)
-                               && (AbstractAnimation)pi.GetValue(behaviour) != null)
+                               && ((AbstractAnimation)pi.GetValue(behaviour))?.Stop() != null)
                         .Select(pi => new AnimationInfo(pi.Name,
                             MemberType.Property,
                             ((AbstractAnimation)pi.GetValue(behaviour)).Stop()))
@@ -135,15 +135,14 @@ namespace FriedSynapse.FlowEnt.Editor
                             => !mi.IsSpecialName
                                && abstractAnimationType.IsAssignableFrom(mi.ReturnType)
                                && mi.GetParameters().Length == 0
-                               && (AbstractAnimation)mi.Invoke(behaviour, emptyArray) != null) //This will create and run the animation...
+                               && ((AbstractAnimation)mi.Invoke(behaviour, emptyArray))?.Stop() != null)
                         .Select(mi => new AnimationInfo(mi.Name,
                             MemberType.Method,
                             ((AbstractAnimation)mi.Invoke(behaviour, emptyArray)).Stop()))
                         .ToList());
                 
-                //TODO add the range from animations authoring
-                //TODO fix the de-focus reset bug
-                //TODO fix when the animation is started in the prop or function. Maybe don't call invoke twice? line 138
+                //TODO add the range from animations authoring - don't: add a focus mode in the previewer.
+                //TODO fix the de-focus reset bug - create a reset button
             }
 
             foreach (AnimationInfo animationInfo in animations)
