@@ -11,14 +11,20 @@ namespace FriedSynapse.FlowEnt.Editor
         where TAnimation : AbstractAnimation
         where TAnimationBuilder : AbstractAnimationBuilder<TAnimation>
     {
-        protected virtual List<string> VisibleProperties => new List<string>{
+        protected virtual List<string> VisibleProperties => new List<string>
+        {
             "options",
             "events",
             "motions",
         };
 
         private static TAnimationBuilder clipboard;
-        public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
+
+        public TAnimationBuilder Clipboard
+        {
+            get => clipboard;
+            set => clipboard = value;
+        }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -37,9 +43,11 @@ namespace FriedSynapse.FlowEnt.Editor
             TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
             SerializedProperty parentProperty = property.GetParentArray();
             string name = animation.GetPropertyValue<object>("Options").GetPropertyValue<string>("Name");
-            label.text = $"{(parentProperty == null ? label.text : "")} [{animation.GetType().Name.Replace("Builder", "")}{(string.IsNullOrEmpty(name) ? "" : $" - {name}")}]";
+            label.text =
+                $"{(parentProperty == null ? label.text : "")} [{animation.GetType().Name.Replace("Builder", "")}{(string.IsNullOrEmpty(name) ? "" : $" - {name}")}]";
 
-            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
+            property.isExpanded =
+                EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
             DrawMenu(position, property);
 
@@ -64,7 +72,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 if (check.changed && PreviewerWindow.Instance != null)
                 {
                     property.serializedObject.ApplyModifiedProperties();
-                    PreviewerWindow.Instance.RenderAnimations();
+                    PreviewerWindow.Instance.RefreshAnimations();
                     GUIUtility.ExitGUI();
                 }
             }
@@ -84,7 +92,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
             if (GUI.Button(previewPosition, "Preview"))
             {
-                FlowEntMenu.ShowPreviewer();
+                PreviewerWindow.ShowSingleton();
+                PreviewerWindow.Instance.FocusAnimation(() => property.GetValue<IAbstractAnimationBuilder>().Build());
             }
 
             Rect menuPosition = position;
@@ -101,8 +110,10 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
                 else
                 {
-                    FlowEntEditorGUILayout.ShowListCrud(context, parentProperty, parentProperty.GetArrayElementIndex(property), "Animation", this);
+                    FlowEntEditorGUILayout.ShowListCrud(context, parentProperty,
+                        parentProperty.GetArrayElementIndex(property), "Animation", this);
                 }
+
                 context.ShowAsContext();
             }
         }

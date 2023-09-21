@@ -11,6 +11,7 @@ namespace FriedSynapse.FlowEnt.Editor
     internal class PreviewerWindow : FlowEntWindow<PreviewerWindow>
     {
         private const float DefaultTimelessEchoTimeout = 3f;
+        private const string SelectMessage = "Please Select an object from the hierarchy first.";
 
         private enum MemberType
         {
@@ -48,38 +49,91 @@ namespace FriedSynapse.FlowEnt.Editor
         private static readonly object[] emptyArray = { };
 
         private TextElement label;
+        private Button exitFocusButton;
         private ScrollView animationsElement;
 
-#pragma warning disable IDE0051, RCS1213
+        private Func<AbstractAnimation> GetFocusedAnimation { get; set; }
 
         protected override void CreateGUI()
         {
             LoadHeader();
             LoadContent();
             label = Content.Query<TextElement>("name").First();
+            exitFocusButton = Content.Query<Button>("exitFocus").First();
             animationsElement = Content.Query<ScrollView>("animations").First();
-            Selection.selectionChanged += RenderAnimations;
-            EditorApplication.playModeStateChanged += _ => RenderAnimations();
-            RenderAnimations();
+            Bind();
+            Selection.selectionChanged += RefreshAnimations;
+            EditorApplication.playModeStateChanged += _ => RefreshAnimations();
+            RefreshAnimations();
         }
 
-        internal void RenderAnimations()
+        private void Bind()
+        {
+            exitFocusButton.clicked += ExitFocus;
+        }
+
+        internal void RefreshAnimations()
+        {
+            if (GetFocusedAnimation != null)
+            {
+                RenderFocusedAnimation();
+            }
+            else
+            {
+                RenderSelectedAnimations();
+            }
+        }
+
+        internal void FocusAnimation(Func<AbstractAnimation> getAnimation)
+        {
+            exitFocusButton.visible = true;
+            GetFocusedAnimation = getAnimation;
+            RenderFocusedAnimation();
+        }
+
+        private void ExitFocus()
+        {
+            exitFocusButton.visible = false;
+            GetFocusedAnimation = null;
+        }
+
+        private void RenderFocusedAnimation()
+        {
+            InitRender();
+            RenderAnimationsInternal(new List<AnimationInfo>
+            {
+                new AnimationInfo("", MemberType.Field, GetFocusedAnimation())
+            });
+        }
+
+        private void RenderSelectedAnimations()
+        {
+            InitRender();
+
+            Transform transform = Selection.activeTransform;
+            label.text = transform == null ? SelectMessage : transform.name;
+
+            if (transform == null)
+            {
+                return;
+            }
+
+            RenderAnimationsInternal(GetAnimations(transform));
+        }
+
+        private void InitRender()
         {
             if (PreviewController.IsRunning)
             {
                 PreviewController.Stop();
             }
 
-            Transform transform = Selection.activeTransform;
-            label.text = transform == null ? "Select an object from the hierarchy first." : transform.name;
-
             animationsElement.Clear();
-            if (transform == null)
-            {
-                return;
-            }
+        }
 
-            foreach (AnimationInfo animationInfo in GetAnimations(transform))
+        private void RenderAnimationsInternal(List<AnimationInfo> animationsInfo)
+        {
+            foreach (AnimationInfo animationInfo in animationsInfo)
             {
                 VisualElement animationElement = new VisualElement();
                 animationElement.AddToClassList("animation");
@@ -96,8 +150,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 animationsElement.contentContainer.Add(animationElement);
             }
         }
-
-#pragma warning restore IDE0051, RCS1213
 
         private List<AnimationInfo> GetAnimations(Transform transform)
         {
@@ -140,8 +192,7 @@ namespace FriedSynapse.FlowEnt.Editor
                             MemberType.Method,
                             ((AbstractAnimation)mi.Invoke(behaviour, emptyArray)).Stop()))
                         .ToList());
-                
-                //TODO add the range from animations authoring - don't: add a focus mode in the previewer.
+
                 //TODO fix the de-focus reset bug - create a reset button
             }
 

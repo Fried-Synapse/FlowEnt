@@ -108,8 +108,8 @@ namespace FriedSynapse.FlowEnt.Editor
             list.drawElementCallback = drawElement;
             list.elementHeightCallback = getElementHeight;
             list.onAddDropdownCallback = (buttonRect, list) => OnAdd(list, buttonRect, property);
-            position.x += padding * 2;
-            position.width -= padding * 2;
+            position.x += padding;
+            position.width -= padding;
             list.DoList(position);
 
 
