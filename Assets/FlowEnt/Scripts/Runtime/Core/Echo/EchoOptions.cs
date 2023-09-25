@@ -11,6 +11,7 @@ namespace FriedSynapse.FlowEnt
         internal const string ErrorTimeoutMin = "Timeout cannot be 0.001 or less.";
         internal const string ErrorTimeoutInfinity = "Timeout cannot be infinity.";
         internal const float MinTime = 0.001f;
+        public const float DefaultTime = 1f;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="EchoOptions"/> class.

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -64,7 +65,7 @@ namespace FriedSynapse.FlowEnt.Editor
             Bind();
             Selection.selectionChanged += () => RefreshAnimations();
             EditorApplication.playModeStateChanged += _ => RefreshAnimations();
-            RefreshAnimations();
+            EditorApplication.delayCall += () => RefreshAnimations();
         }
 
         private void Bind()
@@ -133,7 +134,8 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             if (PreviewController.IsRunning)
             {
-                PreviewController.Stop();
+                //HACK: PreviewController.Stop undoes changes so if we do it on a different frame we save the changes on the editor
+                Task.Run(PreviewController.Stop);
             }
 
             animationsElement.Clear();
