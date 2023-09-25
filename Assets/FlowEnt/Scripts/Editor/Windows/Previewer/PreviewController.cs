@@ -56,6 +56,9 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
+        /// <summary>
+        /// Stops all running animations and undoes all the changes done while playing
+        /// </summary>
         public static void Stop()
         {
             options?.Animation?.Stop(true).Reset();

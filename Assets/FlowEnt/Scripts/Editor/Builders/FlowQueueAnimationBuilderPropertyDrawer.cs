@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using Queue = FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue;
 
@@ -16,6 +17,8 @@ namespace FriedSynapse.FlowEnt.Editor
             set => clipboard = value;
         }
 
+        private const string StartTimeName = "startTime";
+
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             float height = base.GetPropertyHeight(property, label);
@@ -24,6 +27,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 return height;
             }
 
+            height += FlowEntConstants.SpacedSingleLineHeight;
             height += IdentifiableBuilderFields.GetDisplayNameHeight(property);
             return height;
         }
@@ -36,42 +40,31 @@ namespace FriedSynapse.FlowEnt.Editor
             return label;
         }
 
-        protected override void DrawMenu(Rect position, SerializedProperty property)
+        protected override void AddItemsToContextMenu(GenericMenu contextMenu, SerializedProperty property)
         {
-            Rect menuPosition = position;
-            const float menuWidth = 20f;
-            menuPosition.x = position.xMax - (menuWidth / 2f) - 10;
-            menuPosition.width = menuWidth;
-            menuPosition.height = EditorGUIUtility.singleLineHeight;
-            if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
-            {
-                SerializedProperty parentProperty = property.GetParentArray();
-
-                GenericMenu context = new GenericMenu();
-                FlowEntEditorGUILayout.ShowListCrud(context, parentProperty,
-                    parentProperty.GetArrayElementIndex(property), "Queue", this);
-                context.AddSeparator(string.Empty);
-                IdentifiableBuilderFields.DrawShowRename(property, context);
-            }
+            SerializedProperty parentProperty = property.GetParentArray();
+            FlowEntEditorGUILayout.ShowListCrud(contextMenu, parentProperty,
+                parentProperty.GetArrayElementIndex(property), "Queue", this);
+            contextMenu.AddSeparator(string.Empty);
+            IdentifiableBuilderFields.DrawShowRename(property, contextMenu);
         }
 
-        protected override Rect Draw(Rect position, SerializedProperty property)
+        protected override void Draw(ref Rect position, SerializedProperty property)
         {
             IdentifiableBuilderFields.DrawDisplayName(ref position, property);
-
-            DrawButton(position, "Add animation", () => ShowAddAnimation(EditorGUI.IndentedRect(position), property));
-            return position;
+            FlowEntEditorGUILayout.PropertyFieldSingleLine(ref position, property.FindPropertyRelative(StartTimeName));
         }
 
-        private void ShowAddAnimation(Rect position, SerializedProperty property)
+
+        protected override void OnAdd(ReorderableList list, Rect buttonRect, SerializedProperty property)
         {
             Queue queue = property.GetValue<Queue>();
             GenericMenu context = new GenericMenu();
             context.AddItem(new GUIContent("Flow"), false, () => queue.Items.Add(new FlowBuilder()));
             context.AddItem(new GUIContent("Tween"), false, () => queue.Items.Add(new TweenBuilder()));
             context.AddItem(new GUIContent("Echo"), false, () => queue.Items.Add(new EchoBuilder()));
-            position.y += 3f;
-            context.DropDown(position);
+            buttonRect.y += 3f;
+            context.DropDown(buttonRect);
         }
     }
 }

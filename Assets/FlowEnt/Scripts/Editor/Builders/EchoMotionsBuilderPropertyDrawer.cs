@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -6,10 +7,9 @@ namespace FriedSynapse.FlowEnt.Editor
     [CustomPropertyDrawer(typeof(EchoMotionsBuilder))]
     public class EchoMotionsBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<AbstractEchoMotionBuilder>
     {
-        protected override Rect Draw(Rect position, SerializedProperty property)
+        protected override void OnAdd(ReorderableList list, Rect buttonRect, SerializedProperty property)
         {
-            DrawButton(position, "Add motion", () => MotionPickerWindow.Show<AbstractEchoMotionBuilder>(GetData(property).AddedItemTypes.Enqueue));
-            return position;
+            MotionPickerWindow.Show<AbstractEchoMotionBuilder>(GetData(property).AddedItemTypes.Enqueue);
         }
     }
 }

@@ -1,20 +1,36 @@
 using System;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractListBuilderPropertyDrawer<TListItem> : PropertyDrawer<AbstractListBuilderPropertyDrawer<TListItem>.Data>
+    public abstract class
+        AbstractListBuilderPropertyDrawer<TListItem> : PropertyDrawer<AbstractListBuilderPropertyDrawer<TListItem>.Data>
         where TListItem : IListBuilderItem
     {
         public class Data
         {
             public Queue<TListItem> AddedItemTypes { get; } = new Queue<TListItem>();
         }
-        protected virtual void DrawMenu(Rect position, SerializedProperty property) { }
+
+        private const string ItemsNames = "items";
+
+        private Dictionary<string, ReorderableList> Lists { get; } =
+            new Dictionary<string, ReorderableList>();
+
         protected virtual GUIContent GetLabel(SerializedProperty property, GUIContent label) => label;
-        protected abstract Rect Draw(Rect position, SerializedProperty property);
+
+        protected virtual void AddItemsToContextMenu(GenericMenu context, SerializedProperty property)
+        {
+        }
+
+        protected virtual void Draw(ref Rect position, SerializedProperty property)
+        {
+        }
+
+        protected abstract void OnAdd(ReorderableList list, Rect buttonRect, SerializedProperty property);
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -23,19 +39,19 @@ namespace FriedSynapse.FlowEnt.Editor
                 return EditorGUIUtility.singleLineHeight;
             }
 
-            float height = FlowEntConstants.SpacedSingleLineHeight * 2;
-            SerializedProperty listProperty = property.FindPropertyRelative("items");
-            for (int i = 0; i < listProperty.arraySize; i++)
+            float height = FlowEntConstants.SpacedSingleLineHeight;
+            if (Lists.TryGetValue(property.FindPropertyRelative(ItemsNames).propertyPath, out ReorderableList list))
             {
-                SerializedProperty listItemProperty = listProperty.GetArrayElementAtIndex(i);
-                height += EditorGUI.GetPropertyHeight(listItemProperty, true);
+                height += list?.GetHeight() ?? 0;
             }
+
             return height;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, GetLabel(property, label), EditorStyles.foldoutHeader);
+            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded,
+                GetLabel(property, label), EditorStyles.foldoutHeader);
 
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
             DrawMenu(headerPosition, property);
@@ -46,37 +62,68 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             EditorGUI.indentLevel++;
-            position = Draw(FlowEntEditorGUILayout.GetRect(position, 1), property);
-            DrawList(FlowEntEditorGUILayout.GetRect(position, 1), property);
+            position = FlowEntEditorGUILayout.GetRect(position, 1);
+            Draw(ref position, property);
+            DrawList(position, property);
             EditorGUI.indentLevel--;
         }
 
-        protected void DrawButton(Rect position, string name, Action callback)
+
+        private void DrawMenu(Rect position, SerializedProperty property)
         {
-            if (GUI.Button(EditorGUI.IndentedRect(position), name))
+            Rect menuPosition = position;
+            const float menuWidth = 20f;
+            menuPosition.x = position.xMax - (menuWidth / 2f) - 10;
+            menuPosition.width = menuWidth;
+            menuPosition.height = EditorGUIUtility.singleLineHeight;
+            if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
-                callback();
+                GenericMenu context = new GenericMenu();
+                FlowEntEditorGUILayout.ShowListClear(context, property.FindPropertyRelative(ItemsNames));
+                context.AddSeparator(string.Empty);
+                AddItemsToContextMenu(context, property);
+                context.ShowAsContext();
             }
         }
 
         private void DrawList(Rect position, SerializedProperty property)
         {
+            const int padding = 10;
+
             Data data = GetData(property);
-            SerializedProperty listProperty = property.FindPropertyRelative("items");
+            SerializedProperty listProperty = property.FindPropertyRelative(ItemsNames);
+            if (!Lists.TryGetValue(listProperty.propertyPath, out ReorderableList list))
+            {
+                list = new ReorderableList(listProperty.serializedObject, listProperty,
+                    true, true, true, true);
+                Lists.Add(listProperty.propertyPath, list);
+            }
 
             while (data.AddedItemTypes.Count > 0)
             {
                 listProperty.PersistentInsertArrayElementAtIndex(listProperty.arraySize, data.AddedItemTypes.Dequeue());
             }
 
-            for (int i = 0; i < listProperty.arraySize; i++)
+            list.headerHeight = 0;
+            list.drawElementCallback = drawElement;
+            list.elementHeightCallback = getElementHeight;
+            list.onAddDropdownCallback = (buttonRect, list) => OnAdd(list, buttonRect, property);
+            position.x += padding;
+            position.width -= padding;
+            list.DoList(position);
+
+
+            void drawElement(Rect rect, int index, bool isActive, bool isFocused)
             {
-                SerializedProperty listItemProperty = listProperty.GetArrayElementAtIndex(i);
-                float height = EditorGUI.GetPropertyHeight(listItemProperty, true);
-                position.height = height;
-                EditorGUI.PropertyField(position, listItemProperty, true);
-                position.y += height;
+                rect.x += padding;
+                rect.width -= padding;
+                EditorGUI.PropertyField(rect, listProperty.GetArrayElementAtIndex(index), true);
             }
+
+            float getElementHeight(int index)
+                => EditorGUI.GetPropertyHeight(listProperty.GetArrayElementAtIndex(index), true);
+
+            return;
         }
     }
 }

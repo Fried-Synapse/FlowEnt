@@ -54,14 +54,14 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             position.width /= 2f;
 
-            SerializedProperty isLoopCountInfiniteProperty = property.FindPropertyRelative(flagPropertyName);
+            SerializedProperty flagProperty = property.FindPropertyRelative(flagPropertyName);
 
-            GUI.enabled = isLoopCountInfiniteProperty.boolValue ^ isInverted;
+            GUI.enabled = flagProperty.boolValue ^ isInverted;
             EditorGUI.PropertyField(position, property.FindPropertyRelative(propertyName));
             GUI.enabled = true;
 
             position.x += position.width;
-            EditorGUI.PropertyField(position, isLoopCountInfiniteProperty);
+            EditorGUI.PropertyField(position, flagProperty);
         }
     }
 }

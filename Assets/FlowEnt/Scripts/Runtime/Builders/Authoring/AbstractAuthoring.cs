@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class AnimationBuilderContainer : MonoBehaviour
+    public abstract class AbstractAuthoring : MonoBehaviour
     {
         public enum StartModeEnum
         {
@@ -13,7 +14,6 @@ namespace FriedSynapse.FlowEnt
             Custom
         }
 
-        [Header("Settings")]
         [SerializeField]
         private StartModeEnum startMode;
 
@@ -30,27 +30,12 @@ namespace FriedSynapse.FlowEnt
         public bool AutoDestroy => autoDestroy;
 
         [SerializeField]
-        private bool triggerOnCompleted = false;
+        private bool triggerOnCompleted;
 
         public bool TriggerOnCompleted => triggerOnCompleted;
 
-        [Header("Animations")]
-        [SerializeField]
-        private List<FlowBuilder> flowsBuilders;
-
-        public List<FlowBuilder> FlowsBuilders => flowsBuilders;
-
-        [SerializeField]
-        private List<TweenBuilder> tweensBuilders;
-
-        public List<TweenBuilder> TweensBuilders => tweensBuilders;
-
-        [SerializeField]
-        private List<EchoBuilder> echoesBuilders;
-
-        public List<EchoBuilder> EchoesBuilders => echoesBuilders;
-
-        public List<AbstractAnimation> Animations { get; private set; }
+        protected abstract void StartAnimations();
+        protected abstract void StopAnimations();
 
         public void StartCustomMode()
         {
@@ -99,21 +84,31 @@ namespace FriedSynapse.FlowEnt
                 StopAnimations();
             }
         }
+    }
 
-        private void StartAnimations()
+    public class AbstractAuthoring<TAnimation, TAnimationBuilder> : AbstractAuthoring
+        where TAnimation : AbstractAnimation
+        where TAnimationBuilder : AbstractBuilder<TAnimation>
+    {
+        [SerializeField]
+        private protected TAnimationBuilder animationBuilder;
+
+        public TAnimationBuilder AnimationBuilder => animationBuilder;
+
+        public TAnimation Animation { get; set; }
+
+        private Tween DelayTween { get; set; }
+
+        protected override void StartAnimations()
         {
-            Animations = new List<AbstractAnimation>();
-
             void startAnimations()
             {
-                Animations.AddRange(FlowsBuilders.Build().Start());
-                Animations.AddRange(TweensBuilders.Build().Start());
-                Animations.AddRange(EchoesBuilders.Build().Start());
+                Animation = (TAnimation)AnimationBuilder.Build().Start();
             }
 
             if (Delay > 0)
             {
-                Animations.Add(new Tween(Delay).OnCompleted(startAnimations).Start());
+                DelayTween = new Tween(Delay).OnCompleted(startAnimations).Start();
             }
             else
             {
@@ -121,9 +116,10 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        private void StopAnimations()
+        protected override void StopAnimations()
         {
-            Animations.Stop(triggerOnCompleted);
+            DelayTween?.Stop();
+            Animation?.Stop(TriggerOnCompleted);
         }
     }
 }

@@ -5,6 +5,11 @@
     -unity-font-style: bold;
 }
 
+#exitFocus{
+    position: absolute;
+    right: 0;
+}
+
 #animations #unity-content-container {
     padding: 0 10px 0 10px;
 }

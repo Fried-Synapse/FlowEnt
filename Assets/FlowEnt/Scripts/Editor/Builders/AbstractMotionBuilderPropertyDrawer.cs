@@ -103,11 +103,11 @@ namespace FriedSynapse.FlowEnt.Editor
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
             IMotionBuilder motionBuilder = property.GetValue<IMotionBuilder>();
             string name = MotionNameGetter.GetNames(motionBuilder.GetType(), motionBuilder)[0];
-            label.text = name.PadLeft(name.Length + 8);
+            label.text = name.PadLeft(name.Length + 6);
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label);
 
             Rect isEnabledPosition = headerPosition;
-            isEnabledPosition.x = EditorGUIUtility.singleLineHeight * 1.2f;
+            isEnabledPosition.x += 2f;
             isEnabledPosition.width = EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(isEnabledPosition,
                 property.FindPropertyRelative(IdentifiableBuilderFields.IsEnabled), GUIContent.none);
@@ -143,12 +143,12 @@ namespace FriedSynapse.FlowEnt.Editor
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
                 SerializedProperty parentProperty = property.GetParentArray();
-
                 GenericMenu context = new GenericMenu();
                 FlowEntEditorGUILayout.ShowListCrud(context, parentProperty,
                     parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);
                 IdentifiableBuilderFields.DrawShowRename(property, context);
+                context.ShowAsContext();
             }
         }
 

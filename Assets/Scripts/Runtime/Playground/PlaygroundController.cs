@@ -5,7 +5,6 @@ namespace FriedSynapse.FlowEnt.Builder
 {
     public class PlaygroundController : MonoBehaviour
     {
-#pragma warning disable RCS1169, IDE0044
         [SerializeField]
         private Transform character;
         private Transform Character => character;
@@ -27,9 +26,6 @@ namespace FriedSynapse.FlowEnt.Builder
         [SerializeField]
         private FlowBuilder flow;
         private FlowBuilder Flow => flow;
-#pragma warning restore RCS1169, IDE0044
-
-#pragma warning disable IDE0051, RCS1213
 
         public AbstractAnimation TweenProp
             => new Tween(1)
@@ -66,8 +62,6 @@ namespace FriedSynapse.FlowEnt.Builder
             await Task.Yield();
             Tween.Build().Start();
         }
-
-#pragma warning restore IDE0051, RCS1213
 
         public void ResetMob()
         {

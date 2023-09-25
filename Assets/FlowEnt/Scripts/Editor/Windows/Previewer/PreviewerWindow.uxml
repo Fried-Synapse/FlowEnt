@@ -3,6 +3,7 @@
     <Style src="PreviewerWindow.uss" />
     <ui:VisualElement name="content">
         <ui:Label display-tooltip-when-elided="true" name="name" class="dd" />
+        <ui:Button text="Exit Focus" display-tooltip-when-elided="true" name="exitFocus" style="visibility: hidden;" />
         <ui:ScrollView name="animations" />
     </ui:VisualElement>
 </ui:UXML>
