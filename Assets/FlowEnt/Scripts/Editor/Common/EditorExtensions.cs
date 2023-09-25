@@ -24,7 +24,12 @@ namespace FriedSynapse.FlowEnt.Editor
             return char.ToLower(typeName[0]) + typeName.Substring(1);
         }
 
-        internal static T GetValue<T>(this SerializedProperty prop)
+        internal static string GetUniqueId(this SerializedProperty property)
+        {
+            return $"{property.serializedObject.targetObject.GetHashCode()}{property.propertyPath}";
+        }
+
+        internal static T GetValue<T>(this SerializedProperty property)
         {
             static object getValue(object source, string name)
             {
@@ -50,8 +55,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 return enumerator.Current;
             }
 
-            string path = prop.propertyPath.Replace(".Array.data[", "[");
-            object obj = prop.serializedObject.targetObject;
+            string path = property.propertyPath.Replace(".Array.data[", "[");
+            object obj = property.serializedObject.targetObject;
             string[] elements = path.Split('.');
             foreach (string element in elements.Take(elements.Length))
             {

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -55,6 +56,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         private static ulong lastId;
+
         /// <summary>
         /// A value used to identify the current updatable that is automatically assigned.
         /// </summary>
@@ -112,12 +114,19 @@ namespace FriedSynapse.FlowEnt
         }
 
         public override string ToString()
-            => $"{GetType().Name} [Id: {Id}{(string.IsNullOrEmpty(Name) ? string.Empty : $", Name: \"{Name}\"")}]";
+            => $"{GetType().Name} " +
+#if UNITY_EDITOR
+               $"[Id: {(Application.isPlaying ? Id.ToString() : "-")}" +
+#else
+               $"[Id: {Id}" +
+#endif
+               $"{(string.IsNullOrEmpty(Name) ? string.Empty : $", Name: \"{Name}\"")}]";
     }
 
     internal class UpdatableAnchor : AbstractUpdatable
     {
         private const string InvalidImplementation = "This method should not be called.";
+
         public UpdatableAnchor() : base(0)
         {
         }

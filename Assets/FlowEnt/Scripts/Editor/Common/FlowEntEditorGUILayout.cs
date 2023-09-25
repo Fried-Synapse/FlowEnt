@@ -11,38 +11,20 @@ namespace FriedSynapse.FlowEnt.Editor
 
     internal static class FlowEntEditorGUILayout
     {
-        private static GUIStyle labelStyle;
-
-        internal static GUIStyle LabelStyle
-        {
-            get
-            {
-                if (labelStyle == null)
-                {
-                    labelStyle = new GUIStyle(EditorStyles.label)
-                    {
-                        richText = true,
-                        wordWrap = true,
-                    };
-                }
-
-                return labelStyle;
-            }
-        }
-
         internal static void ForEachVisibleProperty(SerializedProperty property, Action<SerializedProperty> predicate)
         {
-            int baseDepth = property.depth;
-            property.NextVisible(true);
+            SerializedProperty copy = property.Copy();
+            int baseDepth = copy.depth;
+            copy.NextVisible(true);
             do
             {
-                if (property.depth <= baseDepth)
+                if (copy.depth <= baseDepth)
                 {
                     break;
                 }
 
-                predicate(property);
-            } while (property.NextVisible(false));
+                predicate(copy);
+            } while (copy.NextVisible(false));
         }
 
         internal static void ShowListClear(GenericMenu context, SerializedProperty listProperty)

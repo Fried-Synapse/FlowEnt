@@ -52,7 +52,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private Button exitFocusButton;
         private ScrollView animationsElement;
 
-        private Func<AbstractAnimation> GetFocusedAnimation { get; set; }
+        private AbstractAnimation FocusedAnimation { get; set; }
 
         protected override void CreateGUI()
         {
@@ -62,7 +62,7 @@ namespace FriedSynapse.FlowEnt.Editor
             exitFocusButton = Content.Query<Button>("exitFocus").First();
             animationsElement = Content.Query<ScrollView>("animations").First();
             Bind();
-            Selection.selectionChanged += RefreshAnimations;
+            Selection.selectionChanged += () => RefreshAnimations();
             EditorApplication.playModeStateChanged += _ => RefreshAnimations();
             RefreshAnimations();
         }
@@ -72,10 +72,15 @@ namespace FriedSynapse.FlowEnt.Editor
             exitFocusButton.clicked += ExitFocus;
         }
 
-        internal void RefreshAnimations()
+        internal void RefreshAnimations(AbstractAnimation focusedAnimation = null)
         {
-            if (GetFocusedAnimation != null)
+            if (FocusedAnimation != null)
             {
+                if (focusedAnimation != null)
+                {
+                    FocusedAnimation = focusedAnimation;
+                }
+
                 RenderFocusedAnimation();
             }
             else
@@ -84,25 +89,28 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        internal void FocusAnimation(Func<AbstractAnimation> getAnimation)
+        internal void FocusAnimation(AbstractAnimation animation)
         {
             exitFocusButton.visible = true;
-            GetFocusedAnimation = getAnimation;
-            RenderFocusedAnimation();
+            FocusedAnimation = animation;
+            RefreshAnimations();
         }
 
         private void ExitFocus()
         {
             exitFocusButton.visible = false;
-            GetFocusedAnimation = null;
+            FocusedAnimation = null;
+            RefreshAnimations();
         }
 
         private void RenderFocusedAnimation()
         {
             InitRender();
+            label.text = $"[Focused] {FocusedAnimation.Name}";
+
             RenderAnimationsInternal(new List<AnimationInfo>
             {
-                new AnimationInfo("", MemberType.Field, GetFocusedAnimation())
+                new AnimationInfo("", MemberType.Field, FocusedAnimation)
             });
         }
 
@@ -192,8 +200,6 @@ namespace FriedSynapse.FlowEnt.Editor
                             MemberType.Method,
                             ((AbstractAnimation)mi.Invoke(behaviour, emptyArray)).Stop()))
                         .ToList());
-
-                //TODO fix the de-focus reset bug - create a reset button
             }
 
             foreach (AnimationInfo animationInfo in animations)

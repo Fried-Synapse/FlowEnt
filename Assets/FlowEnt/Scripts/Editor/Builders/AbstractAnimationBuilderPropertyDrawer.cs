@@ -26,6 +26,8 @@ namespace FriedSynapse.FlowEnt.Editor
             set => clipboard = value;
         }
 
+        private static string FocusedPropertyId { get; set; }
+
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             if (!property.isExpanded)
@@ -72,7 +74,10 @@ namespace FriedSynapse.FlowEnt.Editor
                 if (check.changed && PreviewerWindow.Instance != null)
                 {
                     property.serializedObject.ApplyModifiedProperties();
-                    PreviewerWindow.Instance.RefreshAnimations();
+                    PreviewerWindow.Instance.RefreshAnimations(
+                        FocusedPropertyId == property.GetUniqueId()
+                            ? property.GetValue<IAbstractAnimationBuilder>().Build()
+                            : null);
                     GUIUtility.ExitGUI();
                 }
             }
@@ -93,7 +98,8 @@ namespace FriedSynapse.FlowEnt.Editor
             if (GUI.Button(previewPosition, "Preview"))
             {
                 PreviewerWindow.ShowSingleton();
-                PreviewerWindow.Instance.FocusAnimation(() => property.GetValue<IAbstractAnimationBuilder>().Build());
+                FocusedPropertyId = property.GetUniqueId();
+                PreviewerWindow.Instance.FocusAnimation(property.GetValue<IAbstractAnimationBuilder>().Build());
             }
 
             Rect menuPosition = position;

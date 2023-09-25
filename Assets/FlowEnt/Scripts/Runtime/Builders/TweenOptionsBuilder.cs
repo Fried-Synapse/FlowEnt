@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt
         }
 
 #pragma warning disable RCS1169, RCS1085, IDE0044
-        [SerializeField, Min(0f)]
+        [SerializeField, Min(TweenOptions.MinTime)]
         private float time = TweenOptions.DefaultTime;
         public float Time => time;
         [SerializeField]
