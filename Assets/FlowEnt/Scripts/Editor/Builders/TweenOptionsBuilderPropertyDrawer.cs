@@ -54,17 +54,5 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
             }
         }
-
-        protected override void Init(SerializedProperty property)
-        {
-            base.Init(property);
-            property.FindPropertyRelative(PropertiesEnum.timeScale.ToString()).floatValue =
-                AbstractAnimationOptions.DefaultTimeScale;
-            property.FindPropertyRelative(PropertiesEnum.time.ToString()).floatValue = TweenOptions.DefaultTime;
-            property.FindPropertyRelative(PropertiesEnum.loopCount.ToString()).intValue =
-                AbstractAnimationOptions.DefaultLoopCount;
-            property.FindPropertyRelative(PropertiesEnum.easingType.ToString()).enumValueIndex =
-                (int)TweenOptions.DefaultEasing;
-        }
     }
 }

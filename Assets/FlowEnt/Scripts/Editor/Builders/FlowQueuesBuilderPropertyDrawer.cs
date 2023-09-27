@@ -7,9 +7,9 @@ namespace FriedSynapse.FlowEnt.Editor
     [CustomPropertyDrawer(typeof(FlowBuilder.QueueList))]
     public class FlowQueuesBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<FlowBuilder.QueueList.Queue>
     {
-        protected override void OnAdd(ReorderableList list, Rect buttonRect, SerializedProperty property)
+        protected override void OnAdd(Rect buttonRect, ReorderableList list)
         {
-            GetData(property).AddedItemTypes.Enqueue(new FlowBuilder.QueueList.Queue());
+            list.Add(new FlowBuilder.QueueList.Queue());
         }
     }
 }

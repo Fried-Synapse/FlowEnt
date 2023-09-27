@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
@@ -6,8 +7,8 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class
-        AbstractListBuilderPropertyDrawer<TListItem> : PropertyDrawer<AbstractListBuilderPropertyDrawer<TListItem>.Data>
+    public abstract class AbstractListBuilderPropertyDrawer<TListItem>
+        : PropertyDrawer<AbstractListBuilderPropertyDrawer<TListItem>.Data>
         where TListItem : IListBuilderItem
     {
         public class Data
@@ -30,7 +31,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
         }
 
-        protected abstract void OnAdd(ReorderableList list, Rect buttonRect, SerializedProperty property);
+        protected abstract void OnAdd(Rect buttonRect, ReorderableList list);
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -107,7 +108,7 @@ namespace FriedSynapse.FlowEnt.Editor
             list.headerHeight = 0;
             list.drawElementCallback = drawElement;
             list.elementHeightCallback = getElementHeight;
-            list.onAddDropdownCallback = (buttonRect, list) => OnAdd(list, buttonRect, property);
+            list.onAddDropdownCallback = OnAdd;
             position.x += padding;
             position.width -= padding;
             list.DoList(position);
@@ -122,8 +123,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
             float getElementHeight(int index)
                 => EditorGUI.GetPropertyHeight(listProperty.GetArrayElementAtIndex(index), true);
-
-            return;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -115,6 +116,9 @@ namespace FriedSynapse.FlowEnt.Editor
             property.serializedObject.ApplyModifiedProperties();
         }
 
+        internal static void PersistentAddArrayElement(this SerializedProperty listProperty, object item)
+            => PersistentInsertArrayElementAtIndex(listProperty, listProperty.arraySize, item);
+
         internal static void PersistentInsertArrayElementAtIndex(this SerializedProperty listProperty, int index,
             object item)
             => PersistentSetArrayElementAtIndex(listProperty, index, item,
@@ -187,7 +191,10 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             return -1;
-        }
+        }     
+        
+        internal static void Add(this ReorderableList list, object item)
+            => list.serializedProperty.PersistentAddArrayElement(item);
 
         internal static void AddItem(this GenericMenu menu, GUIContent content, GenericMenu.MenuFunction callback,
             bool isDisabled = false, bool isOn = false)

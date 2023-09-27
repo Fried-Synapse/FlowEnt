@@ -1,25 +1,44 @@
+using System;
 using System.Collections;
+using FluentAssertions;
 using NUnit.Framework;
+using Unity.PerformanceTesting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Tests.Performance
 {
-    public class AbstractTest
+    public abstract class AbstractTest
     {
-        protected GameObject[] GameObjects { get; set; }
-        protected int CompletedAnimations { get; set; } = 0;
+        protected const float TestLength = 1f;
+        protected abstract string ObjectCreationName { get; }
+        protected abstract string AnimationCreationName { get; }
+        protected abstract string UsageName { get; }
 
-        protected virtual IEnumerator CreateObjects(int count)
+        protected GameObject[] GameObjects { get; private set; }
+        private int CompletedAnimations { get; set; }
+
+
+        protected IEnumerator CreateObjects(int count, Func<int, GameObject> onCreating = null)
         {
-            GameObjects = new GameObject[count];
-            for (int i = 0; i < count; i++)
+            using (Measure.Frames().WarmupCount(10).Scope(ObjectCreationName))
             {
-                GameObject gameObject = new GameObject($"Test game object {i}");
-                gameObject.transform.position = new Vector3(0, 0, i);
-                GameObjects[i] = gameObject;
+                onCreating ??= i =>
+                {
+                    GameObject gameObject = new GameObject($"Test game object {i}");
+                    gameObject.transform.position = new Vector3(0, 0, i);
+                    return gameObject;
+                };
+
+                GameObjects = new GameObject[count];
+                for (int i = 0; i < count; i++)
+                {
+                    GameObjects[i] = onCreating(i);
+                }
+
+                yield return null;
             }
-            yield return null;
         }
 
         protected void OnAnimationComplete()
@@ -55,8 +74,41 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
 
                 GameObjects = null;
             }
+
             CompletedAnimations = 0;
-            System.GC.Collect();
+            GC.Collect();
+        }
+
+        protected IEnumerator CreateAndPlay(int count, Action animationCreation)
+        {
+            using (Measure.Frames().WarmupCount(60).Scope(AnimationCreationName))
+            {
+                animationCreation();
+                yield return null;
+            }
+
+            using (Measure.Frames().Scope($"{UsageName} - Start"))
+            {
+                yield return null;
+            }
+
+            using (Measure.Frames().Scope(UsageName))
+            {
+                while (CompletedAnimations < count)
+                {
+                    yield return null;
+                }
+            }
+        }
+
+        protected void AssertPerformance(string sampleName, float minFps)
+        {
+            PerformanceTest info = PerformanceTest.Active;
+            info.CalculateStatisticalValues();
+            SampleGroup sampleGroup = info.SampleGroups.Find(s => s.Name == sampleName);
+            double fps = 1000f / sampleGroup.Average;
+            Debug.Log($"FPS results: {fps}.");
+            fps.Should().BeGreaterOrEqualTo(minFps);
         }
     }
 }
