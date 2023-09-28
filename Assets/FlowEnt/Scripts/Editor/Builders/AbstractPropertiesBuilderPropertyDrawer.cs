@@ -9,7 +9,6 @@ namespace FriedSynapse.FlowEnt.Editor
     public abstract class AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum> : PropertyDrawer
         where TPropertiesEnum : Enum
     {
-        private static string isInitName = "isInit";
         protected abstract float PropertyHeight { get; }
         private List<TPropertiesEnum> properties;
 
@@ -23,13 +22,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SerializedProperty isInit = property.FindPropertyRelative(isInitName);
-            if (!isInit.boolValue)
-            {
-                Init(property);
-                isInit.boolValue = true;
-            }
-
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded,
                 label, EditorStyles.foldoutHeader);
 
@@ -44,10 +36,6 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         protected abstract void DrawProperties(Rect position, SerializedProperty property);
-
-        protected virtual void Init(SerializedProperty property)
-        {
-        }
 
         protected void DrawNullable(Rect position, SerializedProperty property, string propertyName,
             string flagPropertyName, bool isInverted = false)

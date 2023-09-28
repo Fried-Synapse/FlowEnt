@@ -7,9 +7,9 @@ namespace FriedSynapse.FlowEnt.Editor
     [CustomPropertyDrawer(typeof(TweenMotionsBuilder))]
     public class TweenMotionsBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<AbstractTweenMotionBuilder>
     {
-        protected override void OnAdd(ReorderableList list, Rect buttonRect, SerializedProperty property)
+        protected override void OnAdd(Rect buttonRect, ReorderableList list)
         {
-            MotionPickerWindow.Show<AbstractTweenMotionBuilder>(GetData(property).AddedItemTypes.Enqueue);
+            MotionPickerWindow.Show<AbstractTweenMotionBuilder>(list.Add);
         }
     }
 }
