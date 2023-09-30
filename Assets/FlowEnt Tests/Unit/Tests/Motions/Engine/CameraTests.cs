@@ -1,4 +1,5 @@
 using System.Collections;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -44,8 +45,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).BackgroundColorTo(from, to)
-                                    .OnUpdated((_) => startingValue ??= Component.backgroundColor)
-                                    .Start())
+                    .OnUpdated((_) => startingValue ??= Component.backgroundColor)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -86,7 +87,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.orthographicSize = 0f)
                 .Act(() => Component.Tween(TestTime).OrthographicSize(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.orthographicSize))
+                .Assert(() => Component.orthographicSize.Should().Be(value))
                 .Run();
         }
 
@@ -99,7 +100,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.orthographicSize = 0f)
                 .Act(() => Component.Tween(TestTime).OrthographicSizeTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.orthographicSize))
+                .Assert(() => Component.orthographicSize.Should().Be(to))
                 .Run();
         }
 
@@ -119,8 +120,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.orthographicSize);
+                    startingValue.Should().Be(from);
+                    Component.orthographicSize.Should().Be(to);
                 })
                 .Run();
         }
@@ -138,7 +139,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.fieldOfView = 0f)
                 .Act(() => Component.Tween(TestTime).FieldOfView(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.fieldOfView))
+                .Assert(() => Component.fieldOfView.Should().Be(value))
                 .Run();
         }
 
@@ -151,7 +152,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.fieldOfView = 0f)
                 .Act(() => Component.Tween(TestTime).FieldOfViewTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.fieldOfView))
+                .Assert(() => Component.fieldOfView.Should().Be(to))
                 .Run();
         }
 
@@ -171,8 +172,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.fieldOfView);
+                    startingValue.Should().Be(from);
+                    Component.fieldOfView.Should().Be(to);
                 })
                 .Run();
         }
@@ -190,7 +191,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.nearClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).NearClipPlane(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.nearClipPlane))
+                .Assert(() => Component.nearClipPlane.Should().Be(value))
                 .Run();
         }
 
@@ -203,7 +204,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.nearClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).NearClipPlaneTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.nearClipPlane))
+                .Assert(() => Component.nearClipPlane.Should().Be(to))
                 .Run();
         }
 
@@ -223,8 +224,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.nearClipPlane);
+                    startingValue.Should().Be(from);
+                    Component.nearClipPlane.Should().Be(to);
                 })
                 .Run();
         }
@@ -242,7 +243,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.farClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).FarClipPlane(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.farClipPlane))
+                .Assert(() => Component.farClipPlane.Should().Be(value))
                 .Run();
         }
 
@@ -255,7 +256,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.farClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).FarClipPlaneTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.farClipPlane))
+                .Assert(() => Component.farClipPlane.Should().Be(to))
                 .Run();
         }
 
@@ -275,8 +276,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.farClipPlane);
+                    startingValue.Should().Be(from);
+                    Component.farClipPlane.Should().Be(to);
                 })
                 .Run();
         }

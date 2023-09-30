@@ -21,6 +21,8 @@ namespace FriedSynapse.FlowEnt.Builder
         private TweenBuilder tween;
         private TweenBuilder Tween => tween;
         [SerializeField]
+        private EchoBuilder echo1;
+        [SerializeField]
         private EchoBuilder echo;
         private EchoBuilder Echo => echo;
         [SerializeField]

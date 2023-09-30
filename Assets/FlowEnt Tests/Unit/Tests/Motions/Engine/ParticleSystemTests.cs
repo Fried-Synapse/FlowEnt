@@ -1,4 +1,5 @@
 using System.Collections;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -13,9 +14,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             EmissionModule emission = Component.emission;
             emission.rateOverTime = 0;
             emission.SetBursts(new Burst[]
-                {
-                    new Burst(0, particleCount)
-                });
+            {
+                new(0, particleCount)
+            });
             MainModule main = Component.main;
             main.startSpeed = 0;
         }
@@ -37,11 +38,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 {
                     Particle[] particles = new Particle[Component.main.maxParticles];
                     int activeCount = Component.GetParticles(particles);
-                    Assert.AreEqual(particleCount, activeCount);
-                    for (int i = 0; i < activeCount; i++)
-                    {
-                        FlowEntAssert.AreEqual(target, particles[i].position);
-                    }
+                    activeCount.Should().Be(particleCount);
+                    particles.Should().AllSatisfy(p => p.position.Should().Be(target));
                 })
                 .Run();
         }
@@ -59,11 +57,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 {
                     Particle[] particles = new Particle[Component.main.maxParticles];
                     int activeCount = Component.GetParticles(particles);
-                    Assert.AreEqual(particleCount, activeCount);
-                    for (int i = 0; i < activeCount; i++)
-                    {
-                        FlowEntAssert.AreEqual(Variables.Target.position, particles[i].position);
-                    }
+                    activeCount.Should().Be(particleCount);
+                    particles.Should().AllSatisfy(p => p.position.Should().Be(Variables.Target.position));
                 })
                 .Run();
         }

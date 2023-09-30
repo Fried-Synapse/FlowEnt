@@ -41,17 +41,17 @@ namespace FriedSynapse.FlowEnt
         }
 
         [SerializeField]
-        private FlowOptionsBuilder options;
+        private FlowOptionsBuilder options = new FlowOptionsBuilder();
 
         public FlowOptionsBuilder Options => options;
 
         [SerializeField]
-        private FlowEventsBuilder events;
+        private FlowEventsBuilder events = new FlowEventsBuilder();
 
         public FlowEventsBuilder Events => events;
 
         [SerializeField]
-        private QueueList queues;
+        private QueueList queues = new QueueList();
 
         public QueueList Queues => queues;
 
