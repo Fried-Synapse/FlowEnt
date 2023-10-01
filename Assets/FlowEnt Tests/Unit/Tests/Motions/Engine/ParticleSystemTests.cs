@@ -39,7 +39,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     Particle[] particles = new Particle[Component.main.maxParticles];
                     int activeCount = Component.GetParticles(particles);
                     activeCount.Should().Be(particleCount);
-                    particles.Should().AllSatisfy(p => p.position.Should().Be(target));
+                    for (int i = 0; i < activeCount; i++)
+                    {
+                        particles[i].position.Should().Be(target);
+                    }
                 })
                 .Run();
         }
@@ -58,7 +61,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     Particle[] particles = new Particle[Component.main.maxParticles];
                     int activeCount = Component.GetParticles(particles);
                     activeCount.Should().Be(particleCount);
-                    particles.Should().AllSatisfy(p => p.position.Should().Be(Variables.Target.position));
+                    for (int i = 0; i < activeCount; i++)
+                    {
+                        particles[i].position.Should().Be(Variables.Target.position);
+                    }
                 })
                 .Run();
         }

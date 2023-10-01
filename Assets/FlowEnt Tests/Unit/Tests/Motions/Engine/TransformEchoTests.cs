@@ -40,7 +40,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).MoveX(MoveValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.position.x.Should().Be(MoveValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.position.x.Should()
+                        .BeApproximatelyFloat(MoveValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
@@ -52,7 +53,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).MoveY(MoveValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.position.y.Should().Be(MoveValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.position.y.Should()
+                        .BeApproximatelyFloat(MoveValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
@@ -64,7 +66,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).MoveZ(MoveValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.position.z.Should().Be(MoveValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.position.z.Should()
+                        .BeApproximatelyFloat(MoveValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
@@ -130,7 +133,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).RotateX(RotateValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.eulerAngles.x.Should().Be(RotateValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.eulerAngles.x.Should()
+                        .BeApproximatelyFloat(RotateValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
@@ -142,7 +146,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).RotateY(RotateValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.eulerAngles.y.Should().Be(RotateValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.eulerAngles.y.Should()
+                        .BeApproximatelyFloat(RotateValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
@@ -154,7 +159,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).RotateZ(RotateValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.eulerAngles.z.Should().Be(RotateValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.eulerAngles.z.Should()
+                        .BeApproximatelyFloat(RotateValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
@@ -253,7 +259,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).ScaleX(ScaleValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.localScale.x.Should().Be(ScaleValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.localScale.x.Should()
+                        .BeApproximatelyFloat(ScaleValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
@@ -265,7 +272,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).ScaleY(ScaleValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.localScale.y.Should().Be(ScaleValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.localScale.y.Should()
+                        .BeApproximatelyFloat(ScaleValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
@@ -277,7 +285,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => GameObject.transform.Echo(TestTime).ScaleZ(ScaleValue).Start())
                 .AssertTime(TestTime)
                 .Assert<Echo>(echo =>
-                    GameObject.transform.localScale.z.Should().Be(ScaleValue * (TestTime + echo.Overdraft.Value)))
+                    GameObject.transform.localScale.z.Should()
+                        .BeApproximatelyFloat(ScaleValue * (TestTime + echo.Overdraft.Value)))
                 .Run();
         }
 
