@@ -11,7 +11,6 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     internal class PreviewerWindow : FlowEntWindow<PreviewerWindow>
     {
-        private const float DefaultTimelessEchoTimeout = 3f;
         private const string SelectMessage = "Please Select an object from the hierarchy first.";
 
         private enum MemberType
@@ -35,9 +34,9 @@ namespace FriedSynapse.FlowEnt.Editor
                 }
             }
 
-            internal string name;
-            internal MemberType type;
-            internal AbstractAnimation animation;
+            internal readonly string name;
+            internal readonly MemberType type;
+            internal readonly AbstractAnimation animation;
         }
 
         protected override string Name => "FlowEnt Previewer";
@@ -46,7 +45,6 @@ namespace FriedSynapse.FlowEnt.Editor
             BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
 
         private static readonly Type abstractAnimationType = typeof(AbstractAnimation);
-        private static readonly Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
         private static readonly object[] emptyArray = { };
 
         private TextElement label;
@@ -163,6 +161,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private List<AnimationInfo> GetAnimations(Transform transform)
         {
+            Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
             List<AnimationInfo> animations = new List<AnimationInfo>();
             foreach (MonoBehaviour behaviour in transform.GetComponents<MonoBehaviour>())
             {
@@ -171,22 +170,23 @@ namespace FriedSynapse.FlowEnt.Editor
                         .GetType()
                         .GetFields(DefaultBindingFlags)
                         .Where(fi => abstractAnimationBuilderType.IsAssignableFrom(fi.FieldType))
-                        .Select(fi => new AnimationInfo(
-                            char.ToUpper(fi.Name[0]) + fi.Name.Substring(1),
-                            MemberType.Field,
-                            ((IAbstractAnimationBuilder)fi.GetValue(behaviour)).Build()))
+                        .Select(fi => (
+                            FieldInfo: fi,
+                            Animation: ((IAbstractAnimationBuilder)fi.GetValue(behaviour))?.Build()))
+                        .Where(t => t.Animation != null)
+                        .Select(t => new AnimationInfo(t.FieldInfo.Name, MemberType.Field, t.Animation))
                         .ToList());
 
                 animations.AddRange(
                     behaviour
                         .GetType()
                         .GetProperties(DefaultBindingFlags)
-                        .Where(pi
-                            => abstractAnimationType.IsAssignableFrom(pi.PropertyType)
-                               && ((AbstractAnimation)pi.GetValue(behaviour))?.Stop() != null)
-                        .Select(pi => new AnimationInfo(pi.Name,
-                            MemberType.Property,
-                            ((AbstractAnimation)pi.GetValue(behaviour)).Stop()))
+                        .Where(pi => abstractAnimationType.IsAssignableFrom(pi.PropertyType))
+                        .Select(pi => (
+                            PropertyInfo: pi,
+                            Animation: (AbstractAnimation)pi.GetValue(behaviour)))
+                        .Where(t => t.Animation != null)
+                        .Select(t => new AnimationInfo(t.PropertyInfo.Name, MemberType.Property, t.Animation))
                         .ToList());
 
                 animations.AddRange(
@@ -196,11 +196,12 @@ namespace FriedSynapse.FlowEnt.Editor
                         .Where(mi
                             => !mi.IsSpecialName
                                && abstractAnimationType.IsAssignableFrom(mi.ReturnType)
-                               && mi.GetParameters().Length == 0
-                               && ((AbstractAnimation)mi.Invoke(behaviour, emptyArray))?.Stop() != null)
-                        .Select(mi => new AnimationInfo(mi.Name,
-                            MemberType.Method,
-                            ((AbstractAnimation)mi.Invoke(behaviour, emptyArray)).Stop()))
+                               && mi.GetParameters().Length == 0)
+                        .Select(mi => (
+                            FieldInfo: mi,
+                            Animation: (AbstractAnimation)mi.Invoke(behaviour, emptyArray)))
+                        .Where(t => t.Animation != null)
+                        .Select(t => new AnimationInfo(t.FieldInfo.Name, MemberType.Method, t.Animation))
                         .ToList());
             }
 
@@ -211,7 +212,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     case Echo echo:
                         if (echo.Timeout == null)
                         {
-                            echo.SetTimeout(DefaultTimelessEchoTimeout);
+                            echo.SetTimeout(EchoOptions.DefaultTime);
                         }
 
                         break;

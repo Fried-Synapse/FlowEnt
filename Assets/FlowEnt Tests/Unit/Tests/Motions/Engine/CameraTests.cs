@@ -1,4 +1,5 @@
 using System.Collections;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -7,6 +8,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 {
     public class CameraTests : AbstractEngineTests<Camera>
     {
+        private const float Value = 4f;
+        private const float FromValue = 1f;
+        private const float ToValue = 4f;
+
         #region BackgroundColor
 
         [UnityTest]
@@ -44,8 +49,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).BackgroundColorTo(from, to)
-                                    .OnUpdated((_) => startingValue ??= Component.backgroundColor)
-                                    .Start())
+                    .OnUpdated((_) => startingValue ??= Component.backgroundColor)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -86,7 +91,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.orthographicSize = 0f)
                 .Act(() => Component.Tween(TestTime).OrthographicSize(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.orthographicSize))
+                .Assert(() => Component.orthographicSize.Should().Be(value))
                 .Run();
         }
 
@@ -99,7 +104,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.orthographicSize = 0f)
                 .Act(() => Component.Tween(TestTime).OrthographicSizeTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.orthographicSize))
+                .Assert(() => Component.orthographicSize.Should().Be(to))
                 .Run();
         }
 
@@ -119,8 +124,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.orthographicSize);
+                    startingValue.Should().Be(from);
+                    Component.orthographicSize.Should().Be(to);
                 })
                 .Run();
         }
@@ -132,47 +137,40 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator FieldOfView()
         {
-            const float value = 1f;
-
             yield return CreateTester()
-                .Arrange(() => Component.fieldOfView = 0f)
-                .Act(() => Component.Tween(TestTime).FieldOfView(value).Start())
+                .Arrange(() => Component.fieldOfView = FromValue)
+                .Act(() => Component.Tween(TestTime).FieldOfView(Value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.fieldOfView))
+                .Assert(() => Component.fieldOfView.Should().Be(FromValue + Value))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator FieldOfViewTo()
         {
-            const float to = 2f;
-
             yield return CreateTester()
-                .Arrange(() => Component.fieldOfView = 0f)
-                .Act(() => Component.Tween(TestTime).FieldOfViewTo(to).Start())
+                .Arrange(() => Component.fieldOfView = FromValue)
+                .Act(() => Component.Tween(TestTime).FieldOfViewTo(ToValue).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.fieldOfView))
+                .Assert(() => Component.fieldOfView.Should().Be(ToValue))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator FieldOfViewFromTo()
         {
-            const float from = 1f;
-            const float to = 2f;
-
             float? startingValue = null;
 
             yield return CreateTester()
                 .Arrange(() => Component.fieldOfView = 0f)
-                .Act(() => Component.Tween(TestTime).FieldOfViewTo(from, to)
+                .Act(() => Component.Tween(TestTime).FieldOfViewTo(FromValue, ToValue)
                     .OnUpdated(_ => startingValue ??= Component.fieldOfView)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.fieldOfView);
+                    startingValue.Should().Be(FromValue);
+                    Component.fieldOfView.Should().Be(ToValue);
                 })
                 .Run();
         }
@@ -184,47 +182,40 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator NearClipPlane()
         {
-            const float value = 1f;
-
             yield return CreateTester()
-                .Arrange(() => Component.nearClipPlane = 0.5f)
-                .Act(() => Component.Tween(TestTime).NearClipPlane(value).Start())
+                .Arrange(() => Component.nearClipPlane = FromValue)
+                .Act(() => Component.Tween(TestTime).NearClipPlane(Value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.nearClipPlane))
+                .Assert(() => Component.nearClipPlane.Should().Be(FromValue + Value))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator NearClipPlaneTo()
         {
-            const float to = 2f;
-
             yield return CreateTester()
-                .Arrange(() => Component.nearClipPlane = 0.5f)
-                .Act(() => Component.Tween(TestTime).NearClipPlaneTo(to).Start())
+                .Arrange(() => Component.nearClipPlane = FromValue)
+                .Act(() => Component.Tween(TestTime).NearClipPlaneTo(ToValue).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.nearClipPlane))
+                .Assert(() => Component.nearClipPlane.Should().Be(ToValue))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator NearClipPlaneFromTo()
         {
-            const float from = 1f;
-            const float to = 2f;
-
             float? startingValue = null;
 
             yield return CreateTester()
                 .Arrange(() => Component.nearClipPlane = 0.5f)
-                .Act(() => Component.Tween(TestTime).NearClipPlaneTo(from, to)
+                .Act(() => Component.Tween(TestTime).NearClipPlaneTo(FromValue, ToValue)
                     .OnUpdated(_ => startingValue ??= Component.nearClipPlane)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.nearClipPlane);
+                    startingValue.Should().Be(FromValue);
+                    Component.nearClipPlane.Should().Be(ToValue);
                 })
                 .Run();
         }
@@ -236,47 +227,40 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator FarClipPlane()
         {
-            const float value = 1f;
-
             yield return CreateTester()
-                .Arrange(() => Component.farClipPlane = 0.5f)
-                .Act(() => Component.Tween(TestTime).FarClipPlane(value).Start())
+                .Arrange(() => Component.farClipPlane = FromValue)
+                .Act(() => Component.Tween(TestTime).FarClipPlane(Value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.farClipPlane))
+                .Assert(() => Component.farClipPlane.Should().Be(FromValue + Value))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator FarClipPlaneTo()
         {
-            const float to = 2f;
-
             yield return CreateTester()
-                .Arrange(() => Component.farClipPlane = 0.5f)
-                .Act(() => Component.Tween(TestTime).FarClipPlaneTo(to).Start())
+                .Arrange(() => Component.farClipPlane = FromValue)
+                .Act(() => Component.Tween(TestTime).FarClipPlaneTo(ToValue).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.farClipPlane))
+                .Assert(() => Component.farClipPlane.Should().Be(ToValue))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator FarClipPlaneFromTo()
         {
-            const float from = 1f;
-            const float to = 2f;
-
             float? startingValue = null;
 
             yield return CreateTester()
                 .Arrange(() => Component.farClipPlane = 0.5f)
-                .Act(() => Component.Tween(TestTime).FarClipPlaneTo(from, to)
+                .Act(() => Component.Tween(TestTime).FarClipPlaneTo(FromValue, ToValue)
                     .OnUpdated(_ => startingValue ??= Component.farClipPlane)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.farClipPlane);
+                    startingValue.Should().Be(FromValue);
+                    Component.farClipPlane.Should().Be(ToValue);
                 })
                 .Run();
         }

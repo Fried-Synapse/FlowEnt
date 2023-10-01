@@ -1,4 +1,5 @@
 using System.Collections;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -18,7 +19,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.pitch = 0f)
                 .Act(() => Component.Tween(TestTime).Pitch(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => FlowEntAssert.AreEqual(value, Component.pitch))
+                .Assert(() => Component.pitch.Should().Be(value))
                 .Run();
         }
 
@@ -31,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.pitch = 0f)
                 .Act(() => Component.Tween(TestTime).PitchTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.pitch))
+                .Assert(() => Component.pitch.Should().Be(to))
                 .Run();
         }
 
@@ -51,8 +52,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.pitch);
+                    startingValue.Should().Be(from);
+                    Component.pitch.Should().Be(to);
                 })
                 .Run();
         }
@@ -60,7 +61,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #endregion
 
         #region Volume
-
 
         [UnityTest]
         public IEnumerator Volume()
@@ -71,7 +71,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.volume = 0f)
                 .Act(() => Component.Tween(TestTime).Volume(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, Component.volume))
+                .Assert(() => Component.volume.Should().Be(value))
                 .Run();
         }
 
@@ -85,7 +85,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.volume = 0f)
                 .Act(() => Component.Tween(TestTime).Volume(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(maxValue, Component.volume))
+                .Assert(() => Component.volume.Should().Be(maxValue))
                 .Run();
         }
 
@@ -102,13 +102,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => Component.Tween(TestTime)
                     .Volume(value)
                     .SetEasing(Easing.EaseOutBack)
-                    .OnUpdated((t) => underClamp = underClamp ? underClamp : Component.volume < 0)
+                    .OnUpdated((_) => underClamp = underClamp ? underClamp : Component.volume < 0)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(minValue, Component.volume);
-                    Assert.IsFalse(underClamp);
+                    Component.volume.Should().Be(minValue);
+                    underClamp.Should().BeFalse();
                 })
                 .Run();
         }
@@ -126,13 +126,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => Component.Tween(TestTime)
                     .Volume(value)
                     .SetEasing(Easing.EaseOutBack)
-                    .OnUpdated((t) => overClamp = overClamp ? overClamp : Component.volume > 1)
+                    .OnUpdated((_) => overClamp = overClamp ? overClamp : Component.volume > 1)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(maxValue, Component.volume);
-                    Assert.IsFalse(overClamp);
+                    Component.volume.Should().Be(maxValue);
+                    overClamp.Should().BeFalse();
                 })
                 .Run();
         }
@@ -147,7 +147,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.volume = 0.5f)
                 .Act(() => Component.Tween(TestTime).Volume(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(minValue, Component.volume))
+                .Assert(() => Component.volume.Should().Be(minValue))
                 .Run();
         }
 
@@ -160,7 +160,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.volume = 0f)
                 .Act(() => Component.Tween(TestTime).VolumeTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.volume))
+                .Assert(() => Component.volume.Should().Be(to))
                 .Run();
         }
 
@@ -188,7 +188,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.volume = 0.25f)
                 .Act(() => Component.Tween(TestTime).VolumeTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(minValue, Component.volume))
+                .Assert(() => Component.volume.Should().Be(minValue))
                 .Run();
         }
 
@@ -208,8 +208,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, Component.volume);
+                    startingValue.Should().Be(from);
+                    Component.volume.Should().Be(to);
                 })
                 .Run();
         }
@@ -232,8 +232,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(minValue, startingValue);
-                    Assert.AreEqual(maxValue, Component.volume);
+                    startingValue.Should().Be(minValue);
+                    Component.volume.Should().Be(maxValue);
                 })
                 .Run();
         }

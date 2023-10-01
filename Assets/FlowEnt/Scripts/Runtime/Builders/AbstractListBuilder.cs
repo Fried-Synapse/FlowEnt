@@ -13,7 +13,7 @@ namespace FriedSynapse.FlowEnt
         where TBuilderItem : IListBuilderItem
     {
         [SerializeReference]
-        protected List<TBuilderItem> items;
+        protected List<TBuilderItem> items = new List<TBuilderItem>();
 
         public List<TBuilderItem> Items => items;
     }
