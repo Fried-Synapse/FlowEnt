@@ -86,6 +86,7 @@ namespace FriedSynapse.Release
                     {
                         value--;
                     }
+
                     if (GUILayout.Button("-", GUILayout.MaxWidth(20)))
                     {
                         value = 0;
@@ -134,6 +135,7 @@ namespace FriedSynapse.Release
             {
                 Release();
             }
+
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
         }
@@ -144,8 +146,10 @@ namespace FriedSynapse.Release
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("Github", GUILayout.Width(80), GUILayout.Height(30)))
             {
-                Application.OpenURL($"https://github.com/Fried-Synapse/{Application.productName}/releases/tag/{Version}");
+                Application.OpenURL(
+                    $"https://github.com/Fried-Synapse/{Application.productName}/releases/tag/{Version}");
             }
+
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
         }
@@ -160,6 +164,7 @@ namespace FriedSynapse.Release
             {
                 return;
             }
+
             string config = File.ReadAllText(ConfigPath);
             Match result = new Regex(VersionRegex).Match(config);
             Version = result.Groups[1].Value;
@@ -174,6 +179,13 @@ namespace FriedSynapse.Release
 
         private void Release()
         {
+            string directoryPath = Path.GetDirectoryName(FilePath);
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
             AssetDatabase.ExportPackage($"Assets/{Application.productName}", FilePath, ExportPackageOptions.Recurse);
             Upload();
         }
@@ -184,9 +196,9 @@ namespace FriedSynapse.Release
             psi.FileName = "/bin/sh";
             psi.WorkingDirectory = Path.Combine(Application.dataPath, "Scripts/Editor");
             psi.Arguments = "upload.sh " +
-                $"\'{Application.productName}\' " +
-                $"\'{Destination}\' " +
-                $"\'{FileName}\' ";
+                            $"\'{Application.productName}\' " +
+                            $"\'{Destination}\' " +
+                            $"\'{FileName}\' ";
             psi.WindowStyle = ProcessWindowStyle.Minimized;
             psi.CreateNoWindow = true;
             psi.UseShellExecute = false;
