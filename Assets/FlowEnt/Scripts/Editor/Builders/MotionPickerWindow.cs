@@ -38,13 +38,13 @@ namespace FriedSynapse.FlowEnt.Editor
         private string searchText;
         private List<TypeInfo> types = new List<TypeInfo>();
         private Vector2 scrollPosition;
-        private GUIStyle button;
+        private GUIStyle buttonStyle;
         private bool hadInitialFocus;
 
         private void Init()
         {
-            button = new GUIStyle(GUI.skin.button);
-            button.alignment = TextAnchor.MiddleLeft;
+            buttonStyle = new GUIStyle(GUI.skin.button);
+            buttonStyle.alignment = TextAnchor.MiddleLeft;
         }
 
 #pragma warning disable IDE0051, RCS1213
@@ -57,7 +57,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 hadInitialFocus = true;
                 EditorGUI.FocusTextInControl("SearchField");
             }
-
 
             List<TypeInfo> types = this.types;
             if (!string.IsNullOrEmpty(searchText))
@@ -76,7 +75,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             foreach (TypeInfo typeInfo in types)
             {
-                if (GUILayout.Button(typeInfo.Names[0], button))
+                if (GUILayout.Button(typeInfo.Names[0], buttonStyle))
                 {
                     callback.Invoke(typeInfo.Type);
                     instance?.Close();

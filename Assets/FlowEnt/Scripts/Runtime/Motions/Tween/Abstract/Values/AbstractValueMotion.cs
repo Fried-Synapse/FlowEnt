@@ -11,7 +11,8 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
         }
 
-        protected AbstractStructValueMotion(TItem item, TValue? from, TValue to) : base(item, from != null, from ?? default, to)
+        protected AbstractStructValueMotion(TItem item, TValue? from, TValue to) : base(item, from != null,
+            from ?? default, to)
         {
         }
     }
@@ -24,11 +25,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
         }
 
-        protected AbstractClassValueMotion(TItem item, TValue from, TValue to) : base(item, from != null, from ?? default, to)
+        protected AbstractClassValueMotion(TItem item, TValue from, TValue to) : base(item, from != null,
+            from ?? default, to)
         {
         }
     }
-
+    
     public abstract class AbstractValueMotion<TItem, TValue> : AbstractTweenMotion<TItem>
         where TItem : class
     {
@@ -44,6 +46,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
             [SerializeField]
             protected TValue from;
+
             [SerializeField]
             protected TValue to;
         }
@@ -61,6 +64,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
             {
                 this.from = from;
             }
+
             hasTo = true;
             this.to = to;
             lerpFunction = LerpFunction;
@@ -83,6 +87,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
             {
                 from = GetFrom();
             }
+
             if (!hasTo)
             {
                 to = GetTo(from, value);
