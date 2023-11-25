@@ -8,11 +8,6 @@ using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
-    public static class AbstractAnimationOptionsTestsValues
-    {
-        public readonly static bool[] conditional = new bool[] { false, true };
-    }
-
     public abstract class AbstractAnimationOptionsTests<TAnimation, TAnimationOptions> : AbstractEngineTests
         where TAnimation : AbstractAnimation
         where TAnimationOptions : AbstractAnimationOptions, new()
@@ -159,10 +154,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator LoopCount()
         {
-            const int loopCount = 2;
+            const int loopCount = 10;
 
             yield return CreateTester()
-                .Act(() => CreateAnimation(HalfTestTime)
+                .Act(() => CreateAnimation(TestTime / loopCount)
                     .SetLoopCount(loopCount)
                     .Start())
                 .AssertTime(TestTime)
@@ -172,10 +167,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator LoopCount_WithOptions()
         {
-            const int loopCount = 2;
+            const int loopCount = 10;
 
             yield return CreateTester()
-                .Act(() => CreateAnimationInternal(HalfTestTime, new TAnimationOptions().SetLoopCount(loopCount))
+                .Act(() => CreateAnimationInternal(TestTime / loopCount, new TAnimationOptions().SetLoopCount(loopCount))
                     .Start())
                 .AssertTime(TestTime)
                 .Run();

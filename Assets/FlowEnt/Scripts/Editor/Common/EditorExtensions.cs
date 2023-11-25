@@ -191,8 +191,8 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             return -1;
-        }     
-        
+        }
+
         internal static void Add(this ReorderableList list, object item)
             => list.serializedProperty.PersistentAddArrayElement(item);
 
