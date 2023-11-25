@@ -40,16 +40,22 @@ namespace FriedSynapse.FlowEnt.Editor
         protected void DrawNullable(Rect position, SerializedProperty property, string propertyName,
             string flagPropertyName, bool isInverted = false)
         {
-            position.width /= 2f;
+            float width = position.width;
+            float labelWidth = EditorGUIUtility.labelWidth;
+
+            position.width = width * 0.6f;
+            EditorGUIUtility.labelWidth = labelWidth * 0.8f;
 
             SerializedProperty flagProperty = property.FindPropertyRelative(flagPropertyName);
-
             GUI.enabled = flagProperty.boolValue ^ isInverted;
             EditorGUI.PropertyField(position, property.FindPropertyRelative(propertyName));
             GUI.enabled = true;
 
-            position.x += position.width;
+            position.x += position.width - EditorGUIUtility.singleLineHeight;
+            
             EditorGUI.PropertyField(position, flagProperty);
+            
+            EditorGUIUtility.labelWidth = labelWidth;
         }
     }
 }

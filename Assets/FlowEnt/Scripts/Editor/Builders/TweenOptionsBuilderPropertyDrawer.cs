@@ -51,7 +51,7 @@ namespace FriedSynapse.FlowEnt.Editor
                         {
                             Rect buttonPosition = propertyPosition;
                             buttonPosition.width = buttonPosition.height;
-                            buttonPosition.x = EditorGUIUtility.labelWidth;
+                            buttonPosition.x += EditorGUIUtility.labelWidth - buttonPosition.width;
                             GUIContent icon = new GUIContent(Icon.Info)
                             {
                                 tooltip = "go to easings.net"
