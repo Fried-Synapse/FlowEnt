@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Demo
                     {
                         critter.gameObject.SetActive(true);
                         critter.LookAt(firstDestination);
-                        return new Tween(0.5f).For(critter).MoveLocalYTo(-0.5f, 0f).ScaleYTo(0f, 1f);
+                        return new Tween(0.5f).For(critter).MoveLocalYTo(-0.5f, 0f).ScaleLocalYTo(0f, 1f);
                     })
                     .Queue(new Tween(Random.Range(3f, 4f)).SetEasing(Easing.EaseOutQuad).For(critter).MoveLocalTo(firstDestination).OrientToPath())
                     .Queue(new Tween(Random.Range(2f, 3f)).SetEasing(Easing.EaseOutQuad).For(critter).MoveLocalTo(secondDestination).OrientToPath())
