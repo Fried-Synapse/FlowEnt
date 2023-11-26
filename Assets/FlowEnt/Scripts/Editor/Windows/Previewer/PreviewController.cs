@@ -41,6 +41,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 undoGroupId = Undo.GetCurrentGroup();
                 Undo.IncrementCurrentGroup();
             }
+
+            options.Animation.OnCompleted(Reset);
             try
             {
                 options.Animation.Start();
@@ -61,15 +63,23 @@ namespace FriedSynapse.FlowEnt.Editor
         /// </summary>
         public static void Stop()
         {
-            options?.Animation?.Stop(true).Reset();
+            options?.Animation?.Stop(true);
+            Reset();
+        }
+
+        private static void Reset()
+        {
+            options?.Animation?.Reset();
             options?.OnStop?.Invoke();
             options = null;
 
-            if (undoGroupId != null)
+            if (undoGroupId == null)
             {
-                Undo.RevertAllDownToGroup(undoGroupId.Value);
-                undoGroupId = null;
+                return;
             }
+
+            Undo.RevertAllDownToGroup(undoGroupId.Value);
+            undoGroupId = null;
         }
 
         private static void Update()
@@ -94,8 +104,9 @@ namespace FriedSynapse.FlowEnt.Editor
                 AbstractUpdatable updatable = updatableWrapper.GetFieldValue<AbstractUpdatable>("updatable");
                 if (updatable != null && updatable is AbstractAnimation animation)
                 {
-                    hasRecordedObjects = RecordObjects(animation);
+                    hasRecordedObjects |= RecordObjects(animation);
                 }
+
                 object next = updatableWrapper.GetFieldValue<object>("next");
                 if (next != null)
                 {
@@ -107,6 +118,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 addObjects(updatableWrapper);
             }
+
             return hasRecordedObjects;
         }
 
@@ -138,6 +150,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 if (objects.Count > 0)
                 {
                     hasRecordedObjects = true;
+
                     void record()
                     {
                         Undo.RegisterCompleteObjectUndo(objects.ToArray(), "FlowEnt Animation Preview");
@@ -154,6 +167,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     }
                 }
             }
+
             return hasRecordedObjects;
         }
     }

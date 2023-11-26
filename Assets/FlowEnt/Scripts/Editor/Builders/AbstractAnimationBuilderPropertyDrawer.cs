@@ -6,6 +6,11 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
+    internal static class PreviewButtonControl
+    {
+        public static bool IsDisabled { get; set; }
+    }
+
     public abstract class AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder> : PropertyDrawer,
         ICrudable<TAnimationBuilder>
         where TAnimation : AbstractAnimation
@@ -71,7 +76,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     position.y += height;
                 });
 
-                if (check.changed && PreviewerWindow.Instance != null)
+                if (check.changed && !PreviewButtonControl.IsDisabled && PreviewerWindow.Instance != null)
                 {
                     property.serializedObject.ApplyModifiedProperties();
                     PreviewerWindow.Instance.RefreshAnimations(
@@ -97,6 +102,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
             if (GUI.Button(previewPosition, "Preview"))
             {
+                PreviewButtonControl.IsDisabled = true;
+                EditorApplication.delayCall += () => { PreviewButtonControl.IsDisabled = false; };
                 PreviewerWindow.ShowSingleton();
                 FocusedPropertyId = property.GetUniqueId();
                 PreviewerWindow.Instance.FocusAnimation(property.GetValue<IAbstractAnimationBuilder>().Build());

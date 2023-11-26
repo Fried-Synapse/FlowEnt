@@ -47,6 +47,21 @@ namespace FriedSynapse.FlowEnt.Editor
                             _ => throw new System.NotImplementedException(),
                         };
                         EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(propertyName));
+                        if (easingType == TweenOptionsBuilder.EasingType.Predefined)
+                        {
+                            Rect buttonPosition = propertyPosition;
+                            buttonPosition.width = buttonPosition.height;
+                            buttonPosition.x += EditorGUIUtility.labelWidth - buttonPosition.width;
+                            GUIContent icon = new GUIContent(Icon.Info)
+                            {
+                                tooltip = "go to easings.net"
+                            };
+                            if (GUI.Button(buttonPosition, icon, Icon.Style))
+                            {
+                                Application.OpenURL("https://easings.net/");
+                            }
+                        }
+
                         break;
                     default:
                         EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(prop.ToString()));
