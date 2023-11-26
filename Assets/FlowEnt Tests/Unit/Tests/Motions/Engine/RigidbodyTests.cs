@@ -16,6 +16,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         private const float MoveFromValue = 1f;
         private const float MoveToValue = 4f;
         private const float MoveToSplineValue = 4f;
+
         private List<Vector3> GetSpline(Vector3 to)
         {
             return new List<Vector3>()
@@ -49,6 +50,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     component = GameObject.AddComponent<Rigidbody>();
                     component.isKinematic = true;
                 }
+
                 return component;
             }
         }
@@ -96,8 +98,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MoveTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.position)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.position)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -130,7 +132,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        #region Move Axis 
+        #region Move Axis
 
         [UnityTest]
         public IEnumerator MoveX()
@@ -165,8 +167,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MoveXTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.position.x)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.position.x)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -209,8 +211,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MoveYTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.position.y)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.position.y)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -253,8 +255,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MoveZTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.position.z)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.position.z)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -290,12 +292,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).For(Component).Apply(new MoveAxisMotion(Component, Axis.XY, from, to))
-                                    .OnUpdated((_) =>
-                                    {
-                                        startingFromX ??= Component.position.x;
-                                        startingFromY ??= Component.position.y;
-                                    })
-                                    .Start())
+                    .OnUpdated((_) =>
+                    {
+                        startingFromX ??= Component.position.x;
+                        startingFromY ??= Component.position.y;
+                    })
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -308,18 +310,60 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         }
 
         [UnityTest]
-        public IEnumerator MoveToXY_Separated()
+        public IEnumerator MoveXY_Parallel()
+        {
+            const float from = MoveFromValue;
+            const float value = MoveValue;
+            const float expected = from + value;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from, 0))
+                .Act(() => new Flow()
+                    .Queue(Component.Tween(TestTime).MoveX(value))
+                    .At(0, Component.Tween(TestTime).MoveY(value))
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(expected, Component.position.x);
+                    Assert.AreEqual(expected, Component.position.y);
+                })
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MoveXY_Sequence()
+        {
+            const float from = MoveFromValue;
+            const float value = MoveValue;
+            const float expectedX = from + value;
+            const float expectedY = expectedX * 2;
+
+            yield return CreateTester()
+                .Arrange(() => GameObject.transform.position = new Vector3(from, from * 2, 0))
+                .Act(() => new Flow()
+                    .Queue(Component.Tween(HalfTestTime).Move(Axis.XY, value))
+                    .Queue(Component.Tween(HalfTestTime).MoveY(value))
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(expectedX, Component.position.x);
+                    Assert.AreEqual(expectedY, Component.position.y);
+                })
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MoveToXY_Parallel()
         {
             const float to = MoveToValue;
 
             yield return CreateTester()
-                .Act(() =>
-                {
-                    return new Flow()
-                                .Queue(Component.Tween(TestTime).MoveXTo(to))
-                                .At(0, Component.Tween(TestTime).MoveYTo(to))
-                                .Start();
-                })
+                .Act(() => new Flow()
+                    .Queue(Component.Tween(TestTime).MoveXTo(to))
+                    .At(0, Component.Tween(TestTime).MoveYTo(to))
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -330,7 +374,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         }
 
         [UnityTest]
-        public IEnumerator MoveFromToXY_Separated()
+        public IEnumerator MoveToXY_Sequence()
+        {
+            const float to = MoveToValue;
+
+            yield return CreateTester()
+                .Act(() => new Flow()
+                    .Queue(Component.Tween(HalfTestTime).MoveTo(Axis.XY, to))
+                    .Queue(Component.Tween(HalfTestTime).MoveYTo(to))
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    Assert.AreEqual(to, Component.position.x);
+                    Assert.AreEqual(to, Component.position.y);
+                })
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MoveFromToXY_Parallel()
         {
             const float from = MoveFromValue;
             const float to = MoveToValue;
@@ -338,18 +401,44 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             float? startingFromY = null;
 
             yield return CreateTester()
-                .Act(() =>
+                .Act(() => new Flow()
+                    .Queue(Component.Tween(TestTime).MoveXTo(from, to))
+                    .At(0, Component.Tween(TestTime).MoveYTo(from, to))
+                    .OnUpdated((_) =>
+                    {
+                        startingFromX ??= Component.position.x;
+                        startingFromY ??= Component.position.y;
+                    })
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
                 {
-                    return new Flow()
-                                .Queue(Component.Tween(TestTime).MoveXTo(from, to))
-                                .At(0, Component.Tween(TestTime).MoveYTo(from, to))
-                                .OnUpdated((_) =>
-                                {
-                                    startingFromX ??= Component.position.x;
-                                    startingFromY ??= Component.position.y;
-                                })
-                                .Start();
+                    Assert.AreEqual(from, startingFromX);
+                    Assert.AreEqual(from, startingFromY);
+                    Assert.AreEqual(to, Component.position.x);
+                    Assert.AreEqual(to, Component.position.y);
                 })
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MoveFromToXY_Sequence()
+        {
+            const float from = MoveFromValue;
+            const float to = MoveToValue;
+            float? startingFromX = null;
+            float? startingFromY = null;
+
+            yield return CreateTester()
+                .Act(() => new Flow()
+                    .Queue(Component.Tween(HalfTestTime).MoveTo(Axis.XY, from, to))
+                    .Queue(Component.Tween(HalfTestTime).MoveYTo(from, to))
+                    .OnUpdated((_) =>
+                    {
+                        startingFromX ??= Component.position.x;
+                        startingFromY ??= Component.position.y;
+                    })
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -427,14 +516,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator RotateFromToQuaternion()
         {
-            Quaternion from = Quaternion.Euler(new Vector3(RotateXValue, FullCircle - RotateYValue, FullCircle - RotateZValue));
+            Quaternion from =
+                Quaternion.Euler(new Vector3(RotateXValue, FullCircle - RotateYValue, FullCircle - RotateZValue));
             Quaternion to = Quaternion.Euler(new Vector3(RotateXValue, RotateYValue, RotateZValue));
             Quaternion? startingFrom = null;
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).RotateTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.rotation)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.rotation)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -484,8 +574,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).RotateTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.rotation.eulerAngles)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.rotation.eulerAngles)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -530,8 +620,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MassTo(MoveFromValue, MoveToValue)
-                                    .OnUpdated((_) => startingFrom ??= Component.mass)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.mass)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -581,8 +671,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
                 .Act(() => Component.Tween(TestTime).VelocityTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.velocity)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.velocity)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -594,7 +684,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        #region Move
+        #region AngularVelocity
 
         [UnityTest]
         public IEnumerator AngularVelocity()
@@ -632,8 +722,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
                 .Act(() => Component.Tween(TestTime).AngularVelocityTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.angularVelocity)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.angularVelocity)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
@@ -644,6 +734,5 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         }
 
         #endregion
-
     }
 }
