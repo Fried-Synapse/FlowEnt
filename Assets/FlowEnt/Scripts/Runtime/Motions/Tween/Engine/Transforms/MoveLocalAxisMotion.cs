@@ -27,10 +27,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         {
         }
 
-        public MoveLocalAxisMotion(Transform item, Axis axis, float? from, float to) : base(item, axis, from, to)
+        public MoveLocalAxisMotion(Transform item, Axis axis, float? from, float to) : base(item, axis, from, to, item.localPosition)
         {
         }
 
         protected override Vector3 Target { get => item.localPosition; set => item.localPosition = value; }
+        protected override Vector3 GetFrom() => item.localPosition;
     }
 }

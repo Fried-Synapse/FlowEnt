@@ -3,71 +3,84 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
-    public abstract class AbstractAxisMotion<TItem> : AbstractFloatMotion<TItem>
+    public abstract class AbstractAxisMotion<TItem> : AbstractVector3Motion<TItem>
         where TItem : class
     {
         [Serializable]
-        public abstract class AbstractAxisValueBuilder : AbstractValueBuilder
+        public abstract class AbstractAxisValueBuilder : AbstractBuilder
         {
             [SerializeField]
             protected Axis axis;
+
+            [SerializeField]
+            protected float value;
         }
 
         [Serializable]
-        public abstract class AbstractAxisFromToBuilder : AbstractFromToBuilder
+        public abstract class AbstractAxisFromToBuilder : AbstractBuilder
         {
             [SerializeField]
             protected Axis axis;
+
+            [SerializeField]
+            protected float from;
+
+            [SerializeField]
+            protected float to;
         }
 
-        protected AbstractAxisMotion(TItem item, Axis axis, float value) : base(item, value)
+        protected AbstractAxisMotion(TItem item, Axis axis, float value) : base(item, GetValue(value, axis))
         {
             this.axis = axis;
         }
 
-        protected AbstractAxisMotion(TItem item, Axis axis, float? from, float to) : base(item, from, to)
+        protected AbstractAxisMotion(TItem item, Axis axis, float? from, float to, Vector3 baseVector) : base(item,
+            from == null ? null : GetValue(from.Value, axis, baseVector), GetValue(to, axis, baseVector))
         {
             this.axis = axis;
         }
-
+        
         private readonly Axis axis;
         private Vector3 cache;
         protected abstract Vector3 Target { get; set; }
-        protected override float GetFrom()
+        
+        private static Vector3 GetValue(float value, Axis axis, Vector3? baseVector = null)
         {
-            Vector3 target = Target;
-            switch (axis)
-            {
-                case Axis.X:
-                case Axis.XY:
-                case Axis.XZ:
-                case Axis.XYZ:
-                    return target.x;
-                case Axis.Y:
-                case Axis.YZ:
-                    return target.y;
-                case Axis.Z:
-                    return target.z;
-                default:
-                    return 0;
-            }
-        }
+            Vector3 valueVector = baseVector ?? Vector3.zero;
 
-        protected override void SetValue(float value)
+            if ((axis & Axis.X) != 0)
+            {
+                valueVector.x = value;
+            }
+
+            if ((axis & Axis.Y) != 0)
+            {
+                valueVector.y = value;
+            }
+
+            if ((axis & Axis.Z) != 0)
+            {
+                valueVector.z = value;
+            }
+
+            return valueVector;
+        }
+        
+        protected override void SetValue(Vector3 value)
         {
             cache = Target;
 
             if ((axis & Axis.X) != 0)
             {
-                cache.x = value;
+                cache.x = value.x;
             }
             if ((axis & Axis.Y) != 0)
             {
-                cache.y = value;
+                cache.y = value.y;
             }
             if ((axis & Axis.Z) != 0)
             {
-                cache.z = value;
+                cache.z = value.z;
             }
 
             Target = cache;
