@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -7,6 +8,6 @@ namespace FriedSynapse.FlowEnt
     public class AnimationListBuilder : AbstractListBuilder<IAbstractAnimationBuilder, AbstractAnimation>
     {
         public override List<AbstractAnimation> Build()
-            => Items.ConvertAll(m => m.Build());
+            => Items.Where(m => m.IsEnabled).Select(m => m.Build()).ToList();
     }
 }

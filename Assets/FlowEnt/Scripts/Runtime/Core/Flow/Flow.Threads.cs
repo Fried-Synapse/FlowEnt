@@ -1,5 +1,5 @@
-
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
@@ -194,6 +194,24 @@ namespace FriedSynapse.FlowEnt
         /// \copydoc At
         public Flow At(float timeIndex, Func<Flow, AbstractAnimation> builder)
             => At(timeIndex, builder(new Flow()));
+
+        /// <inheritdoc cref="At(float, Func{Tween, AbstractAnimation})" />
+        /// \copydoc At
+        public Flow At(float timeIndex, List<AbstractAnimation> animations)
+        {
+            if (animations.Count == 0)
+            {
+                return this;
+            }
+            
+            At(timeIndex, animations[0]);
+            for (int i = 1; i < animations.Count; i++)
+            {
+                Queue(animations[i]);
+            }
+
+            return this;
+        }
 
         #endregion
 
