@@ -47,16 +47,25 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
             TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
             SerializedProperty parentProperty = property.GetParentArray();
             string name = animation.GetPropertyValue<object>("Options").GetPropertyValue<string>("Name");
-            label.text =
-                $"{(parentProperty == null ? label.text : "")} [{animation.GetType().Name.Replace("Builder", "")}{(string.IsNullOrEmpty(name) ? "" : $" - {name}")}]";
+            name = $"{(parentProperty == null ? label.text : "")} " +
+                   $"[{animation.GetType().Name.Replace("Builder", "")}" +
+                   $"{(string.IsNullOrEmpty(name) ? "" : $" - {name}")}]";
 
+            if (parentProperty != null)
+            {
+                FlowEntEditorGUILayout.PropertyFieldIsEnabled(headerPosition, property);
+                name = name.PadLeft(name.Length + 6);
+            }
+
+            label.text = name;
             property.isExpanded =
                 EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
 
-            DrawMenu(position, property);
+            DrawMenu(headerPosition, property);
 
             if (!property.isExpanded)
             {
@@ -68,7 +77,7 @@ namespace FriedSynapse.FlowEnt.Editor
             using (EditorGUI.ChangeCheckScope check = new EditorGUI.ChangeCheckScope())
             {
                 position.y += EditorGUIUtility.singleLineHeight;
-               
+
                 ForEachVisibleProperty(property, p =>
                 {
                     float height = EditorGUI.GetPropertyHeight(p, true) + FlowEntConstants.DrawerSpacing;

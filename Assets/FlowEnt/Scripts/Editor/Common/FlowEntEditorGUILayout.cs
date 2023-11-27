@@ -111,5 +111,14 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUI.PropertyField(position, child);
             position.y += FlowEntConstants.SpacedSingleLineHeight;
         }
+
+        internal static void PropertyFieldIsEnabled(Rect position, SerializedProperty property)
+        {
+            Rect isEnabledPosition = position;
+            isEnabledPosition.x += 2f;
+            isEnabledPosition.width = EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(isEnabledPosition,
+                property.FindPropertyRelative(IdentifiableBuilderFields.IsEnabled), GUIContent.none);
+        }
     }
 }

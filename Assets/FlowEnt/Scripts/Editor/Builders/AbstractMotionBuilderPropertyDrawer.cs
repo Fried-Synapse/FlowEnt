@@ -103,14 +103,11 @@ namespace FriedSynapse.FlowEnt.Editor
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
             IMotionBuilder motionBuilder = property.GetValue<IMotionBuilder>();
             string name = MotionNameGetter.GetNames(motionBuilder.GetType(), motionBuilder)[0];
+            
+            FlowEntEditorGUILayout.PropertyFieldIsEnabled(headerPosition, property);
+            
             label.text = name.PadLeft(name.Length + 6);
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label);
-
-            Rect isEnabledPosition = headerPosition;
-            isEnabledPosition.x += 2f;
-            isEnabledPosition.width = EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(isEnabledPosition,
-                property.FindPropertyRelative(IdentifiableBuilderFields.IsEnabled), GUIContent.none);
 
             DrawMenu(headerPosition, property);
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -67,11 +68,7 @@ namespace FriedSynapse.FlowEnt
                     continue;
                 }
 
-                flow.At(queue.StartTime, queue.Items[0].Build());
-                for (int i = 1; i < queue.Items.Count; i++)
-                {
-                    flow.Queue(queue.Items[i].Build());
-                }
+                flow.At(queue.StartTime, queue.Items.Where(m => m.IsEnabled).Select(m => m.Build()).ToList());
             }
 
             return flow;
