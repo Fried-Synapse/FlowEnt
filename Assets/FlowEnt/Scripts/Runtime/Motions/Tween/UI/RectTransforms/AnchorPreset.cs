@@ -39,6 +39,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
 
         public Vector2 Min { get; set; }
         public Vector2 Max { get; set; }
+
+        public static AnchorPresetData operator +(AnchorPresetData a, AnchorPresetData b) =>
+            new AnchorPresetData(a.Min + b.Min, a.Max + b.Max);
+        public static AnchorPresetData operator -(AnchorPresetData a, AnchorPresetData b) =>
+            new AnchorPresetData(a.Min - b.Min, a.Max - b.Max);
     }
 
     public static class AnchorPresetFactory
@@ -85,6 +90,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
                 case AnchorPreset.StretchAll:
                     return new AnchorPresetData(new Vector2(0f, 0f), new Vector2(1f, 1f));
             }
+
             throw new ArgumentException($"Unknown preset type {preset}.");
         }
     }
