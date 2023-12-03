@@ -63,7 +63,7 @@ namespace FriedSynapse.FlowEnt.Editor
         /// </summary>
         public static void Stop()
         {
-            options?.Animation?.Stop(true);
+            options?.Animation?.Stop();
             Reset();
         }
 
@@ -78,6 +78,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
 
+            //HACK this is to not undo the change that might have triggered the reset
+            Undo.postprocessModifications += modifications => modifications.SkipLast(1).ToArray();
             Undo.RevertAllDownToGroup(undoGroupId.Value);
             undoGroupId = null;
         }

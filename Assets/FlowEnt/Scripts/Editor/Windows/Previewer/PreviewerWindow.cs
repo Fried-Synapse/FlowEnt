@@ -132,8 +132,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             if (PreviewController.IsRunning)
             {
-                //HACK: PreviewController.Stop undoes changes so if we do it on a different frame we save the changes on the editor
-                Task.Run(PreviewController.Stop);
+                PreviewController.Stop();
             }
 
             animationsElement.Clear();
