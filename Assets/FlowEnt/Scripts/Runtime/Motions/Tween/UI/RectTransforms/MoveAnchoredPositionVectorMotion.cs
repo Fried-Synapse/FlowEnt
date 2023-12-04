@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -8,6 +9,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
     /// </summary>
     public class MoveAnchoredPositionVectorMotion : AbstractVector3Motion<RectTransform>
     {
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new MoveAnchoredPositionVectorMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new MoveAnchoredPositionVectorMotion(item, from, to);
+        }
+        
         public MoveAnchoredPositionVectorMotion(RectTransform item, Vector3 value) : base(item, value)
         {
         }
