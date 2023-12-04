@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 this.name = name;
                 this.type = type;
                 this.animation = animation;
-                if (animation.PlayState != PlayState.Building)
+                if (!Application.isPlaying && animation.PlayState != PlayState.Building)
                 {
                     animation.Stop();
                     animation.Reset();
