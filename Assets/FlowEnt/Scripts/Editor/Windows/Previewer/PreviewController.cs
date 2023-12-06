@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Editor
         static PreviewController()
         {
             EditorApplication.update += Update;
-            FlowEntEditorUpdater.OnException += () => Stop();
+            FlowEntEditorUpdater.OnException += Stop;
         }
 
         private static int? undoGroupId;

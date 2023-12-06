@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using FluentAssertions;
 using FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -23,7 +23,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPosition(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, RectTransform.anchoredPosition))
+                .Assert(() => RectTransform.anchoredPosition.Should().Be(value))
                 .Run();
         }
 
@@ -35,7 +35,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionX(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector2(value, 0), RectTransform.anchoredPosition))
+                .Assert(() => RectTransform.anchoredPosition.Should().Be(new Vector2(value, 0)))
                 .Run();
         }
 
@@ -47,7 +47,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionY(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(new Vector2(0, value), RectTransform.anchoredPosition))
+                .Assert(() => RectTransform.anchoredPosition.Should().Be(new Vector2(0, value)))
                 .Run();
         }
 
@@ -66,7 +66,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, RectTransform.anchoredPosition))
+                .Assert(() => RectTransform.anchoredPosition.Should().Be(to))
                 .Run();
         }
 
@@ -78,7 +78,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionXTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, RectTransform.anchoredPosition.x))
+                .Assert(() => RectTransform.anchoredPosition.x.Should().Be(to))
                 .Run();
         }
 
@@ -90,7 +90,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionYTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, RectTransform.anchoredPosition.y))
+                .Assert(() => RectTransform.anchoredPosition.y.Should().Be(to))
                 .Run();
         }
 
@@ -103,13 +103,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, RectTransform.anchoredPosition);
+                    startingFrom.Should().Be(from);
+                    RectTransform.anchoredPosition.Should().Be(to);
                 })
                 .Run();
         }
@@ -123,13 +123,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionXTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition.x)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition.x)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, RectTransform.anchoredPosition.x);
+                    startingFrom.Should().Be(from);
+                    RectTransform.anchoredPosition.x.Should().Be(to);
                 })
                 .Run();
         }
@@ -143,13 +143,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionYTo(from, to)
-                                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition.y)
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition.y)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, RectTransform.anchoredPosition.y);
+                    startingFrom.Should().Be(from);
+                    RectTransform.anchoredPosition.y.Should().Be(to);
                 })
                 .Run();
         }
@@ -159,15 +159,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #region MoveAnchoredPositionTo Spline
 
         private const float MoveAnchoredPositionToSplineValue = 400f;
+
         private List<Vector3> GetSpline(Vector3 to)
         {
             return new List<Vector3>()
             {
-                new Vector3(  0,   0),
-                new Vector3(  0, 200),
-                new Vector3(  0, 300),
-                new Vector3(500, 400),
-                new Vector3(  0, 800),
+                new(0, 0),
+                new(0, 200),
+                new(0, 300),
+                new(500, 400),
+                new(0, 800),
                 to
             };
         }
@@ -178,9 +179,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector2 to = new Vector2(MoveAnchoredPositionToSplineValue, MoveAnchoredPositionToSplineValue);
 
             yield return CreateTester()
-                .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionTo(new LinearSpline(GetSpline(to))).Start())
+                .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionTo(new LinearSpline(GetSpline(to)))
+                    .Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, RectTransform.anchoredPosition))
+                .Assert(() => RectTransform.anchoredPosition.Should().Be(to))
                 .Run();
         }
 
@@ -192,7 +194,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionTo(new BSpline(GetSpline(to))).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, RectTransform.anchoredPosition))
+                .Assert(() => RectTransform.anchoredPosition.Should().Be(to))
                 .Run();
         }
 
@@ -206,7 +208,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionTo(new CatmullRomSpline(spline)).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, RectTransform.anchoredPosition))
+                .Assert(() => RectTransform.anchoredPosition.Should().Be(to))
                 .Run();
         }
 
@@ -214,10 +216,38 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
         #endregion
 
-        #region MoveAnchorTo
+        #region MoveAnchor
 
         private const float MoveAnchorFromValue = 0f;
         private const float MoveAnchorToValue = 1f;
+
+        [UnityTest]
+        public IEnumerator MoveAnchor()
+        {
+            Vector2 fromMin = new Vector2(MoveAnchorFromValue, MoveAnchorFromValue);
+            Vector2 fromMax = new Vector2(MoveAnchorFromValue, MoveAnchorFromValue);
+
+            Vector2 valueMin = new Vector2(MoveAnchorToValue, MoveAnchorToValue);
+            Vector2 valueMax = new Vector2(MoveAnchorToValue, MoveAnchorToValue);
+
+            Vector2 expectedMin = fromMin + valueMin;
+            Vector2 expectedMax = fromMax + valueMax;
+
+            yield return CreateTester()
+                .Arrange(() =>
+                {
+                    RectTransform.anchorMin = fromMin;
+                    RectTransform.anchorMax = fromMax;
+                })
+                .Act(() => RectTransform.Tween(TestTime).MoveAnchor(valueMin, valueMax).Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    RectTransform.anchorMin.Should().Be(expectedMin);
+                    RectTransform.anchorMax.Should().Be(expectedMax);
+                })
+                .Run();
+        }
 
         [UnityTest]
         public IEnumerator MoveAnchorTo()
@@ -230,8 +260,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(toMin, RectTransform.anchorMin);
-                    Assert.AreEqual(toMax, RectTransform.anchorMax);
+                    RectTransform.anchorMin.Should().Be(toMin);
+                    RectTransform.anchorMax.Should().Be(toMax);
                 })
                 .Run();
         }
@@ -248,19 +278,45 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchorTo(fromMin, fromMax, toMin, toMax)
-                                                .OnUpdated((_) =>
-                                                {
-                                                    startingFromMin ??= RectTransform.anchorMin;
-                                                    startingFromMax ??= RectTransform.anchorMax;
-                                                })
-                                                .Start())
+                    .OnUpdated((_) =>
+                    {
+                        startingFromMin ??= RectTransform.anchorMin;
+                        startingFromMax ??= RectTransform.anchorMax;
+                    })
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(fromMin, startingFromMin);
-                    Assert.AreEqual(fromMax, startingFromMax);
-                    Assert.AreEqual(toMin, RectTransform.anchorMin);
-                    Assert.AreEqual(toMax, RectTransform.anchorMax);
+                    startingFromMin.Should().Be(fromMin);
+                    startingFromMax.Should().Be(fromMax);
+                    RectTransform.anchorMin.Should().Be(toMin);
+                    RectTransform.anchorMax.Should().Be(toMax);
+                })
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MoveAnchorPreset()
+        {
+            AnchorPresetData fromData = new AnchorPresetData(
+                new Vector3(MoveAnchorFromValue, MoveAnchorFromValue),
+                new Vector3(MoveAnchorFromValue, MoveAnchorFromValue));
+            const AnchorPreset value = AnchorPreset.TopRight;
+            AnchorPresetData valueData = AnchorPresetFactory.GetAnchors(value);
+            AnchorPresetData expectedData = fromData + valueData;
+
+            yield return CreateTester()
+                .Arrange(() =>
+                {
+                    RectTransform.anchorMin = fromData.Min;
+                    RectTransform.anchorMax = fromData.Max;
+                })
+                .Act(() => RectTransform.Tween(TestTime).MoveAnchor(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    RectTransform.anchorMin.Should().Be(expectedData.Min);
+                    RectTransform.anchorMax.Should().Be(expectedData.Max);
                 })
                 .Run();
         }
@@ -276,8 +332,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(toData.Min, RectTransform.anchorMin);
-                    Assert.AreEqual(toData.Max, RectTransform.anchorMax);
+                    RectTransform.anchorMin.Should().Be(toData.Min);
+                    RectTransform.anchorMax.Should().Be(toData.Max);
                 })
                 .Run();
         }
@@ -294,29 +350,44 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchorTo(from, to)
-                                                .OnUpdated((_) =>
-                                                {
-                                                    startingFromMin ??= RectTransform.anchorMin;
-                                                    startingFromMax ??= RectTransform.anchorMax;
-                                                })
-                                                .Start())
+                    .OnUpdated((_) =>
+                    {
+                        startingFromMin ??= RectTransform.anchorMin;
+                        startingFromMax ??= RectTransform.anchorMax;
+                    })
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(fromData.Min, startingFromMin);
-                    Assert.AreEqual(fromData.Max, startingFromMax);
-                    Assert.AreEqual(toData.Min, RectTransform.anchorMin);
-                    Assert.AreEqual(toData.Max, RectTransform.anchorMax);
+                    startingFromMin.Should().Be(fromData.Min);
+                    startingFromMax.Should().Be(fromData.Max);
+                    RectTransform.anchorMin.Should().Be(toData.Min);
+                    RectTransform.anchorMax.Should().Be(toData.Max);
                 })
                 .Run();
         }
 
         #endregion
 
-        #region MovePivotTo
+        #region MovePivot
 
         private const float MovePivotFromValue = 0f;
         private const float MovePivotToValue = 1f;
+
+        [UnityTest]
+        public IEnumerator MovePivot()
+        {
+            Vector2 from = new Vector2(MovePivotToValue, MovePivotToValue);
+            Vector2 value = new Vector2(MovePivotToValue, MovePivotToValue);
+            Vector2 expected = from + value;
+
+            yield return CreateTester()
+                .Arrange(() => RectTransform.pivot = from)
+                .Act(() => RectTransform.Tween(TestTime).MovePivot(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => RectTransform.pivot.Should().Be(expected))
+                .Run();
+        }
 
         [UnityTest]
         public IEnumerator MovePivotTo()
@@ -326,7 +397,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MovePivotTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, RectTransform.pivot))
+                .Assert(() => RectTransform.pivot.Should().Be(to))
                 .Run();
         }
 
@@ -339,14 +410,30 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MovePivotTo(from, to)
-                                                .OnUpdated((_) => startingFrom ??= RectTransform.pivot)
-                                                .Start())
+                    .OnUpdated((_) => startingFrom ??= RectTransform.pivot)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, RectTransform.pivot);
+                    startingFrom.Should().Be(from);
+                    RectTransform.pivot.Should().Be(to);
                 })
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator MovePivotPreset()
+        {
+            Vector2 fromVector = new Vector2(MovePivotToValue, MovePivotToValue);
+            PivotPreset value = PivotPreset.TopRight;
+            Vector2 valueVector = PivotPresetFactory.GetPivot(value);
+            Vector2 expectedVector = fromVector + valueVector;
+
+            yield return CreateTester()
+                .Arrange(() => RectTransform.pivot = fromVector)
+                .Act(() => RectTransform.Tween(TestTime).MovePivot(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => RectTransform.pivot.Should().Be(expectedVector))
                 .Run();
         }
 
@@ -359,7 +446,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MovePivotTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(toVector, RectTransform.pivot))
+                .Assert(() => RectTransform.pivot.Should().Be(toVector))
                 .Run();
         }
 
@@ -374,13 +461,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MovePivotTo(from, to)
-                                                .OnUpdated((_) => startingFrom ??= RectTransform.pivot)
-                                                .Start())
+                    .OnUpdated((_) => startingFrom ??= RectTransform.pivot)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(fromVector, startingFrom);
-                    Assert.AreEqual(toVector, RectTransform.pivot);
+                    startingFrom.Should().Be(fromVector);
+                    RectTransform.pivot.Should().Be(toVector);
                 })
                 .Run();
         }
@@ -403,7 +490,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => targetValue = Vector2.Scale(RectTransform.sizeDelta, value))
                 .Act(() => RectTransform.Tween(TestTime).ScaleSizeDelta(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(targetValue, RectTransform.sizeDelta))
+                .Assert(() => RectTransform.sizeDelta.Should().Be(targetValue))
                 .Run();
         }
 
@@ -417,7 +504,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => targetValue = RectTransform.sizeDelta.x * value)
                 .Act(() => RectTransform.Tween(TestTime).ScaleSizeDeltaX(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(targetValue, RectTransform.sizeDelta.x))
+                .Assert(() => RectTransform.sizeDelta.x.Should().Be(targetValue))
                 .Run();
         }
 
@@ -431,13 +518,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => targetValue = RectTransform.sizeDelta.y * value)
                 .Act(() => RectTransform.Tween(TestTime).ScaleSizeDeltaY(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(targetValue, RectTransform.sizeDelta.y))
+                .Assert(() => RectTransform.sizeDelta.y.Should().Be(targetValue))
                 .Run();
         }
 
         #endregion
 
-        #region ScaleSizeDeltaTo
+        #region ScaleSizeDeltaFromTo
 
         private const float ScaleFrom = 200f;
         private const float ScaleTo = 400f;
@@ -452,7 +539,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => RectTransform.sizeDelta = from)
                 .Act(() => RectTransform.Tween(TestTime).ScaleSizeDeltaTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, RectTransform.sizeDelta))
+                .Assert(() => RectTransform.sizeDelta.Should().Be(to))
                 .Run();
         }
 
@@ -465,13 +552,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).ScaleSizeDeltaTo(from, to)
-                                        .OnUpdated((_) => startingFrom ??= RectTransform.sizeDelta)
-                                        .Start())
+                    .OnUpdated((_) => startingFrom ??= RectTransform.sizeDelta)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, RectTransform.sizeDelta);
+                    startingFrom.Should().Be(from);
+                    RectTransform.sizeDelta.Should().Be(to);
                 })
                 .Run();
         }
@@ -479,6 +566,5 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         #endregion
 
         #endregion
-
     }
 }

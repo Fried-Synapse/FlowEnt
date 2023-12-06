@@ -12,10 +12,8 @@ namespace FriedSynapse.FlowEnt.Motions.Echo
         [Serializable]
         public class Builder : AbstractEchoMotionBuilder
         {
-#pragma warning disable IDE0044, RCS1169
             [SerializeField]
             private string name;
-#pragma warning restore IDE0044, RCS1169
             public override IEchoMotion Build()
                 => new DebugMotion(name);
         }

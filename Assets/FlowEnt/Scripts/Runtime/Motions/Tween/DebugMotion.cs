@@ -12,10 +12,8 @@ namespace FriedSynapse.FlowEnt.Motions.Tween
         [Serializable]
         public class Builder : AbstractTweenMotionBuilder
         {
-#pragma warning disable IDE0044, RCS1169
             [SerializeField]
             private string name;
-#pragma warning restore IDE0044, RCS1169
             public override ITweenMotion Build()
                 => new DebugMotion(name);
         }

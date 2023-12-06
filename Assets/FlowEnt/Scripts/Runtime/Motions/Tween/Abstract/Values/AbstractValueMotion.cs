@@ -30,25 +30,35 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
         }
     }
-    
+
     public abstract class AbstractValueMotion<TItem, TValue> : AbstractTweenMotion<TItem>
         where TItem : class
     {
         [Serializable]
-        public abstract class AbstractValueBuilder : AbstractBuilder
+        public abstract class AbstractValueBuilder<T> : AbstractBuilder
         {
             [SerializeField]
-            protected TValue value;
+            protected T value;
         }
 
         [Serializable]
-        public abstract class AbstractFromToBuilder : AbstractBuilder
+        public abstract class AbstractFromToBuilder<T> : AbstractBuilder
         {
             [SerializeField]
-            protected TValue from;
+            protected T from;
 
             [SerializeField]
-            protected TValue to;
+            protected T to;
+        }
+
+        [Serializable]
+        public abstract class AbstractValueBuilder : AbstractValueBuilder<TValue>
+        {
+        }
+
+        [Serializable]
+        public abstract class AbstractFromToBuilder : AbstractFromToBuilder<TValue>
+        {
         }
 
         protected AbstractValueMotion(TItem item, TValue value) : base(item)

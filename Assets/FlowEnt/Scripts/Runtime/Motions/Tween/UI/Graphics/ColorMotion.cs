@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
     /// </summary>
     public class ColorMotion : AbstractColorMotion<Graphic>
     {
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new ColorMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new ColorMotion(item, from, to);
+        }
+        
         public ColorMotion(Graphic item, Color value) : base(item, value)
         {
         }

@@ -87,7 +87,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 });
 
                 if (check.changed && !AbstractAnimationBuilderPropertyDrawer.IsPreviewDisabled &&
-                    PreviewerWindow.Instance != null)
+                    PreviewerWindow.IsAvailable)
                 {
                     property.serializedObject.ApplyModifiedProperties();
                     bool isFocusedAnimationThisOne =

@@ -19,6 +19,7 @@ namespace FriedSynapse.FlowEnt.Editor
 #pragma warning restore IDE0044, RCS1169
         protected abstract string Name { get; }
         internal static TWindow Instance { get; private set; }
+        internal static bool IsAvailable => Instance != null && Instance.Content != null;
         protected VisualElement Content { get; private set; }
         private static Type[] types;
         protected static Type[] Types

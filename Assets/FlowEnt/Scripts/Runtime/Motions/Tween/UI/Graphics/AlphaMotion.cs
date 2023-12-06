@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine.UI;
 
@@ -8,6 +9,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
     /// </summary>
     public class AlphaMotion : AbstractAlphaMotion<Graphic>
     {
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new AlphaMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new AlphaMotion(item, from, to);
+        }
+
         public AlphaMotion(Graphic item, float value) : base(item, value)
         {
         }

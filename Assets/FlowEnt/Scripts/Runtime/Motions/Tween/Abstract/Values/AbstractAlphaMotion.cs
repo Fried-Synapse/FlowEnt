@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
@@ -13,6 +14,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected Color SetAlpha(Color color, float alpha)
         {
             color.a = alpha;
