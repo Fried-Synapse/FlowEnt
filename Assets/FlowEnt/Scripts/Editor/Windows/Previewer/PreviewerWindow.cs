@@ -12,6 +12,7 @@ namespace FriedSynapse.FlowEnt.Editor
     internal class PreviewerWindow : FlowEntWindow<PreviewerWindow>
     {
         private const string SelectMessage = "Please Select an object from the hierarchy first.";
+        private const string PlaymodeMessage = "Previewer not available during play mode.";
 
         private enum MemberType
         {
@@ -27,7 +28,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 this.name = name;
                 this.type = type;
                 this.animation = animation;
-                if (!Application.isPlaying && animation.PlayState != PlayState.Building)
+                if (animation.PlayState != PlayState.Building)
                 {
                     animation.Stop();
                     animation.Reset();
@@ -73,19 +74,24 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal void RefreshAnimations(AbstractAnimation focusedAnimation = null)
         {
-            if (FocusedAnimation != null)
+            if (Application.isPlaying)
             {
-                if (focusedAnimation != null)
-                {
-                    FocusedAnimation = focusedAnimation;
-                }
-
-                RenderFocusedAnimation();
+                label.text = PlaymodeMessage;
+                return;
             }
-            else
+
+            if (FocusedAnimation == null)
             {
                 RenderSelectedAnimations();
+                return;
             }
+
+            if (focusedAnimation != null)
+            {
+                FocusedAnimation = focusedAnimation;
+            }
+
+            RenderFocusedAnimation();
         }
 
         internal void FocusAnimation(AbstractAnimation animation)
