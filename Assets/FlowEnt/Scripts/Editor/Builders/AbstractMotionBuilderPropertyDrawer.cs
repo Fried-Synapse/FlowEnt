@@ -9,63 +9,6 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public static class MotionNameGetter
-    {
-        private static readonly Regex nestedRegEx = new Regex("\\+");
-        private static readonly Regex prettyNameRegEx = new Regex("[A-Z]");
-
-        public static List<string> GetNames(Type type, IMotionBuilder motionBuilder = null)
-        {
-            List<string> names = new List<string>();
-            if (motionBuilder != null && !string.IsNullOrEmpty(motionBuilder.DisplayName))
-            {
-                names.Add(motionBuilder.DisplayName);
-            }
-
-            DisplayNameAttribute displayNameAttribute = type.GetCustomAttribute<DisplayNameAttribute>();
-            if (displayNameAttribute != null)
-            {
-                names.Add(displayNameAttribute.DisplayName);
-            }
-
-            static string getPrettyName(Type type)
-            {
-                const string builder = "Builder";
-                const string flowEntAssembly = "FriedSynapse.FlowEnt";
-
-                string[] nameParts = type.FullName.Split('.');
-                string prettyName = nameParts[nameParts.Length - 1];
-                prettyName = nestedRegEx.Replace(prettyName, " -");
-                prettyName = prettyNameRegEx.Replace(prettyName, " $0");
-                string[] prettyParts = prettyName.Split(' ');
-                if (prettyParts[prettyParts.Length - 1] == builder)
-                {
-                    prettyName = Regex.Replace(prettyName, $"{(type.Name == builder ? $" - {builder}" : builder)}$",
-                        string.Empty);
-                }
-
-                if (type.Assembly.GetName().Name == flowEntAssembly)
-                {
-                    prettyName = $"{type.Namespace.Split('.').Last()} -{prettyName}";
-                }
-
-                return prettyName.TrimStart();
-            }
-
-            names.Add(getPrettyName(type));
-
-            static string getName(Type type)
-            {
-                string[] nameParts = type.FullName.Split('.');
-                string name = nameParts[nameParts.Length - 1];
-                return nestedRegEx.Replace(name, "-");
-            }
-
-            names.Add(getName(type));
-            return names;
-        }
-    }
-
     [CustomPropertyDrawer(typeof(IMotionBuilder), true)]
     public class AbstractMotionBuilderPropertyDrawer : PropertyDrawer, ICrudable<IMotionBuilder>
     {
@@ -102,7 +45,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
             IMotionBuilder motionBuilder = property.GetValue<IMotionBuilder>();
-            string name = MotionNameGetter.GetNames(motionBuilder.GetType(), motionBuilder)[0];
+            string name = MotionNames.GetNames(motionBuilder.GetType(), motionBuilder).Preferred;
             
             FlowEntEditorGUILayout.PropertyFieldIsEnabled(headerPosition, property);
             

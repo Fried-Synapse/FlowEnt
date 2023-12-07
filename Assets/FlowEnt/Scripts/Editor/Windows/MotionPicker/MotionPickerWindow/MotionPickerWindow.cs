@@ -1,111 +1,179 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
     internal class MotionPickerWindow : AbstractBaseWindow<MotionPickerWindow>
     {
-        private class TypeInfo
-        {
-            public Type Type { get; set; }
-            public List<string> Names { get; set; } = new List<string>();
-            public int SearchIndex { get; private set; }
-
-            public void ComputeSearchIndex(List<string> parts)
-            {
-                SearchIndex = parts.Count(sp => Names.Any(n => n.IndexOf(sp, StringComparison.OrdinalIgnoreCase) >= 0));
-            }
-
-            public string GetToolTip()
-            {
-                return "xxx\nyyyy";
-            }
-        }
-
         private const string Name = "Select motion...";
 
         private Action<Type> callback;
-        private string searchText;
-        private List<TypeInfo> types = new List<TypeInfo>();
+        private List<MotionTypeInfo> motionsTypeInfo;
 
         private TextField searchBox;
-        private Foldout favourites;
-        private Foldout recent;
-        private Foldout all;
+        private Toggle autoClose;
+        private FoldoutScrollable favourites;
+        private FoldoutScrollable recent;
+        private FoldoutScrollable all;
 
-
-        private PersistentEditorPrefBool FavouritesFoldout { get; set; } =
+        private PersistentEditorPrefBool FavouritesFoldoutPrefs { get; } =
             new PersistentEditorPrefBool(FlowEntEditorPrefs.FavouritesFoldoutKey);
 
-        private PersistentEditorPrefBool RecentFoldout { get; set; } =
+        private PersistentEditorPrefBool RecentFoldoutPrefs { get; } =
             new PersistentEditorPrefBool(FlowEntEditorPrefs.RecentFoldoutKey);
 
-        private PersistentEditorPrefBool AllFoldout { get; set; } =
+        private PersistentEditorPrefBool AllFoldoutPrefs { get; } =
             new PersistentEditorPrefBool(FlowEntEditorPrefs.AllFoldoutKey, true);
 
-        private PersistentEditorPrefListString Favourites { get; set; } =
-            new PersistentEditorPrefListString(FlowEntEditorPrefs.FavouritesKey);
+        private PersistentEditorPrefListString FavouritesPrefs { get; } =
+            new PersistentEditorPrefListString(FlowEntEditorPrefs.FavouritesKey, new List<string>());
+
+        private PersistentEditorPrefListString RecentPrefs { get; } =
+            new PersistentEditorPrefListString(FlowEntEditorPrefs.RecentKey, new List<string>());
 
         internal static void Show<TMotionBuilder>(Action<TMotionBuilder> callback)
             where TMotionBuilder : IMotionBuilder
         {
-            if (Instance != null)
-            {
-                Instance.Close();
-            }
-
+            Instance?.TryClose();
             Instance = GetWindow<MotionPickerWindow>(false, Name);
             Instance = CreateWindow<MotionPickerWindow>(Name);
-            Instance.ShowModalUtility();
+            Instance.Show();
             Instance.titleContent = new GUIContent(Name);
-            Instance.types = GetTypes<TMotionBuilder>().OrderBy(t => t.Names[0]).ToList();
+            Instance.motionsTypeInfo =
+                MotionTypeInfo.GetTypes<TMotionBuilder>().OrderBy(t => t.Names.Preferred).ToList();
             Instance.callback = type => callback.Invoke((TMotionBuilder)Activator.CreateInstance(type));
             Instance.Redraw();
         }
 
         protected override void CreateGUI()
         {
+            // if (motionsTypeInfo == null)
+            // {
+            //     TryClose();
+            //     return;
+            // }
+
             LoadContent();
             searchBox = Content.Query<TextField>("searchBox").First();
-            favourites = GetInitFoldout("favourites", FavouritesFoldout);
-            recent = GetInitFoldout("recent", RecentFoldout);
-            all = GetInitFoldout("all", AllFoldout);
+            autoClose = Content.Query<Toggle>("autoClose").First();
+            favourites = GetInitFoldout("favourites", FavouritesFoldoutPrefs);
+            recent = GetInitFoldout("recent", RecentFoldoutPrefs);
+            all = GetInitFoldout("all", AllFoldoutPrefs);
+            Bind();
+        }
+
+        private void OnLostFocus()
+        {
+            EditorApplication.delayCall += () => Instance?.Close();
         }
 
         private FoldoutScrollable GetInitFoldout(string name, PersistentEditorPrefBool editorPrefs)
         {
             FoldoutScrollable foldout = Content.Query<FoldoutScrollable>(name).First();
-            foldout.value = editorPrefs;
+            foldout.value = editorPrefs.Value;
             foldout.RegisterValueChangedCallback(value => editorPrefs.Value = value.newValue);
             return foldout;
         }
 
-        private void Redraw(string searchTerm = null)
+        private void Bind()
         {
-            foreach (TypeInfo typeInfo in types)
+            searchBox.RegisterValueChangedCallback(_ => Redraw());
+        }
+
+        private void Redraw()
+        {
+            List<string> favouritesPrefs = FavouritesPrefs.Value;
+            Redraw(favourites, motionsTypeInfo.Where(t => favouritesPrefs.Contains(t.Names.FullName)).ToList());
+            List<string> recentPrefs = RecentPrefs.Value;
+            List<MotionTypeInfo> recentMotions = motionsTypeInfo
+                .Where(t => recentPrefs.Contains(t.Names.FullName))
+                .OrderBy(t => recentPrefs.IndexOf(t.Names.FullName))
+                .ToList();
+            Redraw(recent, recentMotions);
+            Redraw(all, motionsTypeInfo);
+        }
+
+        private void Redraw(FoldoutScrollable foldoutScrollable, List<MotionTypeInfo> motionsTypeInfo)
+        {
+            string searchText = searchBox.text;
+            if (!string.IsNullOrEmpty(searchText))
             {
-                all.Add(new MotionElement());
+                motionsTypeInfo = Search(motionsTypeInfo, searchText);
+            }
+
+            foldoutScrollable.Clear();
+            foreach (MotionTypeInfo motionTypeInfo in motionsTypeInfo)
+            {
+                foldoutScrollable.Add(
+                    new MotionElement(motionTypeInfo, FavouritesPrefs.Value.Contains(motionTypeInfo.Names.FullName))
+                    {
+                        OnSelected = motionTypeInfo =>
+                        {
+                            callback?.Invoke(motionTypeInfo.Type);
+                            AddRecent(motionTypeInfo);
+                            if (autoClose.value)
+                            {
+                                Instance.Close();
+                            }
+                            else
+                            {
+                                Redraw();
+                            }
+                        },
+                        OnFavouriteChanged = isSelected =>
+                        {
+                            List<string> favouritePrefs = FavouritesPrefs.Value;
+
+                            if (isSelected)
+                            {
+                                favouritePrefs.Add(motionTypeInfo.Names.FullName);
+                            }
+                            else
+                            {
+                                favouritePrefs.Remove(motionTypeInfo.Names.FullName);
+                            }
+
+                            FavouritesPrefs.Value = favouritePrefs;
+                            Redraw();
+                        }
+                    });
             }
         }
 
-        private static List<TypeInfo> GetTypes<TMotionBuilder>()
-            where TMotionBuilder : IMotionBuilder
+        private void AddRecent(MotionTypeInfo motionTypeInfo)
         {
-            List<TypeInfo> objects = new List<TypeInfo>();
-            Type type = typeof(TMotionBuilder);
-
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            List<string> recentPrefs = RecentPrefs.Value;
+            if (recentPrefs.Contains(motionTypeInfo.Names.FullName))
             {
-                objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type))
-                    .Select(t => new TypeInfo() { Type = t, Names = MotionNameGetter.GetNames(t) }));
+                recentPrefs.Remove(motionTypeInfo.Names.FullName);
             }
 
-            return objects;
+            recentPrefs.Insert(0, motionTypeInfo.Names.FullName);
+
+            if (recentPrefs.Count > 10)
+            {
+                recentPrefs.RemoveAt(RecentPrefs.Value.Count - 1);
+            }
+
+            RecentPrefs.Value = recentPrefs;
+        }
+
+        private static List<MotionTypeInfo> Search(List<MotionTypeInfo> motionsTypeInfo, string searchText)
+        {
+            List<string> searchParts = searchText
+                .Split(" ")
+                .Where(sp => !string.IsNullOrEmpty(sp))
+                .ToList();
+
+            motionsTypeInfo.ForEach(t => t.ComputeSearchIndex(searchParts));
+            return motionsTypeInfo
+                .Where(t => t.SearchIndex > 0)
+                .OrderByDescending(t => t.SearchIndex)
+                .ToList();
         }
     }
 }

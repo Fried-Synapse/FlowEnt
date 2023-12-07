@@ -7,13 +7,14 @@
     background-color: rgba(0, 0, 0, 0);
     -unity-background-image-tint-color: rgb(255, 255, 255);
     border-width: 0;
-    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-scale-mode: scale-and-crop;
 }
 
 #favourite.selected {
-    -unity-background-image-tint-color: rgb(255, 240, 0);
+    -unity-background-image-tint-color: rgb(240, 208, 16);
 }
 
 #name {
     -unity-text-align: middle-left;
+    flex-grow: 1;
 }

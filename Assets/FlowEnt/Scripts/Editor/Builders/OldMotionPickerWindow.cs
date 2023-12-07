@@ -100,7 +100,7 @@ namespace FriedSynapse.FlowEnt.Editor
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 objects.AddRange(assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type))
-                    .Select(t => new TypeInfo() { Type = t, Names = MotionNameGetter.GetNames(t) }));
+                    .Select(t => new TypeInfo() { Type = t, Names = MotionNames.GetNames(t).All }));
             }
 
             return objects;

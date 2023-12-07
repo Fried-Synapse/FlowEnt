@@ -12,6 +12,7 @@ namespace FriedSynapse.FlowEnt.Editor
         internal const string RecentFoldoutKey = BaseKey + "RecentFoldout";
         internal const string AllFoldoutKey = BaseKey + "AllFoldout";
         internal const string FavouritesKey = BaseKey + "Favourites";
+        internal const string RecentKey = BaseKey + "Recent";
     }
 
     internal abstract class AbstractPersistentEditorPrefDatum<T>
@@ -34,8 +35,6 @@ namespace FriedSynapse.FlowEnt.Editor
             get => HasValue ? Getter(Key) : DefaultValue;
             set => Setter(Key, value);
         }
-
-        public static implicit operator T(AbstractPersistentEditorPrefDatum<T> datum) => datum.Value;
     }
 
     internal class PersistentEditorPrefString : AbstractPersistentEditorPrefDatum<string>
@@ -62,7 +61,7 @@ namespace FriedSynapse.FlowEnt.Editor
             (key) => EditorPrefs.GetString(key).Split(Separator).ToList();
 
         protected override Action<string, List<string>> Setter =>
-            (key, list) => EditorPrefs.SetString(key, list == null ? null : string.Join(Separator, list));
+            (key, value) => EditorPrefs.SetString(key, value == null ? null : string.Join(Separator, value));
     }
 
     internal class PersistentEditorPrefBool : AbstractPersistentEditorPrefDatum<bool>

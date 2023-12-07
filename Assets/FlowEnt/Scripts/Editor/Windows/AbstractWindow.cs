@@ -35,6 +35,18 @@ namespace FriedSynapse.FlowEnt.Editor
             rootVisualElement.LoadUxml(contentAsset);
             Content = rootVisualElement.Query("content");
         }
+
+        protected void TryClose()
+        {
+            try
+            {
+                Instance.Close();
+            }
+            catch
+            {
+                //HACK: there is a bug in unity that crashes on Close when it doesn't have a parent but there is no way to check for one...
+            }
+        }
     }
 
     internal abstract class AbstractThemedWindow<TWindow> : AbstractBaseWindow<TWindow>

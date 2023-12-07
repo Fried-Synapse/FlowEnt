@@ -1,3 +1,18 @@
 Label {
     -unity-font-style: bold;
 }
+
+#header {
+    flex-direction: row;
+}
+
+#searchBox {
+    flex-grow: 1;
+}
+
+#autoClose {
+    width: 80px;
+    flex-direction: row;
+    justify-content: flex-end;
+    -unity-text-align: middle-right;
+}

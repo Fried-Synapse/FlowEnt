@@ -175,6 +175,7 @@ MonoBehaviour:
   yellow: {fileID: 1726780655}
   red: {fileID: 1562631411}
   tween:
+    isEnabled: 1
     options:
       name: 
       updateType: 0
@@ -222,6 +223,7 @@ MonoBehaviour:
     motions:
       items: []
   echo:
+    isEnabled: 1
     options:
       name: 
       updateType: 0
@@ -261,6 +263,7 @@ MonoBehaviour:
     motions:
       items: []
   flow:
+    isEnabled: 1
     options:
       name: 
       updateType: 0
@@ -308,6 +311,7 @@ MonoBehaviour:
   autoDestroy: 1
   triggerOnCompleted: 0
   animationBuilder:
+    isEnabled: 1
     options:
       name: 
       updateType: 0
