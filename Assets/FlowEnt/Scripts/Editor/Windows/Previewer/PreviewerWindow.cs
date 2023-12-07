@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class PreviewerWindow : FlowEntWindow<PreviewerWindow>
+    internal class PreviewerWindow : AbstractThemedWindow<PreviewerWindow>
     {
         private const string SelectMessage = "Please Select an object from the hierarchy first.";
         private const string PlaymodeMessage = "Previewer not available during play mode.";

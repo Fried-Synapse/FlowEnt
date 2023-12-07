@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class AnimationInspectorWindow : FlowEntWindow<AnimationInspectorWindow>
+    internal class AnimationInspectorWindow : AbstractThemedWindow<AnimationInspectorWindow>
     {
         internal static void ShowGrouped(AbstractAnimation animation)
         {

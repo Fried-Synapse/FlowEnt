@@ -1,6 +1,6 @@
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class SettingsWindow : FlowEntWindow<SettingsWindow>
+    internal class SettingsWindow : AbstractThemedWindow<SettingsWindow>
     {
         private const string FlowEntDebugEditor = "FlowEnt_Debug_Editor";
         private const string FlowEntDebug = "FlowEnt_Debug";
