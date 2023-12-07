@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Windows/MotionPicker/MotionPickerWindow/MotionPickerWindow.uss?fileID=7433441132597879392&amp;guid=d61d2474104e14d3fbdddf5b1846cd69&amp;type=3#MotionPickerWindow" />
     <ui:ScrollView name="content">
         <ui:VisualElement name="header">
-            <ui:TextField picking-mode="Ignore" value="filler text" name="searchBox" />
+            <ui:TextField picking-mode="Ignore" name="searchBox" />
             <ui:Toggle label="AutoClose" tooltip="Select if you want to auto close the window when a motion is selected" value="true" name="autoClose" />
         </ui:VisualElement>
         <FriedSynapse.FlowEnt.Editor.FoldoutScrollable name="favourites" text="Favourites" value="false" />

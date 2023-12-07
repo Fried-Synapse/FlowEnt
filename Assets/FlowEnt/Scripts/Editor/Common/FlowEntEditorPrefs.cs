@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -58,7 +59,11 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         protected override Func<string, List<string>> Getter =>
-            (key) => EditorPrefs.GetString(key).Split(Separator).ToList();
+            key =>
+            {
+                string value = EditorPrefs.GetString(key);
+                return string.IsNullOrEmpty(value) ? DefaultValue : value.Split(Separator).ToList();
+            };
 
         protected override Action<string, List<string>> Setter =>
             (key, value) => EditorPrefs.SetString(key, value == null ? null : string.Join(Separator, value));

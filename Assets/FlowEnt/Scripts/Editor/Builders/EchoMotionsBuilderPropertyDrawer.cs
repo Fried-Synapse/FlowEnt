@@ -9,7 +9,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         protected override void OnAdd(Rect buttonRect, ReorderableList list)
         {
-            OldMotionPickerWindow.Show<AbstractEchoMotionBuilder>(list.Add);
+            MotionPickerWindow.Show<AbstractEchoMotionBuilder>(list.Add);
         }
     }
 }

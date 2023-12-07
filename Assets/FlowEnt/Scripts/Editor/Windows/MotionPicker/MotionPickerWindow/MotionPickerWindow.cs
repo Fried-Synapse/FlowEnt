@@ -11,6 +11,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         private const string Name = "Select motion...";
 
+        private Type selectionMotionType;
         private Action<Type> callback;
         private List<MotionTypeInfo> motionsTypeInfo;
 
@@ -32,17 +33,33 @@ namespace FriedSynapse.FlowEnt.Editor
         private PersistentEditorPrefListString FavouritesPrefs { get; } =
             new PersistentEditorPrefListString(FlowEntEditorPrefs.FavouritesKey, new List<string>());
 
-        private PersistentEditorPrefListString RecentPrefs { get; } =
-            new PersistentEditorPrefListString(FlowEntEditorPrefs.RecentKey, new List<string>());
+        private Dictionary<string, PersistentEditorPrefListString> RecentPrefsDictionary { get; } =
+            new Dictionary<string, PersistentEditorPrefListString>();
+        
+        private PersistentEditorPrefListString RecentPrefs
+        {
+            get
+            {
+                if (!RecentPrefsDictionary.TryGetValue(selectionMotionType.Name,
+                        out PersistentEditorPrefListString recentEditorPrefs))
+                {
+                    recentEditorPrefs = new PersistentEditorPrefListString(
+                        FlowEntEditorPrefs.RecentKey + selectionMotionType.Name, new List<string>());
+                    RecentPrefsDictionary.Add(selectionMotionType.Name, recentEditorPrefs);
+                }
+
+                return recentEditorPrefs;
+            }
+        }
 
         internal static void Show<TMotionBuilder>(Action<TMotionBuilder> callback)
             where TMotionBuilder : IMotionBuilder
         {
             Instance?.TryClose();
-            Instance = GetWindow<MotionPickerWindow>(false, Name);
             Instance = CreateWindow<MotionPickerWindow>(Name);
             Instance.Show();
             Instance.titleContent = new GUIContent(Name);
+            Instance.selectionMotionType = typeof(TMotionBuilder);
             Instance.motionsTypeInfo =
                 MotionTypeInfo.GetTypes<TMotionBuilder>().OrderBy(t => t.Names.Preferred).ToList();
             Instance.callback = type => callback.Invoke((TMotionBuilder)Activator.CreateInstance(type));
@@ -51,19 +68,22 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void CreateGUI()
         {
-            // if (motionsTypeInfo == null)
-            // {
-            //     TryClose();
-            //     return;
-            // }
-
+            ApplyHacks();
             LoadContent();
             searchBox = Content.Query<TextField>("searchBox").First();
             autoClose = Content.Query<Toggle>("autoClose").First();
-            favourites = GetInitFoldout("favourites", FavouritesFoldoutPrefs);
-            recent = GetInitFoldout("recent", RecentFoldoutPrefs);
-            all = GetInitFoldout("all", AllFoldoutPrefs);
+            favourites = queryAndInitFoldout("favourites", FavouritesFoldoutPrefs);
+            recent = queryAndInitFoldout("recent", RecentFoldoutPrefs);
+            all = queryAndInitFoldout("all", AllFoldoutPrefs);
             Bind();
+
+            FoldoutScrollable queryAndInitFoldout(string name, PersistentEditorPrefBool editorPrefs)
+            {
+                FoldoutScrollable foldout = Content.Query<FoldoutScrollable>(name).First();
+                foldout.value = editorPrefs.Value;
+                foldout.RegisterValueChangedCallback(value => editorPrefs.Value = value.newValue);
+                return foldout;
+            }
         }
 
         private void OnLostFocus()
@@ -71,12 +91,20 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorApplication.delayCall += () => Instance?.Close();
         }
 
-        private FoldoutScrollable GetInitFoldout(string name, PersistentEditorPrefBool editorPrefs)
+        private void ApplyHacks()
         {
-            FoldoutScrollable foldout = Content.Query<FoldoutScrollable>(name).First();
-            foldout.value = editorPrefs.Value;
-            foldout.RegisterValueChangedCallback(value => editorPrefs.Value = value.newValue);
-            return foldout;
+            //HACK if the windows stayed we will try to close it because we don't want an empty window.
+            //we need to wait 1 frame in order to ensure we didn't just open this window intentionally
+            EditorApplication.delayCall += () =>
+            {
+                if (motionsTypeInfo == null)
+                {
+                    TryClose();
+                }
+            };
+
+            //HACK this removes the tab at the top and makes it look like a popup
+            EditorApplication.delayCall += () => rootVisualElement.style.top = 0;
         }
 
         private void Bind()
@@ -126,18 +154,18 @@ namespace FriedSynapse.FlowEnt.Editor
                         },
                         OnFavouriteChanged = isSelected =>
                         {
-                            List<string> favouritePrefs = FavouritesPrefs.Value;
+                            List<string> favouritePrefsValue = FavouritesPrefs.Value;
 
                             if (isSelected)
                             {
-                                favouritePrefs.Add(motionTypeInfo.Names.FullName);
+                                favouritePrefsValue.Add(motionTypeInfo.Names.FullName);
                             }
                             else
                             {
-                                favouritePrefs.Remove(motionTypeInfo.Names.FullName);
+                                favouritePrefsValue.Remove(motionTypeInfo.Names.FullName);
                             }
 
-                            FavouritesPrefs.Value = favouritePrefs;
+                            FavouritesPrefs.Value = favouritePrefsValue;
                             Redraw();
                         }
                     });
@@ -146,20 +174,20 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void AddRecent(MotionTypeInfo motionTypeInfo)
         {
-            List<string> recentPrefs = RecentPrefs.Value;
-            if (recentPrefs.Contains(motionTypeInfo.Names.FullName))
+            List<string> recentPrefsValue = RecentPrefs.Value;
+            if (recentPrefsValue.Contains(motionTypeInfo.Names.FullName))
             {
-                recentPrefs.Remove(motionTypeInfo.Names.FullName);
+                recentPrefsValue.Remove(motionTypeInfo.Names.FullName);
             }
 
-            recentPrefs.Insert(0, motionTypeInfo.Names.FullName);
+            recentPrefsValue.Insert(0, motionTypeInfo.Names.FullName);
 
-            if (recentPrefs.Count > 10)
+            if (recentPrefsValue.Count > 10)
             {
-                recentPrefs.RemoveAt(RecentPrefs.Value.Count - 1);
+                recentPrefsValue.RemoveAt(recentPrefsValue.Count - 1);
             }
 
-            RecentPrefs.Value = recentPrefs;
+            RecentPrefs.Value = recentPrefsValue;
         }
 
         private static List<MotionTypeInfo> Search(List<MotionTypeInfo> motionsTypeInfo, string searchText)
