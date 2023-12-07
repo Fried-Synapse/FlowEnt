@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal string GetToolTip()
         {
-            return "xxx\nyyyy";
+            return "";
         }
 
         internal static List<MotionTypeInfo> GetTypes<TMotionBuilder>()
