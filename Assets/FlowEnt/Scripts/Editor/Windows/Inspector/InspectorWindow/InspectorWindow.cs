@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class InspectorWindow : FlowEntWindow<InspectorWindow>
+    internal class InspectorWindow : AbstractThemedWindow<InspectorWindow>
     {
         protected override string Name => "FlowEnt Inspector";
         private TextField search;

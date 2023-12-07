@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Windows/MotionPicker/MotionPickerWindow/MotionPickerWindow.uss?fileID=7433441132597879392&amp;guid=d61d2474104e14d3fbdddf5b1846cd69&amp;type=3#MotionPickerWindow" />
+    <ui:ScrollView name="content">
+        <ui:TextField picking-mode="Ignore" value="filler text" name="searchBox" />
+        <FriedSynapse.FlowEnt.Editor.FoldoutScrollable name="favourites" text="Favourites" value="false" />
+        <FriedSynapse.FlowEnt.Editor.FoldoutScrollable name="recent" text="Recent" value="false" />
+        <FriedSynapse.FlowEnt.Editor.FoldoutScrollable name="all" text="All" value="false" />
+    </ui:ScrollView>
+</ui:UXML>

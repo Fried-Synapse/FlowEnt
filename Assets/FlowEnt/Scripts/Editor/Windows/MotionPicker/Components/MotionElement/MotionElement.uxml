@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Windows/MotionPicker/Components/MotionElement/MotionElement.uss?fileID=7433441132597879392&amp;guid=0c826fc285fb44f64946f094e01042e5&amp;type=3#MotionElement" />
+    <ui:VisualElement name="motion">
+        <ui:Button display-tooltip-when-elided="true" name="favourite" class="favourite" />
+        <ui:Label text="Label" display-tooltip-when-elided="true" name="name" />
+    </ui:VisualElement>
+</ui:UXML>

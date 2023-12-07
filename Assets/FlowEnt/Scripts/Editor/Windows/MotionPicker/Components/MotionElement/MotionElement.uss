@@ -1,0 +1,19 @@
+#motion {
+    flex-direction: row;
+}
+
+#favourite {
+    background-image: resource('d_Favorite@2x');
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    border-width: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+#favourite.selected {
+    -unity-background-image-tint-color: rgb(255, 240, 0);
+}
+
+#name {
+    -unity-text-align: middle-left;
+}

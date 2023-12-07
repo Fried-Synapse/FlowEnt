@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public class MotionPickerWindow : EditorWindow
+    public class OldMotionPickerWindow : EditorWindow
     {
         private class TypeInfo
         {
@@ -21,13 +21,13 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        private static MotionPickerWindow instance;
+        private static OldMotionPickerWindow instance;
 
         public static void Show<TMotionBuilder>(Action<TMotionBuilder> callback)
             where TMotionBuilder : IMotionBuilder
         {
             instance?.Close();
-            instance = CreateWindow<MotionPickerWindow>("Select animation");
+            instance = CreateWindow<OldMotionPickerWindow>("Select animation");
             instance.types = GetTypes<TMotionBuilder>().OrderBy(t => t.Names[0]).ToList();
             instance.callback = type => callback.Invoke((TMotionBuilder)Activator.CreateInstance(type));
             instance.Init();
