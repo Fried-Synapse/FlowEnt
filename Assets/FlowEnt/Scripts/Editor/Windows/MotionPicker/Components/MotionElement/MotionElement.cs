@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             SetIsFavourite(isFavourite);
             name.text = motionTypeInfo.Names.Preferred;
-            name.tooltip = motionTypeInfo.GetToolTip();
+            name.tooltip = motionTypeInfo.GetTooltip();
         }
 
         private void Bind()

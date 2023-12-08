@@ -76,22 +76,22 @@ namespace FriedSynapse.FlowEnt.Editor
                 const string flowEntAssembly = "FriedSynapse.FlowEnt";
 
                 string[] nameParts = type.FullName.Split('.');
-                string prettyName = nameParts[nameParts.Length - 1];
-                prettyName = nestedRegEx.Replace(prettyName, " -");
-                prettyName = prettyNameRegEx.Replace(prettyName, " $0");
-                string[] prettyParts = prettyName.Split(' ');
+                string name = nameParts[nameParts.Length - 1];
+                name = nestedRegEx.Replace(name, " -");
+                name = prettyNameRegEx.Replace(name, " $0");
+                string[] prettyParts = name.Split(' ');
                 if (prettyParts[prettyParts.Length - 1] == builder)
                 {
-                    prettyName = Regex.Replace(prettyName, $"{(type.Name == builder ? $" - {builder}" : builder)}$",
+                    name = Regex.Replace(name, $"{(type.Name == builder ? $" - {builder}" : builder)}$",
                         string.Empty);
                 }
 
                 if (type.Assembly.GetName().Name == flowEntAssembly)
                 {
-                    prettyName = $"[{type.Namespace.Split('.').Last()}]{prettyName}";
+                    name = $"[{type.Namespace.Split('.').Last()}]{name}";
                 }
 
-                return prettyName.TrimStart();
+                return name.Trim();
             }
         }
     }
