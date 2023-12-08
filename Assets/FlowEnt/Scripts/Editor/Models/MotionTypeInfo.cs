@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -22,9 +24,31 @@ namespace FriedSynapse.FlowEnt.Editor
             SearchIndex = parts.Count(sp => Names.All.Any(n => n.IndexOf(sp, StringComparison.OrdinalIgnoreCase) >= 0));
         }
 
-        internal string GetToolTip()
+        internal string GetTooltip()
         {
-            return "";
+            const string flowEntAssembly = "FriedSynapse.FlowEnt";
+
+            string result = string.Empty;
+            TooltipAttribute tooltipAttribute = Type.GetCustomAttribute<TooltipAttribute>();
+            if (tooltipAttribute != null)
+            {
+                result += $"{tooltipAttribute.tooltip}\n";
+            }
+            
+            if (Type.Assembly.GetName().Name == flowEntAssembly)
+            {
+                if (Names.Preferred.EndsWith(" Value"))
+                {
+                    result += "*Value* - It will interpolate starting at the [Current State] and end at [Current State] + [Value].\n";
+                }
+                
+                if (Names.Preferred.EndsWith(" From To"))
+                {
+                    result += "*From To* - It will interpolate starting at the [From] and ending at [To]. (Not available in the editor yet) - If [From] is not specified it will use it's [Current State].\n";
+                }
+            }
+            
+            return result.Trim();
         }
 
         internal static List<MotionTypeInfo> GetTypes<TMotionBuilder>()
