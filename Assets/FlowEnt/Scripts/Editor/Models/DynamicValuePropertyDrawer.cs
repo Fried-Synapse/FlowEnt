@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    [CustomPropertyDrawer(typeof(DynamicValue), true)]
+    [CustomPropertyDrawer(typeof(DynamicValue<>), true)]
     public class DynamicValuePropertyDrawer : PropertyDrawer
     {
-        public enum PropertiesEnum
+        private enum PropertiesEnum
         {
             type,
-            value,
-            min,
-            max,
+            constant,
+            randomMin,
+            randomMax,
         }
 
         const float MenuWidth = 20f;
@@ -20,13 +20,11 @@ namespace FriedSynapse.FlowEnt.Editor
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
             => (DynamicValueType)property.FindPropertyRelative(PropertiesEnum.type.ToString()).enumValueIndex switch
             {
-                DynamicValueType.Constant =>
-                    EditorGUI.GetPropertyHeight(property.FindPropertyRelative(PropertiesEnum.value.ToString())),
                 DynamicValueType.Random =>
-                    EditorGUI.GetPropertyHeight(property.FindPropertyRelative(PropertiesEnum.min.ToString())) +
-                    EditorGUI.GetPropertyHeight(property.FindPropertyRelative(PropertiesEnum.max.ToString())) +
+                    EditorGUI.GetPropertyHeight(property.FindPropertyRelative(PropertiesEnum.randomMin.ToString())) +
+                    EditorGUI.GetPropertyHeight(property.FindPropertyRelative(PropertiesEnum.randomMax.ToString())) +
                     FlowEntConstants.DrawerSpacing,
-                _ => throw new ArgumentOutOfRangeException()
+                _ => EditorGUI.GetPropertyHeight(property.FindPropertyRelative(PropertiesEnum.constant.ToString())),
             };
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -38,19 +36,19 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 case DynamicValueType.Constant:
                     EditorGUI.PropertyField(position,
-                        property.FindPropertyRelative(PropertiesEnum.value.ToString()));
+                        property.FindPropertyRelative(PropertiesEnum.constant.ToString()), label);
                     break;
                 case DynamicValueType.Random:
                     Rect labelPosition = position;
                     labelPosition.width = EditorGUIUtility.labelWidth - 13;
-                    EditorGUI.LabelField(labelPosition, "Value");
+                    EditorGUI.LabelField(labelPosition, label);
                     position.width -= labelPosition.width;
                     position.x += labelPosition.width;
                     EditorGUI.PropertyField(position,
-                        property.FindPropertyRelative(PropertiesEnum.min.ToString()), new GUIContent());
+                        property.FindPropertyRelative(PropertiesEnum.randomMin.ToString()), GUIContent.none);
                     position.y += FlowEntConstants.SpacedSingleLineHeight;
                     EditorGUI.PropertyField(position,
-                        property.FindPropertyRelative(PropertiesEnum.max.ToString()), new GUIContent());
+                        property.FindPropertyRelative(PropertiesEnum.randomMax.ToString()), GUIContent.none);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

@@ -28,12 +28,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
     }
 
     public abstract class AbstractValueMotion<T> : AbstractEventMotion<T>
+        where T : struct
     {
         [Serializable]
         public abstract class AbstractValueMotionBuilder : AbstractEventMotionBuilder
         {
             [SerializeField]
             protected T from;
+
             [SerializeField]
             protected T to;
         }

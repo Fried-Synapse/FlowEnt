@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -5,43 +6,55 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class DebugToggle : VisualElement
+    internal class FeatureToggle : VisualElement
     {
-        public DebugToggle(string name, string symbol, string warning = null)
+        internal FeatureToggle(string name, string symbol, string tooltip = null, string warning = null)
         {
             this.symbol = symbol;
             toggle = new Toggle(name);
-            toggle.tooltip = "Compilation symbols are platform specific.";
+            toggle.tooltip = tooltip;
             Add(toggle);
             if (!string.IsNullOrEmpty(warning))
             {
-                this.warning = new HelpBox(warning, HelpBoxMessageType.Warning);
-                Add(this.warning);
+                Add(new HelpBox(warning, HelpBoxMessageType.Warning));
             }
+
             Init();
             Bind();
         }
 
         private readonly string symbol;
         private readonly Toggle toggle;
-        private readonly HelpBox warning;
+
+        internal bool Value => toggle.value;
 
         private void Init()
         {
-            bool isActive = GetSymbols().Contains(symbol);
+            bool isActive = GetSymbols(EditorUserBuildSettings.selectedBuildTargetGroup).Contains(symbol);
             toggle.SetEnabled(!EditorApplication.isPlayingOrWillChangePlaymode);
             toggle.SetValueWithoutNotify(isActive);
-            warning?.SetEnabled(isActive);
         }
 
         private void Bind()
         {
-            EditorApplication.playModeStateChanged += playModeStateChange => toggle.SetEnabled(playModeStateChange == PlayModeStateChange.EnteredEditMode);
+            EditorApplication.playModeStateChanged += playModeStateChange =>
+                toggle.SetEnabled(playModeStateChange == PlayModeStateChange.EnteredEditMode);
 
             toggle.RegisterValueChangedCallback(eventData =>
             {
-                List<string> symbols = GetSymbols();
                 bool isActive = eventData.newValue;
+                foreach (BuildTargetGroup target in Enum.GetValues(typeof(BuildTargetGroup)))
+                {
+                    TryUpdateSymbols(target, isActive);
+                }
+            });
+        }
+
+        private void TryUpdateSymbols(BuildTargetGroup targetGroup, bool isActive)
+        {
+            try
+            {
+                List<string> symbols = GetSymbols(targetGroup);
                 if (isActive)
                 {
                     symbols.Add(symbol);
@@ -51,20 +64,23 @@ namespace FriedSynapse.FlowEnt.Editor
                     symbols.Remove(symbol);
                 }
 
-                SetSymbols(symbols);
-                warning?.SetEnabled(isActive);
-            });
+                SetSymbols(targetGroup, symbols);
+            }
+            catch
+            {
+                //HACK there is no way to check if we can change of not, so we try and see...
+            }
         }
 
-        private static List<string> GetSymbols()
+        private static List<string> GetSymbols(BuildTargetGroup targetGroup)
         {
-            PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, out string[] symbols);
+            PlayerSettings.GetScriptingDefineSymbolsForGroup(targetGroup, out string[] symbols);
             return symbols.ToList();
         }
 
-        private static void SetSymbols(List<string> symbols)
+        private static void SetSymbols(BuildTargetGroup targetGroup, List<string> symbols)
         {
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, symbols.ToArray());
+            PlayerSettings.SetScriptingDefineSymbolsForGroup(targetGroup, symbols.ToArray());
         }
     }
 }
