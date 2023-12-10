@@ -7,6 +7,24 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         where TItem : class
         where TValue : struct
     {
+#if FlowEnt_3_Nullables
+        [Serializable]
+        public new abstract class AbstractFromToBuilder<T> : AbstractBuilder
+            where T : struct
+        {
+            [SerializeField]
+            protected SerializableNullable<T> from;
+
+            [SerializeField]
+            protected T to;
+        }
+        
+        [Serializable]
+        public new abstract class AbstractFromToBuilder : AbstractFromToBuilder<TValue>
+        {
+        }
+#endif
+
         protected AbstractStructValueMotion(TItem item, TValue value) : base(item, value)
         {
         }

@@ -1,3 +1,12 @@
 #content {
     padding: 0 10px 0 10px;
 }
+
+.section {
+    margin-bottom: 10px;
+}
+
+.label {
+    font-size: 16px;
+    -unity-font-style: bold;
+}

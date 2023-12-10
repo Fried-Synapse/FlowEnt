@@ -28,11 +28,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         }
 
         public ScaleLocalAxisMotion(Transform item, Axis axis, float? from, float to) : base(item, axis, from, to,
-            item.localScale)
+            item == null ? null : item.localScale)
         {
         }
 
         protected override Vector3 Target { get => item.localScale; set => item.localScale = value; }
+
         protected override Vector3 GetFrom() => item.localScale;
     }
 }

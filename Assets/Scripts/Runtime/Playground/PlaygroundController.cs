@@ -7,24 +7,37 @@ namespace FriedSynapse.FlowEnt.Builder
     {
         [SerializeField]
         private Transform character;
+
         private Transform Character => character;
+
         [SerializeField]
         private Transform green;
+
         private Transform Green => green;
+
         [SerializeField]
         private Transform yellow;
+
         private Transform Yellow => yellow;
+
         [SerializeField]
         private Transform red;
+
         private Transform Red => red;
+
         [SerializeField]
         private TweenBuilder tween;
+
         private TweenBuilder Tween => tween;
+
         [SerializeField]
         private EchoBuilder echo;
+
         private EchoBuilder Echo => echo;
+
         [SerializeField]
         private FlowBuilder flow;
+
         private FlowBuilder Flow => flow;
 
         public AbstractAnimation TweenProp
