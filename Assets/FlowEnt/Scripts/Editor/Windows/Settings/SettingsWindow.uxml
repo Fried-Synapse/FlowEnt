@@ -1,5 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="../../Common/Bootstrap.uss" />
-    <Style src="SettingsWindow.uss" />
-    <ui:VisualElement name="content" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Common/Bootstrap.uss?fileID=7433441132597879392&amp;guid=f326891f6508d4e2ea8ab234c0998e79&amp;type=3#Bootstrap" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Windows/Settings/SettingsWindow.uss?fileID=7433441132597879392&amp;guid=c3d99283b74d547d3870f7bc6d264d29&amp;type=3#SettingsWindow" />
+    <ui:VisualElement name="content">
+        <ui:VisualElement name="debug" class="section">
+            <ui:Label text="Debug" display-tooltip-when-elided="true" class="label" />
+        </ui:VisualElement>
+        <ui:VisualElement name="features" class="section">
+            <ui:Label text="Features" display-tooltip-when-elided="true" class="label" />
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

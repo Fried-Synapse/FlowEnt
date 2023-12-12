@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 371499374}
   - component: {fileID: 371499375}
-  - component: {fileID: 371499377}
   m_Layer: 0
   m_Name: PlaygroundController
   m_TagString: Untagged
@@ -198,10 +197,36 @@ MonoBehaviour:
     events:
       onStarted:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 371499375}
+            m_TargetAssemblyTypeName: FriedSynapse.FlowEnt.Builder.PlaygroundController,
+              FriedSynapse.FlowEnt.Builder
+            m_MethodName: Log
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       onUpdated:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 371499375}
+            m_TargetAssemblyTypeName: FriedSynapse.FlowEnt.Builder.PlaygroundController,
+              FriedSynapse.FlowEnt.Builder
+            m_MethodName: Log
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       onLoopStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -210,7 +235,20 @@ MonoBehaviour:
           m_Calls: []
       onCompleted:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 371499375}
+            m_TargetAssemblyTypeName: FriedSynapse.FlowEnt.Builder.PlaygroundController,
+              FriedSynapse.FlowEnt.Builder
+            m_MethodName: Log
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       onStarting:
         m_PersistentCalls:
           m_Calls: []
@@ -290,73 +328,6 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     queues:
-      items: []
-  references:
-    version: 2
-    RefIds: []
---- !u!114 &371499377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371499373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41660485212484f73950df3d90c2c2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMode: 0
-  delay: 0
-  autoDestroy: 1
-  triggerOnCompleted: 0
-  animationBuilder:
-    isEnabled: 1
-    options:
-      name: 
-      updateType: 0
-      autoStart: 0
-      skipFrames: 0
-      delay: 0
-      timeScale: 1
-      isLoopCountInfinite: 0
-      loopCount: 1
-      time: 1
-      easingType: 0
-      easing: 0
-      easingCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loopType: 0
-    events:
-      onStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      onUpdated:
-        m_PersistentCalls:
-          m_Calls: []
-      onLoopStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      onLoopCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onStarting:
-        m_PersistentCalls:
-          m_Calls: []
-      onUpdating:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleting:
-        m_PersistentCalls:
-          m_Calls: []
-    motions:
       items: []
   references:
     version: 2

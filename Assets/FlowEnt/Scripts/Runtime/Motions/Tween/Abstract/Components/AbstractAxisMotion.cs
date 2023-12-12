@@ -21,9 +21,13 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
             [SerializeField]
             protected Axis axis;
-
+#if FlowEnt_3_Nullables
+            [SerializeField]
+            protected SerializableNullable<float> from;
+#else
             [SerializeField]
             protected float from;
+#endif
 
             [SerializeField]
             protected float to;
@@ -34,16 +38,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
             this.axis = axis;
         }
 
-        protected AbstractAxisMotion(TItem item, Axis axis, float? from, float to, Vector3 baseVector) : base(item,
+        protected AbstractAxisMotion(TItem item, Axis axis, float? from, float to, Vector3? baseVector) : base(item,
             from == null ? null : GetValue(from.Value, axis, baseVector), GetValue(to, axis, baseVector))
         {
             this.axis = axis;
         }
-        
+
         private readonly Axis axis;
         private Vector3 cache;
         protected abstract Vector3 Target { get; set; }
-        
+
         private static Vector3 GetValue(float value, Axis axis, Vector3? baseVector = null)
         {
             Vector3 valueVector = baseVector ?? Vector3.zero;
@@ -65,7 +69,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 
             return valueVector;
         }
-        
+
         protected override void SetValue(Vector3 value)
         {
             cache = Target;
@@ -74,10 +78,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
             {
                 cache.x = value.x;
             }
+
             if ((axis & Axis.Y) != 0)
             {
                 cache.y = value.y;
             }
+
             if ((axis & Axis.Z) != 0)
             {
                 cache.z = value.z;
