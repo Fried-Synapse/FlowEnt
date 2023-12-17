@@ -5,10 +5,10 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     internal class MotionElement : VisualElement
     {
-        private string SelectedClass = "selected";
-        private Button favourite;
-        private Button name;
-        private MotionTypeInfo motionTypeInfo;
+        private const string SelectedClass = "selected";
+        private readonly Button favourite;
+        private new readonly Button name;
+        private readonly MotionTypeInfo motionTypeInfo;
         internal Action<bool> OnFavouriteChanged { get; set; }
         internal Action<MotionTypeInfo> OnSelected { get; set; }
 
