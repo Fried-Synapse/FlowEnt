@@ -31,11 +31,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        public ColorMotion(Material item, Color value) : this((DynamicMaterial)item, value)
+        public ColorMotion(Material item, Color value) : this(new DynamicMaterial(item), value)
         {
         }
 
-        public ColorMotion(Material item, Color? from, Color to) : this((DynamicMaterial)item, from, to)
+        public ColorMotion(Material item, Color? from, Color to) : this(new DynamicMaterial(item), from, to)
         {
         }
 

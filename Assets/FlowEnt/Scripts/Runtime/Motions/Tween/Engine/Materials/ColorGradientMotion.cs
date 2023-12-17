@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        public ColorGradientMotion(Material item, Gradient gradient) : this((DynamicMaterial)item, gradient)
+        public ColorGradientMotion(Material item, Gradient gradient) : this(new DynamicMaterial(item), gradient)
         {
         }
 

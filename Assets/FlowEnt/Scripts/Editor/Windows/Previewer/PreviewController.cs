@@ -6,9 +6,15 @@ using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
+    public interface IHasUndoableObjects
+    {
+        public List<UnityObject> GetUndoableObjects();
+    }
+
     public static class PreviewController
     {
         public class Options
@@ -128,21 +134,28 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             bool hasRecordedObjects = false;
             IMotion[] motions = animation.GetFieldValue<IMotion[]>("motions");
-            Type type = typeof(UnityEngine.Object);
+            Type unityObjectType = typeof(UnityObject);
+            Type undoableObjectsType = typeof(IHasUndoableObjects);
             foreach (IMotion motion in motions)
             {
-                List<UnityEngine.Object> objects = motion
+                List<UnityObject> objects = motion
                     .GetType()
                     .GetFields()
-                    .Where(fi => type.IsAssignableFrom(fi.FieldType))
-                    .Select(fi => (UnityEngine.Object)fi.GetValue(motion))
+                    .Where(fi => unityObjectType.IsAssignableFrom(fi.FieldType))
+                    .Select(fi => (UnityObject)fi.GetValue(motion))
                     .ToList();
 
                 objects.AddRange(motion
                     .GetType()
                     .GetProperties()
-                    .Where(pi => type.IsAssignableFrom(pi.PropertyType))
-                    .Select(pi => (UnityEngine.Object)pi.GetValue(motion)));
+                    .Where(pi => unityObjectType.IsAssignableFrom(pi.PropertyType))
+                    .Select(pi => (UnityObject)pi.GetValue(motion)));
+
+                objects.AddRange(motion
+                    .GetType()
+                    .GetFields()
+                    .Where(pi => undoableObjectsType.IsAssignableFrom(pi.FieldType))
+                    .SelectMany(pi => ((IHasUndoableObjects)pi.GetValue(motion)).GetUndoableObjects()));
 
                 objects = objects
                     .Distinct()

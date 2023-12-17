@@ -14,8 +14,8 @@ namespace FriedSynapse.FlowEnt.Editor
         private enum FieldsEnum
         {
             type,
-            material,
-            gameObject,
+            predefinedMaterial,
+            gameObjectWithInstance,
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -30,8 +30,8 @@ namespace FriedSynapse.FlowEnt.Editor
             position.y += FlowEntConstants.SpacedSingleLineHeight;
             FieldsEnum itemFieldEnum = (DynamicMaterial.MaterialType)typeProperty.enumValueIndex switch
             {
-                DynamicMaterial.MaterialType.Instance => FieldsEnum.gameObject,
-                DynamicMaterial.MaterialType.Predefined => FieldsEnum.material,
+                DynamicMaterial.MaterialType.Instance => FieldsEnum.gameObjectWithInstance,
+                DynamicMaterial.MaterialType.Predefined => FieldsEnum.predefinedMaterial,
                 _ => throw new ArgumentOutOfRangeException()
             };
             SerializedProperty itemProperty = property.FindPropertyRelative(itemFieldEnum.ToString());
@@ -39,7 +39,7 @@ namespace FriedSynapse.FlowEnt.Editor
         }
     }
 
-    [CustomPropertyDrawer(typeof(DynamicMaterialWithProperty<>), true)]
+    [CustomPropertyDrawer(typeof(DynamicMaterialWithProperty), true)]
     public class DynamicMaterialWithPropertyPropertyDrawer : DynamicMaterialPropertyDrawer
     {
         private enum FieldsEnum
@@ -106,6 +106,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 DynamicMaterialWithProperty<Color> => new[] { ShaderPropertyType.Color },
                 DynamicMaterialWithProperty<Vector2> => new[] { ShaderPropertyType.Vector },
                 DynamicMaterialWithProperty<Vector4> => new[] { ShaderPropertyType.Vector },
+                DynamicMaterialWithProperty<Texture> => new[] { ShaderPropertyType.TexEnv },
+                DynamicMaterialWithProperty => (ShaderPropertyType[])Enum.GetValues(typeof(ShaderPropertyType)),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }

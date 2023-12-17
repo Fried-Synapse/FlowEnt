@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
 {
     /// <summary>
-    /// Lerps the alpha for the specified shader property using a gradient.
+    /// Lerps the color for the specified shader property using a gradient.
     /// </summary>
     public class ColorGradientPropertyMotion : AbstractColorGradientMotion<DynamicMaterialWithProperty<Color>>
     {
@@ -13,7 +13,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         public class GradientBuilder : AbstractGradientBuilder
         {
             public override ITweenMotion Build()
-                => new ColorGradientMotion(item, gradient);
+                => new ColorGradientPropertyMotion(item, gradient);
         }
         
         private ColorGradientPropertyMotion(DynamicMaterialWithProperty<Color> item, Gradient gradient)

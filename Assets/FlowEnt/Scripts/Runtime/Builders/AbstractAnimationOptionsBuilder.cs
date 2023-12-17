@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt
         [SerializeField, Min(0f)]
         private float timeScale = AbstractAnimationOptions.DefaultTimeScale;
         public float TimeScale => timeScale;
-        [SerializeField]
+        [SerializeField, Tooltip("Infinite looping")]
         private bool isLoopCountInfinite;
         [SerializeField, Min(1)]
         private int loopCount = AbstractAnimationOptions.DefaultLoopCount;

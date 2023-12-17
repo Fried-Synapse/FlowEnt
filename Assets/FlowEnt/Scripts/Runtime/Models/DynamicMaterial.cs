@@ -1,15 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
     public class DynamicMaterial
     {
-        private const string Tooltip = "Due to how Unity manages materials, we have 2 options. We either get the material that is used by all renderers or just the current instance." +
-                                       "\n*Instance* - uses the instance of the material, which is assigner at runtime, and therefore doesn't change the other objects using it (Renderer.sharedMaterial)" +
-                                       "\n*Predefined* - changes the defined material. Will affect all objects that use this material.";
-        
+        private const string Tooltip =
+            "Due to how Unity manages materials, we have 2 options. We either get the material that is used by all renderers or just the current instance." +
+            "\n*Instance* - uses the instance of the material, which is assigner at runtime, and therefore doesn't change the other objects using it (Renderer.sharedMaterial)" +
+            "\n*Predefined* - changes the defined material. Will affect all objects that use this material.";
+
         public enum MaterialType
         {
             Instance,
@@ -21,49 +23,52 @@ namespace FriedSynapse.FlowEnt
         private MaterialType type;
 
         [SerializeField]
-        private GameObject gameObject;
+        private GameObject gameObjectWithInstance;
 
         [SerializeField]
-        private Material material;
+        private Material predefinedMaterial;
 
-        private Material instancedMaterial;
+        private Material material;
 
         public DynamicMaterial()
         {
         }
 
-        public DynamicMaterial(Material material)
+        public DynamicMaterial(Material predefinedMaterial)
         {
-            this.material = material;
+            this.predefinedMaterial = predefinedMaterial;
         }
 
         public Material Material
         {
             get
             {
-                if (instancedMaterial == null)
+                //NOTE We don't want to cache in the previewer.
+#if UNITY_EDITOR
+                if (!Application.isPlaying || material == null)
+#else
+                if (material == null)
+#endif
                 {
-                    instancedMaterial = GetMaterial();
+                    material = GetMaterial();
                 }
 
-                return instancedMaterial;
+                return material;
             }
         }
 
-        public static implicit operator DynamicMaterial(Material value) => new(value);
-
-        public static implicit operator Material(DynamicMaterial value) => value.Material;
-
         private Material GetMaterial() => type switch
         {
-            MaterialType.Predefined => material,
-            MaterialType.Instance => gameObject != null ? gameObject.GetComponent<Renderer>()?.sharedMaterial : null,
+            MaterialType.Predefined => predefinedMaterial,
+            MaterialType.Instance => gameObjectWithInstance != null
+                ? gameObjectWithInstance.GetComponent<Renderer>()?.sharedMaterial
+                : null,
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-    
+
     [Serializable]
-    public class DynamicMaterialWithProperty<T> : DynamicMaterial
+    public class DynamicMaterialWithProperty : DynamicMaterial
     {
         [SerializeField]
         private int propertyId;
@@ -78,5 +83,18 @@ namespace FriedSynapse.FlowEnt
         }
 
         public int PropertyId => propertyId;
+    }
+
+
+    [Serializable]
+    public class DynamicMaterialWithProperty<T> : DynamicMaterialWithProperty
+    {
+        public DynamicMaterialWithProperty()
+        {
+        }
+
+        public DynamicMaterialWithProperty(Material material, int propertyId) : base(material, propertyId)
+        {
+        }
     }
 }
