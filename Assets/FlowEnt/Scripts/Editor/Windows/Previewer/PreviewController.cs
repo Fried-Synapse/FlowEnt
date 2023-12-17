@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -21,6 +23,18 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             EditorApplication.update += Update;
             FlowEntEditorUpdater.OnException += Stop;
+            PrefabStage.prefabStageClosing += _ =>
+            {
+                bool isPlaying = IsRunning;
+                Stop();
+                if (isPlaying)
+                {
+                    EditorUtility.DisplayDialog("Exiting while playing",
+                        "It's not safe to exit the Prefab Stage while running an animation. It might affect the default state of your prefab." +
+                        "\nPlease make sure everything is in place and next time stop the previewer before exiting.",
+                        "Ok");
+                }
+            };
         }
 
         private static int? undoGroupId;
