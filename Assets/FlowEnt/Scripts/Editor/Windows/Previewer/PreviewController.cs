@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
@@ -11,11 +12,6 @@ using UnityObject = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public interface IHasUndoableObjects
-    {
-        public List<UnityObject> GetUndoableObjects();
-    }
-
     public static class PreviewController
     {
         public class Options
@@ -147,28 +143,11 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             bool hasRecordedObjects = false;
             IMotion[] motions = animation.GetFieldValue<IMotion[]>("motions");
-            Type unityObjectType = typeof(UnityObject);
-            Type undoableObjectsType = typeof(IHasUndoableObjects);
             foreach (IMotion motion in motions)
             {
-                List<UnityObject> objects = motion
-                    .GetType()
-                    .GetFields()
-                    .Where(fi => unityObjectType.IsAssignableFrom(fi.FieldType))
-                    .Select(fi => (UnityObject)fi.GetValue(motion))
-                    .ToList();
-
-                objects.AddRange(motion
-                    .GetType()
-                    .GetProperties()
-                    .Where(pi => unityObjectType.IsAssignableFrom(pi.PropertyType))
-                    .Select(pi => (UnityObject)pi.GetValue(motion)));
-
-                objects.AddRange(motion
-                    .GetType()
-                    .GetFields()
-                    .Where(pi => undoableObjectsType.IsAssignableFrom(pi.FieldType))
-                    .SelectMany(pi => ((IHasUndoableObjects)pi.GetValue(motion)).GetUndoableObjects()));
+                List<UnityObject> objects = GetAllFor<UnityObject>(motion);
+                objects.AddRange(GetAllFor<IHasUndoableObjects>(motion)
+                    .SelectMany(i => i.GetUndoableObjects()));
 
                 objects = objects
                     .Distinct()
@@ -197,6 +176,27 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             return hasRecordedObjects;
+        }
+
+        private static List<T> GetAllFor<T>(IMotion motion)
+        {
+            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+            Type type = typeof(T);
+
+            List<T> objects = motion
+                .GetType()
+                .GetFields(bindingFlags)
+                .Where(fi => type.IsAssignableFrom(fi.FieldType))
+                .Select(fi => (T)fi.GetValue(motion))
+                .ToList();
+
+            objects.AddRange(motion
+                .GetType()
+                .GetProperties(bindingFlags)
+                .Where(pi => type.IsAssignableFrom(pi.PropertyType))
+                .Select(pi => (T)pi.GetValue(motion)));
+
+            return objects;
         }
     }
 }

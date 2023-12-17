@@ -33,16 +33,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        public TextureOffsetPropertyMotion(Material item, string propertyName, Vector2 value)
-            : this(item, Shader.PropertyToID(propertyName), value)
-        {
-        }
-
-        public TextureOffsetPropertyMotion(Material item, string propertyName, Vector2? from, Vector2 to)
-            : this(item, Shader.PropertyToID(propertyName), from, to)
-        {
-        }
-
         public TextureOffsetPropertyMotion(Material item, int propertyId, Vector2 value)
             : this(new DynamicMaterialWithProperty<Texture>(item, propertyId), value)
         {
@@ -50,6 +40,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
 
         public TextureOffsetPropertyMotion(Material item, int propertyId, Vector2? from, Vector2 to)
             : this(new DynamicMaterialWithProperty<Texture>(item, propertyId), from, to)
+        {
+        }
+
+        public TextureOffsetPropertyMotion(Material item, string propertyName, Vector2 value)
+            : this(item, Shader.PropertyToID(propertyName), value)
+        {
+        }
+
+        public TextureOffsetPropertyMotion(Material item, string propertyName, Vector2? from, Vector2 to)
+            : this(item, Shader.PropertyToID(propertyName), from, to)
         {
         }
 

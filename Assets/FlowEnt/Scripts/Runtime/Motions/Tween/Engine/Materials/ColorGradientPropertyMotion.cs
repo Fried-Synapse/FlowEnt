@@ -20,14 +20,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
             : base(item, gradient)
         {
         }
-        
-        public ColorGradientPropertyMotion(Material item, string propertyName, Gradient gradient)
-            : this(item, Shader.PropertyToID(propertyName), gradient)
-        {
-        }
 
         public ColorGradientPropertyMotion(Material item, int propertyId, Gradient gradient)
             : this(new DynamicMaterialWithProperty<Color>(item, propertyId), gradient)
+        {
+        }
+        
+        public ColorGradientPropertyMotion(Material item, string propertyName, Gradient gradient)
+            : this(item, Shader.PropertyToID(propertyName), gradient)
         {
         }
 

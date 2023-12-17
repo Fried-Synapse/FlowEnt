@@ -32,12 +32,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         }
 
         public AlphaPropertyMotion(Material item, int propertyId, float value)
-            : base(new DynamicMaterialWithProperty<Color>(item, propertyId), value)
+            : this(new DynamicMaterialWithProperty<Color>(item, propertyId), value)
         {
         }
 
         public AlphaPropertyMotion(Material item, int propertyId, float? from, float to)
-            : base(new DynamicMaterialWithProperty<Color>(item, propertyId), from, to)
+            : this(new DynamicMaterialWithProperty<Color>(item, propertyId), from, to)
         {
         }
 

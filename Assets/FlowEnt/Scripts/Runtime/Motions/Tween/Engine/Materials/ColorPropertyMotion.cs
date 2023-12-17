@@ -33,16 +33,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        public ColorPropertyMotion(Material item, string propertyName, Color value)
-            : this(item, Shader.PropertyToID(propertyName), value)
-        {
-        }
-
-        public ColorPropertyMotion(Material item, string propertyName, Color? from, Color to)
-            : this(item, Shader.PropertyToID(propertyName), from, to)
-        {
-        }
-
         public ColorPropertyMotion(Material item, int propertyId, Color value)
             : this(new DynamicMaterialWithProperty<Color>(item, propertyId), value)
         {
@@ -50,6 +40,16 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
 
         public ColorPropertyMotion(Material item, int propertyId, Color? from, Color to)
             : this(new DynamicMaterialWithProperty<Color>(item, propertyId), from, to)
+        {
+        }
+
+        public ColorPropertyMotion(Material item, string propertyName, Color value)
+            : this(item, Shader.PropertyToID(propertyName), value)
+        {
+        }
+
+        public ColorPropertyMotion(Material item, string propertyName, Color? from, Color to)
+            : this(item, Shader.PropertyToID(propertyName), from, to)
         {
         }
 

@@ -1,11 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class DynamicMaterial
+    public class DynamicMaterial : IHasUndoableObjects
     {
         private const string Tooltip =
             "Due to how Unity manages materials, we have 2 options. We either get the material that is used by all renderers or just the current instance." +
@@ -65,6 +67,8 @@ namespace FriedSynapse.FlowEnt
                 : null,
             _ => throw new ArgumentOutOfRangeException()
         };
+
+        public List<Object> GetUndoableObjects() => new() { Material };
     }
 
     [Serializable]
