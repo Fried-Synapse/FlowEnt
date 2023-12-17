@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt
@@ -38,6 +37,7 @@ namespace FriedSynapse.FlowEnt
 
         public DynamicMaterial(Material predefinedMaterial)
         {
+            type = MaterialType.Predefined;
             this.predefinedMaterial = predefinedMaterial;
         }
 
