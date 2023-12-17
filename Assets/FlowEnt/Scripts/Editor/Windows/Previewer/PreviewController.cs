@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
