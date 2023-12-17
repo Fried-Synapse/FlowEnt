@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the alpha for the specified shader property.
     /// </summary>
-    public class AlphaPropertyMotion : AbstractAlphaMotion<MaterialWithProperty<Color>>
+    public class AlphaPropertyMotion : AbstractAlphaMotion<DynamicMaterialWithProperty<Color>>
     {
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
@@ -23,21 +23,21 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new AlphaPropertyMotion(item, from, to);
         }
 
-        private AlphaPropertyMotion(MaterialWithProperty<Color> item, float value) : base(item, value)
+        private AlphaPropertyMotion(DynamicMaterialWithProperty<Color> item, float value) : base(item, value)
         {
         }
 
-        private AlphaPropertyMotion(MaterialWithProperty<Color> item, float? from, float to) : base(item, from, to)
+        private AlphaPropertyMotion(DynamicMaterialWithProperty<Color> item, float? from, float to) : base(item, from, to)
         {
         }
 
         public AlphaPropertyMotion(Material item, int propertyId, float value)
-            : base(new MaterialWithProperty<Color>(item, propertyId), value)
+            : base(new DynamicMaterialWithProperty<Color>(item, propertyId), value)
         {
         }
 
         public AlphaPropertyMotion(Material item, int propertyId, float? from, float to)
-            : base(new MaterialWithProperty<Color>(item, propertyId), from, to)
+            : base(new DynamicMaterialWithProperty<Color>(item, propertyId), from, to)
         {
         }
 

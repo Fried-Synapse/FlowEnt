@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt
             this.value = value;
             this.hasValue = true;
         }
-        
+
         private SerializableNullable(T value, bool hasValue)
         {
             this.value = value;

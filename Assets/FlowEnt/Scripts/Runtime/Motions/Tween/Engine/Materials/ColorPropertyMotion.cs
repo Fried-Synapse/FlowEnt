@@ -1,3 +1,4 @@
+using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
@@ -6,8 +7,32 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the color for the specified shader property.
     /// </summary>
-    public class ColorPropertyMotion : AbstractColorMotion<Material>
+    public class ColorPropertyMotion : AbstractColorMotion<DynamicMaterialWithProperty<Color>>
     {
+        [Serializable]
+        public class ValueBuilder : AbstractValueBuilder
+        {
+            public override ITweenMotion Build()
+                => new ColorPropertyMotion(item, value);
+        }
+
+        [Serializable]
+        public class FromToBuilder : AbstractFromToBuilder
+        {
+            public override ITweenMotion Build()
+                => new ColorPropertyMotion(item, from, to);
+        }
+        
+        private ColorPropertyMotion(DynamicMaterialWithProperty<Color> item, Color value)
+            : base(item, value)
+        {
+        }
+
+        private ColorPropertyMotion(DynamicMaterialWithProperty<Color> item, Color? from, Color to)
+            : base(item, from, to)
+        {
+        }
+
         public ColorPropertyMotion(Material item, string propertyName, Color value)
             : this(item, Shader.PropertyToID(propertyName), value)
         {
@@ -18,18 +43,17 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        public ColorPropertyMotion(Material item, int propertyId, Color value) : base(item, value)
+        public ColorPropertyMotion(Material item, int propertyId, Color value)
+            : this(new DynamicMaterialWithProperty<Color>(item, propertyId), value)
         {
-            this.propertyId = propertyId;
         }
 
-        public ColorPropertyMotion(Material item, int propertyId, Color? from, Color to) : base(item, from, to)
+        public ColorPropertyMotion(Material item, int propertyId, Color? from, Color to)
+            : this(new DynamicMaterialWithProperty<Color>(item, propertyId), from, to)
         {
-            this.propertyId = propertyId;
         }
 
-        private readonly int propertyId;
-        protected override Color GetFrom() => item.GetColor(propertyId);
-        protected override void SetValue(Color value) => item.SetColor(propertyId, value);
+        protected override Color GetFrom() => item.Material.GetColor(item.PropertyId);
+        protected override void SetValue(Color value) => item.Material.SetColor(item.PropertyId, value);
     }
 }
