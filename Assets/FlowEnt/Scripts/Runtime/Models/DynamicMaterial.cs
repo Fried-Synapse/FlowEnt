@@ -68,7 +68,7 @@ namespace FriedSynapse.FlowEnt
             _ => throw new ArgumentOutOfRangeException()
         };
 
-        public List<Object> GetUndoableObjects() => new() { Material };
+        List<Object> IHasUndoableObjects.GetUndoableObjects() => new() { Material };
     }
 
     [Serializable]

@@ -95,10 +95,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     PreviewerWindow.Instance.RefreshAnimations(isFocusedAnimationThisOne
                         ? property.GetValue<IAbstractAnimationBuilder>().Build()
                         : null);
-                    if (isFocusedAnimationThisOne)
-                    {
-                        GUIUtility.ExitGUI();
-                    }
+                    GUIUtility.ExitGUI();
                 }
             }
 
