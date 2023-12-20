@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Editor
     [CustomPropertyDrawer(typeof(IMotionBuilder), true)]
     public class AbstractMotionBuilderPropertyDrawer : PropertyDrawer, ICrudable<IMotionBuilder>
     {
-        private readonly List<string> hiddenProperties = new List<string>
+        private readonly List<string> hiddenProperties = new()
         {
             IdentifiableBuilderFields.DisplayName,
             IdentifiableBuilderFields.IsDisplayNameEnabled,
@@ -46,11 +46,11 @@ namespace FriedSynapse.FlowEnt.Editor
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
             IMotionBuilder motionBuilder = property.GetValue<IMotionBuilder>();
             string name = MotionNames.GetNames(motionBuilder.GetType(), motionBuilder).Preferred;
-            
+
             FlowEntEditorGUILayout.PropertyFieldIsEnabled(headerPosition, property);
-            
+
             label.text = name.PadLeft(name.Length + 6);
-            property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label);
+            property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label, true);
 
             DrawMenu(headerPosition, property);
 

@@ -52,7 +52,7 @@ namespace FriedSynapse.FlowEnt.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded,
-                GetLabel(property, label), EditorStyles.foldoutHeader);
+                GetLabel(property, label), true, EditorStyles.foldoutHeader);
 
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
             DrawMenu(headerPosition, property);
