@@ -5,9 +5,9 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenOptionsBuilder))]
     public class TweenOptionsBuilderPropertyDrawer : AbstractPropertiesBuilderPropertyDrawer<
-        TweenOptionsBuilderPropertyDrawer.PropertiesEnum>
+        TweenOptionsBuilderPropertyDrawer.FieldsEnum>
     {
-        public enum PropertiesEnum
+        public enum FieldsEnum
         {
             name,
             updateType,
@@ -28,21 +28,21 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             for (int i = 0; i < Properties.Count; i++)
             {
-                PropertiesEnum prop = Properties[i];
+                FieldsEnum prop = Properties[i];
                 Rect propertyPosition = FlowEntEditorGUILayout.GetRect(position, i + 1);
                 switch (prop)
                 {
-                    case PropertiesEnum.loopCount:
-                        DrawNullable(propertyPosition, property, nameof(PropertiesEnum.loopCount),
+                    case FieldsEnum.loopCount:
+                        DrawNullable(propertyPosition, property, nameof(FieldsEnum.loopCount),
                             "isLoopCountInfinite", true);
                         break;
-                    case PropertiesEnum.easing:
+                    case FieldsEnum.easing:
                         TweenOptionsBuilder.EasingType easingType =
                             (TweenOptionsBuilder.EasingType)property
-                                .FindPropertyRelative(nameof(PropertiesEnum.easingType)).enumValueIndex;
+                                .FindPropertyRelative(nameof(FieldsEnum.easingType)).enumValueIndex;
                         string propertyName = easingType switch
                         {
-                            TweenOptionsBuilder.EasingType.Predefined => nameof(PropertiesEnum.easing),
+                            TweenOptionsBuilder.EasingType.Predefined => nameof(FieldsEnum.easing),
                             TweenOptionsBuilder.EasingType.AnimationCurve => "easingCurve",
                             _ => throw new System.NotImplementedException(),
                         };

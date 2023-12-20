@@ -5,9 +5,9 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(FlowOptionsBuilder))]
     public class FlowOptionsBuilderPropertyDrawer : AbstractPropertiesBuilderPropertyDrawer<
-        FlowOptionsBuilderPropertyDrawer.PropertiesEnum>
+        FlowOptionsBuilderPropertyDrawer.FieldsEnum>
     {
-        public enum PropertiesEnum
+        public enum FieldsEnum
         {
             name,
             updateType,
@@ -24,12 +24,12 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             for (int i = 0; i < Properties.Count; i++)
             {
-                PropertiesEnum prop = Properties[i];
+                FieldsEnum prop = Properties[i];
                 Rect propertyPosition = FlowEntEditorGUILayout.GetRect(position, i + 1);
                 switch (prop)
                 {
-                    case PropertiesEnum.loopCount:
-                        DrawNullable(propertyPosition, property, nameof(PropertiesEnum.loopCount),
+                    case FieldsEnum.loopCount:
+                        DrawNullable(propertyPosition, property, nameof(FieldsEnum.loopCount),
                             "isLoopCountInfinite", true);
                         break;
                     default:
