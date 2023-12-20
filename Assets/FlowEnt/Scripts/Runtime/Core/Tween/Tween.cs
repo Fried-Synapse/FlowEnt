@@ -270,7 +270,6 @@ namespace FriedSynapse.FlowEnt
         /// <param name="element"></param>
         /// <typeparam name="TItem"></typeparam>
         public TweenMotionProxy<TItem> For<TItem>(TItem element)
-            where TItem : class
         {
             return new TweenMotionProxy<TItem>(this, element);
         }
@@ -281,7 +280,6 @@ namespace FriedSynapse.FlowEnt
         /// <param name="elements"></param>
         /// <typeparam name="TItem"></typeparam>
         public TweenMotionProxyArray<TItem> For<TItem>(params TItem[] elements)
-            where TItem : class
         {
             return new TweenMotionProxyArray<TItem>(this, elements);
         }
@@ -292,7 +290,6 @@ namespace FriedSynapse.FlowEnt
         /// <param name="elements"></param>
         /// <typeparam name="TItem"></typeparam>
         public TweenMotionProxyArray<TItem> ForAll<TItem>(IEnumerable<TItem> elements)
-            where TItem : class
         {
             return new TweenMotionProxyArray<TItem>(this, elements.ToArray());
         }

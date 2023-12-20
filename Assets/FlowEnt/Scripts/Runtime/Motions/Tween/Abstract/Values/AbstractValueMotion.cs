@@ -4,10 +4,8 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractStructValueMotion<TItem, TValue> : AbstractValueMotion<TItem, TValue>
-        where TItem : class
         where TValue : struct
     {
-#if FlowEnt_3_Nullables
         [Serializable]
         public new abstract class AbstractFromToBuilder<T> : AbstractBuilder
             where T : struct
@@ -23,7 +21,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         public new abstract class AbstractFromToBuilder : AbstractFromToBuilder<TValue>
         {
         }
-#endif
 
         protected AbstractStructValueMotion(TItem item, TValue value) : base(item, value)
         {
@@ -36,7 +33,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     }
 
     public abstract class AbstractClassValueMotion<TItem, TValue> : AbstractValueMotion<TItem, TValue>
-        where TItem : class
         where TValue : class
     {
         protected AbstractClassValueMotion(TItem item, TValue value) : base(item, value)
@@ -44,13 +40,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         }
 
         protected AbstractClassValueMotion(TItem item, TValue from, TValue to) : base(item, from != null,
-            from ?? default, to)
+            from, to)
         {
         }
     }
 
     public abstract class AbstractValueMotion<TItem, TValue> : AbstractTweenMotion<TItem>
-        where TItem : class
     {
         [Serializable]
         public abstract class AbstractValueBuilder<T> : AbstractBuilder

@@ -7,7 +7,6 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     /// <typeparam name="TItem"></typeparam>
     public class EchoMotionProxyArray<TItem>
-        where TItem : class
     {
         public EchoMotionProxyArray(Echo echo, TItem[] array)
         {

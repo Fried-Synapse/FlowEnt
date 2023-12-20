@@ -4,7 +4,6 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractAxisMotion<TItem> : AbstractVector3Motion<TItem>
-        where TItem : class
     {
         [Serializable]
         public abstract class AbstractAxisValueBuilder : AbstractBuilder
@@ -21,13 +20,9 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
             [SerializeField]
             protected Axis axis;
-#if FlowEnt_3_Nullables
+
             [SerializeField]
             protected SerializableNullable<float> from;
-#else
-            [SerializeField]
-            protected float from;
-#endif
 
             [SerializeField]
             protected float to;

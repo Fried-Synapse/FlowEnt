@@ -253,7 +253,6 @@ namespace FriedSynapse.FlowEnt
         /// <param name="element"></param>
         /// <typeparam name="TItem"></typeparam>
         public EchoMotionProxy<TItem> For<TItem>(TItem element)
-            where TItem : class
         {
             return new EchoMotionProxy<TItem>(this, element);
         }
@@ -264,7 +263,6 @@ namespace FriedSynapse.FlowEnt
         /// <param name="elements"></param>
         /// <typeparam name="TItem"></typeparam>
         public EchoMotionProxyArray<TItem> For<TItem>(params TItem[] elements)
-            where TItem : class
         {
             return new EchoMotionProxyArray<TItem>(this, elements);
         }
@@ -275,7 +273,6 @@ namespace FriedSynapse.FlowEnt
         /// <param name="elements"></param>
         /// <typeparam name="TItem"></typeparam>
         public EchoMotionProxyArray<TItem> ForAll<TItem>(IEnumerable<TItem> elements)
-            where TItem : class
         {
             return new EchoMotionProxyArray<TItem>(this, elements.ToArray());
         }

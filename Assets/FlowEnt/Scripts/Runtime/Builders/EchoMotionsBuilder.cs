@@ -12,7 +12,6 @@ namespace FriedSynapse.FlowEnt
 
     [Serializable]
     public abstract class AbstractEchoMotionBuilder<TItem> : AbstractEchoMotionBuilder
-        where TItem : class
     {
         [SerializeField]
         protected TItem item;

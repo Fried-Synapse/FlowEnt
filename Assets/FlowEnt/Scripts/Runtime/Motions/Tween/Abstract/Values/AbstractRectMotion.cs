@@ -4,7 +4,6 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractRectMotion<TItem> : AbstractStructValueMotion<TItem, Rect>
-        where TItem : class
     {
         protected AbstractRectMotion(TItem item, Rect value) : base(item, value)
         {

@@ -97,7 +97,7 @@ namespace FriedSynapse.FlowEnt
         public static implicit operator T(DynamicValue<T> dynamicValue) => dynamicValue.Value;
 
         public static implicit operator DynamicValue<T>(T value) =>
-            new DynamicValue<T>()
+            new()
             {
                 constant = value,
                 randomMin = value,
@@ -105,7 +105,7 @@ namespace FriedSynapse.FlowEnt
             };
 
         public static implicit operator DynamicValue<T>((T, T) value) =>
-            new DynamicValue<T>()
+            new()
             {
                 constant = value.Item1,
                 randomMin = value.Item1,

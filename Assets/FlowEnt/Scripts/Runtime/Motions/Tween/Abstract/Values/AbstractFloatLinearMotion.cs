@@ -3,7 +3,6 @@ using System;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractFloatLinearMotion<TItem> : AbstractClassValueMotion<TItem, LinearFloat>
-        where TItem : class
     {
         protected AbstractFloatLinearMotion(TItem item, LinearFloat value) : base(item, value)
         {

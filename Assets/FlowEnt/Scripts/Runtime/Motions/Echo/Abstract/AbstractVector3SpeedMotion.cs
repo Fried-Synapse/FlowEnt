@@ -4,7 +4,6 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
 {
     public abstract class AbstractVector3SpeedMotion<TItem> : AbstractEchoMotion<TItem>
-        where TItem : class
     {
         [Serializable]
         public abstract class AbstractVector3SpeedBuilder : AbstractBuilder

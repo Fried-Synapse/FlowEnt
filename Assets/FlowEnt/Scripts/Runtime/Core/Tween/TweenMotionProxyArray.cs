@@ -7,7 +7,6 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     /// <typeparam name="TItem"></typeparam>
     public class TweenMotionProxyArray<TItem>
-        where TItem : class
     {
         public TweenMotionProxyArray(Tween tween, TItem[] array)
         {
