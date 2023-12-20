@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityObject = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -141,21 +143,11 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             bool hasRecordedObjects = false;
             IMotion[] motions = animation.GetFieldValue<IMotion[]>("motions");
-            Type type = typeof(UnityEngine.Object);
             foreach (IMotion motion in motions)
             {
-                List<UnityEngine.Object> objects = motion
-                    .GetType()
-                    .GetFields()
-                    .Where(fi => type.IsAssignableFrom(fi.FieldType))
-                    .Select(fi => (UnityEngine.Object)fi.GetValue(motion))
-                    .ToList();
-
-                objects.AddRange(motion
-                    .GetType()
-                    .GetProperties()
-                    .Where(pi => type.IsAssignableFrom(pi.PropertyType))
-                    .Select(pi => (UnityEngine.Object)pi.GetValue(motion)));
+                List<UnityObject> objects = GetAllFor<UnityObject>(motion);
+                objects.AddRange(GetAllFor<IHasUndoableObjects>(motion)
+                    .SelectMany(i => i.GetUndoableObjects()));
 
                 objects = objects
                     .Distinct()
@@ -184,6 +176,27 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             return hasRecordedObjects;
+        }
+
+        private static List<T> GetAllFor<T>(IMotion motion)
+        {
+            const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+            Type type = typeof(T);
+
+            List<T> objects = motion
+                .GetType()
+                .GetFields(bindingFlags)
+                .Where(fi => type.IsAssignableFrom(fi.FieldType))
+                .Select(fi => (T)fi.GetValue(motion))
+                .ToList();
+
+            objects.AddRange(motion
+                .GetType()
+                .GetProperties(bindingFlags)
+                .Where(pi => type.IsAssignableFrom(pi.PropertyType))
+                .Select(pi => (T)pi.GetValue(motion)));
+
+            return objects;
         }
     }
 }

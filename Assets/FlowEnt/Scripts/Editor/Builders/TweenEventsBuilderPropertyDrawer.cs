@@ -4,9 +4,9 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenEventsBuilder))]
-    public class TweenEventsBuilderPropertyDrawer : AbstractEventsBuilderPropertyDrawer<TweenEventsBuilderPropertyDrawer.PropertiesEnum>
+    public class TweenEventsBuilderPropertyDrawer : AbstractEventsBuilderPropertyDrawer<TweenEventsBuilderPropertyDrawer.FieldsEnum>
     {
-        public enum PropertiesEnum
+        public enum FieldsEnum
         {
             onStarting,
             onStarted,
