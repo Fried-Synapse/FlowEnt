@@ -99,6 +99,24 @@ namespace FriedSynapse.FlowEnt.Editor
                 crudable.Clipboard == null || item.GetType() != crudable.Clipboard.GetType());
         }
 
+        internal static void ShowExpand(GenericMenu context, SerializedProperty listProperty)
+        {
+            SerializedProperty target = listProperty.Copy();
+
+            void expandAll()
+            {
+                target.ExpandArray(true);
+            }
+            
+            void collapseAll()
+            {
+                target.ExpandArray(false);
+            }
+
+            context.AddItem(new GUIContent("Expand all"), expandAll);
+            context.AddItem(new GUIContent("Collapse all"), collapseAll);
+        }
+
         internal static Rect GetRect(Rect position, int index)
             => GetRect(position, index, FlowEntConstants.SpacedSingleLineHeight, EditorGUIUtility.singleLineHeight);
 

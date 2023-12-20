@@ -10,11 +10,9 @@ namespace FriedSynapse.FlowEnt
         Random
     }
 
-    //TODO this is a really neat concept but it brings a log of complications:
-    //1 - it's not nullable. Which means it'll have to have a custom implementation for nullable option
-    //2 - it's not backwards compatible.
     [Serializable]
     public struct DynamicValue<T>
+        where T : struct
     {
         [SerializeField]
         private DynamicValueType type;

@@ -23,10 +23,10 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
         public class FromToBuilder : AbstractBuilder
         {
             [SerializeField]
-            protected Vector2 fromMin;
+            protected SerializableNullable<Vector2> fromMin;
 
             [SerializeField]
-            protected Vector2 fromMax;
+            protected SerializableNullable<Vector2> fromMax;
 
             [SerializeField]
             protected Vector2 toMin;
