@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new MoveAnchoredPositionVectorMotion(item, from, to);
+                => new MoveAnchoredPositionVectorMotion(item, From, to);
         }
         
         public MoveAnchoredPositionVectorMotion(RectTransform item, Vector3 value) : base(item, value)

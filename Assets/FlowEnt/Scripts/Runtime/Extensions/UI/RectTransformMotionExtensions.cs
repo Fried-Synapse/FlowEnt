@@ -120,12 +120,40 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveAnchorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        public static TweenMotionProxy<RectTransform> MoveAnchor(this TweenMotionProxy<RectTransform> proxy,
+            MinMaxVector2 value)
+            => proxy.Apply(new MoveAnchorMotion(proxy.Item, value));
+
+        /// <summary>
+        /// Applies a <see cref="MoveAnchorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="to"></param>
+        public static TweenMotionProxy<RectTransform> MoveAnchorTo(this TweenMotionProxy<RectTransform> proxy,
+            MinMaxVector2 to)
+            => proxy.Apply(new MoveAnchorMotion(proxy.Item, null, to));
+
+        /// <summary>
+        /// Applies a <see cref="MoveAnchorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotionProxy<RectTransform> MoveAnchorTo(this TweenMotionProxy<RectTransform> proxy,
+            MinMaxVector2 from, MinMaxVector2 to)
+            => proxy.Apply(new MoveAnchorMotion(proxy.Item, from, to));
+
+        /// <summary>
+        /// Applies a <see cref="MoveAnchorMotion" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
         /// <param name="valueMin"></param>
         /// <param name="valueMax"></param>
         public static TweenMotionProxy<RectTransform> MoveAnchor(this TweenMotionProxy<RectTransform> proxy,
             Vector2 valueMin, Vector2 valueMax)
-            => proxy.Apply(new MoveAnchorMotion(proxy.Item, valueMin, valueMax));
-        
+            => proxy.Apply(new MoveAnchorMotion(proxy.Item, new MinMaxVector2(valueMin, valueMax)));
+
         /// <summary>
         /// Applies a <see cref="MoveAnchorMotion" /> to the tween.
         /// </summary>
@@ -134,7 +162,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="toMax"></param>
         public static TweenMotionProxy<RectTransform> MoveAnchorTo(this TweenMotionProxy<RectTransform> proxy,
             Vector2 toMin, Vector2 toMax)
-            => proxy.Apply(new MoveAnchorMotion(proxy.Item, null, null, toMin, toMax));
+            => proxy.Apply(new MoveAnchorMotion(proxy.Item, null, new MinMaxVector2(toMin, toMax)));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchorMotion" /> to the tween.
@@ -146,7 +174,8 @@ namespace FriedSynapse.FlowEnt
         /// <param name="toMax"></param>
         public static TweenMotionProxy<RectTransform> MoveAnchorTo(this TweenMotionProxy<RectTransform> proxy,
             Vector2 fromMin, Vector2 fromMax, Vector2 toMin, Vector2 toMax)
-            => proxy.Apply(new MoveAnchorMotion(proxy.Item, fromMin, fromMax, toMin, toMax));
+            => proxy.Apply(new MoveAnchorMotion(proxy.Item, new MinMaxVector2(fromMin, fromMax),
+                new MinMaxVector2(toMin, toMax)));
 
         /// <summary>
         /// Applies a <see cref="MoveAnchorMotion" /> to the tween.

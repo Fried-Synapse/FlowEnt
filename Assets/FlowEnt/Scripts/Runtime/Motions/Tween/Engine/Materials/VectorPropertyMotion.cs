@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new VectorPropertyMotion(item, from, to);
+                => new VectorPropertyMotion(item, From, to);
         }
 
         private VectorPropertyMotion(DynamicMaterialWithProperty<Vector4> item, Vector4 value)

@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new ScaleLocalVectorMotion(item, from, to);
+                => new ScaleLocalVectorMotion(item, From, to);
         }
 
         public ScaleLocalVectorMotion(Transform item, Vector3 value) : base(item, value)

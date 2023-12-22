@@ -6,26 +6,17 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     public abstract class AbstractAxisMotion<TItem> : AbstractVector3Motion<TItem>
     {
         [Serializable]
-        public abstract class AbstractAxisValueBuilder : AbstractBuilder
+        public abstract class AbstractAxisValueBuilder : AbstractValueBuilder<float>
         {
             [SerializeField]
             protected Axis axis;
-
-            [SerializeField]
-            protected float value;
         }
 
         [Serializable]
-        public abstract class AbstractAxisFromToBuilder : AbstractBuilder
+        public abstract class AbstractAxisFromToBuilder : AbstractFromToBuilder<float>
         {
             [SerializeField]
             protected Axis axis;
-
-            [SerializeField]
-            protected SerializableNullable<float> from;
-
-            [SerializeField]
-            protected float to;
         }
 
         protected AbstractAxisMotion(TItem item, Axis axis, float value) : base(item, GetValue(value, axis))

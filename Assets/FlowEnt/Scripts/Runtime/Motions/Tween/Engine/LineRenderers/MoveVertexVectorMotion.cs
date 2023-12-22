@@ -12,10 +12,8 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.LineRenderers
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
         {
-#pragma warning disable IDE0044, RCS1169
             [SerializeField]
             private int index;
-#pragma warning restore IDE0044, RCS1169
             public override ITweenMotion Build()
                 => new MoveVertexVectorMotion(item, index, value);
         }
@@ -23,12 +21,10 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.LineRenderers
         [Serializable]
         public class FromToBuilder : AbstractFromToBuilder
         {
-#pragma warning disable IDE0044, RCS1169
             [SerializeField]
             private int index;
-#pragma warning restore IDE0044, RCS1169
             public override ITweenMotion Build()
-                => new MoveVertexVectorMotion(item, index, from, to);
+                => new MoveVertexVectorMotion(item, index, From, to);
         }
 
         public MoveVertexVectorMotion(LineRenderer item, int index, Vector3 value) : base(item, value)

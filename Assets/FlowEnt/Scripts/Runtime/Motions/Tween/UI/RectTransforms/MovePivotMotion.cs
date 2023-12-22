@@ -17,7 +17,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new MovePivotMotion(item, from, to);
+                => new MovePivotMotion(item, From, to);
         }
 
         [Serializable]
@@ -31,7 +31,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
         public class PresetFromToBuilder : AbstractFromToBuilder<PivotPreset>
         {
             public override ITweenMotion Build()
-                => new MovePivotMotion(item, from, to);
+                => new MovePivotMotion(item, From, to);
         }
 
         public MovePivotMotion(RectTransform item, Vector2 value) : base(item, value)

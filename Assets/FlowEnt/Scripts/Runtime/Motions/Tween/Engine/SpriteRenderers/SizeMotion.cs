@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new SizeMotion(item, from, to);
+                => new SizeMotion(item, From, to);
         }
 
         public SizeMotion(SpriteRenderer item, Vector2 value) : base(item, value)

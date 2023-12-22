@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new MassMotion(item, from, to);
+                => new MassMotion(item, From, to);
         }
 
         public MassMotion(Rigidbody item, float value) : base(item, value)

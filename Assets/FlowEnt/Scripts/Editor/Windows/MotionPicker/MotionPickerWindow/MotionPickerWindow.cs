@@ -70,6 +70,7 @@ namespace FriedSynapse.FlowEnt.Editor
             ApplyHacks();
             LoadContent();
             searchBox = Content.Query<TextField>("searchBox").First();
+            searchBox.Focus();
             autoClose = Content.Query<Toggle>("autoClose").First();
             favourites = queryAndInitFoldout("favourites", FavouritesFoldoutPrefs);
             recent = queryAndInitFoldout("recent", RecentFoldoutPrefs);

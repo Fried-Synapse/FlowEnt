@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new RotateQuaternionMotion(item, from, to);
+                => new RotateQuaternionMotion(item, From, to);
         }
 
         public RotateQuaternionMotion(Transform item, Quaternion value) : base(item, value)

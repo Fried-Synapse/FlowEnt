@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Cameras
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new RectMotion(item, from, to);
+                => new RectMotion(item, From, to);
         }
 
         public RectMotion(Camera item, Rect value) : base(item, value)

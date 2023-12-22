@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new ScaleSizeDeltaMotion(item, from, to);
+                => new ScaleSizeDeltaMotion(item, From, to);
         }
 
         public ScaleSizeDeltaMotion(RectTransform item, Vector2 value) : base(item, value)
