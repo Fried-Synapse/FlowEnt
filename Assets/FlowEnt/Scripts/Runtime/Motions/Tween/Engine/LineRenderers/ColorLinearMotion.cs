@@ -20,18 +20,19 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.LineRenderers
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new ColorLinearMotion(item, from, to);
+                => new ColorLinearMotion(item, From, to);
         }
 
         public ColorLinearMotion(LineRenderer item, LinearColor value) : base(item, value)
         {
         }
 
-        public ColorLinearMotion(LineRenderer item, LinearColor from, LinearColor to) : base(item, from, to)
+        public ColorLinearMotion(LineRenderer item, LinearColor? from, LinearColor to) : base(item, from, to)
         {
         }
 
-        protected override LinearColor GetFrom() => new LinearColor(item.startColor, item.endColor);
+        protected override LinearColor GetFrom() => new(item.startColor, item.endColor);
+
         protected override void SetValue(LinearColor value)
         {
             item.startColor = value.Start;

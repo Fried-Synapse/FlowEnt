@@ -9,6 +9,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
         [Serializable]
         public class Builder : AbstractValueMotionBuilder
         {
+            public Builder()
+            {
+                from = Color.white;
+                to = Color.white;
+            }
+            
             public override ITweenMotion Build()
                 => new ColorValueMotion(from, to, GetCallback());
         }

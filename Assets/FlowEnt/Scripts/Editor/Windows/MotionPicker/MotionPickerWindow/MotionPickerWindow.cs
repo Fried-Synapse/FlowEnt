@@ -22,19 +22,18 @@ namespace FriedSynapse.FlowEnt.Editor
         private FoldoutScrollable all;
 
         private PersistentEditorPrefBool FavouritesFoldoutPrefs { get; } =
-            new PersistentEditorPrefBool(FlowEntEditorPrefs.FavouritesFoldoutKey);
+            new (FlowEntEditorPrefs.FavouritesFoldoutKey);
 
         private PersistentEditorPrefBool RecentFoldoutPrefs { get; } =
-            new PersistentEditorPrefBool(FlowEntEditorPrefs.RecentFoldoutKey);
+            new (FlowEntEditorPrefs.RecentFoldoutKey);
 
         private PersistentEditorPrefBool AllFoldoutPrefs { get; } =
-            new PersistentEditorPrefBool(FlowEntEditorPrefs.AllFoldoutKey, true);
+            new (FlowEntEditorPrefs.AllFoldoutKey, true);
 
         private PersistentEditorPrefListString FavouritesPrefs { get; } =
-            new PersistentEditorPrefListString(FlowEntEditorPrefs.FavouritesKey, new List<string>());
+            new (FlowEntEditorPrefs.FavouritesKey, new List<string>());
 
-        private Dictionary<string, PersistentEditorPrefListString> RecentPrefsDictionary { get; } =
-            new Dictionary<string, PersistentEditorPrefListString>();
+        private Dictionary<string, PersistentEditorPrefListString> RecentPrefsDictionary { get; } = new();
         
         private PersistentEditorPrefListString RecentPrefs
         {
@@ -71,6 +70,7 @@ namespace FriedSynapse.FlowEnt.Editor
             ApplyHacks();
             LoadContent();
             searchBox = Content.Query<TextField>("searchBox").First();
+            searchBox.Focus();
             autoClose = Content.Query<Toggle>("autoClose").First();
             favourites = queryAndInitFoldout("favourites", FavouritesFoldoutPrefs);
             recent = queryAndInitFoldout("recent", RecentFoldoutPrefs);

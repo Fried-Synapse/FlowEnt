@@ -17,7 +17,6 @@ namespace FriedSynapse.FlowEnt
         IFluentControllable<TweenMotionProxy<TItem>>,
         IFluentTweenOptionable<TweenMotionProxy<TItem>>,
         IFluentTweenEventable<TweenMotionProxy<TItem>>
-        where TItem : class
     {
         public TweenMotionProxy(Tween tween, TItem item)
         {

@@ -1,4 +1,11 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using FriedSynapse.FlowEnt.Motions.Abstract;
+using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
@@ -86,6 +93,36 @@ namespace FriedSynapse.FlowEnt.Builder
             reset(Green, new Vector3(-2f, 0f, 0f));
             reset(Yellow, new Vector3(0f, 0f, 0f));
             reset(Red, new Vector3(2f, 0f, 0f));
+        }
+
+        public void AddAllMotions<TMotionBuilder>()
+            where TMotionBuilder : IMotionBuilder
+        {
+            Type type = typeof(TMotionBuilder);
+            List<TMotionBuilder> items = new();
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                items.AddRange(assembly
+                    .GetTypes()
+                    .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(type))
+                    .Select(t => (TMotionBuilder)Activator.CreateInstance(t)));
+            }
+
+            switch (type)
+            {
+                case not null when type == typeof(AbstractTweenMotionBuilder):
+                    Tween.Motions.Items.AddRange(items.Cast<AbstractTweenMotionBuilder>());
+                    break;
+                case not null when type == typeof(AbstractEchoMotionBuilder):
+                    Echo.Motions.Items.AddRange(items.Cast<AbstractEchoMotionBuilder>());
+                    break;
+            }
+        }
+
+        public void Clear()
+        {
+            Tween.Motions.Items.Clear();
+            Echo.Motions.Items.Clear();
         }
 
         public void Log(float t)

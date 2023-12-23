@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Lights
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new RangeMotion(item, from, to);
+                => new RangeMotion(item, From, to);
         }
 
         public RangeMotion(Light item, float value) : base(item, value)

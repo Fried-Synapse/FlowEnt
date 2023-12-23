@@ -31,7 +31,6 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TItem"></typeparam>
         public static TweenMotionProxy<TItem> Tween<TItem>(this TItem item, float time = TweenOptions.DefaultTime,
             bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
-            where TItem : class
             => new Tween(time, autoStart).For(item);
 
         /// <summary>
@@ -41,7 +40,6 @@ namespace FriedSynapse.FlowEnt
         /// <param name="options"></param>
         /// <typeparam name="TItem"></typeparam>
         public static TweenMotionProxy<TItem> Tween<TItem>(this TItem item, TweenOptions options)
-            where TItem : class
             => new Tween(options).For(item);
 
         /// <summary>
@@ -65,7 +63,6 @@ namespace FriedSynapse.FlowEnt
         /// <typeparam name="TItem"></typeparam>
         public static EchoMotionProxy<TItem> Echo<TItem>(this TItem item, float? timeout = default,
             bool autoStart = AbstractAnimationOptions.DefaultAutoStart)
-            where TItem : class
             => new Echo(timeout, autoStart).For(item);
 
         /// <summary>
@@ -75,7 +72,6 @@ namespace FriedSynapse.FlowEnt
         /// <param name="options"></param>
         /// <typeparam name="TItem"></typeparam>
         public static EchoMotionProxy<TItem> Echo<TItem>(this TItem item, EchoOptions options)
-            where TItem : class
             => new Echo(options).For(item);
 
         /// <summary>

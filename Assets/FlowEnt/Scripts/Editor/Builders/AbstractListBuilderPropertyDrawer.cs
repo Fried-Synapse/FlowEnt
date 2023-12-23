@@ -82,6 +82,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 GenericMenu context = new GenericMenu();
                 FlowEntEditorGUILayout.ShowListClear(context, property.FindPropertyRelative(ItemsNames));
                 context.AddSeparator(string.Empty);
+                FlowEntEditorGUILayout.ShowExpand(context, property.FindPropertyRelative(ItemsNames));
+                context.AddSeparator(string.Empty);
                 AddItemsToContextMenu(context, property);
                 context.ShowAsContext();
             }

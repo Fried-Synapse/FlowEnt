@@ -20,7 +20,6 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
     /// </summary>
     /// <typeparam name="TItem">Generic Type for the motion. There is a read only property of type <T> called item that can be used and it's required on the constructor.</typeparam>
     public abstract class AbstractEchoMotion<TItem> : AbstractEchoMotion
-        where TItem : class
     {
         [Serializable]
         public abstract class AbstractBuilder : AbstractEchoMotionBuilder<TItem>

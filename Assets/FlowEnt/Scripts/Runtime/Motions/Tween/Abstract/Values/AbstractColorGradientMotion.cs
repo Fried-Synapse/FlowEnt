@@ -4,7 +4,6 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractColorGradientMotion<TItem> : AbstractTweenMotion<TItem>
-        where TItem : class
     {
         [Serializable]
         public abstract class AbstractGradientBuilder : AbstractBuilder

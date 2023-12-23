@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new TextureOffsetPropertyMotion(item, from, to);
+                => new TextureOffsetPropertyMotion(item, From, to);
         }
 
         private TextureOffsetPropertyMotion(DynamicMaterialWithProperty<Texture> item, Vector2 value)

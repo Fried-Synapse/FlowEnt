@@ -2,14 +2,13 @@ using System;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
-    public abstract class AbstractFloatLinearMotion<TItem> : AbstractClassValueMotion<TItem, LinearFloat>
-        where TItem : class
+    public abstract class AbstractFloatLinearMotion<TItem> : AbstractStructValueMotion<TItem, LinearFloat>
     {
         protected AbstractFloatLinearMotion(TItem item, LinearFloat value) : base(item, value)
         {
         }
 
-        protected AbstractFloatLinearMotion(TItem item, LinearFloat from, LinearFloat to) : base(item, from, to)
+        protected AbstractFloatLinearMotion(TItem item, LinearFloat? from, LinearFloat to) : base(item, from, to)
         {
         }
 

@@ -10,11 +10,9 @@ namespace FriedSynapse.FlowEnt
         Random
     }
 
-    //TODO this is a really neat concept but it brings a log of complications:
-    //1 - it's not nullable. Which means it'll have to have a custom implementation for nullable option
-    //2 - it's not backwards compatible.
     [Serializable]
     public struct DynamicValue<T>
+        where T : struct
     {
         [SerializeField]
         private DynamicValueType type;
@@ -97,7 +95,7 @@ namespace FriedSynapse.FlowEnt
         public static implicit operator T(DynamicValue<T> dynamicValue) => dynamicValue.Value;
 
         public static implicit operator DynamicValue<T>(T value) =>
-            new DynamicValue<T>()
+            new()
             {
                 constant = value,
                 randomMin = value,
@@ -105,7 +103,7 @@ namespace FriedSynapse.FlowEnt
             };
 
         public static implicit operator DynamicValue<T>((T, T) value) =>
-            new DynamicValue<T>()
+            new()
             {
                 constant = value.Item1,
                 randomMin = value.Item1,

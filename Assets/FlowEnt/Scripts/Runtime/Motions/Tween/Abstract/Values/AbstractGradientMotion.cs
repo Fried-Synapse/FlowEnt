@@ -4,7 +4,6 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractGradientMotion<TItem> : AbstractClassValueMotion<TItem, Gradient>
-        where TItem : class
     {
         protected AbstractGradientMotion(TItem item, Gradient value) : base(item, value)
         {

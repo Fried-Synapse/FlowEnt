@@ -28,7 +28,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
             private int index;
 #pragma warning restore IDE0044, RCS1169
             public override ITweenMotion Build()
-                => new MoveVertexVectorMotion(item, index, from, to);
+                => new MoveVertexVectorMotion(item, index, From, to);
         }
 
         public MoveVertexVectorMotion(TrailRenderer item, int index, Vector3 value) : base(item, value)

@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         public class FromToBuilder : AbstractRotateAxisFromToBuilder
         {
             public override ITweenMotion Build()
-                => new RotateAxisMotion(item, axis, from, to);
+                => new RotateAxisMotion(item, axis, From, to);
         }
 
         public RotateAxisMotion(Transform item, Axis axis, float value) : base(item, axis, value)

@@ -15,7 +15,6 @@ namespace FriedSynapse.FlowEnt
         IFluentControllable<EchoMotionProxy<TItem>>,
         IFluentEchoOptionable<EchoMotionProxy<TItem>>,
         IFluentEchoEventable<EchoMotionProxy<TItem>>
-        where TItem : class
     {
         public EchoMotionProxy(Echo echo, TItem item)
         {

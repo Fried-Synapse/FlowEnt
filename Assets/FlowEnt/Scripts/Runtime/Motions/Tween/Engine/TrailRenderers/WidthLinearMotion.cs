@@ -20,18 +20,19 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new WidthLinearMotion(item, from, to);
+                => new WidthLinearMotion(item, From, to);
         }
 
         public WidthLinearMotion(TrailRenderer item, LinearFloat value) : base(item, value)
         {
         }
 
-        public WidthLinearMotion(TrailRenderer item, LinearFloat from, LinearFloat to) : base(item, from, to)
+        public WidthLinearMotion(TrailRenderer item, LinearFloat? from, LinearFloat to) : base(item, from, to)
         {
         }
 
-        protected override LinearFloat GetFrom() => new LinearFloat(item.startWidth, item.endWidth);
+        protected override LinearFloat GetFrom() => new(item.startWidth, item.endWidth);
+
         protected override void SetValue(LinearFloat value)
         {
             item.startWidth = value.Start;

@@ -1,29 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractStructValueMotion<TItem, TValue> : AbstractValueMotion<TItem, TValue>
-        where TItem : class
         where TValue : struct
     {
-#if FlowEnt_3_Nullables
         [Serializable]
-        public new abstract class AbstractFromToBuilder<T> : AbstractBuilder
+        public new abstract class AbstractFromToBuilder<T> : AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
             where T : struct
         {
-            [SerializeField]
-            protected SerializableNullable<T> from;
-
-            [SerializeField]
-            protected T to;
+            protected T? From => hasFromValue ? from : null;
         }
-        
+
         [Serializable]
         public new abstract class AbstractFromToBuilder : AbstractFromToBuilder<TValue>
         {
         }
-#endif
 
         protected AbstractStructValueMotion(TItem item, TValue value) : base(item, value)
         {
@@ -36,21 +30,36 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     }
 
     public abstract class AbstractClassValueMotion<TItem, TValue> : AbstractValueMotion<TItem, TValue>
-        where TItem : class
         where TValue : class
     {
+        [Serializable]
+        public new abstract class AbstractFromToBuilder<T> : AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+            where T : class
+        {
+            protected T From => hasFromValue ? from : null;
+        }
+
+        [Serializable]
+        public new abstract class AbstractFromToBuilder : AbstractFromToBuilder<TValue>
+        {
+        }
+        
         protected AbstractClassValueMotion(TItem item, TValue value) : base(item, value)
         {
         }
 
         protected AbstractClassValueMotion(TItem item, TValue from, TValue to) : base(item, from != null,
-            from ?? default, to)
+            from, to)
         {
         }
     }
 
+    public static class TooltipConst
+    {
+        public const string Temp = "If this is disabled the motion will start from the current state";
+    }
+
     public abstract class AbstractValueMotion<TItem, TValue> : AbstractTweenMotion<TItem>
-        where TItem : class
     {
         [Serializable]
         public abstract class AbstractValueBuilder<T> : AbstractBuilder
@@ -63,6 +72,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         public abstract class AbstractFromToBuilder<T> : AbstractBuilder
         {
             [SerializeField]
+            [Tooltip(TooltipConst.Temp)]
+            protected bool hasFromValue = true;
+
+            [SerializeField]
+            [EnableIf(nameof(hasFromValue))]
             protected T from;
 
             [SerializeField]

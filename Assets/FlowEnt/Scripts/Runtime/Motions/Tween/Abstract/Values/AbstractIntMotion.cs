@@ -4,7 +4,6 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractIntMotion<TItem> : AbstractStructValueMotion<TItem, int>
-        where TItem : class
     {
         protected AbstractIntMotion(TItem item, int value) : base(item, value)
         {
@@ -14,7 +13,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
         }
 
-        protected override Func<int, int, float, int> LerpFunction => (int a, int b, float t) => (int)Mathf.LerpUnclamped(a, b, t);
+        protected override Func<int, int, float, int> LerpFunction => (a, b, t) => (int)Mathf.LerpUnclamped(a, b, t);
         protected override int GetTo(int from, int value) => from + value;
     }
 }

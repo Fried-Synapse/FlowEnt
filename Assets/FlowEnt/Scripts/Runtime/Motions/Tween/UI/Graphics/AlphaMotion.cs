@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new AlphaMotion(item, from, to);
+                => new AlphaMotion(item, From, to);
         }
 
         public AlphaMotion(Graphic item, float value) : base(item, value)

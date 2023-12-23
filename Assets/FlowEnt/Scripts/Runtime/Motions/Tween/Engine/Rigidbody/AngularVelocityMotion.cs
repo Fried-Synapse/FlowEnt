@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new AngularVelocityMotion(item, from, to);
+                => new AngularVelocityMotion(item, From, to);
         }
 
         public AngularVelocityMotion(Rigidbody item, Vector3 value) : base(item, value)

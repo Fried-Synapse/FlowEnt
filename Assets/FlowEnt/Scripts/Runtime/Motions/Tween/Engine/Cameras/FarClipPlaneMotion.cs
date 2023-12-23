@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Cameras
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new FarClipPlaneMotion(item, from, to);
+                => new FarClipPlaneMotion(item, From, to);
         }
 
         public FarClipPlaneMotion(Camera item, float value) : base(item, value)

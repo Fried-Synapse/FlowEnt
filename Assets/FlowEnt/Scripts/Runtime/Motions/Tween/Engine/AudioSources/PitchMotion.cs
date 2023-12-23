@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.AudioSources
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new PitchMotion(item, from, to);
+                => new PitchMotion(item, From, to);
         }
 
         public PitchMotion(AudioSource item, float value) : base(item, value)

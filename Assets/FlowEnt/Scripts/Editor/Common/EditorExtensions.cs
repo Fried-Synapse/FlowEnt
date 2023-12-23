@@ -175,6 +175,22 @@ namespace FriedSynapse.FlowEnt.Editor
             listProperty.serializedObject.ApplyModifiedProperties();
         }
 
+        internal static void ExpandArray(this SerializedProperty listProperty, bool isExpanded)
+        {
+            if (!listProperty.isArray)
+            {
+                throw new ArgumentException($"{nameof(listProperty)} is not an array.");
+            }
+
+            listProperty.serializedObject.Update();
+            for (int i = 0; i < listProperty.arraySize; i++)
+            {
+                listProperty.GetArrayElementAtIndex(i).isExpanded = isExpanded;
+            }
+
+            listProperty.serializedObject.ApplyModifiedProperties();
+        }
+
         internal static int GetArrayElementIndex(this SerializedProperty listProperty, SerializedProperty item)
         {
             if (!listProperty.isArray)

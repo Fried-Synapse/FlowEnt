@@ -4,7 +4,6 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
 {
     public abstract class AbstractFloatSpeedTypeMotion<TItem> : AbstractFloatSpeedMotion<TItem>
-        where TItem : class
     {
 #pragma warning disable RCS1158
         public const SpeedType DefaultSpeedType = SpeedType.Linear;

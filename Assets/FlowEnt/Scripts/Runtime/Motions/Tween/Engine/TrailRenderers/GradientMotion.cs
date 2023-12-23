@@ -17,7 +17,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
         public class FromToBuilder : AbstractFromToBuilder
         {
             public override ITweenMotion Build()
-                => new GradientMotion(item, from, to);
+                => new GradientMotion(item, From, to);
         }
 
         public GradientMotion(TrailRenderer item, Gradient value) : base(item, value)
