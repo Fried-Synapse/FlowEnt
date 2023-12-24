@@ -75,8 +75,7 @@ namespace FriedSynapse.FlowEnt.Editor
                     FieldInfo fieldInfo = p.GetFieldInfo();
                     if (fieldInfo.GetCustomAttributes(attributeType, false).Length > 0)
                     {
-                        Rect buttonPosition = position;
-                        AutoAssignButtonAttributeDrawer.DrawButton(buttonPosition, p, fieldInfo);
+                        AutoAssignButtonAttributeDrawer.DrawButton(position, p, fieldInfo);
                     }
                 }
 
