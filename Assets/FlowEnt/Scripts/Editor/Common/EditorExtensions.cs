@@ -31,22 +31,33 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         internal static T GetValue<T>(this SerializedProperty property)
+            => (T)GetValueAndFieldInfo(property).Item1;
+
+        internal static FieldInfo GetFieldInfo(this SerializedProperty property)
+            => GetValueAndFieldInfo(property).Item2;
+
+        private static (object, FieldInfo) GetValueAndFieldInfo(this SerializedProperty property)
         {
-            static object getValue(object source, string name)
+            static object getValue(object source, string name, out FieldInfo fieldInfo)
             {
+                fieldInfo = null;
                 if (source == null)
                 {
                     return null;
                 }
 
                 Type type = source.GetType();
-                FieldInfo fieldInfo = type.GetField(name, ReflectionExtensions.DefaultBindingFlags);
-                return fieldInfo.GetValue(source);
+                fieldInfo = type.GetField(name, ReflectionExtensions.DefaultBindingFlags);
+                return fieldInfo?.GetValue(source);
             }
 
             static object getArrayValue(object source, string name, int index)
             {
-                IEnumerable enumerable = getValue(source, name) as IEnumerable;
+                if (getValue(source, name, out _) is not IEnumerable enumerable)
+                {
+                    return null;
+                }
+
                 IEnumerator enumerator = enumerable.GetEnumerator();
                 while (index-- >= 0)
                 {
@@ -56,25 +67,26 @@ namespace FriedSynapse.FlowEnt.Editor
                 return enumerator.Current;
             }
 
-            string path = property.propertyPath.Replace(".Array.data[", "[");
             object obj = property.serializedObject.targetObject;
-            string[] elements = path.Split('.');
-            foreach (string element in elements.Take(elements.Length))
+            FieldInfo fieldInfo = null;
+            string path = property.propertyPath.Replace(".Array.data[", "[");
+            string[] elementsNames = path.Split('.');
+            foreach (string elementName in elementsNames.Take(elementsNames.Length))
             {
-                if (element.Contains("["))
+                if (elementName.Contains("["))
                 {
-                    string elementName = element.Substring(0, element.IndexOf("["));
-                    int index = Convert.ToInt32(element.Substring(element.IndexOf("[")).Replace("[", "")
+                    string namePart = elementName.Substring(0, elementName.IndexOf("["));
+                    int index = Convert.ToInt32(elementName.Substring(elementName.IndexOf("[")).Replace("[", "")
                         .Replace("]", ""));
-                    obj = getArrayValue(obj, elementName, index);
+                    obj = getArrayValue(obj, namePart, index);
                 }
                 else
                 {
-                    obj = getValue(obj, element);
+                    obj = getValue(obj, elementName, out fieldInfo);
                 }
             }
 
-            return (T)obj;
+            return (obj, fieldInfo);
         }
 
         internal static SerializedProperty GetParent(this SerializedProperty property)

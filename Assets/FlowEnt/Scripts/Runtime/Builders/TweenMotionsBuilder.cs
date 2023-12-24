@@ -13,8 +13,10 @@ namespace FriedSynapse.FlowEnt
     [Serializable]
     public abstract class AbstractTweenMotionBuilder<TItem> : AbstractTweenMotionBuilder
     {
-        [SerializeField]
+        [SerializeField, AutoAssignButtonMotionField]
         protected TItem item;
+
+        public TItem Item => item;
     }
 
     [Serializable]

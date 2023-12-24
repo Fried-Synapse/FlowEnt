@@ -12,12 +12,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 #pragma warning disable IDE0044, RCS1169
             [SerializeField]
             private SplineFactory.SplineType type;
+
             [SerializeField]
             private bool normalise;
+
             // [SerializeField]
             // private bool preview;
             [SerializeField]
-            private List<Vector3> points;
+            private List<Vector3> points = new() { Vector3.zero, Vector3.zero };
 #pragma warning restore IDE0044, RCS1169
 
             protected ISpline GetSpline()
