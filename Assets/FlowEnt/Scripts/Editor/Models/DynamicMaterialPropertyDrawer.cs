@@ -61,12 +61,9 @@ namespace FriedSynapse.FlowEnt.Editor
             SerializedProperty propertyIdProperty = property.FindPropertyRelative(FieldsEnum.propertyId.ToString());
             ShaderPropertyType[] propertyTypes = GetPropertyType(dynamicMaterial);
 
-            if (!TryGetMaterialProperties(
-                    dynamicMaterial.InvokeMethod<DynamicMaterial, Material>("GetMaterial"),
-                    propertyTypes,
-                    out List<string> properties))
+            if (!TryGetMaterialProperties(dynamicMaterial.Material, propertyTypes, out List<string> properties))
             {
-                GUIContent warningContent = new GUIContent(Icon.Warning)
+                GUIContent warningContent = new(Icon.Warning)
                 {
                     text = "Missing material or shader"
                 };
@@ -76,7 +73,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             if (properties.Count == 0)
             {
-                GUIContent warningContent = new GUIContent(Icon.Warning)
+                GUIContent warningContent = new(Icon.Warning)
                 {
                     text =
                         $"No properties of type [{string.Join(", ", propertyTypes.Select(p => p.ToString()).ToArray())}]"

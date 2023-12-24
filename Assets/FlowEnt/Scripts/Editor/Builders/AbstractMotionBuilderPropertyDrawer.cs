@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
+using Component = UnityEngine.Component;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -21,11 +22,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static IMotionBuilder clipboard;
 
-        public IMotionBuilder Clipboard
-        {
-            get => clipboard;
-            set => clipboard = value;
-        }
+        public IMotionBuilder Clipboard { get => clipboard; set => clipboard = value; }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -51,7 +48,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             label.text = name.PadLeft(name.Length + 6);
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label);
-
+            EditorGUI.LabelField(headerPosition, label);
             DrawMenu(headerPosition, property);
 
             if (!property.isExpanded)
@@ -59,7 +56,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
 
-            EditorGUI.indentLevel++;
             position.y += FlowEntConstants.SpacedSingleLineHeight;
             IdentifiableBuilderFields.DrawDisplayName(ref position, property);
 
@@ -68,9 +64,19 @@ namespace FriedSynapse.FlowEnt.Editor
                 float height = EditorGUI.GetPropertyHeight(p, true) + FlowEntConstants.DrawerSpacing;
                 position.height = height;
                 EditorGUI.PropertyField(position, p, true);
+                if (p.propertyType == SerializedPropertyType.ObjectReference)
+                {
+                    Type attributeType = typeof(AutoAssignButtonMotionFieldAttribute);
+                    FieldInfo fieldInfo = p.GetFieldInfo();
+                    if (fieldInfo.GetCustomAttributes(attributeType, false).Length > 0)
+                    {
+                        Rect buttonPosition = position;
+                        AutoAssignButtonAttributeDrawer.DrawButton(buttonPosition, p, fieldInfo);
+                    }
+                }
+
                 position.y += height;
             });
-            EditorGUI.indentLevel--;
         }
 
         private void DrawMenu(Rect position, SerializedProperty property)
@@ -83,7 +89,7 @@ namespace FriedSynapse.FlowEnt.Editor
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
                 SerializedProperty parentProperty = property.GetParentArray();
-                GenericMenu context = new GenericMenu();
+                GenericMenu context = new();
                 FlowEntEditorGUILayout.ShowListCrud(context, parentProperty,
                     parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);

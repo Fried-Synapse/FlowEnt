@@ -1,9 +1,31 @@
 using System;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
 {
     public abstract class AbstractColorLinearMotion<TItem> : AbstractStructValueMotion<TItem, LinearColor>
     {
+        [Serializable]
+        public new abstract class
+            AbstractValueBuilder : AbstractStructValueMotion<TItem, LinearColor>.AbstractValueBuilder
+        {
+            protected AbstractValueBuilder()
+            {
+                value = new(Color.white, Color.white);
+            }
+        }
+
+        [Serializable]
+        public new abstract class
+            AbstractFromToBuilder : AbstractStructValueMotion<TItem, LinearColor>.AbstractFromToBuilder
+        {
+            protected AbstractFromToBuilder()
+            {
+                from = new(Color.white, Color.white);
+                to = new(Color.white, Color.white);
+            }
+        }
+
         protected AbstractColorLinearMotion(TItem item, LinearColor value) : base(item, value)
         {
         }

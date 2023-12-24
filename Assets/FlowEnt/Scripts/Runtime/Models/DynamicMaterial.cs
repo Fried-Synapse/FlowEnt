@@ -23,10 +23,10 @@ namespace FriedSynapse.FlowEnt
         [Tooltip(Tooltip)]
         private MaterialType type;
 
-        [SerializeField]
+        [SerializeField, AutoAssignButton]
         private GameObject gameObjectWithInstance;
 
-        [SerializeField]
+        [SerializeField, AutoAssignButton]
         private Material predefinedMaterial;
 
         private Material material;
@@ -63,9 +63,9 @@ namespace FriedSynapse.FlowEnt
         {
             MaterialType.Predefined => predefinedMaterial,
             MaterialType.Instance => gameObjectWithInstance != null
-                ? gameObjectWithInstance.GetComponent<Renderer>()?.sharedMaterial
+                ? gameObjectWithInstance.TryGetComponent(out Renderer renderer) ? renderer.sharedMaterial : null
                 : null,
-            _ => throw new ArgumentOutOfRangeException()
+            _ => null
         };
 
         List<Object> IHasUndoableObjects.GetUndoableObjects() => new() { Material };
