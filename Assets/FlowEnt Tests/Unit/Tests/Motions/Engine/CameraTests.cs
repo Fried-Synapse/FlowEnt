@@ -292,7 +292,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             
             yield return CreateTester()
                 .Arrange(() => Component.rect = from)
-                .Act(() => Component.Tween(TestTime).Rect(to).Start())
+                .Act(() => Component.Tween(TestTime).RectTo(to).Start())
                 .AssertTime(TestTime)
                 .Assert(() => Component.rect.Should().Be(to))
                 .Run();
