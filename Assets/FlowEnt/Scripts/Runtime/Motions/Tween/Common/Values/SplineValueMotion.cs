@@ -10,7 +10,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
         [Serializable]
         public class Builder : AbstractEventMotionBuilder
         {
-#pragma warning disable IDE0044, RCS1169
             [SerializeField]
             private SplineFactory.SplineType type;
             [SerializeField]
@@ -18,14 +17,12 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
             // [SerializeField]
             // private bool preview;
             [SerializeField]
-            private List<Vector3> points;
-#pragma warning restore IDE0044, RCS1169
+            private List<Vector3> points = new() { Vector3.zero, Vector3.zero };
 
             public override ITweenMotion Build()
                 => new SplineValueMotion(SplineFactory.GetSpline(type, points, normalise), GetCallback());
 
 #if UNITY_EDITOR
-#pragma warning disable IDE0051, RCS1213
             //TODO this function is not called because this is not a monobehaviour...
             private void OnDrawGizmos()
             {
@@ -34,7 +31,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
                 //     GetSpline().DrawGizmo(Color.white, 2f);
                 // }
             }
-#pragma warning restore IDE0051, RCS1213
 #endif
         }
         /// <summary>

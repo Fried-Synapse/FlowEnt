@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class PreviewerWindow : AbstractThemedWindow<PreviewerWindow>
+    internal partial class PreviewerWindow : AbstractThemedWindow<PreviewerWindow>
     {
         private const string SelectMessage = "Please Select an object from the hierarchy first.";
         private const string PlaymodeMessage = "Previewer not available during play mode.";
@@ -18,25 +18,6 @@ namespace FriedSynapse.FlowEnt.Editor
             Field,
             Property,
             Method
-        }
-
-        private class AnimationInfo
-        {
-            public AnimationInfo(string name, MemberType type, AbstractAnimation animation)
-            {
-                this.name = name;
-                this.type = type;
-                this.animation = animation;
-                if (animation.PlayState != PlayState.Building)
-                {
-                    animation.Stop();
-                    animation.Reset();
-                }
-            }
-
-            internal readonly string name;
-            internal readonly MemberType type;
-            internal readonly AbstractAnimation animation;
         }
 
         protected override string Name => "FlowEnt Previewer";
@@ -51,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private Button exitFocusButton;
         private ScrollView animationsElement;
 
-        private AbstractAnimation FocusedAnimation { get; set; }
+        private IAbstractAnimationBuilder FocusedAnimationBuilder { get; set; }
 
         protected override void CreateGUI()
         {
@@ -71,7 +52,7 @@ namespace FriedSynapse.FlowEnt.Editor
             exitFocusButton.clicked += ExitFocus;
         }
 
-        internal void RefreshAnimations(AbstractAnimation focusedAnimation = null)
+        internal void RefreshAnimations()
         {
             if (Application.isPlaying)
             {
@@ -79,49 +60,41 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
 
-            if (FocusedAnimation == null)
+            InitRender();
+
+            if (FocusedAnimationBuilder == null)
             {
                 RenderSelectedAnimations();
                 return;
             }
 
-            if (focusedAnimation != null)
-            {
-                FocusedAnimation = focusedAnimation;
-            }
-
             RenderFocusedAnimation();
         }
 
-        internal void FocusAnimation(AbstractAnimation animation)
+        internal void FocusAnimation(IAbstractAnimationBuilder animationBuilder)
         {
             exitFocusButton.visible = true;
-            FocusedAnimation = animation;
+            FocusedAnimationBuilder = animationBuilder;
             RefreshAnimations();
         }
 
         private void ExitFocus()
         {
             exitFocusButton.visible = false;
-            FocusedAnimation = null;
+            FocusedAnimationBuilder = null;
             RefreshAnimations();
         }
 
         private void RenderFocusedAnimation()
         {
-            InitRender();
-            label.text = $"[Focused] {FocusedAnimation.Name}";
+            AnimationInfo animationInfo = new("", MemberType.Field, FocusedAnimationBuilder);
+            label.text = $"[Focused] {animationInfo.Animation?.Name}";
 
-            RenderAnimationsInternal(new List<AnimationInfo>
-            {
-                new AnimationInfo("", MemberType.Field, FocusedAnimation)
-            });
+            RenderAnimationsInternal(new List<AnimationInfo> { animationInfo });
         }
 
         private void RenderSelectedAnimations()
         {
-            InitRender();
-
             Transform transform = Selection.activeTransform;
             label.text = transform == null ? SelectMessage : transform.name;
 
@@ -147,18 +120,30 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             foreach (AnimationInfo animationInfo in animationsInfo)
             {
-                VisualElement animationElement = new VisualElement();
+                VisualElement animationElement = new();
                 animationElement.AddToClassList("animation");
-                animationElement.AddToClassList(animationInfo.type.ToClassName());
-                TextElement label = new TextElement
-                {
-                    text = $"{animationInfo.name} [{animationInfo.animation}]",
-                };
+                animationElement.AddToClassList(animationInfo.Type.ToClassName());
+                TextElement label = new();
                 label.AddToClassList("label");
                 animationElement.Add(label);
-                PreviewableControlSection controlSection = new PreviewableControlSection();
-                controlSection.Init(animationInfo.animation);
-                animationElement.Add(controlSection);
+                if (animationInfo.Exception != null)
+                {
+                    label.text = "Invalid animation";
+                    animationElement.Add(new TextElement { text = "Looks like one of the motions is in an invalid state. Please check them." });
+                    animationElement.Add(new HelpBox(animationInfo.Exception?.Message, HelpBoxMessageType.Error));
+                    animationElement.Add(new Button(() => { Debug.LogException(animationInfo.Exception); })
+                    {
+                        text = "Log exception to console"
+                    });
+                }
+                else
+                {
+                    label.text = $"{animationInfo.Name} [{animationInfo.Animation}]";
+                    PreviewableControlSection controlSection = new();
+                    controlSection.Init(animationInfo.Animation);
+                    animationElement.Add(controlSection);
+                }
+
                 animationsElement.contentContainer.Add(animationElement);
             }
         }
@@ -166,7 +151,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private List<AnimationInfo> GetAnimations(Transform transform)
         {
             Type abstractAnimationBuilderType = typeof(IAbstractAnimationBuilder);
-            List<AnimationInfo> animations = new List<AnimationInfo>();
+            List<AnimationInfo> animations = new();
             foreach (MonoBehaviour behaviour in transform.GetComponents<MonoBehaviour>())
             {
                 animations.AddRange(
@@ -176,9 +161,9 @@ namespace FriedSynapse.FlowEnt.Editor
                         .Where(fi => abstractAnimationBuilderType.IsAssignableFrom(fi.FieldType))
                         .Select(fi => (
                             FieldInfo: fi,
-                            Animation: ((IAbstractAnimationBuilder)fi.GetValue(behaviour))?.Build()))
-                        .Where(t => t.Animation != null)
-                        .Select(t => new AnimationInfo(t.FieldInfo.Name, MemberType.Field, t.Animation))
+                            AnimationBuilder: (IAbstractAnimationBuilder)fi.GetValue(behaviour)))
+                        .Where(t => t.AnimationBuilder != null)
+                        .Select(t => new AnimationInfo(t.FieldInfo.Name, MemberType.Field, t.AnimationBuilder))
                         .ToList());
 
                 animations.AddRange(
@@ -211,7 +196,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             foreach (AnimationInfo animationInfo in animations)
             {
-                switch (animationInfo.animation)
+                switch (animationInfo.Animation)
                 {
                     case Echo echo:
                         if (echo.Timeout == null)

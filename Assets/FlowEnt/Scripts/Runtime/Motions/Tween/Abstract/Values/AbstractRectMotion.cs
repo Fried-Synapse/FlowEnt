@@ -13,7 +13,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         {
         }
 
-        protected override Func<Rect, Rect, float, Rect> LerpFunction => throw new NotImplementedException();
-        protected override Rect GetTo(Rect from, Rect value) => throw new NotImplementedException();
+        protected override Func<Rect, Rect, float, Rect> LerpFunction => RectHelper.LerpUnclamped;
+        protected override Rect GetTo(Rect from, Rect value) => RectHelper.Add(from, value);
     }
 }

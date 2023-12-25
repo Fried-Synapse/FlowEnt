@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void AddItemsToContextMenu(GenericMenu contextMenu, SerializedProperty property)
         {
-            FlowEntEditorGUILayout.ShowCrud(contextMenu, property, "List", this);
+            contextMenu.AddCrud(property, "List", this);
         }
 
         protected override void OnAdd(Rect buttonRect, ReorderableList list)

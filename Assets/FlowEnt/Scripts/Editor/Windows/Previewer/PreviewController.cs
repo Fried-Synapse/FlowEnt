@@ -55,6 +55,8 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 undoGroupId = Undo.GetCurrentGroup();
                 Undo.IncrementCurrentGroup();
+                //NOTE this is to not undo the change that might have triggered the reset
+                Undo.postprocessModifications += modifications => modifications.SkipLast(1).ToArray();
             }
 
             options.Animation.OnCompleted(Reset);
@@ -68,7 +70,6 @@ namespace FriedSynapse.FlowEnt.Editor
                     $"<color={FlowEntConstants.Red}><b>Exception on starting animation</b></color>\n" +
                     $"<color={FlowEntConstants.Orange}><b>The preview animation is throwing an exception</b></color>:\n\n" +
                     $"<b>Exception</b>:\n{ex}");
-                Debug.LogException(ex);
                 Stop();
             }
         }
@@ -93,8 +94,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
 
-            //HACK this is to not undo the change that might have triggered the reset
-            Undo.postprocessModifications += modifications => modifications.SkipLast(1).ToArray();
             Undo.RevertAllDownToGroup(undoGroupId.Value);
             undoGroupId = null;
         }

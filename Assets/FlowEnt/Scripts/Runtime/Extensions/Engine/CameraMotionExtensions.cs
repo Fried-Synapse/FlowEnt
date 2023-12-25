@@ -157,5 +157,34 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new FarClipPlaneMotion(proxy.Item, from, to));
 
         #endregion
+
+        #region Rect
+
+        /// <summary>
+        /// Applies a <see cref="RectMotion" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="value"></param>
+        public static TweenMotionProxy<Camera> Rect(this TweenMotionProxy<Camera> proxy, Rect value)
+            => proxy.Apply(new RectMotion(proxy.Item, value));
+
+        /// <summary>
+        /// Applies a <see cref="RectMotion" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="to"></param>
+        public static TweenMotionProxy<Camera> RectTo(this TweenMotionProxy<Camera> proxy, Rect to)
+            => proxy.Apply(new RectMotion(proxy.Item, default, to));
+
+        /// <summary>
+        /// Applies a <see cref="RectMotion" /> to the tween.
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public static TweenMotionProxy<Camera> RectTo(this TweenMotionProxy<Camera> proxy, Rect from, Rect to)
+            => proxy.Apply(new RectMotion(proxy.Item, from, to));
+
+        #endregion
     }
 }

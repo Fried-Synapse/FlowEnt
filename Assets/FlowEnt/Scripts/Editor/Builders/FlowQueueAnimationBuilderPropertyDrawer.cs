@@ -11,11 +11,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         private static Queue clipboard;
 
-        public Queue Clipboard
-        {
-            get => clipboard;
-            set => clipboard = value;
-        }
+        public Queue Clipboard { get => clipboard; set => clipboard = value; }
 
         private const string StartTimeName = "startTime";
 
@@ -43,8 +39,7 @@ namespace FriedSynapse.FlowEnt.Editor
         protected override void AddItemsToContextMenu(GenericMenu contextMenu, SerializedProperty property)
         {
             SerializedProperty parentProperty = property.GetParentArray();
-            FlowEntEditorGUILayout.ShowListCrud(contextMenu, parentProperty,
-                parentProperty.GetArrayElementIndex(property), "Queue", this);
+            contextMenu.AddListCrud(parentProperty, parentProperty.GetArrayElementIndex(property), "Queue", this);
             contextMenu.AddSeparator(string.Empty);
             IdentifiableBuilderFields.DrawShowRename(property, contextMenu);
         }

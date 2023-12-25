@@ -79,10 +79,10 @@ namespace FriedSynapse.FlowEnt.Editor
             menuPosition.height = EditorGUIUtility.singleLineHeight;
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
-                GenericMenu context = new GenericMenu();
-                FlowEntEditorGUILayout.ShowListClear(context, property.FindPropertyRelative(ItemsNames));
+                GenericMenu context = new();
+                context.AddListClear(property.FindPropertyRelative(ItemsNames));
                 context.AddSeparator(string.Empty);
-                FlowEntEditorGUILayout.ShowExpand(context, property.FindPropertyRelative(ItemsNames));
+                context.AddExpand(property.FindPropertyRelative(ItemsNames));
                 context.AddSeparator(string.Empty);
                 AddItemsToContextMenu(context, property);
                 context.ShowAsContext();
