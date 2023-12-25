@@ -43,8 +43,8 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 Object obj = fieldInfo.FieldType switch
                 {
-                    _ when fieldInfo.FieldType == typeof(GameObject) => component.gameObject,
-                    _ when fieldInfo.FieldType.IsAssignableFrom(typeof(Component))
+                    _ when typeof(GameObject) == fieldInfo.FieldType => component.gameObject,
+                    _ when typeof(Component).IsAssignableFrom(fieldInfo.FieldType)
                         => component.GetComponent(fieldInfo.FieldType),
                     _ => null
                 };

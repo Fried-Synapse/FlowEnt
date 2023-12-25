@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Editor
             } while (copy.NextVisible(false));
         }
 
-        internal static void ShowListClear(GenericMenu context, SerializedProperty listProperty)
+        internal static void AddListClear(this GenericMenu context, SerializedProperty listProperty)
         {
             SerializedProperty target = listProperty.Copy();
 
@@ -39,7 +39,7 @@ namespace FriedSynapse.FlowEnt.Editor
             context.AddItem(new GUIContent("Clear"), clear);
         }
 
-        internal static void ShowListCrud<T>(GenericMenu context, SerializedProperty listProperty, int index,
+        internal static void AddListCrud<T>(this GenericMenu context, SerializedProperty listProperty, int index,
             string name, ICrudable<T> crudable)
         {
             SerializedProperty target = listProperty.Copy();
@@ -74,7 +74,7 @@ namespace FriedSynapse.FlowEnt.Editor
             context.AddItem(new GUIContent($"Paste {name} as new"), pasteAsNew, crudable.Clipboard == null);
         }
 
-        internal static void ShowCrud<T>(GenericMenu context, SerializedProperty property, string name,
+        internal static void AddCrud<T>(this GenericMenu context, SerializedProperty property, string name,
             ICrudable<T> crudable)
         {
             SerializedProperty target = property.Copy();
@@ -99,7 +99,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 crudable.Clipboard == null || item.GetType() != crudable.Clipboard.GetType());
         }
 
-        internal static void ShowExpand(GenericMenu context, SerializedProperty listProperty)
+        internal static void AddExpand(this GenericMenu context, SerializedProperty listProperty)
         {
             SerializedProperty target = listProperty.Copy();
 

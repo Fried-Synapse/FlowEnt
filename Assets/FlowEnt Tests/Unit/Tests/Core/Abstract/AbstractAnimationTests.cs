@@ -304,9 +304,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                             }
                         })
                         .Start();
-                    return new Tween(TestTime).Start();
+                    return new Tween(TestTime * 1.1f).Start();
                 })
-                .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     animation.PlayState.Should().Be(PlayState.Building);

@@ -26,11 +26,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static TAnimationBuilder clipboard;
 
-        public TAnimationBuilder Clipboard
-        {
-            get => clipboard;
-            set => clipboard = value;
-        }
+        public TAnimationBuilder Clipboard { get => clipboard; set => clipboard = value; }
 
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -74,7 +70,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             EditorGUI.indentLevel++;
 
-            using (EditorGUI.ChangeCheckScope check = new EditorGUI.ChangeCheckScope())
+            using (EditorGUI.ChangeCheckScope check = new())
             {
                 position.y += EditorGUIUtility.singleLineHeight;
 
@@ -86,15 +82,18 @@ namespace FriedSynapse.FlowEnt.Editor
                     position.y += height;
                 });
 
-                if (check.changed && !AbstractAnimationBuilderPropertyDrawer.IsPreviewDisabled &&
-                    PreviewerWindow.IsAvailable)
+                if (check.changed && !AbstractAnimationBuilderPropertyDrawer.IsPreviewDisabled && PreviewerWindow.IsAvailable)
                 {
                     property.serializedObject.ApplyModifiedProperties();
-                    bool isFocusedAnimationThisOne =
-                        AbstractAnimationBuilderPropertyDrawer.FocusedPropertyId == property.GetUniqueId();
-                    PreviewerWindow.Instance.RefreshAnimations(isFocusedAnimationThisOne
-                        ? property.GetValue<IAbstractAnimationBuilder>().Build()
-                        : null);
+                    if (AbstractAnimationBuilderPropertyDrawer.FocusedPropertyId == property.GetUniqueId())
+                    {
+                        PreviewerWindow.Instance.FocusAnimation(property.GetValue<IAbstractAnimationBuilder>());
+                    }
+                    else
+                    {
+                        PreviewerWindow.Instance.RefreshAnimations();
+                    }
+
                     GUIUtility.ExitGUI();
                 }
             }
@@ -115,13 +114,10 @@ namespace FriedSynapse.FlowEnt.Editor
             if (GUI.Button(previewPosition, "Preview"))
             {
                 AbstractAnimationBuilderPropertyDrawer.IsPreviewDisabled = true;
-                EditorApplication.delayCall += () =>
-                {
-                    AbstractAnimationBuilderPropertyDrawer.IsPreviewDisabled = false;
-                };
+                EditorApplication.delayCall += () => { AbstractAnimationBuilderPropertyDrawer.IsPreviewDisabled = false; };
                 PreviewerWindow.ShowSingleton();
                 AbstractAnimationBuilderPropertyDrawer.FocusedPropertyId = property.GetUniqueId();
-                PreviewerWindow.Instance.FocusAnimation(property.GetValue<IAbstractAnimationBuilder>().Build());
+                PreviewerWindow.Instance.FocusAnimation(property.GetValue<IAbstractAnimationBuilder>());
             }
 
             Rect menuPosition = position;
@@ -131,15 +127,14 @@ namespace FriedSynapse.FlowEnt.Editor
             if (GUI.Button(menuPosition, Icon.Menu, Icon.Style))
             {
                 SerializedProperty parentProperty = property.GetParentArray();
-                GenericMenu context = new GenericMenu();
+                GenericMenu context = new();
                 if (parentProperty == null)
                 {
-                    FlowEntEditorGUILayout.ShowCrud(context, property, "Animation", this);
+                    context.AddCrud(property, "Animation", this);
                 }
                 else
                 {
-                    FlowEntEditorGUILayout.ShowListCrud(context, parentProperty,
-                        parentProperty.GetArrayElementIndex(property), "Animation", this);
+                    context.AddListCrud(parentProperty, parentProperty.GetArrayElementIndex(property), "Animation", this);
                 }
 
                 context.ShowAsContext();

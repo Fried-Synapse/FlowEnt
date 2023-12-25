@@ -45,16 +45,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             Color from = Color.red;
             Color to = Color.green;
-            Color? startingValue = null;
+            Color? startingFrom = null;
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).BackgroundColorTo(from, to)
-                    .OnUpdated((_) => startingValue ??= Component.backgroundColor)
+                    .OnUpdated((_) => startingFrom ??= Component.backgroundColor)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
+                    Assert.AreEqual(from, startingFrom);
                     Assert.AreEqual(to, Component.backgroundColor);
                 })
                 .Run();
@@ -114,17 +114,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             const float from = 1f;
             const float to = 2f;
 
-            float? startingValue = null;
+            float? startingFrom = null;
 
             yield return CreateTester()
                 .Arrange(() => Component.orthographicSize = 0f)
                 .Act(() => Component.Tween(TestTime).OrthographicSizeTo(from, to)
-                    .OnUpdated(_ => startingValue ??= Component.orthographicSize)
+                    .OnUpdated(_ => startingFrom ??= Component.orthographicSize)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    startingValue.Should().Be(from);
+                    startingFrom.Should().Be(from);
                     Component.orthographicSize.Should().Be(to);
                 })
                 .Run();
@@ -159,17 +159,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator FieldOfViewFromTo()
         {
-            float? startingValue = null;
+            float? startingFrom = null;
 
             yield return CreateTester()
                 .Arrange(() => Component.fieldOfView = 0f)
                 .Act(() => Component.Tween(TestTime).FieldOfViewTo(FromValue, ToValue)
-                    .OnUpdated(_ => startingValue ??= Component.fieldOfView)
+                    .OnUpdated(_ => startingFrom ??= Component.fieldOfView)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    startingValue.Should().Be(FromValue);
+                    startingFrom.Should().Be(FromValue);
                     Component.fieldOfView.Should().Be(ToValue);
                 })
                 .Run();
@@ -204,17 +204,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator NearClipPlaneFromTo()
         {
-            float? startingValue = null;
+            float? startingFrom = null;
 
             yield return CreateTester()
                 .Arrange(() => Component.nearClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).NearClipPlaneTo(FromValue, ToValue)
-                    .OnUpdated(_ => startingValue ??= Component.nearClipPlane)
+                    .OnUpdated(_ => startingFrom ??= Component.nearClipPlane)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    startingValue.Should().Be(FromValue);
+                    startingFrom.Should().Be(FromValue);
                     Component.nearClipPlane.Should().Be(ToValue);
                 })
                 .Run();
@@ -249,18 +249,71 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator FarClipPlaneFromTo()
         {
-            float? startingValue = null;
+            float? startingFrom = null;
 
             yield return CreateTester()
                 .Arrange(() => Component.farClipPlane = 0.5f)
                 .Act(() => Component.Tween(TestTime).FarClipPlaneTo(FromValue, ToValue)
-                    .OnUpdated(_ => startingValue ??= Component.farClipPlane)
+                    .OnUpdated(_ => startingFrom ??= Component.farClipPlane)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    startingValue.Should().Be(FromValue);
+                    startingFrom.Should().Be(FromValue);
                     Component.farClipPlane.Should().Be(ToValue);
+                })
+                .Run();
+        }
+
+        #endregion
+
+        #region FarClipPlane
+
+        [UnityTest]
+        public IEnumerator Rect()
+        {
+            Rect from = new(FromValue, FromValue, FromValue, FromValue);
+            Rect value = new(FromValue, FromValue, FromValue, FromValue);
+            Rect expected = RectHelper.Add(from, value);
+
+            yield return CreateTester()
+                .Arrange(() => Component.rect = from)
+                .Act(() => Component.Tween(TestTime).Rect(value).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Component.rect.Should().Be(expected))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RectTo()
+        {
+            Rect from = new(FromValue, FromValue, FromValue, FromValue);
+            Rect to = new(FromValue, FromValue, FromValue, FromValue);
+            
+            yield return CreateTester()
+                .Arrange(() => Component.rect = from)
+                .Act(() => Component.Tween(TestTime).Rect(to).Start())
+                .AssertTime(TestTime)
+                .Assert(() => Component.rect.Should().Be(to))
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator RectFromTo()
+        {
+            Rect from = new(FromValue, FromValue, FromValue, FromValue);
+            Rect to = new(FromValue, FromValue, FromValue, FromValue);
+            Rect? startingFrom = null;
+
+            yield return CreateTester()
+                .Act(() => Component.Tween(TestTime).RectTo(from, to)
+                    .OnUpdated(_ => startingFrom ??= Component.rect)
+                    .Start())
+                .AssertTime(TestTime)
+                .Assert(() =>
+                {
+                    startingFrom.Should().Be(from);
+                    Component.rect.Should().Be(to);
                 })
                 .Run();
         }
