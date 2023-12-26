@@ -10,6 +10,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         public abstract class AbstractSplineBuilder : AbstractBuilder
         {
             [SerializeField]
+            [UrlButton(UrlButtonAttribute.PredefinedType.Splines)]
             private SplineFactory.SplineType type;
 
             [SerializeField]
