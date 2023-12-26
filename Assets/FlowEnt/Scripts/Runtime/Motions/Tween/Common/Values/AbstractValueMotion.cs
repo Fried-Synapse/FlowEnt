@@ -10,10 +10,8 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
         [Serializable]
         public abstract class AbstractEventMotionBuilder : AbstractTweenMotionBuilder
         {
-#pragma warning disable IDE0044, RCS1169
             [SerializeField]
             private UnityEvent<T> callback;
-#pragma warning restore IDE0044, RCS1169
 
             protected Action<T> GetCallback()
                 => t => callback.Invoke(t);

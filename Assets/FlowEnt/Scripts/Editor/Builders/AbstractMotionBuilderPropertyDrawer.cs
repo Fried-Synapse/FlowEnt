@@ -1,12 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
-using Component = UnityEngine.Component;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -42,6 +38,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
             IMotionBuilder motionBuilder = property.GetValue<IMotionBuilder>();
+            Type motionBuilderType = motionBuilder.GetType();
 
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, new GUIContent());
 
@@ -51,7 +48,7 @@ namespace FriedSynapse.FlowEnt.Editor
             Rect labelPosition = headerPosition;
             labelPosition.x += EditorGUIUtility.singleLineHeight;
             labelPosition.width -= EditorGUIUtility.singleLineHeight;
-            label.text = MotionNames.GetNames(motionBuilder.GetType(), motionBuilder).Preferred;
+            label.text = MotionNames.GetNames(motionBuilderType, motionBuilder).Preferred;
             EditorGUI.LabelField(labelPosition, label);
 
             DrawMenu(headerPosition, property);

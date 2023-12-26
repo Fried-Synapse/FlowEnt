@@ -77,7 +77,7 @@ namespace FriedSynapse.FlowEnt.Demo
         private AbstractAnimation TurnOffLights() =>
             new Tween(4f).SetEasing(Easing.EaseInOutSine)
                 .For(WorldLight).IntensityTo(0f)
-                .For(Ground.GetComponent<MeshRenderer>().material).ColorTo("_EmissionColor", Color.clear);
+                .For(Ground.GetComponent<MeshRenderer>().sharedMaterial).ColorTo("_EmissionColor", Color.clear);
 
         private void Replay()
         {

@@ -53,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal static MotionNames GetNames(Type type, IMotionBuilder motionBuilder = null)
         {
-            MotionNames names = new MotionNames();
+            MotionNames names = new();
             if (motionBuilder != null && !string.IsNullOrEmpty(motionBuilder.DisplayName))
             {
                 names.DisplayName = motionBuilder.DisplayName;
