@@ -47,8 +47,6 @@ namespace FriedSynapse.FlowEnt.Editor
                             _ => throw new System.NotImplementedException(),
                         };
                         EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(propertyName));
-                        
-
                         break;
                     default:
                         EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(prop.ToString()));

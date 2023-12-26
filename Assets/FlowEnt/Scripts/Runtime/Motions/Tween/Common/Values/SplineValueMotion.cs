@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
         public class Builder : AbstractEventMotionBuilder
         {
             [SerializeField]
-            [UrlButton(UrlButtonAttribute.PredefinedType.Splines)]
+            [UrlButton(UrlButtonAttribute.PredefinedType.Spline)]
             private SplineFactory.SplineType type;
 
             [SerializeField]
