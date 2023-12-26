@@ -87,13 +87,11 @@ namespace FriedSynapse.FlowEnt.Demo
         #region Editor
 
 #if UNITY_EDITOR
-#pragma warning disable IDE0051, RCS1213
         private void OnDrawGizmos()
         {
             CameraAnimation.OnDraw();
             CharacterAnimation.OnDraw();
         }
-#pragma warning restore IDE0051, RCS1213
 #endif
 
         #endregion

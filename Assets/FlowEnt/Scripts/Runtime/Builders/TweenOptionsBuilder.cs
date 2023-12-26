@@ -20,6 +20,7 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private EasingType easingType;
         [SerializeField]
+        [UrlButton(UrlButtonAttribute.PredefinedType.Easing)]
         private Easing easing = TweenOptions.DefaultEasing;
         public IEasing Easing => easingType switch
         {
