@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using FriedSynapse.FlowEnt.Motions.Abstract;
-using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
@@ -125,24 +122,24 @@ namespace FriedSynapse.FlowEnt.Builder
             Echo.Motions.Items.Clear();
         }
 
-        public void Log(float t)
+        public void Log(float value)
         {
-            Debug.Log($"{t}");
+            Debug.Log(value);
         }
 
-        public void Log(Vector2 t)
+        public void Log(Vector2 value)
         {
-            Debug.Log($"{t}");
+            Debug.Log(value);
         }
 
-        public void Log(Vector3 t)
+        public void Log(Vector3 value)
         {
-            Debug.Log($"{t}");
+            Debug.Log(value);
         }
 
-        public void Log(string name)
+        public void Log(string value)
         {
-            Debug.Log(name);
+            Debug.Log(value);
         }
     }
 }

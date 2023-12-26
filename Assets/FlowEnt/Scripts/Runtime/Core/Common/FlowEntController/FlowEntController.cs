@@ -46,7 +46,7 @@ namespace FriedSynapse.FlowEnt
 
                         static void initRuntime()
                         {
-                            GameObject gameObject = new GameObject("FlowEnt");
+                            GameObject gameObject = new("FlowEnt");
                             gameObject.hideFlags = HideFlags.HideInHierarchy;
                             updater = gameObject.AddComponent<FlowEntRuntimeUpdater>();
                         }

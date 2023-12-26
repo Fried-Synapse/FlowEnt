@@ -13,13 +13,12 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         public class Data
         {
-            public Queue<TListItem> AddedItemTypes { get; } = new Queue<TListItem>();
+            public Queue<TListItem> AddedItemTypes { get; } = new();
         }
 
         private const string ItemsNames = "items";
 
-        private Dictionary<string, ReorderableList> Lists { get; } =
-            new Dictionary<string, ReorderableList>();
+        private Dictionary<string, ReorderableList> Lists { get; } = new();
 
         protected virtual GUIContent GetLabel(SerializedProperty property, GUIContent label) => label;
 

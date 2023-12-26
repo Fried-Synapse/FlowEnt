@@ -15,24 +15,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
             [SerializeField]
             private bool normalise;
 
-            // [SerializeField]
-            // private bool preview;
             [SerializeField]
             private List<Vector3> points = new() { Vector3.zero, Vector3.zero };
 
             protected ISpline GetSpline()
                 => SplineFactory.GetSpline(type, points, normalise);
-
-#if UNITY_EDITOR
-            //TODO this function is not called because this is not a monobehaviour...
-            private void OnDrawGizmos()
-            {
-                // if (preview)
-                // {
-                //     GetSpline().DrawGizmo(Color.white, 2f);
-                // }
-            }
-#endif
         }
 
         protected AbstractSplineMotion(TItem item, ISpline spline) : base(item)

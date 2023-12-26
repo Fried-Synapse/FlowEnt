@@ -25,7 +25,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         DeltaTimes IFlowEntUpdater.GetDeltaTimes()
-            => new DeltaTimes()
+            => new()
             {
                 deltaTime = editorDeltaTime,
                 smoothDeltaTime = editorDeltaTime,
