@@ -210,15 +210,15 @@ namespace FriedSynapse.FlowEnt
         #region MoveTo Spline
 
         /// <summary>
-        /// Applies a <see cref="MoveSplineMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveCurveMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
-        /// <param name="spline"></param>
+        /// <param name="curve"></param>
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy,
-            ISpline spline)
+            ICurve curve)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveSplineMotion(proxy.Item, spline));
+            => proxy.Apply(new MoveCurveMotion(proxy.Item, curve));
 
         #endregion
 

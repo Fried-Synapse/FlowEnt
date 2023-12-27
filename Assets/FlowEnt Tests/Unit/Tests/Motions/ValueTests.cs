@@ -170,7 +170,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             Vector3 from = new Vector3(2f, 2f, 2f);
             Vector3 mid = new Vector3(4f, 2f, 4f);
             Vector3 to = new Vector3(5f, 5f, 5f);
-            ISpline spline = new BSpline(from, mid, to);
+            ICurve curve = new BSpline(from, mid, to);
             List<Vector3> values = new List<Vector3>();
 
             yield return CreateTester()

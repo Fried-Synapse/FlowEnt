@@ -406,26 +406,26 @@ namespace FriedSynapse.FlowEnt
         #region MoveTo Spline
 
         /// <summary>
-        /// Applies a <see cref="MoveSplineMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="MoveCurveMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
-        /// <param name="spline"></param>
+        /// <param name="curve"></param>
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveTo<TTransform>(this TweenMotionProxy<TTransform> proxy,
-            ISpline spline)
+            ICurve curve)
             where TTransform : Transform
-            => proxy.Apply(new MoveSplineMotion(proxy.Item, spline));
+            => proxy.Apply(new MoveCurveMotion(proxy.Item, curve));
 
         /// <summary>
-        /// Applies a <see cref="MoveLocalSplineMotion{TTransform}" /> to the tween.
+        /// Applies a <see cref="MoveLocalCurveMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
-        /// <param name="spline"></param>
+        /// <param name="curve"></param>
         /// <typeparam name="TTransform"></typeparam>
         public static TweenMotionProxy<TTransform> MoveLocalTo<TTransform>(this TweenMotionProxy<TTransform> proxy,
-            ISpline spline)
+            ICurve curve)
             where TTransform : Transform
-            => proxy.Apply(new MoveLocalSplineMotion(proxy.Item, spline));
+            => proxy.Apply(new MoveLocalCurveMotion(proxy.Item, curve));
 
         #endregion
 

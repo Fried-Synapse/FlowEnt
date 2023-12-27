@@ -43,7 +43,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         public new abstract class AbstractFromToBuilder : AbstractFromToBuilder<TValue>
         {
         }
-        
+
         protected AbstractClassValueMotion(TItem item, TValue value) : base(item, value)
         {
         }
@@ -76,7 +76,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
             protected bool hasFromValue = true;
 
             [SerializeField]
-            [EnableIf(nameof(hasFromValue))]
+            [EnableIf(nameof(hasFromValue), true)]
             protected T from;
 
             [SerializeField]
