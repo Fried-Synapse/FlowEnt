@@ -1,6 +1,5 @@
 using System.Collections;
 using FluentAssertions;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -102,7 +101,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => Component.Tween(TestTime)
                     .Volume(value)
                     .SetEasing(Easing.EaseOutBack)
-                    .OnUpdated((_) => underClamp = underClamp ? underClamp : Component.volume < 0)
+                    .OnUpdated(_ => underClamp = underClamp ? underClamp : Component.volume < 0)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -174,7 +173,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.volume = 0f)
                 .Act(() => Component.Tween(TestTime).VolumeTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(maxValue, Component.volume))
+                .Assert(() => Component.volume.Should().Be(maxValue))
                 .Run();
         }
 
