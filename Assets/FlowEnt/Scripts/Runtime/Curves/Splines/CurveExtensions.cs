@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace FriedSynapse.FlowEnt
 {
-    public static class SplineExtensions
+    public static class CurveExtensions
     {
 #if UNITY_EDITOR
         public static void DrawGizmo(this ICurve curve, Color color = default, float width = 1f, float step = 0.001f)

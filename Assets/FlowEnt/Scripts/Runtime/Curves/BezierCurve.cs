@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class BezierCurve : ICurve
+    public class BezierCurve : AbstractCurve
     {
         /// <summary>
         /// Creates a bezier curve.
@@ -19,12 +19,12 @@ namespace FriedSynapse.FlowEnt
             this.endPoint = endPoint;
         }
 
-        private Vector3 startPoint;
-        private Vector3 startControl;
-        private Vector3 endControl;
-        private Vector3 endPoint;
+        private readonly Vector3 startPoint;
+        private readonly Vector3 startControl;
+        private readonly Vector3 endControl;
+        private readonly Vector3 endPoint;
 
-        public Vector3 GetPoint(float t)
+        public override Vector3 GetPoint(float t)
         {
             return GetPoint(t, startPoint, startControl, endControl, endPoint);
         }

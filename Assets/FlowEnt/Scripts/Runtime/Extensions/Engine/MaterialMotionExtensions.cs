@@ -152,7 +152,7 @@ namespace FriedSynapse.FlowEnt
         #region Alpha
 
         /// <summary>
-        /// Applies a <see cref="AlphaMotion{TMaterial}" /> to the tween.
+        /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -162,7 +162,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new AlphaMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="AlphaMotion{TMaterial}" /> to the tween.
+        /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -172,7 +172,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new AlphaMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="AlphaMotion{TMaterial}" /> to the tween.
+        /// Applies a <see cref="AlphaMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -255,7 +255,7 @@ namespace FriedSynapse.FlowEnt
         #region Color
 
         /// <summary>
-        /// Applies a <see cref="ColorMotion{TMaterial}" /> to the tween.
+        /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -265,7 +265,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ColorMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="ColorMotion{TMaterial}" /> to the tween.
+        /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -275,7 +275,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ColorMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="ColorMotion{TMaterial}" /> to the tween.
+        /// Applies a <see cref="ColorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -286,7 +286,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ColorMotion(proxy.Item, from, to));
 
         /// <summary>
-        /// Applies a <see cref="ColorGradientMotion{TMaterial}" /> to the tween.
+        /// Applies a <see cref="ColorGradientMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="gradient"></param>

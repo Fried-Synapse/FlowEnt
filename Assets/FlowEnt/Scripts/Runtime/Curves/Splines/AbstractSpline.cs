@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt
     {
     }
 
-    public abstract class AbstractSpline : ISpline
+    public abstract class AbstractSpline : AbstractCurve, ISpline
     {
         private const string ErrorListIsNull = "List cannot be null";
         private const string ErrorArrayIsNull = "Array cannot be null";
@@ -43,29 +43,5 @@ namespace FriedSynapse.FlowEnt
         protected virtual int MinPoints => 2;
 
         protected readonly Vector3[] points;
-        protected NormalisedCurve cachedNormalisedCurve;
-
-        public abstract Vector3 GetPoint(float t);
-
-        /// <summary>
-        /// This will return a new spline, which is a normalised version of this spline.
-        /// Go to <see cref="NormalisedCurve" /> for more info.
-        /// </summary>
-        /// <param name="cache"></param>
-        public NormalisedCurve Normalise(bool cache = true)
-        {
-            if (cache)
-            {
-                if (cachedNormalisedCurve == null)
-                {
-                    cachedNormalisedCurve = new NormalisedCurve(this);
-                }
-                return cachedNormalisedCurve;
-            }
-            else
-            {
-                return new NormalisedCurve(this);
-            }
-        }
     }
 }

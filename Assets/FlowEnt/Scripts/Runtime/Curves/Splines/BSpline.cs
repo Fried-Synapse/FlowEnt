@@ -13,6 +13,7 @@ namespace FriedSynapse.FlowEnt
         /// Creates a b-spline(based on Bezier curve).
         /// </summary>
         /// <param name="points">The sequence of points that will create the spline.</param>
+        /// <param name="gradient">The desired gradient for the spline</param>
         public BSpline(List<Vector3> points, float gradient = DefaultGradient) : base(points)
         {
             this.gradient = gradient;
@@ -20,12 +21,12 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <summary>
-        /// Creates a b-spline(based on Bezier curve).
+        /// Creates a b-spline(based on Bezier curve) using the default gradient.
         /// </summary>
         /// <param name="points">The sequence of points that will create the spline.</param>
         public BSpline(params Vector3[] points) : base(points)
         {
-            this.gradient = DefaultGradient;
+            gradient = DefaultGradient;
             Init();
         }
 

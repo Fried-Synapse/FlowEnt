@@ -98,6 +98,7 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveVertexVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
+        /// <param name="index"></param>
         /// <param name="value"></param>
         public static TweenMotionProxy<TrailRenderer> MoveVertex(this TweenMotionProxy<TrailRenderer> proxy, int index, Vector3 value)
             => proxy.Apply(new MoveVertexVectorMotion(proxy.Item, index, value));
@@ -106,6 +107,7 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveVertexVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
+        /// <param name="index"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<TrailRenderer> MoveVertexTo(this TweenMotionProxy<TrailRenderer> proxy, int index, Vector3 to)
             => proxy.Apply(new MoveVertexVectorMotion(proxy.Item, index, default, to));
@@ -114,6 +116,7 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="MoveVertexVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
+        /// <param name="index"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         public static TweenMotionProxy<TrailRenderer> MoveVertexTo(this TweenMotionProxy<TrailRenderer> proxy, int index, Vector3 from, Vector3 to)
