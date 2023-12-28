@@ -19,6 +19,24 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             return assertions.BeApproximately(expectedValue, Epsilon, because, becauseArgs);
         }
 
+        public static AndConstraint<NumericAssertions<float>> BeApproximatelyAngle(
+            this NumericAssertions<float> assertions,
+            float expectedValue, string because = "", params object[] becauseArgs)
+        {
+            const int fullCircle = 360;
+            while (expectedValue < 0)
+            {
+                expectedValue += fullCircle;
+            }
+            
+            while (expectedValue > fullCircle)
+            {
+                expectedValue -= fullCircle;
+            }
+
+            return assertions.BeApproximately(expectedValue, TimeEpsilon, because, becauseArgs);
+        }
+
         public static AndConstraint<NumericAssertions<float>> BeApproximatelyTime(
             this NumericAssertions<float> assertions,
             float expectedValue, string because = "", params object[] becauseArgs)

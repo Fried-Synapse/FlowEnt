@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -26,9 +27,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from <= v && v <= to));
-                        Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v => v.Should().BeGreaterOrEqualTo(from).And.BeLessOrEqualTo(to));
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }
@@ -46,9 +47,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from <= v && v <= to));
-                        Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v => v.Should().BeGreaterOrEqualTo(from).And.BeLessOrEqualTo(to));
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }
@@ -66,9 +67,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from.x <= v.x && v.x <= to.x));
-                        Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v =>
+                        {
+                            v.x.Should().BeGreaterOrEqualTo(from.x).And.BeLessOrEqualTo(to.x);
+                            v.y.Should().BeGreaterOrEqualTo(from.y).And.BeLessOrEqualTo(to.y);
+                        });
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }
@@ -86,9 +91,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from.x <= v.x && v.x <= to.x));
-                        Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v =>
+                        {
+                            v.x.Should().BeGreaterOrEqualTo(from.x).And.BeLessOrEqualTo(to.x);
+                            v.y.Should().BeGreaterOrEqualTo(from.y).And.BeLessOrEqualTo(to.y);
+                            v.z.Should().BeGreaterOrEqualTo(from.z).And.BeLessOrEqualTo(to.z);
+                        });
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }
@@ -106,9 +116,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from.x <= v.x && v.x <= to.x));
-                        Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v =>
+                        {
+                            v.x.Should().BeGreaterOrEqualTo(from.x).And.BeLessOrEqualTo(to.x);
+                            v.y.Should().BeGreaterOrEqualTo(from.y).And.BeLessOrEqualTo(to.y);
+                            v.z.Should().BeGreaterOrEqualTo(from.z).And.BeLessOrEqualTo(to.z);
+                            v.w.Should().BeGreaterOrEqualTo(from.w).And.BeLessOrEqualTo(to.w);
+                        });
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }
@@ -126,7 +142,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     .Value(animationCurve, (value) => values.Add(lastKey, value))
                     .Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.True(values.ToList().TrueForAll(v => animationCurve.Evaluate(v.Key) == v.Value)))
+                .Assert(() => values.Should().AllSatisfy(v => v.Value.Should().Be(animationCurve.Evaluate(v.Key))))
                 .Run();
         }
 
@@ -143,7 +159,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     .Value(animationCurve, (value) => values.Add(lastKey, value))
                     .Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.True(values.ToList().TrueForAll(v => animationCurve.Evaluate(v.Key) == v.Value)))
+                .Assert(() => values.Should().AllSatisfy(v => v.Value.Should().Be(animationCurve.Evaluate(v.Key))))
                 .Run();
         }
 
@@ -160,28 +176,33 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     .Value(animationCurve, (value) => values.Add(lastKey, value))
                     .Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.True(values.ToList().TrueForAll(v => animationCurve.Evaluate(v.Key) == v.Value)))
+                .Assert(() => values.Should().AllSatisfy(v => v.Value.Should().Be(animationCurve.Evaluate(v.Key))))
                 .Run();
         }
 
         [UnityTest]
-        public IEnumerator SplineValue()
+        public IEnumerator CurveValue()
         {
-            Vector3 from = new Vector3(2f, 2f, 2f);
-            Vector3 mid = new Vector3(4f, 2f, 4f);
-            Vector3 to = new Vector3(5f, 5f, 5f);
-            ISpline spline = new BSpline(from, mid, to);
-            List<Vector3> values = new List<Vector3>();
+            Vector3 from = new(2f, 2f, 2f);
+            Vector3 mid = new(4f, 2f, 4f);
+            Vector3 to = new(5f, 5f, 5f);
+            ICurve curve = new BSpline(from, mid, to);
+            List<Vector3> values = new();
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(curve, (value) => values.Add(value)).Start())
                 .AssertTime(TestTime)
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from.x <= v.x && v.x <= to.x));
-                        Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v =>
+                        {
+                            v.x.Should().BeGreaterOrEqualTo(from.x).And.BeLessOrEqualTo(to.x);
+                            v.y.Should().BeGreaterOrEqualTo(from.y).And.BeLessOrEqualTo(to.y);
+                            v.z.Should().BeGreaterOrEqualTo(from.z).And.BeLessOrEqualTo(to.z);
+                        });
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }
@@ -191,7 +212,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         {
             Quaternion from = Quaternion.Euler(0f, 0f, 0f);
             Quaternion to = Quaternion.Euler(0f, 90f, 0f);
-            List<Quaternion> values = new List<Quaternion>();
+            List<Quaternion> values = new();
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
@@ -199,9 +220,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from.eulerAngles.y <= v.eulerAngles.y && v.eulerAngles.y <= to.eulerAngles.y));
-                        FlowEntAssert.AreEqual(from, values[0]);
-                        FlowEntAssert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v =>
+                        {
+                            v.eulerAngles.x.Should().BeGreaterOrEqualTo(from.eulerAngles.x).And.BeLessOrEqualTo(to.eulerAngles.x);
+                            v.eulerAngles.y.Should().BeGreaterOrEqualTo(from.eulerAngles.y).And.BeLessOrEqualTo(to.eulerAngles.y);
+                            v.eulerAngles.z.Should().BeGreaterOrEqualTo(from.eulerAngles.z).And.BeLessOrEqualTo(to.eulerAngles.z);
+                        });
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }
@@ -209,9 +235,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator ColorValue()
         {
-            Color from = Color.blue;
-            Color to = Color.red;
-            List<Color> values = new List<Color>();
+            Color from = Color.clear;
+            Color to = Color.white;
+            List<Color> values = new();
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
@@ -219,9 +245,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from.r <= v.r && v.r <= to.r));
-                        Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v =>
+                        {
+                            v.r.Should().BeGreaterOrEqualTo(from.r).And.BeLessOrEqualTo(to.r);
+                            v.g.Should().BeGreaterOrEqualTo(from.g).And.BeLessOrEqualTo(to.g);
+                            v.b.Should().BeGreaterOrEqualTo(from.b).And.BeLessOrEqualTo(to.b);
+                            v.a.Should().BeGreaterOrEqualTo(from.a).And.BeLessOrEqualTo(to.a);
+                        });
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }
@@ -229,9 +261,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator Color32Value()
         {
-            Color32 from = Color.blue;
-            Color32 to = Color.red;
-            List<Color32> values = new List<Color32>();
+            Color32 from = Color.clear;
+            Color32 to = Color.white;
+            List<Color32> values = new();
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).Value(from, to, (value) => values.Add(value)).Start())
@@ -239,9 +271,15 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Assert(
                     () =>
                     {
-                        Assert.True(values.TrueForAll(v => from.r <= v.r && v.r <= to.r));
-                        Assert.AreEqual(from, values[0]);
-                        Assert.AreEqual(to, values[^1]);
+                        values.Should().AllSatisfy(v =>
+                        {
+                            v.r.Should().BeGreaterOrEqualTo(from.r).And.BeLessOrEqualTo(to.r);
+                            v.g.Should().BeGreaterOrEqualTo(from.g).And.BeLessOrEqualTo(to.g);
+                            v.b.Should().BeGreaterOrEqualTo(from.b).And.BeLessOrEqualTo(to.b);
+                            v.a.Should().BeGreaterOrEqualTo(from.a).And.BeLessOrEqualTo(to.a);
+                        });
+                        values[0].Should().Be(from);
+                        values[^1].Should().Be(to);
                     })
                 .Run();
         }

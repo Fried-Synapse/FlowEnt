@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the value for the specified shader property.
     /// </summary>
-    public class IntPropertyMotion : AbstractIntMotion<DynamicMaterialWithProperty<int>>
+    public class IntPropertyMotion : AbstractIntMotion<MaterialBuilderWithProperty<int>>
     {
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
@@ -23,23 +23,23 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new IntPropertyMotion(item, From, to);
         }
 
-        private IntPropertyMotion(DynamicMaterialWithProperty<int> item, int value)
+        private IntPropertyMotion(MaterialBuilderWithProperty<int> item, int value)
             : base(item, value)
         {
         }
 
-        private IntPropertyMotion(DynamicMaterialWithProperty<int> item, int? from, int to)
+        private IntPropertyMotion(MaterialBuilderWithProperty<int> item, int? from, int to)
             : base(item, from, to)
         {
         }
 
         public IntPropertyMotion(Material item, int propertyId, int value)
-            : this(new DynamicMaterialWithProperty<int>(item, propertyId), value)
+            : this(new MaterialBuilderWithProperty<int>(item, propertyId), value)
         {
         }
 
         public IntPropertyMotion(Material item, int propertyId, int? from, int to)
-            : this(new DynamicMaterialWithProperty<int>(item, propertyId), from, to)
+            : this(new MaterialBuilderWithProperty<int>(item, propertyId), from, to)
         {
         }
 
@@ -53,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        protected override int GetFrom() => item.Material.GetInt(item.PropertyId);
-        protected override void SetValue(int value) => item.Material.SetInt(item.PropertyId, value);
+        protected override int GetFrom() => item.BuiltMaterial.GetInt(item.PropertyId);
+        protected override void SetValue(int value) => item.BuiltMaterial.SetInt(item.PropertyId, value);
     }
 }

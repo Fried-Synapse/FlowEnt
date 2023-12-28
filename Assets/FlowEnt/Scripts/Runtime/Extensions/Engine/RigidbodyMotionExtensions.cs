@@ -1,4 +1,3 @@
-using FriedSynapse.FlowEnt.Motions;
 using FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies;
 using FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies;
 using UnityEngine;
@@ -14,7 +13,7 @@ namespace FriedSynapse.FlowEnt
         #region Move
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -25,7 +24,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveVectorMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -36,7 +35,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveVectorMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -52,7 +51,7 @@ namespace FriedSynapse.FlowEnt
         #region MoveTo AnimationCurve3d
 
         /// <summary>
-        /// Applies a <see cref="MoveAnimationCurve3dMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAnimationCurve3dMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="animationCurve"></param>
@@ -67,7 +66,7 @@ namespace FriedSynapse.FlowEnt
         #region Move Axis
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="axis"></param>
@@ -79,7 +78,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, axis, value));
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="axis"></param>
@@ -91,7 +90,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, axis, default, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="axis"></param>
@@ -104,7 +103,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, axis, from, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -115,7 +114,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.X, value));
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -126,7 +125,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.X, default, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -138,7 +137,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.X, from, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -149,7 +148,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Y, value));
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -160,7 +159,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Y, default, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -172,7 +171,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Y, from, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -183,7 +182,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Z, value));
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -194,7 +193,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveAxisMotion(proxy.Item, Axis.Z, default, to));
 
         /// <summary>
-        /// Applies a <see cref="MoveAxisMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveAxisMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -210,15 +209,15 @@ namespace FriedSynapse.FlowEnt
         #region MoveTo Spline
 
         /// <summary>
-        /// Applies a <see cref="MoveSplineMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MoveCurveMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
-        /// <param name="spline"></param>
+        /// <param name="curve"></param>
         /// <typeparam name="TRigidbody"></typeparam>
         public static TweenMotionProxy<TRigidbody> MoveTo<TRigidbody>(this TweenMotionProxy<TRigidbody> proxy,
-            ISpline spline)
+            ICurve curve)
             where TRigidbody : Rigidbody
-            => proxy.Apply(new MoveSplineMotion(proxy.Item, spline));
+            => proxy.Apply(new MoveCurveMotion(proxy.Item, curve));
 
         #endregion
 
@@ -229,7 +228,7 @@ namespace FriedSynapse.FlowEnt
         #region Rotate
 
         /// <summary>
-        /// Applies a <see cref="RotateQuaternionMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="RotateQuaternionMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -240,7 +239,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateQuaternionMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="RotateQuaternionMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="RotateQuaternionMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -251,7 +250,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateQuaternionMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="RotateQuaternionMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="RotateQuaternionMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -267,7 +266,7 @@ namespace FriedSynapse.FlowEnt
         #region Rotate Vector
 
         /// <summary>
-        /// Applies a <see cref="RotateVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="RotateVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -278,7 +277,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateVectorMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="RotateVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="RotateVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -289,7 +288,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateVectorMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="RotateVectorMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="RotateVectorMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -307,7 +306,7 @@ namespace FriedSynapse.FlowEnt
         #region Mass
 
         /// <summary>
-        /// Applies a <see cref="MassMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MassMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -318,7 +317,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MassMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="MassMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MassMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -328,7 +327,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MassMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="MassMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="MassMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -344,7 +343,7 @@ namespace FriedSynapse.FlowEnt
         #region Velocity
 
         /// <summary>
-        /// Applies a <see cref="VelocityMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="VelocityMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -355,7 +354,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new VelocityMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="VelocityMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="VelocityMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -366,7 +365,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new VelocityMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="VelocityMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="VelocityMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -382,7 +381,7 @@ namespace FriedSynapse.FlowEnt
         #region Angular Velocity
 
         /// <summary>
-        /// Applies a <see cref="AngularVelocityMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="AngularVelocityMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="value"></param>
@@ -393,7 +392,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new AngularVelocityMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="AngularVelocityMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="AngularVelocityMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -404,7 +403,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new AngularVelocityMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="AngularVelocityMotion{TRigidbody}" /> to the tween.
+        /// Applies a <see cref="AngularVelocityMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -437,6 +436,7 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="RotateByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
+        /// <param name="camera"></param>
         /// <param name="speed"></param>
         public static EchoMotionProxy<TRigidbody> RotateByInput<TRigidbody>(this EchoMotionProxy<TRigidbody> proxy,
             Transform camera, float speed = RotateByInputMotion.DefaultSensitivity)

@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the color for the specified shader property.
     /// </summary>
-    public class ColorPropertyMotion : AbstractColorMotion<DynamicMaterialWithProperty<Color>>
+    public class ColorPropertyMotion : AbstractColorMotion<MaterialBuilderWithProperty<Color>>
     {
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
@@ -23,23 +23,23 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new ColorPropertyMotion(item, From, to);
         }
         
-        private ColorPropertyMotion(DynamicMaterialWithProperty<Color> item, Color value)
+        private ColorPropertyMotion(MaterialBuilderWithProperty<Color> item, Color value)
             : base(item, value)
         {
         }
 
-        private ColorPropertyMotion(DynamicMaterialWithProperty<Color> item, Color? from, Color to)
+        private ColorPropertyMotion(MaterialBuilderWithProperty<Color> item, Color? from, Color to)
             : base(item, from, to)
         {
         }
 
         public ColorPropertyMotion(Material item, int propertyId, Color value)
-            : this(new DynamicMaterialWithProperty<Color>(item, propertyId), value)
+            : this(new MaterialBuilderWithProperty<Color>(item, propertyId), value)
         {
         }
 
         public ColorPropertyMotion(Material item, int propertyId, Color? from, Color to)
-            : this(new DynamicMaterialWithProperty<Color>(item, propertyId), from, to)
+            : this(new MaterialBuilderWithProperty<Color>(item, propertyId), from, to)
         {
         }
 
@@ -53,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        protected override Color GetFrom() => item.Material.GetColor(item.PropertyId);
-        protected override void SetValue(Color value) => item.Material.SetColor(item.PropertyId, value);
+        protected override Color GetFrom() => item.BuiltMaterial.GetColor(item.PropertyId);
+        protected override void SetValue(Color value) => item.BuiltMaterial.SetColor(item.PropertyId, value);
     }
 }

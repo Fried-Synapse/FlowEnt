@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the <see cref="Material.color" /> value.
     /// </summary>
-    public class ColorMotion : AbstractColorMotion<DynamicMaterial>
+    public class ColorMotion : AbstractColorMotion<MaterialBuilder>
     {
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
@@ -23,23 +23,23 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new ColorMotion(item, From, to);
         }
 
-        private ColorMotion(DynamicMaterial item, Color value) : base(item, value)
+        private ColorMotion(MaterialBuilder item, Color value) : base(item, value)
         {
         }
 
-        private ColorMotion(DynamicMaterial item, Color? from, Color to) : base(item, from, to)
+        private ColorMotion(MaterialBuilder item, Color? from, Color to) : base(item, from, to)
         {
         }
 
-        public ColorMotion(Material item, Color value) : this(new DynamicMaterial(item), value)
+        public ColorMotion(Material item, Color value) : this(new MaterialBuilder(item), value)
         {
         }
 
-        public ColorMotion(Material item, Color? from, Color to) : this(new DynamicMaterial(item), from, to)
+        public ColorMotion(Material item, Color? from, Color to) : this(new MaterialBuilder(item), from, to)
         {
         }
 
-        protected override Color GetFrom() => item.Material.color;
-        protected override void SetValue(Color value) => item.Material.color = value;
+        protected override Color GetFrom() => item.BuiltMaterial.color;
+        protected override void SetValue(Color value) => item.BuiltMaterial.color = value;
     }
 }

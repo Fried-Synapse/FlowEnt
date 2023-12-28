@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the vector for the specified shader property.
     /// </summary>
-    public class VectorPropertyMotion : AbstractVector4Motion<DynamicMaterialWithProperty<Vector4>>
+    public class VectorPropertyMotion : AbstractVector4Motion<MaterialBuilderWithProperty<Vector4>>
     {
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
@@ -23,23 +23,23 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new VectorPropertyMotion(item, From, to);
         }
 
-        private VectorPropertyMotion(DynamicMaterialWithProperty<Vector4> item, Vector4 value)
+        private VectorPropertyMotion(MaterialBuilderWithProperty<Vector4> item, Vector4 value)
             : base(item, value)
         {
         }
 
-        private VectorPropertyMotion(DynamicMaterialWithProperty<Vector4> item, Vector4? from, Vector4 to)
+        private VectorPropertyMotion(MaterialBuilderWithProperty<Vector4> item, Vector4? from, Vector4 to)
             : base(item, from, to)
         {
         }
 
         public VectorPropertyMotion(Material item, int propertyId, Vector4 value) 
-            : base(new DynamicMaterialWithProperty<Vector4>(item, propertyId), value)
+            : base(new MaterialBuilderWithProperty<Vector4>(item, propertyId), value)
         {
         }
 
         public VectorPropertyMotion(Material item, int propertyId, Vector4? from, Vector4 to) 
-            : base(new DynamicMaterialWithProperty<Vector4>(item, propertyId), from, to)
+            : base(new MaterialBuilderWithProperty<Vector4>(item, propertyId), from, to)
         {
         }
         
@@ -53,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        protected override Vector4 GetFrom() => item.Material.GetVector(item.PropertyId);
-        protected override void SetValue(Vector4 value) => item.Material.SetVector(item.PropertyId, value);
+        protected override Vector4 GetFrom() => item.BuiltMaterial.GetVector(item.PropertyId);
+        protected override void SetValue(Vector4 value) => item.BuiltMaterial.SetVector(item.PropertyId, value);
     }
 }

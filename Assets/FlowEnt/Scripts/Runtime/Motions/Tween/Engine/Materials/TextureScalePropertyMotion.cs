@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the texture scale for the specified shader property.
     /// </summary>
-    public class TextureScalePropertyMotion : AbstractVector2Motion<DynamicMaterialWithProperty<Texture>>
+    public class TextureScalePropertyMotion : AbstractVector2Motion<MaterialBuilderWithProperty<Texture>>
     {
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
@@ -23,23 +23,23 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new TextureScalePropertyMotion(item, From, to);
         }
 
-        private TextureScalePropertyMotion(DynamicMaterialWithProperty<Texture> item, Vector2 value)
+        private TextureScalePropertyMotion(MaterialBuilderWithProperty<Texture> item, Vector2 value)
             : base(item, value)
         {
         }
 
-        private TextureScalePropertyMotion(DynamicMaterialWithProperty<Texture> item, Vector2? from, Vector2 to)
+        private TextureScalePropertyMotion(MaterialBuilderWithProperty<Texture> item, Vector2? from, Vector2 to)
             : base(item, from, to)
         {
         }
 
         public TextureScalePropertyMotion(Material item, int propertyId, Vector2 value)
-            : this(new DynamicMaterialWithProperty<Texture>(item, propertyId), value)
+            : this(new MaterialBuilderWithProperty<Texture>(item, propertyId), value)
         {
         }
 
         public TextureScalePropertyMotion(Material item, int propertyId, Vector2? from, Vector2 to)
-            : this(new DynamicMaterialWithProperty<Texture>(item, propertyId), from, to)
+            : this(new MaterialBuilderWithProperty<Texture>(item, propertyId), from, to)
         {
         }
 
@@ -53,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        protected override Vector2 GetFrom() => item.Material.GetTextureScale(item.PropertyId);
-        protected override void SetValue(Vector2 value) => item.Material.SetTextureScale(item.PropertyId, value);
+        protected override Vector2 GetFrom() => item.BuiltMaterial.GetTextureScale(item.PropertyId);
+        protected override void SetValue(Vector2 value) => item.BuiltMaterial.SetTextureScale(item.PropertyId, value);
     }
 }

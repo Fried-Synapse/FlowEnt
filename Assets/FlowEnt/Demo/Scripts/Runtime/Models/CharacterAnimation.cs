@@ -22,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Demo
         private List<Vector3> SplinePoints => splinePoints;
 #pragma warning restore RCS1169, IDE0044
 
-        private ISpline GetSpline() => new BSpline(SplinePoints).Normalise();
+        private ICurve GetSpline() => new BSpline(SplinePoints).Normalise();
 
         public override AbstractAnimation GetAnimation()
             => new Flow()

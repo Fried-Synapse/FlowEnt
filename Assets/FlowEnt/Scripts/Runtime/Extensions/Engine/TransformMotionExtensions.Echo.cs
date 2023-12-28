@@ -11,7 +11,7 @@ namespace FriedSynapse.FlowEnt
         #region Move
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="MoveVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -21,7 +21,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveVectorMotion(proxy.Item, speed));
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="MoveVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -31,7 +31,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(speed, 0f, 0f)));
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="MoveVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -41,7 +41,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, speed, 0f)));
 
         /// <summary>
-        /// Applies a <see cref="MoveVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="MoveVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -51,7 +51,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveVectorMotion(proxy.Item, new Vector3(0f, 0f, speed)));
 
         /// <summary>
-        /// Applies a <see cref="MoveToVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="MoveToVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -63,7 +63,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new MoveToVectorMotion(proxy.Item, target, speed, speedType));
 
         /// <summary>
-        /// Applies a <see cref="MoveToTransformMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="MoveToTransformMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -83,7 +83,7 @@ namespace FriedSynapse.FlowEnt
         #region Rotate
 
         /// <summary>
-        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -93,7 +93,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateVectorMotion(proxy.Item, speed.eulerAngles));
 
         /// <summary>
-        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -103,7 +103,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateVectorMotion(proxy.Item, speed));
 
         /// <summary>
-        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -113,7 +113,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateVectorMotion(proxy.Item, new Vector3(speed, 0f, 0f)));
 
         /// <summary>
-        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -123,7 +123,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateVectorMotion(proxy.Item, new Vector3(0f, speed, 0f)));
 
         /// <summary>
-        /// Applies a <see cref="RotateVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -133,7 +133,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateVectorMotion(proxy.Item, new Vector3(0f, 0f, speed)));
 
         /// <summary>
-        /// Applies a <see cref="RotateToVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -145,7 +145,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateToQuaternionMotion(proxy.Item, target, speed, speedType));
 
         /// <summary>
-        /// Applies a <see cref="RotateToVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -157,7 +157,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateToQuaternionMotion(proxy.Item, Quaternion.Euler(target), speed, speedType));
 
         /// <summary>
-        /// Applies a <see cref="RotateToTransformMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateToTransformMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -173,7 +173,7 @@ namespace FriedSynapse.FlowEnt
         #region RotateAround
 
         /// <summary>
-        /// Applies a <see cref="RotateAroundTransformMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateAroundTransformMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="point"></param>
@@ -185,7 +185,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new RotateAroundTransformMotion(proxy.Item, point, axis, speed));
 
         /// <summary>
-        /// Applies a <see cref="RotateAroundVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="RotateAroundVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="point"></param>
@@ -201,7 +201,7 @@ namespace FriedSynapse.FlowEnt
         #region LookAt
 
         /// <summary>
-        /// Applies a <see cref="LookAtTransformMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="LookAtTransformMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -211,7 +211,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new LookAtTransformMotion(proxy.Item, target));
 
         /// <summary>
-        /// Applies a <see cref="LookAtVector3Motion{TTransform}" /> to the echo.
+        /// Applies a <see cref="LookAtVector3Motion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -229,7 +229,7 @@ namespace FriedSynapse.FlowEnt
         #region Scale
 
         /// <summary>
-        /// Applies a <see cref="ScaleVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="ScaleVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -239,7 +239,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ScaleVectorMotion(proxy.Item, speed));
 
         /// <summary>
-        /// Applies a <see cref="ScaleVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="ScaleVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -249,7 +249,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ScaleVectorMotion(proxy.Item, new Vector3(speed, 1f, 1f)));
 
         /// <summary>
-        /// Applies a <see cref="ScaleVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="ScaleVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -259,7 +259,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ScaleVectorMotion(proxy.Item, new Vector3(1f, speed, 1f)));
 
         /// <summary>
-        /// Applies a <see cref="ScaleVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="ScaleVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="speed"></param>
@@ -269,7 +269,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ScaleVectorMotion(proxy.Item, new Vector3(1f, 1f, speed)));
 
         /// <summary>
-        /// Applies a <see cref="ScaleToVectorMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="ScaleToVectorMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>
@@ -281,7 +281,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new ScaleToVectorMotion(proxy.Item, target, speed, speedType));
 
         /// <summary>
-        /// Applies a <see cref="ScaleToTransformMotion{TTransform}" /> to the echo.
+        /// Applies a <see cref="ScaleToTransformMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="target"></param>

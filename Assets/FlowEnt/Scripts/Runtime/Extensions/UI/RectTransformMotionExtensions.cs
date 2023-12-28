@@ -102,13 +102,13 @@ namespace FriedSynapse.FlowEnt
         #region MoveAnchoredPosition Spline
 
         /// <summary>
-        /// Applies a <see cref="MoveAnchoredPositionSplineMotion" /> to the tween.
+        /// Applies a <see cref="MoveAnchoredPositionCurveMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
-        /// <param name="spline"></param>
+        /// <param name="curve"></param>
         public static TweenMotionProxy<RectTransform> MoveAnchoredPositionTo(this TweenMotionProxy<RectTransform> proxy,
-            ISpline spline)
-            => proxy.Apply(new MoveAnchoredPositionSplineMotion(proxy.Item, spline));
+            ICurve curve)
+            => proxy.Apply(new MoveAnchoredPositionCurveMotion(proxy.Item, curve));
 
         #endregion
 

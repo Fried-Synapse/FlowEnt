@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the alpha for <see cref="Material.color" /> value.
     /// </summary>
-    public class AlphaMotion : AbstractAlphaMotion<DynamicMaterial>
+    public class AlphaMotion : AbstractAlphaMotion<MaterialBuilder>
     {
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
@@ -23,23 +23,23 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new AlphaMotion(item, From, to);
         }
 
-        private AlphaMotion(DynamicMaterial item, float value) : base(item, value)
+        private AlphaMotion(MaterialBuilder item, float value) : base(item, value)
         {
         }
 
-        private AlphaMotion(DynamicMaterial item, float? from, float to) : base(item, from, to)
+        private AlphaMotion(MaterialBuilder item, float? from, float to) : base(item, from, to)
         {
         }
 
-        public AlphaMotion(Material item, float value) : this(new DynamicMaterial(item), value)
+        public AlphaMotion(Material item, float value) : this(new MaterialBuilder(item), value)
         {
         }
 
-        public AlphaMotion(Material item, float? from, float to) : this(new DynamicMaterial(item), from, to)
+        public AlphaMotion(Material item, float? from, float to) : this(new MaterialBuilder(item), from, to)
         {
         }
 
-        protected override float GetFrom() => item.Material.color.a;
-        protected override void SetValue(float value) => item.Material.color = SetAlpha(item.Material.color, value);
+        protected override float GetFrom() => item.BuiltMaterial.color.a;
+        protected override void SetValue(float value) => item.BuiltMaterial.color = SetAlpha(item.BuiltMaterial.color, value);
     }
 }

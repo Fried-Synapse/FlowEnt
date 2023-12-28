@@ -16,7 +16,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new PitchMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="PitchToMotion" /> to the tween.
+        /// Applies a <see cref="PitchMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="to"></param>
@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new PitchMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="PitchToMotion" /> to the tween.
+        /// Applies a <see cref="PitchMotion" /> to the tween.
         /// </summary>
         /// <param name="proxy"></param>
         /// <param name="from"></param>
@@ -46,7 +46,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new VolumeMotion(proxy.Item, value));
 
         /// <summary>
-        /// Applies a <see cref="VolumeToMotion" /> to the tween.
+        /// Applies a <see cref="VolumeMotion" /> to the tween.
         /// </summary>
         /// <remarks><paramref name="to"/> value will be clamped between 0 and 1.</remarks>
         /// <param name="proxy"></param>
@@ -55,7 +55,7 @@ namespace FriedSynapse.FlowEnt
             => proxy.Apply(new VolumeMotion(proxy.Item, default, to));
 
         /// <summary>
-        /// Applies a <see cref="VolumeToMotion" /> to the tween.
+        /// Applies a <see cref="VolumeMotion" /> to the tween.
         /// </summary>
         /// <remarks><paramref name="from"/> and <paramref name="to"/> values will be clamped between 0 and 1.</remarks>
         /// <param name="proxy"></param>

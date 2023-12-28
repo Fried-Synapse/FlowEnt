@@ -107,7 +107,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 target.ExpandArray(true);
             }
-            
+
             void collapseAll()
             {
                 target.ExpandArray(false);
@@ -120,14 +120,14 @@ namespace FriedSynapse.FlowEnt.Editor
         internal static Rect GetRect(Rect position, int index)
             => GetRect(position, index, FlowEntConstants.SpacedSingleLineHeight, EditorGUIUtility.singleLineHeight);
 
-        internal static Rect GetRect(Rect position, int index, float spacedLineHeight, float lineHeight)
-            => new Rect(position.x, position.y + (index * spacedLineHeight), position.width, lineHeight);
+        internal static Rect GetRect(Rect position, int index, float spacedLineHeight, float lineHeight) =>
+            new(position.x, position.y + (index * spacedLineHeight), position.width, lineHeight);
 
-        internal static void PropertyFieldSingleLine(ref Rect position, SerializedProperty child)
+        internal static void PropertyField(ref Rect position, SerializedProperty property)
         {
-            position.height = EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, child);
-            position.y += FlowEntConstants.SpacedSingleLineHeight;
+            position.height = EditorGUI.GetPropertyHeight(property);
+            EditorGUI.PropertyField(position, property);
+            position.y += position.height + FlowEntConstants.DrawerSpacing;
         }
 
         internal static void PropertyFieldIsEnabled(Rect position, SerializedProperty property)

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using FriedSynapse.FlowEnt.Motions;
 using FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies;
 using NUnit.Framework;
 using UnityEngine;

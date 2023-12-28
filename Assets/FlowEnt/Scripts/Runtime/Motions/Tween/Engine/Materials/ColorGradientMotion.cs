@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the <see cref="Material.color" /> value using a gradient.
     /// </summary>
-    public class ColorGradientMotion : AbstractColorGradientMotion<DynamicMaterial>
+    public class ColorGradientMotion : AbstractColorGradientMotion<MaterialBuilder>
     {
         [Serializable]
         public class Builder : AbstractGradientBuilder
@@ -16,17 +16,17 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new ColorGradientMotion(item, gradient);
         }
 
-        private ColorGradientMotion(DynamicMaterial item, Gradient gradient) : base(item, gradient)
+        private ColorGradientMotion(MaterialBuilder item, Gradient gradient) : base(item, gradient)
         {
         }
 
-        public ColorGradientMotion(Material item, Gradient gradient) : this(new DynamicMaterial(item), gradient)
+        public ColorGradientMotion(Material item, Gradient gradient) : this(new MaterialBuilder(item), gradient)
         {
         }
 
         public override void OnUpdate(float t)
         {
-            item.Material.color = gradient.Evaluate(t);
+            item.BuiltMaterial.color = gradient.Evaluate(t);
         }
     }
 }
