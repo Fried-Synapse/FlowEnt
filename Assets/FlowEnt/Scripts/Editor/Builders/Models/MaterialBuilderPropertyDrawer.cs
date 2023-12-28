@@ -75,22 +75,19 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 GUIContent warningContent = new(Icon.Warning)
                 {
-                    text =
-                        $"No properties of type [{string.Join(", ", propertyTypes.Select(p => p.ToString()).ToArray())}]"
+                    text = $"No properties of type [{string.Join(", ", propertyTypes.Select(p => p.ToString()).ToArray())}]"
                 };
                 EditorGUI.LabelField(position, label, warningContent);
                 return;
             }
 
-            int index = properties.Select(Shader.PropertyToID).ToList()
-                .IndexOf(propertyIdProperty.intValue);
+            int index = properties.Select(Shader.PropertyToID).ToList().IndexOf(propertyIdProperty.intValue);
             if (index < 0 || index >= properties.Count)
             {
                 index = 0;
             }
 
-            index = EditorGUI.Popup(position, label, index,
-                properties.Select(o => new GUIContent(o)).ToArray());
+            index = EditorGUI.Popup(position, label, index, properties.Select(o => new GUIContent(o)).ToArray());
             propertyIdProperty.intValue = Shader.PropertyToID(properties[index]);
         }
 

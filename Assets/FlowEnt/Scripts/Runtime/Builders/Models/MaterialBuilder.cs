@@ -84,7 +84,6 @@ namespace FriedSynapse.FlowEnt
         public int PropertyId => propertyId;
     }
 
-
     [Serializable]
     public class MaterialBuilderWithProperty<T> : MaterialBuilderWithProperty
     {
