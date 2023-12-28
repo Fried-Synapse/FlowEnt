@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -1236,9 +1235,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    FlowEntAssert.AreEqual(from, startingFrom.Value);
-                    FlowEntAssert.AreEqual(to, GameObject.transform.rotation.eulerAngles.x);
-
                      startingFrom.Value.Should().BeApproximatelyAngle(from);
                      GameObject.transform.rotation.eulerAngles.x.Should().BeApproximatelyAngle(to);
                 })

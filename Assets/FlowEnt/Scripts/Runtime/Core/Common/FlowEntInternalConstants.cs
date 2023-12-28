@@ -1,6 +1,6 @@
 namespace FriedSynapse.FlowEnt
 {
-    internal static class FlowEntConstants
+    internal static class FlowEntInternalConstants
     {
         internal const string FlowEnt = "#3065ba";
         internal const string Blue = "#4871F3";

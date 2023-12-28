@@ -50,17 +50,5 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         {
             return assertions.BeApproximately(expectedValue, TimeEpsilon, because, becauseArgs);
         }
-
-        [Obsolete("Use FluentAssertions. They are also wrong")]
-        public static void AreEqual(float expected, float actual, float precision = Epsilon)
-            => Assert.LessOrEqual(expected - actual, precision);
-
-        [Obsolete("Use FluentAssertions. They are also wrong")]
-        public static void AreEqual(Vector3 expected, Vector3 actual, float precision = Epsilon)
-            => Assert.LessOrEqual((expected - actual).magnitude, precision);
-
-        [Obsolete("Use FluentAssertions. They are also wrong")]
-        public static void AreEqual(Quaternion expected, Quaternion actual, float precision = Epsilon)
-            => Assert.LessOrEqual(Quaternion.Angle(expected, actual), precision);
     }
 }

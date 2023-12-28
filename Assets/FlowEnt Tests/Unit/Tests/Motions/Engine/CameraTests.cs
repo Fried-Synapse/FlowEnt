@@ -1,6 +1,5 @@
 using System.Collections;
 using FluentAssertions;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -23,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.backgroundColor = Color.clear)
                 .Act(() => Component.Tween(TestTime).BackgroundColor(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, Component.backgroundColor))
+                .Assert(() => Component.backgroundColor.Should().Be(value))
                 .Run();
         }
 
@@ -36,7 +35,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.backgroundColor = Color.red)
                 .Act(() => Component.Tween(TestTime).BackgroundColorTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.backgroundColor))
+                .Assert(() => Component.backgroundColor.Should().Be(to))
                 .Run();
         }
 
@@ -54,8 +53,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, Component.backgroundColor);
+                     startingFrom.Should().Be(from);
+                     Component.backgroundColor.Should().Be(to);
                 })
                 .Run();
         }
@@ -72,8 +71,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(Variables.Gradient.Evaluate(0f), actualFrom);
-                    Assert.AreEqual(Variables.Gradient.Evaluate(1f), Component.backgroundColor);
+                    actualFrom.Should().Be(Variables.Gradient.Evaluate(0f));
+                    Component.backgroundColor.Should().Be(Variables.Gradient.Evaluate(1f));
                 })
                 .Run();
         }

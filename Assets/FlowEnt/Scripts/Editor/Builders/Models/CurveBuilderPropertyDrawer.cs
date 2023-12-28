@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt.Editor
     [CustomPropertyDrawer(typeof(CurveBuilder))]
     public class CurveBuilderPropertyDrawer : PropertyDrawer
     {
-        public enum FieldsEnum
+        private enum FieldsEnum
         {
             type,
             bezierPoints,
@@ -20,13 +20,16 @@ namespace FriedSynapse.FlowEnt.Editor
             => property.isExpanded
                 ? (CurveType)property.FindPropertyRelative(FieldsEnum.type.ToString()).enumValueIndex switch
                 {
-                    CurveType.BezierCurve => FlowEntConstants.SpacedSingleLineHeight * 7,
+                    CurveType.BezierCurve
+                        => 3 * FlowEntConstants.SpacedSingleLineHeight
+                           + 4 * EditorGUI.GetPropertyHeight(property.FindPropertyRelative(FieldsEnum.bezierPoints.ToString()).FirstChild())
+                           + FlowEntConstants.DrawerSpacing,
                     CurveType.LinearSpline or
                         CurveType.BSpline or
                         CurveType.CatmullRomSpline or
                         CurveType.CubicSpline
                         => EditorGUI.GetPropertyHeight(property.FindPropertyRelative(FieldsEnum.splinePoints.ToString()), true)
-                           + FlowEntConstants.SpacedSingleLineHeight * 3,
+                           + 3 * FlowEntConstants.SpacedSingleLineHeight,
                     _ => throw new ArgumentOutOfRangeException()
                 }
                 : EditorGUIUtility.singleLineHeight;
@@ -34,7 +37,7 @@ namespace FriedSynapse.FlowEnt.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded,
-                label, true, EditorStyles.foldoutHeader);
+                label, true);
 
             if (!property.isExpanded)
             {
@@ -53,10 +56,8 @@ namespace FriedSynapse.FlowEnt.Editor
             switch ((CurveType)typeProperty.enumValueIndex)
             {
                 case CurveType.BezierCurve:
-                    FlowEntEditorGUILayout.ForEachVisibleProperty(property.FindPropertyRelative(FieldsEnum.bezierPoints.ToString()), p =>
-                    {
-                        FlowEntEditorGUILayout.PropertyField(ref position, p);
-                    });
+                    FlowEntEditorGUILayout.ForEachVisibleProperty(property.FindPropertyRelative(FieldsEnum.bezierPoints.ToString()),
+                        p => { FlowEntEditorGUILayout.PropertyField(ref position, p); });
                     break;
                 case CurveType.LinearSpline:
                 case CurveType.BSpline:

@@ -89,6 +89,21 @@ namespace FriedSynapse.FlowEnt.Editor
             return (obj, fieldInfo);
         }
 
+        internal static SerializedProperty FirstChild(this SerializedProperty property)
+        {
+            if (property == null)
+            {
+                return null;
+            }
+
+            foreach (SerializedProperty childProperty in property)
+            {
+                return childProperty;
+            }
+
+            return null;
+        }
+
         internal static SerializedProperty GetParent(this SerializedProperty property)
         {
             string path = property.propertyPath;
