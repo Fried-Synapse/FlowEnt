@@ -123,10 +123,18 @@ namespace FriedSynapse.FlowEnt.Editor
         internal static Rect GetRect(Rect position, int index, float spacedLineHeight, float lineHeight) =>
             new(position.x, position.y + (index * spacedLineHeight), position.width, lineHeight);
 
-        internal static void PropertyField(ref Rect position, SerializedProperty property)
+        internal static void PropertyField(ref Rect position, SerializedProperty property, GUIContent label = null)
         {
             position.height = EditorGUI.GetPropertyHeight(property);
-            EditorGUI.PropertyField(position, property);
+            if (label == null)
+            {
+                EditorGUI.PropertyField(position, property);
+            }
+            else
+            {
+                EditorGUI.PropertyField(position, property, label);
+            }
+
             position.y += position.height + FlowEntConstants.DrawerSpacing;
         }
 

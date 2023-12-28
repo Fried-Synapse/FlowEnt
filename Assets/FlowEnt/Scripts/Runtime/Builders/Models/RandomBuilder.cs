@@ -1,64 +1,27 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace FriedSynapse.FlowEnt
 {
-    public enum DynamicValueType
-    {
-        Constant,
-        Random
-    }
-
     [Serializable]
-    public struct DynamicValue<T>
+    public class RandomBuilder<T> : AbstractBuilder<T>
         where T : struct
     {
         [SerializeField]
-        private DynamicValueType type;
+        private T min;
 
-        public DynamicValueType Type => type;
-
-        [SerializeField]
-        private T constant;
-
-        public T Constant => constant;
+        public T Min => min;
 
         [SerializeField]
-        private T randomMin;
+        private T max;
 
-        public T RandomMin => randomMin;
+        public T Max => max;
 
-        [SerializeField]
-        private T randomMax;
-
-        public T RandomMax => randomMax;
-
-        private T value;
-        private bool hasValue;
-
-        public T Value
+        public override T Build()
         {
-            get
-            {
-                if (!hasValue)
-                {
-                    hasValue = true;
-                    value = type switch
-                    {
-                        DynamicValueType.Constant => value,
-                        DynamicValueType.Random => GetRandom(),
-                        _ => throw new NotImplementedException()
-                    };
-                }
-
-                return value;
-            }
-        }
-
-        private T GetRandom()
-        {
-            return (T)(object)((randomMin, randomMax) switch
+            return (T)(object)((randomMin: min, randomMax: max) switch
             {
                 (Color32 minColour, Color32 maxColour) => new Color32(
                     (byte)Random.Range(minColour.r, maxColour.r),
@@ -91,23 +54,5 @@ namespace FriedSynapse.FlowEnt
                 _ => throw new NotImplementedException()
             });
         }
-
-        public static implicit operator T(DynamicValue<T> dynamicValue) => dynamicValue.Value;
-
-        public static implicit operator DynamicValue<T>(T value) =>
-            new()
-            {
-                constant = value,
-                randomMin = value,
-                randomMax = value,
-            };
-
-        public static implicit operator DynamicValue<T>((T, T) value) =>
-            new()
-            {
-                constant = value.Item1,
-                randomMin = value.Item1,
-                randomMax = value.Item2,
-            };
     }
 }
