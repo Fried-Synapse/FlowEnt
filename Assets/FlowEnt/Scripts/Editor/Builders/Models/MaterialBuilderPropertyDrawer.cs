@@ -8,8 +8,8 @@ using ShaderPropertyType = UnityEditor.ShaderUtil.ShaderPropertyType;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    [CustomPropertyDrawer(typeof(DynamicMaterial), true)]
-    public class DynamicMaterialPropertyDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(MaterialBuilder), true)]
+    public class MaterialBuilderPropertyDrawer : PropertyDrawer
     {
         private enum FieldsEnum
         {
@@ -28,10 +28,10 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUI.PropertyField(position, typeProperty);
 
             position.y += FlowEntConstants.SpacedSingleLineHeight;
-            FieldsEnum itemFieldEnum = (DynamicMaterial.MaterialType)typeProperty.enumValueIndex switch
+            FieldsEnum itemFieldEnum = (MaterialBuilder.MaterialType)typeProperty.enumValueIndex switch
             {
-                DynamicMaterial.MaterialType.Instance => FieldsEnum.gameObjectWithInstance,
-                DynamicMaterial.MaterialType.Predefined => FieldsEnum.predefinedMaterial,
+                MaterialBuilder.MaterialType.Instance => FieldsEnum.gameObjectWithInstance,
+                MaterialBuilder.MaterialType.Predefined => FieldsEnum.predefinedMaterial,
                 _ => throw new ArgumentOutOfRangeException()
             };
             SerializedProperty itemProperty = property.FindPropertyRelative(itemFieldEnum.ToString());
@@ -39,8 +39,8 @@ namespace FriedSynapse.FlowEnt.Editor
         }
     }
 
-    [CustomPropertyDrawer(typeof(DynamicMaterialWithProperty), true)]
-    public class DynamicMaterialWithPropertyPropertyDrawer : DynamicMaterialPropertyDrawer
+    [CustomPropertyDrawer(typeof(MaterialBuilderWithProperty), true)]
+    public class MaterialBuilderWithPropertyPropertyDrawer : MaterialBuilderPropertyDrawer
     {
         private enum FieldsEnum
         {
@@ -55,13 +55,13 @@ namespace FriedSynapse.FlowEnt.Editor
             base.OnGUI(position, property, label);
 
             position.height = EditorGUIUtility.singleLineHeight;
-            DynamicMaterial dynamicMaterial = property.GetValue<DynamicMaterial>();
+            MaterialBuilder materialBuilder = property.GetValue<MaterialBuilder>();
             position.y += base.GetPropertyHeight(property, label) + FlowEntConstants.DrawerSpacing;
             label = new GUIContent("Property");
             SerializedProperty propertyIdProperty = property.FindPropertyRelative(FieldsEnum.propertyId.ToString());
-            ShaderPropertyType[] propertyTypes = GetPropertyType(dynamicMaterial);
+            ShaderPropertyType[] propertyTypes = GetPropertyType(materialBuilder);
 
-            if (!TryGetMaterialProperties(dynamicMaterial.Material, propertyTypes, out List<string> properties))
+            if (!TryGetMaterialProperties(materialBuilder.Build(), propertyTypes, out List<string> properties))
             {
                 GUIContent warningContent = new(Icon.Warning)
                 {
@@ -94,17 +94,17 @@ namespace FriedSynapse.FlowEnt.Editor
             propertyIdProperty.intValue = Shader.PropertyToID(properties[index]);
         }
 
-        private ShaderPropertyType[] GetPropertyType(DynamicMaterial dynamicMaterial)
+        private ShaderPropertyType[] GetPropertyType(MaterialBuilder materialBuilder)
         {
-            return dynamicMaterial switch
+            return materialBuilder switch
             {
-                DynamicMaterialWithProperty<int> => new[] { ShaderPropertyType.Int },
-                DynamicMaterialWithProperty<float> => new[] { ShaderPropertyType.Float, ShaderPropertyType.Range },
-                DynamicMaterialWithProperty<Color> => new[] { ShaderPropertyType.Color },
-                DynamicMaterialWithProperty<Vector2> => new[] { ShaderPropertyType.Vector },
-                DynamicMaterialWithProperty<Vector4> => new[] { ShaderPropertyType.Vector },
-                DynamicMaterialWithProperty<Texture> => new[] { ShaderPropertyType.TexEnv },
-                DynamicMaterialWithProperty => (ShaderPropertyType[])Enum.GetValues(typeof(ShaderPropertyType)),
+                MaterialBuilderWithProperty<int> => new[] { ShaderPropertyType.Int },
+                MaterialBuilderWithProperty<float> => new[] { ShaderPropertyType.Float, ShaderPropertyType.Range },
+                MaterialBuilderWithProperty<Color> => new[] { ShaderPropertyType.Color },
+                MaterialBuilderWithProperty<Vector2> => new[] { ShaderPropertyType.Vector },
+                MaterialBuilderWithProperty<Vector4> => new[] { ShaderPropertyType.Vector },
+                MaterialBuilderWithProperty<Texture> => new[] { ShaderPropertyType.TexEnv },
+                MaterialBuilderWithProperty => (ShaderPropertyType[])Enum.GetValues(typeof(ShaderPropertyType)),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }

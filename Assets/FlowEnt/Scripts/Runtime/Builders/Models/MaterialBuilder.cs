@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class DynamicMaterial : IHasUndoableObjects
+    public class MaterialBuilder : AbstractBuilder<Material>, IHasUndoableObjects
     {
         private const string Tooltip =
             "Due to how Unity manages materials, we have 2 options. We either get the material that is used by all renderers or just the current instance." +
@@ -29,37 +29,32 @@ namespace FriedSynapse.FlowEnt
         [SerializeField, AutoAssignButton]
         private Material predefinedMaterial;
 
-        private Material material;
+        private Material builtMaterial;
 
-        public DynamicMaterial()
+        public MaterialBuilder()
         {
         }
 
-        public DynamicMaterial(Material predefinedMaterial)
+        public MaterialBuilder(Material predefinedMaterial)
         {
             type = MaterialType.Predefined;
             this.predefinedMaterial = predefinedMaterial;
         }
 
-        public Material Material
+        public Material BuiltMaterial
         {
             get
             {
-                //NOTE We don't want to cache in the previewer.
-#if UNITY_EDITOR
-                if (!Application.isPlaying || material == null)
-#else
-                if (material == null)
-#endif
+                if (builtMaterial == null)
                 {
-                    material = GetMaterial();
+                    builtMaterial = Build();
                 }
 
-                return material;
+                return builtMaterial;
             }
         }
 
-        private Material GetMaterial() => type switch
+        public override Material Build() => type switch
         {
             MaterialType.Predefined => predefinedMaterial,
             MaterialType.Instance => gameObjectWithInstance != null
@@ -68,20 +63,20 @@ namespace FriedSynapse.FlowEnt
             _ => null
         };
 
-        List<Object> IHasUndoableObjects.GetUndoableObjects() => new() { Material };
+        List<Object> IHasUndoableObjects.GetUndoableObjects() => new() { Build() };
     }
 
     [Serializable]
-    public class DynamicMaterialWithProperty : DynamicMaterial
+    public class MaterialBuilderWithProperty : MaterialBuilder
     {
         [SerializeField]
         private int propertyId;
 
-        public DynamicMaterialWithProperty()
+        public MaterialBuilderWithProperty()
         {
         }
 
-        public DynamicMaterialWithProperty(Material material, int propertyId) : base(material)
+        public MaterialBuilderWithProperty(Material material, int propertyId) : base(material)
         {
             this.propertyId = propertyId;
         }
@@ -91,13 +86,13 @@ namespace FriedSynapse.FlowEnt
 
 
     [Serializable]
-    public class DynamicMaterialWithProperty<T> : DynamicMaterialWithProperty
+    public class MaterialBuilderWithProperty<T> : MaterialBuilderWithProperty
     {
-        public DynamicMaterialWithProperty()
+        public MaterialBuilderWithProperty()
         {
         }
 
-        public DynamicMaterialWithProperty(Material material, int propertyId) : base(material, propertyId)
+        public MaterialBuilderWithProperty(Material material, int propertyId) : base(material, propertyId)
         {
         }
     }

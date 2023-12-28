@@ -7,7 +7,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
     /// <summary>
     /// Lerps the value for the specified shader property.
     /// </summary>
-    public class FloatPropertyMotion : AbstractFloatMotion<DynamicMaterialWithProperty<float>>
+    public class FloatPropertyMotion : AbstractFloatMotion<MaterialBuilderWithProperty<float>>
     {
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
@@ -23,23 +23,23 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
                 => new FloatPropertyMotion(item, From, to);
         }
 
-        private FloatPropertyMotion(DynamicMaterialWithProperty<float> item, float value)
+        private FloatPropertyMotion(MaterialBuilderWithProperty<float> item, float value)
             : base(item, value)
         {
         }
 
-        private FloatPropertyMotion(DynamicMaterialWithProperty<float> item, float? from, float to)
+        private FloatPropertyMotion(MaterialBuilderWithProperty<float> item, float? from, float to)
             : base(item, from, to)
         {
         }
 
         public FloatPropertyMotion(Material item, int propertyId, float value)
-            : this(new DynamicMaterialWithProperty<float>(item, propertyId), value)
+            : this(new MaterialBuilderWithProperty<float>(item, propertyId), value)
         {
         }
 
         public FloatPropertyMotion(Material item, int propertyId, float? from, float to)
-            : this(new DynamicMaterialWithProperty<float>(item, propertyId), from, to)
+            : this(new MaterialBuilderWithProperty<float>(item, propertyId), from, to)
         {
         }
 
@@ -53,7 +53,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         {
         }
 
-        protected override float GetFrom() => item.Material.GetFloat(item.PropertyId);
-        protected override void SetValue(float value) => item.Material.SetFloat(item.PropertyId, value);
+        protected override float GetFrom() => item.BuiltMaterial.GetFloat(item.PropertyId);
+        protected override void SetValue(float value) => item.BuiltMaterial.SetFloat(item.PropertyId, value);
     }
 }

@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt
         public abstract Vector3 GetPoint(float t);
 
         /// <summary>
-        /// This will return a new spline, which is a normalised version of this spline.
+        /// This will return a new curve, which is a normalised version of this curve.
         /// Go to <see cref="NormalisedCurve" /> for more info.
         /// </summary>
         /// <param name="cache"></param>
