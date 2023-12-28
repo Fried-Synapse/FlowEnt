@@ -29,6 +29,53 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         }
     }
 
+    public abstract class AbstractRandomStructValueMotion<TItem, TValue> : AbstractValueMotion<TItem, TValue>
+        where TValue : struct
+    {
+        [Serializable]
+        public new abstract class AbstractValueBuilder<T> : AbstractBuilder
+            where T : struct
+        {
+            [SerializeField]
+            protected RandomBuilder<T> value;
+        }
+
+        [Serializable]
+        public new abstract class AbstractFromToBuilder<T> : AbstractBuilder
+            where T : struct
+        {
+            [SerializeField]
+            [Tooltip(FlowEntConstants.HasFromValueTooltip)]
+            protected bool hasFromValue = true;
+
+            [SerializeField]
+            [EnableIf(nameof(hasFromValue), true)]
+            protected RandomBuilder<T> from;
+
+            [SerializeField]
+            protected RandomBuilder<T> to;
+        }
+
+        [Serializable]
+        public new abstract class AbstractValueBuilder : AbstractValueBuilder<TValue>
+        {
+        }
+
+        [Serializable]
+        public new abstract class AbstractFromToBuilder : AbstractFromToBuilder<TValue>
+        {
+        }
+
+        protected AbstractRandomStructValueMotion(TItem item, TValue value) : base(item, value)
+        {
+        }
+
+        protected AbstractRandomStructValueMotion(TItem item, TValue? from, TValue to) : base(item, from != null,
+            from ?? default, to)
+        {
+        }
+    }
+
     public abstract class AbstractClassValueMotion<TItem, TValue> : AbstractValueMotion<TItem, TValue>
         where TValue : class
     {
@@ -54,11 +101,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         }
     }
 
-    public static class TooltipConst
-    {
-        public const string Temp = "If this is disabled the motion will start from the current state";
-    }
-
     public abstract class AbstractValueMotion<TItem, TValue> : AbstractTweenMotion<TItem>
     {
         [Serializable]
@@ -72,7 +114,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
         public abstract class AbstractFromToBuilder<T> : AbstractBuilder
         {
             [SerializeField]
-            [Tooltip(TooltipConst.Temp)]
+            [Tooltip(FlowEntConstants.HasFromValueTooltip)]
             protected bool hasFromValue = true;
 
             [SerializeField]
