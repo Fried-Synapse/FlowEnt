@@ -9,5 +9,7 @@ namespace FriedSynapse.FlowEnt
         internal const string Orange = "#F3C648";
         internal const string Red = "#F06D35";
         internal const string Grey = "#DEDEDE";
+
+        internal const string InvalidImplementation = "This method should not be called.";
     }
 }
