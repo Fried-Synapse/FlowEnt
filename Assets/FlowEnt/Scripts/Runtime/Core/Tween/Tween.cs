@@ -50,7 +50,7 @@ namespace FriedSynapse.FlowEnt
             this.time = time;
         }
 
-        private readonly List<AbstractTweenMotion> motions = new();
+        private readonly List<AbstractTweenMotion> motions = new(1);
         private int? remainingLoops;
         private float remainingTime;
         private LoopDirection loopDirection;

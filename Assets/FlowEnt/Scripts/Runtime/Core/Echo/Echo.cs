@@ -44,7 +44,7 @@ namespace FriedSynapse.FlowEnt
             AutoStart = autoStart;
         }
 
-        private List<AbstractEchoMotion> motions = new(1);
+        private readonly List<AbstractEchoMotion> motions = new(1);
         private int? remainingLoops;
 
         #region Seek
