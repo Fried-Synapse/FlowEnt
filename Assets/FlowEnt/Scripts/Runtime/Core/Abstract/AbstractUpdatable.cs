@@ -49,9 +49,7 @@ namespace FriedSynapse.FlowEnt
 #endif
 
         //HACK for having a constructor that does nothing, to instantiate quicker when needed
-#pragma warning disable RCS1163, IDE0060
         private protected AbstractUpdatable(int thisIsAnEmptyConstructorForAnchor)
-#pragma warning restore RCS1163, IDE0060
         {
         }
 
@@ -125,7 +123,6 @@ namespace FriedSynapse.FlowEnt
 
     internal class UpdatableAnchor : AbstractUpdatable
     {
-        private const string InvalidImplementation = "This method should not be called.";
 
         public UpdatableAnchor() : base(0)
         {
@@ -133,12 +130,12 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime)
         {
-            throw new InvalidOperationException(InvalidImplementation);
+            throw new InvalidOperationException(FlowEntInternalConstants.InvalidImplementation);
         }
 
         internal override void UpdateInternal(float deltaTime)
         {
-            throw new InvalidOperationException(InvalidImplementation);
+            throw new InvalidOperationException(FlowEntInternalConstants.InvalidImplementation);
         }
     }
 }
