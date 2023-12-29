@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
             private Transform target;
 #pragma warning restore IDE0044, RCS1169
 
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new ConvergeToTransformMotion(item, target, speed, speedType);
         }
 

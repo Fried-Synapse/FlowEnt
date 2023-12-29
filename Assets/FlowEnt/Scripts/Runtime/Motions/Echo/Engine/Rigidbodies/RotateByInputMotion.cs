@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
             [SerializeField]
             private Transform camera;
 #pragma warning restore IDE0044, RCS1169
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new RotateByInputMotion(item, camera, sensitivity);
         }
 

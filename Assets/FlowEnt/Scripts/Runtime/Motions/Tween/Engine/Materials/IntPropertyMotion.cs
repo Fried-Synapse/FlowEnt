@@ -12,14 +12,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new IntPropertyMotion(item, value);
         }
 
         [Serializable]
         public class FromToBuilder : AbstractFromToBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new IntPropertyMotion(item, From, to);
         }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public abstract class AbstractEchoMotionBuilder : AbstractMotionBuilder<IEchoMotion>
+    public abstract class AbstractEchoMotionBuilder : AbstractMotionBuilder<AbstractEchoMotion>
     {
     }
 
@@ -20,9 +20,9 @@ namespace FriedSynapse.FlowEnt
     }
 
     [Serializable]
-    public class EchoMotionsBuilder : AbstractListBuilder<AbstractEchoMotionBuilder, IEchoMotion>
+    public class EchoMotionsBuilder : AbstractListBuilder<AbstractEchoMotionBuilder, AbstractEchoMotion>
     {
-        public override List<IEchoMotion> Build()
+        public override List<AbstractEchoMotion> Build()
             => Items.FindAll(m => m.IsEnabled).ConvertAll(m => m.Build());
     }
 }

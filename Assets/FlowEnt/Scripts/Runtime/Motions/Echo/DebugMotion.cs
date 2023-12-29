@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo
         {
             [SerializeField]
             private string name;
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new DebugMotion(name);
         }
 

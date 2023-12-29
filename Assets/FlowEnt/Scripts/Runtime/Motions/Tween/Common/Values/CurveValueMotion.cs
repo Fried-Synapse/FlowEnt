@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
             [SerializeField]
             protected CurveBuilder curve;
 
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new CurveValueMotion(curve.Build(), GetCallback());
         }
 

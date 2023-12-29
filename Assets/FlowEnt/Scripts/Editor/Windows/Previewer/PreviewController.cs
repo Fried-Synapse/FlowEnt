@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FriedSynapse.FlowEnt.Motions.Abstract;
+using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -141,7 +141,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private static bool RecordAnimationObjects(AbstractAnimation animation)
         {
             bool hasRecordedObjects = false;
-            IMotion[] motions = animation.GetFieldValue<IMotion[]>("motions");
+            IEnumerable<IMotion> motions = animation.GetFieldValue<IEnumerable>("motions").Cast<IMotion>();
             foreach (IMotion motion in motions)
             {
                 List<UnityObject> objects = GetAllFor<UnityObject>(motion);

@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
                 to = Color.white;
             }
             
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new Color32ValueMotion(from, to, GetCallback());
         }
 

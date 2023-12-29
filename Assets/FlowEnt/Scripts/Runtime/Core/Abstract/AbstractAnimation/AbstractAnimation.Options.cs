@@ -36,10 +36,14 @@ namespace FriedSynapse.FlowEnt
                 }
             }
         }
-        private protected int skipFrames;
-        private protected float delay;
+
+        private protected StartHelperType startHelperType;
+        private int skipFrames;
+        private float delay;
+        private Func<bool> delayUntil;
         private protected int? loopCount = AbstractAnimationOptions.DefaultLoopCount;
         private protected float timeScale = AbstractAnimationOptions.DefaultTimeScale;
+
         public float TimeScale
         {
             get => timeScale;
@@ -49,11 +53,13 @@ namespace FriedSynapse.FlowEnt
                 {
                     throw new ArgumentException(AbstractAnimationOptions.ErrorTimeScaleNegative);
                 }
+
                 timeScale = value;
             }
         }
 
         private protected PlayState playState = PlayState.Building;
+
         /// <summary>
         /// The current state of the animation.
         /// </summary>
@@ -88,6 +94,8 @@ namespace FriedSynapse.FlowEnt
             AutoStart = options.AutoStart;
             skipFrames = options.SkipFrames;
             delay = options.Delay;
+            delayUntil = options.DelayUntil;
+            startHelperType = options.StartHelperType;
             timeScale = options.TimeScale;
             loopCount = options.LoopCount;
         }
@@ -121,6 +129,7 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimation SetSkipFrames(int frames)
         {
             skipFrames = frames;
+            startHelperType |= StartHelperType.SkipFrames;
             return this;
         }
 
@@ -129,6 +138,16 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimation SetDelay(float time)
         {
             delay = time;
+            startHelperType |= StartHelperType.Delay;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public AbstractAnimation SetDelayUntil(Func<bool> callback)
+        {
+            delayUntil = callback;
+            startHelperType |= StartHelperType.DelayUntil;
             return this;
         }
 
@@ -140,6 +159,7 @@ namespace FriedSynapse.FlowEnt
             {
                 throw new ArgumentException(AbstractAnimationOptions.ErrorLoopCountNegative);
             }
+
             this.loopCount = loopCount;
             return this;
         }

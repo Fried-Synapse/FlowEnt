@@ -38,12 +38,12 @@ namespace FriedSynapse.FlowEnt.Builder
         {
         }
 
-        public virtual async Task RunAsync()
+        public async Task RunAsync()
         {
-            Stopwatch stopwatch = new Stopwatch();
+            Stopwatch stopwatch = new();
             stopwatch.Start();
 
-            Stopwatch warmupStopwatch = new Stopwatch();
+            Stopwatch warmupStopwatch = new();
             warmupStopwatch.Start();
 
             Prepare();
@@ -51,7 +51,7 @@ namespace FriedSynapse.FlowEnt.Builder
             warmupStopwatch.Stop();
 
             int framesBefore = Time.frameCount;
-            Stopwatch frameRateStopwatch = new Stopwatch();
+            Stopwatch frameRateStopwatch = new();
             frameRateStopwatch.Start();
 
             await StartControlAsync();

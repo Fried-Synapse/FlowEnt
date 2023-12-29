@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
     public static class AbstractAnimationTestsValues
     {
-        public readonly static bool[] stopValues = new bool[] { false, true };
+        public static readonly bool[] stopValues = { false, true };
     }
 
     public abstract class AbstractAnimationTests<TAnimation> : AbstractEngineTests
@@ -29,7 +29,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => animation = CreateAnimation(time))
                 .Act(() => animation.SetName(name).Start())
                 .AssertTime(time)
-                .Assert(() => Assert.AreEqual(name, animation.Name))
+                .Assert(() => animation.Name.Should().Be(name))
                 .Run();
         }
 
@@ -53,13 +53,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     animation.Start();
 
                     Flow flowControl = new Flow()
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => isWaiting = animation.PlayState == PlayState.Waiting))
-                                    .Queue(new Tween(QuarterTestTime))
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => isPlaying = animation.PlayState == PlayState.Playing))
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Pause()))
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => isPaused = animation.PlayState == PlayState.Paused))
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Resume()))
-                                    .Start();
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => isWaiting = animation.PlayState == PlayState.Waiting))
+                        .Queue(new Tween(QuarterTestTime))
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => isPlaying = animation.PlayState == PlayState.Playing))
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Pause()))
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => isPaused = animation.PlayState == PlayState.Paused))
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Resume()))
+                        .Start();
                     return animation;
                 })
                 .AssertTime(DoubleTestTime)
@@ -211,8 +211,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    //TODO switch to fluent assertions
-                    Assert.True(startException != null && startException is AnimationException animationException && animationException.Animation is TAnimation);
+                    startException.Should().NotBeNull()
+                        .And.BeOfType<AnimationException>()
+                        .Which.Animation.Should().BeOfType<TAnimation>();
                     Action act = () => animation.Start();
                     act.Should().Throw<AnimationException>();
                 })
@@ -226,10 +227,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     TAnimation animation = CreateAnimation(HalfTestTime).Start() as TAnimation;
-                    Flow flowControl = new Flow()
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Pause()))
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Resume()))
-                                    .Start();
+                    new Flow()
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Pause()))
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Resume()))
+                        .Start();
                     return animation;
                 })
                 .AssertTime(ThreeQuartersTestTime)
@@ -244,9 +245,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     TAnimation animation = CreateAnimation(QuarterTestTime).SetDelay(HalfTestTime).Start() as TAnimation;
                     Flow flowControl = new Flow()
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Pause()))
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Resume()))
-                                    .Start();
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Pause()))
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Resume()))
+                        .Start();
                     return animation;
                 })
                 .AssertTime(TestTime)
@@ -254,7 +255,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [UnityTest]
-        public IEnumerator Stop([ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))] bool triggerOnCompleted)
+        public IEnumerator Stop(
+            [ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))] bool triggerOnCompleted)
         {
             TAnimation animation = null;
             bool hasFinished = false;
@@ -263,13 +265,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     animation = CreateAnimation(HalfTestTime)
-                                   .OnCompleted(() => hasFinished = true) as TAnimation;
+                        .OnCompleted(() => hasFinished = true) as TAnimation;
                     _ = animation.StartAsync();
 
                     return new Flow()
-                                    .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Stop(triggerOnCompleted)))
-                                    .Queue(new Tween(QuarterTestTime))
-                                    .Start();
+                        .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Stop(triggerOnCompleted)))
+                        .Queue(new Tween(QuarterTestTime))
+                        .Start();
                 })
                 .Assert(() =>
                 {

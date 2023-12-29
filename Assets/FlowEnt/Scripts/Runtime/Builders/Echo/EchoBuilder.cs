@@ -8,17 +8,17 @@ namespace FriedSynapse.FlowEnt
     {
 #pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]
-        private EchoOptionsBuilder options = new EchoOptionsBuilder();
+        private EchoOptionsBuilder options = new();
 
         public EchoOptionsBuilder Options => options;
 
         [SerializeField]
-        private EchoEventsBuilder events = new EchoEventsBuilder();
+        private EchoEventsBuilder events = new();
 
         public EchoEventsBuilder Events => events;
 
         [SerializeField]
-        private EchoMotionsBuilder motions = new EchoMotionsBuilder();
+        private EchoMotionsBuilder motions = new();
 
         public EchoMotionsBuilder Motions => motions;
 #pragma warning restore RCS1169, RCS1085, IDE0044

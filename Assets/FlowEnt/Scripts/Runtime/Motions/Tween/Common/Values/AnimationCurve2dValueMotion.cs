@@ -16,7 +16,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
             [SerializeField]
             private AnimationCurve2d animationCurve;
 
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new AnimationCurve2dValueMotion(animationCurve, GetCallback());
 #pragma warning restore IDE0044, RCS1169
         }

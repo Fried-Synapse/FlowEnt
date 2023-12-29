@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using FriedSynapse.FlowEnt.Motions.Echo;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using FriedSynapse.FlowEnt.Motions.Echo.Transforms;
@@ -24,8 +26,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 })
                 .Assert(() =>
                 {
-                    IEchoMotion[] motions = echo.GetFieldValue<IEchoMotion[]>("motions");
-                    Assert.AreEqual(2, motions.Length);
+                    List<AbstractEchoMotion> motions = echo.GetFieldValue<IList>("motions").Cast<AbstractEchoMotion>().ToList();
+                    Assert.AreEqual(2, motions.Count);
                     Assert.IsTrue(motions[0] is MoveVectorMotion);
                     Assert.IsTrue(motions[1] is DebugMotion);
                 })

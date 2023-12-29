@@ -40,15 +40,17 @@ namespace FriedSynapse.FlowEnt
             {
                 throw new ArgumentException(TweenOptions.ErrorTimeMin);
             }
+
             if (float.IsInfinity(time))
             {
                 throw new ArgumentException(TweenOptions.ErrorTimeInfinity);
             }
+
             AutoStart = autoStart;
             this.time = time;
         }
 
-        private ITweenMotion[] motions = new ITweenMotion[0];
+        private readonly List<AbstractTweenMotion> motions = new(1);
         private int? remainingLoops;
         private float remainingTime;
         private LoopDirection loopDirection;
@@ -57,6 +59,7 @@ namespace FriedSynapse.FlowEnt
 
         private protected override bool IsSeekable => true;
         private protected override float TotalSeekTime => time;
+
         private protected override float GetSeekingDeltaTimeFromRatio(float ratio)
             => ((ratio * time) - elapsedTime) / timeScale;
 
@@ -121,15 +124,8 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            if (skipFrames > 0)
+            if (startHelperType != StartHelperType.None && TryStartHelpers())
             {
-                StartSkipFrames();
-                return;
-            }
-
-            if (delay > 0f)
-            {
-                StartDelay();
                 return;
             }
 
@@ -137,10 +133,11 @@ namespace FriedSynapse.FlowEnt
             remainingTime = time;
 
             onStarting?.Invoke();
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnStart();
             }
+
             updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
             onStarted?.Invoke();
@@ -165,10 +162,11 @@ namespace FriedSynapse.FlowEnt
             float t = easing.GetValue(currentLoopTime / time);
 
             onUpdating?.Invoke(t);
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnUpdate(t);
             }
+
             onUpdated?.Invoke(t);
 
             if (overdraft != null)
@@ -179,10 +177,11 @@ namespace FriedSynapse.FlowEnt
 
         private void StartLoop()
         {
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnLoopStart();
             }
+
             onLoopStarted?.Invoke(remainingLoops);
         }
 
@@ -195,7 +194,7 @@ namespace FriedSynapse.FlowEnt
                 remainingTime = time;
                 elapsedTime = 0;
 
-                for (int i = 0; i < motions.Length; i++)
+                for (int i = 0; i < motions.Count; i++)
                 {
                     motions[i].OnLoopComplete();
                 }
@@ -205,6 +204,7 @@ namespace FriedSynapse.FlowEnt
                 {
                     loopDirection = loopDirection == LoopDirection.Forward ? LoopDirection.Backward : LoopDirection.Forward;
                 }
+
                 float overdraft = this.overdraft.Value;
                 this.overdraft = null;
                 StartLoop();
@@ -221,10 +221,11 @@ namespace FriedSynapse.FlowEnt
 
             onCompleting?.Invoke();
             playState = PlayState.Finished;
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnComplete();
             }
+
             onCompleted?.Invoke();
 
             if (updateController is Flow parentFlow)
@@ -249,18 +250,18 @@ namespace FriedSynapse.FlowEnt
         /// Applies all the motions to the current tween.
         /// </summary>
         /// <param name="motions"></param>
-        public Tween Apply(params ITweenMotion[] motions)
+        public Tween Apply(params AbstractTweenMotion[] motions)
         {
-            this.motions = this.motions.Concat(motions).ToArray();
+            this.motions.AddRange(motions);
             return this;
         }
 
-        /// <inheritdoc cref="Apply(ITweenMotion[])"/>
+        /// <inheritdoc cref="Apply(AbstractTweenMotion[])"/>
         /// \copydoc Tween.Apply
         /// <param name="motions"></param>
-        public Tween Apply(IEnumerable<ITweenMotion> motions)
+        public Tween Apply(IEnumerable<AbstractTweenMotion> motions)
         {
-            this.motions = this.motions.Concat(motions).ToArray();
+            this.motions.AddRange(motions);
             return this;
         }
 

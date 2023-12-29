@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
         [Serializable]
         public class Builder : AbstractFloatSpeedBuilder
         {
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new MoveByInputMotion(item, speed);
         }
         public MoveByInputMotion(CharacterController item, float speed = DefaultSpeed) : base(item, speed)

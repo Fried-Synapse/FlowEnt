@@ -17,7 +17,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
             private Transform point;
 #pragma warning restore IDE0044, RCS1169
 
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
             {
                 return new RotateAroundTransformMotion(item, point, axis, speed);
             }

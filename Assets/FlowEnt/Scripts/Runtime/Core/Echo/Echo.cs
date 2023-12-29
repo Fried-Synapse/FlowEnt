@@ -34,21 +34,24 @@ namespace FriedSynapse.FlowEnt
             {
                 throw new ArgumentException(EchoOptions.ErrorTimeoutMin);
             }
+
             if (timeout != null && float.IsInfinity(timeout.Value))
             {
                 throw new ArgumentException(EchoOptions.ErrorTimeoutInfinity);
             }
+
             this.timeout = timeout != null && float.IsInfinity(timeout.Value) ? null : timeout;
             AutoStart = autoStart;
         }
 
-        private IEchoMotion[] motions = new IEchoMotion[0];
+        private readonly List<AbstractEchoMotion> motions = new(1);
         private int? remainingLoops;
 
         #region Seek
 
         private protected override bool IsSeekable => timeout != null;
         private protected override float TotalSeekTime => timeout ?? 0;
+
         private protected override float GetSeekingDeltaTimeFromRatio(float ratio)
             => ((ratio * timeout ?? 0) - elapsedTime) / timeScale;
 
@@ -113,25 +116,19 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            if (skipFrames > 0)
+            if (startHelperType != StartHelperType.None && TryStartHelpers())
             {
-                StartSkipFrames();
-                return;
-            }
-
-            if (delay > 0f)
-            {
-                StartDelay();
                 return;
             }
 
             remainingLoops = loopCount;
 
             onStarting?.Invoke();
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnStart();
             }
+
             updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
             onStarted?.Invoke();
@@ -155,10 +152,11 @@ namespace FriedSynapse.FlowEnt
             }
 
             onUpdating?.Invoke(scaledDeltaTime);
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnUpdate(scaledDeltaTime);
             }
+
             onUpdated?.Invoke(scaledDeltaTime);
 
             if (overdraft != null)
@@ -169,10 +167,11 @@ namespace FriedSynapse.FlowEnt
 
         private void StartLoop()
         {
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnLoopStart();
             }
+
             onLoopStarted?.Invoke(remainingLoops);
         }
 
@@ -184,7 +183,7 @@ namespace FriedSynapse.FlowEnt
             {
                 elapsedTime = 0;
 
-                for (int i = 0; i < motions.Length; i++)
+                for (int i = 0; i < motions.Count; i++)
                 {
                     motions[i].OnLoopComplete();
                 }
@@ -206,10 +205,11 @@ namespace FriedSynapse.FlowEnt
 
             onCompleting?.Invoke();
             playState = PlayState.Finished;
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnComplete();
             }
+
             onCompleted?.Invoke();
 
             if (updateController is Flow parentFlow)
@@ -232,18 +232,18 @@ namespace FriedSynapse.FlowEnt
         /// Applies all the motions to the current echo.
         /// </summary>
         /// <param name="motions"></param>
-        public Echo Apply(params IEchoMotion[] motions)
+        public Echo Apply(params AbstractEchoMotion[] motions)
         {
-            this.motions = this.motions.Concat(motions).ToArray();
+            this.motions.AddRange(motions);
             return this;
         }
 
-        /// <inheritdoc cref="Apply(IEchoMotion[])"/>
+        /// <inheritdoc cref="Apply(AbstractEchoMotion[])"/>
         /// \copydoc Echo.Apply
         /// <param name="motions"></param>
-        public Echo Apply(IEnumerable<IEchoMotion> motions)
+        public Echo Apply(IEnumerable<AbstractEchoMotion> motions)
         {
-            this.motions = this.motions.Concat(motions).ToArray();
+            this.motions.AddRange(motions);
             return this;
         }
 

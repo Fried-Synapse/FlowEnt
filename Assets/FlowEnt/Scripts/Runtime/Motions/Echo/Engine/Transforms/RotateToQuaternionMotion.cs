@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
             [SerializeField]
             private Vector3 target;
 
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new RotateToQuaternionMotion(item, Quaternion.Euler(target), speed, speedType);
         }
 

@@ -5,8 +5,5 @@
         <ui:VisualElement name="debug" class="section">
             <ui:Label text="Debug" display-tooltip-when-elided="true" class="label" />
         </ui:VisualElement>
-        <ui:VisualElement name="features" class="section">
-            <ui:Label text="Features" display-tooltip-when-elided="true" class="label" />
-        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

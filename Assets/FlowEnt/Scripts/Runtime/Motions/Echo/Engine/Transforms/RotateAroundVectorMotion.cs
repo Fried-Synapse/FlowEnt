@@ -28,7 +28,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
             private Vector3 point;
 #pragma warning restore IDE0044, RCS1169
 
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new RotateAroundVectorMotion(item, point, axis, speed);
         }
 

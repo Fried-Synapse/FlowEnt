@@ -13,7 +13,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
             [SerializeField]
             private Vector3 target;
 
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new ConvergeToVectorMotion(item, target, speed, speedType);
         }
 

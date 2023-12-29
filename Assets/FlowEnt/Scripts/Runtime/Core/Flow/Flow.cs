@@ -35,7 +35,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Internal Members
 
-        private readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
+        private readonly UpdatablesFastList updatables = new UpdatablesFastList();
         private readonly List<AbstractUpdatableWrapper> updatableWrappersQueue = new List<AbstractUpdatableWrapper>(2);
         private AbstractUpdatableWrapper lastQueuedUpdatableWrapper;
 
@@ -135,15 +135,8 @@ namespace FriedSynapse.FlowEnt
                 throw new AnimationException(this, "Cannot start empty flow.");
             }
 
-            if (skipFrames > 0)
+            if (startHelperType != StartHelperType.None && TryStartHelpers())
             {
-                StartSkipFrames();
-                return;
-            }
-
-            if (delay > 0f)
-            {
-                StartDelay();
                 return;
             }
 
@@ -162,11 +155,11 @@ namespace FriedSynapse.FlowEnt
         {
             int count = updatableWrappersQueue.Count;
             runningUpdatableWrappersCount = count;
-            
+
             float scaledDeltaTime = deltaTime * timeScale;
             elapsedTime += scaledDeltaTime;
             onUpdating?.Invoke(scaledDeltaTime);
-           
+
             for (int i = 0; i < count; i++)
             {
                 AbstractUpdatableWrapper updatableWrapper = updatableWrappersQueue[i];

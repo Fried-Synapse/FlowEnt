@@ -9,7 +9,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
         [Serializable]
         public class Builder : AbstractValueMotionBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new QuaternionValueMotion(from, to, GetCallback());
         }
 

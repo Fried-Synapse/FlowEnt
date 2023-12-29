@@ -47,7 +47,13 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         /// <param name="time"></param>
         TAnimation SetDelay(float time);
-
+        
+        /// <summary>
+        /// Sets the callback that holds the starting of the animation.
+        /// </summary>
+        /// <param name="callback"></param>
+        TAnimation SetDelayUntil(Func<bool> callback);
+        
         /// <summary>
         /// Sets the amount of loops you want this animation to have. If you want infinite loops pass a null value.
         /// </summary>

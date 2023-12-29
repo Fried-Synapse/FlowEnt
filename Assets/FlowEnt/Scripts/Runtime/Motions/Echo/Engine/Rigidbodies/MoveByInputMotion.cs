@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
         [Serializable]
         public class Builder : AbstractFloatSpeedBuilder
         {
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new MoveByInputMotion(item, speed);
         }
 

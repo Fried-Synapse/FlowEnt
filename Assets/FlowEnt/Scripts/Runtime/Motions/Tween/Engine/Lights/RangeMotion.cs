@@ -12,14 +12,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Lights
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new RangeMotion(item, value);
         }
 
         [Serializable]
         public class FromToBuilder : AbstractFromToBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new RangeMotion(item, From, to);
         }
 

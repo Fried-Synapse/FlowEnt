@@ -18,7 +18,7 @@ namespace FriedSynapse.FlowEnt
             last = anchor;
         }
 
-        public readonly TAnchor anchor = new TAnchor();
+        public readonly TAnchor anchor = new();
         private T last;
 
         internal void Add(T item)
@@ -69,7 +69,7 @@ namespace FriedSynapse.FlowEnt
         internal List<T> ToList()
         {
             T index = anchor.next;
-            List<T> result = new List<T>();
+            List<T> result = new();
             while (index != null)
             {
                 result.Add(index);

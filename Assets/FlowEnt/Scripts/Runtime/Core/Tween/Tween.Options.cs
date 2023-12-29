@@ -79,6 +79,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public new Tween SetDelayUntil(Func<bool> callback)
+        {
+            base.SetDelayUntil(callback);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentTweenOptionable.SetTime
         public Tween SetTime(float time)
         {

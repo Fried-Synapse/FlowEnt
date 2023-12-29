@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
         [Serializable]
         public class Builder : AbstractBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MoveAnchoredPositionCurveMotion(item, curve.Build());
         }
         

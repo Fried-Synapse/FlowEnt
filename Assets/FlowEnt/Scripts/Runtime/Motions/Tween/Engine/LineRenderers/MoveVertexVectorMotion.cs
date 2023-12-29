@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.LineRenderers
         {
             [SerializeField]
             private int index;
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MoveVertexVectorMotion(item, index, value);
         }
 
@@ -23,7 +23,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.LineRenderers
         {
             [SerializeField]
             private int index;
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MoveVertexVectorMotion(item, index, From, to);
         }
 

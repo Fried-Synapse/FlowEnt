@@ -13,14 +13,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new ScaleSizeDeltaMotion(item, value);
         }
 
         [Serializable]
         public class FromToBuilder : AbstractFromToBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new ScaleSizeDeltaMotion(item, From, to);
         }
 

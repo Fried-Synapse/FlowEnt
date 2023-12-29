@@ -16,7 +16,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
             [SerializeField]
             private int index;
 #pragma warning restore IDE0044, RCS1169
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MoveVertexVectorMotion(item, index, value);
         }
 
@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
             [SerializeField]
             private int index;
 #pragma warning restore IDE0044, RCS1169
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MoveVertexVectorMotion(item, index, From, to);
         }
 

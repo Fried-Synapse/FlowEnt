@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
         [Serializable]
         public class Builder : AbstractVector3SpeedBuilder
         {
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new ScaleVectorMotion(item, speed);
         }
 

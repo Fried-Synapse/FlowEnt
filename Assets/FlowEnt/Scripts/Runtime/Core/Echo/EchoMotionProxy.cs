@@ -29,17 +29,17 @@ namespace FriedSynapse.FlowEnt
 
         #region Motions
 
-        /// <inheritdoc cref="Echo.Apply(IEchoMotion[])"/>
+        /// <inheritdoc cref="Echo.Apply(AbstractEchoMotion[])"/>
         /// \copydoc Echo.Apply
-        public EchoMotionProxy<TItem> Apply(params IEchoMotion[] motions)
+        public EchoMotionProxy<TItem> Apply(params AbstractEchoMotion[] motions)
         {
             Echo.Apply(motions);
             return this;
         }
 
-        /// <inheritdoc cref="Echo.Apply(IEchoMotion[])"/>
+        /// <inheritdoc cref="Echo.Apply(AbstractEchoMotion[])"/>
         /// \copydoc Echo.Apply
-        public EchoMotionProxy<TItem> Apply(IEnumerable<IEchoMotion> motions)
+        public EchoMotionProxy<TItem> Apply(IEnumerable<AbstractEchoMotion> motions)
         {
             Echo.Apply(motions);
             return this;
@@ -231,10 +231,18 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
-        /// \copydoc IFluentAnimationOptionable.SetName
+        /// \copydoc IFluentAnimationOptionable.SetDelay
         public EchoMotionProxy<TItem> SetDelay(float time)
         {
             Echo.SetDelay(time);
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public EchoMotionProxy<TItem> SetDelayUntil(Func<bool> callback)
+        {
+            Echo.SetDelayUntil(callback);
             return this;
         }
 
