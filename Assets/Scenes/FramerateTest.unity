@@ -349,4 +349,4 @@ MonoBehaviour:
   count: 10
   testTime: 1
   frameRateAnchor: {fileID: 2790963635679519058, guid: 5982d5b3564484a66ad44561af8265da, type: 3}
-  cube: {fileID: 2790963635679519058, guid: e7f87e3dadcad4cb5aa800dfee7e9d39, type: 3}
+  cube: {fileID: 2790963635679519058, guid: 9c74edd475e634570acde1d88f3e8cda, type: 3}
