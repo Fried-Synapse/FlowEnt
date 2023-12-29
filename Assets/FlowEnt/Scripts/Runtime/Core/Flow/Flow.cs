@@ -135,9 +135,8 @@ namespace FriedSynapse.FlowEnt
                 throw new AnimationException(this, "Cannot start empty flow.");
             }
 
-            if (startHelperType != StartHelperEnum.None)
+            if (startHelperType != StartHelperType.None && TryStartHelpers())
             {
-                StartHelpers();
                 return;
             }
 
@@ -156,11 +155,11 @@ namespace FriedSynapse.FlowEnt
         {
             int count = updatableWrappersQueue.Count;
             runningUpdatableWrappersCount = count;
-            
+
             float scaledDeltaTime = deltaTime * timeScale;
             elapsedTime += scaledDeltaTime;
             onUpdating?.Invoke(scaledDeltaTime);
-           
+
             for (int i = 0; i < count; i++)
             {
                 AbstractUpdatableWrapper updatableWrapper = updatableWrappersQueue[i];

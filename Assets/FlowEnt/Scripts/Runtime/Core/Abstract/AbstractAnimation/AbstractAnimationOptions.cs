@@ -40,20 +40,49 @@ namespace FriedSynapse.FlowEnt
         /// </remarks>
         public bool AutoStart { get; set; }
 
+        private int skipFrames;
         /// <summary>
         /// The amount of frames that the animation will skip from the moment it started till the animation begins.
         /// </summary>
-        public int SkipFrames { get; set; }
+        public int SkipFrames
+        {
+            get => skipFrames;
+            set
+            {
+                StartHelperType |= StartHelperType.SkipFrames;
+                skipFrames = value;
+            }
+        }
 
+        private float delay;
         /// <summary>
         /// The amount of time that the animation will skip from the moment it started till the animation begins.
         /// </summary>
-        public float Delay { get; set; }
+        public float Delay
+        {
+            get => delay;
+            set
+            {
+                StartHelperType |= StartHelperType.Delay;
+                delay = value;
+            }
+        }
 
+        private Func<bool> delayUntil;
         /// <summary>
         /// The condition that will let the animation begin when it returns true.
         /// </summary>
-        public Func<bool> DelayUntil { get; set; }
+        public Func<bool> DelayUntil
+        {
+            get => delayUntil;
+            set
+            {
+                StartHelperType |= StartHelperType.DelayUntil;
+                delayUntil = value;
+            }
+        }
+
+        internal StartHelperType StartHelperType { get; private set; }
 
         private float timeScale = DefaultTimeScale;
 

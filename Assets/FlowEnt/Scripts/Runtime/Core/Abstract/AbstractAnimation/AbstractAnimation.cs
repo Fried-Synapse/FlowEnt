@@ -156,24 +156,27 @@ namespace FriedSynapse.FlowEnt
             autoStartHelper = null;
         }
 
-        private protected void StartHelpers()
+        private protected bool TryStartHelpers()
         {
-            if ((startHelperType & StartHelperEnum.SkipFrames) != StartHelperEnum.None)
+            if ((startHelperType & StartHelperType.SkipFrames) != StartHelperType.None && skipFrames > 0)
             {
                 StartSkipFrames();
-                return;
+                return true;
             }
 
-            if ((startHelperType & StartHelperEnum.Delay) != StartHelperEnum.None)
+            if ((startHelperType & StartHelperType.Delay) != StartHelperType.None && delay > 0)
             {
                 StartDelay();
-                return;
+                return true;
             }
 
-            if ((startHelperType & StartHelperEnum.DelayUntil) != StartHelperEnum.None)
+            if ((startHelperType & StartHelperType.DelayUntil) != StartHelperType.None && delayUntil != null)
             {
                 StartDelayUntil();
+                return true;
             }
+
+            return false;
         }
 
         private void StartSkipFrames()
@@ -188,7 +191,7 @@ namespace FriedSynapse.FlowEnt
             startHelper = new SkipFramesStartHelper(updateController, updateType, skipFrames, (deltaTime) =>
             {
                 startHelper = null;
-                startHelperType &= ~StartHelperEnum.SkipFrames;
+                startHelperType &= ~StartHelperType.SkipFrames;
                 StartInternal(deltaTime);
             });
         }
@@ -199,7 +202,7 @@ namespace FriedSynapse.FlowEnt
             startHelper = new DelayStartHelper(updateController, updateType, delay, (deltaTime) =>
             {
                 startHelper = null;
-                startHelperType &= ~StartHelperEnum.Delay;
+                startHelperType &= ~StartHelperType.Delay;
                 StartInternal(deltaTime);
             });
         }
@@ -207,10 +210,10 @@ namespace FriedSynapse.FlowEnt
         private void StartDelayUntil()
         {
             playState = PlayState.Waiting;
-            startHelper = new DelayUntilStartHelper(updateController, updateType, delayUntilCondition, (deltaTime) =>
+            startHelper = new DelayUntilStartHelper(updateController, updateType, delayUntil, (deltaTime) =>
             {
                 startHelper = null;
-                startHelperType &= ~StartHelperEnum.DelayUntil;
+                startHelperType &= ~StartHelperType.DelayUntil;
                 StartInternal(deltaTime);
             });
         }

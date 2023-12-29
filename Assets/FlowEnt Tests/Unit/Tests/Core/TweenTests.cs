@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using FriedSynapse.FlowEnt.Motions.Tween;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
@@ -22,8 +24,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() => { tween = Variables.Tween.Build(); })
                 .Assert(() =>
                 {
-                    ITweenMotion[] motions = tween.GetFieldValue<ITweenMotion[]>("motions");
-                    Assert.AreEqual(2, motions.Length);
+                    List<AbstractTweenMotion> motions = tween .GetFieldValue<IList>("motions").Cast<AbstractTweenMotion>().ToList();
+                    Assert.AreEqual(2, motions.Count);
                     Assert.IsTrue(motions[0] is MoveVectorMotion);
                     Assert.IsTrue(motions[1] is DebugMotion);
                 })

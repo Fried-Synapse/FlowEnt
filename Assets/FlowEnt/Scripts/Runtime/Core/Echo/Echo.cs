@@ -116,9 +116,8 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            if (startHelperType != StartHelperEnum.None)
+            if (startHelperType != StartHelperType.None && TryStartHelpers())
             {
-                StartHelpers();
                 return;
             }
 

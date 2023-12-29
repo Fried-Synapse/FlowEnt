@@ -40,10 +40,12 @@ namespace FriedSynapse.FlowEnt
             {
                 throw new ArgumentException(TweenOptions.ErrorTimeMin);
             }
+
             if (float.IsInfinity(time))
             {
                 throw new ArgumentException(TweenOptions.ErrorTimeInfinity);
             }
+
             AutoStart = autoStart;
             this.time = time;
         }
@@ -57,6 +59,7 @@ namespace FriedSynapse.FlowEnt
 
         private protected override bool IsSeekable => true;
         private protected override float TotalSeekTime => time;
+
         private protected override float GetSeekingDeltaTimeFromRatio(float ratio)
             => ((ratio * time) - elapsedTime) / timeScale;
 
@@ -121,9 +124,8 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            if (startHelperType != StartHelperEnum.None)
+            if (startHelperType != StartHelperType.None && TryStartHelpers())
             {
-                StartHelpers();
                 return;
             }
 
@@ -135,6 +137,7 @@ namespace FriedSynapse.FlowEnt
             {
                 motions[i].OnStart();
             }
+
             updateController.SubscribeToUpdate(this);
             playState = PlayState.Playing;
             onStarted?.Invoke();
@@ -163,6 +166,7 @@ namespace FriedSynapse.FlowEnt
             {
                 motions[i].OnUpdate(t);
             }
+
             onUpdated?.Invoke(t);
 
             if (overdraft != null)
@@ -177,6 +181,7 @@ namespace FriedSynapse.FlowEnt
             {
                 motions[i].OnLoopStart();
             }
+
             onLoopStarted?.Invoke(remainingLoops);
         }
 
@@ -199,6 +204,7 @@ namespace FriedSynapse.FlowEnt
                 {
                     loopDirection = loopDirection == LoopDirection.Forward ? LoopDirection.Backward : LoopDirection.Forward;
                 }
+
                 float overdraft = this.overdraft.Value;
                 this.overdraft = null;
                 StartLoop();
@@ -219,6 +225,7 @@ namespace FriedSynapse.FlowEnt
             {
                 motions[i].OnComplete();
             }
+
             onCompleted?.Invoke();
 
             if (updateController is Flow parentFlow)

@@ -141,7 +141,7 @@ namespace FriedSynapse.FlowEnt.Editor
         private static bool RecordAnimationObjects(AbstractAnimation animation)
         {
             bool hasRecordedObjects = false;
-            IEnumerable<IMotion> motions = animation.GetFieldValue<IList>("motions").Cast<IMotion>();
+            IEnumerable<IMotion> motions = animation.GetFieldValue<IEnumerable>("motions").Cast<IMotion>();
             foreach (IMotion motion in motions)
             {
                 List<UnityObject> objects = GetAllFor<UnityObject>(motion);
