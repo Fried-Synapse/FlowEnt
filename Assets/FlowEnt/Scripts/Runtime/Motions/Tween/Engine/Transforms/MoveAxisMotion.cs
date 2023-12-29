@@ -12,14 +12,14 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         [Serializable]
         public class ValueBuilder : AbstractAxisValueBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MoveAxisMotion(item, axis, value);
         }
 
         [Serializable]
         public class FromToBuilder : AbstractAxisFromToBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MoveAxisMotion(item, axis, from, to);
         }
 

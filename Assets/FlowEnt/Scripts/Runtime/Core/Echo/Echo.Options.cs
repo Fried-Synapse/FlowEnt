@@ -74,6 +74,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public new Echo SetDelayUntil(Func<bool> callback)
+        {
+            base.SetDelayUntil(callback);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetLoopCount
         public new Echo SetLoopCount(int? loopCount)
         {

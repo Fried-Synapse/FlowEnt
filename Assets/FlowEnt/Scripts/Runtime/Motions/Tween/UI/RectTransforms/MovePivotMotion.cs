@@ -9,28 +9,28 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
         [Serializable]
         public class ValueBuilder : AbstractValueBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MovePivotMotion(item, value);
         }
 
         [Serializable]
         public class FromToBuilder : AbstractFromToBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MovePivotMotion(item, From, to);
         }
 
         [Serializable]
         public class PresetValueBuilder : AbstractValueBuilder<PivotPreset>
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MovePivotMotion(item, value);
         }
 
         [Serializable]
         public class PresetFromToBuilder : AbstractFromToBuilder<PivotPreset>
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MovePivotMotion(item, From, to);
         }
 

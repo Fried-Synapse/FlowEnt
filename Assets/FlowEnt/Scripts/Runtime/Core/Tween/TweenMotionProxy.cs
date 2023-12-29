@@ -31,17 +31,17 @@ namespace FriedSynapse.FlowEnt
 
         #region Motions
 
-        /// <inheritdoc cref="Tween.Apply(ITweenMotion[])"/>
+        /// <inheritdoc cref="Tween.Apply(AbstractTweenMotion[])"/>
         /// \copydoc Tween.Apply
-        public TweenMotionProxy<TItem> Apply(params ITweenMotion[] motions)
+        public TweenMotionProxy<TItem> Apply(params AbstractTweenMotion[] motions)
         {
             Tween.Apply(motions);
             return this;
         }
 
-        /// <inheritdoc cref="Tween.Apply(ITweenMotion[])"/>
+        /// <inheritdoc cref="Tween.Apply(AbstractTweenMotion[])"/>
         /// \copydoc Tween.Apply
-        public TweenMotionProxy<TItem> Apply(IEnumerable<ITweenMotion> motions)
+        public TweenMotionProxy<TItem> Apply(IEnumerable<AbstractTweenMotion> motions)
         {
             Tween.Apply(motions);
             return this;
@@ -237,6 +237,14 @@ namespace FriedSynapse.FlowEnt
         public TweenMotionProxy<TItem> SetDelay(float time)
         {
             Tween.SetDelay(time);
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public TweenMotionProxy<TItem> SetDelayUntil(Func<bool> callback)
+        {
+            Tween.SetDelayUntil(callback);
             return this;
         }
 

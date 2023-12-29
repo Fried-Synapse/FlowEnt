@@ -17,7 +17,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Transforms
             private Transform target;
 #pragma warning restore IDE0044, RCS1169
 
-            public override IEchoMotion Build()
+            public override AbstractEchoMotion Build()
                 => new ScaleToTransformMotion(item, target, speed, speedType);
         }
 

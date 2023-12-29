@@ -23,7 +23,6 @@ namespace FriedSynapse.FlowEnt.Builder
 
     public class FrameRateTestController : MonoBehaviour
     {
-#pragma warning disable IDE0044, RCS1169
         [SerializeField]
         private TestType tests;
 
@@ -38,12 +37,10 @@ namespace FriedSynapse.FlowEnt.Builder
 
         [SerializeField]
         private Transform cube;
-#pragma warning restore IDE0044, RCS1169
 
         private int framesCount;
         public int FramesCount => framesCount;
 
-#pragma warning disable IDE0051, RCS1213
         private async void Start()
         {
             Transform frameRateAnchorInstance = Instantiate(frameRateAnchor);
@@ -72,16 +69,21 @@ namespace FriedSynapse.FlowEnt.Builder
                 csv += $"{tests[i].TestName}, {tests[i].TestAmount}, {warmup}, {fps}\n";
             }
 
-            File.WriteAllText(Path.Combine(Application.dataPath, "Resources", "FrameRateTestResults.csv"), csv);
+            if (this.tests == TestType.OfficialList)
+            {
+                File.WriteAllText(Path.Combine(Application.dataPath, "Resources", "FrameRateTestResults.csv"), csv);
+            }
 
             Debug.Log("Test finished.");
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
         }
 
         private void Update()
         {
             framesCount++;
         }
-#pragma warning restore IDE0051, RCS1213
 
         public Transform CreateCube()
             => Instantiate(cube);
@@ -117,7 +119,7 @@ namespace FriedSynapse.FlowEnt.Builder
             const int k256 = 256 * k;
             _ = k8 + k16 + k32 + k64 + k128 + k256;
 
-            List<AbstractFrameRateTest> result = new List<AbstractFrameRateTest>();
+            List<AbstractFrameRateTest> result = new();
             void addTest(TestType testType, AbstractFrameRateTest test)
             {
                 if ((tests & testType) == testType)

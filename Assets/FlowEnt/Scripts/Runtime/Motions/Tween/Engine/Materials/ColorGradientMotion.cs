@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Materials
         [Serializable]
         public class Builder : AbstractGradientBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new ColorGradientMotion(item, gradient);
         }
 

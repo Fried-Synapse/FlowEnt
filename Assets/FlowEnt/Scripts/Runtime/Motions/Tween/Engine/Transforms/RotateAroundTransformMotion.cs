@@ -17,7 +17,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
             private Transform point;
 #pragma warning restore IDE0044, RCS1169
 
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
             {
                 return new RotateAroundTransformMotion(item, point, axis, toAngle);
             }

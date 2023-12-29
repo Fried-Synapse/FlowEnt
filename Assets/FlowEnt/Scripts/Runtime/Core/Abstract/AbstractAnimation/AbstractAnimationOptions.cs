@@ -50,6 +50,11 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public float Delay { get; set; }
 
+        /// <summary>
+        /// The condition that will let the animation begin when it returns true.
+        /// </summary>
+        public Func<bool> DelayUntil { get; set; }
+
         private float timeScale = DefaultTimeScale;
 
         /// <summary>
@@ -125,6 +130,14 @@ namespace FriedSynapse.FlowEnt
         public AbstractAnimationOptions SetDelay(float time)
         {
             Delay = time;
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public AbstractAnimationOptions SetDelayUntil(Func<bool> callback)
+        {
+            DelayUntil = callback;
             return this;
         }
 

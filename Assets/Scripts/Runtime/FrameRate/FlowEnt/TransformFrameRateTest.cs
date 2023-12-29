@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
 {
@@ -12,9 +14,10 @@ namespace FriedSynapse.FlowEnt.Builder
 
         protected override void Prepare()
         {
+            Vector3 value = Vector3.right;
             for (int i = 0; i < internalTestAmount; i++)
             {
-                new Tween(internalTestTime).For(Transforms[i]).MoveX(1).Start();
+                new Tween(internalTestTime).For(Transforms[i]).Move(value).Start();
             }
         }
 

@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         [Serializable]
         public class Builder : AbstractAnimationCurve3dBuilder
         {
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new MoveAnimationCurve3dMotion(item, animationCurve);
         }
 

@@ -3,8 +3,8 @@
     "rootNamespace": "FriedSynapse.FlowEnt.Builder",
     "references": [
         "GUID:20b24152311b643c3953c429ca0ac587",
-        "GUID:f6558143c744844678abf04a75fbd8ae",
-        "GUID:c59acf50987564ad393ad16eb0be1a82"
+        "GUID:c59acf50987564ad393ad16eb0be1a82",
+        "GUID:7a46e5fa2e94d49278cdef4d90401b30"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

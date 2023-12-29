@@ -16,7 +16,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
             [SerializeField]
             private Transform target;
 #pragma warning restore IDE0044, RCS1169
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new LookAtTransformMotion(item, target);
         }
 

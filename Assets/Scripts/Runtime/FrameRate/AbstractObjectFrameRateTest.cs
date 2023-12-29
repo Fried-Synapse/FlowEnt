@@ -9,7 +9,7 @@ namespace FriedSynapse.FlowEnt.Builder
         {
         }
 
-        private readonly List<Transform> transforms = new List<Transform>();
+        private readonly List<Transform> transforms = new();
         protected List<Transform> Transforms => transforms;
         public override void Load()
         {
@@ -27,6 +27,7 @@ namespace FriedSynapse.FlowEnt.Builder
             {
                 Object.Destroy(transforms[i].gameObject);
             }
+            transforms.Clear();
         }
     }
 }

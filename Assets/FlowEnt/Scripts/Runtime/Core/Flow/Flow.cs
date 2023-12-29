@@ -35,7 +35,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Internal Members
 
-        private readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
+        private readonly UpdatablesFastList updatables = new UpdatablesFastList();
         private readonly List<AbstractUpdatableWrapper> updatableWrappersQueue = new List<AbstractUpdatableWrapper>(2);
         private AbstractUpdatableWrapper lastQueuedUpdatableWrapper;
 
@@ -135,15 +135,9 @@ namespace FriedSynapse.FlowEnt
                 throw new AnimationException(this, "Cannot start empty flow.");
             }
 
-            if (skipFrames > 0)
+            if (startHelperType != StartHelperEnum.None)
             {
-                StartSkipFrames();
-                return;
-            }
-
-            if (delay > 0f)
-            {
-                StartDelay();
+                StartHelpers();
                 return;
             }
 

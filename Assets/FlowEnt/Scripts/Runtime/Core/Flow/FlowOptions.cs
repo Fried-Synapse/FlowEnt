@@ -1,3 +1,5 @@
+using System;
+
 namespace FriedSynapse.FlowEnt
 {
     /// <summary>
@@ -51,6 +53,14 @@ namespace FriedSynapse.FlowEnt
         public new FlowOptions SetDelay(float time)
         {
             base.SetDelay(time);
+            return this;
+        }
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public new FlowOptions SetDelayUntil(Func<bool> callback)
+        {
+            base.SetDelayUntil(callback);
             return this;
         }
 

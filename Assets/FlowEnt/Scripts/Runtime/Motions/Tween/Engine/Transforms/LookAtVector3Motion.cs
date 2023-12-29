@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
             [SerializeField]
             private Vector3 target;
 
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new LookAtVector3Motion(item, target);
         }
 

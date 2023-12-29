@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Singleton
 
-        private static readonly object lockObject = new object();
+        private static readonly object lockObject = new();
         private static IFlowEntUpdater updater;
         internal static IFlowEntUpdater Updater => updater;
         private static FlowEntController instance;
@@ -80,12 +80,12 @@ namespace FriedSynapse.FlowEnt
 
         #region Members
 
-        internal readonly UpdatablesFastList<AbstractUpdatable> updatables = new UpdatablesFastList<AbstractUpdatable>();
-        internal readonly UpdatablesFastList<AbstractUpdatable> smoothUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        internal readonly UpdatablesFastList<AbstractUpdatable> lateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        internal readonly UpdatablesFastList<AbstractUpdatable> smoothLateUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        internal readonly UpdatablesFastList<AbstractUpdatable> fixedUpdatables = new UpdatablesFastList<AbstractUpdatable>();
-        internal readonly UpdatablesFastList<AbstractUpdatable> customUpdatables = new UpdatablesFastList<AbstractUpdatable>();
+        internal readonly UpdatablesFastList updatables = new();
+        internal readonly UpdatablesFastList smoothUpdatables = new();
+        internal readonly UpdatablesFastList lateUpdatables = new();
+        internal readonly UpdatablesFastList smoothLateUpdatables = new();
+        internal readonly UpdatablesFastList fixedUpdatables = new();
+        internal readonly UpdatablesFastList customUpdatables = new();
 
         private static float elapsedTime;
         private float timeScale = 1f;
@@ -155,7 +155,7 @@ namespace FriedSynapse.FlowEnt
             Update(customUpdatables, deltaTime * timeScale);
         }
 
-        internal static void Update(UpdatablesFastList<AbstractUpdatable> updatables, float scaledDeltaTime)
+        internal static void Update(UpdatablesFastList updatables, float scaledDeltaTime)
         {
             elapsedTime += scaledDeltaTime;
             AbstractUpdatable index = updatables.anchor.next;
@@ -172,9 +172,9 @@ namespace FriedSynapse.FlowEnt
                 catch (Exception ex)
                 {
                     FlowEntDebug.LogError(
-                        $"<color={FlowEntConstants.Red}><b>Exception on update</b></color>\n" +
-                        $"<color={FlowEntConstants.Orange}><b>Origin of animation that generated the exception</b></color>:\n" +
-                        $"<color={FlowEntConstants.Orange}>{index.stackTrace}</color>\n\n" +
+                        $"<color={FlowEntInternalConstants.Red}><b>Exception on update</b></color>\n" +
+                        $"<color={FlowEntInternalConstants.Orange}><b>Origin of animation that generated the exception</b></color>:\n" +
+                        $"<color={FlowEntInternalConstants.Orange}>{index.stackTrace}</color>\n\n" +
                         $"<b>Exception</b>:\n{ex}");
                 }
 #endif
@@ -270,7 +270,7 @@ namespace FriedSynapse.FlowEnt
             Stop(customUpdatables, triggerOnCompleted);
         }
 
-        private static void Stop(UpdatablesFastList<AbstractUpdatable> updatables, bool triggerOnCompleted)
+        private static void Stop(UpdatablesFastList updatables, bool triggerOnCompleted)
         {
             AbstractUpdatable index = updatables.anchor.next;
 

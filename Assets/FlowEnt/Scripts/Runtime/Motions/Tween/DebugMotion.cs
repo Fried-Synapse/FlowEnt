@@ -14,7 +14,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween
         {
             [SerializeField]
             private string name;
-            public override ITweenMotion Build()
+            public override AbstractTweenMotion Build()
                 => new DebugMotion(name);
         }
 

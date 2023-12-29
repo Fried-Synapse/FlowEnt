@@ -14,13 +14,14 @@ namespace FriedSynapse.FlowEnt
         {
         }
 
-        #region Members       
+        #region Members
 
         private protected float elapsedTime;
         private protected AbstractStartHelper startHelper;
         private protected AutoStartHelper autoStartHelper;
 
         private protected float? overdraft;
+
         /// <summary>
         /// THe amount of scaled time unconsumed by this animation from the last frame.
         /// </summary>
@@ -155,7 +156,27 @@ namespace FriedSynapse.FlowEnt
             autoStartHelper = null;
         }
 
-        private protected void StartSkipFrames()
+        private protected void StartHelpers()
+        {
+            if ((startHelperType & StartHelperEnum.SkipFrames) != StartHelperEnum.None)
+            {
+                StartSkipFrames();
+                return;
+            }
+
+            if ((startHelperType & StartHelperEnum.Delay) != StartHelperEnum.None)
+            {
+                StartDelay();
+                return;
+            }
+
+            if ((startHelperType & StartHelperEnum.DelayUntil) != StartHelperEnum.None)
+            {
+                StartDelayUntil();
+            }
+        }
+
+        private void StartSkipFrames()
         {
             playState = PlayState.Waiting;
             //NOTE autostart already skips one frame, so we're skipping it
@@ -163,21 +184,33 @@ namespace FriedSynapse.FlowEnt
             {
                 --skipFrames;
             }
+
             startHelper = new SkipFramesStartHelper(updateController, updateType, skipFrames, (deltaTime) =>
             {
-                skipFrames = 0;
                 startHelper = null;
+                startHelperType &= ~StartHelperEnum.SkipFrames;
                 StartInternal(deltaTime);
             });
         }
 
-        private protected void StartDelay()
+        private void StartDelay()
         {
             playState = PlayState.Waiting;
-            startHelper = new DelayedStartHelper(updateController, updateType, delay, (deltaTime) =>
+            startHelper = new DelayStartHelper(updateController, updateType, delay, (deltaTime) =>
             {
-                delay = -1f;
                 startHelper = null;
+                startHelperType &= ~StartHelperEnum.Delay;
+                StartInternal(deltaTime);
+            });
+        }
+
+        private void StartDelayUntil()
+        {
+            playState = PlayState.Waiting;
+            startHelper = new DelayUntilStartHelper(updateController, updateType, delayUntilCondition, (deltaTime) =>
+            {
+                startHelper = null;
+                startHelperType &= ~StartHelperEnum.DelayUntil;
                 StartInternal(deltaTime);
             });
         }
@@ -207,6 +240,7 @@ namespace FriedSynapse.FlowEnt
                     {
                         updateController.UnsubscribeFromUpdate(startHelper);
                     }
+
                     break;
                 case PlayState.Playing:
                     updateController.UnsubscribeFromUpdate(this);

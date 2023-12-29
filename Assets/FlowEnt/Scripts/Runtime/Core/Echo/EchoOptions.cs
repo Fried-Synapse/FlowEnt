@@ -87,6 +87,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public new EchoOptions SetDelayUntil(Func<bool> callback)
+        {
+            base.SetDelayUntil(callback);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetTimeScale
         public new EchoOptions SetTimeScale(float timeScale)
         {

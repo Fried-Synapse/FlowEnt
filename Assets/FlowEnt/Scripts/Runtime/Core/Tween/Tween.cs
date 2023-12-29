@@ -48,7 +48,7 @@ namespace FriedSynapse.FlowEnt
             this.time = time;
         }
 
-        private ITweenMotion[] motions = new ITweenMotion[0];
+        private readonly List<AbstractTweenMotion> motions = new();
         private int? remainingLoops;
         private float remainingTime;
         private LoopDirection loopDirection;
@@ -121,15 +121,9 @@ namespace FriedSynapse.FlowEnt
 
         internal override void StartInternal(float deltaTime = 0)
         {
-            if (skipFrames > 0)
+            if (startHelperType != StartHelperEnum.None)
             {
-                StartSkipFrames();
-                return;
-            }
-
-            if (delay > 0f)
-            {
-                StartDelay();
+                StartHelpers();
                 return;
             }
 
@@ -137,7 +131,7 @@ namespace FriedSynapse.FlowEnt
             remainingTime = time;
 
             onStarting?.Invoke();
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnStart();
             }
@@ -165,7 +159,7 @@ namespace FriedSynapse.FlowEnt
             float t = easing.GetValue(currentLoopTime / time);
 
             onUpdating?.Invoke(t);
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnUpdate(t);
             }
@@ -179,7 +173,7 @@ namespace FriedSynapse.FlowEnt
 
         private void StartLoop()
         {
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnLoopStart();
             }
@@ -195,7 +189,7 @@ namespace FriedSynapse.FlowEnt
                 remainingTime = time;
                 elapsedTime = 0;
 
-                for (int i = 0; i < motions.Length; i++)
+                for (int i = 0; i < motions.Count; i++)
                 {
                     motions[i].OnLoopComplete();
                 }
@@ -221,7 +215,7 @@ namespace FriedSynapse.FlowEnt
 
             onCompleting?.Invoke();
             playState = PlayState.Finished;
-            for (int i = 0; i < motions.Length; i++)
+            for (int i = 0; i < motions.Count; i++)
             {
                 motions[i].OnComplete();
             }
@@ -249,18 +243,18 @@ namespace FriedSynapse.FlowEnt
         /// Applies all the motions to the current tween.
         /// </summary>
         /// <param name="motions"></param>
-        public Tween Apply(params ITweenMotion[] motions)
+        public Tween Apply(params AbstractTweenMotion[] motions)
         {
-            this.motions = this.motions.Concat(motions).ToArray();
+            this.motions.AddRange(motions);
             return this;
         }
 
-        /// <inheritdoc cref="Apply(ITweenMotion[])"/>
+        /// <inheritdoc cref="Apply(AbstractTweenMotion[])"/>
         /// \copydoc Tween.Apply
         /// <param name="motions"></param>
-        public Tween Apply(IEnumerable<ITweenMotion> motions)
+        public Tween Apply(IEnumerable<AbstractTweenMotion> motions)
         {
-            this.motions = this.motions.Concat(motions).ToArray();
+            this.motions.AddRange(motions);
             return this;
         }
 

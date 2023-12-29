@@ -398,5 +398,111 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         #endregion
+        
+        #region Delay Until
+
+        [UnityTest]
+        public IEnumerator DelayUntil()
+        {
+            bool flag = false;
+            yield return CreateTester()
+                .Arrange(() => new Tween(HalfTestTime).OnCompleted(() => flag = true).Start())
+                .Act(() => CreateAnimation(HalfTestTime)
+                    .SetDelayUntil(() => flag)
+                    .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator DelayUntil_AutoStart()
+        {
+            yield return CreateTester()
+                .Act(() => CreateAnimation(HalfTestTime)
+                    .SetAutoStart(true)
+                    .SetDelay(HalfTestTime))
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator DelayUntil_WithOptions()
+        {
+            yield return CreateTester()
+                .Act(() => CreateAnimationInternal(HalfTestTime, new TAnimationOptions().SetDelay(HalfTestTime))
+                    .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator DelayUntil_NegativeValue()
+        {
+            const float delay = -2f;
+
+            yield return CreateTester()
+                .Act(() => CreateAnimation(TestTime)
+                    .SetDelay(delay)
+                    .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator DelayUntil_StopBeforeStart()
+        {
+            const float delay = TestTime;
+            const float time = delay / 2;
+            bool onStartedCalled = false;
+            TAnimation controlAnimation = null;
+
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    TAnimation animation = CreateAnimation(time)
+                        .OnStarted(() => onStartedCalled = true)
+                        .SetDelay(delay)
+                        .Start() as TAnimation;
+
+                    controlAnimation =
+                        CreateAnimation(time).OnCompleted(() => animation.Stop(true)).Start() as TAnimation;
+
+                    return animation;
+                })
+                .AssertTime((stopwatch) => stopwatch.Elapsed.TotalSeconds.Should()
+                    .BeApproximatelyTime(time + controlAnimation.Overdraft.Value))
+                .Assert(() => onStartedCalled.Should().BeFalse())
+                .Run();
+        }
+
+        #endregion
+        
+        [UnityTest]
+        public IEnumerator DelayBothSequence()
+        {
+            bool flag = false;
+            yield return CreateTester()
+                .Arrange(() => new Tween(TwoThirdsTestTime).OnCompleted(() => flag = true).Start())
+                .Act(() => CreateAnimation(ThirdTestTime)
+                    .SetDelay(ThirdTestTime)
+                    .SetDelayUntil(() => flag)
+                    .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+        
+        [UnityTest]
+        public IEnumerator DelayBothParallel()
+        {
+            bool flag = false;
+            yield return CreateTester()
+                .Arrange(() => new Tween(HalfTestTime).OnCompleted(() => flag = true).Start())
+                .Act(() => CreateAnimation(HalfTestTime)
+                    .SetDelay(HalfTestTime)
+                    .SetDelayUntil(() => flag)
+                    .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
     }
 }
