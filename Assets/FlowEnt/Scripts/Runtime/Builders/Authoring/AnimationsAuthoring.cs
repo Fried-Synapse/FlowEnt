@@ -36,11 +36,11 @@ namespace FriedSynapse.FlowEnt
             Animations.Stop(TriggerOnCompleted);
         }
 
+#if UNITY_EDITOR
         void IGizmoDrawer.OnGizmosDrawing()
         {
-#if UNITY_EDITOR
             AnimationBuilders.Items.ForEach(item => ((IGizmoDrawer)item).OnGizmosDrawing());
-#endif
         }
+#endif
     }
 }

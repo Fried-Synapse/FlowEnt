@@ -68,9 +68,11 @@ namespace FriedSynapse.FlowEnt
             return result;
         }
 
+#if UNITY_EDITOR
         void IGizmoDrawer.OnGizmosDrawing()
         {
             Build().DrawGizmo();
         }
+#endif
     }
 }
