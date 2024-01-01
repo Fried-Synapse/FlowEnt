@@ -8,24 +8,38 @@ namespace FriedSynapse.FlowEnt
     public class GizmoOptions
     {
         private const float DefaultWidth = 1f;
-        private static readonly Color DefaultColour = Color.white;
+        private static readonly Color DefaultColor = Color.white;
 
-        public GizmoOptions(Color colour = default, float width = DefaultWidth)
+        public GizmoOptions()
         {
-            if (colour == default)
+            Show = true;
+            Color = DefaultColor;
+            Width = DefaultWidth;
+        }
+
+        public GizmoOptions(Color color = default, float width = DefaultWidth)
+        {
+            if (color == default)
             {
-                colour = DefaultColour;
+                color = DefaultColor;
             }
 
-            Colour = colour;
+            Color = color;
             Width = width;
         }
 
+        [SerializeField]
+        private bool isVisible;
 
         [SerializeField]
-        private Color colour = DefaultColour;
+        private bool show = true;
 
-        public Color Colour { get => colour; set => colour = value; }
+        public bool Show { get => show; set => show = value; }
+
+        [SerializeField]
+        private Color color = DefaultColor;
+
+        public Color Color { get => color; set => color = value; }
 
 
         [SerializeField]
@@ -33,6 +47,7 @@ namespace FriedSynapse.FlowEnt
 
         public float Width { get => width; set => width = value; }
 
+        public Vector3 PositionOffset { get; set; }
         public float Step { get; set; } = 0.001f;
     }
 }

@@ -9,20 +9,22 @@ namespace FriedSynapse.FlowEnt.Editor
         private enum FieldsEnum
         {
             name,
-            isEnabled,
+            isVisible,
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-            => property.FindPropertyRelative(FieldsEnum.isEnabled.ToString()).boolValue
+            => property.FindPropertyRelative(FieldsEnum.isVisible.ToString()).boolValue
                 ? FlowEntConstants.SpacedSingleLineHeight
                 : 0;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (property.FindPropertyRelative(FieldsEnum.isEnabled.ToString()).boolValue)
+            if (!property.FindPropertyRelative(FieldsEnum.isVisible.ToString()).boolValue)
             {
-                FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(FieldsEnum.name.ToString()));
+                return;
             }
+
+            FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(FieldsEnum.name.ToString()));
         }
     }
 }

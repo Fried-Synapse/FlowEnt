@@ -10,7 +10,7 @@ namespace FriedSynapse.FlowEnt
         private string name;
 
         [SerializeField]
-        private bool isEnabled;
+        private bool isVisible;
 
         public override string ToString() => name;
 

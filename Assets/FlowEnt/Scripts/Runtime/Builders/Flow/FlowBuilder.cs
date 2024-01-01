@@ -71,13 +71,13 @@ namespace FriedSynapse.FlowEnt
         }
         
 #if UNITY_EDITOR
-        void IGizmoDrawer.OnGizmosDrawing()
+        void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
         {
             foreach (IAbstractAnimationBuilder animation in Queues.Items.SelectMany(queue => queue.Items))
             {
                 if (animation is IGizmoDrawer drawer)
                 {
-                    drawer.OnGizmosDrawing();
+                    drawer.OnGizmosDrawing(options);
                 }
             }
         }

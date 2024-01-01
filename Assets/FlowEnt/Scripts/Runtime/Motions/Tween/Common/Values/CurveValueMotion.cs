@@ -19,9 +19,9 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
                 => new CurveValueMotion(curve.Build(), GetCallback());
 
 #if UNITY_EDITOR
-            void IGizmoDrawer.OnGizmosDrawing()
+            void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
             {
-                ((IGizmoDrawer)curve).OnGizmosDrawing();
+                ((IGizmoDrawer)curve).OnGizmosDrawing(options ?? GizmoOptions);
             }
 #endif
         }

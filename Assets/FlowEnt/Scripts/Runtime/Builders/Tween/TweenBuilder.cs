@@ -29,13 +29,13 @@ namespace FriedSynapse.FlowEnt
                 .Apply(Motions.Build());
 
 #if UNITY_EDITOR
-        void IGizmoDrawer.OnGizmosDrawing()
+        void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
         {
             foreach (AbstractTweenMotionBuilder motion in Motions.Items)
             {
                 if (motion is IGizmoDrawer drawer)
                 {
-                    drawer.OnGizmosDrawing();
+                    drawer.OnGizmosDrawing(options);
                 }
             }
         }

@@ -90,6 +90,11 @@ namespace FriedSynapse.FlowEnt.Editor
                 context.AddListCrud(parentProperty, parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);
                 context.AddShowDisplayName(property);
+                if (property.GetValue<IMotionBuilder>() is IGizmoDrawer)
+                {
+                    context.AddShowGizmoOptions(property);
+                }
+
                 context.ShowAsContext();
             }
         }

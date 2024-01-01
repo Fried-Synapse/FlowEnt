@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt
     public static class GizmosCallbacks
     {
         private static void DrawGizmo(IGizmoDrawer drawer)
-            => drawer.OnGizmosDrawing();
+            => drawer.OnGizmosDrawing(null);
 
         [DrawGizmo(GizmoType.Selected | GizmoType.Active)]
         public static void DrawGizmo(TweenAuthoring drawer, GizmoType gizmoType)

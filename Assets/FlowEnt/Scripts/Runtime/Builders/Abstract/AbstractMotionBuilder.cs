@@ -23,5 +23,7 @@ namespace FriedSynapse.FlowEnt
 
         [SerializeField]
         private GizmoOptions gizmoOptions;
+
+        public GizmoOptions GizmoOptions => gizmoOptions;
     }
 }

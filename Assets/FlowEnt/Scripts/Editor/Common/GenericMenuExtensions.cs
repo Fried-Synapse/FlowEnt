@@ -104,7 +104,7 @@ namespace FriedSynapse.FlowEnt.Editor
         internal static void AddShowDisplayName(this GenericMenu context, SerializedProperty property)
         {
             SerializedProperty displayNameProperty = property.FindPropertyRelative("displayName");
-            SerializedProperty isEnabledProperty = displayNameProperty.FindPropertyRelative("isEnabled");
+            SerializedProperty isEnabledProperty = displayNameProperty.FindPropertyRelative("isVisible");
 
             void showRename()
             {
@@ -112,7 +112,21 @@ namespace FriedSynapse.FlowEnt.Editor
                 isEnabledProperty.serializedObject.ApplyModifiedProperties();
             }
 
-            context.AddItem(new GUIContent("Show Rename"), showRename, false, isEnabledProperty.boolValue);
+            context.AddItem(new GUIContent("Show Name"), showRename, false, isEnabledProperty.boolValue);
+        }
+        
+        internal static void AddShowGizmoOptions(this GenericMenu context, SerializedProperty property)
+        {
+            SerializedProperty displayNameProperty = property.FindPropertyRelative("gizmoOptions");
+            SerializedProperty isEnabledProperty = displayNameProperty.FindPropertyRelative("isVisible");
+
+            void showRename()
+            {
+                isEnabledProperty.boolValue = !isEnabledProperty.boolValue;
+                isEnabledProperty.serializedObject.ApplyModifiedProperties();
+            }
+
+            context.AddItem(new GUIContent("Show Gizmo Options"), showRename, false, isEnabledProperty.boolValue);
         }
     }
 }
