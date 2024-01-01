@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
@@ -61,14 +59,11 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
 
-            EditorGUI.indentLevel++;
             position = FlowEntEditorGUILayout.GetRect(position, 1);
             Draw(ref position, property);
             DrawList(position, property);
-            EditorGUI.indentLevel--;
         }
-
-
+        
         private void DrawMenu(Rect position, SerializedProperty property)
         {
             Rect menuPosition = position;
@@ -113,8 +108,7 @@ namespace FriedSynapse.FlowEnt.Editor
             position.x += padding;
             position.width -= padding;
             list.DoList(position);
-
-
+            
             void drawElement(Rect rect, int index, bool isActive, bool isFocused)
             {
                 rect.x += padding;

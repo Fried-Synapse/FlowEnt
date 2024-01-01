@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class CurveBuilder : AbstractBuilder<ICurve>
+    public class CurveBuilder : AbstractBuilder<ICurve>, IGizmoDrawer
     {
         public enum CurveType
         {
@@ -66,5 +67,12 @@ namespace FriedSynapse.FlowEnt
 
             return result;
         }
+
+#if UNITY_EDITOR
+        void IGizmoDrawer.OnGizmosDrawing()
+        {
+            FlowEntGizmos.DrawCurve(Build());
+        }
+#endif
     }
 }

@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class AnimationsAuthoring : AbstractAuthoring
+    public class AnimationsAuthoring : AbstractAuthoring, IGizmoDrawer
     {
         [SerializeField]
         private AnimationListBuilder animationBuilders;
@@ -36,5 +35,12 @@ namespace FriedSynapse.FlowEnt
         {
             Animations.Stop(TriggerOnCompleted);
         }
+
+#if UNITY_EDITOR
+        void IGizmoDrawer.OnGizmosDrawing()
+        {
+            AnimationBuilders.Items.ForEach(item => ((IGizmoDrawer)item).OnGizmosDrawing());
+        }
+#endif
     }
 }

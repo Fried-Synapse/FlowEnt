@@ -1,10 +1,12 @@
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
-
 namespace FriedSynapse.FlowEnt
 {
-    public class TweenAuthoring : AbstractAuthoring<Tween, TweenBuilder>
+    public class TweenAuthoring : AbstractAuthoring<Tween, TweenBuilder>, IGizmoDrawer
     {
+#if UNITY_EDITOR
+        void IGizmoDrawer.OnGizmosDrawing()
+        {
+            ((IGizmoDrawer)AnimationBuilder).OnGizmosDrawing();
+        }
+#endif
     }
 }
