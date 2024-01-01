@@ -11,9 +11,7 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         private readonly List<string> hiddenProperties = new()
         {
-            IdentifiableBuilderFields.DisplayName,
-            IdentifiableBuilderFields.IsDisplayNameEnabled,
-            IdentifiableBuilderFields.IsEnabled,
+            "isEnabled",
         };
 
         private static IMotionBuilder clipboard;
@@ -28,7 +26,6 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             float height = FlowEntConstants.SpacedSingleLineHeight + 5;
-            height += IdentifiableBuilderFields.GetDisplayNameHeight(property);
 
             ForEachVisibleProperty(property, p => height += EditorGUI.GetPropertyHeight(p, true));
             return height;
@@ -59,7 +56,6 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             position.y += FlowEntConstants.SpacedSingleLineHeight;
-            IdentifiableBuilderFields.DrawDisplayName(ref position, property);
 
             ForEachVisibleProperty(property, p =>
             {
@@ -93,7 +89,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 GenericMenu context = new();
                 context.AddListCrud(parentProperty, parentProperty.GetArrayElementIndex(property), "Motion", this);
                 context.AddSeparator(string.Empty);
-                IdentifiableBuilderFields.DrawShowRename(property, context);
+                context.AddShowDisplayName(property);
                 context.ShowAsContext();
             }
         }

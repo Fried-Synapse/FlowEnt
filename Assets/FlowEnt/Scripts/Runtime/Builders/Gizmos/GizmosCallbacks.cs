@@ -1,8 +1,8 @@
+#if UNITY_EDITOR
 using UnityEditor;
 
 namespace FriedSynapse.FlowEnt
 {
-#if UNITY_EDITOR
     public static class GizmosCallbacks
     {
         private static void DrawGizmo(IGizmoDrawer drawer)
@@ -24,5 +24,5 @@ namespace FriedSynapse.FlowEnt
         public static void DrawGizmo(AnimationsAuthoring drawer, GizmoType gizmoType)
             => DrawGizmo(drawer);
     }
-#endif
 }
+#endif

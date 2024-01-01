@@ -9,11 +9,14 @@ namespace FriedSynapse.FlowEnt.Editor
     public class FlowQueueAnimationBuilderPropertyDrawer : AbstractListBuilderPropertyDrawer<IAbstractAnimationBuilder>,
         ICrudable<Queue>
     {
+        private enum FieldsEnum
+        {
+            displayName,
+            startTime,
+        }
+
         private static Queue clipboard;
-
         public Queue Clipboard { get => clipboard; set => clipboard = value; }
-
-        private const string StartTimeName = "startTime";
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -24,7 +27,8 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             height += FlowEntConstants.SpacedSingleLineHeight;
-            height += IdentifiableBuilderFields.GetDisplayNameHeight(property);
+
+            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative(FieldsEnum.displayName.ToString()), true);
             return height;
         }
 
@@ -41,13 +45,13 @@ namespace FriedSynapse.FlowEnt.Editor
             SerializedProperty parentProperty = property.GetParentArray();
             contextMenu.AddListCrud(parentProperty, parentProperty.GetArrayElementIndex(property), "Queue", this);
             contextMenu.AddSeparator(string.Empty);
-            IdentifiableBuilderFields.DrawShowRename(property, contextMenu);
+            contextMenu.AddShowDisplayName(property);
         }
 
         protected override void Draw(ref Rect position, SerializedProperty property)
         {
-            IdentifiableBuilderFields.DrawDisplayName(ref position, property);
-            FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(StartTimeName));
+            FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(FieldsEnum.displayName.ToString()));
+            FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(FieldsEnum.startTime.ToString()));
         }
 
         protected override void OnAdd(Rect buttonRect, ReorderableList list)

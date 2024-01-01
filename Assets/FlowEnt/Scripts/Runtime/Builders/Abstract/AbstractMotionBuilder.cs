@@ -3,24 +3,25 @@ using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-    public interface IMotionBuilder : IIdentifiableBuilder, IListBuilderItem
+    public interface IMotionBuilder : IListBuilderItem
     {
+        public DisplayName DisplayName { get; }
     }
 
     [Serializable]
     public abstract class AbstractMotionBuilder<T> : AbstractBuilder<T>, IMotionBuilder
     {
         [SerializeField]
-        private string displayName;
+        private DisplayName displayName;
 
-        public string DisplayName => displayName;
-
-        [SerializeField]
-        private bool isDisplayNameEnabled;
+        public DisplayName DisplayName => displayName;
 
         [SerializeField]
         private bool isEnabled = true;
 
         public bool IsEnabled => isEnabled;
+
+        [SerializeField]
+        private GizmoOptions gizmoOptions;
     }
 }

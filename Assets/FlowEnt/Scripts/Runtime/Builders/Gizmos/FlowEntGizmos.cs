@@ -1,27 +1,9 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
-#if UNITY_EDITOR
-    public class GizmoOptions
-    {
-        public GizmoOptions(Color colour = default, float width = 1f)
-        {
-            if (colour == default)
-            {
-                colour = Color.white;
-            }
-
-            Colour = colour;
-            Width = width;
-        }
-
-        public Color Colour { get; set; }
-        public float Width { get; set; }
-        public float Step { get; set; } = 0.001f;
-    }
-
     public static class FlowEntGizmos
     {
         public static void DrawCurve(ICurve curve, GizmoOptions options = default)
@@ -56,5 +38,5 @@ namespace FriedSynapse.FlowEnt
             Handles.color = initialColour;
         }
     }
-#endif
 }
+#endif
