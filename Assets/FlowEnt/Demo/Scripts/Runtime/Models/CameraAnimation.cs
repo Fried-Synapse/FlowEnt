@@ -36,7 +36,7 @@ namespace FriedSynapse.FlowEnt.Demo
 #if UNITY_EDITOR
         public void OnDraw()
         {
-            GetSpline().DrawGizmo(Color.white, 2f);
+            FlowEntGizmos.DrawCurve(GetSpline());
         }
 #endif
     }

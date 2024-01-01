@@ -2,9 +2,9 @@ using UnityEditor;
 
 namespace FriedSynapse.FlowEnt
 {
+#if UNITY_EDITOR
     public static class GizmosCallbacks
     {
-#if UNITY_EDITOR
         private static void DrawGizmo(IGizmoDrawer drawer)
             => drawer.OnGizmosDrawing();
 
@@ -23,6 +23,6 @@ namespace FriedSynapse.FlowEnt
         [DrawGizmo(GizmoType.Selected | GizmoType.Active)]
         public static void DrawGizmo(AnimationsAuthoring drawer, GizmoType gizmoType)
             => DrawGizmo(drawer);
-#endif
     }
+#endif
 }

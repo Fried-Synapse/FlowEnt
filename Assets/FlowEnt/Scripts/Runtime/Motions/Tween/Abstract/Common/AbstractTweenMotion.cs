@@ -5,7 +5,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     /// <summary>
     /// Abstract Motion that can be used to create a simple motion.
     /// </summary>
-    public abstract class AbstractTweenMotion : FastListItem<AbstractTweenMotion>, ITweenMotion
+    public abstract class AbstractTweenMotion : ITweenMotion
     {
         public virtual void OnStart() { }
         public abstract void OnUpdate(float t);

@@ -71,7 +71,7 @@ namespace FriedSynapse.FlowEnt
 #if UNITY_EDITOR
         void IGizmoDrawer.OnGizmosDrawing()
         {
-            Build().DrawGizmo();
+            FlowEntGizmos.DrawCurve(Build());
         }
 #endif
     }

@@ -10,17 +10,37 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     public class MoveLocalVectorMotion : AbstractVector3Motion<Transform>
     {
         [Serializable]
-        public class ValueBuilder : AbstractValueBuilder
+        public class ValueBuilder : AbstractValueBuilder, IGizmoDrawer
         {
             public override AbstractTweenMotion Build()
                 => new MoveLocalVectorMotion(item, value);
+
+#if UNITY_EDITOR
+            void IGizmoDrawer.OnGizmosDrawing()
+            {
+                if (item != null)
+                {
+                    FlowEntGizmos.DrawLine(item.localPosition, item.localPosition + value);
+                }
+            }
+#endif
         }
 
         [Serializable]
-        public class FromToBuilder : AbstractFromToBuilder
+        public class FromToBuilder : AbstractFromToBuilder, IGizmoDrawer
         {
             public override AbstractTweenMotion Build()
                 => new MoveLocalVectorMotion(item, From, to);
+
+#if UNITY_EDITOR
+            void IGizmoDrawer.OnGizmosDrawing()
+            {
+                if (item != null)
+                {
+                    FlowEntGizmos.DrawLine(From ?? item.localPosition, to);
+                }
+            }
+#endif
         }
 
         public MoveLocalVectorMotion(Transform item, Vector3 value) : base(item, value)
