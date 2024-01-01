@@ -10,13 +10,20 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Values
     public class CurveValueMotion : AbstractEventMotion<Vector3>
     {
         [Serializable]
-        public class Builder : AbstractEventMotionBuilder
+        public class Builder : AbstractEventMotionBuilder, IGizmoDrawer
         {
             [SerializeField]
             protected CurveBuilder curve;
 
             public override AbstractTweenMotion Build()
                 => new CurveValueMotion(curve.Build(), GetCallback());
+
+#if UNITY_EDITOR
+            void IGizmoDrawer.OnGizmosDrawing()
+            {
+                ((IGizmoDrawer)curve).OnGizmosDrawing();
+            }
+#endif
         }
 
         public CurveValueMotion(ICurve curve, Action<Vector3> onUpdated) : base(onUpdated)

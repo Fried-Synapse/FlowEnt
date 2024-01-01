@@ -6,7 +6,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class FlowBuilder : AbstractAnimationBuilder<Flow>
+    public class FlowBuilder : AbstractAnimationBuilder<Flow>, IGizmoDrawer
     {
         [Serializable]
         public class QueueList : AbstractListBuilder<QueueList.Queue, List<AbstractAnimation>>
@@ -73,5 +73,18 @@ namespace FriedSynapse.FlowEnt
 
             return flow;
         }
+        
+#if UNITY_EDITOR
+        void IGizmoDrawer.OnGizmosDrawing()
+        {
+            foreach (IAbstractAnimationBuilder animation in Queues.Items.SelectMany(queue => queue.Items))
+            {
+                if (animation is IGizmoDrawer drawer)
+                {
+                    drawer.OnGizmosDrawing();
+                }
+            }
+        }
+#endif
     }
 }

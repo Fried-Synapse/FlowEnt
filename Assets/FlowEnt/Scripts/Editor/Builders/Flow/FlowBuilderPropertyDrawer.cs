@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {

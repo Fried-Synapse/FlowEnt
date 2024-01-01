@@ -68,8 +68,6 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
 
-            EditorGUI.indentLevel++;
-
             using (EditorGUI.ChangeCheckScope check = new())
             {
                 position.y += EditorGUIUtility.singleLineHeight;
@@ -97,8 +95,6 @@ namespace FriedSynapse.FlowEnt.Editor
                     GUIUtility.ExitGUI();
                 }
             }
-
-            EditorGUI.indentLevel--;
         }
 
         private void DrawMenu(Rect position, SerializedProperty property)

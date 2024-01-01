@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt
 {
     [Serializable]
-    public class TweenBuilder : AbstractAnimationBuilder<Tween>
+    public class TweenBuilder : AbstractAnimationBuilder<Tween>, IGizmoDrawer
     {
 #pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]
@@ -27,5 +27,18 @@ namespace FriedSynapse.FlowEnt
             => new Tween(Options.Build())
                 .SetEvents(Events.Build())
                 .Apply(Motions.Build());
+
+#if UNITY_EDITOR
+        void IGizmoDrawer.OnGizmosDrawing()
+        {
+            foreach (AbstractTweenMotionBuilder motion in Motions.Items)
+            {
+                if (motion is IGizmoDrawer drawer)
+                {
+                    drawer.OnGizmosDrawing();
+                }
+            }
+        }
+#endif
     }
 }
