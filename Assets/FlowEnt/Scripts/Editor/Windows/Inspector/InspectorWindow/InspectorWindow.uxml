@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="../../../Common/Bootstrap.uss" />
-    <Style src="InspectorWindow.uss" />
-    <ui:VisualElement name="content" class="m-5 mt-10" >
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Common/Bootstrap.uss?fileID=7433441132597879392&amp;guid=f326891f6508d4e2ea8ab234c0998e79&amp;type=3#Bootstrap" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Windows/Inspector/InspectorWindow/InspectorWindow.uss?fileID=7433441132597879392&amp;guid=e4cd03748a4594d318c49189db4c8769&amp;type=3#InspectorWindow" />
+    <ui:VisualElement name="content" class="m-5 mt-10">
         <FriedSynapse.FlowEnt.Editor.ControlSection name="control" />
         <ui:TextField picking-mode="Ignore" label="Search" name="search" class="mt-10" />
         <ui:ScrollView name="animations" class="mt-10" />
