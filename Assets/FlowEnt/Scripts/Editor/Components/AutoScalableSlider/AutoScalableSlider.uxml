@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="../Fried/FriedSlider/FriedSlider.uss" />
-    <Style src="AutoScalableSlider.uss" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Components/Fried/FriedSlider/FriedSlider.uss?fileID=7433441132597879392&amp;guid=ee8fd4f3089e947328ff4f7518a17c1a&amp;type=3#FriedSlider" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Components/AutoScalableSlider/AutoScalableSlider.uss?fileID=7433441132597879392&amp;guid=eb78b51fc16584f49b1bfac5557a9369&amp;type=3#AutoScalableSlider" />
     <ui:VisualElement name="wrapper">
         <ui:VisualElement name="background">
             <ui:VisualElement name="fill">
