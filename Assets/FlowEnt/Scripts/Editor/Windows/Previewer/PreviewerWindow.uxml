@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="../../Common/Bootstrap.uss" />
-    <Style src="PreviewerWindow.uss" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Common/Bootstrap.uss?fileID=7433441132597879392&amp;guid=f326891f6508d4e2ea8ab234c0998e79&amp;type=3#Bootstrap" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Windows/Previewer/PreviewerWindow.uss?fileID=7433441132597879392&amp;guid=68f53abbec88b453c8326cffa9cbaae8&amp;type=3#PreviewerWindow" />
     <ui:VisualElement name="content">
         <ui:Label display-tooltip-when-elided="true" name="name" class="dd" />
         <ui:Button text="Exit Focus" display-tooltip-when-elided="true" name="exitFocus" style="visibility: hidden;" />

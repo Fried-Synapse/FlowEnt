@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="/Assets/FlowEnt/Scripts/Editor/Common/Bootstrap.uss" />
-    <Style src="AnimationInspectorWindow.uss" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Common/Bootstrap.uss?fileID=7433441132597879392&amp;guid=f326891f6508d4e2ea8ab234c0998e79&amp;type=3#Bootstrap" />
+    <Style src="project://database/Assets/FlowEnt/Scripts/Editor/Windows/Inspector/AnimationInspectorWindow/AnimationInspectorWindow.uss?fileID=7433441132597879392&amp;guid=cd3e790edb9884e6594c84fd7edfe74b&amp;type=3#AnimationInspectorWindow" />
     <ui:VisualElement name="content" class="m-5 mt-10">
         <ui:VisualElement name="fixed">
             <ui:VisualElement name="nameWrapper">
