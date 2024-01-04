@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using NUnit.Framework;
-using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
@@ -25,12 +22,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() => flowEvents = Variables.Flow.Events.Build())
                 .Assert(() =>
                 {
-                    static void assert(UnityEventBase unityEvent, Delegate action) => Assert.AreEqual(unityEvent.GetPersistentEventCount() == 0, action == null);
-
-                    assert(Variables.Flow.Events.OnStarted, flowEvents.OnStartedEvent);
-                    assert(Variables.Flow.Events.OnUpdated, flowEvents.OnUpdatedEvent);
-                    assert(Variables.Flow.Events.OnLoopCompleted, flowEvents.OnLoopCompletedEvent);
-                    assert(Variables.Flow.Events.OnCompleted, flowEvents.OnCompletedEvent);
+                    Assert(Variables.Flow.Events.OnStarted, flowEvents.OnStartedEvent);
+                    Assert(Variables.Flow.Events.OnUpdated, flowEvents.OnUpdatedEvent);
+                    Assert(Variables.Flow.Events.OnLoopCompleted, flowEvents.OnLoopCompletedEvent);
+                    Assert(Variables.Flow.Events.OnCompleted, flowEvents.OnCompletedEvent);
                 })
                 .Run();
         }

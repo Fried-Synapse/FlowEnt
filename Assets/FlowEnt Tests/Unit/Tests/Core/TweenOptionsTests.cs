@@ -1,16 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
+    public static class TweenTestsValues
+    {
+        public static readonly float[] timeValues = { 0, -1f, 1f / 0f };
+    }
+
     public class TweenOptionsTests : AbstractAnimationOptionsTests<Tween, TweenOptions>
     {
         protected override Tween CreateAnimation(float testTime)
-            => new Tween(testTime);
+            => new(testTime);
 
         protected override Tween CreateAnimation(float testTime, TweenOptions options)
             => new Tween().SetOptions(options).SetTime(testTime);
@@ -26,16 +31,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() => tweenOptions = Variables.Tween.Options.Build())
                 .Assert(() =>
                 {
-                    Assert.AreEqual(Variables.Tween.Options.Name, tweenOptions.Name);
-                    Assert.AreEqual(Variables.Tween.Options.UpdateType, tweenOptions.UpdateType);
-                    Assert.AreEqual(Variables.Tween.Options.AutoStart, tweenOptions.AutoStart);
-                    Assert.AreEqual(Variables.Tween.Options.SkipFrames, tweenOptions.SkipFrames);
-                    Assert.AreEqual(Variables.Tween.Options.Delay, tweenOptions.Delay);
-                    Assert.AreEqual(Variables.Tween.Options.TimeScale, tweenOptions.TimeScale);
-                    Assert.AreEqual(Variables.Tween.Options.Time, tweenOptions.Time);
-                    Assert.AreEqual(Variables.Tween.Options.Easing.GetType().FullName, tweenOptions.Easing.GetType().FullName);
-                    Assert.AreEqual(Variables.Tween.Options.LoopCount, tweenOptions.LoopCount);
-                    Assert.AreEqual(Variables.Tween.Options.LoopType, tweenOptions.LoopType);
+                    tweenOptions.Name.Should().Be(Variables.Tween.Options.Name);
+                    tweenOptions.UpdateType.Should().Be(Variables.Tween.Options.UpdateType);
+                    tweenOptions.AutoStart.Should().Be(Variables.Tween.Options.AutoStart);
+                    tweenOptions.SkipFrames.Should().Be(Variables.Tween.Options.SkipFrames);
+                    tweenOptions.Delay.Should().Be(Variables.Tween.Options.Delay);
+                    tweenOptions.TimeScale.Should().Be(Variables.Tween.Options.TimeScale);
+                    tweenOptions.Time.Should().Be(Variables.Tween.Options.Time);
+                    tweenOptions.Easing.GetType().FullName.Should().Be(Variables.Tween.Options.Easing.GetType().FullName);
+                    tweenOptions.LoopCount.Should().Be(Variables.Tween.Options.LoopCount);
+                    tweenOptions.LoopType.Should().Be(Variables.Tween.Options.LoopType);
                 })
                 .Run();
         }
@@ -49,7 +54,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             yield return CreateTester()
                 .Act(() => CreateAnimation(TestTime)
-                            .Start())
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
@@ -59,7 +64,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             yield return CreateTester()
                 .Act(() => CreateAnimation(TestTime)
-                            .Start())
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
@@ -69,43 +74,23 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             yield return CreateTester()
                 .Act(() => CreateAnimation(TestTime)
-                            .SetOptions(new TweenOptions().SetTime(TestTime))
-                            .Start())
+                    .SetOptions(new TweenOptions().SetTime(TestTime))
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
 
         [Test]
-        public void Time_ZeroValue()
+        public void Time_Invalid([ValueSource(typeof(TweenTestsValues), nameof(TweenTestsValues.timeValues))] float time)
         {
-            const float time = 0f;
-
-            Assert.Throws<ArgumentException>(() => new Tween(time));
-            Assert.Throws<ArgumentException>(() => new Tween().SetTime(time));
-            Assert.Throws<ArgumentException>(() => new Tween(new TweenOptions() { Time = time }));
-            Assert.Throws<ArgumentException>(() => new Tween(new TweenOptions().SetTime(time)));
-        }
-
-        [Test]
-        public void Time_NegativeValue()
-        {
-            const float time = -2f;
-
-            Assert.Throws<ArgumentException>(() => new Tween(time));
-            Assert.Throws<ArgumentException>(() => new Tween().SetTime(time));
-            Assert.Throws<ArgumentException>(() => new Tween(new TweenOptions() { Time = time }));
-            Assert.Throws<ArgumentException>(() => new Tween(new TweenOptions().SetTime(time)));
-        }
-
-        [Test]
-        public void Time_InfinityValue()
-        {
-            const float infinity = 1f / 0f;
-
-            Assert.Throws<ArgumentException>(() => new Tween(infinity));
-            Assert.Throws<ArgumentException>(() => new Tween().SetTime(infinity));
-            Assert.Throws<ArgumentException>(() => new Tween(new TweenOptions() { Time = infinity }));
-            Assert.Throws<ArgumentException>(() => new Tween(new TweenOptions().SetTime(infinity)));
+            Func<Tween> act = () => new Tween(time);
+            act.Should().Throw<ArgumentException>();
+            act = () => new Tween().SetTime(time);
+            act.Should().Throw<ArgumentException>();
+            act = () => new Tween(new TweenOptions() { Time = time });
+            act.Should().Throw<ArgumentException>();
+            act = () => new Tween(new TweenOptions().SetTime(time));
+            act.Should().Throw<ArgumentException>();
         }
 
         #endregion
@@ -115,20 +100,20 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         [UnityTest]
         public IEnumerator LoopType_PingPong()
         {
-            List<float> ascending = new List<float>();
-            List<float> descending = new List<float>();
+            List<float> ascending = new();
+            List<float> descending = new();
             List<float> current = ascending;
 
             yield return CreateTester()
                 .Act(() => new Tween(HalfTestTime)
-                            .SetLoopType(LoopType.PingPong)
-                            .SetLoopCount(2)
-                            .OnUpdating(t => current.Add(t))
-                            .OnLoopCompleted(_ => current = descending)
-                            .Start())
+                    .SetLoopType(LoopType.PingPong)
+                    .SetLoopCount(2)
+                    .OnUpdating(t => current.Add(t))
+                    .OnLoopCompleted(_ => current = descending)
+                    .Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.IsTrue(ascending.SequenceEqual(ascending.OrderBy(v => v))))
-                .Assert(() => Assert.IsTrue(descending.SequenceEqual(descending.OrderByDescending(v => v))))
+                .Assert(() => ascending.Should().BeInAscendingOrder())
+                .Assert(() => descending.Should().BeInDescendingOrder())
                 .Run();
         }
 
@@ -144,24 +129,25 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime)
-                            .SetEasing(Easing.EaseInOutElastic)
-                            .OnUpdating(t =>
-                            {
-                                if (t < 0)
-                                {
-                                    smallerThanZero = true;
-                                }
-                                if (t > 1)
-                                {
-                                    biggerThanOne = true;
-                                }
-                            })
-                            .Start())
+                    .SetEasing(Easing.EaseInOutElastic)
+                    .OnUpdating(t =>
+                    {
+                        if (t < 0)
+                        {
+                            smallerThanZero = true;
+                        }
+
+                        if (t > 1)
+                        {
+                            biggerThanOne = true;
+                        }
+                    })
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(smallerThanZero);
-                    Assert.True(biggerThanOne);
+                    smallerThanZero.Should().BeTrue();
+                    biggerThanOne.Should().BeTrue();
                 })
                 .Run();
         }
@@ -174,24 +160,25 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime)
-                            .SetEasing(Easing.EaseInOutBack)
-                            .OnUpdating(t =>
-                            {
-                                if (t < 0)
-                                {
-                                    smallerThanZero = true;
-                                }
-                                if (t > 1)
-                                {
-                                    biggerThanOne = true;
-                                }
-                            })
-                            .Start())
+                    .SetEasing(Easing.EaseInOutBack)
+                    .OnUpdating(t =>
+                    {
+                        if (t < 0)
+                        {
+                            smallerThanZero = true;
+                        }
+
+                        if (t > 1)
+                        {
+                            biggerThanOne = true;
+                        }
+                    })
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(smallerThanZero);
-                    Assert.True(biggerThanOne);
+                    smallerThanZero.Should().BeTrue();
+                    biggerThanOne.Should().BeTrue();
                 })
                 .Run();
         }

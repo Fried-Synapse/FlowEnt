@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using NUnit.Framework;
+using FluentAssertions;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -25,13 +25,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() => flowOptions = Variables.Flow.Options.Build())
                 .Assert(() =>
                 {
-                    Assert.AreEqual(Variables.Flow.Options.Name, flowOptions.Name);
-                    Assert.AreEqual(Variables.Flow.Options.UpdateType, flowOptions.UpdateType);
-                    Assert.AreEqual(Variables.Flow.Options.AutoStart, flowOptions.AutoStart);
-                    Assert.AreEqual(Variables.Flow.Options.SkipFrames, flowOptions.SkipFrames);
-                    Assert.AreEqual(Variables.Flow.Options.Delay, flowOptions.Delay);
-                    Assert.AreEqual(Variables.Flow.Options.TimeScale, flowOptions.TimeScale);
-                    Assert.AreEqual(Variables.Flow.Options.LoopCount, flowOptions.LoopCount);
+                    flowOptions.Name.Should().Be(Variables.Flow.Options.Name);
+                    flowOptions.UpdateType.Should().Be(Variables.Flow.Options.UpdateType);
+                    flowOptions.AutoStart.Should().Be(Variables.Flow.Options.AutoStart);
+                    flowOptions.SkipFrames.Should().Be(Variables.Flow.Options.SkipFrames);
+                    flowOptions.Delay.Should().Be(Variables.Flow.Options.Delay);
+                    flowOptions.TimeScale.Should().Be(Variables.Flow.Options.TimeScale);
+                    flowOptions.LoopCount.Should().Be(Variables.Flow.Options.LoopCount);
                 })
                 .Run();
         }
@@ -152,7 +152,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                                     .SetSkipFrames(skipFrames)
                                     .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
                             .Start())
-                .Assert(() => Assert.AreEqual(skipFrames, frameCount))
+                .Assert(() => frameCount.Should().Be(skipFrames))
                 .Run();
         }
 

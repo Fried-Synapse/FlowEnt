@@ -8,6 +8,11 @@ using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
+    public static partial class AbstractAnimationTestsValues
+    {
+        public static readonly int[] loopCountValues = { 0, -1 };
+    }
+
     public abstract class AbstractAnimationOptionsTests<TAnimation, TAnimationOptions> : AbstractEngineTests
         where TAnimation : AbstractAnimation
         where TAnimationOptions : AbstractAnimationOptions, new()
@@ -25,7 +30,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             [ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))]
             bool isDefaultTime)
         {
-            float time = isDefaultTime ? TestTime : HalfTestTime;
             yield return CreateTester()
                 .Act(() => CreateAnimation(TestTime)
                     .Conditional(() => !isDefaultTime, a => a.SetTimeScale(2))
@@ -205,22 +209,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         }
 
         [Test]
-        public void LoopCount_NegativeValue()
+        public void LoopCount_Invalid(
+            [ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.loopCountValues))] int loopCount)
         {
-            const int loopCountZero = 0;
-            const int loopCountNegative = -1;
-
-            Action act = () => CreateAnimation(TestTime).SetLoopCount(loopCountZero);
+            Action act = () => CreateAnimation(TestTime).SetLoopCount(loopCount);
             act.Should().Throw<ArgumentException>();
-            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions() { LoopCount = loopCountZero });
+            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions { LoopCount = loopCount });
             act.Should().Throw<ArgumentException>();
-            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions().SetLoopCount(loopCountZero));
-            act.Should().Throw<ArgumentException>();
-            act = () => CreateAnimation(TestTime).SetLoopCount(loopCountNegative);
-            act.Should().Throw<ArgumentException>();
-            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions() { LoopCount = loopCountNegative });
-            act.Should().Throw<ArgumentException>();
-            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions().SetLoopCount(loopCountNegative));
+            act = () => CreateAnimationInternal(TestTime, new TAnimationOptions().SetLoopCount(loopCount));
             act.Should().Throw<ArgumentException>();
         }
 
