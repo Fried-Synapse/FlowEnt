@@ -37,9 +37,9 @@ namespace FriedSynapse.FlowEnt
         }
 
 #if UNITY_EDITOR
-        void IGizmoDrawer.OnGizmosDrawing()
+        void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
         {
-            AnimationBuilders.Items.ForEach(item => ((IGizmoDrawer)item).OnGizmosDrawing());
+            AnimationBuilders.Items.ForEach(item => ((IGizmoDrawer)item).OnGizmosDrawing(options));
         }
 #endif
     }

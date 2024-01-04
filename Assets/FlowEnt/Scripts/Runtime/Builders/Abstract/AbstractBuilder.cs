@@ -8,12 +8,6 @@ namespace FriedSynapse.FlowEnt
         public TItem Build();
     }
 
-    public interface IIdentifiableBuilder
-    {
-        public string DisplayName { get; }
-        public bool IsEnabled { get; }
-    }
-
     public abstract class AbstractBuilder
     {
     }

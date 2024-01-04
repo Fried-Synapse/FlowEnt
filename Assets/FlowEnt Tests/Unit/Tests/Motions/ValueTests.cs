@@ -184,13 +184,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         public IEnumerator CurveValue()
         {
             Vector3 from = new(2f, 2f, 2f);
-            Vector3 mid = new(4f, 2f, 4f);
+            Vector3 mid = new(4f, 3f, 4f);
             Vector3 to = new(5f, 5f, 5f);
             ICurve curve = new BSpline(from, mid, to);
             List<Vector3> values = new();
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).Value(curve, (value) => values.Add(value)).Start())
+                .Act(() => new Tween(TestTime).Value(curve, value => values.Add(value)).Start())
                 .AssertTime(TestTime)
                 .Assert(
                     () =>

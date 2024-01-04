@@ -12,16 +12,12 @@ namespace FriedSynapse.FlowEnt
         public class QueueList : AbstractListBuilder<QueueList.Queue, List<AbstractAnimation>>
         {
             [Serializable]
-            public class Queue : AbstractListBuilder<IAbstractAnimationBuilder, AbstractAnimation>,
-                IIdentifiableBuilder, IListBuilderItem
+            public class Queue : AbstractListBuilder<IAbstractAnimationBuilder, AbstractAnimation>, IListBuilderItem
             {
                 [SerializeField]
-                private string displayName;
+                private DisplayName displayName;
 
-                public string DisplayName => displayName;
-
-                [SerializeField]
-                private bool isDisplayNameEnabled;
+                public DisplayName DisplayName => displayName;
 
                 [SerializeField]
                 private bool isEnabled = true;
@@ -75,13 +71,13 @@ namespace FriedSynapse.FlowEnt
         }
         
 #if UNITY_EDITOR
-        void IGizmoDrawer.OnGizmosDrawing()
+        void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
         {
             foreach (IAbstractAnimationBuilder animation in Queues.Items.SelectMany(queue => queue.Items))
             {
                 if (animation is IGizmoDrawer drawer)
                 {
-                    drawer.OnGizmosDrawing();
+                    drawer.OnGizmosDrawing(options);
                 }
             }
         }

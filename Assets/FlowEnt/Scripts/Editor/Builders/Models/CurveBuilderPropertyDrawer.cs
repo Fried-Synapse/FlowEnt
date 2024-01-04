@@ -22,8 +22,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     CurveType.BezierCurve
                         => 3 * FlowEntConstants.SpacedSingleLineHeight
-                           + 4 * EditorGUI.GetPropertyHeight(property.FindPropertyRelative(FieldsEnum.bezierPoints.ToString()).FirstChild())
-                           + FlowEntConstants.DrawerSpacing,
+                           + 4 * (EditorGUI.GetPropertyHeight(property.FindPropertyRelative(FieldsEnum.bezierPoints.ToString()).FirstChild())
+                                  + FlowEntConstants.DrawerSpacing),
                     CurveType.LinearSpline or
                         CurveType.BSpline or
                         CurveType.CatmullRomSpline or

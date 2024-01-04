@@ -16,11 +16,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
                 => new MoveVectorMotion(item, value);
 
 #if UNITY_EDITOR
-            void IGizmoDrawer.OnGizmosDrawing()
+            void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
             {
                 if (item != null)
                 {
-                    FlowEntGizmos.DrawLine(item.position, item.position + value);
+                    FlowEntGizmos.DrawLine(item.position, item.position + value, options ?? GizmoOptions);
                 }
             }
 #endif
@@ -33,11 +33,11 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
                 => new MoveVectorMotion(item, From, to);
 
 #if UNITY_EDITOR
-            void IGizmoDrawer.OnGizmosDrawing()
+            void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
             {
                 if (item != null)
                 {
-                    FlowEntGizmos.DrawLine(From ?? item.position, to);
+                    FlowEntGizmos.DrawLine(From ?? item.position, to, options ?? GizmoOptions);
                 }
             }
 #endif
