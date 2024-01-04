@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FriedSynapse.FlowEnt.Motions.Abstract;
-using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;

@@ -206,6 +206,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
                         break;
                 }
+
+                if (animationInfo.Animation.AutoStart)
+                {
+                    animationInfo.Animation.SetAutoStart(false);
+                }
             }
 
             return animations;
