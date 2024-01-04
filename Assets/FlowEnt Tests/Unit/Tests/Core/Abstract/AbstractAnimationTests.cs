@@ -8,7 +8,7 @@ using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
-    public static class AbstractAnimationTestsValues
+    public static partial class AbstractAnimationTestsValues
     {
         public static readonly bool[] stopValues = { false, true };
     }

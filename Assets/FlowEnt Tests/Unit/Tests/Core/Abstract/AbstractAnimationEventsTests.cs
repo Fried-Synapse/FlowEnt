@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FluentAssertions;
-using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
@@ -12,6 +13,18 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         protected abstract TAnimation CreateAnimation(float testTime);
         protected abstract float GetTotalTimeFromUpdate(float t, float previousValue, float loopTime);
 
+        protected static void Assert(UnityEventBase unityEvent, Delegate action)
+        {
+            if (unityEvent.GetPersistentEventCount() == 0)
+            {
+                action.Should().BeNull();
+            }
+            else
+            {
+                action.Should().NotBeNull();
+            }
+        }
+        
         [UnityTest]
         public IEnumerator OnStarting()
         {

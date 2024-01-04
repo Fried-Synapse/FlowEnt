@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
@@ -35,7 +36,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         public void TimeScale_NegativeTimeScale()
         {
             const float testTimeScale = -1f;
-            Assert.Throws<ArgumentException>(() => FlowEntController.Instance.TimeScale = testTimeScale);
+            Action act = () => FlowEntController.Instance.TimeScale = testTimeScale;
+            act.Should().Throw<ArgumentException>();
         }
 
         [UnityTest]
@@ -60,8 +62,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(ThreeQuartersTestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(tween1.PlayState, PlayState.Finished);
-                    Assert.AreEqual(tween2.PlayState, PlayState.Playing);
+                    tween1.PlayState.Should().Be(PlayState.Finished);
+                    tween2.PlayState.Should().Be(PlayState.Playing);
                 })
                 .Run();
         }
@@ -84,7 +86,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     return new Tween(HalfTestTime).OnCompleted(() => FlowEntController.Instance.Stop()).Start();
                 })
                 .AssertTime(HalfTestTime)
-                .Assert(() => Assert.AreEqual(expectedCompletedTweens, comletedTweens))
+                .Assert(() => comletedTweens.Should().Be(expectedCompletedTweens))
                 .Run();
         }
 
@@ -106,7 +108,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     return new Tween(TestTime).OnCompleted(() => FlowEntController.Instance.Stop(true)).Start();
                 })
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(expectedCompletedTweens, comletedTweens))
+                .Assert(() => comletedTweens.Should().Be(expectedCompletedTweens))
                 .Run();
         }
 
