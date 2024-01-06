@@ -12,7 +12,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
         protected override string AnimationCreationName => "Animation Creation";
         protected override string UsageName => "Usage";
 
-        private static readonly (int, float)[] emptyTweenParams = { (128000, 120f), (256000, 60f), (512000, 30f) };
+        private static readonly (int, float)[] emptyTweenParams = { (64000, 120f), (128000, 60f), (256000, 30f) };
 
         [UnityTest, Performance]
         public IEnumerator EmptyTween([ValueSource(nameof(emptyTweenParams))] (int Count, float Fps) data)
