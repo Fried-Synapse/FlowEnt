@@ -77,7 +77,7 @@ namespace FriedSynapse.FlowEnt
             for (int i = 0; i < colours.Length; i++)
             {
                 Color colour = colours[i];
-                float key = i / (float)(colours.Length - 1f);
+                float key = i / (colours.Length - 1f);
                 colourKeys[i] = new GradientColorKey(colour, key);
                 alphaKeys[i] = new GradientAlphaKey(colour.a, key);
             }

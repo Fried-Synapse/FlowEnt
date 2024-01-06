@@ -9,8 +9,8 @@ namespace FriedSynapse.FlowEnt.Editor
 {
     internal class MotionNames
     {
-        private static readonly Regex nestedRegEx = new Regex("\\+");
-        private static readonly Regex prettyNameRegEx = new Regex("[A-Z]");
+        private static readonly Regex nestedRegEx = new("\\+");
+        private static readonly Regex prettyNameRegEx = new("[A-Z]");
 
         internal string DisplayName { get; private set; }
         internal string AttributeDisplayName { get; private set; }

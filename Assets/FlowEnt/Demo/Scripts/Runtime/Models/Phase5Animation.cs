@@ -8,7 +8,6 @@ namespace FriedSynapse.FlowEnt.Demo
     [Serializable]
     public class Phase5Animation : AbstractDemoAnimation
     {
-#pragma warning disable RCS1169, IDE0044
         [SerializeField]
         private List<Light> lights;
         private List<Light> Lights => lights;
@@ -16,7 +15,6 @@ namespace FriedSynapse.FlowEnt.Demo
         [SerializeField]
         private AnimationCurve flicker;
         private AnimationCurve Flicker => flicker;
-#pragma warning restore RCS1169, IDE0044
 
         public override AbstractAnimation GetAnimation()
         {

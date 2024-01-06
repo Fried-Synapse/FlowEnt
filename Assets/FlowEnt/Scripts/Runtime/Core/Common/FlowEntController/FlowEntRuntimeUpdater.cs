@@ -24,7 +24,6 @@ namespace FriedSynapse.FlowEnt
                 fixedDeltaTime = Time.fixedDeltaTime,
             };
 
-#pragma warning disable IDE0051, RCS1213
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
@@ -49,6 +48,5 @@ namespace FriedSynapse.FlowEnt
         {
             controller.ResetInstance();
         }
-#pragma warning restore IDE0051, RCS1213
     }
 }

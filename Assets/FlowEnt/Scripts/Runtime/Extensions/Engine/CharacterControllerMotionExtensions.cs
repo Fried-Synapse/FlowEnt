@@ -18,6 +18,7 @@ namespace FriedSynapse.FlowEnt
         /// Applies a <see cref="RotateByInputMotion" /> to the echo.
         /// </summary>
         /// <param name="proxy"></param>
+        /// <param name="camera"></param>
         /// <param name="speed"></param>
         public static EchoMotionProxy<TCharacterController> RotateByInput<TCharacterController>(this EchoMotionProxy<TCharacterController> proxy, Transform camera, float speed = RotateByInputMotion.DefaultSensitivity)
             where TCharacterController : CharacterController

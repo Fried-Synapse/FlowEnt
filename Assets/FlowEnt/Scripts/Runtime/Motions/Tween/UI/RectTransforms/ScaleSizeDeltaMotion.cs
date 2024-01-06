@@ -1,6 +1,5 @@
 using System;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
-using FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms

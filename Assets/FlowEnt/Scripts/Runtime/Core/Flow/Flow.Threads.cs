@@ -181,6 +181,7 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="At(float, AbstractAnimation)" />
         /// \copydoc At
+        /// <param name="timeIndex">Time index for the sequence to start.</param>
         /// <param name="builder">Callback to build the animation.</param>
         public Flow At(float timeIndex, Func<Tween, AbstractAnimation> builder)
             => At(timeIndex, builder(new Tween()));
@@ -203,7 +204,7 @@ namespace FriedSynapse.FlowEnt
             {
                 return this;
             }
-            
+
             At(timeIndex, animations[0]);
             for (int i = 1; i < animations.Count; i++)
             {

@@ -78,10 +78,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    List<Tween> tweens = new();
                     for (int i = 0; i < tweensCount; i++)
                     {
-                        tweens.Add(new Tween(TestTime).OnCompleted(() => comletedTweens++).Start());
+                        new Tween(TestTime).OnCompleted(() => comletedTweens++).Start();
                     }
                     return new Tween(HalfTestTime).OnCompleted(() => FlowEntController.Instance.Stop()).Start();
                 })
@@ -120,7 +119,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             bool hasThrownException = false;
 
             yield return CreateTester()
-                .Act(() => new Tween(TestTime).OnUpdating((t) =>
+                .Act(() => new Tween(TestTime).OnUpdating(t =>
                 {
                     if (t > 0.1f && !hasThrownException)
                     {

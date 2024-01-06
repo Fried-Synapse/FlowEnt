@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 if (component == null)
                 {
                     component = GameObject.AddComponent<TrailRenderer>();
-                    component.AddPositions(new Vector3[2] { Vector3.zero, Vector3.right });
+                    component.AddPositions(new[] { Vector3.zero, Vector3.right });
                 }
 
                 return component;

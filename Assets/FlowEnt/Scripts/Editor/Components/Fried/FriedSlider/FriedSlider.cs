@@ -12,9 +12,9 @@ namespace FriedSynapse.FlowEnt.Editor
         [Preserve]
         public new class UxmlTraits : VisualElement.UxmlTraits
         {
-            private readonly UxmlFloatAttributeDescription minValue = new UxmlFloatAttributeDescription { name = "minValue", };
-            private readonly UxmlFloatAttributeDescription maxValue = new UxmlFloatAttributeDescription { name = "maxValue", defaultValue = 1 };
-            private readonly UxmlFloatAttributeDescription value = new UxmlFloatAttributeDescription { name = "value", defaultValue = 0 };
+            private readonly UxmlFloatAttributeDescription minValue = new() { name = "minValue", };
+            private readonly UxmlFloatAttributeDescription maxValue = new() { name = "maxValue", defaultValue = 1 };
+            private readonly UxmlFloatAttributeDescription value = new() { name = "value", defaultValue = 0 };
 
             public override void Init(VisualElement visualElement, IUxmlAttributes bag, CreationContext context)
             {

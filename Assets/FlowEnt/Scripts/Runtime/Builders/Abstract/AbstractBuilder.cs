@@ -1,6 +1,3 @@
-using UnityEditor;
-using UnityEngine;
-
 namespace FriedSynapse.FlowEnt
 {
     public interface IBuilder<out TItem>

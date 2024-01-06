@@ -9,7 +9,6 @@ namespace FriedSynapse.FlowEnt.Demo
     {
         private const float Time = 30f;
 
-#pragma warning disable RCS1169, IDE0044
         [SerializeField]
         private Transform wrapper;
         private Transform Wrapper => wrapper;
@@ -21,7 +20,6 @@ namespace FriedSynapse.FlowEnt.Demo
         [SerializeField]
         private List<Vector3> splinePoints;
         private List<Vector3> SplinePoints => splinePoints;
-#pragma warning restore RCS1169, IDE0044
 
         private ICurve GetSpline() => new BSpline(SplinePoints).Normalise();
 

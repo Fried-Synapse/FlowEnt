@@ -84,24 +84,24 @@ namespace FriedSynapse.FlowEnt
         {
             const int n = 16;
             float h = t / n;
-            float XI0 = ArcLengthIntegrand(spline, t);
-            float XI1 = 0;
-            float XI2 = 0;
+            float xi0 = ArcLengthIntegrand(spline, t);
+            float xi1 = 0;
+            float xi2 = 0;
 
             for (int i = 0; i < n; i++)
             {
-                float X = i * h;
+                float x = i * h;
                 if (i % 2 == 0)
                 {
-                    XI2 += ArcLengthIntegrand(spline, X);
+                    xi2 += ArcLengthIntegrand(spline, x);
                 }
                 else
                 {
-                    XI1 += ArcLengthIntegrand(spline, X);
+                    xi1 += ArcLengthIntegrand(spline, x);
                 }
             }
 
-            return (float)(h * (XI0 + (2 * XI2) + (4 * XI1)) * (1.0f / 3));
+            return h * (xi0 + (2 * xi2) + (4 * xi1)) * (1.0f / 3);
         }
 
         private float ArcLengthIntegrand(int spline, float t)
@@ -120,7 +120,7 @@ namespace FriedSynapse.FlowEnt
         {
             float scaledT = t * segmentsCount;
             int segment = (int)scaledT;
-            float x = (float)(scaledT - segment);
+            float x = scaledT - segment;
             float xx = x * x;
             float xxx = x * xx;
 

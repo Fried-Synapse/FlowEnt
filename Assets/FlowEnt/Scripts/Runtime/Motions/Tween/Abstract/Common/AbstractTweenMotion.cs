@@ -17,7 +17,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
     /// <summary>
     /// Generic Abstract Motion
     /// </summary>
-    /// <typeparam name="TItem">Generic Type for the motion. There is a read only property of type <T> called item that can be used and it's required on the constructor.</typeparam>
+    /// <typeparam name="TItem">Generic Type for the motion. There is a read only property of type &lt;T&gt; called item that can be used and it's required on the constructor.</typeparam>
     public abstract class AbstractTweenMotion<TItem> : AbstractTweenMotion
     {
         [Serializable]

@@ -32,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     case FieldsEnum.loopCount:
                         DrawNullable(propertyPosition, property, nameof(FieldsEnum.loopCount),
-                            "isLoopCountInfinite", true);
+                            "isLoopCountInfinite", true, new GUIContent("Is Infinite"));
                         break;
                     case FieldsEnum.easing:
                         TweenOptionsBuilder.EasingType easingType =
