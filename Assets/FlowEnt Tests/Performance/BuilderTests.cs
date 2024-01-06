@@ -16,7 +16,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
         protected override string AnimationCreationName => "Animation Creation";
         protected override string UsageName => "Usage";
 
-        private static readonly (int, float)[] builtTweenParams = { (2000, 100f), (4000, 80f), (8000, 40f) };
+        private static readonly (int, float)[] builtTweenParams = { (8000, 120f), (16000, 60f), (32000, 30f) };
 
         [UnityTest, Performance]
         public IEnumerator BuiltTween([ValueSource(nameof(builtTweenParams))] (int Count, float Fps) data)
@@ -25,7 +25,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
 
             GameObject createGameObject(int i)
             {
-                GameObject gameObject = new GameObject($"Test game object {i}");
+                GameObject gameObject = new($"Test game object {i}");
                 gameObject.SetActive(false);
                 gameObject.transform.position = new Vector3(0, 0, i);
 
@@ -35,7 +35,7 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
 
                 tweenAuthoring.SetFieldValue("startMode", AbstractAuthoring.StartModeEnum.Custom);
                 tweenAuthoring.AnimationBuilder.Options.SetFieldValue("time", TestLength);
-                MoveVectorMotion.ValueBuilder motion = new MoveVectorMotion.ValueBuilder();
+                MoveVectorMotion.ValueBuilder motion = new();
                 motion.SetFieldValue("item", gameObject.transform);
                 motion.SetFieldValue("value", Vector3.one);
                 tweenAuthoring.AnimationBuilder.Motions
