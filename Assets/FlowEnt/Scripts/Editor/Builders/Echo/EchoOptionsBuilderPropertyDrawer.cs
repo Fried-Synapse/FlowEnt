@@ -32,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Editor
                         break;
                     case FieldsEnum.loopCount:
                         DrawNullable(propertyPosition, property, nameof(FieldsEnum.loopCount),
-                            "isLoopCountInfinite", true);
+                            "isLoopCountInfinite", true, new GUIContent("Is Infinite"));
                         break;
                     default:
                         EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(prop.ToString()));

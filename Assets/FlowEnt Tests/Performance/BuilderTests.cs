@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using FriedSynapse.FlowEnt.Motions.Tween;
 using FriedSynapse.FlowEnt.Motions.Tween.Transforms;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
@@ -8,9 +7,6 @@ using UnityEngine.TestTools;
 using UnityEngine;
 using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
-using UnityEditor.Events;
-using UnityEngine.Events;
-using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Tests.Performance
 {

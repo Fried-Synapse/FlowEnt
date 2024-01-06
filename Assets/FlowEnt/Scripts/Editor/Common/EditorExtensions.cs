@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FriedSynapse.FlowEnt.Reflection;
@@ -75,8 +74,8 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 if (elementName.Contains("["))
                 {
-                    string namePart = elementName.Substring(0, elementName.IndexOf("["));
-                    int index = Convert.ToInt32(elementName.Substring(elementName.IndexOf("[")).Replace("[", "")
+                    string namePart = elementName.Substring(0, elementName.IndexOf("[", StringComparison.Ordinal));
+                    int index = Convert.ToInt32(elementName.Substring(elementName.IndexOf("[", StringComparison.Ordinal)).Replace("[", "")
                         .Replace("]", ""));
                     obj = getArrayValue(obj, namePart, index);
                 }

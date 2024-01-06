@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
 {
     /// <summary>
-    /// Lerps the <see cref="TRigidbody.position" /> value.
+    /// Lerps the <see cref="Rigidbody.position" /> value.
     /// </summary>
     public class MoveVectorMotion : AbstractVector3Motion<Rigidbody>
     {

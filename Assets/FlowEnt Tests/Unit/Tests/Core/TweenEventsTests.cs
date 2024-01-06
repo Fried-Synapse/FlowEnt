@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using NUnit.Framework;
-using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core

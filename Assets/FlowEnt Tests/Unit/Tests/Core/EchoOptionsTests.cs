@@ -113,7 +113,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     bool flag = false;
-                    Tween tween = new Tween(TestTime).OnCompleted(() => flag = true).Start();
+                    new Tween(TestTime).OnCompleted(() => flag = true).Start();
 
                     return new Echo()
                         .SetStopCondition(_ => flag)

@@ -38,7 +38,7 @@ namespace FriedSynapse.FlowEnt.Editor
         protected abstract void DrawProperties(Rect position, SerializedProperty property);
 
         protected void DrawNullable(Rect position, SerializedProperty property, string propertyName,
-            string flagPropertyName, bool isInverted = false)
+            string flagPropertyName, bool isInverted = false, GUIContent flagPropertyLabel = null)
         {
             float width = position.width;
             float labelWidth = EditorGUIUtility.labelWidth;
@@ -51,10 +51,17 @@ namespace FriedSynapse.FlowEnt.Editor
             EditorGUI.PropertyField(position, property.FindPropertyRelative(propertyName));
             GUI.enabled = true;
 
-            position.x += position.width - EditorGUIUtility.singleLineHeight;
-            
-            EditorGUI.PropertyField(position, flagProperty);
-            
+            position.x += position.width;
+
+            if (flagPropertyLabel == null)
+            {
+                EditorGUI.PropertyField(position, flagProperty);
+            }
+            else
+            {
+                EditorGUI.PropertyField(position, flagProperty, flagPropertyLabel);
+            }
+
             EditorGUIUtility.labelWidth = labelWidth;
         }
     }

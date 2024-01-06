@@ -8,11 +8,9 @@ namespace FriedSynapse.FlowEnt.Demo
     [Serializable]
     public class Phase4Animation : AbstractDemoAnimation
     {
-#pragma warning disable RCS1169, IDE0044
         [SerializeField]
         private List<Transform> critters;
         private List<Transform> Critters => critters;
-#pragma warning restore RCS1169, IDE0044
 
         public override AbstractAnimation GetAnimation()
         {
@@ -20,8 +18,8 @@ namespace FriedSynapse.FlowEnt.Demo
 
             foreach (Transform critter in Critters)
             {
-                Vector3 firstDestination = new Vector3(GetRandomAxis(1f, 8f), 0f, GetRandomAxis(1f, 8f));
-                Vector3 secondDestination = new Vector3(GetRandomAxis(1f, 8f), 0f, GetRandomAxis(1f, 8f));
+                Vector3 firstDestination = new(GetRandomAxis(1f, 8f), 0f, GetRandomAxis(1f, 8f));
+                Vector3 secondDestination = new(GetRandomAxis(1f, 8f), 0f, GetRandomAxis(1f, 8f));
                 Flow critterFlow = new Flow()
                     .QueueDeferred(() =>
                     {

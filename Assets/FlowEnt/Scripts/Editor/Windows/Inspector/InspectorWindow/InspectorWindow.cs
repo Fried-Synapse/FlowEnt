@@ -49,11 +49,9 @@ namespace FriedSynapse.FlowEnt.Editor
             animationList.Search(searchTerm);
         }
 
-#pragma warning disable IDE0051, RCS1213
         private void OnDestroy()
         {
             animationList?.Deinit();
         }
-#pragma warning restore IDE0051, RCS1213
     }
 }
