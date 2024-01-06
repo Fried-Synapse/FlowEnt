@@ -12,17 +12,17 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: Run Doxygen
-        uses: mattnotmitt/doxygen-action@v1.1.0
+        uses: mattnotmitt/doxygen-action@v1.9.5
         with:
           working-directory: "Docs"
           doxyfile-path: "Doxyfile" 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           branch: public/docs

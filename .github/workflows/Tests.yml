@@ -13,10 +13,10 @@ jobs:
           - playmode
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache Ligrary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: FlowEnt/Library
           key: Library-FlowEnt
@@ -24,7 +24,7 @@ jobs:
             Library-
 
       - name: Run Tests
-        uses: game-ci/unity-test-runner@v2
+        uses: game-ci/unity-test-runner@v4
         id: testsRunner
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -35,7 +35,7 @@ jobs:
 
       - name: Upload Results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Test results for ${{ matrix.testMode }}
           path: ${{ steps.testsRunner.outputs.artifactsPath }}
