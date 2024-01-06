@@ -1,5 +1,0 @@
-var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion =
-[
-    [ "AbstractAxisFromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_from_to_builder.html", null ],
-    [ "AbstractAxisValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_value_builder.html", null ]
-];

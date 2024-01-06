@@ -1,5 +1,0 @@
-var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchored_position_vector_motion =
-[
-    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anch46c3a6e272d970f8dce738e71b714acd.html", null ],
-    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchecddce818d9e7b7561895ad96f3e0314.html", null ]
-];
