@@ -1,7 +1,5 @@
 var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchored_position_vector_motion =
 [
-    [ "MoveAnchoredPositionVectorMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchored_position_vector_motion.html#a0f2a8c729a8366c96b48d4ff08696628", null ],
-    [ "MoveAnchoredPositionVectorMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchored_position_vector_motion.html#a3778623fbd05f9e465c07f3c9627e2dd", null ],
-    [ "GetFrom", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchored_position_vector_motion.html#ab7c6a182f64a0faf7cb354463969e66e", null ],
-    [ "SetValue", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchored_position_vector_motion.html#ad8e7e904374dd5086c80514a350459ba", null ]
+    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anch46c3a6e272d970f8dce738e71b714acd.html", null ],
+    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchecddce818d9e7b7561895ad96f3e0314.html", null ]
 ];

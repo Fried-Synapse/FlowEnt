@@ -1,9 +1,5 @@
 var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion =
 [
-    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion_1_1_from_to_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion_1_1_from_to_builder" ],
-    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion_1_1_value_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion_1_1_value_builder" ],
-    [ "AngularVelocityMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion.html#a0b7527ad75ffa63b877903ac6094ae51", null ],
-    [ "AngularVelocityMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion.html#a6172167a44b911c4b0e915e05a3e81a1", null ],
-    [ "GetFrom", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion.html#af8c080fa3e93cac33e5a13a6f8fd0d12", null ],
-    [ "SetValue", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion.html#a340ff2be59c3d72f5487413dbcfaacb4", null ]
+    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion_1_1_from_to_builder.html", null ],
+    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_rigidbodies_1_1_angular_velocity_motion_1_1_value_builder.html", null ]
 ];

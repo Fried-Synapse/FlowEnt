@@ -1,9 +1,5 @@
 var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion =
 [
-    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion_1_1_from_to_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion_1_1_from_to_builder" ],
-    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion_1_1_value_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion_1_1_value_builder" ],
-    [ "NearClipPlaneMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion.html#a4c45e57fbce584f71f8a457a354897d9", null ],
-    [ "NearClipPlaneMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion.html#ad7a992ecf071ba89b91dc6ae4d92ed6a", null ],
-    [ "GetFrom", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion.html#a2503bdc4e2638f65b4dc780a754e0683", null ],
-    [ "SetValue", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion.html#a503886d7e5a9661e51780976501cbaa7", null ]
+    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion_1_1_from_to_builder.html", null ],
+    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_near_clip_plane_motion_1_1_value_builder.html", null ]
 ];

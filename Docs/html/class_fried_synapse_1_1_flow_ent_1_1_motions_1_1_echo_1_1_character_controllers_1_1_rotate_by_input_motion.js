@@ -1,7 +1,4 @@
 var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_character_controllers_1_1_rotate_by_input_motion =
 [
-    [ "Builder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_character_controllers_1_1_rotate_by_input_motion_1_1_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_character_controllers_1_1_rotate_by_input_motion_1_1_builder" ],
-    [ "RotateByInputMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_character_controllers_1_1_rotate_by_input_motion.html#ae7f86ecf99a5e5f9e903b515e0536e06", null ],
-    [ "OnUpdate", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_character_controllers_1_1_rotate_by_input_motion.html#af98aebdd1e87c4604a8ad402d98005ad", null ],
-    [ "DefaultSensitivity", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_character_controllers_1_1_rotate_by_input_motion.html#a2b26281f4ea18ad70c861921fc08b139", null ]
+    [ "Builder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_character_controllers_1_1_rotate_by_input_motion_1_1_builder.html", null ]
 ];

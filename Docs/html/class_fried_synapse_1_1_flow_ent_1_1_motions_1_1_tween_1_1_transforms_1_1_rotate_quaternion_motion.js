@@ -1,9 +1,5 @@
 var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion =
 [
-    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion_1_1_from_to_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion_1_1_from_to_builder" ],
-    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion_1_1_value_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion_1_1_value_builder" ],
-    [ "RotateQuaternionMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion.html#a18581d27fdd176dc176efb2b3b475ea2", null ],
-    [ "RotateQuaternionMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion.html#a77e04022d36810aaccc1066c43a875a1", null ],
-    [ "GetFrom", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion.html#ae17cffcde625add4f7a796b2afbdc47d", null ],
-    [ "SetValue", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion.html#aed135b9016d289c762902119c96015be", null ]
+    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion_1_1_from_to_builder.html", null ],
+    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_rotate_quaternion_motion_1_1_value_builder.html", null ]
 ];

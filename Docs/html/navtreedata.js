@@ -26,8 +26,8 @@ var NAVTREE =
 [
   [ "FlowEnt", "index.html", [
     [ "Packages", "namespaces.html", [
-      [ "Packages", "namespaces.html", "namespaces_dup" ],
-      [ "Package Functions", "namespacemembers.html", [
+      [ "Package List", "namespaces.html", "namespaces_dup" ],
+      [ "Package Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
@@ -39,7 +39,6 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
         [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ]
@@ -49,15 +48,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_fried_synapse_1_1_flow_ent_1_1_easings_1_1_ease_in_elastic.html#a06ba98acab2fc89b47d28c3b4188c3de",
-"class_fried_synapse_1_1_flow_ent_1_1_editor_1_1_echo_events_builder_property_drawer.html#a3c5d88b83299230154da0bb5610fea3aa6350c0fd8dd81c6b3730f2c56c8ecb17",
-"class_fried_synapse_1_1_flow_ent_1_1_flow_events.html#a73fb30c0315cd829b47f3629ddbd2537",
-"class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_rigidbodies_1_1_rotate_by_input_motion.html#a97ddceb2404e52706966559365a8bf71",
-"class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_cameras_1_1_field_of_view_motion_1_1_from_to_builder.html",
-"class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_sprite_renderers_1_1_color_gradient_motion.html",
-"class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_u_i_1_1_rect_transforms_1_1_move_anchored_position_spline_motion.html#a1cfe39301015e510238cea060afe1a23",
-"class_fried_synapse_1_1_flow_ent_1_1_transform_motion_extensions.html#ab77b17d2bd4d4c0130f49f73a7985439",
-"interface_fried_synapse_1_1_flow_ent_1_1_i_flow_ent_updater.html"
+"class_fried_synapse_1_1_flow_ent_1_1_canvas_group_motion_extensions.html#a6d29902a3342ce373882ea2afa20ea97",
+"class_fried_synapse_1_1_flow_ent_1_1_echo_motion_proxy.html#a5981f644888499caed0ffe779b8abdd8",
+"class_fried_synapse_1_1_flow_ent_1_1_flow.html#aee1ba0601ff2d9ac3ae06b1df703ff2e",
+"class_fried_synapse_1_1_flow_ent_1_1_material_motion_extensions.html#a9c9eaac14cfe0374c89d13889412c76b",
+"class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_vector3_motion.html",
+"class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_gradient_motion_1_1_value_builder.html",
+"class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_values_1_1_vector4_value_motion_1_1_builder.html",
+"class_fried_synapse_1_1_flow_ent_1_1_transform_motion_extensions.html#a37a8dda7700d8f6edc5ae692121dc521",
+"class_fried_synapse_1_1_flow_ent_1_1_tween.html#ad568653538dd08e7a465de2cb71d9c0e",
+"interface_fried_synapse_1_1_flow_ent_1_1_i_gizmo_drawer.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

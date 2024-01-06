@@ -1,6 +1,4 @@
 var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_move_animation_curve3d_motion =
 [
-    [ "Builder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_move_animation_curve3d_motion_1_1_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_move_animation_curve3d_motion_1_1_builder" ],
-    [ "MoveAnimationCurve3dMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_move_animation_curve3d_motion.html#af27a5e3430f8e4afc567e16c41c82874", null ],
-    [ "OnUpdate", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_move_animation_curve3d_motion.html#a5019942549e3b9ca75eef094aa12487a", null ]
+    [ "Builder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_transforms_1_1_move_animation_curve3d_motion_1_1_builder.html", null ]
 ];

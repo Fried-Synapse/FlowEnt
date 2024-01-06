@@ -1,8 +1,8 @@
 var interface_fried_synapse_1_1_flow_ent_1_1_i_controllable =
 [
-    [ "Pause", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a42ce6f018a00687ec91100cb476deb77", null ],
-    [ "Resume", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a3933df11f453a9cb13fa3363b74b15fb", null ],
-    [ "Stop", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#aaf0a7bfab3163a8e1ce0694a959c4341", null ],
-    [ "PlayState", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a7198e4903ae6a5a2395f08f9ac30dc45", null ],
-    [ "TimeScale", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#ab7045baca2b4c46db8318fbe3ee78726", null ]
+    [ "SimulateFrames", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a83a28b4b6881e773c9a987853cb966ff", null ],
+    [ "SimulateUpdate", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a492dd9867a677d88f442f4b5e2c42db3", null ],
+    [ "ElapsedTime", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a9b6a3f4a23a76809a94999ce9c7b9e32", null ],
+    [ "IsSeekable", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#a1b510ecf7eaba9a1a5084d4338e40466", null ],
+    [ "SeekRatio", "interface_fried_synapse_1_1_flow_ent_1_1_i_controllable.html#ab4b38d95e0c44a54fb567740bfcc0eff", null ]
 ];

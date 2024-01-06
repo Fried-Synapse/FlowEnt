@@ -1,10 +1,5 @@
 var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion =
 [
-    [ "AbstractAxisFromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_from_to_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_from_to_builder" ],
-    [ "AbstractAxisValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_value_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_value_builder" ],
-    [ "AbstractAxisMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion.html#aaf796cb9e279ac1753825c01f4ec69d9", null ],
-    [ "AbstractAxisMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion.html#a915e95a96e5059922b4fcb53069adbce", null ],
-    [ "GetFrom", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion.html#a028722b6fc4a1c3d82cb9e50d22e96a5", null ],
-    [ "SetValue", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion.html#a18094e8dfd69e1e2ef1fd0cc7f940bc3", null ],
-    [ "Target", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion.html#abb8229e0df741b2869ca9ac5d5867c9b", null ]
+    [ "AbstractAxisFromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_from_to_builder.html", null ],
+    [ "AbstractAxisValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_axis_motion_1_1_abstract_axis_value_builder.html", null ]
 ];

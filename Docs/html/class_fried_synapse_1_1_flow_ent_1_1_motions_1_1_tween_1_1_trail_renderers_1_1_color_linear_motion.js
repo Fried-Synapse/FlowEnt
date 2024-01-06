@@ -1,9 +1,5 @@
 var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion =
 [
-    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion_1_1_from_to_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion_1_1_from_to_builder" ],
-    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion_1_1_value_builder.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion_1_1_value_builder" ],
-    [ "ColorLinearMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion.html#a3bae4659a04659bbfceac79241e7bf21", null ],
-    [ "ColorLinearMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion.html#a558f68fae46a8cc8d6499e7681817c2d", null ],
-    [ "GetFrom", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion.html#aef89b259cebdf11bd13efbb26e5c8932", null ],
-    [ "SetValue", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion.html#ae5f5406c9d4b201b121c03a71c6871c5", null ]
+    [ "FromToBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion_1_1_from_to_builder.html", null ],
+    [ "ValueBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_trail_renderers_1_1_color_linear_motion_1_1_value_builder.html", null ]
 ];
