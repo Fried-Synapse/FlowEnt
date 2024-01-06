@@ -116,7 +116,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     Tween tween = new Tween(TestTime).OnCompleted(() => flag = true).Start();
 
                     return new Echo()
-                        .SetStopCondition((_) => flag)
+                        .SetStopCondition(_ => flag)
                         .Start();
                 })
                 .AssertTime(TestTime)

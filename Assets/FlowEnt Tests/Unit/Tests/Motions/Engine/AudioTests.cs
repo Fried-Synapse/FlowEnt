@@ -125,7 +125,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => Component.Tween(TestTime)
                     .Volume(value)
                     .SetEasing(Easing.EaseOutBack)
-                    .OnUpdated((_) => overClamp = overClamp ? overClamp : Component.volume > 1)
+                    .OnUpdated(_ => overClamp = overClamp ? overClamp : Component.volume > 1)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>

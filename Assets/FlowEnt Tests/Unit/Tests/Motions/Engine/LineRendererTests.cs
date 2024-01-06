@@ -80,7 +80,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     Component.endColor = Color.clear;
                 })
                 .Act(() => Component.Tween(TestTime).ColorLinearTo(fromStart, fromEnd, toStart, toEnd)
-                    .OnUpdated((_) =>
+                    .OnUpdated(_ =>
                     {
                         startingValueStart ??= Component.startColor;
                         startingValueEnd ??= Component.endColor;
@@ -185,7 +185,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MoveVertexTo(0, from, to)
-                    .OnUpdated((_) => startingFrom ??= Component.GetPosition(0))
+                    .OnUpdated(_ => startingFrom ??= Component.GetPosition(0))
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -261,7 +261,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     Component.endWidth = 0f;
                 })
                 .Act(() => Component.Tween(TestTime).WidthLinearTo(fromStart, fromEnd, toStart, toEnd)
-                    .OnUpdated((_) =>
+                    .OnUpdated(_ =>
                     {
                         startingValueStart ??= Component.startWidth;
                         startingValueEnd ??= Component.endWidth;

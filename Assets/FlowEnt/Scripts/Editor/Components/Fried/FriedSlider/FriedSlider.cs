@@ -122,7 +122,7 @@ namespace FriedSynapse.FlowEnt.Editor
             OnPointerMove(evt);
             Background.CaptureMouse();
             Background.RegisterCallback<PointerMoveEvent>(OnPointerMove);
-            Background.RegisterCallback<PointerUpEvent>((_) =>
+            Background.RegisterCallback<PointerUpEvent>(_ =>
             {
                 Background.UnregisterCallback<PointerMoveEvent>(OnPointerMove);
                 Background.ReleaseMouse();

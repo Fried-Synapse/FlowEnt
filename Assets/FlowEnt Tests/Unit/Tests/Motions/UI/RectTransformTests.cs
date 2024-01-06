@@ -103,7 +103,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition)
+                    .OnUpdated(_ => startingFrom ??= RectTransform.anchoredPosition)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -123,7 +123,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionXTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition.x)
+                    .OnUpdated(_ => startingFrom ??= RectTransform.anchoredPosition.x)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -143,7 +143,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchoredPositionYTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= RectTransform.anchoredPosition.y)
+                    .OnUpdated(_ => startingFrom ??= RectTransform.anchoredPosition.y)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -278,7 +278,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchorTo(fromMin, fromMax, toMin, toMax)
-                    .OnUpdated((_) =>
+                    .OnUpdated(_ =>
                     {
                         startingFromMin ??= RectTransform.anchorMin;
                         startingFromMax ??= RectTransform.anchorMax;
@@ -350,7 +350,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MoveAnchorTo(from, to)
-                    .OnUpdated((_) =>
+                    .OnUpdated(_ =>
                     {
                         startingFromMin ??= RectTransform.anchorMin;
                         startingFromMax ??= RectTransform.anchorMax;
@@ -410,7 +410,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MovePivotTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= RectTransform.pivot)
+                    .OnUpdated(_ => startingFrom ??= RectTransform.pivot)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -461,7 +461,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).MovePivotTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= RectTransform.pivot)
+                    .OnUpdated(_ => startingFrom ??= RectTransform.pivot)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -552,7 +552,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => RectTransform.Tween(TestTime).ScaleSizeDeltaTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= RectTransform.sizeDelta)
+                    .OnUpdated(_ => startingFrom ??= RectTransform.sizeDelta)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
