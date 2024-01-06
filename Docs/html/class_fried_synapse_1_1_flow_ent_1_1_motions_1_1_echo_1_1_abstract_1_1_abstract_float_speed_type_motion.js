@@ -1,8 +1,0 @@
-var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_type_motion =
-[
-    [ "AbstractFloatSpeedTypeBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_type82c007f5c46fb7835b65b5ad048fc965.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_type82c007f5c46fb7835b65b5ad048fc965" ],
-    [ "AbstractFloatSpeedTypeMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_type_motion.html#ae2ce139c4720973c3a22d6748720667f", null ],
-    [ "GetSpeed", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_type_motion.html#a579fd618be583c3c6b2b578cbf913d66", null ],
-    [ "DefaultSpeedType", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_type_motion.html#af8326ee28894d4f82ae204b7dfc4ec39", null ],
-    [ "speedType", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_type_motion.html#a3a73e692286cff8220e890c40b931d16", null ]
-];

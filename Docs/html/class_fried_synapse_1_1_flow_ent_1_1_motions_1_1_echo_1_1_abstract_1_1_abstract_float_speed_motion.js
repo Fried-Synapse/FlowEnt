@@ -1,7 +1,0 @@
-var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_motion =
-[
-    [ "AbstractFloatSpeedBuilder", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_moti7803e07ce4deab0b3a0afed8352f800c.html", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_moti7803e07ce4deab0b3a0afed8352f800c" ],
-    [ "AbstractFloatSpeedMotion", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_motion.html#a5bfde1ab2210af9dc9f16ed13e4e0ea9", null ],
-    [ "DefaultSpeed", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_motion.html#a4e526fb1c29c122fb7e8d6bd0b259a48", null ],
-    [ "speed", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_echo_1_1_abstract_1_1_abstract_float_speed_motion.html#a2f6e21262948592048c4dd43eac8d33d", null ]
-];
