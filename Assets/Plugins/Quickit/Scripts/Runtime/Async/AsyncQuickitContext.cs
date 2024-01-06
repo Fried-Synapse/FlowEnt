@@ -10,14 +10,14 @@ namespace FriedSynapse.Quickit
         {
             public AsyncQuickitContext CreateInstance()
             {
-                GameObject gameObject = new GameObject("AsyncRunnerUnityContext");
+                GameObject gameObject = new("AsyncRunnerUnityContext");
                 gameObject.hideFlags = HideFlags.HideInHierarchy;
                 return gameObject.AddComponent<AsyncQuickitContext>();
             }
         }
-        internal Queue<Exception> ExceptionsToBePrinted { get; } = new Queue<Exception>();
 
-#pragma warning disable IDE0051, RCS1213
+        internal Queue<Exception> ExceptionsToBePrinted { get; } = new();
+
         private void Update()
         {
             while (ExceptionsToBePrinted.Count > 0)
@@ -26,6 +26,5 @@ namespace FriedSynapse.Quickit
                 Debug.LogException(exception);
             }
         }
-#pragma warning restore IDE0051, RCS1213
     }
 }

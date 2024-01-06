@@ -8,33 +8,33 @@ namespace FriedSynapse.Quickit.Editor
     {
         private static class Icon
         {
-            public static GUIContent Reset = EditorGUIUtility.IconContent("winbtn_win_close@2x", "Reset");
-            public static GUIContent Approximate = EditorGUIUtility.IconContent("Linked", "Integer values");
+            public static readonly GUIContent Reset = EditorGUIUtility.IconContent("winbtn_win_close@2x", "Reset");
+            public static readonly GUIContent Approximate = EditorGUIUtility.IconContent("Linked", "Integer values");
         }
         private static class Style
         {
-            public static GUIStyle Button = GetButtonStyle();
-            public static float ButtonSize = EditorGUIUtility.singleLineHeight;
+            public static readonly GUIStyle Button = GetButtonStyle();
+            public static readonly float ButtonSize = EditorGUIUtility.singleLineHeight;
             public const float LabelWidth = 15f;
 
             private static GUIStyle GetButtonStyle()
             {
-                GUIStyle style = new GUIStyle(GUI.skin.box);
-                style.imagePosition = ImagePosition.ImageOnly;
-                style.padding = new RectOffset(1, 1, 1, 1);
-                style.border = new RectOffset(0, 0, 0, 0);
+                GUIStyle style = new(GUI.skin.box)
+                {
+                    imagePosition = ImagePosition.ImageOnly,
+                    padding = new RectOffset(1, 1, 1, 1),
+                    border = new RectOffset(0, 0, 0, 0)
+                };
                 return style;
             }
         }
 
         private Transform transform;
 
-#pragma warning disable IDE0051, RCS1213
         private void OnEnable()
         {
             transform = target as Transform;
         }
-#pragma warning restore IDE0051, RCS1213
 
         public override void OnInspectorGUI()
         {

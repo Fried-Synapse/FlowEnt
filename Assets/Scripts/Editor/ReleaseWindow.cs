@@ -16,11 +16,10 @@ namespace FriedSynapse.Release
         private string FileName => $"{Application.productName}.{Version}.unitypackage";
         private string FilePath => Path.Combine(Destination, FileName);
         private const int Margin = 50;
-        private GUIStyle ContentStyle => new GUIStyle() { margin = new RectOffset(Margin, Margin, 0, 0) };
+        private GUIStyle ContentStyle => new() { margin = new RectOffset(Margin, Margin, 0, 0) };
         private float LabelWidth => 60;
         private float LabelContentWidth => position.width - (2 * Margin) - LabelWidth;
 
-#pragma warning disable IDE0051, RCS1213
         [MenuItem("Fried Synapse/Release", true, 1)]
         private static bool ValidateOpen()
             => File.Exists(ConfigPath);
@@ -31,11 +30,9 @@ namespace FriedSynapse.Release
             ReleaseWindow window = GetWindow<ReleaseWindow>("Release");
             window.Show();
         }
-#pragma warning restore IDE0051, RCS1213
 
         #region GUI
 
-#pragma warning disable IDE0051, RCS1213
         private void OnGUI()
         {
             Init();
@@ -56,7 +53,6 @@ namespace FriedSynapse.Release
 
             ShowGithubButton();
         }
-#pragma warning restore IDE0051, RCS1213
 
         private void ReleaseVersionField()
         {

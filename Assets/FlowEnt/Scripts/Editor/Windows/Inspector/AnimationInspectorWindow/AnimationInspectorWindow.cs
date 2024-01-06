@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 using FriedSynapse.FlowEnt.Reflection;
@@ -15,6 +16,7 @@ namespace FriedSynapse.FlowEnt.Editor
             window.Init(animation);
             window.titleContent = new GUIContent(window.Name, window.Logo);
         }
+
         protected override string Name => animation.ToString();
 
         private AbstractAnimation animation;
@@ -35,12 +37,10 @@ namespace FriedSynapse.FlowEnt.Editor
             stackTraceContent = Content.Query<VisualElement>("stackTrace").First().Query<VisualElement>("content").First();
         }
 
-#pragma warning disable IDE0051, RCS1213
         private void OnDestroy()
         {
             EditorApplication.update -= Update;
         }
-#pragma warning restore IDE0051, RCS1213
 
         private void Init(AbstractAnimation animation)
         {
@@ -51,26 +51,28 @@ namespace FriedSynapse.FlowEnt.Editor
             switch (this.animation)
             {
                 case Tween tween:
-                    InitMotions<ITweenMotion>();
+                    InitMotions<AbstractTweenMotion>();
                     break;
                 case Echo echo:
-                    InitMotions<IEchoMotion>();
+                    InitMotions<AbstractEchoMotion>();
                     break;
                 case Flow flow:
                     Content.Remove(motions);
                     break;
             }
+
             InitStackTrace();
         }
 
         private void InitMotions<TMotion>()
         {
-            foreach (TMotion motion in animation.GetFieldValue<TMotion[]>("motions"))
+            foreach (TMotion motion in animation.GetFieldValue<List<TMotion>>("motions"))
             {
-                TextElement text = new TextElement();
-                text.text = motion.GetType().Name;
-                text.tooltip = motion.GetType().FullName;
-                motions.Add(text);
+                motions.Add(new TextElement
+                {
+                    text = motion.GetType().Name,
+                    tooltip = motion.GetType().FullName
+                });
             }
         }
 
@@ -78,9 +80,11 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             stackTraceContent.Clear();
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
-            TextElement text = new TextElement();
-            text.text = animation.GetFieldValue<string>("stackTrace");
-            ScrollView scroll = new ScrollView();
+            TextElement text = new()
+            {
+                text = animation.GetFieldValue<string>("stackTrace")
+            };
+            ScrollView scroll = new();
             scroll.contentContainer.Add(text);
             stackTraceContent.Add(scroll);
 #else
