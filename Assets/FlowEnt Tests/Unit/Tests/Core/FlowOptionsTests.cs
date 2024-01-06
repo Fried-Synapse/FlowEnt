@@ -89,11 +89,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    Flow flow = new Flow();
+                    Flow flow = new();
 
                     for (int i = 0; i < tweens; i++)
                     {
-                        int x = i;
                         flow.Queue(createAnimation(QuarterTestTime).SetLoopCount(loopCount));
                     }
 

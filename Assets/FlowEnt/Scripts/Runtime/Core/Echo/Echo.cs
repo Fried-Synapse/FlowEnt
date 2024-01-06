@@ -68,7 +68,7 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
-        /// <inheritdoc cref="AbstractAnimation..StartAsync(CancellationToken?)" />
+        /// <inheritdoc cref="AbstractAnimation.StartAsync(CancellationToken?)" />
         /// \copydoc AbstractAnimation..StartAsync(CancellationToken?)
         /// <exception cref="AnimationException">If the echo has already started.</exception>
         public new async Task<Echo> StartAsync(CancellationToken? token = null)

@@ -50,13 +50,13 @@ namespace FriedSynapse.FlowEnt.Editor
             updateType.text = this.animation.GetFieldValue<UpdateType>("updateType").ToString();
             switch (this.animation)
             {
-                case Tween tween:
+                case Tween:
                     InitMotions<AbstractTweenMotion>();
                     break;
-                case Echo echo:
+                case Echo:
                     InitMotions<AbstractEchoMotion>();
                     break;
-                case Flow flow:
+                case Flow:
                     Content.Remove(motions);
                     break;
             }

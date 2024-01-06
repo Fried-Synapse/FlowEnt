@@ -21,6 +21,7 @@ namespace FriedSynapse.FlowEnt
         }
 
         private float? timeout;
+
         /// <summary>
         /// The amount of time in seconds that this echo will last.
         /// </summary>
@@ -33,10 +34,12 @@ namespace FriedSynapse.FlowEnt
                 {
                     throw new ArgumentException(ErrorTimeoutMin);
                 }
+
                 if (value != null && float.IsInfinity(value.Value))
                 {
                     throw new ArgumentException(ErrorTimeoutInfinity);
                 }
+
                 timeout = value != null && float.IsInfinity(value.Value) ? null : value;
             }
         }
@@ -44,7 +47,7 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// The condition that when true, it will stop the echo.
         /// </summary>
-        public Func<float, bool> StopCondition;
+        public Func<float, bool> StopCondition { get; set; }
 
         /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetName

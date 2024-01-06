@@ -52,7 +52,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     animation.Start();
 
-                    Flow flowControl = new Flow()
+                    new Flow()
                         .Queue(new Tween(QuarterTestTime).OnCompleted(() => isWaiting = animation.PlayState == PlayState.Waiting))
                         .Queue(new Tween(QuarterTestTime))
                         .Queue(new Tween(QuarterTestTime).OnCompleted(() => isPlaying = animation.PlayState == PlayState.Playing))
@@ -244,7 +244,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() =>
                 {
                     TAnimation animation = CreateAnimation(QuarterTestTime).SetDelay(HalfTestTime).Start() as TAnimation;
-                    Flow flowControl = new Flow()
+                    new Flow()
                         .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Pause()))
                         .Queue(new Tween(QuarterTestTime).OnCompleted(() => animation.Resume()))
                         .Start();
