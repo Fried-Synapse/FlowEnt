@@ -1,5 +1,5 @@
 using System.Collections;
-using NUnit.Framework;
+using FluentAssertions;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => GameObject.GetComponent<CanvasGroup>().alpha = 0)
                 .Act(() => RectTransform.GetComponent<CanvasGroup>().Tween(TestTime).Alpha(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, GameObject.GetComponent<CanvasGroup>().alpha))
+                .Assert(() => GameObject.GetComponent<CanvasGroup>().alpha.Should().Be(value))
                 .Run();
         }
 
@@ -37,7 +37,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => GameObject.GetComponent<CanvasGroup>().alpha = 0)
                 .Act(() => RectTransform.GetComponent<CanvasGroup>().Tween(TestTime).AlphaTo(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, GameObject.GetComponent<CanvasGroup>().alpha))
+                .Assert(() => GameObject.GetComponent<CanvasGroup>().alpha.Should().Be(value))
                 .Run();
         }
 
@@ -51,13 +51,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Arrange(() => GameObject.GetComponent<CanvasGroup>().alpha = 0)
                 .Act(() => RectTransform.GetComponent<CanvasGroup>().Tween(TestTime).AlphaTo(from, to)
-                                        .OnUpdated((_) => startingValue ??= GameObject.GetComponent<CanvasGroup>().alpha)
-                                        .Start())
+                    .OnUpdated(_ => startingValue ??= GameObject.GetComponent<CanvasGroup>().alpha)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, GameObject.GetComponent<CanvasGroup>().alpha);
+                    startingValue.Should().Be(from);
+                    GameObject.GetComponent<CanvasGroup>().alpha.Should().Be(to);
                 })
                 .Run();
         }
