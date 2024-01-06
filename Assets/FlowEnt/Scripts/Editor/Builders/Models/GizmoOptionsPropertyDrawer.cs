@@ -12,15 +12,14 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private enum FieldsEnum
         {
+            isVisible,
             show,
             color,
             width,
         }
 
-        private const string IsVisibleName = "isVisible";
-
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-            => property.FindPropertyRelative(IsVisibleName).boolValue
+            => property.FindPropertyRelative(FieldsEnum.isVisible.ToString()).boolValue
                 ? FlowEntConstants.SpacedSingleLineHeight
                   + Enum.GetValues(typeof(FieldsEnum)).Cast<FieldsEnum>()
                       .Sum(f => EditorGUI.GetPropertyHeight(property.FindPropertyRelative(f.ToString())) + FlowEntConstants.DrawerSpacing)
@@ -29,12 +28,11 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (!property.FindPropertyRelative(IsVisibleName).boolValue)
+            if (!property.FindPropertyRelative(FieldsEnum.isVisible.ToString()).boolValue)
             {
                 return;
             }
 
-            label = EditorGUI.BeginProperty(position, label, property);
             DrawBox(position);
 
             position.height = EditorGUIUtility.singleLineHeight;
@@ -42,14 +40,12 @@ namespace FriedSynapse.FlowEnt.Editor
             position.y += FlowEntConstants.SpacedSingleLineHeight;
 
             EditorGUI.indentLevel++;
-            foreach (FieldsEnum field in Enum.GetValues(typeof(FieldsEnum)).Cast<FieldsEnum>())
+            foreach (FieldsEnum field in Enum.GetValues(typeof(FieldsEnum)).Cast<FieldsEnum>().Where(f => f != FieldsEnum.isVisible))
             {
                 FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(field.ToString()));
             }
 
             EditorGUI.indentLevel--;
-
-            EditorGUI.EndProperty();
         }
 
         private static void DrawBox(Rect position)

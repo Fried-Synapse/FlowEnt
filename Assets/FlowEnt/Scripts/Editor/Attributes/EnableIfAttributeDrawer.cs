@@ -11,12 +11,14 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            label = EditorGUI.BeginProperty(position, label, property);
             bool guiState = GUI.enabled;
             bool fieldState = HasValue(property);
 
             GUI.enabled = fieldState;
             EditorGUI.PropertyField(position, property, label, true);
             GUI.enabled = guiState;
+            EditorGUI.EndProperty();
         }
     }
 }

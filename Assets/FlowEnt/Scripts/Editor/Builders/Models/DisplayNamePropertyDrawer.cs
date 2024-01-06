@@ -8,8 +8,8 @@ namespace FriedSynapse.FlowEnt.Editor
     {
         private enum FieldsEnum
         {
-            name,
             isVisible,
+            name,
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -24,7 +24,9 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
 
+            EditorGUI.BeginProperty(position, label, property);
             FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(FieldsEnum.name.ToString()));
+            EditorGUI.EndProperty();
         }
     }
 }

@@ -22,8 +22,8 @@ namespace FriedSynapse.FlowEnt.Editor
                 {
                     CurveType.BezierCurve
                         => 3 * FlowEntConstants.SpacedSingleLineHeight
-                           + 4 * (EditorGUI.GetPropertyHeight(property.FindPropertyRelative(FieldsEnum.bezierPoints.ToString()).FirstChild())
-                                  + FlowEntConstants.DrawerSpacing),
+                           + 4 * EditorGUI.GetPropertyHeight(property.FindPropertyRelative(FieldsEnum.bezierPoints.ToString()).FirstChild())
+                           + FlowEntConstants.DrawerSpacing,
                     CurveType.LinearSpline or
                         CurveType.BSpline or
                         CurveType.CatmullRomSpline or
@@ -36,6 +36,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            label = EditorGUI.BeginProperty(position, label, property);
             property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded,
                 label, true);
 
@@ -70,6 +71,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             EditorGUI.indentLevel--;
+            EditorGUI.EndProperty();
         }
     }
 }

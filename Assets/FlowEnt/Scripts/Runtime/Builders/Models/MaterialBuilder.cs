@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt
         [SerializeField, AutoAssignButton]
         private GameObject gameObjectWithInstance;
 
-        [SerializeField, AutoAssignButton]
+        [SerializeField]
         private Material predefinedMaterial;
 
         private Material builtMaterial;
