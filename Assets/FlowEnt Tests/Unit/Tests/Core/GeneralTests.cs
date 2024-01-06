@@ -78,7 +78,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    List<Tween> tweens = new List<Tween>();
+                    List<Tween> tweens = new();
                     for (int i = 0; i < tweensCount; i++)
                     {
                         tweens.Add(new Tween(TestTime).OnCompleted(() => comletedTweens++).Start());
@@ -100,7 +100,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    List<Tween> tweens = new List<Tween>();
+                    List<Tween> tweens = new();
                     for (int i = 0; i < tweensCount; i++)
                     {
                         tweens.Add(new Tween(TestTime * 2).OnCompleted(() => comletedTweens++).Start());

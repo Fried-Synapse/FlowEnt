@@ -38,7 +38,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         }
 
         public AndConstraint<Vector3Assertions> BeApproximately(
-            Vector3 expectedValue, float epsilon = FlowEntAssert.Epsilon, string because = "",
+            Vector3 expectedValue, float epsilon = NumericAssertionsExtensions.Epsilon, string because = "",
             params object[] becauseArgs)
         {
             Execute.Assertion
@@ -71,7 +71,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         }
 
         public AndConstraint<QuaternionAssertions> BeApproximately(
-            Quaternion expectedValue, float epsilon = FlowEntAssert.Epsilon, string because = "",
+            Quaternion expectedValue, float epsilon = NumericAssertionsExtensions.Epsilon, string because = "",
             params object[] becauseArgs)
         {
             Execute.Assertion

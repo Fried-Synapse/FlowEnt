@@ -1,5 +1,5 @@
 using System.Collections;
-using NUnit.Framework;
+using FluentAssertions;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -35,8 +35,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(valueStart, Component.startColor);
-                    Assert.AreEqual(valueEnd, Component.endColor);
+                    Component.startColor.Should().Be(valueStart);
+                    Component.endColor.Should().Be(valueEnd);
                 })
                 .Run();
         }
@@ -57,8 +57,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(toStart, Component.startColor);
-                    Assert.AreEqual(toEnd, Component.endColor);
+                    Component.startColor.Should().Be(toStart);
+                    Component.endColor.Should().Be(toEnd);
                 })
                 .Run();
         }
@@ -80,19 +80,19 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     Component.endColor = Color.clear;
                 })
                 .Act(() => Component.Tween(TestTime).ColorLinearTo(fromStart, fromEnd, toStart, toEnd)
-                                    .OnUpdated((_) =>
-                                    {
-                                        startingValueStart ??= Component.startColor;
-                                        startingValueEnd ??= Component.endColor;
-                                    })
-                                    .Start())
+                    .OnUpdated((_) =>
+                    {
+                        startingValueStart ??= Component.startColor;
+                        startingValueEnd ??= Component.endColor;
+                    })
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(fromStart, startingValueStart);
-                    Assert.AreEqual(fromEnd, startingValueEnd);
-                    Assert.AreEqual(toStart, Component.startColor);
-                    Assert.AreEqual(toEnd, Component.endColor);
+                    startingValueStart.Should().Be(fromStart);
+                    startingValueEnd.Should().Be(fromEnd);
+                    Component.startColor.Should().Be(toStart);
+                    Component.endColor.Should().Be(toEnd);
                 })
                 .Run();
         }
@@ -110,7 +110,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.colorGradient = GradientOperations.Generate(Color.clear, Color.clear))
                 .Act(() => Component.Tween(TestTime).Gradient(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.True(GradientOperations.AreEqual(value, Component.colorGradient)))
+                .Assert(() => Component.colorGradient.Should().Be(value))
                 .Run();
         }
 
@@ -123,7 +123,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => Component.colorGradient = GradientOperations.Generate(Color.clear, Color.clear))
                 .Act(() => Component.Tween(TestTime).GradientTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.True(GradientOperations.AreEqual(to, Component.colorGradient)))
+                .Assert(() => Component.colorGradient.Should().Be(to))
                 .Run();
         }
 
@@ -137,13 +137,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Arrange(() => Component.colorGradient = GradientOperations.Generate(Color.clear, Color.clear))
                 .Act(() => Component.Tween(TestTime).GradientTo(from, to)
-                                    .OnUpdated(_ => startingValue ??= Component.colorGradient)
-                                    .Start())
+                    .OnUpdated(_ => startingValue ??= Component.colorGradient)
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.True(GradientOperations.AreEqual(from, startingValue));
-                    Assert.True(GradientOperations.AreEqual(to, Component.colorGradient));
+                    startingValue.Should().Be(from);
+                    Component.colorGradient.Should().Be(to);
                 })
                 .Run();
         }
@@ -155,12 +155,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
         [UnityTest]
         public IEnumerator MoveVertex()
         {
-            Vector3 value = new Vector3(MoveValue, MoveValue, MoveValue);
+            Vector3 value = new(MoveValue, MoveValue, MoveValue);
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MoveVertex(0, value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, Component.GetPosition(0)))
+                .Assert(() => Component.GetPosition(0).Should().Be(value))
                 .Run();
         }
 
@@ -172,7 +172,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MoveVertexTo(0, to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, Component.GetPosition(0)))
+                .Assert(() => Component.GetPosition(0).Should().Be(to))
                 .Run();
         }
 
@@ -185,13 +185,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).MoveVertexTo(0, from, to)
-                                    .OnUpdated((_) => startingFrom ??= Component.GetPosition(0))
-                                    .Start())
+                    .OnUpdated((_) => startingFrom ??= Component.GetPosition(0))
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingFrom);
-                    Assert.AreEqual(to, Component.GetPosition(0));
+                    startingFrom.Should().Be(from);
+                    Component.GetPosition(0).Should().Be(to);
                 })
                 .Run();
         }
@@ -216,8 +216,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(valueStart, Component.startWidth);
-                    Assert.AreEqual(valueEnd, Component.endWidth);
+                    Component.startWidth.Should().Be(valueStart);
+                    Component.endWidth.Should().Be(valueEnd);
                 })
                 .Run();
         }
@@ -238,8 +238,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(toStart, Component.startWidth);
-                    Assert.AreEqual(toEnd, Component.endWidth);
+                    Component.startWidth.Should().Be(toStart);
+                    Component.endWidth.Should().Be(toEnd);
                 })
                 .Run();
         }
@@ -261,19 +261,19 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                     Component.endWidth = 0f;
                 })
                 .Act(() => Component.Tween(TestTime).WidthLinearTo(fromStart, fromEnd, toStart, toEnd)
-                                    .OnUpdated((_) =>
-                                    {
-                                        startingValueStart ??= Component.startWidth;
-                                        startingValueEnd ??= Component.endWidth;
-                                    })
-                                    .Start())
+                    .OnUpdated((_) =>
+                    {
+                        startingValueStart ??= Component.startWidth;
+                        startingValueEnd ??= Component.endWidth;
+                    })
+                    .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(fromStart, startingValueStart);
-                    Assert.AreEqual(fromEnd, startingValueEnd);
-                    Assert.AreEqual(toStart, Component.startWidth);
-                    Assert.AreEqual(toEnd, Component.endWidth);
+                    startingValueStart.Should().Be(fromStart);
+                    startingValueEnd.Should().Be(fromEnd);
+                    Component.startWidth.Should().Be(toStart);
+                    Component.endWidth.Should().Be(toEnd);
                 })
                 .Run();
         }

@@ -5,7 +5,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 {
     public class UpdateTracker : MonoBehaviour
     {
-        public Dictionary<UpdateType, List<float>> Values = new Dictionary<UpdateType, List<float>>()
+        public Dictionary<UpdateType, List<float>> Values = new()
         {
             { UpdateType.Update, new List<float>() },
             { UpdateType.SmoothUpdate, new List<float>() },

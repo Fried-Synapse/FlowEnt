@@ -1,6 +1,5 @@
 using System.Collections;
 using FluentAssertions;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using static UnityEngine.ParticleSystem;
