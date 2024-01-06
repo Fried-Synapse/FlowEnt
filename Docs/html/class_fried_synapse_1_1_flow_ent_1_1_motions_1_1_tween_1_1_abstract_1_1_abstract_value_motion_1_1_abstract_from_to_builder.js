@@ -1,5 +1,0 @@
-var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_value_motion_1_1_abstract_from_to_builder =
-[
-    [ "from", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_value_motion_1_1_abstract_from_to_builder.html#a852391e44624e20867c8b915fe4b38e6", null ],
-    [ "to", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_value_motion_1_1_abstract_from_to_builder.html#a0327f6f1d745ea8bab664382fad59c1e", null ]
-];

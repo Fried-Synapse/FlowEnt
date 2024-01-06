@@ -1,4 +1,0 @@
-var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_materials_1_1_color_motion_1_1_value_builder =
-[
-    [ "Build", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_materials_1_1_color_motion_1_1_value_builder.html#a644cb11cac8fd33781d33844e5b55cac", null ]
-];

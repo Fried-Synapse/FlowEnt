@@ -1,4 +1,0 @@
-var class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_rotate_axis_motc0ae4e9f1b54b5e1c9407c0a8f046657 =
-[
-    [ "axis", "class_fried_synapse_1_1_flow_ent_1_1_motions_1_1_tween_1_1_abstract_1_1_abstract_rotate_axis_motc0ae4e9f1b54b5e1c9407c0a8f046657.html#a7d5e65c51e39ebf7ae9619a46bf05ac5", null ]
-];
