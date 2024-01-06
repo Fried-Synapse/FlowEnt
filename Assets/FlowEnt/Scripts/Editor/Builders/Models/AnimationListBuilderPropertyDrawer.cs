@@ -23,7 +23,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         protected override void OnAdd(Rect buttonRect, ReorderableList list)
         {
-            GenericMenu context = new GenericMenu();
+            GenericMenu context = new();
             context.AddItem(new GUIContent("Flow"), false, () => list.Add(new FlowBuilder()));
             context.AddItem(new GUIContent("Tween"), false, () => list.Add(new TweenBuilder()));
             context.AddItem(new GUIContent("Echo"), false, () => list.Add(new EchoBuilder()));

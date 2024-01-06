@@ -14,6 +14,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            label = EditorGUI.BeginProperty(position, label, property);
             EditorGUI.PropertyField(position, property, label, true);
 
             if (property.propertyType != SerializedPropertyType.ObjectReference)
@@ -22,6 +23,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             DrawButton(position, property, fieldInfo);
+            EditorGUI.EndProperty();
         }
 
         public static void DrawButton(Rect position, SerializedProperty property, FieldInfo fieldInfo)

@@ -25,7 +25,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 return EditorGUIUtility.singleLineHeight;
             }
 
-            float height = FlowEntConstants.SpacedSingleLineHeight + 5;
+            float height = FlowEntConstants.SpacedSingleLineHeight + 12;
 
             ForEachVisibleProperty(property, p => height += EditorGUI.GetPropertyHeight(p, true));
             return height;

@@ -22,6 +22,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            label = EditorGUI.BeginProperty(position, label, property);
             float minMaxLabelWidth =
                 EditorStyles.label.CalcSize(new GUIContent(property.FindPropertyRelative(PropertiesEnum.max.ToString()).displayName)).x + Padding;
             float labelWidth = EditorGUIUtility.labelWidth - minMaxLabelWidth;
@@ -38,6 +39,7 @@ namespace FriedSynapse.FlowEnt.Editor
             FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(PropertiesEnum.min.ToString()));
             FlowEntEditorGUILayout.PropertyField(ref position, property.FindPropertyRelative(PropertiesEnum.max.ToString()));
             EditorGUIUtility.labelWidth = previousLabelWidth;
+            EditorGUI.EndProperty();
         }
     }
 }

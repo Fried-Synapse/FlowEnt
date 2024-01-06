@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit
 {
-    public static class FlowEntAssert
+    public static class NumericAssertionsExtensions
     {
         public const float Epsilon = 0.0001f;
         private const float TimeEpsilon = 0.03f;

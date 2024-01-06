@@ -13,10 +13,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (HasValue(property))
+            if (!HasValue(property))
             {
-                EditorGUI.PropertyField(position, property, label, true);
+                return;
             }
+            label = EditorGUI.BeginProperty(position, label, property);
+            EditorGUI.PropertyField(position, property, label, true);
+            EditorGUI.EndProperty();
         }
     }
 }

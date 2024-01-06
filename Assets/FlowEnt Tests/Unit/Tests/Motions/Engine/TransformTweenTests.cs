@@ -1038,7 +1038,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).RotateTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.rotation)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.rotation)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1088,7 +1088,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocalTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.localRotation)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.localRotation)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1141,7 +1141,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).RotateTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.rotation.eulerAngles)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.rotation.eulerAngles)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1175,7 +1175,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocalTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.localRotation.eulerAngles)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.localRotation.eulerAngles)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1230,7 +1230,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).RotateXTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.rotation.eulerAngles.x)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.rotation.eulerAngles.x)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1279,7 +1279,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocalXTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.localRotation.eulerAngles.x)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.localRotation.eulerAngles.x)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1332,7 +1332,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).RotateYTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.rotation.eulerAngles.y)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.rotation.eulerAngles.y)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1381,7 +1381,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).RotateLocalYTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.localRotation.eulerAngles.y)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.localRotation.eulerAngles.y)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1543,7 +1543,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).MoveTo(from, to).OrientToPath()
-                    .OnUpdated((_) => values.Add(GameObject.transform.eulerAngles))
+                    .OnUpdated(_ => values.Add(GameObject.transform.eulerAngles))
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() => values.ForEach(v => orientation.Should().Be(v)))
@@ -1596,7 +1596,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.localScale)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.localScale)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1651,7 +1651,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalXTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.localScale.x)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.localScale.x)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1704,7 +1704,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalYTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.localScale.y)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.localScale.y)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1757,7 +1757,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.transform.Tween(TestTime).ScaleLocalZTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= GameObject.transform.localScale.z)
+                    .OnUpdated(_ => startingFrom ??= GameObject.transform.localScale.z)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -1821,7 +1821,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => new Tween(TestTime).For(GameObject.transform).ScaleLocalTo(Axis.XY, from, to)
-                    .OnUpdated((_) =>
+                    .OnUpdated(_ =>
                     {
                         var localScale = GameObject.transform.localScale;
                         startingFromX ??= localScale.x;
@@ -1947,7 +1947,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => new Flow()
                     .Queue(GameObject.transform.Tween(TestTime).ScaleLocalXTo(from, to))
                     .At(0, GameObject.transform.Tween(TestTime).ScaleLocalYTo(from, to))
-                    .OnUpdated((_) =>
+                    .OnUpdated(_ =>
                     {
                         Vector3 localScale = GameObject.transform.localScale;
                         startingFromX ??= localScale.x;
@@ -1978,7 +1978,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Act(() => new Flow()
                     .Queue(GameObject.transform.Tween(HalfTestTime).ScaleLocalTo(Axis.XY, from, to))
                     .Queue(GameObject.transform.Tween(HalfTestTime).ScaleLocalYTo(from, to))
-                    .OnUpdated((_) =>
+                    .OnUpdated(_ =>
                     {
                         Vector3 localScale = GameObject.transform.localScale;
                         startingFromX ??= localScale.x;

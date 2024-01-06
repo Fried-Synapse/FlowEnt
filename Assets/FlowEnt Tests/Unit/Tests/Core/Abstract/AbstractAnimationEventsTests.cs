@@ -145,7 +145,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     CreateAnimation(time)
                         .SetLoopCount(expectedLoopCount)
                         .OnUpdated(t => timeTracker = GetTotalTimeFromUpdate(t, timeTracker, time))
-                        .OnLoopStarted((_) =>
+                        .OnLoopStarted(_ =>
                         {
                             loopCount++;
                             timeControl = timeTracker;
@@ -174,7 +174,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     CreateAnimation(time)
                         .SetLoopCount(expectedLoopCount)
                         .OnUpdated(t => timeTracker = GetTotalTimeFromUpdate(t, timeTracker, time))
-                        .OnLoopCompleted((_) =>
+                        .OnLoopCompleted(_ =>
                         {
                             loopCount++;
                             timeControl = timeTracker;
@@ -204,7 +204,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     TAnimation animation = (TAnimation)CreateAnimation(time)
                         .SetLoopCount(expectedLoopCount)
                         .OnUpdated(t => timeTracker = GetTotalTimeFromUpdate(t, timeTracker, time))
-                        .OnLoopCompleted((_) =>
+                        .OnLoopCompleted(_ =>
                         {
                             loopCount++;
                             timeControl = timeTracker;

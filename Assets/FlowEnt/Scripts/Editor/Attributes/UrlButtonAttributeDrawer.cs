@@ -11,6 +11,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            label = EditorGUI.BeginProperty(position, label, property);
             EditorGUI.PropertyField(position, property, label);
 
             UrlButtonAttribute urlButtonAttribute = (UrlButtonAttribute)attribute;
@@ -24,6 +25,7 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 Application.OpenURL(urlButtonAttribute.Url);
             }
+            EditorGUI.EndProperty();
         }
     }
 }

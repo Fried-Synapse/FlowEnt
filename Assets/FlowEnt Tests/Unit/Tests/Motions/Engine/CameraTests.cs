@@ -48,7 +48,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime).BackgroundColorTo(from, to)
-                    .OnUpdated((_) => startingFrom ??= Component.backgroundColor)
+                    .OnUpdated(_ => startingFrom ??= Component.backgroundColor)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
@@ -66,7 +66,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => Component.Tween(TestTime)
-                    .OnUpdated((_) => actualFrom ??= Component.backgroundColor)
+                    .OnUpdated(_ => actualFrom ??= Component.backgroundColor)
                     .BackgroundColorTo(Variables.Gradient).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>

@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             if (Controllable.IsSeekable)
             {
-                ControlBar.OnValueChanging += (_) =>
+                ControlBar.OnValueChanging += _ =>
                 {
                     if (!IsRunning)
                     {

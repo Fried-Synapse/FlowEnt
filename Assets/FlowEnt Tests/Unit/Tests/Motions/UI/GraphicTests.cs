@@ -1,5 +1,5 @@
 using System.Collections;
-using NUnit.Framework;
+using FluentAssertions;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
@@ -19,7 +19,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => GameObject.GetComponent<Graphic>().color = Color.clear)
                 .Act(() => GameObject.GetComponent<Graphic>().Tween(TestTime).Alpha(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, GameObject.GetComponent<Graphic>().color.a))
+                .Assert(() => GameObject.GetComponent<Graphic>().color.a.Should().Be(value))
                 .Run();
         }
 
@@ -32,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => GameObject.GetComponent<Graphic>().color = Color.clear)
                 .Act(() => GameObject.GetComponent<Graphic>().Tween(TestTime).AlphaTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, GameObject.GetComponent<Graphic>().color.a))
+                .Assert(() => GameObject.GetComponent<Graphic>().color.a.Should().Be(to))
                 .Run();
         }
 
@@ -46,13 +46,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Arrange(() => GameObject.GetComponent<Graphic>().color = Color.clear)
                 .Act(() => GameObject.GetComponent<Graphic>().Tween(TestTime).AlphaTo(from, to)
-                    .OnUpdated((_) => startingValue ??= GameObject.GetComponent<Graphic>().color.a)
+                    .OnUpdated(_ => startingValue ??= GameObject.GetComponent<Graphic>().color.a)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, GameObject.GetComponent<Graphic>().color.a);
+                    startingValue.Should().Be(from);
+                    GameObject.GetComponent<Graphic>().color.a.Should().Be(to);
                 })
                 .Run();
         }
@@ -70,7 +70,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => GameObject.GetComponent<Graphic>().color = Color.clear)
                 .Act(() => GameObject.GetComponent<Graphic>().Tween(TestTime).Color(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(value, GameObject.GetComponent<Graphic>().color))
+                .Assert(() => GameObject.GetComponent<Graphic>().color.Should().Be(value))
                 .Run();
         }
 
@@ -83,7 +83,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(() => GameObject.GetComponent<Graphic>().color = Color.red)
                 .Act(() => GameObject.GetComponent<Graphic>().Tween(TestTime).ColorTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Assert.AreEqual(to, GameObject.GetComponent<Graphic>().color))
+                .Assert(() => GameObject.GetComponent<Graphic>().color.Should().Be(to))
                 .Run();
         }
 
@@ -96,13 +96,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.GetComponent<Graphic>().Tween(TestTime).ColorTo(from, to)
-                    .OnUpdated((_) => startingValue ??= GameObject.GetComponent<Graphic>().color)
+                    .OnUpdated(_ => startingValue ??= GameObject.GetComponent<Graphic>().color)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(from, startingValue);
-                    Assert.AreEqual(to, GameObject.GetComponent<Graphic>().color);
+                    startingValue.Should().Be(from);
+                    GameObject.GetComponent<Graphic>().color.Should().Be(to);
                 })
                 .Run();
         }
@@ -114,18 +114,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
 
             yield return CreateTester()
                 .Act(() => GameObject.GetComponent<Graphic>().Tween(TestTime)
-                    .OnUpdated((_) => actualFrom ??= GameObject.GetComponent<Graphic>().color)
+                    .OnUpdated(_ => actualFrom ??= GameObject.GetComponent<Graphic>().color)
                     .ColorTo(Variables.Gradient).Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
-                    Assert.AreEqual(Variables.Gradient.Evaluate(0f), actualFrom);
-                    Assert.AreEqual(Variables.Gradient.Evaluate(1f), GameObject.GetComponent<Graphic>().color);
+                    actualFrom.Should().Be(Variables.Gradient.Evaluate(0f));
+                    GameObject.GetComponent<Graphic>().color.Should().Be(Variables.Gradient.Evaluate(1f));
                 })
                 .Run();
         }
 
         #endregion
-
     }
 }
