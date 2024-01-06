@@ -23,7 +23,7 @@ jobs:
           working-directory: "Docs"
           doxyfile-path: "Doxyfile" 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           branch: public/docs
