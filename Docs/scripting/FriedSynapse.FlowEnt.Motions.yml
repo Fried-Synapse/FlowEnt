@@ -1,0 +1,129 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions
+  id: Motions
+  parent: FriedSynapse.FlowEnt
+  children:
+  - FriedSynapse.FlowEnt.Motions.Abstract
+  - FriedSynapse.FlowEnt.Motions.Echo
+  - FriedSynapse.FlowEnt.Motions.Tween
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Motions
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Abstract
+  commentId: N:FriedSynapse.FlowEnt.Motions.Abstract
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Abstract
+  nameWithType: FriedSynapse.FlowEnt.Motions.Abstract
+  fullName: FriedSynapse.FlowEnt.Motions.Abstract
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Abstract
+    name: Abstract
+    href: FriedSynapse.FlowEnt.Motions.Abstract.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Abstract
+    name: Abstract
+    href: FriedSynapse.FlowEnt.Motions.Abstract.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo
+  commentId: N:FriedSynapse.FlowEnt.Motions.Echo
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Echo
+  nameWithType: FriedSynapse.FlowEnt.Motions.Echo
+  fullName: FriedSynapse.FlowEnt.Motions.Echo
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Tween
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween
+  fullName: FriedSynapse.FlowEnt.Motions.Tween
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html

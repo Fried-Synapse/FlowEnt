@@ -49,6 +49,7 @@ items:
   - FriedSynapse.FlowEnt.DelayFlowAwaiter
   - FriedSynapse.FlowEnt.DisplayName
   - FriedSynapse.FlowEnt.Easing
+  - FriedSynapse.FlowEnt.Easings
   - FriedSynapse.FlowEnt.Echo
   - FriedSynapse.FlowEnt.EchoAuthoring
   - FriedSynapse.FlowEnt.EchoBuilder
@@ -59,6 +60,7 @@ items:
   - FriedSynapse.FlowEnt.EchoMotionsBuilder
   - FriedSynapse.FlowEnt.EchoOptions
   - FriedSynapse.FlowEnt.EchoOptionsBuilder
+  - FriedSynapse.FlowEnt.Editor
   - FriedSynapse.FlowEnt.EnableIfAttribute
   - FriedSynapse.FlowEnt.FastListItem`1
   - FriedSynapse.FlowEnt.Flow
@@ -100,6 +102,7 @@ items:
   - FriedSynapse.FlowEnt.MaterialBuilderWithProperty`1
   - FriedSynapse.FlowEnt.MaterialMotionExtensions
   - FriedSynapse.FlowEnt.MinMaxVector2
+  - FriedSynapse.FlowEnt.Motions
   - FriedSynapse.FlowEnt.NormalisedCurve
   - FriedSynapse.FlowEnt.NotSeekableException
   - FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
@@ -136,13 +139,68 @@ items:
   fullName: FriedSynapse.FlowEnt
   type: Namespace
 references:
-- uid: FriedSynapse.FlowEnt.AbstractUpdatable
-  commentId: T:FriedSynapse.FlowEnt.AbstractUpdatable
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AbstractUpdatable.html
-  name: AbstractUpdatable
-  nameWithType: AbstractUpdatable
-  fullName: FriedSynapse.FlowEnt.AbstractUpdatable
+- uid: FriedSynapse.FlowEnt.Easings
+  commentId: N:FriedSynapse.FlowEnt.Easings
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Easings
+  nameWithType: FriedSynapse.FlowEnt.Easings
+  fullName: FriedSynapse.FlowEnt.Easings
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Easings
+    name: Easings
+    href: FriedSynapse.FlowEnt.Easings.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Easings
+    name: Easings
+    href: FriedSynapse.FlowEnt.Easings.html
+- uid: FriedSynapse.FlowEnt.Editor
+  commentId: N:FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Editor
+  nameWithType: FriedSynapse.FlowEnt.Editor
+  fullName: FriedSynapse.FlowEnt.Editor
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor
+    name: Editor
+    href: FriedSynapse.FlowEnt.Editor.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor
+    name: Editor
+    href: FriedSynapse.FlowEnt.Editor.html
+- uid: FriedSynapse.FlowEnt.Motions
+  isExternal: true
 - uid: FriedSynapse.FlowEnt.AbstractAnimation
   commentId: T:FriedSynapse.FlowEnt.AbstractAnimation
   parent: FriedSynapse.FlowEnt
@@ -150,6 +208,31 @@ references:
   name: AbstractAnimation
   nameWithType: AbstractAnimation
   fullName: FriedSynapse.FlowEnt.AbstractAnimation
+- uid: FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
+  href: FriedSynapse.FlowEnt.AbstractAnimationBuilder-1.html
+  name: AbstractAnimationBuilder<TAnimation>
+  nameWithType: AbstractAnimationBuilder<TAnimation>
+  fullName: FriedSynapse.FlowEnt.AbstractAnimationBuilder<TAnimation>
+  nameWithType.vb: AbstractAnimationBuilder(Of TAnimation)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimationBuilder(Of TAnimation)
+  name.vb: AbstractAnimationBuilder(Of TAnimation)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
+    name: AbstractAnimationBuilder
+    href: FriedSynapse.FlowEnt.AbstractAnimationBuilder-1.html
+  - name: <
+  - name: TAnimation
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
+    name: AbstractAnimationBuilder
+    href: FriedSynapse.FlowEnt.AbstractAnimationBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAnimation
+  - name: )
 - uid: FriedSynapse.FlowEnt.AbstractAnimationEvents
   commentId: T:FriedSynapse.FlowEnt.AbstractAnimationEvents
   parent: FriedSynapse.FlowEnt
@@ -157,6 +240,31 @@ references:
   name: AbstractAnimationEvents
   nameWithType: AbstractAnimationEvents
   fullName: FriedSynapse.FlowEnt.AbstractAnimationEvents
+- uid: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder`1
+  href: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder-1.html
+  name: AbstractAnimationEventsBuilder<TAnimationEvents>
+  nameWithType: AbstractAnimationEventsBuilder<TAnimationEvents>
+  fullName: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder<TAnimationEvents>
+  nameWithType.vb: AbstractAnimationEventsBuilder(Of TAnimationEvents)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder(Of TAnimationEvents)
+  name.vb: AbstractAnimationEventsBuilder(Of TAnimationEvents)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder`1
+    name: AbstractAnimationEventsBuilder
+    href: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder-1.html
+  - name: <
+  - name: TAnimationEvents
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder`1
+    name: AbstractAnimationEventsBuilder
+    href: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAnimationEvents
+  - name: )
 - uid: FriedSynapse.FlowEnt.AbstractAnimationOptions
   commentId: T:FriedSynapse.FlowEnt.AbstractAnimationOptions
   parent: FriedSynapse.FlowEnt
@@ -164,349 +272,91 @@ references:
   name: AbstractAnimationOptions
   nameWithType: AbstractAnimationOptions
   fullName: FriedSynapse.FlowEnt.AbstractAnimationOptions
-- uid: FriedSynapse.FlowEnt.Tween
-  commentId: T:FriedSynapse.FlowEnt.Tween
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.Tween.html
-  name: Tween
-  nameWithType: Tween
-  fullName: FriedSynapse.FlowEnt.Tween
-- uid: FriedSynapse.FlowEnt.TweenEvents
-  commentId: T:FriedSynapse.FlowEnt.TweenEvents
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.TweenEvents.html
-  name: TweenEvents
-  nameWithType: TweenEvents
-  fullName: FriedSynapse.FlowEnt.TweenEvents
-- uid: FriedSynapse.FlowEnt.TweenOptions
-  commentId: T:FriedSynapse.FlowEnt.TweenOptions
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.TweenOptions.html
-  name: TweenOptions
-  nameWithType: TweenOptions
-  fullName: FriedSynapse.FlowEnt.TweenOptions
-- uid: FriedSynapse.FlowEnt.TweenMotionProxyArray`1
-  commentId: T:FriedSynapse.FlowEnt.TweenMotionProxyArray`1
-  href: FriedSynapse.FlowEnt.TweenMotionProxyArray-1.html
-  name: TweenMotionProxyArray<TItem>
-  nameWithType: TweenMotionProxyArray<TItem>
-  fullName: FriedSynapse.FlowEnt.TweenMotionProxyArray<TItem>
-  nameWithType.vb: TweenMotionProxyArray(Of TItem)
-  fullName.vb: FriedSynapse.FlowEnt.TweenMotionProxyArray(Of TItem)
-  name.vb: TweenMotionProxyArray(Of TItem)
+- uid: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder`1
+  href: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder-1.html
+  name: AbstractAnimationOptionsBuilder<TAnimationOptions>
+  nameWithType: AbstractAnimationOptionsBuilder<TAnimationOptions>
+  fullName: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder<TAnimationOptions>
+  nameWithType.vb: AbstractAnimationOptionsBuilder(Of TAnimationOptions)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder(Of TAnimationOptions)
+  name.vb: AbstractAnimationOptionsBuilder(Of TAnimationOptions)
   spec.csharp:
-  - uid: FriedSynapse.FlowEnt.TweenMotionProxyArray`1
-    name: TweenMotionProxyArray
-    href: FriedSynapse.FlowEnt.TweenMotionProxyArray-1.html
+  - uid: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder`1
+    name: AbstractAnimationOptionsBuilder
+    href: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder-1.html
   - name: <
-  - name: TItem
+  - name: TAnimationOptions
   - name: '>'
   spec.vb:
-  - uid: FriedSynapse.FlowEnt.TweenMotionProxyArray`1
-    name: TweenMotionProxyArray
-    href: FriedSynapse.FlowEnt.TweenMotionProxyArray-1.html
+  - uid: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder`1
+    name: AbstractAnimationOptionsBuilder
+    href: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder-1.html
   - name: (
   - name: Of
   - name: " "
-  - name: TItem
+  - name: TAnimationOptions
   - name: )
-- uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
-  commentId: T:FriedSynapse.FlowEnt.TweenMotionProxy`1
+- uid: FriedSynapse.FlowEnt.AbstractAuthoring
+  commentId: T:FriedSynapse.FlowEnt.AbstractAuthoring
   parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
-  name: TweenMotionProxy<TItem>
-  nameWithType: TweenMotionProxy<TItem>
-  fullName: FriedSynapse.FlowEnt.TweenMotionProxy<TItem>
-  nameWithType.vb: TweenMotionProxy(Of TItem)
-  fullName.vb: FriedSynapse.FlowEnt.TweenMotionProxy(Of TItem)
-  name.vb: TweenMotionProxy(Of TItem)
+  href: FriedSynapse.FlowEnt.AbstractAuthoring.html
+  name: AbstractAuthoring
+  nameWithType: AbstractAuthoring
+  fullName: FriedSynapse.FlowEnt.AbstractAuthoring
+- uid: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
+  commentId: T:FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AbstractAuthoring.html
+  name: AbstractAuthoring.StartModeEnum
+  nameWithType: AbstractAuthoring.StartModeEnum
+  fullName: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
   spec.csharp:
-  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
-    name: TweenMotionProxy
-    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
-  - name: <
-  - name: TItem
-  - name: '>'
+  - uid: FriedSynapse.FlowEnt.AbstractAuthoring
+    name: AbstractAuthoring
+    href: FriedSynapse.FlowEnt.AbstractAuthoring.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
+    name: StartModeEnum
+    href: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum.html
   spec.vb:
-  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
-    name: TweenMotionProxy
-    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
-  - name: )
-- uid: FriedSynapse.FlowEnt.Echo
-  commentId: T:FriedSynapse.FlowEnt.Echo
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.Echo.html
-  name: Echo
-  nameWithType: Echo
-  fullName: FriedSynapse.FlowEnt.Echo
-- uid: FriedSynapse.FlowEnt.EchoOptions
-  commentId: T:FriedSynapse.FlowEnt.EchoOptions
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.EchoOptions.html
-  name: EchoOptions
-  nameWithType: EchoOptions
-  fullName: FriedSynapse.FlowEnt.EchoOptions
-- uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
-  commentId: T:FriedSynapse.FlowEnt.EchoMotionProxy`1
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
-  name: EchoMotionProxy<TItem>
-  nameWithType: EchoMotionProxy<TItem>
-  fullName: FriedSynapse.FlowEnt.EchoMotionProxy<TItem>
-  nameWithType.vb: EchoMotionProxy(Of TItem)
-  fullName.vb: FriedSynapse.FlowEnt.EchoMotionProxy(Of TItem)
-  name.vb: EchoMotionProxy(Of TItem)
+  - uid: FriedSynapse.FlowEnt.AbstractAuthoring
+    name: AbstractAuthoring
+    href: FriedSynapse.FlowEnt.AbstractAuthoring.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
+    name: StartModeEnum
+    href: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum.html
+- uid: FriedSynapse.FlowEnt.AbstractAuthoring`2
+  commentId: T:FriedSynapse.FlowEnt.AbstractAuthoring`2
+  href: FriedSynapse.FlowEnt.AbstractAuthoring-2.html
+  name: AbstractAuthoring<TAnimation, TAnimationBuilder>
+  nameWithType: AbstractAuthoring<TAnimation, TAnimationBuilder>
+  fullName: FriedSynapse.FlowEnt.AbstractAuthoring<TAnimation, TAnimationBuilder>
+  nameWithType.vb: AbstractAuthoring(Of TAnimation, TAnimationBuilder)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAuthoring(Of TAnimation, TAnimationBuilder)
+  name.vb: AbstractAuthoring(Of TAnimation, TAnimationBuilder)
   spec.csharp:
-  - uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
-    name: EchoMotionProxy
-    href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  - uid: FriedSynapse.FlowEnt.AbstractAuthoring`2
+    name: AbstractAuthoring
+    href: FriedSynapse.FlowEnt.AbstractAuthoring-2.html
   - name: <
-  - name: TItem
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
-    name: EchoMotionProxy
-    href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
-  - name: )
-- uid: FriedSynapse.FlowEnt.EchoMotionProxyArray`1
-  commentId: T:FriedSynapse.FlowEnt.EchoMotionProxyArray`1
-  href: FriedSynapse.FlowEnt.EchoMotionProxyArray-1.html
-  name: EchoMotionProxyArray<TItem>
-  nameWithType: EchoMotionProxyArray<TItem>
-  fullName: FriedSynapse.FlowEnt.EchoMotionProxyArray<TItem>
-  nameWithType.vb: EchoMotionProxyArray(Of TItem)
-  fullName.vb: FriedSynapse.FlowEnt.EchoMotionProxyArray(Of TItem)
-  name.vb: EchoMotionProxyArray(Of TItem)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.EchoMotionProxyArray`1
-    name: EchoMotionProxyArray
-    href: FriedSynapse.FlowEnt.EchoMotionProxyArray-1.html
-  - name: <
-  - name: TItem
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.EchoMotionProxyArray`1
-    name: EchoMotionProxyArray
-    href: FriedSynapse.FlowEnt.EchoMotionProxyArray-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
-  - name: )
-- uid: FriedSynapse.FlowEnt.EchoEvents
-  commentId: T:FriedSynapse.FlowEnt.EchoEvents
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.EchoEvents.html
-  name: EchoEvents
-  nameWithType: EchoEvents
-  fullName: FriedSynapse.FlowEnt.EchoEvents
-- uid: FriedSynapse.FlowEnt.AnimationException
-  commentId: T:FriedSynapse.FlowEnt.AnimationException
-  href: FriedSynapse.FlowEnt.AnimationException.html
-  name: AnimationException
-  nameWithType: AnimationException
-  fullName: FriedSynapse.FlowEnt.AnimationException
-- uid: FriedSynapse.FlowEnt.IControllable
-  commentId: T:FriedSynapse.FlowEnt.IControllable
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.IControllable.html
-  name: IControllable
-  nameWithType: IControllable
-  fullName: FriedSynapse.FlowEnt.IControllable
-- uid: FriedSynapse.FlowEnt.NotSeekableException
-  commentId: T:FriedSynapse.FlowEnt.NotSeekableException
-  href: FriedSynapse.FlowEnt.NotSeekableException.html
-  name: NotSeekableException
-  nameWithType: NotSeekableException
-  fullName: FriedSynapse.FlowEnt.NotSeekableException
-- uid: FriedSynapse.FlowEnt.FlowEntDebug
-  commentId: T:FriedSynapse.FlowEnt.FlowEntDebug
-  href: FriedSynapse.FlowEnt.FlowEntDebug.html
-  name: FlowEntDebug
-  nameWithType: FlowEntDebug
-  fullName: FriedSynapse.FlowEnt.FlowEntDebug
-- uid: FriedSynapse.FlowEnt.IUpdateController
-  commentId: T:FriedSynapse.FlowEnt.IUpdateController
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.IUpdateController.html
-  name: IUpdateController
-  nameWithType: IUpdateController
-  fullName: FriedSynapse.FlowEnt.IUpdateController
-- uid: FriedSynapse.FlowEnt.UpdateType
-  commentId: T:FriedSynapse.FlowEnt.UpdateType
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.UpdateType.html
-  name: UpdateType
-  nameWithType: UpdateType
-  fullName: FriedSynapse.FlowEnt.UpdateType
-- uid: FriedSynapse.FlowEnt.LoopType
-  commentId: T:FriedSynapse.FlowEnt.LoopType
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.LoopType.html
-  name: LoopType
-  nameWithType: LoopType
-  fullName: FriedSynapse.FlowEnt.LoopType
-- uid: FriedSynapse.FlowEnt.PlayState
-  commentId: T:FriedSynapse.FlowEnt.PlayState
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.PlayState.html
-  name: PlayState
-  nameWithType: PlayState
-  fullName: FriedSynapse.FlowEnt.PlayState
-- uid: FriedSynapse.FlowEnt.FastListItem`1
-  commentId: T:FriedSynapse.FlowEnt.FastListItem`1
-  href: FriedSynapse.FlowEnt.FastListItem-1.html
-  name: FastListItem<T>
-  nameWithType: FastListItem<T>
-  fullName: FriedSynapse.FlowEnt.FastListItem<T>
-  nameWithType.vb: FastListItem(Of T)
-  fullName.vb: FriedSynapse.FlowEnt.FastListItem(Of T)
-  name.vb: FastListItem(Of T)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.FastListItem`1
-    name: FastListItem
-    href: FriedSynapse.FlowEnt.FastListItem-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.FastListItem`1
-    name: FastListItem
-    href: FriedSynapse.FlowEnt.FastListItem-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: FriedSynapse.FlowEnt.FlowEntController
-  commentId: T:FriedSynapse.FlowEnt.FlowEntController
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.FlowEntController.html
-  name: FlowEntController
-  nameWithType: FlowEntController
-  fullName: FriedSynapse.FlowEnt.FlowEntController
-- uid: FriedSynapse.FlowEnt.FlowEntRuntimeUpdater
-  commentId: T:FriedSynapse.FlowEnt.FlowEntRuntimeUpdater
-  href: FriedSynapse.FlowEnt.FlowEntRuntimeUpdater.html
-  name: FlowEntRuntimeUpdater
-  nameWithType: FlowEntRuntimeUpdater
-  fullName: FriedSynapse.FlowEnt.FlowEntRuntimeUpdater
-- uid: FriedSynapse.FlowEnt.Flow
-  commentId: T:FriedSynapse.FlowEnt.Flow
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.Flow.html
-  name: Flow
-  nameWithType: Flow
-  fullName: FriedSynapse.FlowEnt.Flow
-- uid: FriedSynapse.FlowEnt.FlowOptions
-  commentId: T:FriedSynapse.FlowEnt.FlowOptions
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.FlowOptions.html
-  name: FlowOptions
-  nameWithType: FlowOptions
-  fullName: FriedSynapse.FlowEnt.FlowOptions
-- uid: FriedSynapse.FlowEnt.FlowEvents
-  commentId: T:FriedSynapse.FlowEnt.FlowEvents
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.FlowEvents.html
-  name: FlowEvents
-  nameWithType: FlowEvents
-  fullName: FriedSynapse.FlowEnt.FlowEvents
-- uid: FriedSynapse.FlowEnt.CallbackFlowAwaiter
-  commentId: T:FriedSynapse.FlowEnt.CallbackFlowAwaiter
-  href: FriedSynapse.FlowEnt.CallbackFlowAwaiter.html
-  name: CallbackFlowAwaiter
-  nameWithType: CallbackFlowAwaiter
-  fullName: FriedSynapse.FlowEnt.CallbackFlowAwaiter
-- uid: FriedSynapse.FlowEnt.TaskFlowAwaiter
-  commentId: T:FriedSynapse.FlowEnt.TaskFlowAwaiter
-  href: FriedSynapse.FlowEnt.TaskFlowAwaiter.html
-  name: TaskFlowAwaiter
-  nameWithType: TaskFlowAwaiter
-  fullName: FriedSynapse.FlowEnt.TaskFlowAwaiter
-- uid: FriedSynapse.FlowEnt.AbstractFlowAwaiter
-  commentId: T:FriedSynapse.FlowEnt.AbstractFlowAwaiter
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AbstractFlowAwaiter.html
-  name: AbstractFlowAwaiter
-  nameWithType: AbstractFlowAwaiter
-  fullName: FriedSynapse.FlowEnt.AbstractFlowAwaiter
-- uid: FriedSynapse.FlowEnt.DelayFlowAwaiter
-  commentId: T:FriedSynapse.FlowEnt.DelayFlowAwaiter
-  href: FriedSynapse.FlowEnt.DelayFlowAwaiter.html
-  name: DelayFlowAwaiter
-  nameWithType: DelayFlowAwaiter
-  fullName: FriedSynapse.FlowEnt.DelayFlowAwaiter
-- uid: FriedSynapse.FlowEnt.IListBuilderItem
-  commentId: T:FriedSynapse.FlowEnt.IListBuilderItem
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.IListBuilderItem.html
-  name: IListBuilderItem
-  nameWithType: IListBuilderItem
-  fullName: FriedSynapse.FlowEnt.IListBuilderItem
-- uid: FriedSynapse.FlowEnt.AbstractListBuilder`2
-  commentId: T:FriedSynapse.FlowEnt.AbstractListBuilder`2
-  href: FriedSynapse.FlowEnt.AbstractListBuilder-2.html
-  name: AbstractListBuilder<TBuilderItem, TBuiltItem>
-  nameWithType: AbstractListBuilder<TBuilderItem, TBuiltItem>
-  fullName: FriedSynapse.FlowEnt.AbstractListBuilder<TBuilderItem, TBuiltItem>
-  nameWithType.vb: AbstractListBuilder(Of TBuilderItem, TBuiltItem)
-  fullName.vb: FriedSynapse.FlowEnt.AbstractListBuilder(Of TBuilderItem, TBuiltItem)
-  name.vb: AbstractListBuilder(Of TBuilderItem, TBuiltItem)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.AbstractListBuilder`2
-    name: AbstractListBuilder
-    href: FriedSynapse.FlowEnt.AbstractListBuilder-2.html
-  - name: <
-  - name: TBuilderItem
+  - name: TAnimation
   - name: ','
   - name: " "
-  - name: TBuiltItem
+  - name: TAnimationBuilder
   - name: '>'
   spec.vb:
-  - uid: FriedSynapse.FlowEnt.AbstractListBuilder`2
-    name: AbstractListBuilder
-    href: FriedSynapse.FlowEnt.AbstractListBuilder-2.html
+  - uid: FriedSynapse.FlowEnt.AbstractAuthoring`2
+    name: AbstractAuthoring
+    href: FriedSynapse.FlowEnt.AbstractAuthoring-2.html
   - name: (
   - name: Of
   - name: " "
-  - name: TBuilderItem
+  - name: TAnimation
   - name: ','
   - name: " "
-  - name: TBuiltItem
-  - name: )
-- uid: FriedSynapse.FlowEnt.IBuilder`1
-  commentId: T:FriedSynapse.FlowEnt.IBuilder`1
-  href: FriedSynapse.FlowEnt.IBuilder-1.html
-  name: IBuilder<TItem>
-  nameWithType: IBuilder<TItem>
-  fullName: FriedSynapse.FlowEnt.IBuilder<TItem>
-  nameWithType.vb: IBuilder(Of TItem)
-  fullName.vb: FriedSynapse.FlowEnt.IBuilder(Of TItem)
-  name.vb: IBuilder(Of TItem)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.IBuilder`1
-    name: IBuilder
-    href: FriedSynapse.FlowEnt.IBuilder-1.html
-  - name: <
-  - name: TItem
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.IBuilder`1
-    name: IBuilder
-    href: FriedSynapse.FlowEnt.IBuilder-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
+  - name: TAnimationBuilder
   - name: )
 - uid: FriedSynapse.FlowEnt.AbstractBuilder
   commentId: T:FriedSynapse.FlowEnt.AbstractBuilder
@@ -540,209 +390,13 @@ references:
   - name: " "
   - name: TItem
   - name: )
-- uid: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder`1
-  commentId: T:FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder`1
-  href: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder-1.html
-  name: AbstractAnimationEventsBuilder<TAnimationEvents>
-  nameWithType: AbstractAnimationEventsBuilder<TAnimationEvents>
-  fullName: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder<TAnimationEvents>
-  nameWithType.vb: AbstractAnimationEventsBuilder(Of TAnimationEvents)
-  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder(Of TAnimationEvents)
-  name.vb: AbstractAnimationEventsBuilder(Of TAnimationEvents)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder`1
-    name: AbstractAnimationEventsBuilder
-    href: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder-1.html
-  - name: <
-  - name: TAnimationEvents
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder`1
-    name: AbstractAnimationEventsBuilder
-    href: FriedSynapse.FlowEnt.AbstractAnimationEventsBuilder-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TAnimationEvents
-  - name: )
-- uid: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder`1
-  commentId: T:FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder`1
-  href: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder-1.html
-  name: AbstractAnimationOptionsBuilder<TAnimationOptions>
-  nameWithType: AbstractAnimationOptionsBuilder<TAnimationOptions>
-  fullName: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder<TAnimationOptions>
-  nameWithType.vb: AbstractAnimationOptionsBuilder(Of TAnimationOptions)
-  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder(Of TAnimationOptions)
-  name.vb: AbstractAnimationOptionsBuilder(Of TAnimationOptions)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder`1
-    name: AbstractAnimationOptionsBuilder
-    href: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder-1.html
-  - name: <
-  - name: TAnimationOptions
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder`1
-    name: AbstractAnimationOptionsBuilder
-    href: FriedSynapse.FlowEnt.AbstractAnimationOptionsBuilder-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TAnimationOptions
-  - name: )
-- uid: FriedSynapse.FlowEnt.IMotionBuilder
-  commentId: T:FriedSynapse.FlowEnt.IMotionBuilder
+- uid: FriedSynapse.FlowEnt.AbstractCurve
+  commentId: T:FriedSynapse.FlowEnt.AbstractCurve
   parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.IMotionBuilder.html
-  name: IMotionBuilder
-  nameWithType: IMotionBuilder
-  fullName: FriedSynapse.FlowEnt.IMotionBuilder
-- uid: FriedSynapse.FlowEnt.AbstractMotionBuilder`1
-  commentId: T:FriedSynapse.FlowEnt.AbstractMotionBuilder`1
-  href: FriedSynapse.FlowEnt.AbstractMotionBuilder-1.html
-  name: AbstractMotionBuilder<T>
-  nameWithType: AbstractMotionBuilder<T>
-  fullName: FriedSynapse.FlowEnt.AbstractMotionBuilder<T>
-  nameWithType.vb: AbstractMotionBuilder(Of T)
-  fullName.vb: FriedSynapse.FlowEnt.AbstractMotionBuilder(Of T)
-  name.vb: AbstractMotionBuilder(Of T)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.AbstractMotionBuilder`1
-    name: AbstractMotionBuilder
-    href: FriedSynapse.FlowEnt.AbstractMotionBuilder-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.AbstractMotionBuilder`1
-    name: AbstractMotionBuilder
-    href: FriedSynapse.FlowEnt.AbstractMotionBuilder-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: FriedSynapse.FlowEnt.IAbstractAnimationBuilder
-  commentId: T:FriedSynapse.FlowEnt.IAbstractAnimationBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.IAbstractAnimationBuilder.html
-  name: IAbstractAnimationBuilder
-  nameWithType: IAbstractAnimationBuilder
-  fullName: FriedSynapse.FlowEnt.IAbstractAnimationBuilder
-- uid: FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
-  commentId: T:FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
-  href: FriedSynapse.FlowEnt.AbstractAnimationBuilder-1.html
-  name: AbstractAnimationBuilder<TAnimation>
-  nameWithType: AbstractAnimationBuilder<TAnimation>
-  fullName: FriedSynapse.FlowEnt.AbstractAnimationBuilder<TAnimation>
-  nameWithType.vb: AbstractAnimationBuilder(Of TAnimation)
-  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimationBuilder(Of TAnimation)
-  name.vb: AbstractAnimationBuilder(Of TAnimation)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
-    name: AbstractAnimationBuilder
-    href: FriedSynapse.FlowEnt.AbstractAnimationBuilder-1.html
-  - name: <
-  - name: TAnimation
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
-    name: AbstractAnimationBuilder
-    href: FriedSynapse.FlowEnt.AbstractAnimationBuilder-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TAnimation
-  - name: )
-- uid: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder
-  commentId: T:FriedSynapse.FlowEnt.AbstractTweenMotionBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder.html
-  name: AbstractTweenMotionBuilder
-  nameWithType: AbstractTweenMotionBuilder
-  fullName: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder
-- uid: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder`1
-  commentId: T:FriedSynapse.FlowEnt.AbstractTweenMotionBuilder`1
-  href: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder-1.html
-  name: AbstractTweenMotionBuilder<TItem>
-  nameWithType: AbstractTweenMotionBuilder<TItem>
-  fullName: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder<TItem>
-  nameWithType.vb: AbstractTweenMotionBuilder(Of TItem)
-  fullName.vb: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder(Of TItem)
-  name.vb: AbstractTweenMotionBuilder(Of TItem)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder`1
-    name: AbstractTweenMotionBuilder
-    href: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder-1.html
-  - name: <
-  - name: TItem
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder`1
-    name: AbstractTweenMotionBuilder
-    href: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
-  - name: )
-- uid: FriedSynapse.FlowEnt.TweenMotionsBuilder
-  commentId: T:FriedSynapse.FlowEnt.TweenMotionsBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.TweenMotionsBuilder.html
-  name: TweenMotionsBuilder
-  nameWithType: TweenMotionsBuilder
-  fullName: FriedSynapse.FlowEnt.TweenMotionsBuilder
-- uid: FriedSynapse.FlowEnt.TweenOptionsBuilder
-  commentId: T:FriedSynapse.FlowEnt.TweenOptionsBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.TweenOptionsBuilder.html
-  name: TweenOptionsBuilder
-  nameWithType: TweenOptionsBuilder
-  fullName: FriedSynapse.FlowEnt.TweenOptionsBuilder
-- uid: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
-  commentId: T:FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.TweenOptionsBuilder.html
-  name: TweenOptionsBuilder.EasingType
-  nameWithType: TweenOptionsBuilder.EasingType
-  fullName: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.TweenOptionsBuilder
-    name: TweenOptionsBuilder
-    href: FriedSynapse.FlowEnt.TweenOptionsBuilder.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
-    name: EasingType
-    href: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.TweenOptionsBuilder
-    name: TweenOptionsBuilder
-    href: FriedSynapse.FlowEnt.TweenOptionsBuilder.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
-    name: EasingType
-    href: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType.html
-- uid: FriedSynapse.FlowEnt.TweenEventsBuilder
-  commentId: T:FriedSynapse.FlowEnt.TweenEventsBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.TweenEventsBuilder.html
-  name: TweenEventsBuilder
-  nameWithType: TweenEventsBuilder
-  fullName: FriedSynapse.FlowEnt.TweenEventsBuilder
-- uid: FriedSynapse.FlowEnt.TweenBuilder
-  commentId: T:FriedSynapse.FlowEnt.TweenBuilder
-  href: FriedSynapse.FlowEnt.TweenBuilder.html
-  name: TweenBuilder
-  nameWithType: TweenBuilder
-  fullName: FriedSynapse.FlowEnt.TweenBuilder
-- uid: FriedSynapse.FlowEnt.EchoEventsBuilder
-  commentId: T:FriedSynapse.FlowEnt.EchoEventsBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.EchoEventsBuilder.html
-  name: EchoEventsBuilder
-  nameWithType: EchoEventsBuilder
-  fullName: FriedSynapse.FlowEnt.EchoEventsBuilder
+  href: FriedSynapse.FlowEnt.AbstractCurve.html
+  name: AbstractCurve
+  nameWithType: AbstractCurve
+  fullName: FriedSynapse.FlowEnt.AbstractCurve
 - uid: FriedSynapse.FlowEnt.AbstractEchoMotionBuilder
   commentId: T:FriedSynapse.FlowEnt.AbstractEchoMotionBuilder
   parent: FriedSynapse.FlowEnt
@@ -775,58 +429,235 @@ references:
   - name: " "
   - name: TItem
   - name: )
-- uid: FriedSynapse.FlowEnt.EchoMotionsBuilder
-  commentId: T:FriedSynapse.FlowEnt.EchoMotionsBuilder
+- uid: FriedSynapse.FlowEnt.AbstractFlowAwaiter
+  commentId: T:FriedSynapse.FlowEnt.AbstractFlowAwaiter
   parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.EchoMotionsBuilder.html
-  name: EchoMotionsBuilder
-  nameWithType: EchoMotionsBuilder
-  fullName: FriedSynapse.FlowEnt.EchoMotionsBuilder
-- uid: FriedSynapse.FlowEnt.EchoBuilder
-  commentId: T:FriedSynapse.FlowEnt.EchoBuilder
-  href: FriedSynapse.FlowEnt.EchoBuilder.html
-  name: EchoBuilder
-  nameWithType: EchoBuilder
-  fullName: FriedSynapse.FlowEnt.EchoBuilder
-- uid: FriedSynapse.FlowEnt.EchoOptionsBuilder
-  commentId: T:FriedSynapse.FlowEnt.EchoOptionsBuilder
+  href: FriedSynapse.FlowEnt.AbstractFlowAwaiter.html
+  name: AbstractFlowAwaiter
+  nameWithType: AbstractFlowAwaiter
+  fullName: FriedSynapse.FlowEnt.AbstractFlowAwaiter
+- uid: FriedSynapse.FlowEnt.AbstractIfAttribute
+  commentId: T:FriedSynapse.FlowEnt.AbstractIfAttribute
   parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.EchoOptionsBuilder.html
-  name: EchoOptionsBuilder
-  nameWithType: EchoOptionsBuilder
-  fullName: FriedSynapse.FlowEnt.EchoOptionsBuilder
-- uid: FriedSynapse.FlowEnt.IGizmoDrawer
-  commentId: T:FriedSynapse.FlowEnt.IGizmoDrawer
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.IGizmoDrawer.html
-  name: IGizmoDrawer
-  nameWithType: IGizmoDrawer
-  fullName: FriedSynapse.FlowEnt.IGizmoDrawer
-- uid: FriedSynapse.FlowEnt.RandomBuilder`1
-  commentId: T:FriedSynapse.FlowEnt.RandomBuilder`1
-  href: FriedSynapse.FlowEnt.RandomBuilder-1.html
-  name: RandomBuilder<T>
-  nameWithType: RandomBuilder<T>
-  fullName: FriedSynapse.FlowEnt.RandomBuilder<T>
-  nameWithType.vb: RandomBuilder(Of T)
-  fullName.vb: FriedSynapse.FlowEnt.RandomBuilder(Of T)
-  name.vb: RandomBuilder(Of T)
+  href: FriedSynapse.FlowEnt.AbstractIfAttribute.html
+  name: AbstractIfAttribute
+  nameWithType: AbstractIfAttribute
+  fullName: FriedSynapse.FlowEnt.AbstractIfAttribute
+- uid: FriedSynapse.FlowEnt.AbstractListBuilder`2
+  commentId: T:FriedSynapse.FlowEnt.AbstractListBuilder`2
+  href: FriedSynapse.FlowEnt.AbstractListBuilder-2.html
+  name: AbstractListBuilder<TBuilderItem, TBuiltItem>
+  nameWithType: AbstractListBuilder<TBuilderItem, TBuiltItem>
+  fullName: FriedSynapse.FlowEnt.AbstractListBuilder<TBuilderItem, TBuiltItem>
+  nameWithType.vb: AbstractListBuilder(Of TBuilderItem, TBuiltItem)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractListBuilder(Of TBuilderItem, TBuiltItem)
+  name.vb: AbstractListBuilder(Of TBuilderItem, TBuiltItem)
   spec.csharp:
-  - uid: FriedSynapse.FlowEnt.RandomBuilder`1
-    name: RandomBuilder
-    href: FriedSynapse.FlowEnt.RandomBuilder-1.html
+  - uid: FriedSynapse.FlowEnt.AbstractListBuilder`2
+    name: AbstractListBuilder
+    href: FriedSynapse.FlowEnt.AbstractListBuilder-2.html
+  - name: <
+  - name: TBuilderItem
+  - name: ','
+  - name: " "
+  - name: TBuiltItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.AbstractListBuilder`2
+    name: AbstractListBuilder
+    href: FriedSynapse.FlowEnt.AbstractListBuilder-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TBuilderItem
+  - name: ','
+  - name: " "
+  - name: TBuiltItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractMotionBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.AbstractMotionBuilder`1
+  href: FriedSynapse.FlowEnt.AbstractMotionBuilder-1.html
+  name: AbstractMotionBuilder<T>
+  nameWithType: AbstractMotionBuilder<T>
+  fullName: FriedSynapse.FlowEnt.AbstractMotionBuilder<T>
+  nameWithType.vb: AbstractMotionBuilder(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractMotionBuilder(Of T)
+  name.vb: AbstractMotionBuilder(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.AbstractMotionBuilder`1
+    name: AbstractMotionBuilder
+    href: FriedSynapse.FlowEnt.AbstractMotionBuilder-1.html
   - name: <
   - name: T
   - name: '>'
   spec.vb:
-  - uid: FriedSynapse.FlowEnt.RandomBuilder`1
-    name: RandomBuilder
-    href: FriedSynapse.FlowEnt.RandomBuilder-1.html
+  - uid: FriedSynapse.FlowEnt.AbstractMotionBuilder`1
+    name: AbstractMotionBuilder
+    href: FriedSynapse.FlowEnt.AbstractMotionBuilder-1.html
   - name: (
   - name: Of
   - name: " "
   - name: T
   - name: )
+- uid: FriedSynapse.FlowEnt.AbstractSpline
+  commentId: T:FriedSynapse.FlowEnt.AbstractSpline
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AbstractSpline.html
+  name: AbstractSpline
+  nameWithType: AbstractSpline
+  fullName: FriedSynapse.FlowEnt.AbstractSpline
+- uid: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder
+  commentId: T:FriedSynapse.FlowEnt.AbstractTweenMotionBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder.html
+  name: AbstractTweenMotionBuilder
+  nameWithType: AbstractTweenMotionBuilder
+  fullName: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder
+- uid: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.AbstractTweenMotionBuilder`1
+  href: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder-1.html
+  name: AbstractTweenMotionBuilder<TItem>
+  nameWithType: AbstractTweenMotionBuilder<TItem>
+  fullName: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder<TItem>
+  nameWithType.vb: AbstractTweenMotionBuilder(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder(Of TItem)
+  name.vb: AbstractTweenMotionBuilder(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder`1
+    name: AbstractTweenMotionBuilder
+    href: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder`1
+    name: AbstractTweenMotionBuilder
+    href: FriedSynapse.FlowEnt.AbstractTweenMotionBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable
+  commentId: T:FriedSynapse.FlowEnt.AbstractUpdatable
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html
+  name: AbstractUpdatable
+  nameWithType: AbstractUpdatable
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable
+- uid: FriedSynapse.FlowEnt.AnimationCurve2d
+  commentId: T:FriedSynapse.FlowEnt.AnimationCurve2d
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AnimationCurve2d.html
+  name: AnimationCurve2d
+  nameWithType: AnimationCurve2d
+  fullName: FriedSynapse.FlowEnt.AnimationCurve2d
+- uid: FriedSynapse.FlowEnt.AnimationCurve3d
+  commentId: T:FriedSynapse.FlowEnt.AnimationCurve3d
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AnimationCurve3d.html
+  name: AnimationCurve3d
+  nameWithType: AnimationCurve3d
+  fullName: FriedSynapse.FlowEnt.AnimationCurve3d
+- uid: FriedSynapse.FlowEnt.AnimationException
+  commentId: T:FriedSynapse.FlowEnt.AnimationException
+  href: FriedSynapse.FlowEnt.AnimationException.html
+  name: AnimationException
+  nameWithType: AnimationException
+  fullName: FriedSynapse.FlowEnt.AnimationException
+- uid: FriedSynapse.FlowEnt.AnimationListBuilder
+  commentId: T:FriedSynapse.FlowEnt.AnimationListBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AnimationListBuilder.html
+  name: AnimationListBuilder
+  nameWithType: AnimationListBuilder
+  fullName: FriedSynapse.FlowEnt.AnimationListBuilder
+- uid: FriedSynapse.FlowEnt.AnimationsAuthoring
+  commentId: T:FriedSynapse.FlowEnt.AnimationsAuthoring
+  href: FriedSynapse.FlowEnt.AnimationsAuthoring.html
+  name: AnimationsAuthoring
+  nameWithType: AnimationsAuthoring
+  fullName: FriedSynapse.FlowEnt.AnimationsAuthoring
+- uid: FriedSynapse.FlowEnt.AudioSourceMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.AudioSourceMotionExtensions
+  href: FriedSynapse.FlowEnt.AudioSourceMotionExtensions.html
+  name: AudioSourceMotionExtensions
+  nameWithType: AudioSourceMotionExtensions
+  fullName: FriedSynapse.FlowEnt.AudioSourceMotionExtensions
+- uid: FriedSynapse.FlowEnt.AutoAssignButtonAttribute
+  commentId: T:FriedSynapse.FlowEnt.AutoAssignButtonAttribute
+  href: FriedSynapse.FlowEnt.AutoAssignButtonAttribute.html
+  name: AutoAssignButtonAttribute
+  nameWithType: AutoAssignButtonAttribute
+  fullName: FriedSynapse.FlowEnt.AutoAssignButtonAttribute
+- uid: FriedSynapse.FlowEnt.AutoAssignButtonMotionFieldAttribute
+  commentId: T:FriedSynapse.FlowEnt.AutoAssignButtonMotionFieldAttribute
+  href: FriedSynapse.FlowEnt.AutoAssignButtonMotionFieldAttribute.html
+  name: AutoAssignButtonMotionFieldAttribute
+  nameWithType: AutoAssignButtonMotionFieldAttribute
+  fullName: FriedSynapse.FlowEnt.AutoAssignButtonMotionFieldAttribute
+- uid: FriedSynapse.FlowEnt.Axis
+  commentId: T:FriedSynapse.FlowEnt.Axis
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.Axis.html
+  name: Axis
+  nameWithType: Axis
+  fullName: FriedSynapse.FlowEnt.Axis
+- uid: FriedSynapse.FlowEnt.BSpline
+  commentId: T:FriedSynapse.FlowEnt.BSpline
+  href: FriedSynapse.FlowEnt.BSpline.html
+  name: BSpline
+  nameWithType: BSpline
+  fullName: FriedSynapse.FlowEnt.BSpline
+- uid: FriedSynapse.FlowEnt.BezierCurve
+  commentId: T:FriedSynapse.FlowEnt.BezierCurve
+  href: FriedSynapse.FlowEnt.BezierCurve.html
+  name: BezierCurve
+  nameWithType: BezierCurve
+  fullName: FriedSynapse.FlowEnt.BezierCurve
+- uid: FriedSynapse.FlowEnt.CallbackFlowAwaiter
+  commentId: T:FriedSynapse.FlowEnt.CallbackFlowAwaiter
+  href: FriedSynapse.FlowEnt.CallbackFlowAwaiter.html
+  name: CallbackFlowAwaiter
+  nameWithType: CallbackFlowAwaiter
+  fullName: FriedSynapse.FlowEnt.CallbackFlowAwaiter
+- uid: FriedSynapse.FlowEnt.CameraMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.CameraMotionExtensions
+  href: FriedSynapse.FlowEnt.CameraMotionExtensions.html
+  name: CameraMotionExtensions
+  nameWithType: CameraMotionExtensions
+  fullName: FriedSynapse.FlowEnt.CameraMotionExtensions
+- uid: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+  href: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.html
+  name: CanvasGroupMotionExtensions
+  nameWithType: CanvasGroupMotionExtensions
+  fullName: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+- uid: FriedSynapse.FlowEnt.CatmullRomSpline
+  commentId: T:FriedSynapse.FlowEnt.CatmullRomSpline
+  href: FriedSynapse.FlowEnt.CatmullRomSpline.html
+  name: CatmullRomSpline
+  nameWithType: CatmullRomSpline
+  fullName: FriedSynapse.FlowEnt.CatmullRomSpline
+- uid: FriedSynapse.FlowEnt.CharacterControllerMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.CharacterControllerMotionExtensions
+  href: FriedSynapse.FlowEnt.CharacterControllerMotionExtensions.html
+  name: CharacterControllerMotionExtensions
+  nameWithType: CharacterControllerMotionExtensions
+  fullName: FriedSynapse.FlowEnt.CharacterControllerMotionExtensions
+- uid: FriedSynapse.FlowEnt.CommonExtensions
+  commentId: T:FriedSynapse.FlowEnt.CommonExtensions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.CommonExtensions.html
+  name: CommonExtensions
+  nameWithType: CommonExtensions
+  fullName: FriedSynapse.FlowEnt.CommonExtensions
+- uid: FriedSynapse.FlowEnt.CubicSpline
+  commentId: T:FriedSynapse.FlowEnt.CubicSpline
+  href: FriedSynapse.FlowEnt.CubicSpline.html
+  name: CubicSpline
+  nameWithType: CubicSpline
+  fullName: FriedSynapse.FlowEnt.CubicSpline
 - uid: FriedSynapse.FlowEnt.CurveBuilder
   commentId: T:FriedSynapse.FlowEnt.CurveBuilder
   parent: FriedSynapse.FlowEnt
@@ -857,6 +688,12 @@ references:
   - uid: FriedSynapse.FlowEnt.CurveBuilder.CurveType
     name: CurveType
     href: FriedSynapse.FlowEnt.CurveBuilder.CurveType.html
+- uid: FriedSynapse.FlowEnt.DelayFlowAwaiter
+  commentId: T:FriedSynapse.FlowEnt.DelayFlowAwaiter
+  href: FriedSynapse.FlowEnt.DelayFlowAwaiter.html
+  name: DelayFlowAwaiter
+  nameWithType: DelayFlowAwaiter
+  fullName: FriedSynapse.FlowEnt.DelayFlowAwaiter
 - uid: FriedSynapse.FlowEnt.DisplayName
   commentId: T:FriedSynapse.FlowEnt.DisplayName
   parent: FriedSynapse.FlowEnt
@@ -864,6 +701,427 @@ references:
   name: DisplayName
   nameWithType: DisplayName
   fullName: FriedSynapse.FlowEnt.DisplayName
+- uid: FriedSynapse.FlowEnt.Easing
+  commentId: T:FriedSynapse.FlowEnt.Easing
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.Easing.html
+  name: Easing
+  nameWithType: Easing
+  fullName: FriedSynapse.FlowEnt.Easing
+- uid: FriedSynapse.FlowEnt.Echo
+  commentId: T:FriedSynapse.FlowEnt.Echo
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.Echo.html
+  name: Echo
+  nameWithType: Echo
+  fullName: FriedSynapse.FlowEnt.Echo
+- uid: FriedSynapse.FlowEnt.EchoAuthoring
+  commentId: T:FriedSynapse.FlowEnt.EchoAuthoring
+  href: FriedSynapse.FlowEnt.EchoAuthoring.html
+  name: EchoAuthoring
+  nameWithType: EchoAuthoring
+  fullName: FriedSynapse.FlowEnt.EchoAuthoring
+- uid: FriedSynapse.FlowEnt.EchoBuilder
+  commentId: T:FriedSynapse.FlowEnt.EchoBuilder
+  href: FriedSynapse.FlowEnt.EchoBuilder.html
+  name: EchoBuilder
+  nameWithType: EchoBuilder
+  fullName: FriedSynapse.FlowEnt.EchoBuilder
+- uid: FriedSynapse.FlowEnt.EchoEvents
+  commentId: T:FriedSynapse.FlowEnt.EchoEvents
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.EchoEvents.html
+  name: EchoEvents
+  nameWithType: EchoEvents
+  fullName: FriedSynapse.FlowEnt.EchoEvents
+- uid: FriedSynapse.FlowEnt.EchoEventsBuilder
+  commentId: T:FriedSynapse.FlowEnt.EchoEventsBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.EchoEventsBuilder.html
+  name: EchoEventsBuilder
+  nameWithType: EchoEventsBuilder
+  fullName: FriedSynapse.FlowEnt.EchoEventsBuilder
+- uid: FriedSynapse.FlowEnt.EchoMotionProxyArray`1
+  commentId: T:FriedSynapse.FlowEnt.EchoMotionProxyArray`1
+  href: FriedSynapse.FlowEnt.EchoMotionProxyArray-1.html
+  name: EchoMotionProxyArray<TItem>
+  nameWithType: EchoMotionProxyArray<TItem>
+  fullName: FriedSynapse.FlowEnt.EchoMotionProxyArray<TItem>
+  nameWithType.vb: EchoMotionProxyArray(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.EchoMotionProxyArray(Of TItem)
+  name.vb: EchoMotionProxyArray(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.EchoMotionProxyArray`1
+    name: EchoMotionProxyArray
+    href: FriedSynapse.FlowEnt.EchoMotionProxyArray-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.EchoMotionProxyArray`1
+    name: EchoMotionProxyArray
+    href: FriedSynapse.FlowEnt.EchoMotionProxyArray-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
+  commentId: T:FriedSynapse.FlowEnt.EchoMotionProxy`1
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  name: EchoMotionProxy<TItem>
+  nameWithType: EchoMotionProxy<TItem>
+  fullName: FriedSynapse.FlowEnt.EchoMotionProxy<TItem>
+  nameWithType.vb: EchoMotionProxy(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.EchoMotionProxy(Of TItem)
+  name.vb: EchoMotionProxy(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
+    name: EchoMotionProxy
+    href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
+    name: EchoMotionProxy
+    href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.EchoMotionsBuilder
+  commentId: T:FriedSynapse.FlowEnt.EchoMotionsBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.EchoMotionsBuilder.html
+  name: EchoMotionsBuilder
+  nameWithType: EchoMotionsBuilder
+  fullName: FriedSynapse.FlowEnt.EchoMotionsBuilder
+- uid: FriedSynapse.FlowEnt.EchoOptions
+  commentId: T:FriedSynapse.FlowEnt.EchoOptions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.EchoOptions.html
+  name: EchoOptions
+  nameWithType: EchoOptions
+  fullName: FriedSynapse.FlowEnt.EchoOptions
+- uid: FriedSynapse.FlowEnt.EchoOptionsBuilder
+  commentId: T:FriedSynapse.FlowEnt.EchoOptionsBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.EchoOptionsBuilder.html
+  name: EchoOptionsBuilder
+  nameWithType: EchoOptionsBuilder
+  fullName: FriedSynapse.FlowEnt.EchoOptionsBuilder
+- uid: FriedSynapse.FlowEnt.EnableIfAttribute
+  commentId: T:FriedSynapse.FlowEnt.EnableIfAttribute
+  href: FriedSynapse.FlowEnt.EnableIfAttribute.html
+  name: EnableIfAttribute
+  nameWithType: EnableIfAttribute
+  fullName: FriedSynapse.FlowEnt.EnableIfAttribute
+- uid: FriedSynapse.FlowEnt.FastListItem`1
+  commentId: T:FriedSynapse.FlowEnt.FastListItem`1
+  href: FriedSynapse.FlowEnt.FastListItem-1.html
+  name: FastListItem<T>
+  nameWithType: FastListItem<T>
+  fullName: FriedSynapse.FlowEnt.FastListItem<T>
+  nameWithType.vb: FastListItem(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.FastListItem(Of T)
+  name.vb: FastListItem(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.FastListItem`1
+    name: FastListItem
+    href: FriedSynapse.FlowEnt.FastListItem-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.FastListItem`1
+    name: FastListItem
+    href: FriedSynapse.FlowEnt.FastListItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Flow
+  commentId: T:FriedSynapse.FlowEnt.Flow
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.Flow.html
+  name: Flow
+  nameWithType: Flow
+  fullName: FriedSynapse.FlowEnt.Flow
+- uid: FriedSynapse.FlowEnt.FlowAuthoring
+  commentId: T:FriedSynapse.FlowEnt.FlowAuthoring
+  href: FriedSynapse.FlowEnt.FlowAuthoring.html
+  name: FlowAuthoring
+  nameWithType: FlowAuthoring
+  fullName: FriedSynapse.FlowEnt.FlowAuthoring
+- uid: FriedSynapse.FlowEnt.FlowBuilder
+  commentId: T:FriedSynapse.FlowEnt.FlowBuilder
+  href: FriedSynapse.FlowEnt.FlowBuilder.html
+  name: FlowBuilder
+  nameWithType: FlowBuilder
+  fullName: FriedSynapse.FlowEnt.FlowBuilder
+- uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
+  commentId: T:FriedSynapse.FlowEnt.FlowBuilder.QueueList
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.FlowBuilder.html
+  name: FlowBuilder.QueueList
+  nameWithType: FlowBuilder.QueueList
+  fullName: FriedSynapse.FlowEnt.FlowBuilder.QueueList
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.FlowBuilder
+    name: FlowBuilder
+    href: FriedSynapse.FlowEnt.FlowBuilder.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
+    name: QueueList
+    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.FlowBuilder
+    name: FlowBuilder
+    href: FriedSynapse.FlowEnt.FlowBuilder.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
+    name: QueueList
+    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.html
+- uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
+  commentId: T:FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.FlowBuilder.html
+  name: FlowBuilder.QueueList.Queue
+  nameWithType: FlowBuilder.QueueList.Queue
+  fullName: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.FlowBuilder
+    name: FlowBuilder
+    href: FriedSynapse.FlowEnt.FlowBuilder.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
+    name: QueueList
+    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
+    name: Queue
+    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.FlowBuilder
+    name: FlowBuilder
+    href: FriedSynapse.FlowEnt.FlowBuilder.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
+    name: QueueList
+    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
+    name: Queue
+    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue.html
+- uid: FriedSynapse.FlowEnt.FlowEntConstants
+  commentId: T:FriedSynapse.FlowEnt.FlowEntConstants
+  href: FriedSynapse.FlowEnt.FlowEntConstants.html
+  name: FlowEntConstants
+  nameWithType: FlowEntConstants
+  fullName: FriedSynapse.FlowEnt.FlowEntConstants
+- uid: FriedSynapse.FlowEnt.FlowEntController
+  commentId: T:FriedSynapse.FlowEnt.FlowEntController
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.FlowEntController.html
+  name: FlowEntController
+  nameWithType: FlowEntController
+  fullName: FriedSynapse.FlowEnt.FlowEntController
+- uid: FriedSynapse.FlowEnt.FlowEntDebug
+  commentId: T:FriedSynapse.FlowEnt.FlowEntDebug
+  href: FriedSynapse.FlowEnt.FlowEntDebug.html
+  name: FlowEntDebug
+  nameWithType: FlowEntDebug
+  fullName: FriedSynapse.FlowEnt.FlowEntDebug
+- uid: FriedSynapse.FlowEnt.FlowEntRuntimeUpdater
+  commentId: T:FriedSynapse.FlowEnt.FlowEntRuntimeUpdater
+  href: FriedSynapse.FlowEnt.FlowEntRuntimeUpdater.html
+  name: FlowEntRuntimeUpdater
+  nameWithType: FlowEntRuntimeUpdater
+  fullName: FriedSynapse.FlowEnt.FlowEntRuntimeUpdater
+- uid: FriedSynapse.FlowEnt.FlowEvents
+  commentId: T:FriedSynapse.FlowEnt.FlowEvents
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.FlowEvents.html
+  name: FlowEvents
+  nameWithType: FlowEvents
+  fullName: FriedSynapse.FlowEnt.FlowEvents
+- uid: FriedSynapse.FlowEnt.FlowEventsBuilder
+  commentId: T:FriedSynapse.FlowEnt.FlowEventsBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.FlowEventsBuilder.html
+  name: FlowEventsBuilder
+  nameWithType: FlowEventsBuilder
+  fullName: FriedSynapse.FlowEnt.FlowEventsBuilder
+- uid: FriedSynapse.FlowEnt.FlowOptions
+  commentId: T:FriedSynapse.FlowEnt.FlowOptions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.FlowOptions.html
+  name: FlowOptions
+  nameWithType: FlowOptions
+  fullName: FriedSynapse.FlowEnt.FlowOptions
+- uid: FriedSynapse.FlowEnt.FlowOptionsBuilder
+  commentId: T:FriedSynapse.FlowEnt.FlowOptionsBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.FlowOptionsBuilder.html
+  name: FlowOptionsBuilder
+  nameWithType: FlowOptionsBuilder
+  fullName: FriedSynapse.FlowEnt.FlowOptionsBuilder
+- uid: FriedSynapse.FlowEnt.GradientOperations
+  commentId: T:FriedSynapse.FlowEnt.GradientOperations
+  href: FriedSynapse.FlowEnt.GradientOperations.html
+  name: GradientOperations
+  nameWithType: GradientOperations
+  fullName: FriedSynapse.FlowEnt.GradientOperations
+- uid: FriedSynapse.FlowEnt.GraphicMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.GraphicMotionExtensions
+  href: FriedSynapse.FlowEnt.GraphicMotionExtensions.html
+  name: GraphicMotionExtensions
+  nameWithType: GraphicMotionExtensions
+  fullName: FriedSynapse.FlowEnt.GraphicMotionExtensions
+- uid: FriedSynapse.FlowEnt.IAbstractAnimationBuilder
+  commentId: T:FriedSynapse.FlowEnt.IAbstractAnimationBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.IAbstractAnimationBuilder.html
+  name: IAbstractAnimationBuilder
+  nameWithType: IAbstractAnimationBuilder
+  fullName: FriedSynapse.FlowEnt.IAbstractAnimationBuilder
+- uid: FriedSynapse.FlowEnt.IBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.IBuilder`1
+  href: FriedSynapse.FlowEnt.IBuilder-1.html
+  name: IBuilder<TItem>
+  nameWithType: IBuilder<TItem>
+  fullName: FriedSynapse.FlowEnt.IBuilder<TItem>
+  nameWithType.vb: IBuilder(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.IBuilder(Of TItem)
+  name.vb: IBuilder(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.IBuilder`1
+    name: IBuilder
+    href: FriedSynapse.FlowEnt.IBuilder-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.IBuilder`1
+    name: IBuilder
+    href: FriedSynapse.FlowEnt.IBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.IControllable
+  commentId: T:FriedSynapse.FlowEnt.IControllable
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.IControllable.html
+  name: IControllable
+  nameWithType: IControllable
+  fullName: FriedSynapse.FlowEnt.IControllable
+- uid: FriedSynapse.FlowEnt.ICurve
+  commentId: T:FriedSynapse.FlowEnt.ICurve
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.ICurve.html
+  name: ICurve
+  nameWithType: ICurve
+  fullName: FriedSynapse.FlowEnt.ICurve
+- uid: FriedSynapse.FlowEnt.IGizmoDrawer
+  commentId: T:FriedSynapse.FlowEnt.IGizmoDrawer
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.IGizmoDrawer.html
+  name: IGizmoDrawer
+  nameWithType: IGizmoDrawer
+  fullName: FriedSynapse.FlowEnt.IGizmoDrawer
+- uid: FriedSynapse.FlowEnt.IHasUndoableObjects
+  commentId: T:FriedSynapse.FlowEnt.IHasUndoableObjects
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.IHasUndoableObjects.html
+  name: IHasUndoableObjects
+  nameWithType: IHasUndoableObjects
+  fullName: FriedSynapse.FlowEnt.IHasUndoableObjects
+- uid: FriedSynapse.FlowEnt.IListBuilderItem
+  commentId: T:FriedSynapse.FlowEnt.IListBuilderItem
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.IListBuilderItem.html
+  name: IListBuilderItem
+  nameWithType: IListBuilderItem
+  fullName: FriedSynapse.FlowEnt.IListBuilderItem
+- uid: FriedSynapse.FlowEnt.IMotionBuilder
+  commentId: T:FriedSynapse.FlowEnt.IMotionBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.IMotionBuilder.html
+  name: IMotionBuilder
+  nameWithType: IMotionBuilder
+  fullName: FriedSynapse.FlowEnt.IMotionBuilder
+- uid: FriedSynapse.FlowEnt.ISpline
+  commentId: T:FriedSynapse.FlowEnt.ISpline
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.ISpline.html
+  name: ISpline
+  nameWithType: ISpline
+  fullName: FriedSynapse.FlowEnt.ISpline
+- uid: FriedSynapse.FlowEnt.IUpdateController
+  commentId: T:FriedSynapse.FlowEnt.IUpdateController
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.IUpdateController.html
+  name: IUpdateController
+  nameWithType: IUpdateController
+  fullName: FriedSynapse.FlowEnt.IUpdateController
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.InputMotionExtensions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.InputMotionExtensions.html
+  name: InputMotionExtensions
+  nameWithType: InputMotionExtensions
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions
+- uid: FriedSynapse.FlowEnt.LagrangeSpline
+  commentId: T:FriedSynapse.FlowEnt.LagrangeSpline
+  href: FriedSynapse.FlowEnt.LagrangeSpline.html
+  name: LagrangeSpline
+  nameWithType: LagrangeSpline
+  fullName: FriedSynapse.FlowEnt.LagrangeSpline
+- uid: FriedSynapse.FlowEnt.LightMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.LightMotionExtensions
+  href: FriedSynapse.FlowEnt.LightMotionExtensions.html
+  name: LightMotionExtensions
+  nameWithType: LightMotionExtensions
+  fullName: FriedSynapse.FlowEnt.LightMotionExtensions
+- uid: FriedSynapse.FlowEnt.LineRendererExtensions
+  commentId: T:FriedSynapse.FlowEnt.LineRendererExtensions
+  href: FriedSynapse.FlowEnt.LineRendererExtensions.html
+  name: LineRendererExtensions
+  nameWithType: LineRendererExtensions
+  fullName: FriedSynapse.FlowEnt.LineRendererExtensions
+- uid: FriedSynapse.FlowEnt.LinearColor
+  commentId: T:FriedSynapse.FlowEnt.LinearColor
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.LinearColor.html
+  name: LinearColor
+  nameWithType: LinearColor
+  fullName: FriedSynapse.FlowEnt.LinearColor
+- uid: FriedSynapse.FlowEnt.LinearFloat
+  commentId: T:FriedSynapse.FlowEnt.LinearFloat
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.LinearFloat.html
+  name: LinearFloat
+  nameWithType: LinearFloat
+  fullName: FriedSynapse.FlowEnt.LinearFloat
+- uid: FriedSynapse.FlowEnt.LinearSpline
+  commentId: T:FriedSynapse.FlowEnt.LinearSpline
+  href: FriedSynapse.FlowEnt.LinearSpline.html
+  name: LinearSpline
+  nameWithType: LinearSpline
+  fullName: FriedSynapse.FlowEnt.LinearSpline
+- uid: FriedSynapse.FlowEnt.LoopType
+  commentId: T:FriedSynapse.FlowEnt.LoopType
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.LoopType.html
+  name: LoopType
+  nameWithType: LoopType
+  fullName: FriedSynapse.FlowEnt.LoopType
 - uid: FriedSynapse.FlowEnt.MaterialBuilder
   commentId: T:FriedSynapse.FlowEnt.MaterialBuilder
   parent: FriedSynapse.FlowEnt
@@ -926,198 +1184,12 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: FriedSynapse.FlowEnt.AnimationListBuilder
-  commentId: T:FriedSynapse.FlowEnt.AnimationListBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AnimationListBuilder.html
-  name: AnimationListBuilder
-  nameWithType: AnimationListBuilder
-  fullName: FriedSynapse.FlowEnt.AnimationListBuilder
-- uid: FriedSynapse.FlowEnt.AnimationsAuthoring
-  commentId: T:FriedSynapse.FlowEnt.AnimationsAuthoring
-  href: FriedSynapse.FlowEnt.AnimationsAuthoring.html
-  name: AnimationsAuthoring
-  nameWithType: AnimationsAuthoring
-  fullName: FriedSynapse.FlowEnt.AnimationsAuthoring
-- uid: FriedSynapse.FlowEnt.TweenAuthoring
-  commentId: T:FriedSynapse.FlowEnt.TweenAuthoring
-  href: FriedSynapse.FlowEnt.TweenAuthoring.html
-  name: TweenAuthoring
-  nameWithType: TweenAuthoring
-  fullName: FriedSynapse.FlowEnt.TweenAuthoring
-- uid: FriedSynapse.FlowEnt.FlowAuthoring
-  commentId: T:FriedSynapse.FlowEnt.FlowAuthoring
-  href: FriedSynapse.FlowEnt.FlowAuthoring.html
-  name: FlowAuthoring
-  nameWithType: FlowAuthoring
-  fullName: FriedSynapse.FlowEnt.FlowAuthoring
-- uid: FriedSynapse.FlowEnt.EchoAuthoring
-  commentId: T:FriedSynapse.FlowEnt.EchoAuthoring
-  href: FriedSynapse.FlowEnt.EchoAuthoring.html
-  name: EchoAuthoring
-  nameWithType: EchoAuthoring
-  fullName: FriedSynapse.FlowEnt.EchoAuthoring
-- uid: FriedSynapse.FlowEnt.AbstractAuthoring
-  commentId: T:FriedSynapse.FlowEnt.AbstractAuthoring
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AbstractAuthoring.html
-  name: AbstractAuthoring
-  nameWithType: AbstractAuthoring
-  fullName: FriedSynapse.FlowEnt.AbstractAuthoring
-- uid: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
-  commentId: T:FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AbstractAuthoring.html
-  name: AbstractAuthoring.StartModeEnum
-  nameWithType: AbstractAuthoring.StartModeEnum
-  fullName: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.AbstractAuthoring
-    name: AbstractAuthoring
-    href: FriedSynapse.FlowEnt.AbstractAuthoring.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
-    name: StartModeEnum
-    href: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.AbstractAuthoring
-    name: AbstractAuthoring
-    href: FriedSynapse.FlowEnt.AbstractAuthoring.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum
-    name: StartModeEnum
-    href: FriedSynapse.FlowEnt.AbstractAuthoring.StartModeEnum.html
-- uid: FriedSynapse.FlowEnt.AbstractAuthoring`2
-  commentId: T:FriedSynapse.FlowEnt.AbstractAuthoring`2
-  href: FriedSynapse.FlowEnt.AbstractAuthoring-2.html
-  name: AbstractAuthoring<TAnimation, TAnimationBuilder>
-  nameWithType: AbstractAuthoring<TAnimation, TAnimationBuilder>
-  fullName: FriedSynapse.FlowEnt.AbstractAuthoring<TAnimation, TAnimationBuilder>
-  nameWithType.vb: AbstractAuthoring(Of TAnimation, TAnimationBuilder)
-  fullName.vb: FriedSynapse.FlowEnt.AbstractAuthoring(Of TAnimation, TAnimationBuilder)
-  name.vb: AbstractAuthoring(Of TAnimation, TAnimationBuilder)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.AbstractAuthoring`2
-    name: AbstractAuthoring
-    href: FriedSynapse.FlowEnt.AbstractAuthoring-2.html
-  - name: <
-  - name: TAnimation
-  - name: ','
-  - name: " "
-  - name: TAnimationBuilder
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.AbstractAuthoring`2
-    name: AbstractAuthoring
-    href: FriedSynapse.FlowEnt.AbstractAuthoring-2.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TAnimation
-  - name: ','
-  - name: " "
-  - name: TAnimationBuilder
-  - name: )
-- uid: FriedSynapse.FlowEnt.FlowBuilder
-  commentId: T:FriedSynapse.FlowEnt.FlowBuilder
-  href: FriedSynapse.FlowEnt.FlowBuilder.html
-  name: FlowBuilder
-  nameWithType: FlowBuilder
-  fullName: FriedSynapse.FlowEnt.FlowBuilder
-- uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
-  commentId: T:FriedSynapse.FlowEnt.FlowBuilder.QueueList
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.FlowBuilder.html
-  name: FlowBuilder.QueueList
-  nameWithType: FlowBuilder.QueueList
-  fullName: FriedSynapse.FlowEnt.FlowBuilder.QueueList
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.FlowBuilder
-    name: FlowBuilder
-    href: FriedSynapse.FlowEnt.FlowBuilder.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
-    name: QueueList
-    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.FlowBuilder
-    name: FlowBuilder
-    href: FriedSynapse.FlowEnt.FlowBuilder.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
-    name: QueueList
-    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.html
-- uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
-  commentId: T:FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.FlowBuilder.html
-  name: FlowBuilder.QueueList.Queue
-  nameWithType: FlowBuilder.QueueList.Queue
-  fullName: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.FlowBuilder
-    name: FlowBuilder
-    href: FriedSynapse.FlowEnt.FlowBuilder.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
-    name: QueueList
-    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
-    name: Queue
-    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.FlowBuilder
-    name: FlowBuilder
-    href: FriedSynapse.FlowEnt.FlowBuilder.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList
-    name: QueueList
-    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue
-    name: Queue
-    href: FriedSynapse.FlowEnt.FlowBuilder.QueueList.Queue.html
-- uid: FriedSynapse.FlowEnt.FlowOptionsBuilder
-  commentId: T:FriedSynapse.FlowEnt.FlowOptionsBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.FlowOptionsBuilder.html
-  name: FlowOptionsBuilder
-  nameWithType: FlowOptionsBuilder
-  fullName: FriedSynapse.FlowEnt.FlowOptionsBuilder
-- uid: FriedSynapse.FlowEnt.FlowEventsBuilder
-  commentId: T:FriedSynapse.FlowEnt.FlowEventsBuilder
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.FlowEventsBuilder.html
-  name: FlowEventsBuilder
-  nameWithType: FlowEventsBuilder
-  fullName: FriedSynapse.FlowEnt.FlowEventsBuilder
-- uid: FriedSynapse.FlowEnt.FlowEntConstants
-  commentId: T:FriedSynapse.FlowEnt.FlowEntConstants
-  href: FriedSynapse.FlowEnt.FlowEntConstants.html
-  name: FlowEntConstants
-  nameWithType: FlowEntConstants
-  fullName: FriedSynapse.FlowEnt.FlowEntConstants
-- uid: FriedSynapse.FlowEnt.Axis
-  commentId: T:FriedSynapse.FlowEnt.Axis
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.Axis.html
-  name: Axis
-  nameWithType: Axis
-  fullName: FriedSynapse.FlowEnt.Axis
-- uid: FriedSynapse.FlowEnt.GradientOperations
-  commentId: T:FriedSynapse.FlowEnt.GradientOperations
-  href: FriedSynapse.FlowEnt.GradientOperations.html
-  name: GradientOperations
-  nameWithType: GradientOperations
-  fullName: FriedSynapse.FlowEnt.GradientOperations
-- uid: FriedSynapse.FlowEnt.IHasUndoableObjects
-  commentId: T:FriedSynapse.FlowEnt.IHasUndoableObjects
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.IHasUndoableObjects.html
-  name: IHasUndoableObjects
-  nameWithType: IHasUndoableObjects
-  fullName: FriedSynapse.FlowEnt.IHasUndoableObjects
+- uid: FriedSynapse.FlowEnt.MaterialMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.MaterialMotionExtensions
+  href: FriedSynapse.FlowEnt.MaterialMotionExtensions.html
+  name: MaterialMotionExtensions
+  nameWithType: MaterialMotionExtensions
+  fullName: FriedSynapse.FlowEnt.MaterialMotionExtensions
 - uid: FriedSynapse.FlowEnt.MinMaxVector2
   commentId: T:FriedSynapse.FlowEnt.MinMaxVector2
   parent: FriedSynapse.FlowEnt
@@ -1125,158 +1197,240 @@ references:
   name: MinMaxVector2
   nameWithType: MinMaxVector2
   fullName: FriedSynapse.FlowEnt.MinMaxVector2
-- uid: FriedSynapse.FlowEnt.LinearColor
-  commentId: T:FriedSynapse.FlowEnt.LinearColor
+- uid: FriedSynapse.FlowEnt.NormalisedCurve
+  commentId: T:FriedSynapse.FlowEnt.NormalisedCurve
   parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.LinearColor.html
-  name: LinearColor
-  nameWithType: LinearColor
-  fullName: FriedSynapse.FlowEnt.LinearColor
-- uid: FriedSynapse.FlowEnt.RectHelper
-  commentId: T:FriedSynapse.FlowEnt.RectHelper
-  href: FriedSynapse.FlowEnt.RectHelper.html
-  name: RectHelper
-  nameWithType: RectHelper
-  fullName: FriedSynapse.FlowEnt.RectHelper
-- uid: FriedSynapse.FlowEnt.AnimationCurve2d
-  commentId: T:FriedSynapse.FlowEnt.AnimationCurve2d
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AnimationCurve2d.html
-  name: AnimationCurve2d
-  nameWithType: AnimationCurve2d
-  fullName: FriedSynapse.FlowEnt.AnimationCurve2d
-- uid: FriedSynapse.FlowEnt.LinearFloat
-  commentId: T:FriedSynapse.FlowEnt.LinearFloat
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.LinearFloat.html
-  name: LinearFloat
-  nameWithType: LinearFloat
-  fullName: FriedSynapse.FlowEnt.LinearFloat
-- uid: FriedSynapse.FlowEnt.AnimationCurve3d
-  commentId: T:FriedSynapse.FlowEnt.AnimationCurve3d
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AnimationCurve3d.html
-  name: AnimationCurve3d
-  nameWithType: AnimationCurve3d
-  fullName: FriedSynapse.FlowEnt.AnimationCurve3d
-- uid: FriedSynapse.FlowEnt.GraphicMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.GraphicMotionExtensions
-  href: FriedSynapse.FlowEnt.GraphicMotionExtensions.html
-  name: GraphicMotionExtensions
-  nameWithType: GraphicMotionExtensions
-  fullName: FriedSynapse.FlowEnt.GraphicMotionExtensions
-- uid: FriedSynapse.FlowEnt.RectTransformMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.RectTransformMotionExtensions
-  href: FriedSynapse.FlowEnt.RectTransformMotionExtensions.html
-  name: RectTransformMotionExtensions
-  nameWithType: RectTransformMotionExtensions
-  fullName: FriedSynapse.FlowEnt.RectTransformMotionExtensions
-- uid: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
-  href: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.html
-  name: CanvasGroupMotionExtensions
-  nameWithType: CanvasGroupMotionExtensions
-  fullName: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
-- uid: FriedSynapse.FlowEnt.ValueMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.ValueMotionExtensions
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.ValueMotionExtensions.html
-  name: ValueMotionExtensions
-  nameWithType: ValueMotionExtensions
-  fullName: FriedSynapse.FlowEnt.ValueMotionExtensions
-- uid: FriedSynapse.FlowEnt.CommonExtensions
-  commentId: T:FriedSynapse.FlowEnt.CommonExtensions
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.CommonExtensions.html
-  name: CommonExtensions
-  nameWithType: CommonExtensions
-  fullName: FriedSynapse.FlowEnt.CommonExtensions
-- uid: FriedSynapse.FlowEnt.InputMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.InputMotionExtensions
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.InputMotionExtensions.html
-  name: InputMotionExtensions
-  nameWithType: InputMotionExtensions
-  fullName: FriedSynapse.FlowEnt.InputMotionExtensions
-- uid: FriedSynapse.FlowEnt.SpriteRendererMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.SpriteRendererMotionExtensions
-  href: FriedSynapse.FlowEnt.SpriteRendererMotionExtensions.html
-  name: SpriteRendererMotionExtensions
-  nameWithType: SpriteRendererMotionExtensions
-  fullName: FriedSynapse.FlowEnt.SpriteRendererMotionExtensions
-- uid: FriedSynapse.FlowEnt.CameraMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.CameraMotionExtensions
-  href: FriedSynapse.FlowEnt.CameraMotionExtensions.html
-  name: CameraMotionExtensions
-  nameWithType: CameraMotionExtensions
-  fullName: FriedSynapse.FlowEnt.CameraMotionExtensions
-- uid: FriedSynapse.FlowEnt.TransformMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.TransformMotionExtensions
-  href: FriedSynapse.FlowEnt.TransformMotionExtensions.html
-  name: TransformMotionExtensions
-  nameWithType: TransformMotionExtensions
-  fullName: FriedSynapse.FlowEnt.TransformMotionExtensions
-- uid: FriedSynapse.FlowEnt.CharacterControllerMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.CharacterControllerMotionExtensions
-  href: FriedSynapse.FlowEnt.CharacterControllerMotionExtensions.html
-  name: CharacterControllerMotionExtensions
-  nameWithType: CharacterControllerMotionExtensions
-  fullName: FriedSynapse.FlowEnt.CharacterControllerMotionExtensions
-- uid: FriedSynapse.FlowEnt.TrailRendererExtensions
-  commentId: T:FriedSynapse.FlowEnt.TrailRendererExtensions
-  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html
-  name: TrailRendererExtensions
-  nameWithType: TrailRendererExtensions
-  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions
-- uid: FriedSynapse.FlowEnt.MaterialMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.MaterialMotionExtensions
-  href: FriedSynapse.FlowEnt.MaterialMotionExtensions.html
-  name: MaterialMotionExtensions
-  nameWithType: MaterialMotionExtensions
-  fullName: FriedSynapse.FlowEnt.MaterialMotionExtensions
+  href: FriedSynapse.FlowEnt.NormalisedCurve.html
+  name: NormalisedCurve
+  nameWithType: NormalisedCurve
+  fullName: FriedSynapse.FlowEnt.NormalisedCurve
+- uid: FriedSynapse.FlowEnt.NotSeekableException
+  commentId: T:FriedSynapse.FlowEnt.NotSeekableException
+  href: FriedSynapse.FlowEnt.NotSeekableException.html
+  name: NotSeekableException
+  nameWithType: NotSeekableException
+  fullName: FriedSynapse.FlowEnt.NotSeekableException
 - uid: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
   commentId: T:FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
   href: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.html
   name: ParticleSystemMotionExtensions
   nameWithType: ParticleSystemMotionExtensions
   fullName: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
-- uid: FriedSynapse.FlowEnt.AudioSourceMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.AudioSourceMotionExtensions
-  href: FriedSynapse.FlowEnt.AudioSourceMotionExtensions.html
-  name: AudioSourceMotionExtensions
-  nameWithType: AudioSourceMotionExtensions
-  fullName: FriedSynapse.FlowEnt.AudioSourceMotionExtensions
+- uid: FriedSynapse.FlowEnt.PlayState
+  commentId: T:FriedSynapse.FlowEnt.PlayState
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.PlayState.html
+  name: PlayState
+  nameWithType: PlayState
+  fullName: FriedSynapse.FlowEnt.PlayState
+- uid: FriedSynapse.FlowEnt.RandomBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.RandomBuilder`1
+  href: FriedSynapse.FlowEnt.RandomBuilder-1.html
+  name: RandomBuilder<T>
+  nameWithType: RandomBuilder<T>
+  fullName: FriedSynapse.FlowEnt.RandomBuilder<T>
+  nameWithType.vb: RandomBuilder(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.RandomBuilder(Of T)
+  name.vb: RandomBuilder(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.RandomBuilder`1
+    name: RandomBuilder
+    href: FriedSynapse.FlowEnt.RandomBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.RandomBuilder`1
+    name: RandomBuilder
+    href: FriedSynapse.FlowEnt.RandomBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.RectHelper
+  commentId: T:FriedSynapse.FlowEnt.RectHelper
+  href: FriedSynapse.FlowEnt.RectHelper.html
+  name: RectHelper
+  nameWithType: RectHelper
+  fullName: FriedSynapse.FlowEnt.RectHelper
+- uid: FriedSynapse.FlowEnt.RectTransformMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.RectTransformMotionExtensions
+  href: FriedSynapse.FlowEnt.RectTransformMotionExtensions.html
+  name: RectTransformMotionExtensions
+  nameWithType: RectTransformMotionExtensions
+  fullName: FriedSynapse.FlowEnt.RectTransformMotionExtensions
 - uid: FriedSynapse.FlowEnt.RigidbodyMotionExtensions
   commentId: T:FriedSynapse.FlowEnt.RigidbodyMotionExtensions
   href: FriedSynapse.FlowEnt.RigidbodyMotionExtensions.html
   name: RigidbodyMotionExtensions
   nameWithType: RigidbodyMotionExtensions
   fullName: FriedSynapse.FlowEnt.RigidbodyMotionExtensions
-- uid: FriedSynapse.FlowEnt.LineRendererExtensions
-  commentId: T:FriedSynapse.FlowEnt.LineRendererExtensions
-  href: FriedSynapse.FlowEnt.LineRendererExtensions.html
-  name: LineRendererExtensions
-  nameWithType: LineRendererExtensions
-  fullName: FriedSynapse.FlowEnt.LineRendererExtensions
-- uid: FriedSynapse.FlowEnt.LightMotionExtensions
-  commentId: T:FriedSynapse.FlowEnt.LightMotionExtensions
-  href: FriedSynapse.FlowEnt.LightMotionExtensions.html
-  name: LightMotionExtensions
-  nameWithType: LightMotionExtensions
-  fullName: FriedSynapse.FlowEnt.LightMotionExtensions
-- uid: FriedSynapse.FlowEnt.AbstractIfAttribute
-  commentId: T:FriedSynapse.FlowEnt.AbstractIfAttribute
+- uid: FriedSynapse.FlowEnt.ShowIfAttribute
+  commentId: T:FriedSynapse.FlowEnt.ShowIfAttribute
+  href: FriedSynapse.FlowEnt.ShowIfAttribute.html
+  name: ShowIfAttribute
+  nameWithType: ShowIfAttribute
+  fullName: FriedSynapse.FlowEnt.ShowIfAttribute
+- uid: FriedSynapse.FlowEnt.SpriteRendererMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.SpriteRendererMotionExtensions
+  href: FriedSynapse.FlowEnt.SpriteRendererMotionExtensions.html
+  name: SpriteRendererMotionExtensions
+  nameWithType: SpriteRendererMotionExtensions
+  fullName: FriedSynapse.FlowEnt.SpriteRendererMotionExtensions
+- uid: FriedSynapse.FlowEnt.TaskFlowAwaiter
+  commentId: T:FriedSynapse.FlowEnt.TaskFlowAwaiter
+  href: FriedSynapse.FlowEnt.TaskFlowAwaiter.html
+  name: TaskFlowAwaiter
+  nameWithType: TaskFlowAwaiter
+  fullName: FriedSynapse.FlowEnt.TaskFlowAwaiter
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions
+  commentId: T:FriedSynapse.FlowEnt.TrailRendererExtensions
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html
+  name: TrailRendererExtensions
+  nameWithType: TrailRendererExtensions
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions
+- uid: FriedSynapse.FlowEnt.TransformMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.TransformMotionExtensions
+  href: FriedSynapse.FlowEnt.TransformMotionExtensions.html
+  name: TransformMotionExtensions
+  nameWithType: TransformMotionExtensions
+  fullName: FriedSynapse.FlowEnt.TransformMotionExtensions
+- uid: FriedSynapse.FlowEnt.Tween
+  commentId: T:FriedSynapse.FlowEnt.Tween
   parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AbstractIfAttribute.html
-  name: AbstractIfAttribute
-  nameWithType: AbstractIfAttribute
-  fullName: FriedSynapse.FlowEnt.AbstractIfAttribute
-- uid: FriedSynapse.FlowEnt.EnableIfAttribute
-  commentId: T:FriedSynapse.FlowEnt.EnableIfAttribute
-  href: FriedSynapse.FlowEnt.EnableIfAttribute.html
-  name: EnableIfAttribute
-  nameWithType: EnableIfAttribute
-  fullName: FriedSynapse.FlowEnt.EnableIfAttribute
+  href: FriedSynapse.FlowEnt.Tween.html
+  name: Tween
+  nameWithType: Tween
+  fullName: FriedSynapse.FlowEnt.Tween
+- uid: FriedSynapse.FlowEnt.TweenAuthoring
+  commentId: T:FriedSynapse.FlowEnt.TweenAuthoring
+  href: FriedSynapse.FlowEnt.TweenAuthoring.html
+  name: TweenAuthoring
+  nameWithType: TweenAuthoring
+  fullName: FriedSynapse.FlowEnt.TweenAuthoring
+- uid: FriedSynapse.FlowEnt.TweenBuilder
+  commentId: T:FriedSynapse.FlowEnt.TweenBuilder
+  href: FriedSynapse.FlowEnt.TweenBuilder.html
+  name: TweenBuilder
+  nameWithType: TweenBuilder
+  fullName: FriedSynapse.FlowEnt.TweenBuilder
+- uid: FriedSynapse.FlowEnt.TweenEvents
+  commentId: T:FriedSynapse.FlowEnt.TweenEvents
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenEvents.html
+  name: TweenEvents
+  nameWithType: TweenEvents
+  fullName: FriedSynapse.FlowEnt.TweenEvents
+- uid: FriedSynapse.FlowEnt.TweenEventsBuilder
+  commentId: T:FriedSynapse.FlowEnt.TweenEventsBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenEventsBuilder.html
+  name: TweenEventsBuilder
+  nameWithType: TweenEventsBuilder
+  fullName: FriedSynapse.FlowEnt.TweenEventsBuilder
+- uid: FriedSynapse.FlowEnt.TweenMotionProxyArray`1
+  commentId: T:FriedSynapse.FlowEnt.TweenMotionProxyArray`1
+  href: FriedSynapse.FlowEnt.TweenMotionProxyArray-1.html
+  name: TweenMotionProxyArray<TItem>
+  nameWithType: TweenMotionProxyArray<TItem>
+  fullName: FriedSynapse.FlowEnt.TweenMotionProxyArray<TItem>
+  nameWithType.vb: TweenMotionProxyArray(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.TweenMotionProxyArray(Of TItem)
+  name.vb: TweenMotionProxyArray(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxyArray`1
+    name: TweenMotionProxyArray
+    href: FriedSynapse.FlowEnt.TweenMotionProxyArray-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxyArray`1
+    name: TweenMotionProxyArray
+    href: FriedSynapse.FlowEnt.TweenMotionProxyArray-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+  commentId: T:FriedSynapse.FlowEnt.TweenMotionProxy`1
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  name: TweenMotionProxy<TItem>
+  nameWithType: TweenMotionProxy<TItem>
+  fullName: FriedSynapse.FlowEnt.TweenMotionProxy<TItem>
+  nameWithType.vb: TweenMotionProxy(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.TweenMotionProxy(Of TItem)
+  name.vb: TweenMotionProxy(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.TweenMotionsBuilder
+  commentId: T:FriedSynapse.FlowEnt.TweenMotionsBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenMotionsBuilder.html
+  name: TweenMotionsBuilder
+  nameWithType: TweenMotionsBuilder
+  fullName: FriedSynapse.FlowEnt.TweenMotionsBuilder
+- uid: FriedSynapse.FlowEnt.TweenOptions
+  commentId: T:FriedSynapse.FlowEnt.TweenOptions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenOptions.html
+  name: TweenOptions
+  nameWithType: TweenOptions
+  fullName: FriedSynapse.FlowEnt.TweenOptions
+- uid: FriedSynapse.FlowEnt.TweenOptionsBuilder
+  commentId: T:FriedSynapse.FlowEnt.TweenOptionsBuilder
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenOptionsBuilder.html
+  name: TweenOptionsBuilder
+  nameWithType: TweenOptionsBuilder
+  fullName: FriedSynapse.FlowEnt.TweenOptionsBuilder
+- uid: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
+  commentId: T:FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenOptionsBuilder.html
+  name: TweenOptionsBuilder.EasingType
+  nameWithType: TweenOptionsBuilder.EasingType
+  fullName: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.TweenOptionsBuilder
+    name: TweenOptionsBuilder
+    href: FriedSynapse.FlowEnt.TweenOptionsBuilder.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
+    name: EasingType
+    href: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.TweenOptionsBuilder
+    name: TweenOptionsBuilder
+    href: FriedSynapse.FlowEnt.TweenOptionsBuilder.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType
+    name: EasingType
+    href: FriedSynapse.FlowEnt.TweenOptionsBuilder.EasingType.html
+- uid: FriedSynapse.FlowEnt.UpdateType
+  commentId: T:FriedSynapse.FlowEnt.UpdateType
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.UpdateType.html
+  name: UpdateType
+  nameWithType: UpdateType
+  fullName: FriedSynapse.FlowEnt.UpdateType
 - uid: FriedSynapse.FlowEnt.UrlButtonAttribute
   commentId: T:FriedSynapse.FlowEnt.UrlButtonAttribute
   href: FriedSynapse.FlowEnt.UrlButtonAttribute.html
@@ -1306,102 +1460,13 @@ references:
   - uid: FriedSynapse.FlowEnt.UrlButtonAttribute.PredefinedType
     name: PredefinedType
     href: FriedSynapse.FlowEnt.UrlButtonAttribute.PredefinedType.html
-- uid: FriedSynapse.FlowEnt.AutoAssignButtonAttribute
-  commentId: T:FriedSynapse.FlowEnt.AutoAssignButtonAttribute
-  href: FriedSynapse.FlowEnt.AutoAssignButtonAttribute.html
-  name: AutoAssignButtonAttribute
-  nameWithType: AutoAssignButtonAttribute
-  fullName: FriedSynapse.FlowEnt.AutoAssignButtonAttribute
-- uid: FriedSynapse.FlowEnt.AutoAssignButtonMotionFieldAttribute
-  commentId: T:FriedSynapse.FlowEnt.AutoAssignButtonMotionFieldAttribute
-  href: FriedSynapse.FlowEnt.AutoAssignButtonMotionFieldAttribute.html
-  name: AutoAssignButtonMotionFieldAttribute
-  nameWithType: AutoAssignButtonMotionFieldAttribute
-  fullName: FriedSynapse.FlowEnt.AutoAssignButtonMotionFieldAttribute
-- uid: FriedSynapse.FlowEnt.ShowIfAttribute
-  commentId: T:FriedSynapse.FlowEnt.ShowIfAttribute
-  href: FriedSynapse.FlowEnt.ShowIfAttribute.html
-  name: ShowIfAttribute
-  nameWithType: ShowIfAttribute
-  fullName: FriedSynapse.FlowEnt.ShowIfAttribute
-- uid: FriedSynapse.FlowEnt.Easing
-  commentId: T:FriedSynapse.FlowEnt.Easing
+- uid: FriedSynapse.FlowEnt.ValueMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.ValueMotionExtensions
   parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.Easing.html
-  name: Easing
-  nameWithType: Easing
-  fullName: FriedSynapse.FlowEnt.Easing
-- uid: FriedSynapse.FlowEnt.BezierCurve
-  commentId: T:FriedSynapse.FlowEnt.BezierCurve
-  href: FriedSynapse.FlowEnt.BezierCurve.html
-  name: BezierCurve
-  nameWithType: BezierCurve
-  fullName: FriedSynapse.FlowEnt.BezierCurve
-- uid: FriedSynapse.FlowEnt.ICurve
-  commentId: T:FriedSynapse.FlowEnt.ICurve
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.ICurve.html
-  name: ICurve
-  nameWithType: ICurve
-  fullName: FriedSynapse.FlowEnt.ICurve
-- uid: FriedSynapse.FlowEnt.AbstractCurve
-  commentId: T:FriedSynapse.FlowEnt.AbstractCurve
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AbstractCurve.html
-  name: AbstractCurve
-  nameWithType: AbstractCurve
-  fullName: FriedSynapse.FlowEnt.AbstractCurve
-- uid: FriedSynapse.FlowEnt.CatmullRomSpline
-  commentId: T:FriedSynapse.FlowEnt.CatmullRomSpline
-  href: FriedSynapse.FlowEnt.CatmullRomSpline.html
-  name: CatmullRomSpline
-  nameWithType: CatmullRomSpline
-  fullName: FriedSynapse.FlowEnt.CatmullRomSpline
-- uid: FriedSynapse.FlowEnt.LagrangeSpline
-  commentId: T:FriedSynapse.FlowEnt.LagrangeSpline
-  href: FriedSynapse.FlowEnt.LagrangeSpline.html
-  name: LagrangeSpline
-  nameWithType: LagrangeSpline
-  fullName: FriedSynapse.FlowEnt.LagrangeSpline
-- uid: FriedSynapse.FlowEnt.BSpline
-  commentId: T:FriedSynapse.FlowEnt.BSpline
-  href: FriedSynapse.FlowEnt.BSpline.html
-  name: BSpline
-  nameWithType: BSpline
-  fullName: FriedSynapse.FlowEnt.BSpline
-- uid: FriedSynapse.FlowEnt.CubicSpline
-  commentId: T:FriedSynapse.FlowEnt.CubicSpline
-  href: FriedSynapse.FlowEnt.CubicSpline.html
-  name: CubicSpline
-  nameWithType: CubicSpline
-  fullName: FriedSynapse.FlowEnt.CubicSpline
-- uid: FriedSynapse.FlowEnt.ISpline
-  commentId: T:FriedSynapse.FlowEnt.ISpline
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.ISpline.html
-  name: ISpline
-  nameWithType: ISpline
-  fullName: FriedSynapse.FlowEnt.ISpline
-- uid: FriedSynapse.FlowEnt.AbstractSpline
-  commentId: T:FriedSynapse.FlowEnt.AbstractSpline
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.AbstractSpline.html
-  name: AbstractSpline
-  nameWithType: AbstractSpline
-  fullName: FriedSynapse.FlowEnt.AbstractSpline
-- uid: FriedSynapse.FlowEnt.LinearSpline
-  commentId: T:FriedSynapse.FlowEnt.LinearSpline
-  href: FriedSynapse.FlowEnt.LinearSpline.html
-  name: LinearSpline
-  nameWithType: LinearSpline
-  fullName: FriedSynapse.FlowEnt.LinearSpline
-- uid: FriedSynapse.FlowEnt.NormalisedCurve
-  commentId: T:FriedSynapse.FlowEnt.NormalisedCurve
-  parent: FriedSynapse.FlowEnt
-  href: FriedSynapse.FlowEnt.NormalisedCurve.html
-  name: NormalisedCurve
-  nameWithType: NormalisedCurve
-  fullName: FriedSynapse.FlowEnt.NormalisedCurve
+  href: FriedSynapse.FlowEnt.ValueMotionExtensions.html
+  name: ValueMotionExtensions
+  nameWithType: ValueMotionExtensions
+  fullName: FriedSynapse.FlowEnt.ValueMotionExtensions
 - uid: FriedSynapse.FlowEnt
   commentId: N:FriedSynapse.FlowEnt
   href: FriedSynapse.html

@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Abstract
   commentId: N:FriedSynapse.FlowEnt.Motions.Abstract
-  id: FriedSynapse.FlowEnt.Motions.Abstract
+  id: Abstract
+  parent: FriedSynapse.FlowEnt.Motions
   children:
   - FriedSynapse.FlowEnt.Motions.Abstract.IMotion
   langs:

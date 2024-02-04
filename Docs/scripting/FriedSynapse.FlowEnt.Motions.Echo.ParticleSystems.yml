@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
   commentId: N:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
-  id: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+  id: ParticleSystems
+  parent: FriedSynapse.FlowEnt.Motions.Echo
   children:
   - FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
   - FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
@@ -16,6 +17,34 @@ items:
   fullName: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
   type: Namespace
 references:
+- uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
+  name: ConvergeToTransformMotion
+  nameWithType: ConvergeToTransformMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
+  name: ConvergeToTransformMotion.Builder
+  nameWithType: ConvergeToTransformMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+    name: ConvergeToTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+    name: ConvergeToTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion
   parent: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
@@ -45,34 +74,6 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
-  href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
-  name: ConvergeToTransformMotion
-  nameWithType: ConvergeToTransformMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
-  name: ConvergeToTransformMotion.Builder
-  nameWithType: ConvergeToTransformMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
-    name: ConvergeToTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
-    name: ConvergeToTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
   commentId: N:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
   href: FriedSynapse.html

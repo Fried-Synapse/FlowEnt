@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups
   commentId: N:FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups
-  id: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups
+  id: CanvasGroups
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI
   children:
   - FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
   - FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.FromToBuilder
@@ -21,28 +22,6 @@ references:
   name: AlphaMotion
   nameWithType: AlphaMotion
   fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
-  href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.html
-  name: AlphaMotion.ValueBuilder
-  nameWithType: AlphaMotion.ValueBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
-    name: AlphaMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
-    name: AlphaMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder.html
 - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.FromToBuilder
   commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.FromToBuilder
   href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.html
@@ -65,3 +44,25 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.FromToBuilder
     name: FromToBuilder
     href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.html
+  name: AlphaMotion.ValueBuilder
+  nameWithType: AlphaMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
+    name: AlphaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
+    name: AlphaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder.html

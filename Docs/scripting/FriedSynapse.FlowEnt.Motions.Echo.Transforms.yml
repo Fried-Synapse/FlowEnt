@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms
   commentId: N:FriedSynapse.FlowEnt.Motions.Echo.Transforms
-  id: FriedSynapse.FlowEnt.Motions.Echo.Transforms
+  id: Transforms
+  parent: FriedSynapse.FlowEnt.Motions.Echo
   children:
   - FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
   - FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
@@ -39,119 +40,34 @@ items:
   fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms
   type: Namespace
 references:
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
-  parent: FriedSynapse.FlowEnt.Motions.Echo.Transforms
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.html
-  name: ScaleToVectorMotion
-  nameWithType: ScaleToVectorMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.html
-  name: ScaleToVectorMotion.Builder
-  nameWithType: ScaleToVectorMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.html
+  name: LookAtTransformMotion
+  nameWithType: LookAtTransformMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.html
+  name: LookAtTransformMotion.Builder
+  nameWithType: LookAtTransformMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
   spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
-    name: ScaleToVectorMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.html
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
+    name: LookAtTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.html
   - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
     name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder.html
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder.html
   spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
-    name: ScaleToVectorMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.html
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
+    name: LookAtTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.html
   - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
     name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.html
-  name: RotateToTransformMotion
-  nameWithType: RotateToTransformMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.html
-  name: RotateToTransformMotion.Builder
-  nameWithType: RotateToTransformMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
-    name: RotateToTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
-    name: RotateToTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.html
-  name: RotateAroundTransformMotion
-  nameWithType: RotateAroundTransformMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.html
-  name: RotateAroundTransformMotion.Builder
-  nameWithType: RotateAroundTransformMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
-    name: RotateAroundTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
-    name: RotateAroundTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.html
-  name: ScaleVectorMotion
-  nameWithType: ScaleVectorMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.html
-  name: ScaleVectorMotion.Builder
-  nameWithType: ScaleVectorMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
-    name: ScaleVectorMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
-    name: ScaleVectorMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder.html
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion
   href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion.html
@@ -180,58 +96,6 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
-  parent: FriedSynapse.FlowEnt.Motions.Echo.Transforms
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
-  name: RotateAroundVectorMotion
-  nameWithType: RotateAroundVectorMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
-  parent: FriedSynapse.FlowEnt.Motions.Echo.Transforms
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
-  name: RotateAroundVectorMotion.AbstractRotateAroundBuilder
-  nameWithType: RotateAroundVectorMotion.AbstractRotateAroundBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
-    name: RotateAroundVectorMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
-    name: AbstractRotateAroundBuilder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
-    name: RotateAroundVectorMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
-    name: AbstractRotateAroundBuilder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
-  name: RotateAroundVectorMotion.Builder
-  nameWithType: RotateAroundVectorMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
-    name: RotateAroundVectorMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
-    name: RotateAroundVectorMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToTransformMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToTransformMotion
   href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToTransformMotion.html
@@ -289,34 +153,6 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToVectorMotion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToVectorMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.html
-  name: ScaleToTransformMotion
-  nameWithType: ScaleToTransformMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.html
-  name: ScaleToTransformMotion.Builder
-  nameWithType: ScaleToTransformMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
-    name: ScaleToTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
-    name: ScaleToTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion
   href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion.html
@@ -345,6 +181,86 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.html
+  name: RotateAroundTransformMotion
+  nameWithType: RotateAroundTransformMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.html
+  name: RotateAroundTransformMotion.Builder
+  nameWithType: RotateAroundTransformMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
+    name: RotateAroundTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
+    name: RotateAroundTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
+  parent: FriedSynapse.FlowEnt.Motions.Echo.Transforms
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
+  name: RotateAroundVectorMotion
+  nameWithType: RotateAroundVectorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
+  parent: FriedSynapse.FlowEnt.Motions.Echo.Transforms
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
+  name: RotateAroundVectorMotion.AbstractRotateAroundBuilder
+  nameWithType: RotateAroundVectorMotion.AbstractRotateAroundBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
+    name: RotateAroundVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
+    name: AbstractRotateAroundBuilder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
+    name: RotateAroundVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
+    name: AbstractRotateAroundBuilder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
+  name: RotateAroundVectorMotion.Builder
+  nameWithType: RotateAroundVectorMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
+    name: RotateAroundVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
+    name: RotateAroundVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToQuaternionMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToQuaternionMotion
   parent: FriedSynapse.FlowEnt.Motions.Echo.Transforms
@@ -374,34 +290,34 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToQuaternionMotion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToQuaternionMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.html
-  name: LookAtTransformMotion
-  nameWithType: LookAtTransformMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.html
-  name: LookAtTransformMotion.Builder
-  nameWithType: LookAtTransformMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.html
+  name: RotateToTransformMotion
+  nameWithType: RotateToTransformMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.html
+  name: RotateToTransformMotion.Builder
+  nameWithType: RotateToTransformMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
   spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
-    name: LookAtTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.html
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
+    name: RotateToTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.html
   - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
     name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder.html
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder.html
   spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
-    name: LookAtTransformMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.html
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
+    name: RotateToTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.html
   - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
     name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder.html
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion
   href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion.html
@@ -430,6 +346,91 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.html
+  name: ScaleToTransformMotion
+  nameWithType: ScaleToTransformMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.html
+  name: ScaleToTransformMotion.Builder
+  nameWithType: ScaleToTransformMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
+    name: ScaleToTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
+    name: ScaleToTransformMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
+  parent: FriedSynapse.FlowEnt.Motions.Echo.Transforms
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.html
+  name: ScaleToVectorMotion
+  nameWithType: ScaleToVectorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.html
+  name: ScaleToVectorMotion.Builder
+  nameWithType: ScaleToVectorMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
+    name: ScaleToVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
+    name: ScaleToVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.html
+  name: ScaleVectorMotion
+  nameWithType: ScaleVectorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.html
+  name: ScaleVectorMotion.Builder
+  nameWithType: ScaleVectorMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
+    name: ScaleVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
+    name: ScaleVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms
   commentId: N:FriedSynapse.FlowEnt.Motions.Echo.Transforms
   href: FriedSynapse.html

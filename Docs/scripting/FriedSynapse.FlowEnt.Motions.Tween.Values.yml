@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Tween.Values
   commentId: N:FriedSynapse.FlowEnt.Motions.Tween.Values
-  id: FriedSynapse.FlowEnt.Motions.Tween.Values
+  id: Values
+  parent: FriedSynapse.FlowEnt.Motions.Tween
   children:
   - FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion`1
   - FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion`1.AbstractEventMotionBuilder
@@ -40,314 +41,6 @@ items:
   fullName: FriedSynapse.FlowEnt.Motions.Tween.Values
   type: Namespace
 references:
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.html
-  name: QuaternionValueMotion
-  nameWithType: QuaternionValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.html
-  name: QuaternionValueMotion.Builder
-  nameWithType: QuaternionValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
-    name: QuaternionValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
-    name: QuaternionValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.html
-  name: Color32ValueMotion
-  nameWithType: Color32ValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.html
-  name: Color32ValueMotion.Builder
-  nameWithType: Color32ValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
-    name: Color32ValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
-    name: Color32ValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.html
-  name: ColorValueMotion
-  nameWithType: ColorValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.html
-  name: ColorValueMotion.Builder
-  nameWithType: ColorValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
-    name: ColorValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
-    name: ColorValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.html
-  name: Vector2ValueMotion
-  nameWithType: Vector2ValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.html
-  name: Vector2ValueMotion.Builder
-  nameWithType: Vector2ValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
-    name: Vector2ValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
-    name: Vector2ValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.html
-  name: AnimationCurveValueMotion
-  nameWithType: AnimationCurveValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.html
-  name: AnimationCurveValueMotion.Builder
-  nameWithType: AnimationCurveValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
-    name: AnimationCurveValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
-    name: AnimationCurveValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.html
-  name: IntValueMotion
-  nameWithType: IntValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.html
-  name: IntValueMotion.Builder
-  nameWithType: IntValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
-    name: IntValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
-    name: IntValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.html
-  name: AnimationCurve3dValueMotion
-  nameWithType: AnimationCurve3dValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.html
-  name: AnimationCurve3dValueMotion.Builder
-  nameWithType: AnimationCurve3dValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
-    name: AnimationCurve3dValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
-    name: AnimationCurve3dValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.html
-  name: CurveValueMotion
-  nameWithType: CurveValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.html
-  name: CurveValueMotion.Builder
-  nameWithType: CurveValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
-    name: CurveValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
-    name: CurveValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.html
-  name: AnimationCurve2dValueMotion
-  nameWithType: AnimationCurve2dValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.html
-  name: AnimationCurve2dValueMotion.Builder
-  nameWithType: AnimationCurve2dValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
-    name: AnimationCurve2dValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
-    name: AnimationCurve2dValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.html
-  name: FloatValueMotion
-  nameWithType: FloatValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.html
-  name: FloatValueMotion.Builder
-  nameWithType: FloatValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
-    name: FloatValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
-    name: FloatValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.html
-  name: Vector3ValueMotion
-  nameWithType: Vector3ValueMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.html
-  name: Vector3ValueMotion.Builder
-  nameWithType: Vector3ValueMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
-    name: Vector3ValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
-    name: Vector3ValueMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion`1
   commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion`1
   href: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion-1.html
@@ -464,6 +157,314 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractValueMotion`1.AbstractValueMotionBuilder
     name: AbstractValueMotionBuilder
     href: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractValueMotion-1.AbstractValueMotionBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.html
+  name: AnimationCurve2dValueMotion
+  nameWithType: AnimationCurve2dValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.html
+  name: AnimationCurve2dValueMotion.Builder
+  nameWithType: AnimationCurve2dValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
+    name: AnimationCurve2dValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
+    name: AnimationCurve2dValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.html
+  name: AnimationCurve3dValueMotion
+  nameWithType: AnimationCurve3dValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.html
+  name: AnimationCurve3dValueMotion.Builder
+  nameWithType: AnimationCurve3dValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
+    name: AnimationCurve3dValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
+    name: AnimationCurve3dValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.html
+  name: AnimationCurveValueMotion
+  nameWithType: AnimationCurveValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.html
+  name: AnimationCurveValueMotion.Builder
+  nameWithType: AnimationCurveValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
+    name: AnimationCurveValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
+    name: AnimationCurveValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.html
+  name: Color32ValueMotion
+  nameWithType: Color32ValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.html
+  name: Color32ValueMotion.Builder
+  nameWithType: Color32ValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
+    name: Color32ValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
+    name: Color32ValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.html
+  name: ColorValueMotion
+  nameWithType: ColorValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.html
+  name: ColorValueMotion.Builder
+  nameWithType: ColorValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
+    name: ColorValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
+    name: ColorValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.html
+  name: CurveValueMotion
+  nameWithType: CurveValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.html
+  name: CurveValueMotion.Builder
+  nameWithType: CurveValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
+    name: CurveValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
+    name: CurveValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.html
+  name: FloatValueMotion
+  nameWithType: FloatValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.html
+  name: FloatValueMotion.Builder
+  nameWithType: FloatValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
+    name: FloatValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
+    name: FloatValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.html
+  name: IntValueMotion
+  nameWithType: IntValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.html
+  name: IntValueMotion.Builder
+  nameWithType: IntValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
+    name: IntValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
+    name: IntValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.html
+  name: QuaternionValueMotion
+  nameWithType: QuaternionValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.html
+  name: QuaternionValueMotion.Builder
+  nameWithType: QuaternionValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
+    name: QuaternionValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
+    name: QuaternionValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.html
+  name: Vector2ValueMotion
+  nameWithType: Vector2ValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.html
+  name: Vector2ValueMotion.Builder
+  nameWithType: Vector2ValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
+    name: Vector2ValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
+    name: Vector2ValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.html
+  name: Vector3ValueMotion
+  nameWithType: Vector3ValueMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.html
+  name: Vector3ValueMotion.Builder
+  nameWithType: Vector3ValueMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
+    name: Vector3ValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
+    name: Vector3ValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector4ValueMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Values.Vector4ValueMotion
   href: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector4ValueMotion.html

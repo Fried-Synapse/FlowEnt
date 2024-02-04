@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
   commentId: N:FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
-  id: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
+  id: CharacterControllers
+  parent: FriedSynapse.FlowEnt.Motions.Echo
   children:
   - FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion
   - FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion.Builder
@@ -16,34 +17,6 @@ items:
   fullName: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
   type: Namespace
 references:
-- uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
-  href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.html
-  name: RotateByInputMotion
-  nameWithType: RotateByInputMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.html
-  name: RotateByInputMotion.Builder
-  nameWithType: RotateByInputMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
-    name: RotateByInputMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
-    name: RotateByInputMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion
   href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion.html
@@ -72,3 +45,31 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.html
+  name: RotateByInputMotion
+  nameWithType: RotateByInputMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.html
+  name: RotateByInputMotion.Builder
+  nameWithType: RotateByInputMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
+    name: RotateByInputMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
+    name: RotateByInputMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder.html

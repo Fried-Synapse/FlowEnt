@@ -10,7 +10,9 @@
         }
       ],
       "dest": "scripting",
-      "allowCompilationErrors": true
+      "allowCompilationErrors": true,
+      "namespaceLayout": "nested",
+      "EnumSortOrder": "declaringOrder"
     }
   ],
   "build": {
@@ -40,8 +42,10 @@
     "globalMetadata": {
       "_appName": "FlowEnt",
       "_appTitle": "FlowEnt",
+      "_appLogoUrl": "https://flowent.friedsynapse.com/",
       "_appLogoPath": "resources/logo.png",
       "_appFaviconPath": "resources/favicon.ico",
+      "_appFooter": "© Fried Synapse",
       "_enableSearch": true,
       "pdf": false
     }

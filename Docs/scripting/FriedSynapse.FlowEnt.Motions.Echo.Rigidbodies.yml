@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
   commentId: N:FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
-  id: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
+  id: Rigidbodies
+  parent: FriedSynapse.FlowEnt.Motions.Echo
   children:
   - FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.JumpByInputMotion
   - FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.JumpByInputMotion.Builder
@@ -46,34 +47,6 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.JumpByInputMotion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.JumpByInputMotion.Builder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
-  href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.html
-  name: RotateByInputMotion
-  nameWithType: RotateByInputMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.html
-  name: RotateByInputMotion.Builder
-  nameWithType: RotateByInputMotion.Builder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
-    name: RotateByInputMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
-    name: RotateByInputMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
-    name: Builder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion
   href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion.html
@@ -102,3 +75,31 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion.Builder
     name: Builder
     href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.html
+  name: RotateByInputMotion
+  nameWithType: RotateByInputMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.html
+  name: RotateByInputMotion.Builder
+  nameWithType: RotateByInputMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
+    name: RotateByInputMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
+    name: RotateByInputMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder.html

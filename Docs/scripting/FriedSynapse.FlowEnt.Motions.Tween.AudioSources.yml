@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources
   commentId: N:FriedSynapse.FlowEnt.Motions.Tween.AudioSources
-  id: FriedSynapse.FlowEnt.Motions.Tween.AudioSources
+  id: AudioSources
+  parent: FriedSynapse.FlowEnt.Motions.Tween
   children:
   - FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
   - FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.FromToBuilder
@@ -18,84 +19,12 @@ items:
   fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources
   type: Namespace
 references:
-- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
-  href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
-  name: VolumeMotion
-  nameWithType: VolumeMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
-  href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
-  name: VolumeMotion.ValueBuilder
-  nameWithType: VolumeMotion.ValueBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
-    name: VolumeMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
-    name: VolumeMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder.html
-- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
-  href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
-  name: VolumeMotion.FromToBuilder
-  nameWithType: VolumeMotion.FromToBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
-    name: VolumeMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
-    name: FromToBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
-    name: VolumeMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
-    name: FromToBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder.html
 - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
   href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.html
   name: PitchMotion
   nameWithType: PitchMotion
   fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
-  href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.html
-  name: PitchMotion.ValueBuilder
-  nameWithType: PitchMotion.ValueBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
-    name: PitchMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
-    name: PitchMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder.html
 - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.FromToBuilder
   commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.FromToBuilder
   href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.html
@@ -118,3 +47,75 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.FromToBuilder
     name: FromToBuilder
     href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.html
+  name: PitchMotion.ValueBuilder
+  nameWithType: PitchMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
+    name: PitchMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
+    name: PitchMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
+  name: VolumeMotion
+  nameWithType: VolumeMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
+  name: VolumeMotion.FromToBuilder
+  nameWithType: VolumeMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
+    name: VolumeMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
+    name: VolumeMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
+  name: VolumeMotion.ValueBuilder
+  nameWithType: VolumeMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
+    name: VolumeMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
+    name: VolumeMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder.html

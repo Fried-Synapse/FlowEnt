@@ -3,6 +3,991 @@ items:
 - uid: FriedSynapse.FlowEnt
   name: FriedSynapse.FlowEnt
   items:
+  - uid: FriedSynapse.FlowEnt.Easings
+    name: Easings
+    items:
+    - uid: FriedSynapse.FlowEnt.Easings.AbstractOscilationEasing
+      name: AbstractOscilationEasing
+    - uid: FriedSynapse.FlowEnt.Easings.AnimationCurveEasing
+      name: AnimationCurveEasing
+    - uid: FriedSynapse.FlowEnt.Easings.BounceEasing
+      name: BounceEasing
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInBack
+      name: EaseInBack
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInBounce
+      name: EaseInBounce
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInCirc
+      name: EaseInCirc
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInCubic
+      name: EaseInCubic
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInElastic
+      name: EaseInElastic
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInExpo
+      name: EaseInExpo
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutBack
+      name: EaseInOutBack
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutBounce
+      name: EaseInOutBounce
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutCirc
+      name: EaseInOutCirc
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutCubic
+      name: EaseInOutCubic
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutElastic
+      name: EaseInOutElastic
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutExpo
+      name: EaseInOutExpo
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutQuad
+      name: EaseInOutQuad
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutQuart
+      name: EaseInOutQuart
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutQuint
+      name: EaseInOutQuint
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInOutSine
+      name: EaseInOutSine
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInQuad
+      name: EaseInQuad
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInQuart
+      name: EaseInQuart
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInQuint
+      name: EaseInQuint
+    - uid: FriedSynapse.FlowEnt.Easings.EaseInSine
+      name: EaseInSine
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutBack
+      name: EaseOutBack
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutBounce
+      name: EaseOutBounce
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutCirc
+      name: EaseOutCirc
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutCubic
+      name: EaseOutCubic
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutElastic
+      name: EaseOutElastic
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutExpo
+      name: EaseOutExpo
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutQuad
+      name: EaseOutQuad
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutQuart
+      name: EaseOutQuart
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutQuint
+      name: EaseOutQuint
+    - uid: FriedSynapse.FlowEnt.Easings.EaseOutSine
+      name: EaseOutSine
+    - uid: FriedSynapse.FlowEnt.Easings.EasingExtensions
+      name: EasingExtensions
+    - uid: FriedSynapse.FlowEnt.Easings.EasingFactory
+      name: EasingFactory
+    - uid: FriedSynapse.FlowEnt.Easings.FunctionEasing
+      name: FunctionEasing
+    - uid: FriedSynapse.FlowEnt.Easings.IEasing
+      name: IEasing
+    - uid: FriedSynapse.FlowEnt.Easings.LinearEasing
+      name: LinearEasing
+    - uid: FriedSynapse.FlowEnt.Easings.ReverseEasing
+      name: ReverseEasing
+    - uid: FriedSynapse.FlowEnt.Easings.ShakeEasing
+      name: ShakeEasing
+  - uid: FriedSynapse.FlowEnt.Editor
+    name: Editor
+    items:
+    - uid: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer`2
+      name: AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder>
+    - uid: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer`1
+      name: AbstractEventsBuilderPropertyDrawer<TPropertiesEnum>
+    - uid: FriedSynapse.FlowEnt.Editor.AbstractIfAttributeDrawer
+      name: AbstractIfAttributeDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
+      name: AbstractListBuilderPropertyDrawer<TListItem>
+    - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1.Data
+      name: AbstractListBuilderPropertyDrawer<TListItem>.Data
+    - uid: FriedSynapse.FlowEnt.Editor.AbstractMotionBuilderPropertyDrawer
+      name: AbstractMotionBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer`1
+      name: AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum>
+    - uid: FriedSynapse.FlowEnt.Editor.AnimationListBuilderPropertyDrawer
+      name: AnimationListBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.AutoAssignButtonAttributeDrawer
+      name: AutoAssignButtonAttributeDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.CreateNewMotionScriptHelper
+      name: CreateNewMotionScriptHelper
+    - uid: FriedSynapse.FlowEnt.Editor.CurveBuilderPropertyDrawer
+      name: CurveBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.DisplayNamePropertyDrawer
+      name: DisplayNamePropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.EchoBuilderPropertyDrawer
+      name: EchoBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer
+      name: EchoEventsBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum
+      name: EchoEventsBuilderPropertyDrawer.FieldsEnum
+    - uid: FriedSynapse.FlowEnt.Editor.EchoMotionsBuilderPropertyDrawer
+      name: EchoMotionsBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer
+      name: EchoOptionsBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum
+      name: EchoOptionsBuilderPropertyDrawer.FieldsEnum
+    - uid: FriedSynapse.FlowEnt.Editor.EnableIfAttributeDrawer
+      name: EnableIfAttributeDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.FlowBuilderPropertyDrawer
+      name: FlowBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.FlowEntMenu
+      name: FlowEntMenu
+    - uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer
+      name: FlowEventsBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum
+      name: FlowEventsBuilderPropertyDrawer.FieldsEnum
+    - uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer
+      name: FlowOptionsBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum
+      name: FlowOptionsBuilderPropertyDrawer.FieldsEnum
+    - uid: FriedSynapse.FlowEnt.Editor.FlowQueueAnimationBuilderPropertyDrawer
+      name: FlowQueueAnimationBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.FlowQueuesBuilderPropertyDrawer
+      name: FlowQueuesBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+      name: FoldoutScrollable
+    - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory
+      name: FoldoutScrollable.UxmlFactory
+    - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits
+      name: FoldoutScrollable.UxmlTraits
+    - uid: FriedSynapse.FlowEnt.Editor.GenericMenuExtensions
+      name: GenericMenuExtensions
+    - uid: FriedSynapse.FlowEnt.Editor.GizmoOptionsPropertyDrawer
+      name: GizmoOptionsPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.Icon
+      name: Icon
+    - uid: FriedSynapse.FlowEnt.Editor.MaterialBuilderPropertyDrawer
+      name: MaterialBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.MaterialBuilderWithPropertyPropertyDrawer
+      name: MaterialBuilderWithPropertyPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.PreviewController
+      name: PreviewController
+    - uid: FriedSynapse.FlowEnt.Editor.PreviewController.Options
+      name: PreviewController.Options
+    - uid: FriedSynapse.FlowEnt.Editor.PropertyDrawer`1
+      name: PropertyDrawer<TData>
+    - uid: FriedSynapse.FlowEnt.Editor.RandomBuilderPropertyDrawer
+      name: RandomBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.ShowIfAttributeDrawer
+      name: ShowIfAttributeDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.TweenBuilderPropertyDrawer
+      name: TweenBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer
+      name: TweenEventsBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum
+      name: TweenEventsBuilderPropertyDrawer.FieldsEnum
+    - uid: FriedSynapse.FlowEnt.Editor.TweenMotionsBuilderPropertyDrawer
+      name: TweenMotionsBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer
+      name: TweenOptionsBuilderPropertyDrawer
+    - uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum
+      name: TweenOptionsBuilderPropertyDrawer.FieldsEnum
+    - uid: FriedSynapse.FlowEnt.Editor.UrlButtonAttributeDrawer
+      name: UrlButtonAttributeDrawer
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    items:
+    - uid: FriedSynapse.FlowEnt.Motions.Abstract
+      name: Abstract
+      items:
+      - uid: FriedSynapse.FlowEnt.Motions.Abstract.IMotion
+        name: IMotion
+    - uid: FriedSynapse.FlowEnt.Motions.Echo
+      name: Echo
+      items:
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract
+        name: Abstract
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion
+          name: AbstractEchoMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion`1
+          name: AbstractEchoMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion`1.AbstractBuilder
+          name: AbstractEchoMotion<TItem>.AbstractBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
+          name: AbstractFloatSpeedMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
+          name: AbstractFloatSpeedMotion<TItem>.AbstractFloatSpeedBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
+          name: AbstractFloatSpeedTypeMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
+          name: AbstractFloatSpeedTypeMotion<TItem>.AbstractFloatSpeedTypeBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion`1
+          name: AbstractVector3SpeedMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion`1.AbstractVector3SpeedBuilder
+          name: AbstractVector3SpeedMotion<TItem>.AbstractVector3SpeedBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion
+          name: IEchoMotion
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
+        name: CharacterControllers
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion
+          name: MoveByInputMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion.Builder
+          name: MoveByInputMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
+          name: RotateByInputMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
+          name: RotateByInputMotion.Builder
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+        name: Inputs
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
+          name: ButtonDownMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
+          name: ButtonMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
+          name: ButtonUpMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputIntMotion
+          name: InputIntMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputKeyCodeMotion
+          name: InputKeyCodeMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputStringMotion
+          name: InputStringMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
+          name: KeyDownMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
+          name: KeyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
+          name: KeyUpMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonDownMotion
+          name: MouseButtonDownMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonMotion
+          name: MouseButtonMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonUpMotion
+          name: MouseButtonUpMotion
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+        name: ParticleSystems
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+          name: ConvergeToTransformMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
+          name: ConvergeToTransformMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion
+          name: ConvergeToVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion.Builder
+          name: ConvergeToVectorMotion.Builder
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
+        name: Rigidbodies
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.JumpByInputMotion
+          name: JumpByInputMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.JumpByInputMotion.Builder
+          name: JumpByInputMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion
+          name: MoveByInputMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion.Builder
+          name: MoveByInputMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
+          name: RotateByInputMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
+          name: RotateByInputMotion.Builder
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms
+        name: Transforms
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
+          name: LookAtTransformMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
+          name: LookAtTransformMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion
+          name: LookAtVector3Motion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion.Builder
+          name: LookAtVector3Motion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToTransformMotion
+          name: MoveToTransformMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToTransformMotion.Builder
+          name: MoveToTransformMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToVectorMotion
+          name: MoveToVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToVectorMotion.Builder
+          name: MoveToVectorMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion
+          name: MoveVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion.Builder
+          name: MoveVectorMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
+          name: RotateAroundTransformMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
+          name: RotateAroundTransformMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
+          name: RotateAroundVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
+          name: RotateAroundVectorMotion.AbstractRotateAroundBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
+          name: RotateAroundVectorMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToQuaternionMotion
+          name: RotateToQuaternionMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToQuaternionMotion.Builder
+          name: RotateToQuaternionMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
+          name: RotateToTransformMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
+          name: RotateToTransformMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion
+          name: RotateVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion.Builder
+          name: RotateVectorMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
+          name: ScaleToTransformMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
+          name: ScaleToTransformMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
+          name: ScaleToVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
+          name: ScaleToVectorMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
+          name: ScaleVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
+          name: ScaleVectorMotion.Builder
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion
+        name: DebugMotion
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder
+        name: DebugMotion.Builder
+      - uid: FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+        name: SpeedType
+    - uid: FriedSynapse.FlowEnt.Motions.Tween
+      name: Tween
+      items:
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+        name: Abstract
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion`1
+          name: AbstractAlphaMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
+          name: AbstractAnimationCurve3dMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1.AbstractAnimationCurve3dBuilder
+          name: AbstractAnimationCurve3dMotion<TItem>.AbstractAnimationCurve3dBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+          name: AbstractAxisMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisFromToBuilder
+          name: AbstractAxisMotion<TItem>.AbstractAxisFromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisValueBuilder
+          name: AbstractAxisMotion<TItem>.AbstractAxisValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+          name: AbstractClassValueMotion<TItem, TValue>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder
+          name: AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder`1
+          name: AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
+          name: AbstractColorGradientMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1.AbstractGradientBuilder
+          name: AbstractColorGradientMotion<TItem>.AbstractGradientBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+          name: AbstractColorLinearMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractFromToBuilder
+          name: AbstractColorLinearMotion<TItem>.AbstractFromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractValueBuilder
+          name: AbstractColorLinearMotion<TItem>.AbstractValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+          name: AbstractColorMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractFromToBuilder
+          name: AbstractColorMotion<TItem>.AbstractFromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractValueBuilder
+          name: AbstractColorMotion<TItem>.AbstractValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
+          name: AbstractCurveMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1.AbstractBuilder
+          name: AbstractCurveMotion<TItem>.AbstractBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion`1
+          name: AbstractFloatLinearMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+          name: AbstractFloatMinMaxMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion`1
+          name: AbstractFloatMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion`1
+          name: AbstractGradientMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion`1
+          name: AbstractIntMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion`1
+          name: AbstractQuaternionMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion`1
+          name: AbstractRandomFloatMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+          name: AbstractRandomStructValueMotion<TItem, TValue>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder
+          name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder`1
+          name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder
+          name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder`1
+          name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder<T>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion`1
+          name: AbstractRandomVector3Motion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion`1
+          name: AbstractRectMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+          name: AbstractRotateAxisMotion<TTransform>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisFromToBuilder
+          name: AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisFromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisValueBuilder
+          name: AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+          name: AbstractStructValueMotion<TItem, TValue>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder
+          name: AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder`1
+          name: AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+          name: AbstractTweenMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+          name: AbstractTweenMotion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.AbstractBuilder
+          name: AbstractTweenMotion<TItem>.AbstractBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+          name: AbstractValueMotion<TItem, TValue>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder
+          name: AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder`1
+          name: AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder
+          name: AbstractValueMotion<TItem, TValue>.AbstractValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder`1
+          name: AbstractValueMotion<TItem, TValue>.AbstractValueBuilder<T>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion`1
+          name: AbstractVector2Motion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion`1
+          name: AbstractVector3Motion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion`1
+          name: AbstractVector4Motion<TItem>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+          name: ITweenMotion
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources
+        name: AudioSources
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
+          name: PitchMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.FromToBuilder
+          name: PitchMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
+          name: PitchMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
+          name: VolumeMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
+          name: VolumeMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
+          name: VolumeMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras
+        name: Cameras
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorGradientMotion
+          name: BackgroundColorGradientMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorGradientMotion.Builder
+          name: BackgroundColorGradientMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorMotion
+          name: BackgroundColorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorMotion.FromToBuilder
+          name: BackgroundColorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorMotion.ValueBuilder
+          name: BackgroundColorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FarClipPlaneMotion
+          name: FarClipPlaneMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FarClipPlaneMotion.FromToBuilder
+          name: FarClipPlaneMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FarClipPlaneMotion.ValueBuilder
+          name: FarClipPlaneMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FieldOfViewMotion
+          name: FieldOfViewMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FieldOfViewMotion.FromToBuilder
+          name: FieldOfViewMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FieldOfViewMotion.ValueBuilder
+          name: FieldOfViewMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.NearClipPlaneMotion
+          name: NearClipPlaneMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.NearClipPlaneMotion.FromToBuilder
+          name: NearClipPlaneMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.NearClipPlaneMotion.ValueBuilder
+          name: NearClipPlaneMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.OrthographicSizeMotion
+          name: OrthographicSizeMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.OrthographicSizeMotion.FromToBuilder
+          name: OrthographicSizeMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.OrthographicSizeMotion.ValueBuilder
+          name: OrthographicSizeMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.RectMotion
+          name: RectMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.RectMotion.FromToBuilder
+          name: RectMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.RectMotion.ValueBuilder
+          name: RectMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights
+        name: Lights
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion
+          name: ColorGradientMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder
+          name: ColorGradientMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+          name: ColorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder
+          name: ColorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder
+          name: ColorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+          name: IntensityMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder
+          name: IntensityMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder
+          name: IntensityMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+          name: RangeMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder
+          name: RangeMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder
+          name: RangeMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+          name: ShadowStrengthMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder
+          name: ShadowStrengthMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder
+          name: ShadowStrengthMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers
+        name: LineRenderers
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.ColorLinearMotion
+          name: ColorLinearMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.ColorLinearMotion.FromToBuilder
+          name: ColorLinearMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.ColorLinearMotion.ValueBuilder
+          name: ColorLinearMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.GradientMotion
+          name: GradientMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.GradientMotion.FromToBuilder
+          name: GradientMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.GradientMotion.ValueBuilder
+          name: GradientMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.MoveVertexVectorMotion
+          name: MoveVertexVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.MoveVertexVectorMotion.FromToBuilder
+          name: MoveVertexVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.MoveVertexVectorMotion.ValueBuilder
+          name: MoveVertexVectorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.WidthLinearMotion
+          name: WidthLinearMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.WidthLinearMotion.FromToBuilder
+          name: WidthLinearMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.WidthLinearMotion.ValueBuilder
+          name: WidthLinearMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials
+        name: Materials
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaMotion
+          name: AlphaMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaMotion.FromToBuilder
+          name: AlphaMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaMotion.ValueBuilder
+          name: AlphaMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaPropertyMotion
+          name: AlphaPropertyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaPropertyMotion.FromToBuilder
+          name: AlphaPropertyMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaPropertyMotion.ValueBuilder
+          name: AlphaPropertyMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorGradientMotion
+          name: ColorGradientMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorGradientMotion.Builder
+          name: ColorGradientMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorGradientPropertyMotion
+          name: ColorGradientPropertyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorGradientPropertyMotion.GradientBuilder
+          name: ColorGradientPropertyMotion.GradientBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorMotion
+          name: ColorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorMotion.FromToBuilder
+          name: ColorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorMotion.ValueBuilder
+          name: ColorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorPropertyMotion
+          name: ColorPropertyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorPropertyMotion.FromToBuilder
+          name: ColorPropertyMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorPropertyMotion.ValueBuilder
+          name: ColorPropertyMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.FloatPropertyMotion
+          name: FloatPropertyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.FloatPropertyMotion.FromToBuilder
+          name: FloatPropertyMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.FloatPropertyMotion.ValueBuilder
+          name: FloatPropertyMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.IntPropertyMotion
+          name: IntPropertyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.IntPropertyMotion.FromToBuilder
+          name: IntPropertyMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.IntPropertyMotion.ValueBuilder
+          name: IntPropertyMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureOffsetPropertyMotion
+          name: TextureOffsetPropertyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureOffsetPropertyMotion.FromToBuilder
+          name: TextureOffsetPropertyMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureOffsetPropertyMotion.ValueBuilder
+          name: TextureOffsetPropertyMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureScalePropertyMotion
+          name: TextureScalePropertyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureScalePropertyMotion.FromToBuilder
+          name: TextureScalePropertyMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureScalePropertyMotion.ValueBuilder
+          name: TextureScalePropertyMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.VectorPropertyMotion
+          name: VectorPropertyMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.VectorPropertyMotion.FromToBuilder
+          name: VectorPropertyMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.VectorPropertyMotion.ValueBuilder
+          name: VectorPropertyMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
+        name: Rigidbodies
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.AngularVelocityMotion
+          name: AngularVelocityMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.AngularVelocityMotion.FromToBuilder
+          name: AngularVelocityMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.AngularVelocityMotion.ValueBuilder
+          name: AngularVelocityMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MassMotion
+          name: MassMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MassMotion.FromToBuilder
+          name: MassMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MassMotion.ValueBuilder
+          name: MassMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAnimationCurve3dMotion
+          name: MoveAnimationCurve3dMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAnimationCurve3dMotion.Builder
+          name: MoveAnimationCurve3dMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAxisMotion
+          name: MoveAxisMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAxisMotion.FromToBuilder
+          name: MoveAxisMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAxisMotion.ValueBuilder
+          name: MoveAxisMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveCurveMotion
+          name: MoveCurveMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveCurveMotion.Builder
+          name: MoveCurveMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveVectorMotion
+          name: MoveVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveVectorMotion.FromToBuilder
+          name: MoveVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveVectorMotion.ValueBuilder
+          name: MoveVectorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateQuaternionMotion
+          name: RotateQuaternionMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateQuaternionMotion.FromToBuilder
+          name: RotateQuaternionMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateQuaternionMotion.ValueBuilder
+          name: RotateQuaternionMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateVectorMotion
+          name: RotateVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateVectorMotion.FromToBuilder
+          name: RotateVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateVectorMotion.ValueBuilder
+          name: RotateVectorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.VelocityMotion
+          name: VelocityMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.VelocityMotion.FromToBuilder
+          name: VelocityMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.VelocityMotion.ValueBuilder
+          name: VelocityMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers
+        name: SpriteRenderers
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorGradientMotion
+          name: ColorGradientMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorGradientMotion.Builder
+          name: ColorGradientMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorMotion
+          name: ColorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorMotion.FromToBuilder
+          name: ColorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorMotion.ValueBuilder
+          name: ColorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.SizeMotion
+          name: SizeMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.SizeMotion.FromToBuilder
+          name: SizeMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.SizeMotion.ValueBuilder
+          name: SizeMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
+        name: TrailRenderers
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+          name: ColorLinearMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder
+          name: ColorLinearMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder
+          name: ColorLinearMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+          name: GradientMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder
+          name: GradientMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder
+          name: GradientMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+          name: MoveVertexVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder
+          name: MoveVertexVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder
+          name: MoveVertexVectorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+          name: WidthLinearMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder
+          name: WidthLinearMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder
+          name: WidthLinearMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms
+        name: Transforms
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.LookAtTransformMotion
+          name: LookAtTransformMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.LookAtTransformMotion.Builder
+          name: LookAtTransformMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.LookAtVector3Motion
+          name: LookAtVector3Motion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.LookAtVector3Motion.Builder
+          name: LookAtVector3Motion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAnimationCurve3dMotion
+          name: MoveAnimationCurve3dMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAnimationCurve3dMotion.Builder
+          name: MoveAnimationCurve3dMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAxisMotion
+          name: MoveAxisMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAxisMotion.FromToBuilder
+          name: MoveAxisMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAxisMotion.ValueBuilder
+          name: MoveAxisMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveCurveMotion
+          name: MoveCurveMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveCurveMotion.Builder
+          name: MoveCurveMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAnimationCurve3dMotion
+          name: MoveLocalAnimationCurve3dMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAnimationCurve3dMotion.Builder
+          name: MoveLocalAnimationCurve3dMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAxisMotion
+          name: MoveLocalAxisMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAxisMotion.FromToBuilder
+          name: MoveLocalAxisMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAxisMotion.ValueBuilder
+          name: MoveLocalAxisMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalCurveMotion
+          name: MoveLocalCurveMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalCurveMotion.Builder
+          name: MoveLocalCurveMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalVectorMotion
+          name: MoveLocalVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalVectorMotion.FromToBuilder
+          name: MoveLocalVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalVectorMotion.ValueBuilder
+          name: MoveLocalVectorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveVectorMotion
+          name: MoveVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveVectorMotion.FromToBuilder
+          name: MoveVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveVectorMotion.ValueBuilder
+          name: MoveVectorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.OrientToPathMotion
+          name: OrientToPathMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.OrientToPathMotion.Builder
+          name: OrientToPathMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundTransformMotion
+          name: RotateAroundTransformMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundTransformMotion.Builder
+          name: RotateAroundTransformMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundVectorMotion
+          name: RotateAroundVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
+          name: RotateAroundVectorMotion.AbstractRotateAroundBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundVectorMotion.Builder
+          name: RotateAroundVectorMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAxisMotion
+          name: RotateAxisMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAxisMotion.FromToBuilder
+          name: RotateAxisMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAxisMotion.ValueBuilder
+          name: RotateAxisMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalAxisMotion
+          name: RotateLocalAxisMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalAxisMotion.FromToBuilder
+          name: RotateLocalAxisMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalAxisMotion.ValueBuilder
+          name: RotateLocalAxisMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalQuaternionMotion
+          name: RotateLocalQuaternionMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalQuaternionMotion.FromToBuilder
+          name: RotateLocalQuaternionMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalQuaternionMotion.ValueBuilder
+          name: RotateLocalQuaternionMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalVectorMotion
+          name: RotateLocalVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalVectorMotion.FromToBuilder
+          name: RotateLocalVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalVectorMotion.ValueBuilder
+          name: RotateLocalVectorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateQuaternionMotion
+          name: RotateQuaternionMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateQuaternionMotion.FromToBuilder
+          name: RotateQuaternionMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateQuaternionMotion.ValueBuilder
+          name: RotateQuaternionMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateVectorMotion
+          name: RotateVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateVectorMotion.FromToBuilder
+          name: RotateVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateVectorMotion.ValueBuilder
+          name: RotateVectorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAnimationCurve3dMotion
+          name: ScaleLocalAnimationCurve3dMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAnimationCurve3dMotion.Builder
+          name: ScaleLocalAnimationCurve3dMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAxisMotion
+          name: ScaleLocalAxisMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAxisMotion.FromToBuilder
+          name: ScaleLocalAxisMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAxisMotion.ValueBuilder
+          name: ScaleLocalAxisMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalVectorMotion
+          name: ScaleLocalVectorMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalVectorMotion.FromToBuilder
+          name: ScaleLocalVectorMotion.FromToBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalVectorMotion.ValueBuilder
+          name: ScaleLocalVectorMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.UI
+        name: UI
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups
+          name: CanvasGroups
+          items:
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
+            name: AlphaMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.FromToBuilder
+            name: AlphaMotion.FromToBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
+            name: AlphaMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
+          name: Graphics
+          items:
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion
+            name: AlphaMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.FromToBuilder
+            name: AlphaMotion.FromToBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
+            name: AlphaMotion.ValueBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorGradientMotion
+            name: ColorGradientMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorGradientMotion.Builder
+            name: ColorGradientMotion.Builder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion
+            name: ColorMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.FromToBuilder
+            name: ColorMotion.FromToBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
+            name: ColorMotion.ValueBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+          name: RectTransforms
+          items:
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+            name: AnchorPreset
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+            name: AnchorPresetData
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetFactory
+            name: AnchorPresetFactory
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+            name: MoveAnchorMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder
+            name: MoveAnchorMotion.FromToBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder
+            name: MoveAnchorMotion.ValueBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion
+            name: MoveAnchoredPositionCurveMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder
+            name: MoveAnchoredPositionCurveMotion.Builder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+            name: MoveAnchoredPositionVectorMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder
+            name: MoveAnchoredPositionVectorMotion.FromToBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder
+            name: MoveAnchoredPositionVectorMotion.ValueBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+            name: MovePivotMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder
+            name: MovePivotMotion.FromToBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder
+            name: MovePivotMotion.PresetFromToBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder
+            name: MovePivotMotion.PresetValueBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder
+            name: MovePivotMotion.ValueBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPreset
+            name: PivotPreset
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPresetFactory
+            name: PivotPresetFactory
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+            name: ScaleSizeDeltaMotion
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder
+            name: ScaleSizeDeltaMotion.FromToBuilder
+          - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder
+            name: ScaleSizeDeltaMotion.ValueBuilder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.Values
+        name: Values
+        items:
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion`1
+          name: AbstractEventMotion<T>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion`1.AbstractEventMotionBuilder
+          name: AbstractEventMotion<T>.AbstractEventMotionBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractValueMotion`1
+          name: AbstractValueMotion<T>
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractValueMotion`1.AbstractValueMotionBuilder
+          name: AbstractValueMotion<T>.AbstractValueMotionBuilder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
+          name: AnimationCurve2dValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
+          name: AnimationCurve2dValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
+          name: AnimationCurve3dValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
+          name: AnimationCurve3dValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
+          name: AnimationCurveValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
+          name: AnimationCurveValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
+          name: Color32ValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
+          name: Color32ValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
+          name: ColorValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
+          name: ColorValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
+          name: CurveValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
+          name: CurveValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
+          name: FloatValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
+          name: FloatValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
+          name: IntValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
+          name: IntValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
+          name: QuaternionValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
+          name: QuaternionValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
+          name: Vector2ValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
+          name: Vector2ValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
+          name: Vector3ValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
+          name: Vector3ValueMotion.Builder
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector4ValueMotion
+          name: Vector4ValueMotion
+        - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector4ValueMotion.Builder
+          name: Vector4ValueMotion.Builder
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion
+        name: DebugMotion
+      - uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder
+        name: DebugMotion.Builder
   - uid: FriedSynapse.FlowEnt.AbstractAnimation
     name: AbstractAnimation
   - uid: FriedSynapse.FlowEnt.AbstractAnimationBuilder`1
@@ -251,988 +1236,4 @@ items:
     name: UrlButtonAttribute.PredefinedType
   - uid: FriedSynapse.FlowEnt.ValueMotionExtensions
     name: ValueMotionExtensions
-- uid: FriedSynapse.FlowEnt.Easings
-  name: FriedSynapse.FlowEnt.Easings
-  items:
-  - uid: FriedSynapse.FlowEnt.Easings.AbstractOscilationEasing
-    name: AbstractOscilationEasing
-  - uid: FriedSynapse.FlowEnt.Easings.AnimationCurveEasing
-    name: AnimationCurveEasing
-  - uid: FriedSynapse.FlowEnt.Easings.BounceEasing
-    name: BounceEasing
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInBack
-    name: EaseInBack
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInBounce
-    name: EaseInBounce
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInCirc
-    name: EaseInCirc
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInCubic
-    name: EaseInCubic
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInElastic
-    name: EaseInElastic
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInExpo
-    name: EaseInExpo
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutBack
-    name: EaseInOutBack
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutBounce
-    name: EaseInOutBounce
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutCirc
-    name: EaseInOutCirc
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutCubic
-    name: EaseInOutCubic
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutElastic
-    name: EaseInOutElastic
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutExpo
-    name: EaseInOutExpo
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutQuad
-    name: EaseInOutQuad
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutQuart
-    name: EaseInOutQuart
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutQuint
-    name: EaseInOutQuint
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInOutSine
-    name: EaseInOutSine
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInQuad
-    name: EaseInQuad
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInQuart
-    name: EaseInQuart
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInQuint
-    name: EaseInQuint
-  - uid: FriedSynapse.FlowEnt.Easings.EaseInSine
-    name: EaseInSine
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutBack
-    name: EaseOutBack
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutBounce
-    name: EaseOutBounce
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutCirc
-    name: EaseOutCirc
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutCubic
-    name: EaseOutCubic
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutElastic
-    name: EaseOutElastic
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutExpo
-    name: EaseOutExpo
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutQuad
-    name: EaseOutQuad
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutQuart
-    name: EaseOutQuart
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutQuint
-    name: EaseOutQuint
-  - uid: FriedSynapse.FlowEnt.Easings.EaseOutSine
-    name: EaseOutSine
-  - uid: FriedSynapse.FlowEnt.Easings.EasingExtensions
-    name: EasingExtensions
-  - uid: FriedSynapse.FlowEnt.Easings.EasingFactory
-    name: EasingFactory
-  - uid: FriedSynapse.FlowEnt.Easings.FunctionEasing
-    name: FunctionEasing
-  - uid: FriedSynapse.FlowEnt.Easings.IEasing
-    name: IEasing
-  - uid: FriedSynapse.FlowEnt.Easings.LinearEasing
-    name: LinearEasing
-  - uid: FriedSynapse.FlowEnt.Easings.ReverseEasing
-    name: ReverseEasing
-  - uid: FriedSynapse.FlowEnt.Easings.ShakeEasing
-    name: ShakeEasing
-- uid: FriedSynapse.FlowEnt.Editor
-  name: FriedSynapse.FlowEnt.Editor
-  items:
-  - uid: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer`2
-    name: AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder>
-  - uid: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer`1
-    name: AbstractEventsBuilderPropertyDrawer<TPropertiesEnum>
-  - uid: FriedSynapse.FlowEnt.Editor.AbstractIfAttributeDrawer
-    name: AbstractIfAttributeDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
-    name: AbstractListBuilderPropertyDrawer<TListItem>
-  - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1.Data
-    name: AbstractListBuilderPropertyDrawer<TListItem>.Data
-  - uid: FriedSynapse.FlowEnt.Editor.AbstractMotionBuilderPropertyDrawer
-    name: AbstractMotionBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer`1
-    name: AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum>
-  - uid: FriedSynapse.FlowEnt.Editor.AnimationListBuilderPropertyDrawer
-    name: AnimationListBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.AutoAssignButtonAttributeDrawer
-    name: AutoAssignButtonAttributeDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.CreateNewMotionScriptHelper
-    name: CreateNewMotionScriptHelper
-  - uid: FriedSynapse.FlowEnt.Editor.CurveBuilderPropertyDrawer
-    name: CurveBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.DisplayNamePropertyDrawer
-    name: DisplayNamePropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.EchoBuilderPropertyDrawer
-    name: EchoBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer
-    name: EchoEventsBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum
-    name: EchoEventsBuilderPropertyDrawer.FieldsEnum
-  - uid: FriedSynapse.FlowEnt.Editor.EchoMotionsBuilderPropertyDrawer
-    name: EchoMotionsBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer
-    name: EchoOptionsBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum
-    name: EchoOptionsBuilderPropertyDrawer.FieldsEnum
-  - uid: FriedSynapse.FlowEnt.Editor.EnableIfAttributeDrawer
-    name: EnableIfAttributeDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.FlowBuilderPropertyDrawer
-    name: FlowBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.FlowEntMenu
-    name: FlowEntMenu
-  - uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer
-    name: FlowEventsBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum
-    name: FlowEventsBuilderPropertyDrawer.FieldsEnum
-  - uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer
-    name: FlowOptionsBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum
-    name: FlowOptionsBuilderPropertyDrawer.FieldsEnum
-  - uid: FriedSynapse.FlowEnt.Editor.FlowQueueAnimationBuilderPropertyDrawer
-    name: FlowQueueAnimationBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.FlowQueuesBuilderPropertyDrawer
-    name: FlowQueuesBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable
-    name: FoldoutScrollable
-  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory
-    name: FoldoutScrollable.UxmlFactory
-  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits
-    name: FoldoutScrollable.UxmlTraits
-  - uid: FriedSynapse.FlowEnt.Editor.GenericMenuExtensions
-    name: GenericMenuExtensions
-  - uid: FriedSynapse.FlowEnt.Editor.GizmoOptionsPropertyDrawer
-    name: GizmoOptionsPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.Icon
-    name: Icon
-  - uid: FriedSynapse.FlowEnt.Editor.MaterialBuilderPropertyDrawer
-    name: MaterialBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.MaterialBuilderWithPropertyPropertyDrawer
-    name: MaterialBuilderWithPropertyPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.PreviewController
-    name: PreviewController
-  - uid: FriedSynapse.FlowEnt.Editor.PreviewController.Options
-    name: PreviewController.Options
-  - uid: FriedSynapse.FlowEnt.Editor.PropertyDrawer`1
-    name: PropertyDrawer<TData>
-  - uid: FriedSynapse.FlowEnt.Editor.RandomBuilderPropertyDrawer
-    name: RandomBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.ShowIfAttributeDrawer
-    name: ShowIfAttributeDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.TweenBuilderPropertyDrawer
-    name: TweenBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer
-    name: TweenEventsBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum
-    name: TweenEventsBuilderPropertyDrawer.FieldsEnum
-  - uid: FriedSynapse.FlowEnt.Editor.TweenMotionsBuilderPropertyDrawer
-    name: TweenMotionsBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer
-    name: TweenOptionsBuilderPropertyDrawer
-  - uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum
-    name: TweenOptionsBuilderPropertyDrawer.FieldsEnum
-  - uid: FriedSynapse.FlowEnt.Editor.UrlButtonAttributeDrawer
-    name: UrlButtonAttributeDrawer
-- uid: FriedSynapse.FlowEnt.Motions.Abstract
-  name: FriedSynapse.FlowEnt.Motions.Abstract
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Abstract.IMotion
-    name: IMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo
-  name: FriedSynapse.FlowEnt.Motions.Echo
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion
-    name: DebugMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder
-    name: DebugMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.SpeedType
-    name: SpeedType
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract
-  name: FriedSynapse.FlowEnt.Motions.Echo.Abstract
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion
-    name: AbstractEchoMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion`1
-    name: AbstractEchoMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion`1.AbstractBuilder
-    name: AbstractEchoMotion<TItem>.AbstractBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
-    name: AbstractFloatSpeedMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
-    name: AbstractFloatSpeedMotion<TItem>.AbstractFloatSpeedBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
-    name: AbstractFloatSpeedTypeMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
-    name: AbstractFloatSpeedTypeMotion<TItem>.AbstractFloatSpeedTypeBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion`1
-    name: AbstractVector3SpeedMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion`1.AbstractVector3SpeedBuilder
-    name: AbstractVector3SpeedMotion<TItem>.AbstractVector3SpeedBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion
-    name: IEchoMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
-  name: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion
-    name: MoveByInputMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.MoveByInputMotion.Builder
-    name: MoveByInputMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion
-    name: RotateByInputMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers.RotateByInputMotion.Builder
-    name: RotateByInputMotion.Builder
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs
-  name: FriedSynapse.FlowEnt.Motions.Echo.Inputs
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
-    name: ButtonDownMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
-    name: ButtonMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
-    name: ButtonUpMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputIntMotion
-    name: InputIntMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputKeyCodeMotion
-    name: InputKeyCodeMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputStringMotion
-    name: InputStringMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
-    name: KeyDownMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
-    name: KeyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
-    name: KeyUpMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonDownMotion
-    name: MouseButtonDownMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonMotion
-    name: MouseButtonMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonUpMotion
-    name: MouseButtonUpMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
-  name: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
-    name: ConvergeToTransformMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.Builder
-    name: ConvergeToTransformMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion
-    name: ConvergeToVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion.Builder
-    name: ConvergeToVectorMotion.Builder
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
-  name: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.JumpByInputMotion
-    name: JumpByInputMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.JumpByInputMotion.Builder
-    name: JumpByInputMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion
-    name: MoveByInputMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.MoveByInputMotion.Builder
-    name: MoveByInputMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion
-    name: RotateByInputMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies.RotateByInputMotion.Builder
-    name: RotateByInputMotion.Builder
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms
-  name: FriedSynapse.FlowEnt.Motions.Echo.Transforms
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion
-    name: LookAtTransformMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtTransformMotion.Builder
-    name: LookAtTransformMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion
-    name: LookAtVector3Motion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.LookAtVector3Motion.Builder
-    name: LookAtVector3Motion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToTransformMotion
-    name: MoveToTransformMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToTransformMotion.Builder
-    name: MoveToTransformMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToVectorMotion
-    name: MoveToVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveToVectorMotion.Builder
-    name: MoveToVectorMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion
-    name: MoveVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.MoveVectorMotion.Builder
-    name: MoveVectorMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion
-    name: RotateAroundTransformMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundTransformMotion.Builder
-    name: RotateAroundTransformMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion
-    name: RotateAroundVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
-    name: RotateAroundVectorMotion.AbstractRotateAroundBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateAroundVectorMotion.Builder
-    name: RotateAroundVectorMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToQuaternionMotion
-    name: RotateToQuaternionMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToQuaternionMotion.Builder
-    name: RotateToQuaternionMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion
-    name: RotateToTransformMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateToTransformMotion.Builder
-    name: RotateToTransformMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion
-    name: RotateVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.RotateVectorMotion.Builder
-    name: RotateVectorMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion
-    name: ScaleToTransformMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToTransformMotion.Builder
-    name: ScaleToTransformMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion
-    name: ScaleToVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleToVectorMotion.Builder
-    name: ScaleToVectorMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion
-    name: ScaleVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Transforms.ScaleVectorMotion.Builder
-    name: ScaleVectorMotion.Builder
-- uid: FriedSynapse.FlowEnt.Motions.Tween
-  name: FriedSynapse.FlowEnt.Motions.Tween
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion
-    name: DebugMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder
-    name: DebugMotion.Builder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
-  name: FriedSynapse.FlowEnt.Motions.Tween.Abstract
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion`1
-    name: AbstractAlphaMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
-    name: AbstractAnimationCurve3dMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1.AbstractAnimationCurve3dBuilder
-    name: AbstractAnimationCurve3dMotion<TItem>.AbstractAnimationCurve3dBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
-    name: AbstractAxisMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisFromToBuilder
-    name: AbstractAxisMotion<TItem>.AbstractAxisFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisValueBuilder
-    name: AbstractAxisMotion<TItem>.AbstractAxisValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
-    name: AbstractClassValueMotion<TItem, TValue>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder
-    name: AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder`1
-    name: AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
-    name: AbstractColorGradientMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1.AbstractGradientBuilder
-    name: AbstractColorGradientMotion<TItem>.AbstractGradientBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
-    name: AbstractColorLinearMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractFromToBuilder
-    name: AbstractColorLinearMotion<TItem>.AbstractFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractValueBuilder
-    name: AbstractColorLinearMotion<TItem>.AbstractValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
-    name: AbstractColorMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractFromToBuilder
-    name: AbstractColorMotion<TItem>.AbstractFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractValueBuilder
-    name: AbstractColorMotion<TItem>.AbstractValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
-    name: AbstractCurveMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1.AbstractBuilder
-    name: AbstractCurveMotion<TItem>.AbstractBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion`1
-    name: AbstractFloatLinearMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
-    name: AbstractFloatMinMaxMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion`1
-    name: AbstractFloatMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion`1
-    name: AbstractGradientMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion`1
-    name: AbstractIntMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion`1
-    name: AbstractQuaternionMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion`1
-    name: AbstractRandomFloatMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
-    name: AbstractRandomStructValueMotion<TItem, TValue>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder
-    name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder`1
-    name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder
-    name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder`1
-    name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder<T>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion`1
-    name: AbstractRandomVector3Motion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion`1
-    name: AbstractRectMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
-    name: AbstractRotateAxisMotion<TTransform>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisFromToBuilder
-    name: AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisValueBuilder
-    name: AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
-    name: AbstractStructValueMotion<TItem, TValue>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder
-    name: AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder`1
-    name: AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
-    name: AbstractTweenMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
-    name: AbstractTweenMotion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.AbstractBuilder
-    name: AbstractTweenMotion<TItem>.AbstractBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
-    name: AbstractValueMotion<TItem, TValue>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder
-    name: AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder`1
-    name: AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder
-    name: AbstractValueMotion<TItem, TValue>.AbstractValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder`1
-    name: AbstractValueMotion<TItem, TValue>.AbstractValueBuilder<T>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion`1
-    name: AbstractVector2Motion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion`1
-    name: AbstractVector3Motion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion`1
-    name: AbstractVector4Motion<TItem>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
-    name: ITweenMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources
-  name: FriedSynapse.FlowEnt.Motions.Tween.AudioSources
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion
-    name: PitchMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.FromToBuilder
-    name: PitchMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.PitchMotion.ValueBuilder
-    name: PitchMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion
-    name: VolumeMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.FromToBuilder
-    name: VolumeMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.AudioSources.VolumeMotion.ValueBuilder
-    name: VolumeMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras
-  name: FriedSynapse.FlowEnt.Motions.Tween.Cameras
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorGradientMotion
-    name: BackgroundColorGradientMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorGradientMotion.Builder
-    name: BackgroundColorGradientMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorMotion
-    name: BackgroundColorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorMotion.FromToBuilder
-    name: BackgroundColorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.BackgroundColorMotion.ValueBuilder
-    name: BackgroundColorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FarClipPlaneMotion
-    name: FarClipPlaneMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FarClipPlaneMotion.FromToBuilder
-    name: FarClipPlaneMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FarClipPlaneMotion.ValueBuilder
-    name: FarClipPlaneMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FieldOfViewMotion
-    name: FieldOfViewMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FieldOfViewMotion.FromToBuilder
-    name: FieldOfViewMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.FieldOfViewMotion.ValueBuilder
-    name: FieldOfViewMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.NearClipPlaneMotion
-    name: NearClipPlaneMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.NearClipPlaneMotion.FromToBuilder
-    name: NearClipPlaneMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.NearClipPlaneMotion.ValueBuilder
-    name: NearClipPlaneMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.OrthographicSizeMotion
-    name: OrthographicSizeMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.OrthographicSizeMotion.FromToBuilder
-    name: OrthographicSizeMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.OrthographicSizeMotion.ValueBuilder
-    name: OrthographicSizeMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.RectMotion
-    name: RectMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.RectMotion.FromToBuilder
-    name: RectMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Cameras.RectMotion.ValueBuilder
-    name: RectMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights
-  name: FriedSynapse.FlowEnt.Motions.Tween.Lights
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion
-    name: ColorGradientMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder
-    name: ColorGradientMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
-    name: ColorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder
-    name: ColorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder
-    name: ColorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
-    name: IntensityMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder
-    name: IntensityMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder
-    name: IntensityMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
-    name: RangeMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder
-    name: RangeMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder
-    name: RangeMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
-    name: ShadowStrengthMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder
-    name: ShadowStrengthMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder
-    name: ShadowStrengthMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers
-  name: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.ColorLinearMotion
-    name: ColorLinearMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.ColorLinearMotion.FromToBuilder
-    name: ColorLinearMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.ColorLinearMotion.ValueBuilder
-    name: ColorLinearMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.GradientMotion
-    name: GradientMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.GradientMotion.FromToBuilder
-    name: GradientMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.GradientMotion.ValueBuilder
-    name: GradientMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.MoveVertexVectorMotion
-    name: MoveVertexVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.MoveVertexVectorMotion.FromToBuilder
-    name: MoveVertexVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.MoveVertexVectorMotion.ValueBuilder
-    name: MoveVertexVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.WidthLinearMotion
-    name: WidthLinearMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.WidthLinearMotion.FromToBuilder
-    name: WidthLinearMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.LineRenderers.WidthLinearMotion.ValueBuilder
-    name: WidthLinearMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Materials
-  name: FriedSynapse.FlowEnt.Motions.Tween.Materials
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaMotion
-    name: AlphaMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaMotion.FromToBuilder
-    name: AlphaMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaMotion.ValueBuilder
-    name: AlphaMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaPropertyMotion
-    name: AlphaPropertyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaPropertyMotion.FromToBuilder
-    name: AlphaPropertyMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.AlphaPropertyMotion.ValueBuilder
-    name: AlphaPropertyMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorGradientMotion
-    name: ColorGradientMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorGradientMotion.Builder
-    name: ColorGradientMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorGradientPropertyMotion
-    name: ColorGradientPropertyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorGradientPropertyMotion.GradientBuilder
-    name: ColorGradientPropertyMotion.GradientBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorMotion
-    name: ColorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorMotion.FromToBuilder
-    name: ColorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorMotion.ValueBuilder
-    name: ColorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorPropertyMotion
-    name: ColorPropertyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorPropertyMotion.FromToBuilder
-    name: ColorPropertyMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.ColorPropertyMotion.ValueBuilder
-    name: ColorPropertyMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.FloatPropertyMotion
-    name: FloatPropertyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.FloatPropertyMotion.FromToBuilder
-    name: FloatPropertyMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.FloatPropertyMotion.ValueBuilder
-    name: FloatPropertyMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.IntPropertyMotion
-    name: IntPropertyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.IntPropertyMotion.FromToBuilder
-    name: IntPropertyMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.IntPropertyMotion.ValueBuilder
-    name: IntPropertyMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureOffsetPropertyMotion
-    name: TextureOffsetPropertyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureOffsetPropertyMotion.FromToBuilder
-    name: TextureOffsetPropertyMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureOffsetPropertyMotion.ValueBuilder
-    name: TextureOffsetPropertyMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureScalePropertyMotion
-    name: TextureScalePropertyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureScalePropertyMotion.FromToBuilder
-    name: TextureScalePropertyMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.TextureScalePropertyMotion.ValueBuilder
-    name: TextureScalePropertyMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.VectorPropertyMotion
-    name: VectorPropertyMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.VectorPropertyMotion.FromToBuilder
-    name: VectorPropertyMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Materials.VectorPropertyMotion.ValueBuilder
-    name: VectorPropertyMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
-  name: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.AngularVelocityMotion
-    name: AngularVelocityMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.AngularVelocityMotion.FromToBuilder
-    name: AngularVelocityMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.AngularVelocityMotion.ValueBuilder
-    name: AngularVelocityMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MassMotion
-    name: MassMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MassMotion.FromToBuilder
-    name: MassMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MassMotion.ValueBuilder
-    name: MassMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAnimationCurve3dMotion
-    name: MoveAnimationCurve3dMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAnimationCurve3dMotion.Builder
-    name: MoveAnimationCurve3dMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAxisMotion
-    name: MoveAxisMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAxisMotion.FromToBuilder
-    name: MoveAxisMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveAxisMotion.ValueBuilder
-    name: MoveAxisMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveCurveMotion
-    name: MoveCurveMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveCurveMotion.Builder
-    name: MoveCurveMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveVectorMotion
-    name: MoveVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveVectorMotion.FromToBuilder
-    name: MoveVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.MoveVectorMotion.ValueBuilder
-    name: MoveVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateQuaternionMotion
-    name: RotateQuaternionMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateQuaternionMotion.FromToBuilder
-    name: RotateQuaternionMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateQuaternionMotion.ValueBuilder
-    name: RotateQuaternionMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateVectorMotion
-    name: RotateVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateVectorMotion.FromToBuilder
-    name: RotateVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.RotateVectorMotion.ValueBuilder
-    name: RotateVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.VelocityMotion
-    name: VelocityMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.VelocityMotion.FromToBuilder
-    name: VelocityMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies.VelocityMotion.ValueBuilder
-    name: VelocityMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers
-  name: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorGradientMotion
-    name: ColorGradientMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorGradientMotion.Builder
-    name: ColorGradientMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorMotion
-    name: ColorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorMotion.FromToBuilder
-    name: ColorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.ColorMotion.ValueBuilder
-    name: ColorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.SizeMotion
-    name: SizeMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.SizeMotion.FromToBuilder
-    name: SizeMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.SpriteRenderers.SizeMotion.ValueBuilder
-    name: SizeMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
-  name: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
-    name: ColorLinearMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder
-    name: ColorLinearMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder
-    name: ColorLinearMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
-    name: GradientMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder
-    name: GradientMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder
-    name: GradientMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
-    name: MoveVertexVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder
-    name: MoveVertexVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder
-    name: MoveVertexVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
-    name: WidthLinearMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder
-    name: WidthLinearMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder
-    name: WidthLinearMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms
-  name: FriedSynapse.FlowEnt.Motions.Tween.Transforms
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.LookAtTransformMotion
-    name: LookAtTransformMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.LookAtTransformMotion.Builder
-    name: LookAtTransformMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.LookAtVector3Motion
-    name: LookAtVector3Motion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.LookAtVector3Motion.Builder
-    name: LookAtVector3Motion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAnimationCurve3dMotion
-    name: MoveAnimationCurve3dMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAnimationCurve3dMotion.Builder
-    name: MoveAnimationCurve3dMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAxisMotion
-    name: MoveAxisMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAxisMotion.FromToBuilder
-    name: MoveAxisMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveAxisMotion.ValueBuilder
-    name: MoveAxisMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveCurveMotion
-    name: MoveCurveMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveCurveMotion.Builder
-    name: MoveCurveMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAnimationCurve3dMotion
-    name: MoveLocalAnimationCurve3dMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAnimationCurve3dMotion.Builder
-    name: MoveLocalAnimationCurve3dMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAxisMotion
-    name: MoveLocalAxisMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAxisMotion.FromToBuilder
-    name: MoveLocalAxisMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalAxisMotion.ValueBuilder
-    name: MoveLocalAxisMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalCurveMotion
-    name: MoveLocalCurveMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalCurveMotion.Builder
-    name: MoveLocalCurveMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalVectorMotion
-    name: MoveLocalVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalVectorMotion.FromToBuilder
-    name: MoveLocalVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveLocalVectorMotion.ValueBuilder
-    name: MoveLocalVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveVectorMotion
-    name: MoveVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveVectorMotion.FromToBuilder
-    name: MoveVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.MoveVectorMotion.ValueBuilder
-    name: MoveVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.OrientToPathMotion
-    name: OrientToPathMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.OrientToPathMotion.Builder
-    name: OrientToPathMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundTransformMotion
-    name: RotateAroundTransformMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundTransformMotion.Builder
-    name: RotateAroundTransformMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundVectorMotion
-    name: RotateAroundVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundVectorMotion.AbstractRotateAroundBuilder
-    name: RotateAroundVectorMotion.AbstractRotateAroundBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAroundVectorMotion.Builder
-    name: RotateAroundVectorMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAxisMotion
-    name: RotateAxisMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAxisMotion.FromToBuilder
-    name: RotateAxisMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateAxisMotion.ValueBuilder
-    name: RotateAxisMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalAxisMotion
-    name: RotateLocalAxisMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalAxisMotion.FromToBuilder
-    name: RotateLocalAxisMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalAxisMotion.ValueBuilder
-    name: RotateLocalAxisMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalQuaternionMotion
-    name: RotateLocalQuaternionMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalQuaternionMotion.FromToBuilder
-    name: RotateLocalQuaternionMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalQuaternionMotion.ValueBuilder
-    name: RotateLocalQuaternionMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalVectorMotion
-    name: RotateLocalVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalVectorMotion.FromToBuilder
-    name: RotateLocalVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateLocalVectorMotion.ValueBuilder
-    name: RotateLocalVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateQuaternionMotion
-    name: RotateQuaternionMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateQuaternionMotion.FromToBuilder
-    name: RotateQuaternionMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateQuaternionMotion.ValueBuilder
-    name: RotateQuaternionMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateVectorMotion
-    name: RotateVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateVectorMotion.FromToBuilder
-    name: RotateVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.RotateVectorMotion.ValueBuilder
-    name: RotateVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAnimationCurve3dMotion
-    name: ScaleLocalAnimationCurve3dMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAnimationCurve3dMotion.Builder
-    name: ScaleLocalAnimationCurve3dMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAxisMotion
-    name: ScaleLocalAxisMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAxisMotion.FromToBuilder
-    name: ScaleLocalAxisMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalAxisMotion.ValueBuilder
-    name: ScaleLocalAxisMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalVectorMotion
-    name: ScaleLocalVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalVectorMotion.FromToBuilder
-    name: ScaleLocalVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Transforms.ScaleLocalVectorMotion.ValueBuilder
-    name: ScaleLocalVectorMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups
-  name: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
-    name: AlphaMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.FromToBuilder
-    name: AlphaMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.ValueBuilder
-    name: AlphaMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
-  name: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion
-    name: AlphaMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.FromToBuilder
-    name: AlphaMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
-    name: AlphaMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorGradientMotion
-    name: ColorGradientMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorGradientMotion.Builder
-    name: ColorGradientMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion
-    name: ColorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.FromToBuilder
-    name: ColorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
-    name: ColorMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
-  name: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
-    name: AnchorPreset
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
-    name: AnchorPresetData
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetFactory
-    name: AnchorPresetFactory
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
-    name: MoveAnchorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder
-    name: MoveAnchorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder
-    name: MoveAnchorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion
-    name: MoveAnchoredPositionCurveMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder
-    name: MoveAnchoredPositionCurveMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
-    name: MoveAnchoredPositionVectorMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder
-    name: MoveAnchoredPositionVectorMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder
-    name: MoveAnchoredPositionVectorMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
-    name: MovePivotMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder
-    name: MovePivotMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder
-    name: MovePivotMotion.PresetFromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder
-    name: MovePivotMotion.PresetValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder
-    name: MovePivotMotion.ValueBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPreset
-    name: PivotPreset
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPresetFactory
-    name: PivotPresetFactory
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
-    name: ScaleSizeDeltaMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder
-    name: ScaleSizeDeltaMotion.FromToBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder
-    name: ScaleSizeDeltaMotion.ValueBuilder
-- uid: FriedSynapse.FlowEnt.Motions.Tween.Values
-  name: FriedSynapse.FlowEnt.Motions.Tween.Values
-  items:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion`1
-    name: AbstractEventMotion<T>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractEventMotion`1.AbstractEventMotionBuilder
-    name: AbstractEventMotion<T>.AbstractEventMotionBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractValueMotion`1
-    name: AbstractValueMotion<T>
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AbstractValueMotion`1.AbstractValueMotionBuilder
-    name: AbstractValueMotion<T>.AbstractValueMotionBuilder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion
-    name: AnimationCurve2dValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve2dValueMotion.Builder
-    name: AnimationCurve2dValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion
-    name: AnimationCurve3dValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurve3dValueMotion.Builder
-    name: AnimationCurve3dValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion
-    name: AnimationCurveValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.AnimationCurveValueMotion.Builder
-    name: AnimationCurveValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion
-    name: Color32ValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Color32ValueMotion.Builder
-    name: Color32ValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion
-    name: ColorValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.ColorValueMotion.Builder
-    name: ColorValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion
-    name: CurveValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.CurveValueMotion.Builder
-    name: CurveValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion
-    name: FloatValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.FloatValueMotion.Builder
-    name: FloatValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion
-    name: IntValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.IntValueMotion.Builder
-    name: IntValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion
-    name: QuaternionValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.QuaternionValueMotion.Builder
-    name: QuaternionValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion
-    name: Vector2ValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector2ValueMotion.Builder
-    name: Vector2ValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion
-    name: Vector3ValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector3ValueMotion.Builder
-    name: Vector3ValueMotion.Builder
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector4ValueMotion
-    name: Vector4ValueMotion
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.Values.Vector4ValueMotion.Builder
-    name: Vector4ValueMotion.Builder
-- uid: FriedSynapse.FlowEnt.Reflection
-  name: FriedSynapse.FlowEnt.Reflection
-  items:
-  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
-    name: ReflectionExtensions
 memberLayout: SamePage

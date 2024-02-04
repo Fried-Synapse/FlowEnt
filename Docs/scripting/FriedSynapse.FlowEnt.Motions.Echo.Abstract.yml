@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract
   commentId: N:FriedSynapse.FlowEnt.Motions.Echo.Abstract
-  id: FriedSynapse.FlowEnt.Motions.Echo.Abstract
+  id: Abstract
+  parent: FriedSynapse.FlowEnt.Motions.Echo
   children:
   - FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion
   - FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion`1
@@ -22,129 +23,6 @@ items:
   fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract
   type: Namespace
 references:
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
-  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
-  name: AbstractFloatSpeedTypeMotion<TItem>
-  nameWithType: AbstractFloatSpeedTypeMotion<TItem>
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion<TItem>
-  nameWithType.vb: AbstractFloatSpeedTypeMotion(Of TItem)
-  fullName.vb: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion(Of TItem)
-  name.vb: AbstractFloatSpeedTypeMotion(Of TItem)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
-    name: AbstractFloatSpeedTypeMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
-  - name: <
-  - name: TItem
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
-    name: AbstractFloatSpeedTypeMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
-  - name: )
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
-  name: AbstractFloatSpeedTypeMotion<TItem>.AbstractFloatSpeedTypeBuilder
-  nameWithType: AbstractFloatSpeedTypeMotion<TItem>.AbstractFloatSpeedTypeBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion<TItem>.AbstractFloatSpeedTypeBuilder
-  nameWithType.vb: AbstractFloatSpeedTypeMotion(Of TItem).AbstractFloatSpeedTypeBuilder
-  fullName.vb: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion(Of TItem).AbstractFloatSpeedTypeBuilder
-  name.vb: AbstractFloatSpeedTypeMotion(Of TItem).AbstractFloatSpeedTypeBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
-    name: AbstractFloatSpeedTypeMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
-  - name: <
-  - name: TItem
-  - name: '>'
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
-    name: AbstractFloatSpeedTypeBuilder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.AbstractFloatSpeedTypeBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
-    name: AbstractFloatSpeedTypeMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
-  - name: )
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
-    name: AbstractFloatSpeedTypeBuilder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.AbstractFloatSpeedTypeBuilder.html
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion
-  parent: FriedSynapse.FlowEnt.Motions.Echo.Abstract
-  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion.html
-  name: IEchoMotion
-  nameWithType: IEchoMotion
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
-  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
-  name: AbstractFloatSpeedMotion<TItem>
-  nameWithType: AbstractFloatSpeedMotion<TItem>
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion<TItem>
-  nameWithType.vb: AbstractFloatSpeedMotion(Of TItem)
-  fullName.vb: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion(Of TItem)
-  name.vb: AbstractFloatSpeedMotion(Of TItem)
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
-    name: AbstractFloatSpeedMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
-  - name: <
-  - name: TItem
-  - name: '>'
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
-    name: AbstractFloatSpeedMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
-  - name: )
-- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
-  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
-  name: AbstractFloatSpeedMotion<TItem>.AbstractFloatSpeedBuilder
-  nameWithType: AbstractFloatSpeedMotion<TItem>.AbstractFloatSpeedBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion<TItem>.AbstractFloatSpeedBuilder
-  nameWithType.vb: AbstractFloatSpeedMotion(Of TItem).AbstractFloatSpeedBuilder
-  fullName.vb: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion(Of TItem).AbstractFloatSpeedBuilder
-  name.vb: AbstractFloatSpeedMotion(Of TItem).AbstractFloatSpeedBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
-    name: AbstractFloatSpeedMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
-  - name: <
-  - name: TItem
-  - name: '>'
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
-    name: AbstractFloatSpeedBuilder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.AbstractFloatSpeedBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
-    name: AbstractFloatSpeedMotion
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TItem
-  - name: )
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
-    name: AbstractFloatSpeedBuilder
-    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.AbstractFloatSpeedBuilder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion
   parent: FriedSynapse.FlowEnt.Motions.Echo.Abstract
@@ -210,6 +88,122 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion`1.AbstractBuilder
     name: AbstractBuilder
     href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractEchoMotion-1.AbstractBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
+  name: AbstractFloatSpeedMotion<TItem>
+  nameWithType: AbstractFloatSpeedMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion<TItem>
+  nameWithType.vb: AbstractFloatSpeedMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion(Of TItem)
+  name.vb: AbstractFloatSpeedMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
+    name: AbstractFloatSpeedMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
+    name: AbstractFloatSpeedMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
+  name: AbstractFloatSpeedMotion<TItem>.AbstractFloatSpeedBuilder
+  nameWithType: AbstractFloatSpeedMotion<TItem>.AbstractFloatSpeedBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion<TItem>.AbstractFloatSpeedBuilder
+  nameWithType.vb: AbstractFloatSpeedMotion(Of TItem).AbstractFloatSpeedBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion(Of TItem).AbstractFloatSpeedBuilder
+  name.vb: AbstractFloatSpeedMotion(Of TItem).AbstractFloatSpeedBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
+    name: AbstractFloatSpeedMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
+    name: AbstractFloatSpeedBuilder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.AbstractFloatSpeedBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1
+    name: AbstractFloatSpeedMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion`1.AbstractFloatSpeedBuilder
+    name: AbstractFloatSpeedBuilder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedMotion-1.AbstractFloatSpeedBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
+  name: AbstractFloatSpeedTypeMotion<TItem>
+  nameWithType: AbstractFloatSpeedTypeMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion<TItem>
+  nameWithType.vb: AbstractFloatSpeedTypeMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion(Of TItem)
+  name.vb: AbstractFloatSpeedTypeMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
+    name: AbstractFloatSpeedTypeMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
+    name: AbstractFloatSpeedTypeMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
+  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
+  name: AbstractFloatSpeedTypeMotion<TItem>.AbstractFloatSpeedTypeBuilder
+  nameWithType: AbstractFloatSpeedTypeMotion<TItem>.AbstractFloatSpeedTypeBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion<TItem>.AbstractFloatSpeedTypeBuilder
+  nameWithType.vb: AbstractFloatSpeedTypeMotion(Of TItem).AbstractFloatSpeedTypeBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion(Of TItem).AbstractFloatSpeedTypeBuilder
+  name.vb: AbstractFloatSpeedTypeMotion(Of TItem).AbstractFloatSpeedTypeBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
+    name: AbstractFloatSpeedTypeMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
+    name: AbstractFloatSpeedTypeBuilder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.AbstractFloatSpeedTypeBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1
+    name: AbstractFloatSpeedTypeMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion`1.AbstractFloatSpeedTypeBuilder
+    name: AbstractFloatSpeedTypeBuilder
+    href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractFloatSpeedTypeMotion-1.AbstractFloatSpeedTypeBuilder.html
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion`1
   commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion`1
   href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion-1.html
@@ -268,6 +262,13 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion`1.AbstractVector3SpeedBuilder
     name: AbstractVector3SpeedBuilder
     href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.AbstractVector3SpeedMotion-1.AbstractVector3SpeedBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion
+  parent: FriedSynapse.FlowEnt.Motions.Echo.Abstract
+  href: FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion.html
+  name: IEchoMotion
+  nameWithType: IEchoMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Abstract.IEchoMotion
 - uid: FriedSynapse.FlowEnt.Motions.Echo.Abstract
   commentId: N:FriedSynapse.FlowEnt.Motions.Echo.Abstract
   href: FriedSynapse.html

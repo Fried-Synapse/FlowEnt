@@ -22,7 +22,7 @@ items:
       repo: https://github.com/Fried-Synapse/FlowEnt
     id: PreviewController
     path: ../Assets/FlowEnt/Scripts/Editor/Windows/Previewer/PreviewController.cs
-    startLine: 13
+    startLine: 12
   namespace: FriedSynapse.FlowEnt.Editor
   syntax:
     content: public static class PreviewController
@@ -55,7 +55,7 @@ items:
       repo: https://github.com/Fried-Synapse/FlowEnt
     id: IsRunning
     path: ../Assets/FlowEnt/Scripts/Editor/Windows/Previewer/PreviewController.cs
-    startLine: 41
+    startLine: 40
   namespace: FriedSynapse.FlowEnt.Editor
   syntax:
     content: public static bool IsRunning { get; }
@@ -82,7 +82,7 @@ items:
       repo: https://github.com/Fried-Synapse/FlowEnt
     id: Start
     path: ../Assets/FlowEnt/Scripts/Editor/Windows/Previewer/PreviewController.cs
-    startLine: 43
+    startLine: 42
   namespace: FriedSynapse.FlowEnt.Editor
   syntax:
     content: public static void Start(PreviewController.Options options)
@@ -109,7 +109,7 @@ items:
       repo: https://github.com/Fried-Synapse/FlowEnt
     id: Stop
     path: ../Assets/FlowEnt/Scripts/Editor/Windows/Previewer/PreviewController.cs
-    startLine: 78
+    startLine: 77
   namespace: FriedSynapse.FlowEnt.Editor
   summary: Stops all running animations and undoes all the changes done while playing
   example: []

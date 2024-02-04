@@ -2,7 +2,8 @@
 items:
 - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
   commentId: N:FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
-  id: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics
+  id: Graphics
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI
   children:
   - FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion
   - FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.FromToBuilder
@@ -26,28 +27,6 @@ references:
   name: AlphaMotion
   nameWithType: AlphaMotion
   fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
-  href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.html
-  name: AlphaMotion.ValueBuilder
-  nameWithType: AlphaMotion.ValueBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion
-    name: AlphaMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion
-    name: AlphaMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder.html
 - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.FromToBuilder
   commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.FromToBuilder
   href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.html
@@ -70,6 +49,28 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.FromToBuilder
     name: FromToBuilder
     href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.html
+  name: AlphaMotion.ValueBuilder
+  nameWithType: AlphaMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion
+    name: AlphaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion
+    name: AlphaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.AlphaMotion.ValueBuilder.html
 - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorGradientMotion
   commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorGradientMotion
   href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorGradientMotion.html
@@ -104,28 +105,6 @@ references:
   name: ColorMotion
   nameWithType: ColorMotion
   fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion
-- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
-  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
-  href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.html
-  name: ColorMotion.ValueBuilder
-  nameWithType: ColorMotion.ValueBuilder
-  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
-  spec.csharp:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion
-    name: ColorMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder.html
-  spec.vb:
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion
-    name: ColorMotion
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.html
-  - name: .
-  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
-    name: ValueBuilder
-    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder.html
 - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.FromToBuilder
   commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.FromToBuilder
   href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.html
@@ -148,3 +127,25 @@ references:
   - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.FromToBuilder
     name: FromToBuilder
     href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.html
+  name: ColorMotion.ValueBuilder
+  nameWithType: ColorMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion
+    name: ColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion
+    name: ColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.Graphics.ColorMotion.ValueBuilder.html
