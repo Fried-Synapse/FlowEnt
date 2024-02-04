@@ -1,0 +1,90 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions.Echo
+  commentId: N:FriedSynapse.FlowEnt.Motions.Echo
+  id: FriedSynapse.FlowEnt.Motions.Echo
+  children:
+  - FriedSynapse.FlowEnt.Motions.Echo.DebugMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder
+  - FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Motions.Echo
+  nameWithType: FriedSynapse.FlowEnt.Motions.Echo
+  fullName: FriedSynapse.FlowEnt.Motions.Echo
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.DebugMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.html
+  name: DebugMotion
+  nameWithType: DebugMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.html
+  name: DebugMotion.Builder
+  nameWithType: DebugMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion
+    name: DebugMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion
+    name: DebugMotion
+    href: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Echo.DebugMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+  parent: FriedSynapse.FlowEnt.Motions.Echo
+  href: FriedSynapse.FlowEnt.Motions.Echo.SpeedType.html
+  name: SpeedType
+  nameWithType: SpeedType
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+- uid: FriedSynapse.FlowEnt.Motions.Echo
+  commentId: N:FriedSynapse.FlowEnt.Motions.Echo
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Echo
+  nameWithType: FriedSynapse.FlowEnt.Motions.Echo
+  fullName: FriedSynapse.FlowEnt.Motions.Echo
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html

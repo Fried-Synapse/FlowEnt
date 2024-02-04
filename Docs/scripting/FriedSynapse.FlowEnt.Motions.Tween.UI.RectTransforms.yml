@@ -1,0 +1,394 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  id: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  children:
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetFactory
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPreset
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPresetFactory
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.html
+  name: MoveAnchoredPositionVectorMotion
+  nameWithType: MoveAnchoredPositionVectorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.html
+  name: MoveAnchoredPositionVectorMotion.ValueBuilder
+  nameWithType: MoveAnchoredPositionVectorMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+    name: MoveAnchoredPositionVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+    name: MoveAnchoredPositionVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.html
+  name: MoveAnchoredPositionVectorMotion.FromToBuilder
+  nameWithType: MoveAnchoredPositionVectorMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+    name: MoveAnchoredPositionVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion
+    name: MoveAnchoredPositionVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionVectorMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.html
+  name: ScaleSizeDeltaMotion
+  nameWithType: ScaleSizeDeltaMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.html
+  name: ScaleSizeDeltaMotion.ValueBuilder
+  nameWithType: ScaleSizeDeltaMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+    name: ScaleSizeDeltaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+    name: ScaleSizeDeltaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.html
+  name: ScaleSizeDeltaMotion.FromToBuilder
+  nameWithType: ScaleSizeDeltaMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+    name: ScaleSizeDeltaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion
+    name: ScaleSizeDeltaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.ScaleSizeDeltaMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  name: MoveAnchorMotion
+  nameWithType: MoveAnchorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  name: MoveAnchorMotion.ValueBuilder
+  nameWithType: MoveAnchorMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  name: MoveAnchorMotion.FromToBuilder
+  nameWithType: MoveAnchorMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.html
+  name: MoveAnchoredPositionCurveMotion
+  nameWithType: MoveAnchoredPositionCurveMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.html
+  name: MoveAnchoredPositionCurveMotion.Builder
+  nameWithType: MoveAnchoredPositionCurveMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion
+    name: MoveAnchoredPositionCurveMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion
+    name: MoveAnchoredPositionCurveMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchoredPositionCurveMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  name: MovePivotMotion
+  nameWithType: MovePivotMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  name: MovePivotMotion.ValueBuilder
+  nameWithType: MovePivotMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+    name: MovePivotMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+    name: MovePivotMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  name: MovePivotMotion.FromToBuilder
+  nameWithType: MovePivotMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+    name: MovePivotMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+    name: MovePivotMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  name: MovePivotMotion.PresetValueBuilder
+  nameWithType: MovePivotMotion.PresetValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+    name: MovePivotMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder
+    name: PresetValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+    name: MovePivotMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder
+    name: PresetValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  name: MovePivotMotion.PresetFromToBuilder
+  nameWithType: MovePivotMotion.PresetFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+    name: MovePivotMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder
+    name: PresetFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion
+    name: MovePivotMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder
+    name: PresetFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MovePivotMotion.PresetFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset.html
+  name: AnchorPreset
+  nameWithType: AnchorPreset
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData.html
+  name: AnchorPresetData
+  nameWithType: AnchorPresetData
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetFactory
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetFactory
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetFactory.html
+  name: AnchorPresetFactory
+  nameWithType: AnchorPresetFactory
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetFactory
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPreset
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPreset
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPreset.html
+  name: PivotPreset
+  nameWithType: PivotPreset
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPreset
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPresetFactory
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPresetFactory
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPresetFactory.html
+  name: PivotPresetFactory
+  nameWithType: PivotPresetFactory
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.PivotPresetFactory
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI
+    name: UI
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+    name: RectTransforms
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI
+    name: UI
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+    name: RectTransforms
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.html

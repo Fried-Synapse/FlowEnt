@@ -1,0 +1,226 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
+  id: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
+  children:
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.html
+  name: MoveVertexVectorMotion
+  nameWithType: MoveVertexVectorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.html
+  name: MoveVertexVectorMotion.ValueBuilder
+  nameWithType: MoveVertexVectorMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+    name: MoveVertexVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+    name: MoveVertexVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.html
+  name: MoveVertexVectorMotion.FromToBuilder
+  nameWithType: MoveVertexVectorMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+    name: MoveVertexVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+    name: MoveVertexVectorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.html
+  name: ColorLinearMotion
+  nameWithType: ColorLinearMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.html
+  name: ColorLinearMotion.ValueBuilder
+  nameWithType: ColorLinearMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+    name: ColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+    name: ColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.html
+  name: ColorLinearMotion.FromToBuilder
+  nameWithType: ColorLinearMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+    name: ColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+    name: ColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.html
+  name: WidthLinearMotion
+  nameWithType: WidthLinearMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.html
+  name: WidthLinearMotion.ValueBuilder
+  nameWithType: WidthLinearMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+    name: WidthLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+    name: WidthLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.html
+  name: WidthLinearMotion.FromToBuilder
+  nameWithType: WidthLinearMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+    name: WidthLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+    name: WidthLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.html
+  name: GradientMotion
+  nameWithType: GradientMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.html
+  name: GradientMotion.ValueBuilder
+  nameWithType: GradientMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+    name: GradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+    name: GradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.html
+  name: GradientMotion.FromToBuilder
+  nameWithType: GradientMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+    name: GradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+    name: GradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.FromToBuilder.html

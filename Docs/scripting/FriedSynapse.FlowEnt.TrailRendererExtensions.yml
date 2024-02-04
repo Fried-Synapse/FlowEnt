@@ -1,0 +1,1247 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions
+  commentId: T:FriedSynapse.FlowEnt.TrailRendererExtensions
+  id: TrailRendererExtensions
+  parent: FriedSynapse.FlowEnt
+  children:
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color,Color,Color)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor,FriedSynapse.FlowEnt.LinearColor)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient,Gradient)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3,Vector3)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single)
+  - FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single,System.Single,System.Single)
+  langs:
+  - csharp
+  - vb
+  name: TrailRendererExtensions
+  nameWithType: TrailRendererExtensions
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions
+  type: Class
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: TrailRendererExtensions
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 5
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public static class TrailRendererExtensions
+    content.vb: Public Module TrailRendererExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor)
+  id: ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: ColorLinear(TweenMotionProxy<TrailRenderer>, LinearColor)
+  nameWithType: TrailRendererExtensions.ColorLinear(TweenMotionProxy<TrailRenderer>, LinearColor)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, FriedSynapse.FlowEnt.LinearColor)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ColorLinear
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 14
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> ColorLinear(this TweenMotionProxy<TrailRenderer> proxy, LinearColor value)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: value
+      type: FriedSynapse.FlowEnt.LinearColor
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function ColorLinear(proxy As TweenMotionProxy(Of TrailRenderer), value As LinearColor) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear*
+  nameWithType.vb: TrailRendererExtensions.ColorLinear(TweenMotionProxy(Of TrailRenderer), LinearColor)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), FriedSynapse.FlowEnt.LinearColor)
+  name.vb: ColorLinear(TweenMotionProxy(Of TrailRenderer), LinearColor)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color)
+  id: ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: ColorLinear(TweenMotionProxy<TrailRenderer>, Color, Color)
+  nameWithType: TrailRendererExtensions.ColorLinear(TweenMotionProxy<TrailRenderer>, Color, Color)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, Color, Color)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ColorLinear
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 23
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> ColorLinear(this TweenMotionProxy<TrailRenderer> proxy, Color valueStart, Color valueEnd)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: valueStart
+      type: Color
+      description: ''
+    - id: valueEnd
+      type: Color
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function ColorLinear(proxy As TweenMotionProxy(Of TrailRenderer), valueStart As Color, valueEnd As Color) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear*
+  nameWithType.vb: TrailRendererExtensions.ColorLinear(TweenMotionProxy(Of TrailRenderer), Color, Color)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Color, Color)
+  name.vb: ColorLinear(TweenMotionProxy(Of TrailRenderer), Color, Color)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor)
+  id: ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: ColorLinearTo(TweenMotionProxy<TrailRenderer>, LinearColor)
+  nameWithType: TrailRendererExtensions.ColorLinearTo(TweenMotionProxy<TrailRenderer>, LinearColor)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, FriedSynapse.FlowEnt.LinearColor)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ColorLinearTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 31
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> ColorLinearTo(this TweenMotionProxy<TrailRenderer> proxy, LinearColor to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: to
+      type: FriedSynapse.FlowEnt.LinearColor
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function ColorLinearTo(proxy As TweenMotionProxy(Of TrailRenderer), [to] As LinearColor) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo*
+  nameWithType.vb: TrailRendererExtensions.ColorLinearTo(TweenMotionProxy(Of TrailRenderer), LinearColor)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), FriedSynapse.FlowEnt.LinearColor)
+  name.vb: ColorLinearTo(TweenMotionProxy(Of TrailRenderer), LinearColor)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color)
+  id: ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: ColorLinearTo(TweenMotionProxy<TrailRenderer>, Color, Color)
+  nameWithType: TrailRendererExtensions.ColorLinearTo(TweenMotionProxy<TrailRenderer>, Color, Color)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, Color, Color)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ColorLinearTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 40
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> ColorLinearTo(this TweenMotionProxy<TrailRenderer> proxy, Color toStart, Color toEnd)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: toStart
+      type: Color
+      description: ''
+    - id: toEnd
+      type: Color
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function ColorLinearTo(proxy As TweenMotionProxy(Of TrailRenderer), toStart As Color, toEnd As Color) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo*
+  nameWithType.vb: TrailRendererExtensions.ColorLinearTo(TweenMotionProxy(Of TrailRenderer), Color, Color)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Color, Color)
+  name.vb: ColorLinearTo(TweenMotionProxy(Of TrailRenderer), Color, Color)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor,FriedSynapse.FlowEnt.LinearColor)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor,FriedSynapse.FlowEnt.LinearColor)
+  id: ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearColor,FriedSynapse.FlowEnt.LinearColor)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: ColorLinearTo(TweenMotionProxy<TrailRenderer>, LinearColor, LinearColor)
+  nameWithType: TrailRendererExtensions.ColorLinearTo(TweenMotionProxy<TrailRenderer>, LinearColor, LinearColor)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, FriedSynapse.FlowEnt.LinearColor, FriedSynapse.FlowEnt.LinearColor)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ColorLinearTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 49
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> ColorLinearTo(this TweenMotionProxy<TrailRenderer> proxy, LinearColor from, LinearColor to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: from
+      type: FriedSynapse.FlowEnt.LinearColor
+      description: ''
+    - id: to
+      type: FriedSynapse.FlowEnt.LinearColor
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function ColorLinearTo(proxy As TweenMotionProxy(Of TrailRenderer), from As LinearColor, [to] As LinearColor) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo*
+  nameWithType.vb: TrailRendererExtensions.ColorLinearTo(TweenMotionProxy(Of TrailRenderer), LinearColor, LinearColor)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), FriedSynapse.FlowEnt.LinearColor, FriedSynapse.FlowEnt.LinearColor)
+  name.vb: ColorLinearTo(TweenMotionProxy(Of TrailRenderer), LinearColor, LinearColor)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color,Color,Color)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color,Color,Color)
+  id: ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Color,Color,Color,Color)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: ColorLinearTo(TweenMotionProxy<TrailRenderer>, Color, Color, Color, Color)
+  nameWithType: TrailRendererExtensions.ColorLinearTo(TweenMotionProxy<TrailRenderer>, Color, Color, Color, Color)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, Color, Color, Color, Color)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ColorLinearTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 60
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> ColorLinearTo(this TweenMotionProxy<TrailRenderer> proxy, Color fromStart, Color fromEnd, Color toStart, Color toEnd)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: fromStart
+      type: Color
+      description: ''
+    - id: fromEnd
+      type: Color
+      description: ''
+    - id: toStart
+      type: Color
+      description: ''
+    - id: toEnd
+      type: Color
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function ColorLinearTo(proxy As TweenMotionProxy(Of TrailRenderer), fromStart As Color, fromEnd As Color, toStart As Color, toEnd As Color) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo*
+  nameWithType.vb: TrailRendererExtensions.ColorLinearTo(TweenMotionProxy(Of TrailRenderer), Color, Color, Color, Color)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Color, Color, Color, Color)
+  name.vb: ColorLinearTo(TweenMotionProxy(Of TrailRenderer), Color, Color, Color, Color)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient)
+  id: Gradient(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: Gradient(TweenMotionProxy<TrailRenderer>, Gradient)
+  nameWithType: TrailRendererExtensions.Gradient(TweenMotionProxy<TrailRenderer>, Gradient)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, Gradient)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Gradient
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 72
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> Gradient(this TweenMotionProxy<TrailRenderer> proxy, Gradient value)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: value
+      type: Gradient
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function Gradient(proxy As TweenMotionProxy(Of TrailRenderer), value As Gradient) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient*
+  nameWithType.vb: TrailRendererExtensions.Gradient(TweenMotionProxy(Of TrailRenderer), Gradient)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Gradient)
+  name.vb: Gradient(TweenMotionProxy(Of TrailRenderer), Gradient)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient)
+  id: GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: GradientTo(TweenMotionProxy<TrailRenderer>, Gradient)
+  nameWithType: TrailRendererExtensions.GradientTo(TweenMotionProxy<TrailRenderer>, Gradient)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, Gradient)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: GradientTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 80
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> GradientTo(this TweenMotionProxy<TrailRenderer> proxy, Gradient to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: to
+      type: Gradient
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function GradientTo(proxy As TweenMotionProxy(Of TrailRenderer), [to] As Gradient) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo*
+  nameWithType.vb: TrailRendererExtensions.GradientTo(TweenMotionProxy(Of TrailRenderer), Gradient)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Gradient)
+  name.vb: GradientTo(TweenMotionProxy(Of TrailRenderer), Gradient)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient,Gradient)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient,Gradient)
+  id: GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},Gradient,Gradient)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: GradientTo(TweenMotionProxy<TrailRenderer>, Gradient, Gradient)
+  nameWithType: TrailRendererExtensions.GradientTo(TweenMotionProxy<TrailRenderer>, Gradient, Gradient)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, Gradient, Gradient)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: GradientTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 89
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> GradientTo(this TweenMotionProxy<TrailRenderer> proxy, Gradient from, Gradient to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: from
+      type: Gradient
+      description: ''
+    - id: to
+      type: Gradient
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function GradientTo(proxy As TweenMotionProxy(Of TrailRenderer), from As Gradient, [to] As Gradient) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo*
+  nameWithType.vb: TrailRendererExtensions.GradientTo(TweenMotionProxy(Of TrailRenderer), Gradient, Gradient)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Gradient, Gradient)
+  name.vb: GradientTo(TweenMotionProxy(Of TrailRenderer), Gradient, Gradient)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3)
+  id: MoveVertex(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: MoveVertex(TweenMotionProxy<TrailRenderer>, int, Vector3)
+  nameWithType: TrailRendererExtensions.MoveVertex(TweenMotionProxy<TrailRenderer>, int, Vector3)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, int, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: MoveVertex
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 102
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> MoveVertex(this TweenMotionProxy<TrailRenderer> proxy, int index, Vector3 value)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: index
+      type: System.Int32
+      description: ''
+    - id: value
+      type: Vector3
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function MoveVertex(proxy As TweenMotionProxy(Of TrailRenderer), index As Integer, value As Vector3) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex*
+  nameWithType.vb: TrailRendererExtensions.MoveVertex(TweenMotionProxy(Of TrailRenderer), Integer, Vector3)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Integer, Vector3)
+  name.vb: MoveVertex(TweenMotionProxy(Of TrailRenderer), Integer, Vector3)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3)
+  id: MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: MoveVertexTo(TweenMotionProxy<TrailRenderer>, int, Vector3)
+  nameWithType: TrailRendererExtensions.MoveVertexTo(TweenMotionProxy<TrailRenderer>, int, Vector3)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, int, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: MoveVertexTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 111
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> MoveVertexTo(this TweenMotionProxy<TrailRenderer> proxy, int index, Vector3 to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: index
+      type: System.Int32
+      description: ''
+    - id: to
+      type: Vector3
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function MoveVertexTo(proxy As TweenMotionProxy(Of TrailRenderer), index As Integer, [to] As Vector3) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo*
+  nameWithType.vb: TrailRendererExtensions.MoveVertexTo(TweenMotionProxy(Of TrailRenderer), Integer, Vector3)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Integer, Vector3)
+  name.vb: MoveVertexTo(TweenMotionProxy(Of TrailRenderer), Integer, Vector3)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3,Vector3)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3,Vector3)
+  id: MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Int32,Vector3,Vector3)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: MoveVertexTo(TweenMotionProxy<TrailRenderer>, int, Vector3, Vector3)
+  nameWithType: TrailRendererExtensions.MoveVertexTo(TweenMotionProxy<TrailRenderer>, int, Vector3, Vector3)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, int, Vector3, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: MoveVertexTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 121
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> MoveVertexTo(this TweenMotionProxy<TrailRenderer> proxy, int index, Vector3 from, Vector3 to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: index
+      type: System.Int32
+      description: ''
+    - id: from
+      type: Vector3
+      description: ''
+    - id: to
+      type: Vector3
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function MoveVertexTo(proxy As TweenMotionProxy(Of TrailRenderer), index As Integer, from As Vector3, [to] As Vector3) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo*
+  nameWithType.vb: TrailRendererExtensions.MoveVertexTo(TweenMotionProxy(Of TrailRenderer), Integer, Vector3, Vector3)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Integer, Vector3, Vector3)
+  name.vb: MoveVertexTo(TweenMotionProxy(Of TrailRenderer), Integer, Vector3, Vector3)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat)
+  id: WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: WidthLinear(TweenMotionProxy<TrailRenderer>, LinearFloat)
+  nameWithType: TrailRendererExtensions.WidthLinear(TweenMotionProxy<TrailRenderer>, LinearFloat)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, FriedSynapse.FlowEnt.LinearFloat)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: WidthLinear
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 133
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> WidthLinear(this TweenMotionProxy<TrailRenderer> proxy, LinearFloat value)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: value
+      type: FriedSynapse.FlowEnt.LinearFloat
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function WidthLinear(proxy As TweenMotionProxy(Of TrailRenderer), value As LinearFloat) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear*
+  nameWithType.vb: TrailRendererExtensions.WidthLinear(TweenMotionProxy(Of TrailRenderer), LinearFloat)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), FriedSynapse.FlowEnt.LinearFloat)
+  name.vb: WidthLinear(TweenMotionProxy(Of TrailRenderer), LinearFloat)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single)
+  id: WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: WidthLinear(TweenMotionProxy<TrailRenderer>, float, float)
+  nameWithType: TrailRendererExtensions.WidthLinear(TweenMotionProxy<TrailRenderer>, float, float)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, float, float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: WidthLinear
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 142
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> WidthLinear(this TweenMotionProxy<TrailRenderer> proxy, float valueStart, float valueEnd)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: valueStart
+      type: System.Single
+      description: ''
+    - id: valueEnd
+      type: System.Single
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function WidthLinear(proxy As TweenMotionProxy(Of TrailRenderer), valueStart As Single, valueEnd As Single) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear*
+  nameWithType.vb: TrailRendererExtensions.WidthLinear(TweenMotionProxy(Of TrailRenderer), Single, Single)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Single, Single)
+  name.vb: WidthLinear(TweenMotionProxy(Of TrailRenderer), Single, Single)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat)
+  id: WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: WidthLinearTo(TweenMotionProxy<TrailRenderer>, LinearFloat)
+  nameWithType: TrailRendererExtensions.WidthLinearTo(TweenMotionProxy<TrailRenderer>, LinearFloat)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, FriedSynapse.FlowEnt.LinearFloat)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: WidthLinearTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 150
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> WidthLinearTo(this TweenMotionProxy<TrailRenderer> proxy, LinearFloat to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: to
+      type: FriedSynapse.FlowEnt.LinearFloat
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function WidthLinearTo(proxy As TweenMotionProxy(Of TrailRenderer), [to] As LinearFloat) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo*
+  nameWithType.vb: TrailRendererExtensions.WidthLinearTo(TweenMotionProxy(Of TrailRenderer), LinearFloat)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), FriedSynapse.FlowEnt.LinearFloat)
+  name.vb: WidthLinearTo(TweenMotionProxy(Of TrailRenderer), LinearFloat)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single)
+  id: WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: WidthLinearTo(TweenMotionProxy<TrailRenderer>, float, float)
+  nameWithType: TrailRendererExtensions.WidthLinearTo(TweenMotionProxy<TrailRenderer>, float, float)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, float, float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: WidthLinearTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 159
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> WidthLinearTo(this TweenMotionProxy<TrailRenderer> proxy, float toStart, float toEnd)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: toStart
+      type: System.Single
+      description: ''
+    - id: toEnd
+      type: System.Single
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function WidthLinearTo(proxy As TweenMotionProxy(Of TrailRenderer), toStart As Single, toEnd As Single) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo*
+  nameWithType.vb: TrailRendererExtensions.WidthLinearTo(TweenMotionProxy(Of TrailRenderer), Single, Single)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Single, Single)
+  name.vb: WidthLinearTo(TweenMotionProxy(Of TrailRenderer), Single, Single)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat)
+  id: WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: WidthLinearTo(TweenMotionProxy<TrailRenderer>, LinearFloat, LinearFloat)
+  nameWithType: TrailRendererExtensions.WidthLinearTo(TweenMotionProxy<TrailRenderer>, LinearFloat, LinearFloat)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.LinearFloat)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: WidthLinearTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 168
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> WidthLinearTo(this TweenMotionProxy<TrailRenderer> proxy, LinearFloat from, LinearFloat to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: from
+      type: FriedSynapse.FlowEnt.LinearFloat
+      description: ''
+    - id: to
+      type: FriedSynapse.FlowEnt.LinearFloat
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function WidthLinearTo(proxy As TweenMotionProxy(Of TrailRenderer), from As LinearFloat, [to] As LinearFloat) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo*
+  nameWithType.vb: TrailRendererExtensions.WidthLinearTo(TweenMotionProxy(Of TrailRenderer), LinearFloat, LinearFloat)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.LinearFloat)
+  name.vb: WidthLinearTo(TweenMotionProxy(Of TrailRenderer), LinearFloat, LinearFloat)
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single,System.Single,System.Single)
+  commentId: M:FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single,System.Single,System.Single)
+  id: WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer},System.Single,System.Single,System.Single,System.Single)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.TrailRendererExtensions
+  langs:
+  - csharp
+  - vb
+  name: WidthLinearTo(TweenMotionProxy<TrailRenderer>, float, float, float, float)
+  nameWithType: TrailRendererExtensions.WidthLinearTo(TweenMotionProxy<TrailRenderer>, float, float, float, float)
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>, float, float, float, float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: WidthLinearTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/TrailRendererExtensions.cs
+    startLine: 179
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<TrailRenderer> WidthLinearTo(this TweenMotionProxy<TrailRenderer> proxy, float fromStart, float fromEnd, float toStart, float toEnd)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+      description: ''
+    - id: fromStart
+      type: System.Single
+      description: ''
+    - id: fromEnd
+      type: System.Single
+      description: ''
+    - id: toStart
+      type: System.Single
+      description: ''
+    - id: toEnd
+      type: System.Single
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+    content.vb: Public Shared Function WidthLinearTo(proxy As TweenMotionProxy(Of TrailRenderer), fromStart As Single, fromEnd As Single, toStart As Single, toEnd As Single) As TweenMotionProxy(Of TrailRenderer)
+  overload: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo*
+  nameWithType.vb: TrailRendererExtensions.WidthLinearTo(TweenMotionProxy(Of TrailRenderer), Single, Single, Single, Single)
+  fullName.vb: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer), Single, Single, Single, Single)
+  name.vb: WidthLinearTo(TweenMotionProxy(Of TrailRenderer), Single, Single, Single, Single)
+references:
+- uid: FriedSynapse.FlowEnt
+  commentId: N:FriedSynapse.FlowEnt
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt
+  nameWithType: FriedSynapse.FlowEnt
+  fullName: FriedSynapse.FlowEnt
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion.html
+  name: ColorLinearMotion
+  nameWithType: ColorLinearMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.ColorLinearMotion
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear*
+  commentId: Overload:FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html#FriedSynapse_FlowEnt_TrailRendererExtensions_ColorLinear_FriedSynapse_FlowEnt_TweenMotionProxy_TrailRenderer__FriedSynapse_FlowEnt_LinearColor_
+  name: ColorLinear
+  nameWithType: TrailRendererExtensions.ColorLinear
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinear
+- uid: FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+  commentId: T:FriedSynapse.FlowEnt.TweenMotionProxy{TrailRenderer}
+  parent: FriedSynapse.FlowEnt
+  definition: FriedSynapse.FlowEnt.TweenMotionProxy`1
+  href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  name: TweenMotionProxy<TrailRenderer>
+  nameWithType: TweenMotionProxy<TrailRenderer>
+  fullName: FriedSynapse.FlowEnt.TweenMotionProxy<TrailRenderer>
+  nameWithType.vb: TweenMotionProxy(Of TrailRenderer)
+  fullName.vb: FriedSynapse.FlowEnt.TweenMotionProxy(Of TrailRenderer)
+  name.vb: TweenMotionProxy(Of TrailRenderer)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: <
+  - uid: TrailRenderer
+    name: TrailRenderer
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TrailRenderer
+    name: TrailRenderer
+    isExternal: true
+  - name: )
+- uid: FriedSynapse.FlowEnt.LinearColor
+  commentId: T:FriedSynapse.FlowEnt.LinearColor
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.LinearColor.html
+  name: LinearColor
+  nameWithType: LinearColor
+  fullName: FriedSynapse.FlowEnt.LinearColor
+- uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+  commentId: T:FriedSynapse.FlowEnt.TweenMotionProxy`1
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  name: TweenMotionProxy<TItem>
+  nameWithType: TweenMotionProxy<TItem>
+  fullName: FriedSynapse.FlowEnt.TweenMotionProxy<TItem>
+  nameWithType.vb: TweenMotionProxy(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.TweenMotionProxy(Of TItem)
+  name.vb: TweenMotionProxy(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: Color
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Color
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo*
+  commentId: Overload:FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html#FriedSynapse_FlowEnt_TrailRendererExtensions_ColorLinearTo_FriedSynapse_FlowEnt_TweenMotionProxy_TrailRenderer__FriedSynapse_FlowEnt_LinearColor_
+  name: ColorLinearTo
+  nameWithType: TrailRendererExtensions.ColorLinearTo
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.ColorLinearTo
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion.html
+  name: GradientMotion
+  nameWithType: GradientMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.GradientMotion
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient*
+  commentId: Overload:FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html#FriedSynapse_FlowEnt_TrailRendererExtensions_Gradient_FriedSynapse_FlowEnt_TweenMotionProxy_TrailRenderer__Gradient_
+  name: Gradient
+  nameWithType: TrailRendererExtensions.Gradient
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.Gradient
+- uid: Gradient
+  isExternal: true
+  name: Gradient
+  nameWithType: Gradient
+  fullName: Gradient
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo*
+  commentId: Overload:FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html#FriedSynapse_FlowEnt_TrailRendererExtensions_GradientTo_FriedSynapse_FlowEnt_TweenMotionProxy_TrailRenderer__Gradient_
+  name: GradientTo
+  nameWithType: TrailRendererExtensions.GradientTo
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.GradientTo
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion.html
+  name: MoveVertexVectorMotion
+  nameWithType: MoveVertexVectorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.MoveVertexVectorMotion
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex*
+  commentId: Overload:FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html#FriedSynapse_FlowEnt_TrailRendererExtensions_MoveVertex_FriedSynapse_FlowEnt_TweenMotionProxy_TrailRenderer__System_Int32_Vector3_
+  name: MoveVertex
+  nameWithType: TrailRendererExtensions.MoveVertex
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo*
+  commentId: Overload:FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html#FriedSynapse_FlowEnt_TrailRendererExtensions_MoveVertexTo_FriedSynapse_FlowEnt_TweenMotionProxy_TrailRenderer__System_Int32_Vector3_
+  name: MoveVertexTo
+  nameWithType: TrailRendererExtensions.MoveVertexTo
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.MoveVertexTo
+- uid: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion.html
+  name: WidthLinearMotion
+  nameWithType: WidthLinearMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.TrailRenderers.WidthLinearMotion
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear*
+  commentId: Overload:FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html#FriedSynapse_FlowEnt_TrailRendererExtensions_WidthLinear_FriedSynapse_FlowEnt_TweenMotionProxy_TrailRenderer__FriedSynapse_FlowEnt_LinearFloat_
+  name: WidthLinear
+  nameWithType: TrailRendererExtensions.WidthLinear
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinear
+- uid: FriedSynapse.FlowEnt.LinearFloat
+  commentId: T:FriedSynapse.FlowEnt.LinearFloat
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.LinearFloat.html
+  name: LinearFloat
+  nameWithType: LinearFloat
+  fullName: FriedSynapse.FlowEnt.LinearFloat
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo*
+  commentId: Overload:FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo
+  href: FriedSynapse.FlowEnt.TrailRendererExtensions.html#FriedSynapse_FlowEnt_TrailRendererExtensions_WidthLinearTo_FriedSynapse_FlowEnt_TweenMotionProxy_TrailRenderer__FriedSynapse_FlowEnt_LinearFloat_
+  name: WidthLinearTo
+  nameWithType: TrailRendererExtensions.WidthLinearTo
+  fullName: FriedSynapse.FlowEnt.TrailRendererExtensions.WidthLinearTo

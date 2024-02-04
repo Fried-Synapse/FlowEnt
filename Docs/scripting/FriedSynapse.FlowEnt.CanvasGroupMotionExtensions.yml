@@ -1,0 +1,505 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+  id: CanvasGroupMotionExtensions
+  parent: FriedSynapse.FlowEnt
+  children:
+  - FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single)
+  - FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single)
+  - FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single,System.Single)
+  langs:
+  - csharp
+  - vb
+  name: CanvasGroupMotionExtensions
+  nameWithType: CanvasGroupMotionExtensions
+  fullName: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+  type: Class
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/UI/CanvasGroupMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: CanvasGroupMotionExtensions
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/UI/CanvasGroupMotionExtensions.cs
+    startLine: 5
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public static class CanvasGroupMotionExtensions
+    content.vb: Public Module CanvasGroupMotionExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single)
+  commentId: M:FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single)
+  id: Alpha(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: Alpha(TweenMotionProxy<CanvasGroup>, float)
+  nameWithType: CanvasGroupMotionExtensions.Alpha(TweenMotionProxy<CanvasGroup>, float)
+  fullName: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha(FriedSynapse.FlowEnt.TweenMotionProxy<CanvasGroup>, float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/UI/CanvasGroupMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Alpha
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/UI/CanvasGroupMotionExtensions.cs
+    startLine: 12
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<CanvasGroup> Alpha(this TweenMotionProxy<CanvasGroup> proxy, float value)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup}
+      description: ''
+    - id: value
+      type: System.Single
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup}
+    content.vb: Public Shared Function Alpha(proxy As TweenMotionProxy(Of CanvasGroup), value As Single) As TweenMotionProxy(Of CanvasGroup)
+  overload: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha*
+  nameWithType.vb: CanvasGroupMotionExtensions.Alpha(TweenMotionProxy(Of CanvasGroup), Single)
+  fullName.vb: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha(FriedSynapse.FlowEnt.TweenMotionProxy(Of CanvasGroup), Single)
+  name.vb: Alpha(TweenMotionProxy(Of CanvasGroup), Single)
+- uid: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single)
+  commentId: M:FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single)
+  id: AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AlphaTo(TweenMotionProxy<CanvasGroup>, float)
+  nameWithType: CanvasGroupMotionExtensions.AlphaTo(TweenMotionProxy<CanvasGroup>, float)
+  fullName: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy<CanvasGroup>, float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/UI/CanvasGroupMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: AlphaTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/UI/CanvasGroupMotionExtensions.cs
+    startLine: 20
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<CanvasGroup> AlphaTo(this TweenMotionProxy<CanvasGroup> proxy, float to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup}
+      description: ''
+    - id: to
+      type: System.Single
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup}
+    content.vb: Public Shared Function AlphaTo(proxy As TweenMotionProxy(Of CanvasGroup), [to] As Single) As TweenMotionProxy(Of CanvasGroup)
+  overload: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo*
+  nameWithType.vb: CanvasGroupMotionExtensions.AlphaTo(TweenMotionProxy(Of CanvasGroup), Single)
+  fullName.vb: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of CanvasGroup), Single)
+  name.vb: AlphaTo(TweenMotionProxy(Of CanvasGroup), Single)
+- uid: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single,System.Single)
+  commentId: M:FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single,System.Single)
+  id: AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup},System.Single,System.Single)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AlphaTo(TweenMotionProxy<CanvasGroup>, float, float)
+  nameWithType: CanvasGroupMotionExtensions.AlphaTo(TweenMotionProxy<CanvasGroup>, float, float)
+  fullName: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy<CanvasGroup>, float, float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/UI/CanvasGroupMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: AlphaTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/UI/CanvasGroupMotionExtensions.cs
+    startLine: 29
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion" data-throw-if-not-resolved="false"></xref> to the tween.
+  example: []
+  syntax:
+    content: public static TweenMotionProxy<CanvasGroup> AlphaTo(this TweenMotionProxy<CanvasGroup> proxy, float from, float to)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup}
+      description: ''
+    - id: from
+      type: System.Single
+      description: ''
+    - id: to
+      type: System.Single
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup}
+    content.vb: Public Shared Function AlphaTo(proxy As TweenMotionProxy(Of CanvasGroup), from As Single, [to] As Single) As TweenMotionProxy(Of CanvasGroup)
+  overload: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo*
+  nameWithType.vb: CanvasGroupMotionExtensions.AlphaTo(TweenMotionProxy(Of CanvasGroup), Single, Single)
+  fullName.vb: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo(FriedSynapse.FlowEnt.TweenMotionProxy(Of CanvasGroup), Single, Single)
+  name.vb: AlphaTo(TweenMotionProxy(Of CanvasGroup), Single, Single)
+references:
+- uid: FriedSynapse.FlowEnt
+  commentId: N:FriedSynapse.FlowEnt
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt
+  nameWithType: FriedSynapse.FlowEnt
+  fullName: FriedSynapse.FlowEnt
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion.html
+  name: AlphaMotion
+  nameWithType: AlphaMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.CanvasGroups.AlphaMotion
+- uid: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha*
+  commentId: Overload:FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha
+  href: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.html#FriedSynapse_FlowEnt_CanvasGroupMotionExtensions_Alpha_FriedSynapse_FlowEnt_TweenMotionProxy_CanvasGroup__System_Single_
+  name: Alpha
+  nameWithType: CanvasGroupMotionExtensions.Alpha
+  fullName: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.Alpha
+- uid: FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup}
+  commentId: T:FriedSynapse.FlowEnt.TweenMotionProxy{CanvasGroup}
+  parent: FriedSynapse.FlowEnt
+  definition: FriedSynapse.FlowEnt.TweenMotionProxy`1
+  href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  name: TweenMotionProxy<CanvasGroup>
+  nameWithType: TweenMotionProxy<CanvasGroup>
+  fullName: FriedSynapse.FlowEnt.TweenMotionProxy<CanvasGroup>
+  nameWithType.vb: TweenMotionProxy(Of CanvasGroup)
+  fullName.vb: FriedSynapse.FlowEnt.TweenMotionProxy(Of CanvasGroup)
+  name.vb: TweenMotionProxy(Of CanvasGroup)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: <
+  - uid: CanvasGroup
+    name: CanvasGroup
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: CanvasGroup
+    name: CanvasGroup
+    isExternal: true
+  - name: )
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+  commentId: T:FriedSynapse.FlowEnt.TweenMotionProxy`1
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  name: TweenMotionProxy<TItem>
+  nameWithType: TweenMotionProxy<TItem>
+  fullName: FriedSynapse.FlowEnt.TweenMotionProxy<TItem>
+  nameWithType.vb: TweenMotionProxy(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.TweenMotionProxy(Of TItem)
+  name.vb: TweenMotionProxy(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.TweenMotionProxy`1
+    name: TweenMotionProxy
+    href: FriedSynapse.FlowEnt.TweenMotionProxy-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo*
+  commentId: Overload:FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo
+  href: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.html#FriedSynapse_FlowEnt_CanvasGroupMotionExtensions_AlphaTo_FriedSynapse_FlowEnt_TweenMotionProxy_CanvasGroup__System_Single_
+  name: AlphaTo
+  nameWithType: CanvasGroupMotionExtensions.AlphaTo
+  fullName: FriedSynapse.FlowEnt.CanvasGroupMotionExtensions.AlphaTo

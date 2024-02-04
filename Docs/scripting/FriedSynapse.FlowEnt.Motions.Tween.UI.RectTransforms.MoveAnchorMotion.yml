@@ -1,0 +1,2661 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  id: MoveAnchorMotion
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  children:
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.MinMaxVector2)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,System.Nullable{FriedSynapse.FlowEnt.MinMaxVector2},FriedSynapse.FlowEnt.MinMaxVector2)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,System.Nullable{FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset},FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.GetFrom
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  langs:
+  - csharp
+  - vb
+  name: MoveAnchorMotion
+  nameWithType: MoveAnchorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  type: Class
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: MoveAnchorMotion
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 6
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  syntax:
+    content: 'public class MoveAnchorMotion : AbstractFloatMinMaxMotion<RectTransform>, ITweenMotion, IMotion'
+    content.vb: Public Class MoveAnchorMotion Inherits AbstractFloatMinMaxMotion(Of RectTransform) Implements ITweenMotion, IMotion
+  inheritance:
+  - System.Object
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}
+  implements:
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+  - FriedSynapse.FlowEnt.Motions.Abstract.IMotion
+  inheritedMembers:
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}.LerpFunction
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.LerpFunction
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetFrom
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnStart
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnUpdate(System.Single)
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}.item
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}.Item
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnStart
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnUpdate(System.Single)
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopStart
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopComplete
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnComplete
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.EchoOptions)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(System.Nullable{System.Single},System.Boolean)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.TweenOptions)
+  - FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(System.Single,System.Boolean)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.String,System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.String,System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.String,System.Object[],System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.String,{T},System.Reflection.BindingFlags)
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.MinMaxVector2)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.MinMaxVector2)
+  id: '#ctor(RectTransform,FriedSynapse.FlowEnt.MinMaxVector2)'
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  langs:
+  - csharp
+  - vb
+  name: MoveAnchorMotion(RectTransform, MinMaxVector2)
+  nameWithType: MoveAnchorMotion.MoveAnchorMotion(RectTransform, MinMaxVector2)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.MoveAnchorMotion(RectTransform, FriedSynapse.FlowEnt.MinMaxVector2)
+  type: Constructor
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: .ctor
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 22
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  syntax:
+    content: public MoveAnchorMotion(RectTransform item, MinMaxVector2 value)
+    parameters:
+    - id: item
+      type: RectTransform
+    - id: value
+      type: FriedSynapse.FlowEnt.MinMaxVector2
+    content.vb: Public Sub New(item As RectTransform, value As MinMaxVector2)
+  overload: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor*
+  nameWithType.vb: MoveAnchorMotion.New(RectTransform, MinMaxVector2)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.New(RectTransform, FriedSynapse.FlowEnt.MinMaxVector2)
+  name.vb: New(RectTransform, MinMaxVector2)
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,System.Nullable{FriedSynapse.FlowEnt.MinMaxVector2},FriedSynapse.FlowEnt.MinMaxVector2)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,System.Nullable{FriedSynapse.FlowEnt.MinMaxVector2},FriedSynapse.FlowEnt.MinMaxVector2)
+  id: '#ctor(RectTransform,System.Nullable{FriedSynapse.FlowEnt.MinMaxVector2},FriedSynapse.FlowEnt.MinMaxVector2)'
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  langs:
+  - csharp
+  - vb
+  name: MoveAnchorMotion(RectTransform, MinMaxVector2?, MinMaxVector2)
+  nameWithType: MoveAnchorMotion.MoveAnchorMotion(RectTransform, MinMaxVector2?, MinMaxVector2)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.MoveAnchorMotion(RectTransform, FriedSynapse.FlowEnt.MinMaxVector2?, FriedSynapse.FlowEnt.MinMaxVector2)
+  type: Constructor
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: .ctor
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 26
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  syntax:
+    content: public MoveAnchorMotion(RectTransform item, MinMaxVector2? from, MinMaxVector2 to)
+    parameters:
+    - id: item
+      type: RectTransform
+    - id: from
+      type: System.Nullable{FriedSynapse.FlowEnt.MinMaxVector2}
+    - id: to
+      type: FriedSynapse.FlowEnt.MinMaxVector2
+    content.vb: Public Sub New(item As RectTransform, from As MinMaxVector2?, [to] As MinMaxVector2)
+  overload: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor*
+  nameWithType.vb: MoveAnchorMotion.New(RectTransform, MinMaxVector2?, MinMaxVector2)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.New(RectTransform, FriedSynapse.FlowEnt.MinMaxVector2?, FriedSynapse.FlowEnt.MinMaxVector2)
+  name.vb: New(RectTransform, MinMaxVector2?, MinMaxVector2)
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  id: '#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)'
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  langs:
+  - csharp
+  - vb
+  name: MoveAnchorMotion(RectTransform, AnchorPresetData)
+  nameWithType: MoveAnchorMotion.MoveAnchorMotion(RectTransform, AnchorPresetData)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.MoveAnchorMotion(RectTransform, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  type: Constructor
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: .ctor
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 30
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  syntax:
+    content: public MoveAnchorMotion(RectTransform item, AnchorPresetData value)
+    parameters:
+    - id: item
+      type: RectTransform
+    - id: value
+      type: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+    content.vb: Public Sub New(item As RectTransform, value As AnchorPresetData)
+  overload: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor*
+  nameWithType.vb: MoveAnchorMotion.New(RectTransform, AnchorPresetData)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.New(RectTransform, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  name.vb: New(RectTransform, AnchorPresetData)
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  id: '#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)'
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  langs:
+  - csharp
+  - vb
+  name: MoveAnchorMotion(RectTransform, AnchorPresetData, AnchorPresetData)
+  nameWithType: MoveAnchorMotion.MoveAnchorMotion(RectTransform, AnchorPresetData, AnchorPresetData)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.MoveAnchorMotion(RectTransform, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  type: Constructor
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: .ctor
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 35
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  syntax:
+    content: public MoveAnchorMotion(RectTransform item, AnchorPresetData from, AnchorPresetData to)
+    parameters:
+    - id: item
+      type: RectTransform
+    - id: from
+      type: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+    - id: to
+      type: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+    content.vb: Public Sub New(item As RectTransform, from As AnchorPresetData, [to] As AnchorPresetData)
+  overload: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor*
+  nameWithType.vb: MoveAnchorMotion.New(RectTransform, AnchorPresetData, AnchorPresetData)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.New(RectTransform, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData)
+  name.vb: New(RectTransform, AnchorPresetData, AnchorPresetData)
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  id: '#ctor(RectTransform,FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)'
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  langs:
+  - csharp
+  - vb
+  name: MoveAnchorMotion(RectTransform, AnchorPreset)
+  nameWithType: MoveAnchorMotion.MoveAnchorMotion(RectTransform, AnchorPreset)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.MoveAnchorMotion(RectTransform, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  type: Constructor
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: .ctor
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 42
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  syntax:
+    content: public MoveAnchorMotion(RectTransform item, AnchorPreset value)
+    parameters:
+    - id: item
+      type: RectTransform
+    - id: value
+      type: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+    content.vb: Public Sub New(item As RectTransform, value As AnchorPreset)
+  overload: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor*
+  nameWithType.vb: MoveAnchorMotion.New(RectTransform, AnchorPreset)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.New(RectTransform, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  name.vb: New(RectTransform, AnchorPreset)
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,System.Nullable{FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset},FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor(RectTransform,System.Nullable{FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset},FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  id: '#ctor(RectTransform,System.Nullable{FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset},FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)'
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  langs:
+  - csharp
+  - vb
+  name: MoveAnchorMotion(RectTransform, AnchorPreset?, AnchorPreset)
+  nameWithType: MoveAnchorMotion.MoveAnchorMotion(RectTransform, AnchorPreset?, AnchorPreset)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.MoveAnchorMotion(RectTransform, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset?, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  type: Constructor
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: .ctor
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 47
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  syntax:
+    content: public MoveAnchorMotion(RectTransform item, AnchorPreset? from, AnchorPreset to)
+    parameters:
+    - id: item
+      type: RectTransform
+    - id: from
+      type: System.Nullable{FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset}
+    - id: to
+      type: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+    content.vb: Public Sub New(item As RectTransform, from As AnchorPreset?, [to] As AnchorPreset)
+  overload: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor*
+  nameWithType.vb: MoveAnchorMotion.New(RectTransform, AnchorPreset?, AnchorPreset)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.New(RectTransform, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset?, FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset)
+  name.vb: New(RectTransform, AnchorPreset?, AnchorPreset)
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.GetFrom
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.GetFrom
+  id: GetFrom
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  langs:
+  - csharp
+  - vb
+  name: GetFrom()
+  nameWithType: MoveAnchorMotion.GetFrom()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.GetFrom()
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: GetFrom
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 54
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  example: []
+  syntax:
+    content: protected override MinMaxVector2 GetFrom()
+    return:
+      type: FriedSynapse.FlowEnt.MinMaxVector2
+    content.vb: Protected Overrides Function GetFrom() As MinMaxVector2
+  overridden: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetFrom
+  overload: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.GetFrom*
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  id: SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+  langs:
+  - csharp
+  - vb
+  name: SetValue(MinMaxVector2)
+  nameWithType: MoveAnchorMotion.SetValue(MinMaxVector2)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetValue
+    path: ../Assets/FlowEnt/Scripts/Runtime/Motions/Tween/UI/RectTransforms/MoveAnchorMotion.cs
+    startLine: 56
+  namespace: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  example: []
+  syntax:
+    content: protected override void SetValue(MinMaxVector2 value)
+    parameters:
+    - id: value
+      type: FriedSynapse.FlowEnt.MinMaxVector2
+    content.vb: Protected Overrides Sub SetValue(value As MinMaxVector2)
+  overridden: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  overload: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.SetValue*
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI
+    name: UI
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+    name: RectTransforms
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI
+    name: UI
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+    name: RectTransforms
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html
+  name: AbstractTweenMotion
+  nameWithType: AbstractTweenMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  name: AbstractTweenMotion<RectTransform>
+  nameWithType: AbstractTweenMotion<RectTransform>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion<RectTransform>
+  nameWithType.vb: AbstractTweenMotion(Of RectTransform)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion(Of RectTransform)
+  name.vb: AbstractTweenMotion(Of RectTransform)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+    name: AbstractTweenMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  - name: <
+  - uid: RectTransform
+    name: RectTransform
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+    name: AbstractTweenMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: RectTransform
+    name: RectTransform
+    isExternal: true
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  name: AbstractValueMotion<RectTransform, MinMaxVector2>
+  nameWithType: AbstractValueMotion<RectTransform, MinMaxVector2>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<RectTransform, FriedSynapse.FlowEnt.MinMaxVector2>
+  nameWithType.vb: AbstractValueMotion(Of RectTransform, MinMaxVector2)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of RectTransform, FriedSynapse.FlowEnt.MinMaxVector2)
+  name.vb: AbstractValueMotion(Of RectTransform, MinMaxVector2)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: <
+  - uid: RectTransform
+    name: RectTransform
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: RectTransform
+    name: RectTransform
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  name: AbstractStructValueMotion<RectTransform, MinMaxVector2>
+  nameWithType: AbstractStructValueMotion<RectTransform, MinMaxVector2>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion<RectTransform, FriedSynapse.FlowEnt.MinMaxVector2>
+  nameWithType.vb: AbstractStructValueMotion(Of RectTransform, MinMaxVector2)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion(Of RectTransform, FriedSynapse.FlowEnt.MinMaxVector2)
+  name.vb: AbstractStructValueMotion(Of RectTransform, MinMaxVector2)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: <
+  - uid: RectTransform
+    name: RectTransform
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: RectTransform
+    name: RectTransform
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  name: AbstractFloatMinMaxMotion<RectTransform>
+  nameWithType: AbstractFloatMinMaxMotion<RectTransform>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion<RectTransform>
+  nameWithType.vb: AbstractFloatMinMaxMotion(Of RectTransform)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion(Of RectTransform)
+  name.vb: AbstractFloatMinMaxMotion(Of RectTransform)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+    name: AbstractFloatMinMaxMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  - name: <
+  - uid: RectTransform
+    name: RectTransform
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+    name: AbstractFloatMinMaxMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: RectTransform
+    name: RectTransform
+    isExternal: true
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion.html
+  name: ITweenMotion
+  nameWithType: ITweenMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+- uid: FriedSynapse.FlowEnt.Motions.Abstract.IMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Abstract.IMotion
+  parent: FriedSynapse.FlowEnt.Motions.Abstract
+  href: FriedSynapse.FlowEnt.Motions.Abstract.IMotion.html
+  name: IMotion
+  nameWithType: IMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Abstract.IMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}.LerpFunction
+  commentId: P:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}.LerpFunction
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1.LerpFunction
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractFloatMinMaxMotion_1_LerpFunction
+  name: LerpFunction
+  nameWithType: AbstractFloatMinMaxMotion<RectTransform>.LerpFunction
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion<RectTransform>.LerpFunction
+  nameWithType.vb: AbstractFloatMinMaxMotion(Of RectTransform).LerpFunction
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion(Of RectTransform).LerpFunction
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractFloatMinMaxMotion_1_GetTo_FriedSynapse_FlowEnt_MinMaxVector2_FriedSynapse_FlowEnt_MinMaxVector2_
+  name: GetTo(MinMaxVector2, MinMaxVector2)
+  nameWithType: AbstractFloatMinMaxMotion<RectTransform>.GetTo(MinMaxVector2, MinMaxVector2)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion<RectTransform>.GetTo(FriedSynapse.FlowEnt.MinMaxVector2, FriedSynapse.FlowEnt.MinMaxVector2)
+  nameWithType.vb: AbstractFloatMinMaxMotion(Of RectTransform).GetTo(MinMaxVector2, MinMaxVector2)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion(Of RectTransform).GetTo(FriedSynapse.FlowEnt.MinMaxVector2, FriedSynapse.FlowEnt.MinMaxVector2)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+    name: GetTo
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractFloatMinMaxMotion_1_GetTo_FriedSynapse_FlowEnt_MinMaxVector2_FriedSynapse_FlowEnt_MinMaxVector2_
+  - name: (
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion{RectTransform}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+    name: GetTo
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractFloatMinMaxMotion_1_GetTo_FriedSynapse_FlowEnt_MinMaxVector2_FriedSynapse_FlowEnt_MinMaxVector2_
+  - name: (
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.LerpFunction
+  commentId: P:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.LerpFunction
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.LerpFunction
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_LerpFunction
+  name: LerpFunction
+  nameWithType: AbstractValueMotion<RectTransform, MinMaxVector2>.LerpFunction
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<RectTransform, FriedSynapse.FlowEnt.MinMaxVector2>.LerpFunction
+  nameWithType.vb: AbstractValueMotion(Of RectTransform, MinMaxVector2).LerpFunction
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of RectTransform, FriedSynapse.FlowEnt.MinMaxVector2).LerpFunction
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetFrom
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetFrom
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetFrom
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetFrom
+  name: GetFrom()
+  nameWithType: AbstractValueMotion<RectTransform, MinMaxVector2>.GetFrom()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<RectTransform, FriedSynapse.FlowEnt.MinMaxVector2>.GetFrom()
+  nameWithType.vb: AbstractValueMotion(Of RectTransform, MinMaxVector2).GetFrom()
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of RectTransform, FriedSynapse.FlowEnt.MinMaxVector2).GetFrom()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetFrom
+    name: GetFrom
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetFrom
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetFrom
+    name: GetFrom
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetFrom
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetTo(`1,`1)
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetTo__1__1_
+  name: GetTo(MinMaxVector2, MinMaxVector2)
+  nameWithType: AbstractValueMotion<RectTransform, MinMaxVector2>.GetTo(MinMaxVector2, MinMaxVector2)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<RectTransform, FriedSynapse.FlowEnt.MinMaxVector2>.GetTo(FriedSynapse.FlowEnt.MinMaxVector2, FriedSynapse.FlowEnt.MinMaxVector2)
+  nameWithType.vb: AbstractValueMotion(Of RectTransform, MinMaxVector2).GetTo(MinMaxVector2, MinMaxVector2)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of RectTransform, FriedSynapse.FlowEnt.MinMaxVector2).GetTo(FriedSynapse.FlowEnt.MinMaxVector2, FriedSynapse.FlowEnt.MinMaxVector2)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+    name: GetTo
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetTo__1__1_
+  - name: (
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+    name: GetTo
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetTo__1__1_
+  - name: (
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.SetValue(`1)
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_SetValue__1_
+  name: SetValue(MinMaxVector2)
+  nameWithType: AbstractValueMotion<RectTransform, MinMaxVector2>.SetValue(MinMaxVector2)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<RectTransform, FriedSynapse.FlowEnt.MinMaxVector2>.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  nameWithType.vb: AbstractValueMotion(Of RectTransform, MinMaxVector2).SetValue(MinMaxVector2)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of RectTransform, FriedSynapse.FlowEnt.MinMaxVector2).SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+    name: SetValue
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_SetValue__1_
+  - name: (
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.SetValue(FriedSynapse.FlowEnt.MinMaxVector2)
+    name: SetValue
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_SetValue__1_
+  - name: (
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnStart
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnStart
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnStart
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnStart
+  name: OnStart()
+  nameWithType: AbstractValueMotion<RectTransform, MinMaxVector2>.OnStart()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<RectTransform, FriedSynapse.FlowEnt.MinMaxVector2>.OnStart()
+  nameWithType.vb: AbstractValueMotion(Of RectTransform, MinMaxVector2).OnStart()
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of RectTransform, FriedSynapse.FlowEnt.MinMaxVector2).OnStart()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnStart
+    name: OnStart
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnStart
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnStart
+    name: OnStart
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnStart
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnUpdate(System.Single)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnUpdate(System.Single)
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnUpdate(System.Single)
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnUpdate_System_Single_
+  name: OnUpdate(float)
+  nameWithType: AbstractValueMotion<RectTransform, MinMaxVector2>.OnUpdate(float)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<RectTransform, FriedSynapse.FlowEnt.MinMaxVector2>.OnUpdate(float)
+  nameWithType.vb: AbstractValueMotion(Of RectTransform, MinMaxVector2).OnUpdate(Single)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of RectTransform, FriedSynapse.FlowEnt.MinMaxVector2).OnUpdate(Single)
+  name.vb: OnUpdate(Single)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnUpdate(System.Single)
+    name: OnUpdate
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnUpdate_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion{RectTransform,FriedSynapse.FlowEnt.MinMaxVector2}.OnUpdate(System.Single)
+    name: OnUpdate
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnUpdate_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}.item
+  commentId: F:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}.item
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.item
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_1_item
+  name: item
+  nameWithType: AbstractTweenMotion<RectTransform>.item
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion<RectTransform>.item
+  nameWithType.vb: AbstractTweenMotion(Of RectTransform).item
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion(Of RectTransform).item
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}.Item
+  commentId: P:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}.Item
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion{RectTransform}
+  definition: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.Item
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_1_Item
+  name: Item
+  nameWithType: AbstractTweenMotion<RectTransform>.Item
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion<RectTransform>.Item
+  nameWithType.vb: AbstractTweenMotion(Of RectTransform).Item
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion(Of RectTransform).Item
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnStart
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnStart
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnStart
+  name: OnStart()
+  nameWithType: AbstractTweenMotion.OnStart()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnStart()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnStart
+    name: OnStart
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnStart
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnStart
+    name: OnStart
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnStart
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnUpdate(System.Single)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnUpdate(System.Single)
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnUpdate_System_Single_
+  name: OnUpdate(float)
+  nameWithType: AbstractTweenMotion.OnUpdate(float)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnUpdate(float)
+  nameWithType.vb: AbstractTweenMotion.OnUpdate(Single)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnUpdate(Single)
+  name.vb: OnUpdate(Single)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnUpdate(System.Single)
+    name: OnUpdate
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnUpdate_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnUpdate(System.Single)
+    name: OnUpdate
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnUpdate_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopStart
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopStart
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnLoopStart
+  name: OnLoopStart()
+  nameWithType: AbstractTweenMotion.OnLoopStart()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopStart()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopStart
+    name: OnLoopStart
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnLoopStart
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopStart
+    name: OnLoopStart
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnLoopStart
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopComplete
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopComplete
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnLoopComplete
+  name: OnLoopComplete()
+  nameWithType: AbstractTweenMotion.OnLoopComplete()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopComplete()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopComplete
+    name: OnLoopComplete
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnLoopComplete
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnLoopComplete
+    name: OnLoopComplete
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnLoopComplete
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnComplete
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnComplete
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnComplete
+  name: OnComplete()
+  nameWithType: AbstractTweenMotion.OnComplete()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnComplete()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnComplete
+    name: OnComplete
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnComplete
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.OnComplete
+    name: OnComplete
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_OnComplete
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.EchoOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  name: Echo<MoveAnchorMotion>(MoveAnchorMotion, EchoOptions)
+  nameWithType: CommonExtensions.Echo<MoveAnchorMotion>(MoveAnchorMotion, EchoOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion>(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion, FriedSynapse.FlowEnt.EchoOptions)
+  nameWithType.vb: CommonExtensions.Echo(Of MoveAnchorMotion)(MoveAnchorMotion, EchoOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion)(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion, FriedSynapse.FlowEnt.EchoOptions)
+  name.vb: Echo(Of MoveAnchorMotion)(MoveAnchorMotion, EchoOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(System.Nullable{System.Single},System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  name: Echo<MoveAnchorMotion>(MoveAnchorMotion, float?, bool)
+  nameWithType: CommonExtensions.Echo<MoveAnchorMotion>(MoveAnchorMotion, float?, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion>(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion, float?, bool)
+  nameWithType.vb: CommonExtensions.Echo(Of MoveAnchorMotion)(MoveAnchorMotion, Single?, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion)(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion, Single?, Boolean)
+  name.vb: Echo(Of MoveAnchorMotion)(MoveAnchorMotion, Single?, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.TweenOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  name: Tween<MoveAnchorMotion>(MoveAnchorMotion, TweenOptions)
+  nameWithType: CommonExtensions.Tween<MoveAnchorMotion>(MoveAnchorMotion, TweenOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion>(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion, FriedSynapse.FlowEnt.TweenOptions)
+  nameWithType.vb: CommonExtensions.Tween(Of MoveAnchorMotion)(MoveAnchorMotion, TweenOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion)(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion, FriedSynapse.FlowEnt.TweenOptions)
+  name.vb: Tween(Of MoveAnchorMotion)(MoveAnchorMotion, TweenOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(System.Single,System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  name: Tween<MoveAnchorMotion>(MoveAnchorMotion, float, bool)
+  nameWithType: CommonExtensions.Tween<MoveAnchorMotion>(MoveAnchorMotion, float, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion>(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion, float, bool)
+  nameWithType.vb: CommonExtensions.Tween(Of MoveAnchorMotion)(MoveAnchorMotion, Single, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion)(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion, Single, Boolean)
+  name.vb: Tween(Of MoveAnchorMotion)(MoveAnchorMotion, Single, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion
+    name: MoveAnchorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetFieldValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetFieldValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetFieldValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetFieldValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetPropertyValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetPropertyValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetPropertyValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetPropertyValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.String,System.Object[],System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  name: InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  nameWithType: ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), System.Reflection.BindingFlags)
+  name.vb: InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: <
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.String,{T},System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  name: SetFieldValue<T>(object, string, T, BindingFlags)
+  nameWithType: ReflectionExtensions.SetFieldValue<T>(object, string, T, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue<T>(object, string, T, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, System.Reflection.BindingFlags)
+  name.vb: SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+    name: Abstract
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+    name: Abstract
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  name: AbstractTweenMotion<TItem>
+  nameWithType: AbstractTweenMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion<TItem>
+  nameWithType.vb: AbstractTweenMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion(Of TItem)
+  name.vb: AbstractTweenMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+    name: AbstractTweenMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+    name: AbstractTweenMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  name: AbstractValueMotion<TItem, TValue>
+  nameWithType: AbstractValueMotion<TItem, TValue>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue)
+  name.vb: AbstractValueMotion(Of TItem, TValue)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  name: AbstractStructValueMotion<TItem, TValue>
+  nameWithType: AbstractStructValueMotion<TItem, TValue>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion<TItem, TValue>
+  nameWithType.vb: AbstractStructValueMotion(Of TItem, TValue)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion(Of TItem, TValue)
+  name.vb: AbstractStructValueMotion(Of TItem, TValue)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  name: AbstractFloatMinMaxMotion<TItem>
+  nameWithType: AbstractFloatMinMaxMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion<TItem>
+  nameWithType.vb: AbstractFloatMinMaxMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion(Of TItem)
+  name.vb: AbstractFloatMinMaxMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+    name: AbstractFloatMinMaxMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+    name: AbstractFloatMinMaxMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Abstract
+  commentId: N:FriedSynapse.FlowEnt.Motions.Abstract
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Abstract
+  nameWithType: FriedSynapse.FlowEnt.Motions.Abstract
+  fullName: FriedSynapse.FlowEnt.Motions.Abstract
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Abstract
+    name: Abstract
+    href: FriedSynapse.FlowEnt.Motions.Abstract.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Abstract
+    name: Abstract
+    href: FriedSynapse.FlowEnt.Motions.Abstract.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1.LerpFunction
+  commentId: P:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1.LerpFunction
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractFloatMinMaxMotion_1_LerpFunction
+  name: LerpFunction
+  nameWithType: AbstractFloatMinMaxMotion<TItem>.LerpFunction
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion<TItem>.LerpFunction
+  nameWithType.vb: AbstractFloatMinMaxMotion(Of TItem).LerpFunction
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion(Of TItem).LerpFunction
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractFloatMinMaxMotion_1_GetTo_FriedSynapse_FlowEnt_MinMaxVector2_FriedSynapse_FlowEnt_MinMaxVector2_
+  name: GetTo(MinMaxVector2, MinMaxVector2)
+  nameWithType: AbstractFloatMinMaxMotion<TItem>.GetTo(MinMaxVector2, MinMaxVector2)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion<TItem>.GetTo(FriedSynapse.FlowEnt.MinMaxVector2, FriedSynapse.FlowEnt.MinMaxVector2)
+  nameWithType.vb: AbstractFloatMinMaxMotion(Of TItem).GetTo(MinMaxVector2, MinMaxVector2)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion(Of TItem).GetTo(FriedSynapse.FlowEnt.MinMaxVector2, FriedSynapse.FlowEnt.MinMaxVector2)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+    name: GetTo
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractFloatMinMaxMotion_1_GetTo_FriedSynapse_FlowEnt_MinMaxVector2_FriedSynapse_FlowEnt_MinMaxVector2_
+  - name: (
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1.GetTo(FriedSynapse.FlowEnt.MinMaxVector2,FriedSynapse.FlowEnt.MinMaxVector2)
+    name: GetTo
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractFloatMinMaxMotion_1_GetTo_FriedSynapse_FlowEnt_MinMaxVector2_FriedSynapse_FlowEnt_MinMaxVector2_
+  - name: (
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.LerpFunction
+  commentId: P:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.LerpFunction
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_LerpFunction
+  name: LerpFunction
+  nameWithType: AbstractValueMotion<TItem, TValue>.LerpFunction
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.LerpFunction
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).LerpFunction
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).LerpFunction
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetFrom
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetFrom
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetFrom
+  name: GetFrom()
+  nameWithType: AbstractValueMotion<TItem, TValue>.GetFrom()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.GetFrom()
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).GetFrom()
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).GetFrom()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetFrom
+    name: GetFrom
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetFrom
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetFrom
+    name: GetFrom
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetFrom
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetTo(`1,`1)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetTo(`1,`1)
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetTo__1__1_
+  name: GetTo(TValue, TValue)
+  nameWithType: AbstractValueMotion<TItem, TValue>.GetTo(TValue, TValue)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.GetTo(TValue, TValue)
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).GetTo(TValue, TValue)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).GetTo(TValue, TValue)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetTo(`1,`1)
+    name: GetTo
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetTo__1__1_
+  - name: (
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.GetTo(`1,`1)
+    name: GetTo
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_GetTo__1__1_
+  - name: (
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.SetValue(`1)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.SetValue(`1)
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_SetValue__1_
+  name: SetValue(TValue)
+  nameWithType: AbstractValueMotion<TItem, TValue>.SetValue(TValue)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.SetValue(TValue)
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).SetValue(TValue)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).SetValue(TValue)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.SetValue(`1)
+    name: SetValue
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_SetValue__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.SetValue(`1)
+    name: SetValue
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_SetValue__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnStart
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnStart
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnStart
+  name: OnStart()
+  nameWithType: AbstractValueMotion<TItem, TValue>.OnStart()
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.OnStart()
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).OnStart()
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).OnStart()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnStart
+    name: OnStart
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnStart
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnStart
+    name: OnStart
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnStart
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnUpdate(System.Single)
+  commentId: M:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnUpdate(System.Single)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnUpdate_System_Single_
+  name: OnUpdate(float)
+  nameWithType: AbstractValueMotion<TItem, TValue>.OnUpdate(float)
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.OnUpdate(float)
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).OnUpdate(Single)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).OnUpdate(Single)
+  name.vb: OnUpdate(Single)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnUpdate(System.Single)
+    name: OnUpdate
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnUpdate_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.OnUpdate(System.Single)
+    name: OnUpdate
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractValueMotion_2_OnUpdate_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.item
+  commentId: F:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.item
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_1_item
+  name: item
+  nameWithType: AbstractTweenMotion<TItem>.item
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion<TItem>.item
+  nameWithType.vb: AbstractTweenMotion(Of TItem).item
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion(Of TItem).item
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.Item
+  commentId: P:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.Item
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html#FriedSynapse_FlowEnt_Motions_Tween_Abstract_AbstractTweenMotion_1_Item
+  name: Item
+  nameWithType: AbstractTweenMotion<TItem>.Item
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion<TItem>.Item
+  nameWithType.vb: AbstractTweenMotion(Of TItem).Item
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion(Of TItem).Item
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  name: Echo<TItem>(TItem, EchoOptions)
+  nameWithType: CommonExtensions.Echo<TItem>(TItem, EchoOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<TItem>(TItem, FriedSynapse.FlowEnt.EchoOptions)
+  nameWithType.vb: CommonExtensions.Echo(Of TItem)(TItem, EchoOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of TItem)(TItem, FriedSynapse.FlowEnt.EchoOptions)
+  name.vb: Echo(Of TItem)(TItem, EchoOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions
+  commentId: T:FriedSynapse.FlowEnt.CommonExtensions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.CommonExtensions.html
+  name: CommonExtensions
+  nameWithType: CommonExtensions
+  fullName: FriedSynapse.FlowEnt.CommonExtensions
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  name: Echo<TItem>(TItem, float?, bool)
+  nameWithType: CommonExtensions.Echo<TItem>(TItem, float?, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<TItem>(TItem, float?, bool)
+  nameWithType.vb: CommonExtensions.Echo(Of TItem)(TItem, Single?, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of TItem)(TItem, Single?, Boolean)
+  name.vb: Echo(Of TItem)(TItem, Single?, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  name: Tween<TItem>(TItem, TweenOptions)
+  nameWithType: CommonExtensions.Tween<TItem>(TItem, TweenOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<TItem>(TItem, FriedSynapse.FlowEnt.TweenOptions)
+  nameWithType.vb: CommonExtensions.Tween(Of TItem)(TItem, TweenOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of TItem)(TItem, FriedSynapse.FlowEnt.TweenOptions)
+  name.vb: Tween(Of TItem)(TItem, TweenOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  name: Tween<TItem>(TItem, float, bool)
+  nameWithType: CommonExtensions.Tween<TItem>(TItem, float, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<TItem>(TItem, float, bool)
+  nameWithType.vb: CommonExtensions.Tween(Of TItem)(TItem, Single, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of TItem)(TItem, Single, Boolean)
+  name.vb: Tween(Of TItem)(TItem, Single, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetFieldValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetFieldValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetFieldValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetFieldValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  commentId: T:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  parent: FriedSynapse.FlowEnt.Reflection
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetPropertyValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetPropertyValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetPropertyValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetPropertyValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  name: InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  nameWithType: ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), System.Reflection.BindingFlags)
+  name.vb: InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: <
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  name: SetFieldValue<T>(object, string, T, BindingFlags)
+  nameWithType: ReflectionExtensions.SetFieldValue<T>(object, string, T, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue<T>(object, string, T, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, System.Reflection.BindingFlags)
+  name.vb: SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt
+  commentId: N:FriedSynapse.FlowEnt
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt
+  nameWithType: FriedSynapse.FlowEnt
+  fullName: FriedSynapse.FlowEnt
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+- uid: FriedSynapse.FlowEnt.Reflection
+  commentId: N:FriedSynapse.FlowEnt.Reflection
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Reflection
+  nameWithType: FriedSynapse.FlowEnt.Reflection
+  fullName: FriedSynapse.FlowEnt.Reflection
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Reflection
+    name: Reflection
+    href: FriedSynapse.FlowEnt.Reflection.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Reflection
+    name: Reflection
+    href: FriedSynapse.FlowEnt.Reflection.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor*
+  commentId: Overload:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.#ctor
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html#FriedSynapse_FlowEnt_Motions_Tween_UI_RectTransforms_MoveAnchorMotion__ctor_RectTransform_FriedSynapse_FlowEnt_MinMaxVector2_
+  name: MoveAnchorMotion
+  nameWithType: MoveAnchorMotion.MoveAnchorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.MoveAnchorMotion
+  nameWithType.vb: MoveAnchorMotion.New
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.New
+  name.vb: New
+- uid: RectTransform
+  isExternal: true
+  name: RectTransform
+  nameWithType: RectTransform
+  fullName: RectTransform
+- uid: FriedSynapse.FlowEnt.MinMaxVector2
+  commentId: T:FriedSynapse.FlowEnt.MinMaxVector2
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  name: MinMaxVector2
+  nameWithType: MinMaxVector2
+  fullName: FriedSynapse.FlowEnt.MinMaxVector2
+- uid: System.Nullable{FriedSynapse.FlowEnt.MinMaxVector2}
+  commentId: T:System.Nullable{FriedSynapse.FlowEnt.MinMaxVector2}
+  parent: System
+  definition: System.Nullable`1
+  href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  name: MinMaxVector2?
+  nameWithType: MinMaxVector2?
+  fullName: FriedSynapse.FlowEnt.MinMaxVector2?
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: '?'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.MinMaxVector2
+    name: MinMaxVector2
+    href: FriedSynapse.FlowEnt.MinMaxVector2.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData.html
+  name: AnchorPresetData
+  nameWithType: AnchorPresetData
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPresetData
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+  parent: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset.html
+  name: AnchorPreset
+  nameWithType: AnchorPreset
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+- uid: System.Nullable{FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset}
+  commentId: T:System.Nullable{FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset}
+  parent: System
+  definition: System.Nullable`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset.html
+  name: AnchorPreset?
+  nameWithType: AnchorPreset?
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset?
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+    name: AnchorPreset
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset.html
+  - name: '?'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset
+    name: AnchorPreset
+    href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.AnchorPreset.html
+  - name: '?'
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.GetFrom*
+  commentId: Overload:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.GetFrom
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html#FriedSynapse_FlowEnt_Motions_Tween_UI_RectTransforms_MoveAnchorMotion_GetFrom
+  name: GetFrom
+  nameWithType: MoveAnchorMotion.GetFrom
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.GetFrom
+- uid: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.SetValue*
+  commentId: Overload:FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.SetValue
+  href: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.html#FriedSynapse_FlowEnt_Motions_Tween_UI_RectTransforms_MoveAnchorMotion_SetValue_FriedSynapse_FlowEnt_MinMaxVector2_
+  name: SetValue
+  nameWithType: MoveAnchorMotion.SetValue
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.UI.RectTransforms.MoveAnchorMotion.SetValue

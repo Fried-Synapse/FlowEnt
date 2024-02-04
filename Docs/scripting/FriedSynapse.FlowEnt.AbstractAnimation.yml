@@ -1,0 +1,3530 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.AbstractAnimation
+  commentId: T:FriedSynapse.FlowEnt.AbstractAnimation
+  id: AbstractAnimation
+  parent: FriedSynapse.FlowEnt
+  children:
+  - FriedSynapse.FlowEnt.AbstractAnimation.#ctor
+  - FriedSynapse.FlowEnt.AbstractAnimation.AsAsync(System.Nullable{System.Threading.CancellationToken})
+  - FriedSynapse.FlowEnt.AbstractAnimation.AutoStart
+  - FriedSynapse.FlowEnt.AbstractAnimation.Conditional(System.Func{System.Boolean},System.Action{FriedSynapse.FlowEnt.AbstractAnimation})
+  - FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal``1(System.Func{System.Boolean},System.Action{``0})
+  - FriedSynapse.FlowEnt.AbstractAnimation.Controllable
+  - FriedSynapse.FlowEnt.AbstractAnimation.OnCompleted(System.Action)
+  - FriedSynapse.FlowEnt.AbstractAnimation.OnCompleting(System.Action)
+  - FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted(System.Action{System.Nullable{System.Int32}})
+  - FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted(System.Action{System.Nullable{System.Int32}})
+  - FriedSynapse.FlowEnt.AbstractAnimation.OnStarted(System.Action)
+  - FriedSynapse.FlowEnt.AbstractAnimation.OnStarting(System.Action)
+  - FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated(System.Action{System.Single})
+  - FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating(System.Action{System.Single})
+  - FriedSynapse.FlowEnt.AbstractAnimation.Overdraft
+  - FriedSynapse.FlowEnt.AbstractAnimation.Pause
+  - FriedSynapse.FlowEnt.AbstractAnimation.PlayState
+  - FriedSynapse.FlowEnt.AbstractAnimation.Reset
+  - FriedSynapse.FlowEnt.AbstractAnimation.ResetInternal
+  - FriedSynapse.FlowEnt.AbstractAnimation.Resume
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart(System.Boolean)
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetDelay(System.Single)
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil(System.Func{System.Boolean})
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetEvents(FriedSynapse.FlowEnt.AbstractAnimationEvents)
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount(System.Nullable{System.Int32})
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetName(System.String)
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetOptions(FriedSynapse.FlowEnt.AbstractAnimationOptions)
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames(System.Int32)
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale(System.Single)
+  - FriedSynapse.FlowEnt.AbstractAnimation.SetUpdateType(FriedSynapse.FlowEnt.UpdateType)
+  - FriedSynapse.FlowEnt.AbstractAnimation.Start
+  - FriedSynapse.FlowEnt.AbstractAnimation.StartAsync(System.Nullable{System.Threading.CancellationToken})
+  - FriedSynapse.FlowEnt.AbstractAnimation.Stop(System.Boolean)
+  - FriedSynapse.FlowEnt.AbstractAnimation.StopInternal(System.Boolean)
+  - FriedSynapse.FlowEnt.AbstractAnimation.TimeScale
+  - FriedSynapse.FlowEnt.AbstractAnimation.UpdateType
+  langs:
+  - csharp
+  - vb
+  name: AbstractAnimation
+  nameWithType: AbstractAnimation
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation
+  type: Class
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: AbstractAnimation
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 8
+  namespace: FriedSynapse.FlowEnt
+  summary: Provides animation specific behaviour
+  example: []
+  syntax:
+    content: 'public abstract class AbstractAnimation : AbstractUpdatable, IControllable'
+    content.vb: Public MustInherit Class AbstractAnimation Inherits AbstractUpdatable Implements IControllable
+  inheritance:
+  - System.Object
+  - FriedSynapse.FlowEnt.FastListItem{FriedSynapse.FlowEnt.AbstractUpdatable}
+  - FriedSynapse.FlowEnt.AbstractUpdatable
+  derivedClasses:
+  - FriedSynapse.FlowEnt.Echo
+  - FriedSynapse.FlowEnt.Flow
+  - FriedSynapse.FlowEnt.Tween
+  implements:
+  - FriedSynapse.FlowEnt.IControllable
+  inheritedMembers:
+  - FriedSynapse.FlowEnt.AbstractUpdatable.Id
+  - FriedSynapse.FlowEnt.AbstractUpdatable.Name
+  - FriedSynapse.FlowEnt.AbstractUpdatable.onStarting
+  - FriedSynapse.FlowEnt.AbstractUpdatable.onUpdating
+  - FriedSynapse.FlowEnt.AbstractUpdatable.onCompleting
+  - FriedSynapse.FlowEnt.AbstractUpdatable.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.EchoOptions)
+  - FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(System.Nullable{System.Single},System.Boolean)
+  - FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Restart``1
+  - FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.TweenOptions)
+  - FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(System.Single,System.Boolean)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.String,System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.String,System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.String,System.Object[],System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.String,{T},System.Reflection.BindingFlags)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Controllable
+  commentId: P:FriedSynapse.FlowEnt.AbstractAnimation.Controllable
+  id: Controllable
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: Controllable
+  nameWithType: AbstractAnimation.Controllable
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Controllable
+  type: Property
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Controllable.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Controllable
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Controllable.cs
+    startLine: 42
+  namespace: FriedSynapse.FlowEnt
+  summary: Returns the current animation cast as IControllable, which can be used to control the animation
+  example: []
+  syntax:
+    content: public IControllable Controllable { get; }
+    parameters: []
+    return:
+      type: FriedSynapse.FlowEnt.IControllable
+    content.vb: Public ReadOnly Property Controllable As IControllable
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.Controllable*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetEvents(FriedSynapse.FlowEnt.AbstractAnimationEvents)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetEvents(FriedSynapse.FlowEnt.AbstractAnimationEvents)
+  id: SetEvents(FriedSynapse.FlowEnt.AbstractAnimationEvents)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetEvents(AbstractAnimationEvents)
+  nameWithType: AbstractAnimation.SetEvents(AbstractAnimationEvents)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetEvents(FriedSynapse.FlowEnt.AbstractAnimationEvents)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetEvents
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 9
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: protected void SetEvents(AbstractAnimationEvents events)
+    parameters:
+    - id: events
+      type: FriedSynapse.FlowEnt.AbstractAnimationEvents
+    content.vb: Protected Sub SetEvents(events As AbstractAnimationEvents)
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetEvents*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnStarting(System.Action)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.OnStarting(System.Action)
+  id: OnStarting(System.Action)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: OnStarting(Action)
+  nameWithType: AbstractAnimation.OnStarting(Action)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnStarting(System.Action)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: OnStarting
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 23
+  namespace: FriedSynapse.FlowEnt
+  summary: Adds an event called when the animation is starting.
+  example: []
+  syntax:
+    content: public AbstractAnimation OnStarting(Action callback)
+    parameters:
+    - id: callback
+      type: System.Action
+      description: The event.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function OnStarting(callback As Action) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.OnStarting*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnStarted(System.Action)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.OnStarted(System.Action)
+  id: OnStarted(System.Action)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: OnStarted(Action)
+  nameWithType: AbstractAnimation.OnStarted(Action)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnStarted(System.Action)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: OnStarted
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 31
+  namespace: FriedSynapse.FlowEnt
+  summary: Adds an event called when the animation has started.
+  example: []
+  syntax:
+    content: public AbstractAnimation OnStarted(Action callback)
+    parameters:
+    - id: callback
+      type: System.Action
+      description: The event.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function OnStarted(callback As Action) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.OnStarted*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating(System.Action{System.Single})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating(System.Action{System.Single})
+  id: OnUpdating(System.Action{System.Single})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: OnUpdating(Action<float>)
+  nameWithType: AbstractAnimation.OnUpdating(Action<float>)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating(System.Action<float>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: OnUpdating
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 39
+  namespace: FriedSynapse.FlowEnt
+  summary: Adds an event called when the animation is updating.
+  example: []
+  syntax:
+    content: public AbstractAnimation OnUpdating(Action<float> callback)
+    parameters:
+    - id: callback
+      type: System.Action{System.Single}
+      description: The event.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function OnUpdating(callback As Action(Of Single)) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating*
+  nameWithType.vb: AbstractAnimation.OnUpdating(Action(Of Single))
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating(System.Action(Of Single))
+  name.vb: OnUpdating(Action(Of Single))
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated(System.Action{System.Single})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated(System.Action{System.Single})
+  id: OnUpdated(System.Action{System.Single})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: OnUpdated(Action<float>)
+  nameWithType: AbstractAnimation.OnUpdated(Action<float>)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated(System.Action<float>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: OnUpdated
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 47
+  namespace: FriedSynapse.FlowEnt
+  summary: Adds an event called when the animation has updated.
+  example: []
+  syntax:
+    content: public AbstractAnimation OnUpdated(Action<float> callback)
+    parameters:
+    - id: callback
+      type: System.Action{System.Single}
+      description: The event.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function OnUpdated(callback As Action(Of Single)) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated*
+  nameWithType.vb: AbstractAnimation.OnUpdated(Action(Of Single))
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated(System.Action(Of Single))
+  name.vb: OnUpdated(Action(Of Single))
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted(System.Action{System.Nullable{System.Int32}})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted(System.Action{System.Nullable{System.Int32}})
+  id: OnLoopStarted(System.Action{System.Nullable{System.Int32}})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: OnLoopStarted(Action<int?>)
+  nameWithType: AbstractAnimation.OnLoopStarted(Action<int?>)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted(System.Action<int?>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: OnLoopStarted
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 55
+  namespace: FriedSynapse.FlowEnt
+  summary: Adds an event called when the animation loop has started.
+  example: []
+  syntax:
+    content: public AbstractAnimation OnLoopStarted(Action<int?> callback)
+    parameters:
+    - id: callback
+      type: System.Action{System.Nullable{System.Int32}}
+      description: The event. The parameter represents the number of loops left. If there are infinite loops it'll send a null param.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function OnLoopStarted(callback As Action(Of Integer?)) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted*
+  nameWithType.vb: AbstractAnimation.OnLoopStarted(Action(Of Integer?))
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted(System.Action(Of Integer?))
+  name.vb: OnLoopStarted(Action(Of Integer?))
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted(System.Action{System.Nullable{System.Int32}})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted(System.Action{System.Nullable{System.Int32}})
+  id: OnLoopCompleted(System.Action{System.Nullable{System.Int32}})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: OnLoopCompleted(Action<int?>)
+  nameWithType: AbstractAnimation.OnLoopCompleted(Action<int?>)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted(System.Action<int?>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: OnLoopCompleted
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 63
+  namespace: FriedSynapse.FlowEnt
+  summary: Adds an event called when the animation loop has completed.
+  example: []
+  syntax:
+    content: public AbstractAnimation OnLoopCompleted(Action<int?> callback)
+    parameters:
+    - id: callback
+      type: System.Action{System.Nullable{System.Int32}}
+      description: The event. The parameter represents the number of loops left. If there are infinite loops it'll send a null param.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function OnLoopCompleted(callback As Action(Of Integer?)) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted*
+  nameWithType.vb: AbstractAnimation.OnLoopCompleted(Action(Of Integer?))
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted(System.Action(Of Integer?))
+  name.vb: OnLoopCompleted(Action(Of Integer?))
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleting(System.Action)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.OnCompleting(System.Action)
+  id: OnCompleting(System.Action)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: OnCompleting(Action)
+  nameWithType: AbstractAnimation.OnCompleting(Action)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleting(System.Action)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: OnCompleting
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 71
+  namespace: FriedSynapse.FlowEnt
+  summary: Adds an event called when the animation is completing.
+  example: []
+  syntax:
+    content: public AbstractAnimation OnCompleting(Action callback)
+    parameters:
+    - id: callback
+      type: System.Action
+      description: The event.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function OnCompleting(callback As Action) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleting*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleted(System.Action)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.OnCompleted(System.Action)
+  id: OnCompleted(System.Action)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: OnCompleted(Action)
+  nameWithType: AbstractAnimation.OnCompleted(Action)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleted(System.Action)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: OnCompleted
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Events.cs
+    startLine: 79
+  namespace: FriedSynapse.FlowEnt
+  summary: Adds an event called when the animation has completed.
+  example: []
+  syntax:
+    content: public AbstractAnimation OnCompleted(Action callback)
+    parameters:
+    - id: callback
+      type: System.Action
+      description: The event.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function OnCompleted(callback As Action) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleted*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.UpdateType
+  commentId: P:FriedSynapse.FlowEnt.AbstractAnimation.UpdateType
+  id: UpdateType
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: UpdateType
+  nameWithType: AbstractAnimation.UpdateType
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.UpdateType
+  type: Property
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: UpdateType
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 6
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public UpdateType UpdateType { get; set; }
+    parameters: []
+    return:
+      type: FriedSynapse.FlowEnt.UpdateType
+    content.vb: Public Property UpdateType As UpdateType
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.UpdateType*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.AutoStart
+  commentId: P:FriedSynapse.FlowEnt.AbstractAnimation.AutoStart
+  id: AutoStart
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: AutoStart
+  nameWithType: AbstractAnimation.AutoStart
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.AutoStart
+  type: Property
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: AutoStart
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 19
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public bool AutoStart { get; protected set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AutoStart As Boolean
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.AutoStart*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.TimeScale
+  commentId: P:FriedSynapse.FlowEnt.AbstractAnimation.TimeScale
+  id: TimeScale
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: TimeScale
+  nameWithType: AbstractAnimation.TimeScale
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.TimeScale
+  type: Property
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: TimeScale
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 46
+  namespace: FriedSynapse.FlowEnt
+  example: []
+  syntax:
+    content: public float TimeScale { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property TimeScale As Single
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.TimeScale*
+  implements:
+  - FriedSynapse.FlowEnt.IControllable.TimeScale
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.PlayState
+  commentId: P:FriedSynapse.FlowEnt.AbstractAnimation.PlayState
+  id: PlayState
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: PlayState
+  nameWithType: AbstractAnimation.PlayState
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.PlayState
+  type: Property
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: PlayState
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 65
+  namespace: FriedSynapse.FlowEnt
+  summary: The current state of the animation.
+  example: []
+  syntax:
+    content: public PlayState PlayState { get; }
+    parameters: []
+    return:
+      type: FriedSynapse.FlowEnt.PlayState
+    content.vb: Public ReadOnly Property PlayState As PlayState
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.PlayState*
+  implements:
+  - FriedSynapse.FlowEnt.IControllable.PlayState
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal``1(System.Func{System.Boolean},System.Action{``0})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal``1(System.Func{System.Boolean},System.Action{``0})
+  id: ConditionalInternal``1(System.Func{System.Boolean},System.Action{``0})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: ConditionalInternal<TAnimation>(Func<bool>, Action<TAnimation>)
+  nameWithType: AbstractAnimation.ConditionalInternal<TAnimation>(Func<bool>, Action<TAnimation>)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal<TAnimation>(System.Func<bool>, System.Action<TAnimation>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ConditionalInternal
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 72
+  namespace: FriedSynapse.FlowEnt
+  summary: Executes the <code class="paramref">onConditionTrue</code> if <code class="paramref">condition</code> returns true.
+  example: []
+  syntax:
+    content: 'protected TAnimation ConditionalInternal<TAnimation>(Func<bool> condition, Action<TAnimation> onConditionTrue) where TAnimation : AbstractAnimation'
+    parameters:
+    - id: condition
+      type: System.Func{System.Boolean}
+      description: The condition.
+    - id: onConditionTrue
+      type: System.Action{{TAnimation}}
+      description: The callback.
+    typeParameters:
+    - id: TAnimation
+    return:
+      type: '{TAnimation}'
+    content.vb: Protected Function ConditionalInternal(Of TAnimation As AbstractAnimation)(condition As Func(Of Boolean), onConditionTrue As Action(Of TAnimation)) As TAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal*
+  nameWithType.vb: AbstractAnimation.ConditionalInternal(Of TAnimation)(Func(Of Boolean), Action(Of TAnimation))
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal(Of TAnimation)(System.Func(Of Boolean), System.Action(Of TAnimation))
+  name.vb: ConditionalInternal(Of TAnimation)(Func(Of Boolean), Action(Of TAnimation))
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Conditional(System.Func{System.Boolean},System.Action{FriedSynapse.FlowEnt.AbstractAnimation})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.Conditional(System.Func{System.Boolean},System.Action{FriedSynapse.FlowEnt.AbstractAnimation})
+  id: Conditional(System.Func{System.Boolean},System.Action{FriedSynapse.FlowEnt.AbstractAnimation})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: Conditional(Func<bool>, Action<AbstractAnimation>)
+  nameWithType: AbstractAnimation.Conditional(Func<bool>, Action<AbstractAnimation>)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Conditional(System.Func<bool>, System.Action<FriedSynapse.FlowEnt.AbstractAnimation>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Conditional
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 86
+  namespace: FriedSynapse.FlowEnt
+  summary: Executes the <code class="paramref">onConditionTrue</code> if <code class="paramref">condition</code> returns true.
+  example: []
+  syntax:
+    content: public AbstractAnimation Conditional(Func<bool> condition, Action<AbstractAnimation> onConditionTrue)
+    parameters:
+    - id: condition
+      type: System.Func{System.Boolean}
+      description: The condition.
+    - id: onConditionTrue
+      type: System.Action{FriedSynapse.FlowEnt.AbstractAnimation}
+      description: The callback.
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function Conditional(condition As Func(Of Boolean), onConditionTrue As Action(Of AbstractAnimation)) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.Conditional*
+  nameWithType.vb: AbstractAnimation.Conditional(Func(Of Boolean), Action(Of AbstractAnimation))
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.Conditional(System.Func(Of Boolean), System.Action(Of FriedSynapse.FlowEnt.AbstractAnimation))
+  name.vb: Conditional(Func(Of Boolean), Action(Of AbstractAnimation))
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetOptions(FriedSynapse.FlowEnt.AbstractAnimationOptions)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetOptions(FriedSynapse.FlowEnt.AbstractAnimationOptions)
+  id: SetOptions(FriedSynapse.FlowEnt.AbstractAnimationOptions)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetOptions(AbstractAnimationOptions)
+  nameWithType: AbstractAnimation.SetOptions(AbstractAnimationOptions)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetOptions(FriedSynapse.FlowEnt.AbstractAnimationOptions)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetOptions
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 89
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: protected void SetOptions(AbstractAnimationOptions options)
+    parameters:
+    - id: options
+      type: FriedSynapse.FlowEnt.AbstractAnimationOptions
+    content.vb: Protected Sub SetOptions(options As AbstractAnimationOptions)
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetOptions*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetName(System.String)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetName(System.String)
+  id: SetName(System.String)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetName(string)
+  nameWithType: AbstractAnimation.SetName(string)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetName(string)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetName
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 104
+  namespace: FriedSynapse.FlowEnt
+  summary: Sets the name of the animation.
+  example: []
+  syntax:
+    content: public AbstractAnimation SetName(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function SetName(name As String) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetName*
+  nameWithType.vb: AbstractAnimation.SetName(String)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.SetName(String)
+  name.vb: SetName(String)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetUpdateType(FriedSynapse.FlowEnt.UpdateType)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetUpdateType(FriedSynapse.FlowEnt.UpdateType)
+  id: SetUpdateType(FriedSynapse.FlowEnt.UpdateType)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetUpdateType(UpdateType)
+  nameWithType: AbstractAnimation.SetUpdateType(UpdateType)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetUpdateType(FriedSynapse.FlowEnt.UpdateType)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetUpdateType
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 112
+  namespace: FriedSynapse.FlowEnt
+  summary: Sets the update type for the animation.
+  example: []
+  syntax:
+    content: public AbstractAnimation SetUpdateType(UpdateType updateType)
+    parameters:
+    - id: updateType
+      type: FriedSynapse.FlowEnt.UpdateType
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function SetUpdateType(updateType As UpdateType) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetUpdateType*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart(System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart(System.Boolean)
+  id: SetAutoStart(System.Boolean)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetAutoStart(bool)
+  nameWithType: AbstractAnimation.SetAutoStart(bool)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart(bool)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetAutoStart
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 120
+  namespace: FriedSynapse.FlowEnt
+  summary: Sets whether this animation should auto-start or not.
+  remarks: Auto-start will be slower than a true-start. See more at https://flowent.friedsynapse.com/tips#h.s5cucrg5qyjc
+  example: []
+  syntax:
+    content: public AbstractAnimation SetAutoStart(bool autoStart)
+    parameters:
+    - id: autoStart
+      type: System.Boolean
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function SetAutoStart(autoStart As Boolean) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart*
+  nameWithType.vb: AbstractAnimation.SetAutoStart(Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart(Boolean)
+  name.vb: SetAutoStart(Boolean)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames(System.Int32)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames(System.Int32)
+  id: SetSkipFrames(System.Int32)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetSkipFrames(int)
+  nameWithType: AbstractAnimation.SetSkipFrames(int)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames(int)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetSkipFrames
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 128
+  namespace: FriedSynapse.FlowEnt
+  summary: Sets the amount of frames you want to skip at when this animation is started.
+  example: []
+  syntax:
+    content: public AbstractAnimation SetSkipFrames(int frames)
+    parameters:
+    - id: frames
+      type: System.Int32
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function SetSkipFrames(frames As Integer) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames*
+  nameWithType.vb: AbstractAnimation.SetSkipFrames(Integer)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames(Integer)
+  name.vb: SetSkipFrames(Integer)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetDelay(System.Single)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetDelay(System.Single)
+  id: SetDelay(System.Single)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetDelay(float)
+  nameWithType: AbstractAnimation.SetDelay(float)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetDelay(float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetDelay
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 137
+  namespace: FriedSynapse.FlowEnt
+  summary: Sets the amount of time in seconds that you want to delay when this animation is started.
+  example: []
+  syntax:
+    content: public AbstractAnimation SetDelay(float time)
+    parameters:
+    - id: time
+      type: System.Single
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function SetDelay(time As Single) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetDelay*
+  nameWithType.vb: AbstractAnimation.SetDelay(Single)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.SetDelay(Single)
+  name.vb: SetDelay(Single)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil(System.Func{System.Boolean})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil(System.Func{System.Boolean})
+  id: SetDelayUntil(System.Func{System.Boolean})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetDelayUntil(Func<bool>)
+  nameWithType: AbstractAnimation.SetDelayUntil(Func<bool>)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil(System.Func<bool>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetDelayUntil
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 146
+  namespace: FriedSynapse.FlowEnt
+  summary: Sets the callback that holds the starting of the animation.
+  example: []
+  syntax:
+    content: public AbstractAnimation SetDelayUntil(Func<bool> callback)
+    parameters:
+    - id: callback
+      type: System.Func{System.Boolean}
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function SetDelayUntil(callback As Func(Of Boolean)) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil*
+  nameWithType.vb: AbstractAnimation.SetDelayUntil(Func(Of Boolean))
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil(System.Func(Of Boolean))
+  name.vb: SetDelayUntil(Func(Of Boolean))
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount(System.Nullable{System.Int32})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount(System.Nullable{System.Int32})
+  id: SetLoopCount(System.Nullable{System.Int32})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetLoopCount(int?)
+  nameWithType: AbstractAnimation.SetLoopCount(int?)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount(int?)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetLoopCount
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 155
+  namespace: FriedSynapse.FlowEnt
+  summary: Sets the amount of loops you want this animation to have. If you want infinite loops pass a null value.
+  remarks: Flows only have reset loop types.
+  example: []
+  syntax:
+    content: public AbstractAnimation SetLoopCount(int? loopCount)
+    parameters:
+    - id: loopCount
+      type: System.Nullable{System.Int32}
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function SetLoopCount(loopCount As Integer?) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount*
+  nameWithType.vb: AbstractAnimation.SetLoopCount(Integer?)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount(Integer?)
+  name.vb: SetLoopCount(Integer?)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale(System.Single)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale(System.Single)
+  id: SetTimeScale(System.Single)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetTimeScale(float)
+  nameWithType: AbstractAnimation.SetTimeScale(float)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale(float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: SetTimeScale
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.Options.cs
+    startLine: 168
+  namespace: FriedSynapse.FlowEnt
+  summary: Sets the time scale for the current animation.
+  example: []
+  syntax:
+    content: public AbstractAnimation SetTimeScale(float timeScale)
+    parameters:
+    - id: timeScale
+      type: System.Single
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function SetTimeScale(timeScale As Single) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale*
+  nameWithType.vb: AbstractAnimation.SetTimeScale(Single)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale(Single)
+  name.vb: SetTimeScale(Single)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.#ctor
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.#ctor
+  id: '#ctor'
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: AbstractAnimation()
+  nameWithType: AbstractAnimation.AbstractAnimation()
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.AbstractAnimation()
+  type: Constructor
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: .ctor
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 11
+  namespace: FriedSynapse.FlowEnt
+  summary: Creates a new instance using <xref href="FriedSynapse.FlowEnt.FlowEntController" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: protected AbstractAnimation()
+    content.vb: Protected Sub New()
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.#ctor*
+  nameWithType.vb: AbstractAnimation.New()
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.New()
+  name.vb: New()
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Overdraft
+  commentId: P:FriedSynapse.FlowEnt.AbstractAnimation.Overdraft
+  id: Overdraft
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: Overdraft
+  nameWithType: AbstractAnimation.Overdraft
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Overdraft
+  type: Property
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Overdraft
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 26
+  namespace: FriedSynapse.FlowEnt
+  summary: THe amount of scaled time unconsumed by this animation from the last frame.
+  example: []
+  syntax:
+    content: public float? Overdraft { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public Property Overdraft As Single?
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.Overdraft*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Start
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.Start
+  id: Start
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: AbstractAnimation.Start()
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Start()
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Start
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 35
+  namespace: FriedSynapse.FlowEnt
+  summary: Starts the animation.
+  example: []
+  syntax:
+    content: public AbstractAnimation Start()
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function Start() As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.Start*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.StartAsync(System.Nullable{System.Threading.CancellationToken})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.StartAsync(System.Nullable{System.Threading.CancellationToken})
+  id: StartAsync(System.Nullable{System.Threading.CancellationToken})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: StartAsync(CancellationToken?)
+  nameWithType: AbstractAnimation.StartAsync(CancellationToken?)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.StartAsync(System.Threading.CancellationToken?)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: StartAsync
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 46
+  namespace: FriedSynapse.FlowEnt
+  summary: Starts the animation async(you can await this till the animation finishes).
+  example: []
+  syntax:
+    content: public Task<AbstractAnimation> StartAsync(CancellationToken? token = null)
+    parameters:
+    - id: token
+      type: System.Nullable{System.Threading.CancellationToken}
+      description: The cancellation doesn't cancel the task, but rather terminates the animation. The task will be completed
+    return:
+      type: System.Threading.Tasks.Task{FriedSynapse.FlowEnt.AbstractAnimation}
+    content.vb: Public Function StartAsync(token As CancellationToken? = Nothing) As Task(Of AbstractAnimation)
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.StartAsync*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Resume
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.Resume
+  id: Resume
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: Resume()
+  nameWithType: AbstractAnimation.Resume()
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Resume()
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Resume
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 64
+  namespace: FriedSynapse.FlowEnt
+  summary: Resumes the animation.
+  example: []
+  syntax:
+    content: public AbstractAnimation Resume()
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function [Resume]() As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.Resume*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Pause
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.Pause
+  id: Pause
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: Pause()
+  nameWithType: AbstractAnimation.Pause()
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Pause()
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Pause
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 88
+  namespace: FriedSynapse.FlowEnt
+  summary: Pauses the animation.
+  example: []
+  syntax:
+    content: public AbstractAnimation Pause()
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function Pause() As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.Pause*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Stop(System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.Stop(System.Boolean)
+  id: Stop(System.Boolean)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: Stop(bool)
+  nameWithType: AbstractAnimation.Stop(bool)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Stop(bool)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Stop
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 107
+  namespace: FriedSynapse.FlowEnt
+  summary: Stops the animation.
+  example: []
+  syntax:
+    content: public AbstractAnimation Stop(bool triggerOnCompleted = false)
+    parameters:
+    - id: triggerOnCompleted
+      type: System.Boolean
+      description: If set to true will trigger the "OnCompleted" event on the animation
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function [Stop](triggerOnCompleted As Boolean = False) As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.Stop*
+  nameWithType.vb: AbstractAnimation.Stop(Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.Stop(Boolean)
+  name.vb: Stop(Boolean)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Reset
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.Reset
+  id: Reset
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: AbstractAnimation.Reset()
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Reset()
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Reset
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 117
+  namespace: FriedSynapse.FlowEnt
+  summary: Resets the animation so in can be replayed.
+  example: []
+  syntax:
+    content: public AbstractAnimation Reset()
+    return:
+      type: FriedSynapse.FlowEnt.AbstractAnimation
+    content.vb: Public Function Reset() As AbstractAnimation
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.Reset*
+  exceptions:
+  - type: FriedSynapse.FlowEnt.AnimationException
+    commentId: T:FriedSynapse.FlowEnt.AnimationException
+    description: If the animation is not finished.
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.AsAsync(System.Nullable{System.Threading.CancellationToken})
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.AsAsync(System.Nullable{System.Threading.CancellationToken})
+  id: AsAsync(System.Nullable{System.Threading.CancellationToken})
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: AsAsync(CancellationToken?)
+  nameWithType: AbstractAnimation.AsAsync(CancellationToken?)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.AsAsync(System.Threading.CancellationToken?)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: AsAsync
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 126
+  namespace: FriedSynapse.FlowEnt
+  summary: Provides a task that can be awaited. The task completes when the animation ends.
+  example: []
+  syntax:
+    content: public Task AsAsync(CancellationToken? token = null)
+    parameters:
+    - id: token
+      type: System.Nullable{System.Threading.CancellationToken}
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function AsAsync(token As CancellationToken? = Nothing) As Task
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.AsAsync*
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.StopInternal(System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.StopInternal(System.Boolean)
+  id: StopInternal(System.Boolean)
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: StopInternal(bool)
+  nameWithType: AbstractAnimation.StopInternal(bool)
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.StopInternal(bool)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: StopInternal
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 232
+  namespace: FriedSynapse.FlowEnt
+  example: []
+  syntax:
+    content: protected override void StopInternal(bool triggerOnCompleted)
+    parameters:
+    - id: triggerOnCompleted
+      type: System.Boolean
+    content.vb: Protected Overrides Sub StopInternal(triggerOnCompleted As Boolean)
+  overridden: FriedSynapse.FlowEnt.AbstractUpdatable.StopInternal(System.Boolean)
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.StopInternal*
+  nameWithType.vb: AbstractAnimation.StopInternal(Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.StopInternal(Boolean)
+  name.vb: StopInternal(Boolean)
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.ResetInternal
+  commentId: M:FriedSynapse.FlowEnt.AbstractAnimation.ResetInternal
+  id: ResetInternal
+  parent: FriedSynapse.FlowEnt.AbstractAnimation
+  langs:
+  - csharp
+  - vb
+  name: ResetInternal()
+  nameWithType: AbstractAnimation.ResetInternal()
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.ResetInternal()
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ResetInternal
+    path: ../Assets/FlowEnt/Scripts/Runtime/Core/Abstract/AbstractAnimation/AbstractAnimation.cs
+    startLine: 264
+  namespace: FriedSynapse.FlowEnt
+  example: []
+  syntax:
+    content: protected override void ResetInternal()
+    content.vb: Protected Overrides Sub ResetInternal()
+  overridden: FriedSynapse.FlowEnt.AbstractUpdatable.ResetInternal
+  overload: FriedSynapse.FlowEnt.AbstractAnimation.ResetInternal*
+references:
+- uid: FriedSynapse.FlowEnt
+  commentId: N:FriedSynapse.FlowEnt
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt
+  nameWithType: FriedSynapse.FlowEnt
+  fullName: FriedSynapse.FlowEnt
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: FriedSynapse.FlowEnt.FastListItem{FriedSynapse.FlowEnt.AbstractUpdatable}
+  commentId: T:FriedSynapse.FlowEnt.FastListItem{FriedSynapse.FlowEnt.AbstractUpdatable}
+  parent: FriedSynapse.FlowEnt
+  definition: FriedSynapse.FlowEnt.FastListItem`1
+  href: FriedSynapse.FlowEnt.FastListItem-1.html
+  name: FastListItem<AbstractUpdatable>
+  nameWithType: FastListItem<AbstractUpdatable>
+  fullName: FriedSynapse.FlowEnt.FastListItem<FriedSynapse.FlowEnt.AbstractUpdatable>
+  nameWithType.vb: FastListItem(Of AbstractUpdatable)
+  fullName.vb: FriedSynapse.FlowEnt.FastListItem(Of FriedSynapse.FlowEnt.AbstractUpdatable)
+  name.vb: FastListItem(Of AbstractUpdatable)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.FastListItem`1
+    name: FastListItem
+    href: FriedSynapse.FlowEnt.FastListItem-1.html
+  - name: <
+  - uid: FriedSynapse.FlowEnt.AbstractUpdatable
+    name: AbstractUpdatable
+    href: FriedSynapse.FlowEnt.AbstractUpdatable.html
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.FastListItem`1
+    name: FastListItem
+    href: FriedSynapse.FlowEnt.FastListItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.AbstractUpdatable
+    name: AbstractUpdatable
+    href: FriedSynapse.FlowEnt.AbstractUpdatable.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable
+  commentId: T:FriedSynapse.FlowEnt.AbstractUpdatable
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html
+  name: AbstractUpdatable
+  nameWithType: AbstractUpdatable
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable
+- uid: FriedSynapse.FlowEnt.IControllable
+  commentId: T:FriedSynapse.FlowEnt.IControllable
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.IControllable.html
+  name: IControllable
+  nameWithType: IControllable
+  fullName: FriedSynapse.FlowEnt.IControllable
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable.Id
+  commentId: P:FriedSynapse.FlowEnt.AbstractUpdatable.Id
+  parent: FriedSynapse.FlowEnt.AbstractUpdatable
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_Id
+  name: Id
+  nameWithType: AbstractUpdatable.Id
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable.Id
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable.Name
+  commentId: P:FriedSynapse.FlowEnt.AbstractUpdatable.Name
+  parent: FriedSynapse.FlowEnt.AbstractUpdatable
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_Name
+  name: Name
+  nameWithType: AbstractUpdatable.Name
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable.Name
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable.onStarting
+  commentId: F:FriedSynapse.FlowEnt.AbstractUpdatable.onStarting
+  parent: FriedSynapse.FlowEnt.AbstractUpdatable
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_onStarting
+  name: onStarting
+  nameWithType: AbstractUpdatable.onStarting
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable.onStarting
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable.onUpdating
+  commentId: F:FriedSynapse.FlowEnt.AbstractUpdatable.onUpdating
+  parent: FriedSynapse.FlowEnt.AbstractUpdatable
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_onUpdating
+  name: onUpdating
+  nameWithType: AbstractUpdatable.onUpdating
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable.onUpdating
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable.onCompleting
+  commentId: F:FriedSynapse.FlowEnt.AbstractUpdatable.onCompleting
+  parent: FriedSynapse.FlowEnt.AbstractUpdatable
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_onCompleting
+  name: onCompleting
+  nameWithType: AbstractUpdatable.onCompleting
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable.onCompleting
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable.ToString
+  commentId: M:FriedSynapse.FlowEnt.AbstractUpdatable.ToString
+  parent: FriedSynapse.FlowEnt.AbstractUpdatable
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_ToString
+  name: ToString()
+  nameWithType: AbstractUpdatable.ToString()
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable.ToString()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.AbstractUpdatable.ToString
+    name: ToString
+    href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.AbstractUpdatable.ToString
+    name: ToString
+    href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_ToString
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.EchoOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  name: Echo<AbstractAnimation>(AbstractAnimation, EchoOptions)
+  nameWithType: CommonExtensions.Echo<AbstractAnimation>(AbstractAnimation, EchoOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<FriedSynapse.FlowEnt.AbstractAnimation>(FriedSynapse.FlowEnt.AbstractAnimation, FriedSynapse.FlowEnt.EchoOptions)
+  nameWithType.vb: CommonExtensions.Echo(Of AbstractAnimation)(AbstractAnimation, EchoOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of FriedSynapse.FlowEnt.AbstractAnimation)(FriedSynapse.FlowEnt.AbstractAnimation, FriedSynapse.FlowEnt.EchoOptions)
+  name.vb: Echo(Of AbstractAnimation)(AbstractAnimation, EchoOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.AbstractAnimation,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.AbstractAnimation,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(System.Nullable{System.Single},System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  name: Echo<AbstractAnimation>(AbstractAnimation, float?, bool)
+  nameWithType: CommonExtensions.Echo<AbstractAnimation>(AbstractAnimation, float?, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<FriedSynapse.FlowEnt.AbstractAnimation>(FriedSynapse.FlowEnt.AbstractAnimation, float?, bool)
+  nameWithType.vb: CommonExtensions.Echo(Of AbstractAnimation)(AbstractAnimation, Single?, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of FriedSynapse.FlowEnt.AbstractAnimation)(FriedSynapse.FlowEnt.AbstractAnimation, Single?, Boolean)
+  name.vb: Echo(Of AbstractAnimation)(AbstractAnimation, Single?, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.AbstractAnimation,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.AbstractAnimation,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Restart``1
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Restart``1(``0)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Restart``1(``0)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Restart__1___0_
+  name: Restart<AbstractAnimation>(AbstractAnimation)
+  nameWithType: CommonExtensions.Restart<AbstractAnimation>(AbstractAnimation)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Restart<FriedSynapse.FlowEnt.AbstractAnimation>(FriedSynapse.FlowEnt.AbstractAnimation)
+  nameWithType.vb: CommonExtensions.Restart(Of AbstractAnimation)(AbstractAnimation)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Restart(Of FriedSynapse.FlowEnt.AbstractAnimation)(FriedSynapse.FlowEnt.AbstractAnimation)
+  name.vb: Restart(Of AbstractAnimation)(AbstractAnimation)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Restart``1(FriedSynapse.FlowEnt.AbstractAnimation)
+    name: Restart
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Restart__1___0_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Restart``1(FriedSynapse.FlowEnt.AbstractAnimation)
+    name: Restart
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Restart__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.TweenOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  name: Tween<AbstractAnimation>(AbstractAnimation, TweenOptions)
+  nameWithType: CommonExtensions.Tween<AbstractAnimation>(AbstractAnimation, TweenOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<FriedSynapse.FlowEnt.AbstractAnimation>(FriedSynapse.FlowEnt.AbstractAnimation, FriedSynapse.FlowEnt.TweenOptions)
+  nameWithType.vb: CommonExtensions.Tween(Of AbstractAnimation)(AbstractAnimation, TweenOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of FriedSynapse.FlowEnt.AbstractAnimation)(FriedSynapse.FlowEnt.AbstractAnimation, FriedSynapse.FlowEnt.TweenOptions)
+  name.vb: Tween(Of AbstractAnimation)(AbstractAnimation, TweenOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.AbstractAnimation,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.AbstractAnimation,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(System.Single,System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  name: Tween<AbstractAnimation>(AbstractAnimation, float, bool)
+  nameWithType: CommonExtensions.Tween<AbstractAnimation>(AbstractAnimation, float, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<FriedSynapse.FlowEnt.AbstractAnimation>(FriedSynapse.FlowEnt.AbstractAnimation, float, bool)
+  nameWithType.vb: CommonExtensions.Tween(Of AbstractAnimation)(AbstractAnimation, Single, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of FriedSynapse.FlowEnt.AbstractAnimation)(FriedSynapse.FlowEnt.AbstractAnimation, Single, Boolean)
+  name.vb: Tween(Of AbstractAnimation)(AbstractAnimation, Single, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.AbstractAnimation,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.AbstractAnimation,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetFieldValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetFieldValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetFieldValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetFieldValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetPropertyValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetPropertyValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetPropertyValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetPropertyValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.String,System.Object[],System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  name: InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  nameWithType: ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), System.Reflection.BindingFlags)
+  name.vb: InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: <
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.String,{T},System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  name: SetFieldValue<T>(object, string, T, BindingFlags)
+  nameWithType: ReflectionExtensions.SetFieldValue<T>(object, string, T, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue<T>(object, string, T, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, System.Reflection.BindingFlags)
+  name.vb: SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FriedSynapse.FlowEnt.FastListItem`1
+  commentId: T:FriedSynapse.FlowEnt.FastListItem`1
+  href: FriedSynapse.FlowEnt.FastListItem-1.html
+  name: FastListItem<T>
+  nameWithType: FastListItem<T>
+  fullName: FriedSynapse.FlowEnt.FastListItem<T>
+  nameWithType.vb: FastListItem(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.FastListItem(Of T)
+  name.vb: FastListItem(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.FastListItem`1
+    name: FastListItem
+    href: FriedSynapse.FlowEnt.FastListItem-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.FastListItem`1
+    name: FastListItem
+    href: FriedSynapse.FlowEnt.FastListItem-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  name: Echo<TItem>(TItem, EchoOptions)
+  nameWithType: CommonExtensions.Echo<TItem>(TItem, EchoOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<TItem>(TItem, FriedSynapse.FlowEnt.EchoOptions)
+  nameWithType.vb: CommonExtensions.Echo(Of TItem)(TItem, EchoOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of TItem)(TItem, FriedSynapse.FlowEnt.EchoOptions)
+  name.vb: Echo(Of TItem)(TItem, EchoOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions
+  commentId: T:FriedSynapse.FlowEnt.CommonExtensions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.CommonExtensions.html
+  name: CommonExtensions
+  nameWithType: CommonExtensions
+  fullName: FriedSynapse.FlowEnt.CommonExtensions
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  name: Echo<TItem>(TItem, float?, bool)
+  nameWithType: CommonExtensions.Echo<TItem>(TItem, float?, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<TItem>(TItem, float?, bool)
+  nameWithType.vb: CommonExtensions.Echo(Of TItem)(TItem, Single?, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of TItem)(TItem, Single?, Boolean)
+  name.vb: Echo(Of TItem)(TItem, Single?, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Restart``1(``0)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Restart``1(``0)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Restart__1___0_
+  name: Restart<TAnimation>(TAnimation)
+  nameWithType: CommonExtensions.Restart<TAnimation>(TAnimation)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Restart<TAnimation>(TAnimation)
+  nameWithType.vb: CommonExtensions.Restart(Of TAnimation)(TAnimation)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Restart(Of TAnimation)(TAnimation)
+  name.vb: Restart(Of TAnimation)(TAnimation)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Restart``1(``0)
+    name: Restart
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Restart__1___0_
+  - name: <
+  - name: TAnimation
+  - name: '>'
+  - name: (
+  - name: TAnimation
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Restart``1(``0)
+    name: Restart
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Restart__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAnimation
+  - name: )
+  - name: (
+  - name: TAnimation
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  name: Tween<TItem>(TItem, TweenOptions)
+  nameWithType: CommonExtensions.Tween<TItem>(TItem, TweenOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<TItem>(TItem, FriedSynapse.FlowEnt.TweenOptions)
+  nameWithType.vb: CommonExtensions.Tween(Of TItem)(TItem, TweenOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of TItem)(TItem, FriedSynapse.FlowEnt.TweenOptions)
+  name.vb: Tween(Of TItem)(TItem, TweenOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  name: Tween<TItem>(TItem, float, bool)
+  nameWithType: CommonExtensions.Tween<TItem>(TItem, float, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<TItem>(TItem, float, bool)
+  nameWithType.vb: CommonExtensions.Tween(Of TItem)(TItem, Single, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of TItem)(TItem, Single, Boolean)
+  name.vb: Tween(Of TItem)(TItem, Single, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetFieldValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetFieldValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetFieldValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetFieldValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  commentId: T:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  parent: FriedSynapse.FlowEnt.Reflection
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetPropertyValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetPropertyValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetPropertyValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetPropertyValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  name: InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  nameWithType: ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), System.Reflection.BindingFlags)
+  name.vb: InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: <
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  name: SetFieldValue<T>(object, string, T, BindingFlags)
+  nameWithType: ReflectionExtensions.SetFieldValue<T>(object, string, T, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue<T>(object, string, T, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, System.Reflection.BindingFlags)
+  name.vb: SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection
+  commentId: N:FriedSynapse.FlowEnt.Reflection
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Reflection
+  nameWithType: FriedSynapse.FlowEnt.Reflection
+  fullName: FriedSynapse.FlowEnt.Reflection
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Reflection
+    name: Reflection
+    href: FriedSynapse.FlowEnt.Reflection.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Reflection
+    name: Reflection
+    href: FriedSynapse.FlowEnt.Reflection.html
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Controllable*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.Controllable
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_Controllable
+  name: Controllable
+  nameWithType: AbstractAnimation.Controllable
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Controllable
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetEvents*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetEvents
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetEvents_FriedSynapse_FlowEnt_AbstractAnimationEvents_
+  name: SetEvents
+  nameWithType: AbstractAnimation.SetEvents
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetEvents
+- uid: FriedSynapse.FlowEnt.AbstractAnimationEvents
+  commentId: T:FriedSynapse.FlowEnt.AbstractAnimationEvents
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AbstractAnimationEvents.html
+  name: AbstractAnimationEvents
+  nameWithType: AbstractAnimationEvents
+  fullName: FriedSynapse.FlowEnt.AbstractAnimationEvents
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnStarting*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.OnStarting
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_OnStarting_System_Action_
+  name: OnStarting
+  nameWithType: AbstractAnimation.OnStarting
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnStarting
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
+- uid: FriedSynapse.FlowEnt.AbstractAnimation
+  commentId: T:FriedSynapse.FlowEnt.AbstractAnimation
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  name: AbstractAnimation
+  nameWithType: AbstractAnimation
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnStarted*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.OnStarted
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_OnStarted_System_Action_
+  name: OnStarted
+  nameWithType: AbstractAnimation.OnStarted
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnStarted
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_OnUpdating_System_Action_System_Single__
+  name: OnUpdating
+  nameWithType: AbstractAnimation.OnUpdating
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdating
+- uid: System.Action{System.Single}
+  commentId: T:System.Action{System.Single}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<float>
+  nameWithType: Action<float>
+  fullName: System.Action<float>
+  nameWithType.vb: Action(Of Single)
+  fullName.vb: System.Action(Of Single)
+  name.vb: Action(Of Single)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_OnUpdated_System_Action_System_Single__
+  name: OnUpdated
+  nameWithType: AbstractAnimation.OnUpdated
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnUpdated
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_OnLoopStarted_System_Action_System_Nullable_System_Int32___
+  name: OnLoopStarted
+  nameWithType: AbstractAnimation.OnLoopStarted
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopStarted
+- uid: System.Action{System.Nullable{System.Int32}}
+  commentId: T:System.Action{System.Nullable{System.Int32}}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<int?>
+  nameWithType: Action<int?>
+  fullName: System.Action<int?>
+  nameWithType.vb: Action(Of Integer?)
+  fullName.vb: System.Action(Of Integer?)
+  name.vb: Action(Of Integer?)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_OnLoopCompleted_System_Action_System_Nullable_System_Int32___
+  name: OnLoopCompleted
+  nameWithType: AbstractAnimation.OnLoopCompleted
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnLoopCompleted
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleting*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.OnCompleting
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_OnCompleting_System_Action_
+  name: OnCompleting
+  nameWithType: AbstractAnimation.OnCompleting
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleting
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleted*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.OnCompleted
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_OnCompleted_System_Action_
+  name: OnCompleted
+  nameWithType: AbstractAnimation.OnCompleted
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.OnCompleted
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.UpdateType*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.UpdateType
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_UpdateType
+  name: UpdateType
+  nameWithType: AbstractAnimation.UpdateType
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.UpdateType
+- uid: FriedSynapse.FlowEnt.UpdateType
+  commentId: T:FriedSynapse.FlowEnt.UpdateType
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.UpdateType.html
+  name: UpdateType
+  nameWithType: UpdateType
+  fullName: FriedSynapse.FlowEnt.UpdateType
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.AutoStart*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.AutoStart
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_AutoStart
+  name: AutoStart
+  nameWithType: AbstractAnimation.AutoStart
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.AutoStart
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.TimeScale*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.TimeScale
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_TimeScale
+  name: TimeScale
+  nameWithType: AbstractAnimation.TimeScale
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.TimeScale
+- uid: FriedSynapse.FlowEnt.IControllable.TimeScale
+  commentId: P:FriedSynapse.FlowEnt.IControllable.TimeScale
+  parent: FriedSynapse.FlowEnt.IControllable
+  href: FriedSynapse.FlowEnt.IControllable.html#FriedSynapse_FlowEnt_IControllable_TimeScale
+  name: TimeScale
+  nameWithType: IControllable.TimeScale
+  fullName: FriedSynapse.FlowEnt.IControllable.TimeScale
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.PlayState*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.PlayState
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_PlayState
+  name: PlayState
+  nameWithType: AbstractAnimation.PlayState
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.PlayState
+- uid: FriedSynapse.FlowEnt.IControllable.PlayState
+  commentId: P:FriedSynapse.FlowEnt.IControllable.PlayState
+  parent: FriedSynapse.FlowEnt.IControllable
+  href: FriedSynapse.FlowEnt.IControllable.html#FriedSynapse_FlowEnt_IControllable_PlayState
+  name: PlayState
+  nameWithType: IControllable.PlayState
+  fullName: FriedSynapse.FlowEnt.IControllable.PlayState
+- uid: FriedSynapse.FlowEnt.PlayState
+  commentId: T:FriedSynapse.FlowEnt.PlayState
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.PlayState.html
+  name: PlayState
+  nameWithType: PlayState
+  fullName: FriedSynapse.FlowEnt.PlayState
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_ConditionalInternal__1_System_Func_System_Boolean__System_Action___0__
+  name: ConditionalInternal
+  nameWithType: AbstractAnimation.ConditionalInternal
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.ConditionalInternal
+- uid: System.Func{System.Boolean}
+  commentId: T:System.Func{System.Boolean}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<bool>
+  nameWithType: Func<bool>
+  fullName: System.Func<bool>
+  nameWithType.vb: Func(Of Boolean)
+  fullName.vb: System.Func(Of Boolean)
+  name.vb: Func(Of Boolean)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Action{{TAnimation}}
+  commentId: T:System.Action{``0}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<TAnimation>
+  nameWithType: Action<TAnimation>
+  fullName: System.Action<TAnimation>
+  nameWithType.vb: Action(Of TAnimation)
+  fullName.vb: System.Action(Of TAnimation)
+  name.vb: Action(Of TAnimation)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: TAnimation
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAnimation
+  - name: )
+- uid: '{TAnimation}'
+  commentId: '!:TAnimation'
+  definition: TAnimation
+  name: TAnimation
+  nameWithType: TAnimation
+  fullName: TAnimation
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: TAnimation
+  name: TAnimation
+  nameWithType: TAnimation
+  fullName: TAnimation
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Conditional*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.Conditional
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_Conditional_System_Func_System_Boolean__System_Action_FriedSynapse_FlowEnt_AbstractAnimation__
+  name: Conditional
+  nameWithType: AbstractAnimation.Conditional
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Conditional
+- uid: System.Action{FriedSynapse.FlowEnt.AbstractAnimation}
+  commentId: T:System.Action{FriedSynapse.FlowEnt.AbstractAnimation}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<AbstractAnimation>
+  nameWithType: Action<AbstractAnimation>
+  fullName: System.Action<FriedSynapse.FlowEnt.AbstractAnimation>
+  nameWithType.vb: Action(Of AbstractAnimation)
+  fullName.vb: System.Action(Of FriedSynapse.FlowEnt.AbstractAnimation)
+  name.vb: Action(Of AbstractAnimation)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetOptions*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetOptions
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetOptions_FriedSynapse_FlowEnt_AbstractAnimationOptions_
+  name: SetOptions
+  nameWithType: AbstractAnimation.SetOptions
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetOptions
+- uid: FriedSynapse.FlowEnt.AbstractAnimationOptions
+  commentId: T:FriedSynapse.FlowEnt.AbstractAnimationOptions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.AbstractAnimationOptions.html
+  name: AbstractAnimationOptions
+  nameWithType: AbstractAnimationOptions
+  fullName: FriedSynapse.FlowEnt.AbstractAnimationOptions
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetName*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetName
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetName_System_String_
+  name: SetName
+  nameWithType: AbstractAnimation.SetName
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetUpdateType*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetUpdateType
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetUpdateType_FriedSynapse_FlowEnt_UpdateType_
+  name: SetUpdateType
+  nameWithType: AbstractAnimation.SetUpdateType
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetUpdateType
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetAutoStart_System_Boolean_
+  name: SetAutoStart
+  nameWithType: AbstractAnimation.SetAutoStart
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetAutoStart
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetSkipFrames_System_Int32_
+  name: SetSkipFrames
+  nameWithType: AbstractAnimation.SetSkipFrames
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetSkipFrames
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetDelay*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetDelay
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetDelay_System_Single_
+  name: SetDelay
+  nameWithType: AbstractAnimation.SetDelay
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetDelay
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetDelayUntil_System_Func_System_Boolean__
+  name: SetDelayUntil
+  nameWithType: AbstractAnimation.SetDelayUntil
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetDelayUntil
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetLoopCount_System_Nullable_System_Int32__
+  name: SetLoopCount
+  nameWithType: AbstractAnimation.SetLoopCount
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetLoopCount
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_SetTimeScale_System_Single_
+  name: SetTimeScale
+  nameWithType: AbstractAnimation.SetTimeScale
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.SetTimeScale
+- uid: FriedSynapse.FlowEnt.FlowEntController
+  commentId: T:FriedSynapse.FlowEnt.FlowEntController
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.FlowEntController.html
+  name: FlowEntController
+  nameWithType: FlowEntController
+  fullName: FriedSynapse.FlowEnt.FlowEntController
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.#ctor*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.#ctor
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation__ctor
+  name: AbstractAnimation
+  nameWithType: AbstractAnimation.AbstractAnimation
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.AbstractAnimation
+  nameWithType.vb: AbstractAnimation.New
+  fullName.vb: FriedSynapse.FlowEnt.AbstractAnimation.New
+  name.vb: New
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Overdraft*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.Overdraft
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_Overdraft
+  name: Overdraft
+  nameWithType: AbstractAnimation.Overdraft
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Overdraft
+- uid: System.Nullable{System.Single}
+  commentId: T:System.Nullable{System.Single}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float?
+  nameWithType: float?
+  fullName: float?
+  nameWithType.vb: Single?
+  fullName.vb: Single?
+  name.vb: Single?
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Start*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.Start
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_Start
+  name: Start
+  nameWithType: AbstractAnimation.Start
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Start
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.StartAsync*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.StartAsync
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_StartAsync_System_Nullable_System_Threading_CancellationToken__
+  name: StartAsync
+  nameWithType: AbstractAnimation.StartAsync
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.StartAsync
+- uid: System.Nullable{System.Threading.CancellationToken}
+  commentId: T:System.Nullable{System.Threading.CancellationToken}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken?
+  nameWithType: CancellationToken?
+  fullName: System.Threading.CancellationToken?
+  spec.csharp:
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: '?'
+  spec.vb:
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: '?'
+- uid: System.Threading.Tasks.Task{FriedSynapse.FlowEnt.AbstractAnimation}
+  commentId: T:System.Threading.Tasks.Task{FriedSynapse.FlowEnt.AbstractAnimation}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<AbstractAnimation>
+  nameWithType: Task<AbstractAnimation>
+  fullName: System.Threading.Tasks.Task<FriedSynapse.FlowEnt.AbstractAnimation>
+  nameWithType.vb: Task(Of AbstractAnimation)
+  fullName.vb: System.Threading.Tasks.Task(Of FriedSynapse.FlowEnt.AbstractAnimation)
+  name.vb: Task(Of AbstractAnimation)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.AbstractAnimation
+    name: AbstractAnimation
+    href: FriedSynapse.FlowEnt.AbstractAnimation.html
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Resume*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.Resume
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_Resume
+  name: Resume
+  nameWithType: AbstractAnimation.Resume
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Resume
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Pause*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.Pause
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_Pause
+  name: Pause
+  nameWithType: AbstractAnimation.Pause
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Pause
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Stop*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.Stop
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_Stop_System_Boolean_
+  name: Stop
+  nameWithType: AbstractAnimation.Stop
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Stop
+- uid: FriedSynapse.FlowEnt.AnimationException
+  commentId: T:FriedSynapse.FlowEnt.AnimationException
+  href: FriedSynapse.FlowEnt.AnimationException.html
+  name: AnimationException
+  nameWithType: AnimationException
+  fullName: FriedSynapse.FlowEnt.AnimationException
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.Reset*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.Reset
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_Reset
+  name: Reset
+  nameWithType: AbstractAnimation.Reset
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.Reset
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.AsAsync*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.AsAsync
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_AsAsync_System_Nullable_System_Threading_CancellationToken__
+  name: AsAsync
+  nameWithType: AbstractAnimation.AsAsync
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.AsAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable.StopInternal(System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.AbstractUpdatable.StopInternal(System.Boolean)
+  parent: FriedSynapse.FlowEnt.AbstractUpdatable
+  isExternal: true
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_StopInternal_System_Boolean_
+  name: StopInternal(bool)
+  nameWithType: AbstractUpdatable.StopInternal(bool)
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable.StopInternal(bool)
+  nameWithType.vb: AbstractUpdatable.StopInternal(Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.AbstractUpdatable.StopInternal(Boolean)
+  name.vb: StopInternal(Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.AbstractUpdatable.StopInternal(System.Boolean)
+    name: StopInternal
+    href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_StopInternal_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.AbstractUpdatable.StopInternal(System.Boolean)
+    name: StopInternal
+    href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_StopInternal_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.StopInternal*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.StopInternal
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_StopInternal_System_Boolean_
+  name: StopInternal
+  nameWithType: AbstractAnimation.StopInternal
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.StopInternal
+- uid: FriedSynapse.FlowEnt.AbstractUpdatable.ResetInternal
+  commentId: M:FriedSynapse.FlowEnt.AbstractUpdatable.ResetInternal
+  parent: FriedSynapse.FlowEnt.AbstractUpdatable
+  href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_ResetInternal
+  name: ResetInternal()
+  nameWithType: AbstractUpdatable.ResetInternal()
+  fullName: FriedSynapse.FlowEnt.AbstractUpdatable.ResetInternal()
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.AbstractUpdatable.ResetInternal
+    name: ResetInternal
+    href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_ResetInternal
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.AbstractUpdatable.ResetInternal
+    name: ResetInternal
+    href: FriedSynapse.FlowEnt.AbstractUpdatable.html#FriedSynapse_FlowEnt_AbstractUpdatable_ResetInternal
+  - name: (
+  - name: )
+- uid: FriedSynapse.FlowEnt.AbstractAnimation.ResetInternal*
+  commentId: Overload:FriedSynapse.FlowEnt.AbstractAnimation.ResetInternal
+  href: FriedSynapse.FlowEnt.AbstractAnimation.html#FriedSynapse_FlowEnt_AbstractAnimation_ResetInternal
+  name: ResetInternal
+  nameWithType: AbstractAnimation.ResetInternal
+  fullName: FriedSynapse.FlowEnt.AbstractAnimation.ResetInternal

@@ -1,0 +1,1543 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.LinearFloat
+  commentId: T:FriedSynapse.FlowEnt.LinearFloat
+  id: LinearFloat
+  parent: FriedSynapse.FlowEnt
+  children:
+  - FriedSynapse.FlowEnt.LinearFloat.#ctor(System.Single,System.Single)
+  - FriedSynapse.FlowEnt.LinearFloat.End
+  - FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat,System.Single)
+  - FriedSynapse.FlowEnt.LinearFloat.Start
+  - FriedSynapse.FlowEnt.LinearFloat.op_Addition(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat)
+  langs:
+  - csharp
+  - vb
+  name: LinearFloat
+  nameWithType: LinearFloat
+  fullName: FriedSynapse.FlowEnt.LinearFloat
+  type: Struct
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: LinearFloat
+    path: ../Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+    startLine: 5
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct LinearFloat
+    content.vb: >-
+      <Serializable>
+
+      Public Structure LinearFloat
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - FriedSynapse.FlowEnt.LinearFloat.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.EchoOptions)
+  - FriedSynapse.FlowEnt.LinearFloat.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(System.Nullable{System.Single},System.Boolean)
+  - FriedSynapse.FlowEnt.LinearFloat.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.TweenOptions)
+  - FriedSynapse.FlowEnt.LinearFloat.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(System.Single,System.Boolean)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.String,System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.String,System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.String,System.Object[],System.Reflection.BindingFlags)
+  - System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.String,{T},System.Reflection.BindingFlags)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: FriedSynapse.FlowEnt.LinearFloat.#ctor(System.Single,System.Single)
+  commentId: M:FriedSynapse.FlowEnt.LinearFloat.#ctor(System.Single,System.Single)
+  id: '#ctor(System.Single,System.Single)'
+  parent: FriedSynapse.FlowEnt.LinearFloat
+  langs:
+  - csharp
+  - vb
+  name: LinearFloat(float, float)
+  nameWithType: LinearFloat.LinearFloat(float, float)
+  fullName: FriedSynapse.FlowEnt.LinearFloat.LinearFloat(float, float)
+  type: Constructor
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: .ctor
+    path: ../Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+    startLine: 8
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public LinearFloat(float start, float end)
+    parameters:
+    - id: start
+      type: System.Single
+    - id: end
+      type: System.Single
+    content.vb: Public Sub New(start As Single, [end] As Single)
+  overload: FriedSynapse.FlowEnt.LinearFloat.#ctor*
+  nameWithType.vb: LinearFloat.New(Single, Single)
+  fullName.vb: FriedSynapse.FlowEnt.LinearFloat.New(Single, Single)
+  name.vb: New(Single, Single)
+- uid: FriedSynapse.FlowEnt.LinearFloat.Start
+  commentId: P:FriedSynapse.FlowEnt.LinearFloat.Start
+  id: Start
+  parent: FriedSynapse.FlowEnt.LinearFloat
+  langs:
+  - csharp
+  - vb
+  name: Start
+  nameWithType: LinearFloat.Start
+  fullName: FriedSynapse.FlowEnt.LinearFloat.Start
+  type: Property
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Start
+    path: ../Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+    startLine: 17
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public float Start { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Start As Single
+  overload: FriedSynapse.FlowEnt.LinearFloat.Start*
+- uid: FriedSynapse.FlowEnt.LinearFloat.End
+  commentId: P:FriedSynapse.FlowEnt.LinearFloat.End
+  id: End
+  parent: FriedSynapse.FlowEnt.LinearFloat
+  langs:
+  - csharp
+  - vb
+  name: End
+  nameWithType: LinearFloat.End
+  fullName: FriedSynapse.FlowEnt.LinearFloat.End
+  type: Property
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: End
+    path: ../Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+    startLine: 22
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public float End { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property [End] As Single
+  overload: FriedSynapse.FlowEnt.LinearFloat.End*
+- uid: FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat,System.Single)
+  commentId: M:FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat,System.Single)
+  id: LerpUnclamped(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat,System.Single)
+  parent: FriedSynapse.FlowEnt.LinearFloat
+  langs:
+  - csharp
+  - vb
+  name: LerpUnclamped(LinearFloat, LinearFloat, float)
+  nameWithType: LinearFloat.LerpUnclamped(LinearFloat, LinearFloat, float)
+  fullName: FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped(FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.LinearFloat, float)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: LerpUnclamped
+    path: ../Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+    startLine: 24
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public static LinearFloat LerpUnclamped(LinearFloat a, LinearFloat b, float t)
+    parameters:
+    - id: a
+      type: FriedSynapse.FlowEnt.LinearFloat
+    - id: b
+      type: FriedSynapse.FlowEnt.LinearFloat
+    - id: t
+      type: System.Single
+    return:
+      type: FriedSynapse.FlowEnt.LinearFloat
+    content.vb: Public Shared Function LerpUnclamped(a As LinearFloat, b As LinearFloat, t As Single) As LinearFloat
+  overload: FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped*
+  nameWithType.vb: LinearFloat.LerpUnclamped(LinearFloat, LinearFloat, Single)
+  fullName.vb: FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped(FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.LinearFloat, Single)
+  name.vb: LerpUnclamped(LinearFloat, LinearFloat, Single)
+- uid: FriedSynapse.FlowEnt.LinearFloat.op_Addition(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat)
+  commentId: M:FriedSynapse.FlowEnt.LinearFloat.op_Addition(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat)
+  id: op_Addition(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.LinearFloat)
+  parent: FriedSynapse.FlowEnt.LinearFloat
+  langs:
+  - csharp
+  - vb
+  name: operator +(LinearFloat, LinearFloat)
+  nameWithType: LinearFloat.operator +(LinearFloat, LinearFloat)
+  fullName: FriedSynapse.FlowEnt.LinearFloat.operator +(FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.LinearFloat)
+  type: Operator
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: op_Addition
+    path: ../Assets/FlowEnt/Scripts/Runtime/Models/Wrappers/LinearFloat.cs
+    startLine: 27
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public static LinearFloat operator +(LinearFloat a, LinearFloat b)
+    parameters:
+    - id: a
+      type: FriedSynapse.FlowEnt.LinearFloat
+    - id: b
+      type: FriedSynapse.FlowEnt.LinearFloat
+    return:
+      type: FriedSynapse.FlowEnt.LinearFloat
+    content.vb: Public Shared Operator +(a As LinearFloat, b As LinearFloat) As LinearFloat
+  overload: FriedSynapse.FlowEnt.LinearFloat.op_Addition*
+  nameWithType.vb: LinearFloat.+(LinearFloat, LinearFloat)
+  fullName.vb: FriedSynapse.FlowEnt.LinearFloat.+(FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.LinearFloat)
+  name.vb: +(LinearFloat, LinearFloat)
+references:
+- uid: FriedSynapse.FlowEnt
+  commentId: N:FriedSynapse.FlowEnt
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt
+  nameWithType: FriedSynapse.FlowEnt
+  fullName: FriedSynapse.FlowEnt
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: FriedSynapse.FlowEnt.LinearFloat.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.EchoOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  name: Echo<LinearFloat>(LinearFloat, EchoOptions)
+  nameWithType: CommonExtensions.Echo<LinearFloat>(LinearFloat, EchoOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<FriedSynapse.FlowEnt.LinearFloat>(FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.EchoOptions)
+  nameWithType.vb: CommonExtensions.Echo(Of LinearFloat)(LinearFloat, EchoOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of FriedSynapse.FlowEnt.LinearFloat)(FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.EchoOptions)
+  name.vb: Echo(Of LinearFloat)(LinearFloat, EchoOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.LinearFloat.FriedSynapse.FlowEnt.CommonExtensions.Echo``1(System.Nullable{System.Single},System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  name: Echo<LinearFloat>(LinearFloat, float?, bool)
+  nameWithType: CommonExtensions.Echo<LinearFloat>(LinearFloat, float?, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<FriedSynapse.FlowEnt.LinearFloat>(FriedSynapse.FlowEnt.LinearFloat, float?, bool)
+  nameWithType.vb: CommonExtensions.Echo(Of LinearFloat)(LinearFloat, Single?, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of FriedSynapse.FlowEnt.LinearFloat)(FriedSynapse.FlowEnt.LinearFloat, Single?, Boolean)
+  name.vb: Echo(Of LinearFloat)(LinearFloat, Single?, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.LinearFloat,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(FriedSynapse.FlowEnt.LinearFloat,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.LinearFloat.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.TweenOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  name: Tween<LinearFloat>(LinearFloat, TweenOptions)
+  nameWithType: CommonExtensions.Tween<LinearFloat>(LinearFloat, TweenOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<FriedSynapse.FlowEnt.LinearFloat>(FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.TweenOptions)
+  nameWithType.vb: CommonExtensions.Tween(Of LinearFloat)(LinearFloat, TweenOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of FriedSynapse.FlowEnt.LinearFloat)(FriedSynapse.FlowEnt.LinearFloat, FriedSynapse.FlowEnt.TweenOptions)
+  name.vb: Tween(Of LinearFloat)(LinearFloat, TweenOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.LinearFloat,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.LinearFloat.FriedSynapse.FlowEnt.CommonExtensions.Tween``1(System.Single,System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  parent: FriedSynapse.FlowEnt.CommonExtensions
+  definition: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  name: Tween<LinearFloat>(LinearFloat, float, bool)
+  nameWithType: CommonExtensions.Tween<LinearFloat>(LinearFloat, float, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<FriedSynapse.FlowEnt.LinearFloat>(FriedSynapse.FlowEnt.LinearFloat, float, bool)
+  nameWithType.vb: CommonExtensions.Tween(Of LinearFloat)(LinearFloat, Single, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of FriedSynapse.FlowEnt.LinearFloat)(FriedSynapse.FlowEnt.LinearFloat, Single, Boolean)
+  name.vb: Tween(Of LinearFloat)(LinearFloat, Single, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.LinearFloat,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: <
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: '>'
+  - name: (
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(FriedSynapse.FlowEnt.LinearFloat,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: )
+  - name: (
+  - uid: FriedSynapse.FlowEnt.LinearFloat
+    name: LinearFloat
+    href: FriedSynapse.FlowEnt.LinearFloat.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetFieldValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetFieldValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetFieldValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetFieldValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetPropertyValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetPropertyValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetPropertyValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetPropertyValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.String,System.Object[],System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  name: InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  nameWithType: ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), System.Reflection.BindingFlags)
+  name.vb: InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: <
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.Object.FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.String,{T},System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  parent: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  definition: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  name: SetFieldValue<T>(object, string, T, BindingFlags)
+  nameWithType: ReflectionExtensions.SetFieldValue<T>(object, string, T, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue<T>(object, string, T, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, System.Reflection.BindingFlags)
+  name.vb: SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  name: Echo<TItem>(TItem, EchoOptions)
+  nameWithType: CommonExtensions.Echo<TItem>(TItem, EchoOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<TItem>(TItem, FriedSynapse.FlowEnt.EchoOptions)
+  nameWithType.vb: CommonExtensions.Echo(Of TItem)(TItem, EchoOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of TItem)(TItem, FriedSynapse.FlowEnt.EchoOptions)
+  name.vb: Echo(Of TItem)(TItem, EchoOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,FriedSynapse.FlowEnt.EchoOptions)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_FriedSynapse_FlowEnt_EchoOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.EchoOptions
+    name: EchoOptions
+    href: FriedSynapse.FlowEnt.EchoOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions
+  commentId: T:FriedSynapse.FlowEnt.CommonExtensions
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.CommonExtensions.html
+  name: CommonExtensions
+  nameWithType: CommonExtensions
+  fullName: FriedSynapse.FlowEnt.CommonExtensions
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  name: Echo<TItem>(TItem, float?, bool)
+  nameWithType: CommonExtensions.Echo<TItem>(TItem, float?, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Echo<TItem>(TItem, float?, bool)
+  nameWithType.vb: CommonExtensions.Echo(Of TItem)(TItem, Single?, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Echo(Of TItem)(TItem, Single?, Boolean)
+  name.vb: Echo(Of TItem)(TItem, Single?, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Echo``1(``0,System.Nullable{System.Single},System.Boolean)
+    name: Echo
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Echo__1___0_System_Nullable_System_Single__System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  name: Tween<TItem>(TItem, TweenOptions)
+  nameWithType: CommonExtensions.Tween<TItem>(TItem, TweenOptions)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<TItem>(TItem, FriedSynapse.FlowEnt.TweenOptions)
+  nameWithType.vb: CommonExtensions.Tween(Of TItem)(TItem, TweenOptions)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of TItem)(TItem, FriedSynapse.FlowEnt.TweenOptions)
+  name.vb: Tween(Of TItem)(TItem, TweenOptions)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,FriedSynapse.FlowEnt.TweenOptions)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_FriedSynapse_FlowEnt_TweenOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.TweenOptions
+    name: TweenOptions
+    href: FriedSynapse.FlowEnt.TweenOptions.html
+  - name: )
+- uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  commentId: M:FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  name: Tween<TItem>(TItem, float, bool)
+  nameWithType: CommonExtensions.Tween<TItem>(TItem, float, bool)
+  fullName: FriedSynapse.FlowEnt.CommonExtensions.Tween<TItem>(TItem, float, bool)
+  nameWithType.vb: CommonExtensions.Tween(Of TItem)(TItem, Single, Boolean)
+  fullName.vb: FriedSynapse.FlowEnt.CommonExtensions.Tween(Of TItem)(TItem, Single, Boolean)
+  name.vb: Tween(Of TItem)(TItem, Single, Boolean)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.CommonExtensions.Tween``1(``0,System.Single,System.Boolean)
+    name: Tween
+    href: FriedSynapse.FlowEnt.CommonExtensions.html#FriedSynapse_FlowEnt_CommonExtensions_Tween__1___0_System_Single_System_Boolean_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: (
+  - name: TItem
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetFieldValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetFieldValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetFieldValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetFieldValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetFieldValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetFieldValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  commentId: T:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+  parent: FriedSynapse.FlowEnt.Reflection
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html
+  name: ReflectionExtensions
+  nameWithType: ReflectionExtensions
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  name: GetPropertyValue<T>(object, string, BindingFlags)
+  nameWithType: ReflectionExtensions.GetPropertyValue<T>(object, string, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue<T>(object, string, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.GetPropertyValue(Of T)(Object, String, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue(Of T)(Object, String, System.Reflection.BindingFlags)
+  name.vb: GetPropertyValue(Of T)(Object, String, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.GetPropertyValue``1(System.Object,System.String,System.Reflection.BindingFlags)
+    name: GetPropertyValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  name: InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  nameWithType: ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod<TClass, TResult>(object, string, object[], System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod(Of TClass, TResult)(Object, String, Object(), System.Reflection.BindingFlags)
+  name.vb: InvokeMethod(Of TClass, TResult)(Object, String, Object(), BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: <
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.InvokeMethod``2(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)
+    name: InvokeMethod
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_InvokeMethod__2_System_Object_System_String_System_Object___System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TClass
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  commentId: M:FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+  isExternal: true
+  href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  name: SetFieldValue<T>(object, string, T, BindingFlags)
+  nameWithType: ReflectionExtensions.SetFieldValue<T>(object, string, T, BindingFlags)
+  fullName: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue<T>(object, string, T, System.Reflection.BindingFlags)
+  nameWithType.vb: ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  fullName.vb: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue(Of T)(Object, String, T, System.Reflection.BindingFlags)
+  name.vb: SetFieldValue(Of T)(Object, String, T, BindingFlags)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.SetFieldValue``1(System.Object,System.String,``0,System.Reflection.BindingFlags)
+    name: SetFieldValue
+    href: FriedSynapse.FlowEnt.Reflection.ReflectionExtensions.html#FriedSynapse_FlowEnt_Reflection_ReflectionExtensions_SetFieldValue__1_System_Object_System_String___0_System_Reflection_BindingFlags_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Reflection.BindingFlags
+    name: BindingFlags
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.bindingflags
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FriedSynapse.FlowEnt.Reflection
+  commentId: N:FriedSynapse.FlowEnt.Reflection
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Reflection
+  nameWithType: FriedSynapse.FlowEnt.Reflection
+  fullName: FriedSynapse.FlowEnt.Reflection
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Reflection
+    name: Reflection
+    href: FriedSynapse.FlowEnt.Reflection.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Reflection
+    name: Reflection
+    href: FriedSynapse.FlowEnt.Reflection.html
+- uid: FriedSynapse.FlowEnt.LinearFloat.#ctor*
+  commentId: Overload:FriedSynapse.FlowEnt.LinearFloat.#ctor
+  href: FriedSynapse.FlowEnt.LinearFloat.html#FriedSynapse_FlowEnt_LinearFloat__ctor_System_Single_System_Single_
+  name: LinearFloat
+  nameWithType: LinearFloat.LinearFloat
+  fullName: FriedSynapse.FlowEnt.LinearFloat.LinearFloat
+  nameWithType.vb: LinearFloat.New
+  fullName.vb: FriedSynapse.FlowEnt.LinearFloat.New
+  name.vb: New
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: FriedSynapse.FlowEnt.LinearFloat.Start*
+  commentId: Overload:FriedSynapse.FlowEnt.LinearFloat.Start
+  href: FriedSynapse.FlowEnt.LinearFloat.html#FriedSynapse_FlowEnt_LinearFloat_Start
+  name: Start
+  nameWithType: LinearFloat.Start
+  fullName: FriedSynapse.FlowEnt.LinearFloat.Start
+- uid: FriedSynapse.FlowEnt.LinearFloat.End*
+  commentId: Overload:FriedSynapse.FlowEnt.LinearFloat.End
+  href: FriedSynapse.FlowEnt.LinearFloat.html#FriedSynapse_FlowEnt_LinearFloat_End
+  name: End
+  nameWithType: LinearFloat.End
+  fullName: FriedSynapse.FlowEnt.LinearFloat.End
+- uid: FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped*
+  commentId: Overload:FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped
+  href: FriedSynapse.FlowEnt.LinearFloat.html#FriedSynapse_FlowEnt_LinearFloat_LerpUnclamped_FriedSynapse_FlowEnt_LinearFloat_FriedSynapse_FlowEnt_LinearFloat_System_Single_
+  name: LerpUnclamped
+  nameWithType: LinearFloat.LerpUnclamped
+  fullName: FriedSynapse.FlowEnt.LinearFloat.LerpUnclamped
+- uid: FriedSynapse.FlowEnt.LinearFloat
+  commentId: T:FriedSynapse.FlowEnt.LinearFloat
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.LinearFloat.html
+  name: LinearFloat
+  nameWithType: LinearFloat
+  fullName: FriedSynapse.FlowEnt.LinearFloat
+- uid: FriedSynapse.FlowEnt.LinearFloat.op_Addition*
+  commentId: Overload:FriedSynapse.FlowEnt.LinearFloat.op_Addition
+  href: FriedSynapse.FlowEnt.LinearFloat.html#FriedSynapse_FlowEnt_LinearFloat_op_Addition_FriedSynapse_FlowEnt_LinearFloat_FriedSynapse_FlowEnt_LinearFloat_
+  name: operator +
+  nameWithType: LinearFloat.operator +
+  fullName: FriedSynapse.FlowEnt.LinearFloat.operator +
+  nameWithType.vb: LinearFloat.+
+  fullName.vb: FriedSynapse.FlowEnt.LinearFloat.+
+  name.vb: +
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: FriedSynapse.FlowEnt.LinearFloat.op_Addition*
+    name: +
+    href: FriedSynapse.FlowEnt.LinearFloat.html#FriedSynapse_FlowEnt_LinearFloat_op_Addition_FriedSynapse_FlowEnt_LinearFloat_FriedSynapse_FlowEnt_LinearFloat_

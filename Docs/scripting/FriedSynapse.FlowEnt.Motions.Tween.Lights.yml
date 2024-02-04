@@ -1,0 +1,256 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween.Lights
+  id: FriedSynapse.FlowEnt.Motions.Tween.Lights
+  children:
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Motions.Tween.Lights
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween.Lights
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.html
+  name: RangeMotion
+  nameWithType: RangeMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.html
+  name: RangeMotion.ValueBuilder
+  nameWithType: RangeMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+    name: RangeMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+    name: RangeMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.html
+  name: RangeMotion.FromToBuilder
+  nameWithType: RangeMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+    name: RangeMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion
+    name: RangeMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.RangeMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.html
+  name: ShadowStrengthMotion
+  nameWithType: ShadowStrengthMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.html
+  name: ShadowStrengthMotion.ValueBuilder
+  nameWithType: ShadowStrengthMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+    name: ShadowStrengthMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+    name: ShadowStrengthMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.html
+  name: ShadowStrengthMotion.FromToBuilder
+  nameWithType: ShadowStrengthMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+    name: ShadowStrengthMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion
+    name: ShadowStrengthMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ShadowStrengthMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.html
+  name: IntensityMotion
+  nameWithType: IntensityMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.html
+  name: IntensityMotion.ValueBuilder
+  nameWithType: IntensityMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+    name: IntensityMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+    name: IntensityMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.html
+  name: IntensityMotion.FromToBuilder
+  nameWithType: IntensityMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+    name: IntensityMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion
+    name: IntensityMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.IntensityMotion.FromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.html
+  name: ColorGradientMotion
+  nameWithType: ColorGradientMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.html
+  name: ColorGradientMotion.Builder
+  nameWithType: ColorGradientMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion
+    name: ColorGradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion
+    name: ColorGradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorGradientMotion.Builder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.html
+  name: ColorMotion
+  nameWithType: ColorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.html
+  name: ColorMotion.ValueBuilder
+  nameWithType: ColorMotion.ValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+    name: ColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+    name: ColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder
+    name: ValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.ValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.html
+  name: ColorMotion.FromToBuilder
+  nameWithType: ColorMotion.FromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+    name: ColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion
+    name: ColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder
+    name: FromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Lights.ColorMotion.FromToBuilder.html

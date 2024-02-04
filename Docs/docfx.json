@@ -1,0 +1,49 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "..",
+          "files": [
+            "Assets/FlowEnt/Scripts/**/*.cs"
+          ]
+        }
+      ],
+      "dest": "scripting",
+      "allowCompilationErrors": true
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "resources/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern",
+      "template"
+    ],
+    "globalMetadata": {
+      "_appName": "FlowEnt",
+      "_appTitle": "FlowEnt",
+      "_appLogoPath": "resources/logo.png",
+      "_appFaviconPath": "resources/favicon.ico",
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}

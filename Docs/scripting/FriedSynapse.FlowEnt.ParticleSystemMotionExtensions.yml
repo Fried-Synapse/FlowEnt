@@ -1,0 +1,576 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
+  id: ParticleSystemMotionExtensions
+  parent: FriedSynapse.FlowEnt
+  children:
+  - FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem},Transform,System.Single,FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  - FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem},Vector3,System.Single,FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  langs:
+  - csharp
+  - vb
+  name: ParticleSystemMotionExtensions
+  nameWithType: ParticleSystemMotionExtensions
+  fullName: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
+  type: Class
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/ParticleSystemMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ParticleSystemMotionExtensions
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/ParticleSystemMotionExtensions.cs
+    startLine: 6
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public static class ParticleSystemMotionExtensions
+    content.vb: Public Module ParticleSystemMotionExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem},Vector3,System.Single,FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  commentId: M:FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem},Vector3,System.Single,FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  id: ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem},Vector3,System.Single,FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: ConvergeTo(EchoMotionProxy<ParticleSystem>, Vector3, float, SpeedType)
+  nameWithType: ParticleSystemMotionExtensions.ConvergeTo(EchoMotionProxy<ParticleSystem>, Vector3, float, SpeedType)
+  fullName: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy<ParticleSystem>, Vector3, float, FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/ParticleSystemMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ConvergeTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/ParticleSystemMotionExtensions.cs
+    startLine: 15
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion" data-throw-if-not-resolved="false"></xref> to the echo.
+  example: []
+  syntax:
+    content: public static EchoMotionProxy<ParticleSystem> ConvergeTo(this EchoMotionProxy<ParticleSystem> proxy, Vector3 target, float speed = 1, SpeedType speedType = SpeedType.Linear)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem}
+      description: ''
+    - id: target
+      type: Vector3
+      description: ''
+    - id: speed
+      type: System.Single
+      description: ''
+    - id: speedType
+      type: FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem}
+    content.vb: Public Shared Function ConvergeTo(proxy As EchoMotionProxy(Of ParticleSystem), target As Vector3, speed As Single = 1, speedType As SpeedType = SpeedType.Linear) As EchoMotionProxy(Of ParticleSystem)
+  overload: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo*
+  nameWithType.vb: ParticleSystemMotionExtensions.ConvergeTo(EchoMotionProxy(Of ParticleSystem), Vector3, Single, SpeedType)
+  fullName.vb: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy(Of ParticleSystem), Vector3, Single, FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  name.vb: ConvergeTo(EchoMotionProxy(Of ParticleSystem), Vector3, Single, SpeedType)
+- uid: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem},Transform,System.Single,FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  commentId: M:FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem},Transform,System.Single,FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  id: ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem},Transform,System.Single,FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: ConvergeTo(EchoMotionProxy<ParticleSystem>, Transform, float, SpeedType)
+  nameWithType: ParticleSystemMotionExtensions.ConvergeTo(EchoMotionProxy<ParticleSystem>, Transform, float, SpeedType)
+  fullName: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy<ParticleSystem>, Transform, float, FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/ParticleSystemMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ConvergeTo
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Engine/ParticleSystemMotionExtensions.cs
+    startLine: 25
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion" data-throw-if-not-resolved="false"></xref> to the echo.
+  example: []
+  syntax:
+    content: public static EchoMotionProxy<ParticleSystem> ConvergeTo(this EchoMotionProxy<ParticleSystem> proxy, Transform target, float speed = 1, SpeedType speedType = SpeedType.Linear)
+    parameters:
+    - id: proxy
+      type: FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem}
+      description: ''
+    - id: target
+      type: Transform
+      description: ''
+    - id: speed
+      type: System.Single
+      description: ''
+    - id: speedType
+      type: FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem}
+    content.vb: Public Shared Function ConvergeTo(proxy As EchoMotionProxy(Of ParticleSystem), target As Transform, speed As Single = 1, speedType As SpeedType = SpeedType.Linear) As EchoMotionProxy(Of ParticleSystem)
+  overload: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo*
+  nameWithType.vb: ParticleSystemMotionExtensions.ConvergeTo(EchoMotionProxy(Of ParticleSystem), Transform, Single, SpeedType)
+  fullName.vb: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo(FriedSynapse.FlowEnt.EchoMotionProxy(Of ParticleSystem), Transform, Single, FriedSynapse.FlowEnt.Motions.Echo.SpeedType)
+  name.vb: ConvergeTo(EchoMotionProxy(Of ParticleSystem), Transform, Single, SpeedType)
+references:
+- uid: FriedSynapse.FlowEnt
+  commentId: N:FriedSynapse.FlowEnt
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt
+  nameWithType: FriedSynapse.FlowEnt
+  fullName: FriedSynapse.FlowEnt
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion
+  parent: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+  href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion.html
+  name: ConvergeToVectorMotion
+  nameWithType: ConvergeToVectorMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToVectorMotion
+- uid: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo*
+  commentId: Overload:FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo
+  href: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.html#FriedSynapse_FlowEnt_ParticleSystemMotionExtensions_ConvergeTo_FriedSynapse_FlowEnt_EchoMotionProxy_ParticleSystem__Vector3_System_Single_FriedSynapse_FlowEnt_Motions_Echo_SpeedType_
+  name: ConvergeTo
+  nameWithType: ParticleSystemMotionExtensions.ConvergeTo
+  fullName: FriedSynapse.FlowEnt.ParticleSystemMotionExtensions.ConvergeTo
+- uid: FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem}
+  commentId: T:FriedSynapse.FlowEnt.EchoMotionProxy{ParticleSystem}
+  parent: FriedSynapse.FlowEnt
+  definition: FriedSynapse.FlowEnt.EchoMotionProxy`1
+  href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  name: EchoMotionProxy<ParticleSystem>
+  nameWithType: EchoMotionProxy<ParticleSystem>
+  fullName: FriedSynapse.FlowEnt.EchoMotionProxy<ParticleSystem>
+  nameWithType.vb: EchoMotionProxy(Of ParticleSystem)
+  fullName.vb: FriedSynapse.FlowEnt.EchoMotionProxy(Of ParticleSystem)
+  name.vb: EchoMotionProxy(Of ParticleSystem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
+    name: EchoMotionProxy
+    href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  - name: <
+  - uid: ParticleSystem
+    name: ParticleSystem
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
+    name: EchoMotionProxy
+    href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: ParticleSystem
+    name: ParticleSystem
+    isExternal: true
+  - name: )
+- uid: Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+  parent: FriedSynapse.FlowEnt.Motions.Echo
+  href: FriedSynapse.FlowEnt.Motions.Echo.SpeedType.html
+  name: SpeedType
+  nameWithType: SpeedType
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.SpeedType
+- uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+  commentId: N:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+  nameWithType: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+    name: ParticleSystems
+    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems
+    name: ParticleSystems
+    href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.html
+- uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
+  commentId: T:FriedSynapse.FlowEnt.EchoMotionProxy`1
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  name: EchoMotionProxy<TItem>
+  nameWithType: EchoMotionProxy<TItem>
+  fullName: FriedSynapse.FlowEnt.EchoMotionProxy<TItem>
+  nameWithType.vb: EchoMotionProxy(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.EchoMotionProxy(Of TItem)
+  name.vb: EchoMotionProxy(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
+    name: EchoMotionProxy
+    href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.EchoMotionProxy`1
+    name: EchoMotionProxy
+    href: FriedSynapse.FlowEnt.EchoMotionProxy-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Echo
+  commentId: N:FriedSynapse.FlowEnt.Motions.Echo
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Echo
+  nameWithType: FriedSynapse.FlowEnt.Motions.Echo
+  fullName: FriedSynapse.FlowEnt.Motions.Echo
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+- uid: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion.html
+  name: ConvergeToTransformMotion
+  nameWithType: ConvergeToTransformMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.ParticleSystems.ConvergeToTransformMotion
+- uid: Transform
+  isExternal: true
+  name: Transform
+  nameWithType: Transform
+  fullName: Transform

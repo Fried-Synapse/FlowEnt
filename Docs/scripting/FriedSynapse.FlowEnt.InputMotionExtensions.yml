@@ -1,0 +1,712 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions
+  commentId: T:FriedSynapse.FlowEnt.InputMotionExtensions
+  id: InputMotionExtensions
+  parent: FriedSynapse.FlowEnt
+  children:
+  - FriedSynapse.FlowEnt.InputMotionExtensions.Button(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  - FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  - FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  - FriedSynapse.FlowEnt.InputMotionExtensions.Key(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  - FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  - FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  langs:
+  - csharp
+  - vb
+  name: InputMotionExtensions
+  nameWithType: InputMotionExtensions
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions
+  type: Class
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: InputMotionExtensions
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+    startLine: 6
+  namespace: FriedSynapse.FlowEnt
+  syntax:
+    content: public static class InputMotionExtensions
+    content.vb: Public Module InputMotionExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  commentId: M:FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  id: KeyDown(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.InputMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: KeyDown(Echo, KeyCode, Action<float>)
+  nameWithType: InputMotionExtensions.KeyDown(Echo, KeyCode, Action<float>)
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown(FriedSynapse.FlowEnt.Echo, KeyCode, System.Action<float>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: KeyDown
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+    startLine: 14
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion" data-throw-if-not-resolved="false"></xref> to the echo.
+  example: []
+  syntax:
+    content: public static Echo KeyDown(this Echo echo, KeyCode keyCode, Action<float> callback)
+    parameters:
+    - id: echo
+      type: FriedSynapse.FlowEnt.Echo
+      description: ''
+    - id: keyCode
+      type: KeyCode
+      description: ''
+    - id: callback
+      type: System.Action{System.Single}
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.Echo
+    content.vb: Public Shared Function KeyDown(echo As Echo, keyCode As KeyCode, callback As Action(Of Single)) As Echo
+  overload: FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown*
+  nameWithType.vb: InputMotionExtensions.KeyDown(Echo, KeyCode, Action(Of Single))
+  fullName.vb: FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown(FriedSynapse.FlowEnt.Echo, KeyCode, System.Action(Of Single))
+  name.vb: KeyDown(Echo, KeyCode, Action(Of Single))
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.Key(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  commentId: M:FriedSynapse.FlowEnt.InputMotionExtensions.Key(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  id: Key(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.InputMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: Key(Echo, KeyCode, Action<float>)
+  nameWithType: InputMotionExtensions.Key(Echo, KeyCode, Action<float>)
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.Key(FriedSynapse.FlowEnt.Echo, KeyCode, System.Action<float>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Key
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+    startLine: 23
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion" data-throw-if-not-resolved="false"></xref> to the echo.
+  example: []
+  syntax:
+    content: public static Echo Key(this Echo echo, KeyCode keyCode, Action<float> callback)
+    parameters:
+    - id: echo
+      type: FriedSynapse.FlowEnt.Echo
+      description: ''
+    - id: keyCode
+      type: KeyCode
+      description: ''
+    - id: callback
+      type: System.Action{System.Single}
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.Echo
+    content.vb: Public Shared Function Key(echo As Echo, keyCode As KeyCode, callback As Action(Of Single)) As Echo
+  overload: FriedSynapse.FlowEnt.InputMotionExtensions.Key*
+  nameWithType.vb: InputMotionExtensions.Key(Echo, KeyCode, Action(Of Single))
+  fullName.vb: FriedSynapse.FlowEnt.InputMotionExtensions.Key(FriedSynapse.FlowEnt.Echo, KeyCode, System.Action(Of Single))
+  name.vb: Key(Echo, KeyCode, Action(Of Single))
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  commentId: M:FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  id: KeyUp(FriedSynapse.FlowEnt.Echo,KeyCode,System.Action{System.Single})
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.InputMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: KeyUp(Echo, KeyCode, Action<float>)
+  nameWithType: InputMotionExtensions.KeyUp(Echo, KeyCode, Action<float>)
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp(FriedSynapse.FlowEnt.Echo, KeyCode, System.Action<float>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: KeyUp
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+    startLine: 32
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion" data-throw-if-not-resolved="false"></xref> to the echo.
+  example: []
+  syntax:
+    content: public static Echo KeyUp(this Echo echo, KeyCode keyCode, Action<float> callback)
+    parameters:
+    - id: echo
+      type: FriedSynapse.FlowEnt.Echo
+      description: ''
+    - id: keyCode
+      type: KeyCode
+      description: ''
+    - id: callback
+      type: System.Action{System.Single}
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.Echo
+    content.vb: Public Shared Function KeyUp(echo As Echo, keyCode As KeyCode, callback As Action(Of Single)) As Echo
+  overload: FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp*
+  nameWithType.vb: InputMotionExtensions.KeyUp(Echo, KeyCode, Action(Of Single))
+  fullName.vb: FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp(FriedSynapse.FlowEnt.Echo, KeyCode, System.Action(Of Single))
+  name.vb: KeyUp(Echo, KeyCode, Action(Of Single))
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  commentId: M:FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  id: ButtonDown(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.InputMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: ButtonDown(Echo, string, Action<float>)
+  nameWithType: InputMotionExtensions.ButtonDown(Echo, string, Action<float>)
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown(FriedSynapse.FlowEnt.Echo, string, System.Action<float>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ButtonDown
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+    startLine: 41
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion" data-throw-if-not-resolved="false"></xref> to the echo.
+  example: []
+  syntax:
+    content: public static Echo ButtonDown(this Echo echo, string buttonName, Action<float> callback)
+    parameters:
+    - id: echo
+      type: FriedSynapse.FlowEnt.Echo
+      description: ''
+    - id: buttonName
+      type: System.String
+      description: ''
+    - id: callback
+      type: System.Action{System.Single}
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.Echo
+    content.vb: Public Shared Function ButtonDown(echo As Echo, buttonName As String, callback As Action(Of Single)) As Echo
+  overload: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown*
+  nameWithType.vb: InputMotionExtensions.ButtonDown(Echo, String, Action(Of Single))
+  fullName.vb: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown(FriedSynapse.FlowEnt.Echo, String, System.Action(Of Single))
+  name.vb: ButtonDown(Echo, String, Action(Of Single))
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.Button(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  commentId: M:FriedSynapse.FlowEnt.InputMotionExtensions.Button(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  id: Button(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.InputMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: Button(Echo, string, Action<float>)
+  nameWithType: InputMotionExtensions.Button(Echo, string, Action<float>)
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.Button(FriedSynapse.FlowEnt.Echo, string, System.Action<float>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: Button
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+    startLine: 50
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion" data-throw-if-not-resolved="false"></xref> to the echo.
+  example: []
+  syntax:
+    content: public static Echo Button(this Echo echo, string buttonName, Action<float> callback)
+    parameters:
+    - id: echo
+      type: FriedSynapse.FlowEnt.Echo
+      description: ''
+    - id: buttonName
+      type: System.String
+      description: ''
+    - id: callback
+      type: System.Action{System.Single}
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.Echo
+    content.vb: Public Shared Function Button(echo As Echo, buttonName As String, callback As Action(Of Single)) As Echo
+  overload: FriedSynapse.FlowEnt.InputMotionExtensions.Button*
+  nameWithType.vb: InputMotionExtensions.Button(Echo, String, Action(Of Single))
+  fullName.vb: FriedSynapse.FlowEnt.InputMotionExtensions.Button(FriedSynapse.FlowEnt.Echo, String, System.Action(Of Single))
+  name.vb: Button(Echo, String, Action(Of Single))
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  commentId: M:FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  id: ButtonUp(FriedSynapse.FlowEnt.Echo,System.String,System.Action{System.Single})
+  isExtensionMethod: true
+  parent: FriedSynapse.FlowEnt.InputMotionExtensions
+  langs:
+  - csharp
+  - vb
+  name: ButtonUp(Echo, string, Action<float>)
+  nameWithType: InputMotionExtensions.ButtonUp(Echo, string, Action<float>)
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp(FriedSynapse.FlowEnt.Echo, string, System.Action<float>)
+  type: Method
+  source:
+    remote:
+      path: Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+      branch: docs/191-add_manual
+      repo: https://github.com/Fried-Synapse/FlowEnt
+    id: ButtonUp
+    path: ../Assets/FlowEnt/Scripts/Runtime/Extensions/Common/InputMotionExtensions.cs
+    startLine: 59
+  namespace: FriedSynapse.FlowEnt
+  summary: Applies a <xref href="FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion" data-throw-if-not-resolved="false"></xref> to the echo.
+  example: []
+  syntax:
+    content: public static Echo ButtonUp(this Echo echo, string buttonName, Action<float> callback)
+    parameters:
+    - id: echo
+      type: FriedSynapse.FlowEnt.Echo
+      description: ''
+    - id: buttonName
+      type: System.String
+      description: ''
+    - id: callback
+      type: System.Action{System.Single}
+      description: ''
+    return:
+      type: FriedSynapse.FlowEnt.Echo
+    content.vb: Public Shared Function ButtonUp(echo As Echo, buttonName As String, callback As Action(Of Single)) As Echo
+  overload: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp*
+  nameWithType.vb: InputMotionExtensions.ButtonUp(Echo, String, Action(Of Single))
+  fullName.vb: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp(FriedSynapse.FlowEnt.Echo, String, System.Action(Of Single))
+  name.vb: ButtonUp(Echo, String, Action(Of Single))
+references:
+- uid: FriedSynapse.FlowEnt
+  commentId: N:FriedSynapse.FlowEnt
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt
+  nameWithType: FriedSynapse.FlowEnt
+  fullName: FriedSynapse.FlowEnt
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion.html
+  name: KeyDownMotion
+  nameWithType: KeyDownMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown*
+  commentId: Overload:FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown
+  href: FriedSynapse.FlowEnt.InputMotionExtensions.html#FriedSynapse_FlowEnt_InputMotionExtensions_KeyDown_FriedSynapse_FlowEnt_Echo_KeyCode_System_Action_System_Single__
+  name: KeyDown
+  nameWithType: InputMotionExtensions.KeyDown
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.KeyDown
+- uid: FriedSynapse.FlowEnt.Echo
+  commentId: T:FriedSynapse.FlowEnt.Echo
+  parent: FriedSynapse.FlowEnt
+  href: FriedSynapse.FlowEnt.Echo.html
+  name: Echo
+  nameWithType: Echo
+  fullName: FriedSynapse.FlowEnt.Echo
+- uid: KeyCode
+  isExternal: true
+  name: KeyCode
+  nameWithType: KeyCode
+  fullName: KeyCode
+- uid: System.Action{System.Single}
+  commentId: T:System.Action{System.Single}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<float>
+  nameWithType: Action<float>
+  fullName: System.Action<float>
+  nameWithType.vb: Action(Of Single)
+  fullName.vb: System.Action(Of Single)
+  name.vb: Action(Of Single)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion.html
+  name: KeyMotion
+  nameWithType: KeyMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.Key*
+  commentId: Overload:FriedSynapse.FlowEnt.InputMotionExtensions.Key
+  href: FriedSynapse.FlowEnt.InputMotionExtensions.html#FriedSynapse_FlowEnt_InputMotionExtensions_Key_FriedSynapse_FlowEnt_Echo_KeyCode_System_Action_System_Single__
+  name: Key
+  nameWithType: InputMotionExtensions.Key
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.Key
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion.html
+  name: KeyUpMotion
+  nameWithType: KeyUpMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp*
+  commentId: Overload:FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp
+  href: FriedSynapse.FlowEnt.InputMotionExtensions.html#FriedSynapse_FlowEnt_InputMotionExtensions_KeyUp_FriedSynapse_FlowEnt_Echo_KeyCode_System_Action_System_Single__
+  name: KeyUp
+  nameWithType: InputMotionExtensions.KeyUp
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.KeyUp
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion.html
+  name: ButtonDownMotion
+  nameWithType: ButtonDownMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown*
+  commentId: Overload:FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown
+  href: FriedSynapse.FlowEnt.InputMotionExtensions.html#FriedSynapse_FlowEnt_InputMotionExtensions_ButtonDown_FriedSynapse_FlowEnt_Echo_System_String_System_Action_System_Single__
+  name: ButtonDown
+  nameWithType: InputMotionExtensions.ButtonDown
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonDown
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion.html
+  name: ButtonMotion
+  nameWithType: ButtonMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.Button*
+  commentId: Overload:FriedSynapse.FlowEnt.InputMotionExtensions.Button
+  href: FriedSynapse.FlowEnt.InputMotionExtensions.html#FriedSynapse_FlowEnt_InputMotionExtensions_Button_FriedSynapse_FlowEnt_Echo_System_String_System_Action_System_Single__
+  name: Button
+  nameWithType: InputMotionExtensions.Button
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.Button
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion.html
+  name: ButtonUpMotion
+  nameWithType: ButtonUpMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
+- uid: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp*
+  commentId: Overload:FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp
+  href: FriedSynapse.FlowEnt.InputMotionExtensions.html#FriedSynapse_FlowEnt_InputMotionExtensions_ButtonUp_FriedSynapse_FlowEnt_Echo_System_String_System_Action_System_Single__
+  name: ButtonUp
+  nameWithType: InputMotionExtensions.ButtonUp
+  fullName: FriedSynapse.FlowEnt.InputMotionExtensions.ButtonUp

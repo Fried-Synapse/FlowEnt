@@ -1,0 +1,1686 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  id: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  children:
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1.AbstractAnimationCurve3dBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1.AbstractGradientBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1.AbstractBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.AbstractBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion`1
+  - FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion-1.html
+  name: AbstractRandomFloatMotion<TItem>
+  nameWithType: AbstractRandomFloatMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion<TItem>
+  nameWithType.vb: AbstractRandomFloatMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion(Of TItem)
+  name.vb: AbstractRandomFloatMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion`1
+    name: AbstractRandomFloatMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion`1
+    name: AbstractRandomFloatMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomFloatMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion-1.html
+  name: AbstractFloatLinearMotion<TItem>
+  nameWithType: AbstractFloatLinearMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion<TItem>
+  nameWithType.vb: AbstractFloatLinearMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion(Of TItem)
+  name.vb: AbstractFloatLinearMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion`1
+    name: AbstractFloatLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion`1
+    name: AbstractFloatLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatLinearMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion-1.html
+  name: AbstractVector4Motion<TItem>
+  nameWithType: AbstractVector4Motion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion<TItem>
+  nameWithType.vb: AbstractVector4Motion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion(Of TItem)
+  name.vb: AbstractVector4Motion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion`1
+    name: AbstractVector4Motion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion`1
+    name: AbstractVector4Motion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector4Motion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion-1.html
+  name: AbstractColorGradientMotion<TItem>
+  nameWithType: AbstractColorGradientMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion<TItem>
+  nameWithType.vb: AbstractColorGradientMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion(Of TItem)
+  name.vb: AbstractColorGradientMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
+    name: AbstractColorGradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
+    name: AbstractColorGradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1.AbstractGradientBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1.AbstractGradientBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion-1.html
+  name: AbstractColorGradientMotion<TItem>.AbstractGradientBuilder
+  nameWithType: AbstractColorGradientMotion<TItem>.AbstractGradientBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion<TItem>.AbstractGradientBuilder
+  nameWithType.vb: AbstractColorGradientMotion(Of TItem).AbstractGradientBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion(Of TItem).AbstractGradientBuilder
+  name.vb: AbstractColorGradientMotion(Of TItem).AbstractGradientBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
+    name: AbstractColorGradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1.AbstractGradientBuilder
+    name: AbstractGradientBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion-1.AbstractGradientBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1
+    name: AbstractColorGradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion`1.AbstractGradientBuilder
+    name: AbstractGradientBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorGradientMotion-1.AbstractGradientBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion-1.html
+  name: AbstractVector2Motion<TItem>
+  nameWithType: AbstractVector2Motion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion<TItem>
+  nameWithType.vb: AbstractVector2Motion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion(Of TItem)
+  name.vb: AbstractVector2Motion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion`1
+    name: AbstractVector2Motion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion`1
+    name: AbstractVector2Motion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector2Motion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion-1.html
+  name: AbstractVector3Motion<TItem>
+  nameWithType: AbstractVector3Motion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion<TItem>
+  nameWithType.vb: AbstractVector3Motion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion(Of TItem)
+  name.vb: AbstractVector3Motion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion`1
+    name: AbstractVector3Motion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion`1
+    name: AbstractVector3Motion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractVector3Motion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion-1.html
+  name: AbstractRandomVector3Motion<TItem>
+  nameWithType: AbstractRandomVector3Motion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion<TItem>
+  nameWithType.vb: AbstractRandomVector3Motion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion(Of TItem)
+  name.vb: AbstractRandomVector3Motion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion`1
+    name: AbstractRandomVector3Motion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion`1
+    name: AbstractRandomVector3Motion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomVector3Motion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion-1.html
+  name: AbstractIntMotion<TItem>
+  nameWithType: AbstractIntMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion<TItem>
+  nameWithType.vb: AbstractIntMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion(Of TItem)
+  name.vb: AbstractIntMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion`1
+    name: AbstractIntMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion`1
+    name: AbstractIntMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractIntMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  name: AbstractColorMotion<TItem>
+  nameWithType: AbstractColorMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion<TItem>
+  nameWithType.vb: AbstractColorMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion(Of TItem)
+  name.vb: AbstractColorMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+    name: AbstractColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+    name: AbstractColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  name: AbstractColorMotion<TItem>.AbstractValueBuilder
+  nameWithType: AbstractColorMotion<TItem>.AbstractValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion<TItem>.AbstractValueBuilder
+  nameWithType.vb: AbstractColorMotion(Of TItem).AbstractValueBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion(Of TItem).AbstractValueBuilder
+  name.vb: AbstractColorMotion(Of TItem).AbstractValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+    name: AbstractColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractValueBuilder
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.AbstractValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+    name: AbstractColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractValueBuilder
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.AbstractValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  name: AbstractColorMotion<TItem>.AbstractFromToBuilder
+  nameWithType: AbstractColorMotion<TItem>.AbstractFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion<TItem>.AbstractFromToBuilder
+  nameWithType.vb: AbstractColorMotion(Of TItem).AbstractFromToBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion(Of TItem).AbstractFromToBuilder
+  name.vb: AbstractColorMotion(Of TItem).AbstractFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+    name: AbstractColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.AbstractFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1
+    name: AbstractColorMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion`1.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorMotion-1.AbstractFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion-1.html
+  name: AbstractAlphaMotion<TItem>
+  nameWithType: AbstractAlphaMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion<TItem>
+  nameWithType.vb: AbstractAlphaMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion(Of TItem)
+  name.vb: AbstractAlphaMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion`1
+    name: AbstractAlphaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion`1
+    name: AbstractAlphaMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAlphaMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion-1.html
+  name: AbstractCurveMotion<TItem>
+  nameWithType: AbstractCurveMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion<TItem>
+  nameWithType.vb: AbstractCurveMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion(Of TItem)
+  name.vb: AbstractCurveMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
+    name: AbstractCurveMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
+    name: AbstractCurveMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1.AbstractBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1.AbstractBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion-1.html
+  name: AbstractCurveMotion<TItem>.AbstractBuilder
+  nameWithType: AbstractCurveMotion<TItem>.AbstractBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion<TItem>.AbstractBuilder
+  nameWithType.vb: AbstractCurveMotion(Of TItem).AbstractBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion(Of TItem).AbstractBuilder
+  name.vb: AbstractCurveMotion(Of TItem).AbstractBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
+    name: AbstractCurveMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1.AbstractBuilder
+    name: AbstractBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion-1.AbstractBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1
+    name: AbstractCurveMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion`1.AbstractBuilder
+    name: AbstractBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractCurveMotion-1.AbstractBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion-1.html
+  name: AbstractAnimationCurve3dMotion<TItem>
+  nameWithType: AbstractAnimationCurve3dMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion<TItem>
+  nameWithType.vb: AbstractAnimationCurve3dMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion(Of TItem)
+  name.vb: AbstractAnimationCurve3dMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
+    name: AbstractAnimationCurve3dMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
+    name: AbstractAnimationCurve3dMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1.AbstractAnimationCurve3dBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1.AbstractAnimationCurve3dBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion-1.html
+  name: AbstractAnimationCurve3dMotion<TItem>.AbstractAnimationCurve3dBuilder
+  nameWithType: AbstractAnimationCurve3dMotion<TItem>.AbstractAnimationCurve3dBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion<TItem>.AbstractAnimationCurve3dBuilder
+  nameWithType.vb: AbstractAnimationCurve3dMotion(Of TItem).AbstractAnimationCurve3dBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion(Of TItem).AbstractAnimationCurve3dBuilder
+  name.vb: AbstractAnimationCurve3dMotion(Of TItem).AbstractAnimationCurve3dBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
+    name: AbstractAnimationCurve3dMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1.AbstractAnimationCurve3dBuilder
+    name: AbstractAnimationCurve3dBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion-1.AbstractAnimationCurve3dBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1
+    name: AbstractAnimationCurve3dMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion`1.AbstractAnimationCurve3dBuilder
+    name: AbstractAnimationCurve3dBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAnimationCurve3dMotion-1.AbstractAnimationCurve3dBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion-1.html
+  name: AbstractFloatMotion<TItem>
+  nameWithType: AbstractFloatMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion<TItem>
+  nameWithType.vb: AbstractFloatMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion(Of TItem)
+  name.vb: AbstractFloatMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion`1
+    name: AbstractFloatMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion`1
+    name: AbstractFloatMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  name: AbstractColorLinearMotion<TItem>
+  nameWithType: AbstractColorLinearMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion<TItem>
+  nameWithType.vb: AbstractColorLinearMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion(Of TItem)
+  name.vb: AbstractColorLinearMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+    name: AbstractColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+    name: AbstractColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  name: AbstractColorLinearMotion<TItem>.AbstractValueBuilder
+  nameWithType: AbstractColorLinearMotion<TItem>.AbstractValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion<TItem>.AbstractValueBuilder
+  nameWithType.vb: AbstractColorLinearMotion(Of TItem).AbstractValueBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion(Of TItem).AbstractValueBuilder
+  name.vb: AbstractColorLinearMotion(Of TItem).AbstractValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+    name: AbstractColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractValueBuilder
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.AbstractValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+    name: AbstractColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractValueBuilder
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.AbstractValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  name: AbstractColorLinearMotion<TItem>.AbstractFromToBuilder
+  nameWithType: AbstractColorLinearMotion<TItem>.AbstractFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion<TItem>.AbstractFromToBuilder
+  nameWithType.vb: AbstractColorLinearMotion(Of TItem).AbstractFromToBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion(Of TItem).AbstractFromToBuilder
+  name.vb: AbstractColorLinearMotion(Of TItem).AbstractFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+    name: AbstractColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.AbstractFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1
+    name: AbstractColorLinearMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion`1.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractColorLinearMotion-1.AbstractFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion-1.html
+  name: AbstractRectMotion<TItem>
+  nameWithType: AbstractRectMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion<TItem>
+  nameWithType.vb: AbstractRectMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion(Of TItem)
+  name.vb: AbstractRectMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion`1
+    name: AbstractRectMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion`1
+    name: AbstractRectMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRectMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion-1.html
+  name: AbstractQuaternionMotion<TItem>
+  nameWithType: AbstractQuaternionMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion<TItem>
+  nameWithType.vb: AbstractQuaternionMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion(Of TItem)
+  name.vb: AbstractQuaternionMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion`1
+    name: AbstractQuaternionMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion`1
+    name: AbstractQuaternionMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractQuaternionMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  name: AbstractFloatMinMaxMotion<TItem>
+  nameWithType: AbstractFloatMinMaxMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion<TItem>
+  nameWithType.vb: AbstractFloatMinMaxMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion(Of TItem)
+  name.vb: AbstractFloatMinMaxMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+    name: AbstractFloatMinMaxMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion`1
+    name: AbstractFloatMinMaxMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractFloatMinMaxMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion-1.html
+  name: AbstractGradientMotion<TItem>
+  nameWithType: AbstractGradientMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion<TItem>
+  nameWithType.vb: AbstractGradientMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion(Of TItem)
+  name.vb: AbstractGradientMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion`1
+    name: AbstractGradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion`1
+    name: AbstractGradientMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractGradientMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  name: AbstractStructValueMotion<TItem, TValue>
+  nameWithType: AbstractStructValueMotion<TItem, TValue>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion<TItem, TValue>
+  nameWithType.vb: AbstractStructValueMotion(Of TItem, TValue)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion(Of TItem, TValue)
+  name.vb: AbstractStructValueMotion(Of TItem, TValue)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  name: AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  nameWithType: AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  nameWithType.vb: AbstractStructValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  name.vb: AbstractStructValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder`1
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.AbstractFromToBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder`1
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.AbstractFromToBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  name: AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder
+  nameWithType: AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion<TItem, TValue>.AbstractFromToBuilder
+  nameWithType.vb: AbstractStructValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  name.vb: AbstractStructValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.AbstractFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2
+    name: AbstractStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion`2.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractStructValueMotion-2.AbstractFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  name: AbstractRandomStructValueMotion<TItem, TValue>
+  nameWithType: AbstractRandomStructValueMotion<TItem, TValue>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion<TItem, TValue>
+  nameWithType.vb: AbstractRandomStructValueMotion(Of TItem, TValue)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion(Of TItem, TValue)
+  name.vb: AbstractRandomStructValueMotion(Of TItem, TValue)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder<T>
+  nameWithType: AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder<T>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder<T>
+  nameWithType.vb: AbstractRandomStructValueMotion(Of TItem, TValue).AbstractValueBuilder(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion(Of TItem, TValue).AbstractValueBuilder(Of T)
+  name.vb: AbstractRandomStructValueMotion(Of TItem, TValue).AbstractValueBuilder(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder`1
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.AbstractValueBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder`1
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.AbstractValueBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  nameWithType: AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  nameWithType.vb: AbstractRandomStructValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  name.vb: AbstractRandomStructValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder`1
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.AbstractFromToBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder`1
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.AbstractFromToBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder
+  nameWithType: AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion<TItem, TValue>.AbstractValueBuilder
+  nameWithType.vb: AbstractRandomStructValueMotion(Of TItem, TValue).AbstractValueBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion(Of TItem, TValue).AbstractValueBuilder
+  name.vb: AbstractRandomStructValueMotion(Of TItem, TValue).AbstractValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.AbstractValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractValueBuilder
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.AbstractValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  name: AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder
+  nameWithType: AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion<TItem, TValue>.AbstractFromToBuilder
+  nameWithType.vb: AbstractRandomStructValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  name.vb: AbstractRandomStructValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.AbstractFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2
+    name: AbstractRandomStructValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion`2.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRandomStructValueMotion-2.AbstractFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  name: AbstractClassValueMotion<TItem, TValue>
+  nameWithType: AbstractClassValueMotion<TItem, TValue>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion<TItem, TValue>
+  nameWithType.vb: AbstractClassValueMotion(Of TItem, TValue)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion(Of TItem, TValue)
+  name.vb: AbstractClassValueMotion(Of TItem, TValue)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+    name: AbstractClassValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+    name: AbstractClassValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  name: AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  nameWithType: AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  nameWithType.vb: AbstractClassValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  name.vb: AbstractClassValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+    name: AbstractClassValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder`1
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.AbstractFromToBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+    name: AbstractClassValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder`1
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.AbstractFromToBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  name: AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder
+  nameWithType: AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion<TItem, TValue>.AbstractFromToBuilder
+  nameWithType.vb: AbstractClassValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  name.vb: AbstractClassValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+    name: AbstractClassValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.AbstractFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2
+    name: AbstractClassValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion`2.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractClassValueMotion-2.AbstractFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  name: AbstractValueMotion<TItem, TValue>
+  nameWithType: AbstractValueMotion<TItem, TValue>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue)
+  name.vb: AbstractValueMotion(Of TItem, TValue)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  name: AbstractValueMotion<TItem, TValue>.AbstractValueBuilder<T>
+  nameWithType: AbstractValueMotion<TItem, TValue>.AbstractValueBuilder<T>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.AbstractValueBuilder<T>
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).AbstractValueBuilder(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).AbstractValueBuilder(Of T)
+  name.vb: AbstractValueMotion(Of TItem, TValue).AbstractValueBuilder(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder`1
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.AbstractValueBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder`1
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.AbstractValueBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  name: AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  nameWithType: AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder<T>
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  name.vb: AbstractValueMotion(Of TItem, TValue).AbstractFromToBuilder(Of T)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder`1
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.AbstractFromToBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder`1
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.AbstractFromToBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  name: AbstractValueMotion<TItem, TValue>.AbstractValueBuilder
+  nameWithType: AbstractValueMotion<TItem, TValue>.AbstractValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.AbstractValueBuilder
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).AbstractValueBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).AbstractValueBuilder
+  name.vb: AbstractValueMotion(Of TItem, TValue).AbstractValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.AbstractValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractValueBuilder
+    name: AbstractValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.AbstractValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  name: AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder
+  nameWithType: AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion<TItem, TValue>.AbstractFromToBuilder
+  nameWithType.vb: AbstractValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  name.vb: AbstractValueMotion(Of TItem, TValue).AbstractFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: <
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.AbstractFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2
+    name: AbstractValueMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion`2.AbstractFromToBuilder
+    name: AbstractFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractValueMotion-2.AbstractFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  name: AbstractAxisMotion<TItem>
+  nameWithType: AbstractAxisMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion<TItem>
+  nameWithType.vb: AbstractAxisMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion(Of TItem)
+  name.vb: AbstractAxisMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+    name: AbstractAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+    name: AbstractAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  name: AbstractAxisMotion<TItem>.AbstractAxisValueBuilder
+  nameWithType: AbstractAxisMotion<TItem>.AbstractAxisValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion<TItem>.AbstractAxisValueBuilder
+  nameWithType.vb: AbstractAxisMotion(Of TItem).AbstractAxisValueBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion(Of TItem).AbstractAxisValueBuilder
+  name.vb: AbstractAxisMotion(Of TItem).AbstractAxisValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+    name: AbstractAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisValueBuilder
+    name: AbstractAxisValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.AbstractAxisValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+    name: AbstractAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisValueBuilder
+    name: AbstractAxisValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.AbstractAxisValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  name: AbstractAxisMotion<TItem>.AbstractAxisFromToBuilder
+  nameWithType: AbstractAxisMotion<TItem>.AbstractAxisFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion<TItem>.AbstractAxisFromToBuilder
+  nameWithType.vb: AbstractAxisMotion(Of TItem).AbstractAxisFromToBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion(Of TItem).AbstractAxisFromToBuilder
+  name.vb: AbstractAxisMotion(Of TItem).AbstractAxisFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+    name: AbstractAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisFromToBuilder
+    name: AbstractAxisFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.AbstractAxisFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1
+    name: AbstractAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion`1.AbstractAxisFromToBuilder
+    name: AbstractAxisFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractAxisMotion-1.AbstractAxisFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  name: AbstractRotateAxisMotion<TTransform>
+  nameWithType: AbstractRotateAxisMotion<TTransform>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion<TTransform>
+  nameWithType.vb: AbstractRotateAxisMotion(Of TTransform)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion(Of TTransform)
+  name.vb: AbstractRotateAxisMotion(Of TTransform)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+    name: AbstractRotateAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  - name: <
+  - name: TTransform
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+    name: AbstractRotateAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TTransform
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisValueBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisValueBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  name: AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisValueBuilder
+  nameWithType: AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisValueBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisValueBuilder
+  nameWithType.vb: AbstractRotateAxisMotion(Of TTransform).AbstractRotateAxisValueBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion(Of TTransform).AbstractRotateAxisValueBuilder
+  name.vb: AbstractRotateAxisMotion(Of TTransform).AbstractRotateAxisValueBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+    name: AbstractRotateAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  - name: <
+  - name: TTransform
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisValueBuilder
+    name: AbstractRotateAxisValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.AbstractRotateAxisValueBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+    name: AbstractRotateAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TTransform
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisValueBuilder
+    name: AbstractRotateAxisValueBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.AbstractRotateAxisValueBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisFromToBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisFromToBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  name: AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisFromToBuilder
+  nameWithType: AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisFromToBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion<TTransform>.AbstractRotateAxisFromToBuilder
+  nameWithType.vb: AbstractRotateAxisMotion(Of TTransform).AbstractRotateAxisFromToBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion(Of TTransform).AbstractRotateAxisFromToBuilder
+  name.vb: AbstractRotateAxisMotion(Of TTransform).AbstractRotateAxisFromToBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+    name: AbstractRotateAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  - name: <
+  - name: TTransform
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisFromToBuilder
+    name: AbstractRotateAxisFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.AbstractRotateAxisFromToBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1
+    name: AbstractRotateAxisMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TTransform
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion`1.AbstractRotateAxisFromToBuilder
+    name: AbstractRotateAxisFromToBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractRotateAxisMotion-1.AbstractRotateAxisFromToBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion.html
+  name: ITweenMotion
+  nameWithType: ITweenMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.ITweenMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+  parent: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion.html
+  name: AbstractTweenMotion
+  nameWithType: AbstractTweenMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  name: AbstractTweenMotion<TItem>
+  nameWithType: AbstractTweenMotion<TItem>
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion<TItem>
+  nameWithType.vb: AbstractTweenMotion(Of TItem)
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion(Of TItem)
+  name.vb: AbstractTweenMotion(Of TItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+    name: AbstractTweenMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+    name: AbstractTweenMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.AbstractBuilder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.AbstractBuilder
+  href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  name: AbstractTweenMotion<TItem>.AbstractBuilder
+  nameWithType: AbstractTweenMotion<TItem>.AbstractBuilder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion<TItem>.AbstractBuilder
+  nameWithType.vb: AbstractTweenMotion(Of TItem).AbstractBuilder
+  fullName.vb: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion(Of TItem).AbstractBuilder
+  name.vb: AbstractTweenMotion(Of TItem).AbstractBuilder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+    name: AbstractTweenMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  - name: <
+  - name: TItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.AbstractBuilder
+    name: AbstractBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.AbstractBuilder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1
+    name: AbstractTweenMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion`1.AbstractBuilder
+    name: AbstractBuilder
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.AbstractTweenMotion-1.AbstractBuilder.html
+- uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+    name: Abstract
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween
+    name: Tween
+    href: FriedSynapse.FlowEnt.Motions.Tween.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.Abstract
+    name: Abstract
+    href: FriedSynapse.FlowEnt.Motions.Tween.Abstract.html

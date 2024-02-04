@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions.Tween
+  commentId: N:FriedSynapse.FlowEnt.Motions.Tween
+  id: FriedSynapse.FlowEnt.Motions.Tween
+  children:
+  - FriedSynapse.FlowEnt.Motions.Tween.DebugMotion
+  - FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Motions.Tween
+  nameWithType: FriedSynapse.FlowEnt.Motions.Tween
+  fullName: FriedSynapse.FlowEnt.Motions.Tween
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.DebugMotion
+  href: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.html
+  name: DebugMotion
+  nameWithType: DebugMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion
+- uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder
+  commentId: T:FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder
+  href: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.html
+  name: DebugMotion.Builder
+  nameWithType: DebugMotion.Builder
+  fullName: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion
+    name: DebugMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion
+    name: DebugMotion
+    href: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder
+    name: Builder
+    href: FriedSynapse.FlowEnt.Motions.Tween.DebugMotion.Builder.html

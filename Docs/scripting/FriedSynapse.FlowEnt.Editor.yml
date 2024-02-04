@@ -1,0 +1,654 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Editor
+  commentId: N:FriedSynapse.FlowEnt.Editor
+  id: FriedSynapse.FlowEnt.Editor
+  children:
+  - FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer`2
+  - FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer`1
+  - FriedSynapse.FlowEnt.Editor.AbstractIfAttributeDrawer
+  - FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
+  - FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1.Data
+  - FriedSynapse.FlowEnt.Editor.AbstractMotionBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer`1
+  - FriedSynapse.FlowEnt.Editor.AnimationListBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.AutoAssignButtonAttributeDrawer
+  - FriedSynapse.FlowEnt.Editor.CreateNewMotionScriptHelper
+  - FriedSynapse.FlowEnt.Editor.CurveBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.DisplayNamePropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.EchoBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum
+  - FriedSynapse.FlowEnt.Editor.EchoMotionsBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum
+  - FriedSynapse.FlowEnt.Editor.EnableIfAttributeDrawer
+  - FriedSynapse.FlowEnt.Editor.FlowBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.FlowEntMenu
+  - FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum
+  - FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum
+  - FriedSynapse.FlowEnt.Editor.FlowQueueAnimationBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.FlowQueuesBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+  - FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory
+  - FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits
+  - FriedSynapse.FlowEnt.Editor.GenericMenuExtensions
+  - FriedSynapse.FlowEnt.Editor.GizmoOptionsPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.Icon
+  - FriedSynapse.FlowEnt.Editor.MaterialBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.MaterialBuilderWithPropertyPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.PreviewController
+  - FriedSynapse.FlowEnt.Editor.PreviewController.Options
+  - FriedSynapse.FlowEnt.Editor.PropertyDrawer`1
+  - FriedSynapse.FlowEnt.Editor.RandomBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.ShowIfAttributeDrawer
+  - FriedSynapse.FlowEnt.Editor.TweenBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum
+  - FriedSynapse.FlowEnt.Editor.TweenMotionsBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer
+  - FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum
+  - FriedSynapse.FlowEnt.Editor.UrlButtonAttributeDrawer
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Editor
+  nameWithType: FriedSynapse.FlowEnt.Editor
+  fullName: FriedSynapse.FlowEnt.Editor
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer`2
+  commentId: T:FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer`2
+  href: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer-2.html
+  name: AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder>
+  nameWithType: AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder>
+  fullName: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer<TAnimation, TAnimationBuilder>
+  nameWithType.vb: AbstractAnimationBuilderPropertyDrawer(Of TAnimation, TAnimationBuilder)
+  fullName.vb: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer(Of TAnimation, TAnimationBuilder)
+  name.vb: AbstractAnimationBuilderPropertyDrawer(Of TAnimation, TAnimationBuilder)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer`2
+    name: AbstractAnimationBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer-2.html
+  - name: <
+  - name: TAnimation
+  - name: ','
+  - name: " "
+  - name: TAnimationBuilder
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer`2
+    name: AbstractAnimationBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractAnimationBuilderPropertyDrawer-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TAnimation
+  - name: ','
+  - name: " "
+  - name: TAnimationBuilder
+  - name: )
+- uid: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer`1
+  commentId: T:FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer`1
+  href: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer-1.html
+  name: AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum>
+  nameWithType: AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum>
+  fullName: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum>
+  nameWithType.vb: AbstractPropertiesBuilderPropertyDrawer(Of TPropertiesEnum)
+  fullName.vb: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer(Of TPropertiesEnum)
+  name.vb: AbstractPropertiesBuilderPropertyDrawer(Of TPropertiesEnum)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer`1
+    name: AbstractPropertiesBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer-1.html
+  - name: <
+  - name: TPropertiesEnum
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer`1
+    name: AbstractPropertiesBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractPropertiesBuilderPropertyDrawer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TPropertiesEnum
+  - name: )
+- uid: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer`1
+  commentId: T:FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer`1
+  href: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer-1.html
+  name: AbstractEventsBuilderPropertyDrawer<TPropertiesEnum>
+  nameWithType: AbstractEventsBuilderPropertyDrawer<TPropertiesEnum>
+  fullName: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer<TPropertiesEnum>
+  nameWithType.vb: AbstractEventsBuilderPropertyDrawer(Of TPropertiesEnum)
+  fullName.vb: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer(Of TPropertiesEnum)
+  name.vb: AbstractEventsBuilderPropertyDrawer(Of TPropertiesEnum)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer`1
+    name: AbstractEventsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer-1.html
+  - name: <
+  - name: TPropertiesEnum
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer`1
+    name: AbstractEventsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractEventsBuilderPropertyDrawer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TPropertiesEnum
+  - name: )
+- uid: FriedSynapse.FlowEnt.Editor.AbstractMotionBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.AbstractMotionBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.AbstractMotionBuilderPropertyDrawer.html
+  name: AbstractMotionBuilderPropertyDrawer
+  nameWithType: AbstractMotionBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.AbstractMotionBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
+  commentId: T:FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
+  href: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer-1.html
+  name: AbstractListBuilderPropertyDrawer<TListItem>
+  nameWithType: AbstractListBuilderPropertyDrawer<TListItem>
+  fullName: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer<TListItem>
+  nameWithType.vb: AbstractListBuilderPropertyDrawer(Of TListItem)
+  fullName.vb: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer(Of TListItem)
+  name.vb: AbstractListBuilderPropertyDrawer(Of TListItem)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
+    name: AbstractListBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer-1.html
+  - name: <
+  - name: TListItem
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
+    name: AbstractListBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TListItem
+  - name: )
+- uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1.Data
+  commentId: T:FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1.Data
+  href: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer-1.html
+  name: AbstractListBuilderPropertyDrawer<TListItem>.Data
+  nameWithType: AbstractListBuilderPropertyDrawer<TListItem>.Data
+  fullName: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer<TListItem>.Data
+  nameWithType.vb: AbstractListBuilderPropertyDrawer(Of TListItem).Data
+  fullName.vb: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer(Of TListItem).Data
+  name.vb: AbstractListBuilderPropertyDrawer(Of TListItem).Data
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
+    name: AbstractListBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer-1.html
+  - name: <
+  - name: TListItem
+  - name: '>'
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1.Data
+    name: Data
+    href: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer-1.Data.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1
+    name: AbstractListBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TListItem
+  - name: )
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer`1.Data
+    name: Data
+    href: FriedSynapse.FlowEnt.Editor.AbstractListBuilderPropertyDrawer-1.Data.html
+- uid: FriedSynapse.FlowEnt.Editor.TweenBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.TweenBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.TweenBuilderPropertyDrawer.html
+  name: TweenBuilderPropertyDrawer
+  nameWithType: TweenBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.TweenBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.html
+  name: TweenOptionsBuilderPropertyDrawer
+  nameWithType: TweenOptionsBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum
+  commentId: T:FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.html
+  name: TweenOptionsBuilderPropertyDrawer.FieldsEnum
+  nameWithType: TweenOptionsBuilderPropertyDrawer.FieldsEnum
+  fullName: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer
+    name: TweenOptionsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer
+    name: TweenOptionsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.TweenOptionsBuilderPropertyDrawer.FieldsEnum.html
+- uid: FriedSynapse.FlowEnt.Editor.TweenMotionsBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.TweenMotionsBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.TweenMotionsBuilderPropertyDrawer.html
+  name: TweenMotionsBuilderPropertyDrawer
+  nameWithType: TweenMotionsBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.TweenMotionsBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.html
+  name: TweenEventsBuilderPropertyDrawer
+  nameWithType: TweenEventsBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum
+  commentId: T:FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.html
+  name: TweenEventsBuilderPropertyDrawer.FieldsEnum
+  nameWithType: TweenEventsBuilderPropertyDrawer.FieldsEnum
+  fullName: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer
+    name: TweenEventsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer
+    name: TweenEventsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.TweenEventsBuilderPropertyDrawer.FieldsEnum.html
+- uid: FriedSynapse.FlowEnt.Editor.EchoMotionsBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.EchoMotionsBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.EchoMotionsBuilderPropertyDrawer.html
+  name: EchoMotionsBuilderPropertyDrawer
+  nameWithType: EchoMotionsBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.EchoMotionsBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.html
+  name: EchoOptionsBuilderPropertyDrawer
+  nameWithType: EchoOptionsBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum
+  commentId: T:FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.html
+  name: EchoOptionsBuilderPropertyDrawer.FieldsEnum
+  nameWithType: EchoOptionsBuilderPropertyDrawer.FieldsEnum
+  fullName: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer
+    name: EchoOptionsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer
+    name: EchoOptionsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.EchoOptionsBuilderPropertyDrawer.FieldsEnum.html
+- uid: FriedSynapse.FlowEnt.Editor.EchoBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.EchoBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.EchoBuilderPropertyDrawer.html
+  name: EchoBuilderPropertyDrawer
+  nameWithType: EchoBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.EchoBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.html
+  name: EchoEventsBuilderPropertyDrawer
+  nameWithType: EchoEventsBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum
+  commentId: T:FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.html
+  name: EchoEventsBuilderPropertyDrawer.FieldsEnum
+  nameWithType: EchoEventsBuilderPropertyDrawer.FieldsEnum
+  fullName: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer
+    name: EchoEventsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer
+    name: EchoEventsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.EchoEventsBuilderPropertyDrawer.FieldsEnum.html
+- uid: FriedSynapse.FlowEnt.Editor.GizmoOptionsPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.GizmoOptionsPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.GizmoOptionsPropertyDrawer.html
+  name: GizmoOptionsPropertyDrawer
+  nameWithType: GizmoOptionsPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.GizmoOptionsPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.DisplayNamePropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.DisplayNamePropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.DisplayNamePropertyDrawer.html
+  name: DisplayNamePropertyDrawer
+  nameWithType: DisplayNamePropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.DisplayNamePropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.AnimationListBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.AnimationListBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.AnimationListBuilderPropertyDrawer.html
+  name: AnimationListBuilderPropertyDrawer
+  nameWithType: AnimationListBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.AnimationListBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.RandomBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.RandomBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.RandomBuilderPropertyDrawer.html
+  name: RandomBuilderPropertyDrawer
+  nameWithType: RandomBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.RandomBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.MaterialBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.MaterialBuilderPropertyDrawer
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.MaterialBuilderPropertyDrawer.html
+  name: MaterialBuilderPropertyDrawer
+  nameWithType: MaterialBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.MaterialBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.MaterialBuilderWithPropertyPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.MaterialBuilderWithPropertyPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.MaterialBuilderWithPropertyPropertyDrawer.html
+  name: MaterialBuilderWithPropertyPropertyDrawer
+  nameWithType: MaterialBuilderWithPropertyPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.MaterialBuilderWithPropertyPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.CurveBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.CurveBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.CurveBuilderPropertyDrawer.html
+  name: CurveBuilderPropertyDrawer
+  nameWithType: CurveBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.CurveBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.FlowQueuesBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.FlowQueuesBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.FlowQueuesBuilderPropertyDrawer.html
+  name: FlowQueuesBuilderPropertyDrawer
+  nameWithType: FlowQueuesBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.FlowQueuesBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.FlowBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.FlowBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.FlowBuilderPropertyDrawer.html
+  name: FlowBuilderPropertyDrawer
+  nameWithType: FlowBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.FlowBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.html
+  name: FlowOptionsBuilderPropertyDrawer
+  nameWithType: FlowOptionsBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum
+  commentId: T:FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.html
+  name: FlowOptionsBuilderPropertyDrawer.FieldsEnum
+  nameWithType: FlowOptionsBuilderPropertyDrawer.FieldsEnum
+  fullName: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer
+    name: FlowOptionsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer
+    name: FlowOptionsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.FlowOptionsBuilderPropertyDrawer.FieldsEnum.html
+- uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.html
+  name: FlowEventsBuilderPropertyDrawer
+  nameWithType: FlowEventsBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum
+  commentId: T:FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.html
+  name: FlowEventsBuilderPropertyDrawer.FieldsEnum
+  nameWithType: FlowEventsBuilderPropertyDrawer.FieldsEnum
+  fullName: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer
+    name: FlowEventsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer
+    name: FlowEventsBuilderPropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum
+    name: FieldsEnum
+    href: FriedSynapse.FlowEnt.Editor.FlowEventsBuilderPropertyDrawer.FieldsEnum.html
+- uid: FriedSynapse.FlowEnt.Editor.FlowQueueAnimationBuilderPropertyDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.FlowQueueAnimationBuilderPropertyDrawer
+  href: FriedSynapse.FlowEnt.Editor.FlowQueueAnimationBuilderPropertyDrawer.html
+  name: FlowQueueAnimationBuilderPropertyDrawer
+  nameWithType: FlowQueueAnimationBuilderPropertyDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.FlowQueueAnimationBuilderPropertyDrawer
+- uid: FriedSynapse.FlowEnt.Editor.CreateNewMotionScriptHelper
+  commentId: T:FriedSynapse.FlowEnt.Editor.CreateNewMotionScriptHelper
+  href: FriedSynapse.FlowEnt.Editor.CreateNewMotionScriptHelper.html
+  name: CreateNewMotionScriptHelper
+  nameWithType: CreateNewMotionScriptHelper
+  fullName: FriedSynapse.FlowEnt.Editor.CreateNewMotionScriptHelper
+- uid: FriedSynapse.FlowEnt.Editor.AutoAssignButtonAttributeDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.AutoAssignButtonAttributeDrawer
+  href: FriedSynapse.FlowEnt.Editor.AutoAssignButtonAttributeDrawer.html
+  name: AutoAssignButtonAttributeDrawer
+  nameWithType: AutoAssignButtonAttributeDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.AutoAssignButtonAttributeDrawer
+- uid: FriedSynapse.FlowEnt.Editor.AbstractIfAttributeDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.AbstractIfAttributeDrawer
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.AbstractIfAttributeDrawer.html
+  name: AbstractIfAttributeDrawer
+  nameWithType: AbstractIfAttributeDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.AbstractIfAttributeDrawer
+- uid: FriedSynapse.FlowEnt.Editor.ShowIfAttributeDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.ShowIfAttributeDrawer
+  href: FriedSynapse.FlowEnt.Editor.ShowIfAttributeDrawer.html
+  name: ShowIfAttributeDrawer
+  nameWithType: ShowIfAttributeDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.ShowIfAttributeDrawer
+- uid: FriedSynapse.FlowEnt.Editor.EnableIfAttributeDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.EnableIfAttributeDrawer
+  href: FriedSynapse.FlowEnt.Editor.EnableIfAttributeDrawer.html
+  name: EnableIfAttributeDrawer
+  nameWithType: EnableIfAttributeDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.EnableIfAttributeDrawer
+- uid: FriedSynapse.FlowEnt.Editor.UrlButtonAttributeDrawer
+  commentId: T:FriedSynapse.FlowEnt.Editor.UrlButtonAttributeDrawer
+  href: FriedSynapse.FlowEnt.Editor.UrlButtonAttributeDrawer.html
+  name: UrlButtonAttributeDrawer
+  nameWithType: UrlButtonAttributeDrawer
+  fullName: FriedSynapse.FlowEnt.Editor.UrlButtonAttributeDrawer
+- uid: FriedSynapse.FlowEnt.Editor.GenericMenuExtensions
+  commentId: T:FriedSynapse.FlowEnt.Editor.GenericMenuExtensions
+  href: FriedSynapse.FlowEnt.Editor.GenericMenuExtensions.html
+  name: GenericMenuExtensions
+  nameWithType: GenericMenuExtensions
+  fullName: FriedSynapse.FlowEnt.Editor.GenericMenuExtensions
+- uid: FriedSynapse.FlowEnt.Editor.Icon
+  commentId: T:FriedSynapse.FlowEnt.Editor.Icon
+  href: FriedSynapse.FlowEnt.Editor.Icon.html
+  name: Icon
+  nameWithType: Icon
+  fullName: FriedSynapse.FlowEnt.Editor.Icon
+- uid: FriedSynapse.FlowEnt.Editor.PropertyDrawer`1
+  commentId: T:FriedSynapse.FlowEnt.Editor.PropertyDrawer`1
+  href: FriedSynapse.FlowEnt.Editor.PropertyDrawer-1.html
+  name: PropertyDrawer<TData>
+  nameWithType: PropertyDrawer<TData>
+  fullName: FriedSynapse.FlowEnt.Editor.PropertyDrawer<TData>
+  nameWithType.vb: PropertyDrawer(Of TData)
+  fullName.vb: FriedSynapse.FlowEnt.Editor.PropertyDrawer(Of TData)
+  name.vb: PropertyDrawer(Of TData)
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.PropertyDrawer`1
+    name: PropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.PropertyDrawer-1.html
+  - name: <
+  - name: TData
+  - name: '>'
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.PropertyDrawer`1
+    name: PropertyDrawer
+    href: FriedSynapse.FlowEnt.Editor.PropertyDrawer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TData
+  - name: )
+- uid: FriedSynapse.FlowEnt.Editor.FlowEntMenu
+  commentId: T:FriedSynapse.FlowEnt.Editor.FlowEntMenu
+  href: FriedSynapse.FlowEnt.Editor.FlowEntMenu.html
+  name: FlowEntMenu
+  nameWithType: FlowEntMenu
+  fullName: FriedSynapse.FlowEnt.Editor.FlowEntMenu
+- uid: FriedSynapse.FlowEnt.Editor.PreviewController
+  commentId: T:FriedSynapse.FlowEnt.Editor.PreviewController
+  href: FriedSynapse.FlowEnt.Editor.PreviewController.html
+  name: PreviewController
+  nameWithType: PreviewController
+  fullName: FriedSynapse.FlowEnt.Editor.PreviewController
+- uid: FriedSynapse.FlowEnt.Editor.PreviewController.Options
+  commentId: T:FriedSynapse.FlowEnt.Editor.PreviewController.Options
+  parent: FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.FlowEnt.Editor.PreviewController.html
+  name: PreviewController.Options
+  nameWithType: PreviewController.Options
+  fullName: FriedSynapse.FlowEnt.Editor.PreviewController.Options
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.PreviewController
+    name: PreviewController
+    href: FriedSynapse.FlowEnt.Editor.PreviewController.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.PreviewController.Options
+    name: Options
+    href: FriedSynapse.FlowEnt.Editor.PreviewController.Options.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.PreviewController
+    name: PreviewController
+    href: FriedSynapse.FlowEnt.Editor.PreviewController.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.PreviewController.Options
+    name: Options
+    href: FriedSynapse.FlowEnt.Editor.PreviewController.Options.html
+- uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+  commentId: T:FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+  href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.html
+  name: FoldoutScrollable
+  nameWithType: FoldoutScrollable
+  fullName: FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+- uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory
+  commentId: T:FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory
+  href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.html
+  name: FoldoutScrollable.UxmlFactory
+  nameWithType: FoldoutScrollable.UxmlFactory
+  fullName: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+    name: FoldoutScrollable
+    href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory
+    name: UxmlFactory
+    href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+    name: FoldoutScrollable
+    href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory
+    name: UxmlFactory
+    href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlFactory.html
+- uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits
+  commentId: T:FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits
+  href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.html
+  name: FoldoutScrollable.UxmlTraits
+  nameWithType: FoldoutScrollable.UxmlTraits
+  fullName: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits
+  spec.csharp:
+  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+    name: FoldoutScrollable
+    href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits
+    name: UxmlTraits
+    href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits.html
+  spec.vb:
+  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable
+    name: FoldoutScrollable
+    href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits
+    name: UxmlTraits
+    href: FriedSynapse.FlowEnt.Editor.FoldoutScrollable.UxmlTraits.html
+- uid: FriedSynapse.FlowEnt.Editor
+  commentId: N:FriedSynapse.FlowEnt.Editor
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Editor
+  nameWithType: FriedSynapse.FlowEnt.Editor
+  fullName: FriedSynapse.FlowEnt.Editor
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor
+    name: Editor
+    href: FriedSynapse.FlowEnt.Editor.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Editor
+    name: Editor
+    href: FriedSynapse.FlowEnt.Editor.html

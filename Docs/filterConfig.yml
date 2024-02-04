@@ -1,0 +1,7 @@
+apiRules:
+- include:
+    uidRegex: ^FlowEnt
+    type: Namespace
+- exclude:
+    uidRegex: .*
+    type: Namespace

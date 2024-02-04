@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  commentId: N:FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  id: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  children:
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputIntMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputKeyCodeMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputStringMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonDownMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonMotion
+  - FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonUpMotion
+  langs:
+  - csharp
+  - vb
+  name: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  nameWithType: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  type: Namespace
+references:
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion.html
+  name: ButtonUpMotion
+  nameWithType: ButtonUpMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonUpMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion.html
+  name: KeyMotion
+  nameWithType: KeyMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonDownMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonDownMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonDownMotion.html
+  name: MouseButtonDownMotion
+  nameWithType: MouseButtonDownMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonDownMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonMotion.html
+  name: MouseButtonMotion
+  nameWithType: MouseButtonMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion.html
+  name: ButtonDownMotion
+  nameWithType: ButtonDownMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonDownMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputKeyCodeMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputKeyCodeMotion
+  parent: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputKeyCodeMotion.html
+  name: InputKeyCodeMotion
+  nameWithType: InputKeyCodeMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputKeyCodeMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonUpMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonUpMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonUpMotion.html
+  name: MouseButtonUpMotion
+  nameWithType: MouseButtonUpMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.MouseButtonUpMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion.html
+  name: KeyDownMotion
+  nameWithType: KeyDownMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyDownMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion.html
+  name: ButtonMotion
+  nameWithType: ButtonMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.ButtonMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion.html
+  name: KeyUpMotion
+  nameWithType: KeyUpMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.KeyUpMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputIntMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputIntMotion
+  parent: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputIntMotion.html
+  name: InputIntMotion
+  nameWithType: InputIntMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputIntMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputStringMotion
+  commentId: T:FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputStringMotion
+  parent: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputStringMotion.html
+  name: InputStringMotion
+  nameWithType: InputStringMotion
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs.InputStringMotion
+- uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  commentId: N:FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  href: FriedSynapse.html
+  name: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  nameWithType: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  fullName: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+  spec.csharp:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+    name: Inputs
+    href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.html
+  spec.vb:
+  - uid: FriedSynapse
+    name: FriedSynapse
+    href: FriedSynapse.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt
+    name: FlowEnt
+    href: FriedSynapse.FlowEnt.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions
+    name: Motions
+    href: FriedSynapse.FlowEnt.Motions.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo
+    name: Echo
+    href: FriedSynapse.FlowEnt.Motions.Echo.html
+  - name: .
+  - uid: FriedSynapse.FlowEnt.Motions.Echo.Inputs
+    name: Inputs
+    href: FriedSynapse.FlowEnt.Motions.Echo.Inputs.html
