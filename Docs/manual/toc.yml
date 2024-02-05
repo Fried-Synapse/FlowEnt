@@ -1,2 +1,25 @@
-- name: Coming soon
-  href: coming-soon.md
+- name: Get started
+- href: quick-start.md
+- href: concepts.md
+
+- name: Scripts
+- name: Animations
+  items:
+  - href: scripts/animations/tween.md
+  - href: scripts/animations/echo.md
+  - href: scripts/animations/flow.md
+- name: Customisations
+  items:
+  - href: scripts/customisations/motions.md
+  - href: scripts/customisations/easings.md
+
+- name: Builders
+- href: builders/tween.md
+- href: builders/echo.md
+- href: builders/flow.md
+
+- name: Authoring (NoCode)
+- href: authoring/tween.md
+- href: authoring/echo.md
+- href: authoring/flow.md
+- href: authoring/animations.md
