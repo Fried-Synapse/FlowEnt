@@ -5,11 +5,12 @@ on:
     types: [created]
   workflow_dispatch:
 
+permissions:
+  pages: write
+  id-token: write
+
 jobs:
-  publish-docs:
-    permissions:
-      pages: write
-      id-token: write
+  publish:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -17,8 +18,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      with:
-          token: ${{ secrets.ACCESS_TOKEN }}
     - name: Dotnet Setup
       uses: actions/setup-dotnet@v3
       with:
@@ -34,5 +33,3 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
-      with:
-          token: ${{ secrets.ACCESS_TOKEN }}
