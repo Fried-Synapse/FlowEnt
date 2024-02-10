@@ -1,25 +1,37 @@
-- name: Get started
+- name: Introduction
 - href: quick-start.md
-- href: concepts.md
 
-- name: Scripts
-- name: Animations
-  items:
-  - href: scripts/animations/tween.md
-  - href: scripts/animations/echo.md
-  - href: scripts/animations/flow.md
-- name: Customisations
-  items:
-  - href: scripts/customisations/motions.md
-  - href: scripts/customisations/easings.md
+- name: Concepts
+- href: concepts/animation.md
+- href: concepts/tween.md
+- href: concepts/echo.md
+- href: concepts/flow.md
+- href: concepts/authoring.md
+- href: concepts/builders.md
+- href: concepts/coding.md
+
+- name: Authoring
+- href: authoring/tween.md
+- href: authoring/echo.md
+- href: authoring/flow.md
+- href: authoring/animations.md
 
 - name: Builders
 - href: builders/tween.md
 - href: builders/echo.md
 - href: builders/flow.md
 
-- name: Authoring (NoCode)
-- href: authoring/tween.md
-- href: authoring/echo.md
-- href: authoring/flow.md
-- href: authoring/animations.md
+- name: Coding
+- href: coding/tween.md
+- href: coding/echo.md
+- href: coding/flow.md
+
+- name: Extensibility
+- href: extensibility/motions.md
+- href: extensibility/easings.md
+
+- name: Tools
+- href: tools/previewer.md
+- href: tools/inspector.md
+- href: tools/debugging.md
+
