@@ -21,9 +21,11 @@ namespace FriedSynapse.FlowEnt
 
         public bool IsEnabled => isEnabled;
 
+#if UNITY_EDITOR
         [SerializeField]
         private GizmoOptions gizmoOptions;
 
         public GizmoOptions GizmoOptions => gizmoOptions;
+#endif
     }
 }
