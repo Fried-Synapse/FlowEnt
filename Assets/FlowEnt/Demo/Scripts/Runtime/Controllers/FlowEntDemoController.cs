@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace FriedSynapse.FlowEnt.Demo
@@ -51,7 +50,6 @@ namespace FriedSynapse.FlowEnt.Demo
 #if !UNITY_EDITOR && UNITY_WEBGL
             WebGLInput.captureAllKeyboardInput = false;
 #endif
-            ReplayButton.onClick.AddListener(Replay);
         }
 
         private void Start()
@@ -74,11 +72,6 @@ namespace FriedSynapse.FlowEnt.Demo
             new Tween(4f).SetEasing(Easing.EaseInOutSine)
                 .For(WorldLight).IntensityTo(0f)
                 .For(Ground.GetComponent<MeshRenderer>().sharedMaterial).ColorTo("_EmissionColor", Color.clear);
-
-        private void Replay()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
 
         #region Editor
 

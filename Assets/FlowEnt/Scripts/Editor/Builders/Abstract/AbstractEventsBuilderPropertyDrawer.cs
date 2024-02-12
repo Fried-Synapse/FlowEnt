@@ -1,25 +1,38 @@
 using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public abstract class AbstractEventsBuilderPropertyDrawer<TPropertiesEnum> : AbstractPropertiesBuilderPropertyDrawer<TPropertiesEnum>
-        where TPropertiesEnum : Enum
+    public abstract class AbstractEventsBuilderPropertyDrawer : AbstractPropertiesBuilderPropertyDrawer<AbstractEventsBuilderPropertyDrawer.FieldsEnum>
     {
+        public enum FieldsEnum
+        {
+            onStarting,
+            onStarted,
+            onUpdating,
+            onUpdated,
+            onLoopCompleted,
+            onCompleting,
+            onCompleted,
+        }
+        
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-            => property.isExpanded ? FlowEntConstants.SpacedSingleLineHeight + (PropertyHeight * Properties.Count) : EditorGUIUtility.singleLineHeight;
-
-        protected override float PropertyHeight => 100f;
+            => !property.isExpanded
+                ? EditorGUIUtility.singleLineHeight
+                : Properties.Sum(prop =>
+                      EditorGUI.GetPropertyHeight(property.FindPropertyRelative(prop.ToString())) + FlowEntConstants.DrawerSpacing) +
+                  EditorGUIUtility.singleLineHeight;
 
         protected override void DrawProperties(Rect position, SerializedProperty property)
         {
             position.y += FlowEntConstants.SpacedSingleLineHeight;
-            for (int i = 0; i < Properties.Count; i++)
+            foreach (FieldsEnum prop in Properties)
             {
-                TPropertiesEnum prop = Properties[i];
-                Rect propertyPosition = FlowEntEditorGUILayout.GetRect(EditorGUI.IndentedRect(position), i, PropertyHeight, PropertyHeight);
-                EditorGUI.PropertyField(propertyPosition, property.FindPropertyRelative(prop.ToString()));
+                position.height = EditorGUI.GetPropertyHeight(property.FindPropertyRelative(prop.ToString())) + FlowEntConstants.DrawerSpacing;
+                EditorGUI.PropertyField(position, property.FindPropertyRelative(prop.ToString()));
+                position.y += position.height;
             }
         }
     }
