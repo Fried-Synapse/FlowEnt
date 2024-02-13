@@ -3,17 +3,7 @@ using UnityEditor;
 namespace FriedSynapse.FlowEnt.Editor
 {
     [CustomPropertyDrawer(typeof(TweenEventsBuilder))]
-    public class TweenEventsBuilderPropertyDrawer : AbstractEventsBuilderPropertyDrawer<TweenEventsBuilderPropertyDrawer.FieldsEnum>
+    public class TweenEventsBuilderPropertyDrawer : AbstractEventsBuilderPropertyDrawer
     {
-        public enum FieldsEnum
-        {
-            onStarting,
-            onStarted,
-            onUpdating,
-            onUpdated,
-            onLoopCompleted,
-            onCompleting,
-            onCompleted,
-        }
     }
 }
