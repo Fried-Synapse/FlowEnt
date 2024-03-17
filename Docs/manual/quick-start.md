@@ -22,10 +22,10 @@ It's probably best to familiarise with the concepts first because they are sligh
 Depending on your approach, you can check different pages, weather you want to create code based animations or author them in the editor.
 
 ##### Authoring
-FlowEnt contains 4 authoring components: Tween, Echo, Flow, and (General)Animations. Just add the component to your game object and start animating. More details about this on the [authoring](~/manual/authoring/index.md) pages.
+FlowEnt contains 4 authoring components: Tween, Echo, Flow, and (General)Animations. Just add the component to your game object and start animating. More details about this on the [authoring](~/manual/core/authoring/index.md) pages.
 
 ##### Coding
-If you like to dabble in c# you can use the coding API of FlowEnt and write your animations in fluent style in your code, which will make it easier to read and understand when things get a bit more complicated. Read all about that on the [coding](~/manual/coding/index.md) pages.
+If you like to dabble in c# you can use the coding API of FlowEnt and write your animations in fluent style in your code, which will make it easier to read and understand when things get a bit more complicated. Read all about that on the [coding](~/manual/core/coding/index.md) pages.
 
 ### Advanced
 FlowEnt is a very scalable and extensible library. You can check out some of the extensibility pages, but also, make sure you check out the tools pages, which can be very useful when you want preview or debug animations.

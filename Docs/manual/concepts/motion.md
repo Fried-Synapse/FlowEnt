@@ -8,8 +8,8 @@ The basic principle, based on the linear extrapolation means that you have a sta
 
 1. `from -> to` - This means you provide a value where to start and where to end. The current position will be ignored.
 2. `current -> to` - This means the motion will start wherever the current state is and it'll go towards the `to` state.
-3. `current by value` - This mean it'll create a `to` based on "adding" the `value` to the current state.
+3. `current by value` - This means it'll create a `to` based on "adding" the `value` to the current state.
 4. `custom` - Some motions require a bit more complex functionality and don't abide to the previous 3  cases.
 
 _"What if I need a very peculiar motion?"_
-Have no worry! With very little code you can write your own motion and even create a builder for it so you can use it in the editor. Check out more [here](~/manual/extensibility/motions.md)
+Have no worry! With very little code you can write your own motion and even create a builder for it so you can use it in the editor. Check out more [here](~/manual/advanced/extensibility/motions.md)

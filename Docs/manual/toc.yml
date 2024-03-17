@@ -8,34 +8,35 @@
 - href: concepts/flow.md
 - href: concepts/motion.md
 
-- href: authoring/index.md
+- name: Core
+- href: core/authoring/index.md
   items:
-  - href: authoring/tween.md
-  - href: authoring/echo.md
-  - href: authoring/flow.md
-  - href: authoring/animations.md
-
-- href: builders/index.md
+  - href: core/authoring/tween.md
+  - href: core/authoring/echo.md
+  - href: core/authoring/flow.md
+  - href: core/authoring/animations.md
+- href: core/builders/index.md
   items:
-  - href: builders/tween.md
-  - href: builders/echo.md
-  - href: builders/flow.md
-
-- href: coding/index.md
+  - href: core/builders/tween.md
+  - href: core/builders/echo.md
+  - href: core/builders/flow.md
+- href: core/coding/index.md
   items:
-  - href: coding/tween.md
-  - href: coding/echo.md
-  - href: coding/flow.md
+  - href: core/coding/tween.md
+  - href: core/coding/echo.md
+  - href: core/coding/flow.md
 
+- name: Advanced
 - name: Extensibility
-- href: extensibility/motions.md
-- href: extensibility/easings.md
-
+  items:
+  - href: advanced/extensibility/motions.md
+  - href: advanced/extensibility/easings.md
 - name: Tools
-- href: tools/previewer.md
-- href: tools/inspector.md
-- href: tools/debugging.md
-
+  items:
+  - href: advanced/tools/previewer.md
+  - href: advanced/tools/inspector.md
+  - href: advanced/tools/debugging.md
 - name: Tips & Tricks
-- href: tips/true-start_auto-start.md
+  items:
+  - href: advanced/tips/true-start_auto-start.md
 
