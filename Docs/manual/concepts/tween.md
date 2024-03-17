@@ -9,7 +9,7 @@ This interpolation can be manipulated in may ways using the options provided.
 
 `Easing Type` -  The type of easing modifier you want applied. Two options: Predefined([View more](https://easings.net/)) or Animation Curve(Unity's). `[Default: Predefined]`
 
-`Easing`/`Easing Curve` - If `Easing Type` is set to Predefined then you can pick from a list otherwise you can use the Animation Curve widget to define one.`[Default: Linear]`
+`Easing` / `Easing Curve` - If `Easing Type` is set to Predefined then you can pick from a list otherwise you can use the Animation Curve widget to define one.`[Default: Linear]`
 
 `Loop Count` -  How many loops should this animation have. `[Default: 1]`
 
