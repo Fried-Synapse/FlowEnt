@@ -5,7 +5,6 @@ using FluentAssertions;
 using FriedSynapse.FlowEnt.Motions.Echo;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
 using FriedSynapse.FlowEnt.Motions.Echo.Transforms;
-using FriedSynapse.FlowEnt.Reflection;
 using UnityEngine.TestTools;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core

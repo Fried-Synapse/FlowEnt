@@ -28,6 +28,7 @@ namespace FriedSynapse.FlowEnt
         public bool AutoDestroy => autoDestroy;
 
         [SerializeField]
+        [Tooltip("Should the OnComplete be triggered if the animation was stopped before it's completion.")]
         private bool triggerOnCompleted;
 
         public bool TriggerOnCompleted => triggerOnCompleted;
@@ -86,7 +87,7 @@ namespace FriedSynapse.FlowEnt
 
     public class AbstractAuthoring<TAnimation, TAnimationBuilder> : AbstractAuthoring
         where TAnimation : AbstractAnimation
-        where TAnimationBuilder : AbstractBuilder<TAnimation>
+        where TAnimationBuilder : AbstractAnimationBuilder<TAnimation>
     {
         [SerializeField]
         private protected TAnimationBuilder animationBuilder;

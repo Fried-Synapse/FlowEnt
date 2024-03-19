@@ -11,7 +11,6 @@ namespace FriedSynapse.FlowEnt.Editor
         {
             name,
             updateType,
-            autoStart,
             skipFrames,
             delay,
             timeScale,

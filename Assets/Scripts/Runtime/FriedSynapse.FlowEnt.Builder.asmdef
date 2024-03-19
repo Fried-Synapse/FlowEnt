@@ -2,9 +2,9 @@
     "name": "FriedSynapse.FlowEnt.Builder",
     "rootNamespace": "FriedSynapse.FlowEnt.Builder",
     "references": [
-        "GUID:20b24152311b643c3953c429ca0ac587",
-        "GUID:c59acf50987564ad393ad16eb0be1a82",
-        "GUID:7a46e5fa2e94d49278cdef4d90401b30"
+        "FriedSynapse.FlowEnt",
+        "FriedSynapse.Quickit",
+        "DOTween.Modules"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
