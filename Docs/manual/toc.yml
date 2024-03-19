@@ -10,16 +10,7 @@
 
 - name: Core
 - href: core/authoring/index.md
-  items:
-  - href: core/authoring/tween.md
-  - href: core/authoring/echo.md
-  - href: core/authoring/flow.md
-  - href: core/authoring/animations.md
 - href: core/builders/index.md
-  items:
-  - href: core/builders/tween.md
-  - href: core/builders/echo.md
-  - href: core/builders/flow.md
 - href: core/coding/index.md
   items:
   - href: core/coding/tween.md

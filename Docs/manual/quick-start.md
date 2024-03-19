@@ -1,4 +1,6 @@
 # Quick Start
+
+### Setup
 This is a quick tutorial on how to use FlowEnt. It might seem brief but that's just because FlowEnt is delightfully easy to use and not a lot needs to be said or done to use this animation engine!
 
 ##### Prerequisites

@@ -91,3 +91,4 @@ crashlytics-build.properties
 
 # DocFX
 /Docs/_site
+/Docs/scripting

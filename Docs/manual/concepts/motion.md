@@ -11,5 +11,5 @@ The basic principle, based on the linear extrapolation means that you have a sta
 3. `current by value` - This means it'll create a `to` based on "adding" the `value` to the current state.
 4. `custom` - Some motions require a bit more complex functionality and don't abide to the previous 3  cases.
 
-_"What if I need a very peculiar motion?"_
+_"What if I need a more peculiar motion?"_
 Have no worry! With very little code you can write your own motion and even create a builder for it so you can use it in the editor. Check out more [here](~/manual/advanced/extensibility/motions.md)
