@@ -6,3 +6,21 @@
 footer .container-xxl .flex-fill{
     text-align: center;
 }
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-column {
+    flex: 1;
+    padding: 10px;
+}
+
+.flex-column:first-child {
+    padding-right: 10px;
+}
+
+.flex-column:last-child {
+    padding-left: 10px;
+}

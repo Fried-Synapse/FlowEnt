@@ -20,3 +20,5 @@ public class TweenBuilderScript : MonoBehaviour
     }
 }
 ```
+
+![Tween Builder Script](~/resources/samples/tween-builder-script.png)
