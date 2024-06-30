@@ -16,15 +16,13 @@ Here we have some examples on how to build [Echoes](~/manual/concepts/echo.md)
     </ol>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Echo echo = new Echo()
+    <pre><code class="lang-csharp hljs language-csharp">Echo echo = new Echo()
     .SetTimeout(100f)
     .SetStopCondition((time) => echoShouldStopFlag)
     .SetDelay(4f)
     .OnStarting(() => Debug.Log("Before start."))
     .OnCompleted(() => Debug.Log("After completion!"))
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -39,12 +37,10 @@ Echo echo = new Echo()
     </ol>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Echo echo = new Echo(10f)
+    <pre><code class="lang-csharp hljs language-csharp">Echo echo = new Echo(10f)
     .For(transform)
         .MoveTowards(otherTransform)
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -60,12 +56,10 @@ This is an example of the many functionalities that can be achieved with echoes.
     </ol>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Echo echo = CharacterController
+    <pre><code class="lang-csharp hljs language-csharp">Echo echo = CharacterController
     .Echo()
         .Move(10f)
         .Rotate(Camera.transform, 5f)
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>

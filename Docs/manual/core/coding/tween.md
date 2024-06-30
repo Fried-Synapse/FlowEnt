@@ -16,15 +16,13 @@ Here we have some examples on how to build [Tweens](~/manual/concepts/tween.md)
     </ol>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Tween tween = new Tween(10f)
+    <pre><code class="lang-csharp hljs language-csharp">Tween tween = new Tween(10f)
     .SetLoopType(LoopType.PingPong)
     .SetLoopCount(4)
     .SetDelay(4f)
     .OnStarting(() => Debug.Log("Before start."))
     .OnCompleted(() => Debug.Log("After completion!"))
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -39,12 +37,10 @@ Tween tween = new Tween(10f)
     </ol>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Tween tween = new Tween(1f)
+    <pre><code class="lang-csharp hljs language-csharp">Tween tween = new Tween(1f)
     .For(transform)
         .Move(Vector3.one)
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -64,14 +60,12 @@ Tween tween = new Tween(1f)
     </blockquote>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Tween tween = new Tween(1f)
+    <pre><code class="lang-csharp hljs language-csharp">Tween tween = new Tween(1f)
     .For(transform)
         .Move(Vector3.one)
         .Rotate(Vector3.up * 360)
         .Scale(Vector3.one * 3)
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -95,8 +89,7 @@ Tween tween = new Tween(1f)
     </blockquote>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Tween tween = new Tween(1f)
+    <pre><code class="lang-csharp hljs language-csharp">Tween tween = new Tween(1f)
     .SetEasing(Easing.EaseInSine)
     .For(transform1)
         .Move(Vector3.one)
@@ -105,8 +98,7 @@ Tween tween = new Tween(1f)
     .For(transform3)
         .Rotate(Vector3.up * 360)
         .Scale(Vector3.one * 3)
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -125,15 +117,13 @@ _In order to apply a tween to an object straight away, you can use the "Tween" e
     </ol>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Tween tween = transform
+    <pre><code class="lang-csharp hljs language-csharp">Tween tween = transform
     .Tween(1f)
     .SetTimeScale(2f)
         .Move(Vector3.one)
         .Rotate(Vector3.up * 360)
         .Scale(Vector3.one * 3)
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -145,15 +135,12 @@ Tween tween = transform
         In the second example, a tween is started, something else is done, and if the tween is not yet finished, it can be awaited to finish.
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-await new Tween(1f)
+    <pre><code class="lang-csharp hljs language-csharp">await new Tween(1f)
     .For(transform)
     .SetSkipFrames(20)
         .Move(Vector3.one)
-    .StartAsync();
-    </code></pre>
-    <pre><code class="lang-csharp hljs language-csharp">
-Tween tween = new Tween(1f)
+    .StartAsync();</code></pre>
+    <pre><code class="lang-csharp hljs language-csharp">Tween tween = new Tween(1f)
     .For(transform)
     .SetSkipFrames(20)
         .Move(Vector3.one)
@@ -161,7 +148,6 @@ Tween tween = new Tween(1f)
 
 await DoSomethingElseAsync();
 
-await tween.AsAsync();
-    </code></pre>
+await tween.AsAsync();</code></pre>
   </div>
 </div>

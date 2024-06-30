@@ -18,14 +18,12 @@ Here we have some examples on how to build [Flows](~/manual/concepts/flow.md)
     </blockquote>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Flow flow = new Flow()
+    <pre><code class="lang-csharp hljs language-csharp">Flow flow = new Flow()
     .Queue(new Tween(2f).For(transform1).MoveX(10f))
     .Queue(new Tween(3f).For(transform1).MoveY(10f))
     .At(1f, new Tween(2f).For(transform2).MoveTo(new Vector3(10f, 10f, 0f)))
     .Queue(new Tween(3f).For(transform2).MoveTo(new Vector3(10f, 10f, 10f)))
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -41,13 +39,11 @@ Flow flow = new Flow()
     </ol>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Flow flow = new Flow()
+    <pre><code class="lang-csharp hljs language-csharp">Flow flow = new Flow()
     .Queue(new Tween(2f).For(transform1).MoveX(10f))
     .QueueDeferred(() => new Tween(2f).For(transform1).MoveY(10f))
     .AtDeferred(10f, () => new Tween(2f).For(transform2).MoveTo(new Vector3(10f, 10f, 0f)))
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -68,15 +64,13 @@ Flow flow = new Flow()
     </blockquote>
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Flow innerFlow = new Flow()
+    <pre><code class="lang-csharp hljs language-csharp">Flow innerFlow = new Flow()
     .Queue(new Tween(2f).For(transform).MoveY(10f));
 
 Flow flow = new Flow()
     .Queue(new Tween(2f).For(transform).MoveX(10f))
     .Queue(innerFlow)
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -86,15 +80,13 @@ Flow flow = new Flow()
 If waiting for a task is needed in order to continue a flow, a "blocker" can be set to make the flow await till the item is finished. Available options are to await for a task, a flag callback, or custom awaiters can be created!
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Task task = Task.Run(() => Task.Delay(2000));
+    <pre><code class="lang-csharp hljs language-csharp">Task task = Task.Run(() => Task.Delay(2000));
 
 Flow flow = new Flow()
     .Queue(new Tween(1f).For(transform).MoveY(10f))
     .QueueAwaiter(task)
     .Queue(new Tween(1f).For(transform).MoveY(10f))
-    .Start();
-    </code></pre>
+    .Start();</code></pre>
   </div>
 </div>
 
@@ -104,11 +96,9 @@ Flow flow = new Flow()
 Same flow as before, just async.
   </div>
   <div class="flex-column">
-    <pre><code class="lang-csharp hljs language-csharp">
-Flow flow = await new Flow()
+    <pre><code class="lang-csharp hljs language-csharp">Flow flow = await new Flow()
     .Queue(new Tween(2f).For(transform).MoveX(10f))
     .Queue(new Tween(2f).For(transform).MoveY(10f))
-    .StartAsync();
-    </code></pre>
+    .StartAsync();</code></pre>
   </div>
 </div>
