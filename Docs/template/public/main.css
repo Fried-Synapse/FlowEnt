@@ -26,3 +26,11 @@ footer .container-xxl .flex-fill{
 .flex-column:last-child {
     padding-left: 10px;
 }
+
+p:has(img){
+    text-align: center;
+}
+
+p img{
+    max-width: 66%;
+}

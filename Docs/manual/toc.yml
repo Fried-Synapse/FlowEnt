@@ -16,6 +16,10 @@
   - href: core/coding/tween.md
   - href: core/coding/echo.md
   - href: core/coding/flow.md
+  - name: Samples  
+    items:
+    - href: core/coding/samples/motions.md
+    - href: core/coding/samples/easings.md
 
 - name: Advanced
 - name: Extensibility
@@ -24,10 +28,9 @@
   - href: advanced/extensibility/easings.md
 - name: Tools
   items:
+  - href: advanced/tools/debugging.md
   - href: advanced/tools/previewer.md
   - href: advanced/tools/inspector.md
-  - href: advanced/tools/debugging.md
 - name: Tips & Tricks
   items:
   - href: advanced/tips/true-start_auto-start.md
-
