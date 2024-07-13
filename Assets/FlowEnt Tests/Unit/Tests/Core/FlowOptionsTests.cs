@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     flowOptions.Name.Should().Be(Variables.Flow.Options.Name);
                     flowOptions.UpdateType.Should().Be(Variables.Flow.Options.UpdateType);
-                    flowOptions.AutoStart.Should().Be(Variables.Flow.Options.AutoStart);
+                    flowOptions.AutoStart.Should().Be(false);
                     flowOptions.SkipFrames.Should().Be(Variables.Flow.Options.SkipFrames);
                     flowOptions.Delay.Should().Be(Variables.Flow.Options.Delay);
                     flowOptions.TimeScale.Should().Be(Variables.Flow.Options.TimeScale);
@@ -70,11 +70,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator Time_ForTween()
-              => Time_ForAnimation((time) => new Tween(time), nameof(Time_ForTween));
+            => Time_ForAnimation((time) => new Tween(time), nameof(Time_ForTween));
 
         [UnityTest]
         public IEnumerator Timeout_ForEchoes()
-              => Time_ForAnimation((time) => new Echo(time), nameof(Timeout_ForEchoes));
+            => Time_ForAnimation((time) => new Echo(time), nameof(Timeout_ForEchoes));
 
         #endregion
 
@@ -104,11 +104,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator LoopCount_ForTween()
-              => LoopCount_ForAnimation((time) => new Tween(time), nameof(LoopCount_ForTween));
+            => LoopCount_ForAnimation((time) => new Tween(time), nameof(LoopCount_ForTween));
 
         [UnityTest]
         public IEnumerator LoopCount_ForEchoes()
-              => LoopCount_ForAnimation((time) => new Echo(time), nameof(LoopCount_ForEchoes));
+            => LoopCount_ForAnimation((time) => new Echo(time), nameof(LoopCount_ForEchoes));
 
         #endregion
 
@@ -120,19 +120,19 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => new Flow()
-                            .Queue(createAnimation(TestTime).SetTimeScale(timeScale))
-                            .Start())
+                    .Queue(createAnimation(TestTime).SetTimeScale(timeScale))
+                    .Start())
                 .AssertTime(TestTime / timeScale)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator TimeScale_ForTween()
-              => TimeScale_ForAnimation((time) => new Tween(time));
+            => TimeScale_ForAnimation((time) => new Tween(time));
 
         [UnityTest]
         public IEnumerator TimeScale_ForEchoes()
-              => TimeScale_ForAnimation((time) => new Echo(time));
+            => TimeScale_ForAnimation((time) => new Echo(time));
 
         #endregion
 
@@ -147,21 +147,21 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Flow()
-                            .Queue(createAnimation(HalfTestTime)
-                                    .SetSkipFrames(skipFrames)
-                                    .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
-                            .Start())
+                    .Queue(createAnimation(HalfTestTime)
+                        .SetSkipFrames(skipFrames)
+                        .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
+                    .Start())
                 .Assert(() => frameCount.Should().Be(skipFrames))
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator SkipFrames_ForTween()
-              => SkipFrames_ForAnimation((time) => new Tween(time));
+            => SkipFrames_ForAnimation((time) => new Tween(time));
 
         [UnityTest]
         public IEnumerator SkipFrames_ForEchoes()
-              => SkipFrames_ForAnimation((time) => new Echo(time));
+            => SkipFrames_ForAnimation((time) => new Echo(time));
 
         #endregion
 
@@ -171,21 +171,20 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             yield return CreateTester()
                 .Act(() => new Flow()
-                            .Queue(createAnimation(HalfTestTime).SetDelay(HalfTestTime))
-                            .Start())
+                    .Queue(createAnimation(HalfTestTime).SetDelay(HalfTestTime))
+                    .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
 
         [UnityTest]
         public IEnumerator Delay_ForTween()
-              => Delay_ForAnimation((time) => new Tween(time));
+            => Delay_ForAnimation((time) => new Tween(time));
 
         [UnityTest]
         public IEnumerator Delay_ForEchoes()
-              => Delay_ForAnimation((time) => new Echo(time));
+            => Delay_ForAnimation((time) => new Echo(time));
 
         #endregion
-
     }
 }

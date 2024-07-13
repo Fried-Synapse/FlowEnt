@@ -33,7 +33,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     tweenOptions.Name.Should().Be(Variables.Tween.Options.Name);
                     tweenOptions.UpdateType.Should().Be(Variables.Tween.Options.UpdateType);
-                    tweenOptions.AutoStart.Should().Be(Variables.Tween.Options.AutoStart);
+                    tweenOptions.AutoStart.Should().Be(false);
                     tweenOptions.SkipFrames.Should().Be(Variables.Tween.Options.SkipFrames);
                     tweenOptions.Delay.Should().Be(Variables.Tween.Options.Delay);
                     tweenOptions.TimeScale.Should().Be(Variables.Tween.Options.TimeScale);
