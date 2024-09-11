@@ -19,9 +19,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: FlowEnt/Library
-          key: Library-FlowEnt
-          restore-keys: |
-            Library-
+          key: Library
+          restore-keys: Library-
 
       - name: Add FLOWENT_GITHUB_RUN symbol to csc.rsp
         run: |

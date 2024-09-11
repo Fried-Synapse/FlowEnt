@@ -23,8 +23,7 @@ jobs:
         with:
           path: FlowEnt/Library
           key: Library-${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}
-          restore-keys: |
-            Library-
+          restore-keys: Library-
 
       - uses: game-ci/unity-builder@v4
         env:
