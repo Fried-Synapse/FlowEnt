@@ -28,7 +28,7 @@ namespace FriedSynapse.FlowEnt
                     Tooltip = "easings.net";
                     break;
                 case PredefinedType.Curves:
-                    Url = "https://docs.flowent.friedsynapse.com/manual/advanced/curves.html";
+                    Url = "https://docs.flowent.friedsynapse.com/manual/concepts/curves.html";
                     Tooltip = "Curves";
                     break;
                 default:

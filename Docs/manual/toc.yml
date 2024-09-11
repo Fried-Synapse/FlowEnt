@@ -7,6 +7,7 @@
 - href: concepts/echo.md
 - href: concepts/flow.md
 - href: concepts/motion.md
+- href: concepts/curves.md
 
 - name: Core
 - href: core/authoring/index.md
@@ -18,7 +19,6 @@
   - href: core/coding/flow.md
 
 - name: Advanced
-- href: advanced/curves.md
 - name: Extensibility
   items:
   - href: advanced/extensibility/motions.md
