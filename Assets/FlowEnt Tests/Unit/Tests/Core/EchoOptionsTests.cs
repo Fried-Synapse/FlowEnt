@@ -32,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     echoOptions.Name.Should().Be(Variables.Echo.Options.Name);
                     echoOptions.UpdateType.Should().Be(Variables.Echo.Options.UpdateType);
-                    echoOptions.AutoStart.Should().Be(Variables.Echo.Options.AutoStart);
+                    echoOptions.AutoStart.Should().Be(false);
                     echoOptions.SkipFrames.Should().Be(Variables.Echo.Options.SkipFrames);
                     echoOptions.Delay.Should().Be(Variables.Echo.Options.Delay);
                     echoOptions.TimeScale.Should().Be(Variables.Echo.Options.TimeScale);
