@@ -34,6 +34,7 @@ jobs:
           testMode: ${{ matrix.testMode }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: ${{ matrix.testMode }} Test Results
+          customParameters: -defineSymbols FLOWENT_GITHUB_RUN
 
       - name: Upload Results
         if: always()

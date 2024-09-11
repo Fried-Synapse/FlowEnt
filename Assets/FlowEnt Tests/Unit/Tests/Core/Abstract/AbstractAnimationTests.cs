@@ -256,7 +256,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator Stop(
-            [ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))] bool triggerOnCompleted)
+            [ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.stopValues))]
+            bool triggerOnCompleted)
         {
             TAnimation animation = null;
             bool hasFinished = false;
@@ -315,6 +316,28 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     ran.Should().Be(runs);
                 })
                 .Run();
+        }
+
+        [UnityTest]
+        public IEnumerator Overdraft()
+        {
+            const float time = 0.05f;
+            const int tweens = 100;
+            const float testTime = time * tweens;
+
+            yield return CreateTester()
+                .Act(() =>
+                {
+                    Flow flow = new();
+                    for (int j = 0; j < tweens; j++)
+                    {
+                        flow.Queue(CreateAnimation(time));
+                    }
+
+                    return flow.Start();
+                })
+                .AssertTime(testTime)
+                .Run($"Testing Overdraft for animation.", testTime);
         }
 
         #region IControllable

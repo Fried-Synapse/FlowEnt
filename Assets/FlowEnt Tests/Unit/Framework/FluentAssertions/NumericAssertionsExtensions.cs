@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
     public static class NumericAssertionsExtensions
     {
         public const float Epsilon = 0.0001f;
-        private const float TimeEpsilon = 0.03f;
+        private const float TimeEpsilon = 0.02f;
 
         public static AndConstraint<NumericAssertions<float>> BeApproximatelyFloat(
             this NumericAssertions<float> assertions,
