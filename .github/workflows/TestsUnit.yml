@@ -1,4 +1,4 @@
-name: FlowEnt Tests
+name: Tests - Unit
 
 on: pull_request
 
