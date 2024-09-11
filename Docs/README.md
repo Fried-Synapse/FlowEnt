@@ -1,0 +1,1 @@
+run `~/.dotnet/tools/docfx --serve` to start the localhost server

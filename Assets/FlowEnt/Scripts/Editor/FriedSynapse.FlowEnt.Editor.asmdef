@@ -2,7 +2,7 @@
     "name": "FriedSynapse.FlowEnt.Editor",
     "rootNamespace": "FriedSynapse.FlowEnt.Editor",
     "references": [
-        "GUID:20b24152311b643c3953c429ca0ac587"
+        "FriedSynapse.FlowEnt"
     ],
     "includePlatforms": [
         "Editor"

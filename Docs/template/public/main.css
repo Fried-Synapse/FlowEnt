@@ -1,0 +1,40 @@
+#logo{
+    width: 40px;
+    margin-right: 15px;
+}
+
+footer .container-xxl .flex-fill{
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-column {
+    flex: 1;
+    width: calc(50% - 20px);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.flex-column:first-child {
+    padding-right: 10px;
+}
+
+.flex-column:last-child {
+    padding-left: 10px;
+}
+
+p:has(img){
+    text-align: center;
+}
+
+p img{
+    max-width: 66%;
+}

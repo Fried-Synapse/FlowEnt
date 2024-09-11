@@ -43,7 +43,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 
                 if (Names.Preferred.EndsWith(" From To"))
                 {
-                    result += "*From To* - It will interpolate starting at the [From] and ending at [To]. (Not available in the editor yet) - If [From] is not specified it will use it's [Current State].\n";
+                    result += "*From To* - It will interpolate starting at the [From] and ending at [To]. If [From] is not specified it will use it's [Current State].\n";
                 }
             }
             

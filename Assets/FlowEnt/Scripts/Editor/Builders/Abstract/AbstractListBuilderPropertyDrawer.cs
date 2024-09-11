@@ -85,8 +85,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private void DrawList(Rect position, SerializedProperty property)
         {
-            const int padding = 10;
-
             Data data = GetData(property);
             SerializedProperty listProperty = property.FindPropertyRelative(ItemsNames);
             if (!Lists.TryGetValue(listProperty.propertyPath, out ReorderableList list))
@@ -105,14 +103,10 @@ namespace FriedSynapse.FlowEnt.Editor
             list.drawElementCallback = drawElement;
             list.elementHeightCallback = getElementHeight;
             list.onAddDropdownCallback = OnAdd;
-            position.x += padding;
-            position.width -= padding;
             list.DoList(position);
             
             void drawElement(Rect rect, int index, bool isActive, bool isFocused)
             {
-                rect.x += padding;
-                rect.width -= padding;
                 EditorGUI.PropertyField(rect, listProperty.GetArrayElementAtIndex(index), true);
             }
 
