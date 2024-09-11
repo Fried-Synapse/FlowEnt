@@ -14,9 +14,6 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private UpdateType updateType;
         public UpdateType UpdateType => updateType;
-        [SerializeField]
-        private bool autoStart;
-        public bool AutoStart => autoStart;
         [SerializeField, Min(0)]
         private int skipFrames;
         public int SkipFrames => skipFrames;
@@ -38,7 +35,6 @@ namespace FriedSynapse.FlowEnt
             {
                 Name = Name,
                 UpdateType = UpdateType,
-                AutoStart = AutoStart,
                 SkipFrames = SkipFrames,
                 Delay = Delay,
                 TimeScale = TimeScale,

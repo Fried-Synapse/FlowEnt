@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     flowOptions.Name.Should().Be(Variables.Flow.Options.Name);
                     flowOptions.UpdateType.Should().Be(Variables.Flow.Options.UpdateType);
-                    flowOptions.AutoStart.Should().Be(Variables.Flow.Options.AutoStart);
+                    flowOptions.AutoStart.Should().Be(false);
                     flowOptions.SkipFrames.Should().Be(Variables.Flow.Options.SkipFrames);
                     flowOptions.Delay.Should().Be(Variables.Flow.Options.Delay);
                     flowOptions.TimeScale.Should().Be(Variables.Flow.Options.TimeScale);
@@ -120,8 +120,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Act(() => new Flow()
-                            .Queue(createAnimation(TestTime).SetTimeScale(timeScale))
-                            .Start())
+                    .Queue(createAnimation(TestTime).SetTimeScale(timeScale))
+                    .Start())
                 .AssertTime(TestTime / timeScale)
                 .Run();
         }
@@ -148,8 +148,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Flow()
                             .Queue(createAnimation(HalfTestTime)
-                                    .SetSkipFrames(skipFrames)
-                                    .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
+                                .SetSkipFrames(skipFrames)
+                                .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
                             .Start())
                 .Assert(() => frameCount.Should().Be(skipFrames))
                 .Run();
