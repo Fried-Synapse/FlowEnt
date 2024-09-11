@@ -50,11 +50,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    Flow flow = new Flow();
+                    Flow flow = new();
 
                     for (int i = 0; i < innerFlows; i++)
                     {
-                        Flow innerFlow = new Flow();
+                        Flow innerFlow = new();
                         flow.Queue(innerFlow);
                         for (int j = 0; j < tweens; j++)
                         {
@@ -70,11 +70,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator Time_ForTween()
-              => Time_ForAnimation((time) => new Tween(time), nameof(Time_ForTween));
+            => Time_ForAnimation(time => new Tween(time), nameof(Time_ForTween));
 
         [UnityTest]
         public IEnumerator Timeout_ForEchoes()
-              => Time_ForAnimation((time) => new Echo(time), nameof(Timeout_ForEchoes));
+            => Time_ForAnimation(time => new Echo(time), nameof(Timeout_ForEchoes));
 
         #endregion
 
@@ -104,11 +104,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator LoopCount_ForTween()
-              => LoopCount_ForAnimation((time) => new Tween(time), nameof(LoopCount_ForTween));
+            => LoopCount_ForAnimation((time) => new Tween(time), nameof(LoopCount_ForTween));
 
         [UnityTest]
         public IEnumerator LoopCount_ForEchoes()
-              => LoopCount_ForAnimation((time) => new Echo(time), nameof(LoopCount_ForEchoes));
+            => LoopCount_ForAnimation((time) => new Echo(time), nameof(LoopCount_ForEchoes));
 
         #endregion
 
@@ -128,11 +128,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator TimeScale_ForTween()
-              => TimeScale_ForAnimation((time) => new Tween(time));
+            => TimeScale_ForAnimation((time) => new Tween(time));
 
         [UnityTest]
         public IEnumerator TimeScale_ForEchoes()
-              => TimeScale_ForAnimation((time) => new Echo(time));
+            => TimeScale_ForAnimation((time) => new Echo(time));
 
         #endregion
 
@@ -157,11 +157,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator SkipFrames_ForTween()
-              => SkipFrames_ForAnimation((time) => new Tween(time));
+            => SkipFrames_ForAnimation((time) => new Tween(time));
 
         [UnityTest]
         public IEnumerator SkipFrames_ForEchoes()
-              => SkipFrames_ForAnimation((time) => new Echo(time));
+            => SkipFrames_ForAnimation((time) => new Echo(time));
 
         #endregion
 
@@ -179,13 +179,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator Delay_ForTween()
-              => Delay_ForAnimation((time) => new Tween(time));
+            => Delay_ForAnimation((time) => new Tween(time));
 
         [UnityTest]
         public IEnumerator Delay_ForEchoes()
-              => Delay_ForAnimation((time) => new Echo(time));
+            => Delay_ForAnimation((time) => new Echo(time));
 
         #endregion
-
     }
 }
