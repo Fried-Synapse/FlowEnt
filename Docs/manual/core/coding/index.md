@@ -7,3 +7,5 @@ In these 3 pages you can see how to create simple animations with some basic set
 - [Tween](~/manual/core/coding/tween.md)
 - [Echo](~/manual/core/coding/echo.md)
 - [Flow](~/manual/core/coding/flow.md)
+
+The demo code is also very useful to asses the power of this library and the extent of the animations that can be created using it. Check out more on [github](https://github.com/Fried-Synapse/FlowEnt/tree/main/Assets/FlowEnt/Demo/Scripts/Runtime)

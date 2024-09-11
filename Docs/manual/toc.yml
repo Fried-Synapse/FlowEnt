@@ -16,12 +16,9 @@
   - href: core/coding/tween.md
   - href: core/coding/echo.md
   - href: core/coding/flow.md
-  - name: Samples  
-    items:
-    - href: core/coding/samples/motions.md
-    - href: core/coding/samples/easings.md
 
 - name: Advanced
+- href: advanced/curves.md
 - name: Extensibility
   items:
   - href: advanced/extensibility/motions.md

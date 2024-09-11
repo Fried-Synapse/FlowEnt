@@ -19,6 +19,10 @@ footer .container-xxl .flex-fill{
     box-sizing: border-box;
 }
 
+.flex-2 {
+    flex: 2;
+}
+
 .flex-column:first-child {
     padding-right: 10px;
 }
