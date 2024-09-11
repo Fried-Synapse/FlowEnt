@@ -5,8 +5,8 @@ using NUnit.Framework;
 using Unity.PerformanceTesting;
 using UnityEngine.TestTools;
 using UnityEngine;
-using FriedSynapse.FlowEnt.Reflection;
 using UnityEditor;
+using FriedSynapse.FlowEnt.Tests;
 
 namespace FriedSynapse.FlowEnt.Tests.Performance
 {

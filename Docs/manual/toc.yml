@@ -1,0 +1,33 @@
+- name: Introduction
+- href: quick-start.md
+
+- name: Concepts
+- href: concepts/animation.md
+- href: concepts/tween.md
+- href: concepts/echo.md
+- href: concepts/flow.md
+- href: concepts/motion.md
+- href: concepts/curves.md
+
+- name: Core
+- href: core/authoring/index.md
+- href: core/builders/index.md
+- href: core/coding/index.md
+  items:
+  - href: core/coding/tween.md
+  - href: core/coding/echo.md
+  - href: core/coding/flow.md
+
+- name: Advanced
+- name: Extensibility
+  items:
+  - href: advanced/extensibility/motions.md
+  - href: advanced/extensibility/easings.md
+- name: Tools
+  items:
+  - href: advanced/tools/debugging.md
+  - href: advanced/tools/previewer.md
+  - href: advanced/tools/inspector.md
+- name: Tips & Tricks
+  items:
+  - href: advanced/tips/true-start_auto-start.md

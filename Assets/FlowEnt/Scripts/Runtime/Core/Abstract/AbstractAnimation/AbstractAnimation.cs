@@ -126,7 +126,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public async Task AsAsync(CancellationToken? token = null)
         {
-            AnimationAwaiter awaiter = new AnimationAwaiter(this);
+            AnimationAwaiter awaiter = new(this);
             token?.Register(() =>
             {
                 Stop();

@@ -5,26 +5,31 @@ on:
     types: [created]
   workflow_dispatch:
 
+permissions:
+  pages: write
+  id-token: write
+
 jobs:
-  build:
-    name: Build Docs 🖥️
+  publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          submodules: true
-          token: ${{ secrets.ACCESS_TOKEN }}
-      - name: Run Doxygen
-        uses: mattnotmitt/doxygen-action@v1.9.5
-        with:
-          working-directory: "Docs"
-          doxyfile-path: "Doxyfile" 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          branch: public/docs
-          folder: Docs/html
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dotnet Setup
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.x
+
+    - run: dotnet tool update -g docfx
+    - run: docfx Docs/docfx.json
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: 'Docs/_site'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

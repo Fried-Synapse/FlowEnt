@@ -89,5 +89,6 @@ crashlytics-build.properties
 # Local History for Visual Studio Code
 .history/
 
-# Doxygen
-/Docs/html
+# DocFX
+/Docs/_site
+/Docs/scripting

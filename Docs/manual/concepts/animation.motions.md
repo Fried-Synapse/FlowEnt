@@ -1,0 +1,1 @@
+A motion is a basic and a unitary animation movement. For example when a cube moved from A to B, we have one motion. If the cube both moves and rotates, we have 2 motions. The idea of motions is that they are atomic and provide one functionality based on the options of the animation. Read more about motions [here](~/manual/concepts/motion.md).

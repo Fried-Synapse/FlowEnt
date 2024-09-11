@@ -45,7 +45,8 @@ namespace FriedSynapse.FlowEnt.Editor
             Rect labelPosition = headerPosition;
             labelPosition.x += EditorGUIUtility.singleLineHeight;
             labelPosition.width -= EditorGUIUtility.singleLineHeight;
-            label.text = MotionNames.GetNames(motionBuilderType, motionBuilder).Preferred;
+            string name = MotionNames.GetNames(motionBuilderType, motionBuilder).Preferred;
+            label.text = name.PadLeft(name.Length + 6);
             EditorGUI.LabelField(labelPosition, label);
 
             DrawMenu(headerPosition, property);
