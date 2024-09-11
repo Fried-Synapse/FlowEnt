@@ -23,6 +23,10 @@ jobs:
           restore-keys: |
             Library-
 
+      - name: Add FLOWENT_GITHUB_RUN symbol to csc.rsp
+        run: |
+          echo "-define:FLOWENT_GITHUB_RUN" >> ./Assets/csc.rsp
+
       - name: Run Tests
         uses: game-ci/unity-test-runner@v4
         id: testsRunner
@@ -34,7 +38,6 @@ jobs:
           testMode: ${{ matrix.testMode }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: ${{ matrix.testMode }} Test Results
-          customParameters: -defineSymbols FLOWENT_GITHUB_RUN
 
       - name: Upload Results
         if: always()
