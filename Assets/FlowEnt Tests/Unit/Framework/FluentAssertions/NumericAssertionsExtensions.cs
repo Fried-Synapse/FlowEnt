@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
     public static class NumericAssertionsExtensions
     {
         public const float Epsilon = 0.0001f;
-        private const float TimeEpsilon = 0.02f;
+        private const float TimeEpsilon = 0.01f;
 
         public static AndConstraint<NumericAssertions<float>> BeApproximatelyFloat(
             this NumericAssertions<float> assertions,
@@ -42,7 +42,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public static AndConstraint<NumericAssertions<double>> BeApproximatelyTime(
             this NumericAssertions<double> assertions,
-            float expectedValue, string because = "", params object[] becauseArgs)
+            double expectedValue, string because = "", params object[] becauseArgs)
         {
             return assertions.BeApproximately(expectedValue, TimeEpsilon, because, becauseArgs);
         }
