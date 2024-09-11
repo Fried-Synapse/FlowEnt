@@ -147,10 +147,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Arrange(() => frameCountStart = Time.frameCount)
                 .Act(() => new Flow()
-                    .Queue(createAnimation(HalfTestTime)
-                        .SetSkipFrames(skipFrames)
-                        .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
-                    .Start())
+                            .Queue(createAnimation(HalfTestTime)
+                                .SetSkipFrames(skipFrames)
+                                .OnStarted(() => frameCount = Time.frameCount - frameCountStart))
+                            .Start())
                 .Assert(() => frameCount.Should().Be(skipFrames))
                 .Run();
         }
@@ -171,8 +171,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             yield return CreateTester()
                 .Act(() => new Flow()
-                    .Queue(createAnimation(HalfTestTime).SetDelay(HalfTestTime))
-                    .Start())
+                            .Queue(createAnimation(HalfTestTime).SetDelay(HalfTestTime))
+                            .Start())
                 .AssertTime(TestTime)
                 .Run();
         }
