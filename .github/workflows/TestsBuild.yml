@@ -9,7 +9,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        unityVersion: ['2021.3.37f1', '2022.3.37f1']
         targetPlatform:
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
           - iOS # Build an iOS player.
@@ -22,7 +21,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: FlowEnt/Library
-          key: Library-${{ matrix.unityVersion }}-${{ matrix.targetPlatform }}
+          key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
 
       - uses: game-ci/unity-builder@v4
@@ -31,5 +30,4 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}     
