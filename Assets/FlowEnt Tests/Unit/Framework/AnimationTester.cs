@@ -15,7 +15,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         {
             Tests = tests;
             Count = count;
-            Stopwatch = new Stopwatch();
+            Stopwatch = new();
         }
 
         private AbstractTests Tests { get; }
@@ -28,7 +28,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         private Action AssertCallback { get; set; }
         private Action AbrogateCallback { get; set; }
         protected AbstractAnimation ControlAnimation { get; set; }
-        protected Stopwatch Stopwatch { get; }
+        protected FlowEntStopwatch Stopwatch { get; }
         private int CompletedTweens { get; set; }
 
         public AnimationTester Arrange(Action callback)
@@ -71,7 +71,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             return this;
         }
 
-        public AnimationTester AssertTime(Action<Stopwatch> callback)
+        public AnimationTester AssertTime(Action<FlowEntStopwatch> callback)
         {
             AssertCallback += () => callback?.Invoke(Stopwatch);
             return this;
@@ -85,7 +85,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public AnimationTester AssertTime(Func<float> getTime)
         {
-            AssertTime((stopwatch) => stopwatch.Elapsed.TotalSeconds.Should()
+            AssertTime((stopwatch) => stopwatch.Seconds.Should()
                 .BeApproximatelyTime(getTime() + (ControlAnimation?.Overdraft ?? 0)));
             return this;
         }
@@ -153,18 +153,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             }
 
             Stopwatch.Stop();
-            if (Stopwatch.Elapsed.TotalSeconds > internalMaxRunTime)
+            if (Stopwatch.Seconds > internalMaxRunTime)
             {
                 throw new TimeoutException(
-                    $"Test took too long. Expected: {internalMaxRunTime} but was {Stopwatch.Elapsed.TotalSeconds}.");
+                    $"Test took too long. Expected: {internalMaxRunTime} but was {Stopwatch.Seconds}.");
             }
-            else
+
+            if (Stopwatch.Seconds > MaxRunTime)
             {
-                if (Stopwatch.Elapsed.TotalSeconds > MaxRunTime)
-                {
-                    Debug.LogWarning(
-                        $"Test went to overtime. Reason: {overtimeReason}. Time: {Stopwatch.Elapsed.TotalSeconds}");
-                }
+                Debug.LogWarning(
+                    $"Test went to overtime. Reason: {overtimeReason}. Time: {Stopwatch.Seconds}");
             }
 
             if (ActDelay > 0)

@@ -310,7 +310,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return animation;
                 })
-                .AssertTime(stopwatch => stopwatch.Elapsed.TotalSeconds.Should()
+                .AssertTime(stopwatch => stopwatch.Seconds.Should()
                     .BeApproximatelyTime(QuarterTestTime + controlAnimation.Overdraft.Value))
                 .Assert(() => onStartedCalled.Should().BeFalse())
                 .Run();
@@ -385,7 +385,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return animation;
                 })
-                .AssertTime(stopwatch => stopwatch.Elapsed.TotalSeconds.Should()
+                .AssertTime(stopwatch => stopwatch.Seconds.Should()
                     .BeApproximatelyTime(time + controlAnimation.Overdraft.Value))
                 .Assert(() => onStartedCalled.Should().BeFalse())
                 .Run();
@@ -468,7 +468,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
                     return animation;
                 })
-                .AssertTime(stopwatch => stopwatch.Elapsed.TotalSeconds.Should()
+                .AssertTime(stopwatch => stopwatch.Seconds.Should()
                     .BeApproximatelyTime(time + controlAnimation.Overdraft.Value))
                 .Assert(() => onStartedCalled.Should().BeFalse())
                 .Run();

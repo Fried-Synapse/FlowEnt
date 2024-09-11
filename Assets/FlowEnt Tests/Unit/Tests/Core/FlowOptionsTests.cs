@@ -50,11 +50,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             yield return CreateTester()
                 .Act(() =>
                 {
-                    Flow flow = new Flow();
+                    Flow flow = new();
 
                     for (int i = 0; i < innerFlows; i++)
                     {
-                        Flow innerFlow = new Flow();
+                        Flow innerFlow = new();
                         flow.Queue(innerFlow);
                         for (int j = 0; j < tweens; j++)
                         {
@@ -70,11 +70,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [UnityTest]
         public IEnumerator Time_ForTween()
-            => Time_ForAnimation((time) => new Tween(time), nameof(Time_ForTween));
+            => Time_ForAnimation(time => new Tween(time), nameof(Time_ForTween));
 
         [UnityTest]
         public IEnumerator Timeout_ForEchoes()
-            => Time_ForAnimation((time) => new Echo(time), nameof(Timeout_ForEchoes));
+            => Time_ForAnimation(time => new Echo(time), nameof(Timeout_ForEchoes));
 
         #endregion
 
