@@ -43,7 +43,7 @@ namespace FriedSynapse.FlowEnt.Editor
         internal static void PropertyFieldIsEnabled(Rect position, SerializedProperty property)
         {
             Rect isEnabledPosition = position;
-            isEnabledPosition.x += 2f;
+            isEnabledPosition.x += 16f;
             isEnabledPosition.width = EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(isEnabledPosition, property.FindPropertyRelative("isEnabled"), GUIContent.none);
         }

@@ -17,8 +17,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private ScrollView ScrollView { get; }
 
-        public override VisualElement contentContainer => ScrollView.contentContainer;
-
         public FoldoutScrollable()
         {
             ScrollView = new ScrollView();
