@@ -33,7 +33,7 @@ namespace FriedSynapse.FlowEnt
         {
             foreach (AbstractTweenMotionBuilder motion in Motions.Items)
             {
-                if (motion is IGizmoDrawer drawer)
+                if (motion.IsEnabled && motion is IGizmoDrawer drawer)
                 {
                     drawer.OnGizmosDrawing(options);
                 }
