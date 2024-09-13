@@ -47,7 +47,7 @@ namespace FriedSynapse.FlowEnt
 
         public float Width { get => width; set => width = value; }
 
-        public Vector3 PositionOffset { get; set; }
+        public Transform Transform { get; set; }
         public float Step { get; set; } = 0.001f;
     }
 }
