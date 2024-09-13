@@ -20,20 +20,25 @@ namespace FriedSynapse.FlowEnt
 
             for (; t <= 1f; t += options.Step, i++)
             {
-                points[i] = curve.GetPoint(t) + options.PositionOffset;
+                points[i] = transformPoint(curve.GetPoint(t));
             }
 
             for (; i < points.Length; i++)
             {
-                points[i] = curve.GetPoint(1f) + options.PositionOffset;
+                points[i] = transformPoint(curve.GetPoint(1f));
             }
 
             Color initialColour = Handles.color;
             Handles.color = options.Color;
             Handles.DrawAAPolyLine(options.Width * 2, points);
             Handles.color = initialColour;
-        }
 
+            Vector3 transformPoint(Vector3 point)
+                => options.Transform != null
+                    ? options.Transform.TransformPoint(point)
+                    : point;
+        }
+        
         public static void DrawLine(Vector3 start, Vector3 end, GizmoOptions options = default)
         {
             options ??= new GizmoOptions();

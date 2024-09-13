@@ -7,20 +7,30 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
     /// <summary>
     /// Lerps the <see cref="Rigidbody.position" /> value.
     /// </summary>
-    public class MoveVectorMotion : AbstractVector3Motion<Rigidbody>
+    public class MoveVectorMotion : AbstractVector3MotionWithGizmo<Rigidbody>
     {
         [Serializable]
-        public class ValueBuilder : AbstractValueBuilder
+        public class ValueBuilder : AbstractVector3ValueBuilderWithGizmo
         {
             public override AbstractTweenMotion Build()
                 => new MoveVectorMotion(item, value);
+            
+#if UNITY_EDITOR
+            private protected override (Vector3 Start, Vector3 End) GizmoLine 
+                => (item.position, item.position + value);
+#endif
         }
 
         [Serializable]
-        public class FromToBuilder : AbstractFromToBuilder
+        public class FromToBuilder : AbstractVector3FromToBuilderWithGizmo
         {
             public override AbstractTweenMotion Build()
                 => new MoveVectorMotion(item, From, to);
+            
+#if UNITY_EDITOR
+            private protected override (Vector3 Start, Vector3 End) GizmoLine 
+                => (From ?? item.position, to);
+#endif
         }
 
         public MoveVectorMotion(Rigidbody item, Vector3 value) : base(item, value)

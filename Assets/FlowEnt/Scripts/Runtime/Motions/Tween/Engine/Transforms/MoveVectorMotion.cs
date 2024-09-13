@@ -7,39 +7,29 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
     /// <summary>
     /// Lerps the <see cref="Transform.position" /> value.
     /// </summary>
-    public class MoveVectorMotion : AbstractVector3Motion<Transform>
+    public class MoveVectorMotion : AbstractVector3MotionWithGizmo<Transform>
     {
         [Serializable]
-        public class ValueBuilder : AbstractValueBuilder, IGizmoDrawer
+        public class ValueBuilder : AbstractVector3ValueBuilderWithGizmo
         {
             public override AbstractTweenMotion Build()
                 => new MoveVectorMotion(item, value);
 
 #if UNITY_EDITOR
-            void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
-            {
-                if (item != null)
-                {
-                    FlowEntGizmos.DrawLine(item.position, item.position + value, options ?? GizmoOptions);
-                }
-            }
+            private protected override (Vector3 Start, Vector3 End) GizmoLine 
+                => (item.position, item.TransformPoint(value));
 #endif
         }
 
         [Serializable]
-        public class FromToBuilder : AbstractFromToBuilder, IGizmoDrawer
+        public class FromToBuilder : AbstractVector3FromToBuilderWithGizmo
         {
             public override AbstractTweenMotion Build()
                 => new MoveVectorMotion(item, From, to);
 
 #if UNITY_EDITOR
-            void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
-            {
-                if (item != null)
-                {
-                    FlowEntGizmos.DrawLine(From ?? item.position, to, options ?? GizmoOptions);
-                }
-            }
+            private protected override (Vector3 Start, Vector3 End) GizmoLine 
+                => (From ?? item.position, to);
 #endif
         }
 
