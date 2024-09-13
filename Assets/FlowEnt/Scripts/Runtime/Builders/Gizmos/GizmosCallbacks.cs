@@ -1,12 +1,20 @@
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
     public static class GizmosCallbacks
     {
         private static void DrawGizmo(IGizmoDrawer drawer)
-            => drawer.OnGizmosDrawing(null);
+        {
+            if (drawer is MonoBehaviour monoBehaviour && !monoBehaviour.enabled)
+            {
+                return;
+            }
+
+            drawer.OnGizmosDrawing(null);
+        }
 
         [DrawGizmo(GizmoType.Selected | GizmoType.Active)]
         public static void DrawGizmo(TweenAuthoring drawer, GizmoType gizmoType)

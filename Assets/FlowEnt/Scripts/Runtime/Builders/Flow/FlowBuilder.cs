@@ -75,7 +75,7 @@ namespace FriedSynapse.FlowEnt
         {
             foreach (IAbstractAnimationBuilder animation in Queues.Items.SelectMany(queue => queue.Items))
             {
-                if (animation is IGizmoDrawer drawer)
+                if (animation.IsEnabled && animation is IGizmoDrawer drawer)
                 {
                     drawer.OnGizmosDrawing(options);
                 }

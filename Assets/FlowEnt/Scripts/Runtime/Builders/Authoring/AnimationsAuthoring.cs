@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -39,7 +40,10 @@ namespace FriedSynapse.FlowEnt
 #if UNITY_EDITOR
         void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
         {
-            AnimationBuilders.Items.ForEach(item => ((IGizmoDrawer)item).OnGizmosDrawing(options));
+            AnimationBuilders.Items
+                .Where(item => item.IsEnabled)
+                .ToList()
+                .ForEach(item => ((IGizmoDrawer)item).OnGizmosDrawing(options));
         }
 #endif
     }
