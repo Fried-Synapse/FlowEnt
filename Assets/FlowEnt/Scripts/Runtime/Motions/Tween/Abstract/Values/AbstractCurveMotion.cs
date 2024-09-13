@@ -12,9 +12,21 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Abstract
             protected CurveBuilder curve;
 
 #if UNITY_EDITOR
+            private protected virtual Transform GizmoTransform => null;
             void IGizmoDrawer.OnGizmosDrawing(GizmoOptions options)
             {
-                ((IGizmoDrawer)curve).OnGizmosDrawing(options ?? GizmoOptions);
+                if (item == null)
+                {
+                    return;
+                }
+
+                options ??= GizmoOptions;
+                if (GizmoTransform != null)
+                {
+                    options.Transform = GizmoTransform;
+                }
+
+                ((IGizmoDrawer)curve).OnGizmosDrawing(options);
             }
 #endif
         }
