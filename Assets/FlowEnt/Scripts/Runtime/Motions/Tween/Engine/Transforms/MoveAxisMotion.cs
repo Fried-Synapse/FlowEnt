@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Transforms
         public class FromToBuilder : AbstractAxisFromToBuilder
         {
             public override AbstractTweenMotion Build()
-                => new MoveAxisMotion(item, axis, from, to);
+                => new MoveAxisMotion(item, axis, From, to);
         }
 
         public MoveAxisMotion(Transform item, Axis axis, float value) : base(item, axis, value)
