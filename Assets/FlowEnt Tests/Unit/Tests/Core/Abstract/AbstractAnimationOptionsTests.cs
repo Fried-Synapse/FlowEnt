@@ -45,7 +45,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         #region TimeScale
 
         protected static readonly UpdateType[] updateTypes = ((UpdateType[])Enum.GetValues(typeof(UpdateType)))
-            .Where(state => state != UpdateType.Custom) // Exclude the Ended state
+            .Where(state => state != UpdateType.Custom)
             .ToArray();
 
         private float GetDeltaTime(UpdateType type)
