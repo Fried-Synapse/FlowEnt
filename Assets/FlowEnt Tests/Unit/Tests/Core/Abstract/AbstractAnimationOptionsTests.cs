@@ -65,9 +65,17 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             List<float> values = new();
             UpdateTracker updateTracker = default;
+            float initialTimeScale = Time.timeScale;
 
             yield return CreateTester()
-                .Arrange(() => updateTracker = GameObject.AddComponent<UpdateTracker>())
+                .Arrange(() =>
+                {
+                    updateTracker = GameObject.AddComponent<UpdateTracker>();
+                    if (type == UpdateType.GuiUpdate)
+                    {
+                        Time.timeScale = 0;
+                    }
+                })
                 .SetActDelay(1)
                 .Act(() => getAnimation(HalfTestTime).OnUpdated(_ => { values.Add(getDeltaTime()); }).Start())
                 .AssertTime(HalfTestTime)
@@ -75,6 +83,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     if (type == UpdateType.GuiUpdate)
                     {
+                        Time.timeScale.Should().Be(0);
                         values.Sum().Should().BeApproximately(updateTracker.Values[type].Sum(), 0.01f);
                     }
                     else
@@ -83,7 +92,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                             .And.AllSatisfy(item => updateTracker.Values[type].Should().Contain(item));
                     }
                 })
-                .Abrogate(() => Object.Destroy(updateTracker))
+                .Abrogate(() =>
+                {
+                    Object.Destroy(updateTracker);
+                    if (type == UpdateType.GuiUpdate)
+                    {
+                        Time.timeScale = initialTimeScale;
+                    }
+                })
                 .Run();
         }
 
