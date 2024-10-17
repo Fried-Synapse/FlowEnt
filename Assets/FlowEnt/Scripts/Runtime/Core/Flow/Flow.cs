@@ -35,12 +35,11 @@ namespace FriedSynapse.FlowEnt
 
         #region Internal Members
 
-        private readonly UpdatablesFastList updatables = new UpdatablesFastList();
-        private readonly List<AbstractUpdatableWrapper> updatableWrappersQueue = new List<AbstractUpdatableWrapper>(2);
+        private readonly UpdatablesFastList updatables = new ();
+        private readonly List<AbstractUpdatableWrapper> updatableWrappersQueue = new(2);
         private AbstractUpdatableWrapper lastQueuedUpdatableWrapper;
 
-        private readonly Dictionary<ulong, AbstractUpdatableWrapper> runningUpdatableWrappers =
-            new Dictionary<ulong, AbstractUpdatableWrapper>(2);
+        private readonly Dictionary<ulong, AbstractUpdatableWrapper> runningUpdatableWrappers = new(2);
 
         private int runningUpdatableWrappersCount;
         private int? remainingLoops;

@@ -19,8 +19,7 @@ namespace FriedSynapse.FlowEnt
             {
                 deltaTime = Time.deltaTime,
                 smoothDeltaTime = Time.smoothDeltaTime,
-                lateDeltaTime = Time.deltaTime,
-                lateSmoothDeltaTime = Time.smoothDeltaTime,
+                unscaledDeltaTime = Time.unscaledDeltaTime,
                 fixedDeltaTime = Time.fixedDeltaTime,
             };
 
@@ -31,12 +30,12 @@ namespace FriedSynapse.FlowEnt
 
         private void Update()
         {
-            controller.Update(Time.deltaTime, Time.smoothDeltaTime);
+            controller.Update(Time.deltaTime, Time.smoothDeltaTime, Time.unscaledDeltaTime);
         }
 
         private void LateUpdate()
         {
-            controller.LateUpdate(Time.deltaTime, Time.smoothDeltaTime);
+            controller.LateUpdate(Time.deltaTime, Time.smoothDeltaTime, Time.unscaledDeltaTime);
         }
 
         private void FixedUpdate()

@@ -71,8 +71,10 @@ namespace FriedSynapse.FlowEnt.Editor
             animations.Clear();
             ReadAnimations("updatables");
             ReadAnimations("smoothUpdatables");
+            ReadAnimations("unscaledUpdatables");
             ReadAnimations("lateUpdatables");
             ReadAnimations("smoothLateUpdatables");
+            ReadAnimations("unscaledLateUpdatables");
             ReadAnimations("fixedUpdatables");
             ReadAnimations("customUpdatables");
 

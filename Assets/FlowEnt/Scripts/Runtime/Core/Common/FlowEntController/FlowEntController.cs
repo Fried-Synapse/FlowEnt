@@ -7,8 +7,7 @@ namespace FriedSynapse.FlowEnt
     {
         public float deltaTime;
         public float smoothDeltaTime;
-        public float lateDeltaTime;
-        public float lateSmoothDeltaTime;
+        public float unscaledDeltaTime;
         public float fixedDeltaTime;
     }
     internal interface IFlowEntUpdater
@@ -80,12 +79,14 @@ namespace FriedSynapse.FlowEnt
 
         #region Members
 
-        internal readonly UpdatablesFastList updatables = new();
-        internal readonly UpdatablesFastList smoothUpdatables = new();
-        internal readonly UpdatablesFastList lateUpdatables = new();
-        internal readonly UpdatablesFastList smoothLateUpdatables = new();
-        internal readonly UpdatablesFastList fixedUpdatables = new();
-        internal readonly UpdatablesFastList customUpdatables = new();
+        private readonly UpdatablesFastList updatables = new();
+        private readonly UpdatablesFastList smoothUpdatables = new();
+        private readonly UpdatablesFastList unscaledUpdatables = new();
+        private readonly UpdatablesFastList lateUpdatables = new();
+        private readonly UpdatablesFastList smoothLateUpdatables = new();
+        private readonly UpdatablesFastList unscaledLateUpdatables = new();
+        private readonly UpdatablesFastList fixedUpdatables = new();
+        private readonly UpdatablesFastList customUpdatables = new();
 
         private static float elapsedTime;
         private float timeScale = 1f;
@@ -117,7 +118,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Update
 
-        internal void Update(float deltaTime, float smoothDeltaTime)
+        internal void Update(float deltaTime, float smoothDeltaTime, float unscaledDeltaTime)
         {
             if (playState != PlayState.Playing)
             {
@@ -125,9 +126,10 @@ namespace FriedSynapse.FlowEnt
             }
             Update(updatables, deltaTime * timeScale);
             Update(smoothUpdatables, smoothDeltaTime * timeScale);
+            Update(unscaledUpdatables, unscaledDeltaTime * timeScale);
         }
 
-        internal void LateUpdate(float deltaTime, float smoothDeltaTime)
+        internal void LateUpdate(float deltaTime, float smoothDeltaTime, float unscaledDeltaTime)
         {
             if (playState != PlayState.Playing)
             {
@@ -135,6 +137,7 @@ namespace FriedSynapse.FlowEnt
             }
             Update(lateUpdatables, deltaTime * timeScale);
             Update(smoothLateUpdatables, smoothDeltaTime * timeScale);
+            Update(unscaledLateUpdatables, unscaledDeltaTime * timeScale);
         }
 
         internal void FixedUpdate(float deltaTime)
@@ -155,7 +158,7 @@ namespace FriedSynapse.FlowEnt
             Update(customUpdatables, deltaTime * timeScale);
         }
 
-        internal static void Update(UpdatablesFastList updatables, float scaledDeltaTime)
+        private static void Update(UpdatablesFastList updatables, float scaledDeltaTime)
         {
             elapsedTime += scaledDeltaTime;
             AbstractUpdatable index = updatables.anchor.next;
@@ -196,11 +199,17 @@ namespace FriedSynapse.FlowEnt
                 case UpdateType.SmoothUpdate:
                     smoothUpdatables.Add(updatable);
                     break;
+                case UpdateType.UnscaledUpdate:
+                    unscaledUpdatables.Add(updatable);
+                    break;
                 case UpdateType.LateUpdate:
                     lateUpdatables.Add(updatable);
                     break;
                 case UpdateType.SmoothLateUpdate:
                     smoothLateUpdatables.Add(updatable);
+                    break;
+                case UpdateType.UnscaledLateUpdate:
+                    unscaledLateUpdatables.Add(updatable);
                     break;
                 case UpdateType.FixedUpdate:
                     fixedUpdatables.Add(updatable);
@@ -221,11 +230,17 @@ namespace FriedSynapse.FlowEnt
                 case UpdateType.SmoothUpdate:
                     smoothUpdatables.Remove(updatable);
                     break;
+                case UpdateType.UnscaledUpdate:
+                    unscaledUpdatables.Remove(updatable);
+                    break;
                 case UpdateType.LateUpdate:
                     lateUpdatables.Remove(updatable);
                     break;
                 case UpdateType.SmoothLateUpdate:
                     smoothLateUpdatables.Remove(updatable);
+                    break;
+                case UpdateType.UnscaledLateUpdate:
+                    unscaledLateUpdatables.Remove(updatable);
                     break;
                 case UpdateType.FixedUpdate:
                     fixedUpdatables.Remove(updatable);
@@ -264,8 +279,10 @@ namespace FriedSynapse.FlowEnt
         {
             Stop(updatables, triggerOnCompleted);
             Stop(smoothUpdatables, triggerOnCompleted);
+            Stop(unscaledUpdatables, triggerOnCompleted);
             Stop(lateUpdatables, triggerOnCompleted);
             Stop(smoothLateUpdatables, triggerOnCompleted);
+            Stop(unscaledLateUpdatables, triggerOnCompleted);
             Stop(fixedUpdatables, triggerOnCompleted);
             Stop(customUpdatables, triggerOnCompleted);
         }
@@ -297,8 +314,10 @@ namespace FriedSynapse.FlowEnt
             DeltaTimes deltaTimes = updater.GetDeltaTimes();
             Update(updatables, deltaTimes.deltaTime * scaledFrameCount);
             Update(smoothUpdatables, deltaTimes.smoothDeltaTime * scaledFrameCount);
-            Update(lateUpdatables, deltaTimes.lateDeltaTime * scaledFrameCount);
-            Update(smoothLateUpdatables, deltaTimes.lateSmoothDeltaTime * scaledFrameCount);
+            Update(unscaledUpdatables, deltaTimes.unscaledDeltaTime * scaledFrameCount);
+            Update(lateUpdatables, deltaTimes.deltaTime * scaledFrameCount);
+            Update(smoothLateUpdatables, deltaTimes.smoothDeltaTime * scaledFrameCount);
+            Update(unscaledLateUpdatables, deltaTimes.unscaledDeltaTime * scaledFrameCount);
             Update(fixedUpdatables, deltaTimes.fixedDeltaTime * scaledFrameCount);
             Update(customUpdatables, deltaTimes.fixedDeltaTime * scaledFrameCount);
         }
@@ -309,8 +328,10 @@ namespace FriedSynapse.FlowEnt
             float scaledDeltaTime = timeScale * deltaTime;
             Update(updatables, scaledDeltaTime);
             Update(smoothUpdatables, scaledDeltaTime);
+            Update(unscaledUpdatables, scaledDeltaTime);
             Update(lateUpdatables, scaledDeltaTime);
             Update(smoothLateUpdatables, scaledDeltaTime);
+            Update(unscaledLateUpdatables, scaledDeltaTime);
             Update(fixedUpdatables, scaledDeltaTime);
             Update(customUpdatables, scaledDeltaTime);
         }
