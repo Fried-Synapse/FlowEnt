@@ -76,8 +76,14 @@ namespace FriedSynapse.FlowEnt.Builder
 
         private async void Start()
         {
+            Time.timeScale = 0;
             await Task.Yield();
             Tween.Build().Start();
+        }
+
+        public void Update()
+        {
+            Debug.Log($"{Time.time} - {Time.deltaTime} - {Time.unscaledDeltaTime}");
         }
 
         public void ResetMob()

@@ -53,10 +53,11 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             {
                 UpdateType.Update => Time.deltaTime,
                 UpdateType.SmoothUpdate => Time.smoothDeltaTime,
+                UpdateType.UnscaledUpdate => Time.unscaledDeltaTime,
                 UpdateType.LateUpdate => Time.deltaTime,
                 UpdateType.SmoothLateUpdate => Time.smoothDeltaTime,
+                UpdateType.UnscaledLateUpdate => Time.unscaledDeltaTime,
                 UpdateType.FixedUpdate => Time.fixedDeltaTime,
-                UpdateType.GuiUpdate => FlowEntTime.guiDeltaTime,
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
 
@@ -71,9 +72,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Arrange(() =>
                 {
                     updateTracker = GameObject.AddComponent<UpdateTracker>();
-                    if (type == UpdateType.GuiUpdate)
+                    switch (type)
                     {
-                        Time.timeScale = 0;
+                        case UpdateType.UnscaledUpdate:
+                        case UpdateType.UnscaledLateUpdate:
+                            Time.timeScale = 0;
+                            break;
                     }
                 })
                 .SetActDelay(1)
@@ -81,23 +85,26 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(HalfTestTime)
                 .Assert(() =>
                 {
-                    if (type == UpdateType.GuiUpdate)
+                    switch (type)
                     {
-                        Time.timeScale.Should().Be(0);
-                        values.Sum().Should().BeApproximately(updateTracker.Values[type].Sum(), 0.01f);
+                        case UpdateType.UnscaledUpdate:
+                        case UpdateType.UnscaledLateUpdate:
+                            Time.timeScale.Should().Be(0);
+                            break;
                     }
-                    else
-                    {
-                        values.Should().HaveCountGreaterThan(5)
-                            .And.AllSatisfy(item => updateTracker.Values[type].Should().Contain(item));
-                    }
+
+                    values.Should().HaveCountGreaterThan(5)
+                        .And.AllSatisfy(item => updateTracker.Values[type].Should().Contain(item));
                 })
                 .Abrogate(() =>
                 {
                     Object.Destroy(updateTracker);
-                    if (type == UpdateType.GuiUpdate)
+                    switch (type)
                     {
-                        Time.timeScale = initialTimeScale;
+                        case UpdateType.UnscaledUpdate:
+                        case UpdateType.UnscaledLateUpdate:
+                            Time.timeScale = initialTimeScale;
+                            break;
                     }
                 })
                 .Run();

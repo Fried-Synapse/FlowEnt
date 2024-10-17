@@ -16,6 +16,10 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         SmoothUpdate,
         /// <summary>
+        /// Uses the Unity's Update method with <see cref="Time.unscaledDeltaTime" /> 
+        /// </summary>
+        UnscaledUpdate,
+        /// <summary>
         /// Uses the Unity's LateUpdate method with <see cref="Time.deltaTime" /> 
         /// </summary>
         LateUpdate,
@@ -24,13 +28,13 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         SmoothLateUpdate,
         /// <summary>
-        /// Uses the Unity's LateUpdate method with <see cref="Time.fixedDeltaTime" /> 
+        /// Uses the Unity's LateUpdate method with <see cref="Time.unscaledDeltaTime" /> 
+        /// </summary>
+        UnscaledLateUpdate,
+        /// <summary>
+        /// Uses the Unity's FixedUpdate method with <see cref="Time.fixedDeltaTime" /> 
         /// </summary>
         FixedUpdate,
-        /// <summary>
-        /// Uses the Unity's OnGUI method with <see cref="FlowEntTime.guiDeltaTime" /> 
-        /// </summary>
-        GuiUpdate,
         /// <summary>
         /// Uses the FlowEnt's custom method. In order to use this you need to invoke <see cref="FlowEntController.CustomUpdate" /> from your custom update loop.
         /// </summary>

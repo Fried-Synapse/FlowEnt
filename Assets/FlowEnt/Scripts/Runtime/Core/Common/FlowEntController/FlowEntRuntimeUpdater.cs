@@ -9,7 +9,7 @@ namespace FriedSynapse.FlowEnt
     public class FlowEntRuntimeUpdater : MonoBehaviour, IFlowEntUpdater
     {
         private FlowEntController controller;
-        
+
         void IFlowEntUpdater.SetController(FlowEntController controller)
         {
             this.controller = controller;
@@ -20,10 +20,8 @@ namespace FriedSynapse.FlowEnt
             {
                 deltaTime = Time.deltaTime,
                 smoothDeltaTime = Time.smoothDeltaTime,
-                lateDeltaTime = Time.deltaTime,
-                lateSmoothDeltaTime = Time.smoothDeltaTime,
+                unscaledDeltaTime = Time.unscaledDeltaTime,
                 fixedDeltaTime = Time.fixedDeltaTime,
-                guiDeltaTime = FlowEntTime.guiDeltaTime,
             };
 
         private void Awake()
@@ -33,24 +31,17 @@ namespace FriedSynapse.FlowEnt
 
         private void Update()
         {
-            controller.Update(Time.deltaTime, Time.smoothDeltaTime);
+            controller.Update(Time.deltaTime, Time.smoothDeltaTime, Time.unscaledDeltaTime);
         }
 
         private void LateUpdate()
         {
-            controller.LateUpdate(Time.deltaTime, Time.smoothDeltaTime);
+            controller.LateUpdate(Time.deltaTime, Time.smoothDeltaTime, Time.unscaledDeltaTime);
         }
 
         private void FixedUpdate()
         {
             controller.FixedUpdate(Time.fixedDeltaTime);
-        }
-
-        private void OnGUI()
-        {
-            FlowEntTime.guiDeltaTime = Time.realtimeSinceStartup - FlowEntTime.guiTime;
-            controller.OnGui(FlowEntTime.guiDeltaTime);
-            FlowEntTime.guiTime = Time.realtimeSinceStartup;
         }
 
         private void OnDestroy()
