@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
@@ -42,72 +44,58 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #region TimeScale
 
+        protected static readonly UpdateType[] updateTypes = ((UpdateType[])Enum.GetValues(typeof(UpdateType)))
+            .Where(state => state != UpdateType.Custom) // Exclude the Ended state
+            .ToArray();
+
+        private float GetDeltaTime(UpdateType type)
+            => type switch
+            {
+                UpdateType.Update => Time.deltaTime,
+                UpdateType.SmoothUpdate => Time.smoothDeltaTime,
+                UpdateType.LateUpdate => Time.deltaTime,
+                UpdateType.SmoothLateUpdate => Time.smoothDeltaTime,
+                UpdateType.FixedUpdate => Time.fixedDeltaTime,
+                UpdateType.GuiUpdate => FlowEntTime.guiDeltaTime,
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+            };
+
         private IEnumerator UpdateTypeInternal(UpdateType type, Func<float, AbstractAnimation> getAnimation,
             Func<float> getDeltaTime)
         {
-            List<float> values = new List<float>();
+            List<float> values = new();
             UpdateTracker updateTracker = default;
 
             yield return CreateTester()
                 .Arrange(() => updateTracker = GameObject.AddComponent<UpdateTracker>())
                 .SetActDelay(1)
-                .Act(() => getAnimation(HalfTestTime).OnUpdated(_ => values.Add(getDeltaTime())).Start())
+                .Act(() => getAnimation(HalfTestTime).OnUpdated(_ => { values.Add(getDeltaTime()); }).Start())
                 .AssertTime(HalfTestTime)
                 .Assert(() =>
                 {
-                    values.Should().HaveCountGreaterThan(5)
-                        .And.AllSatisfy(item => updateTracker.Values[type].Should().Contain(item));
+                    if (type == UpdateType.GuiUpdate)
+                    {
+                        values.Sum().Should().BeApproximately(updateTracker.Values[type].Sum(), 0.01f);
+                    }
+                    else
+                    {
+                        values.Should().HaveCountGreaterThan(5)
+                            .And.AllSatisfy(item => updateTracker.Values[type].Should().Contain(item));
+                    }
                 })
+                .Abrogate(() => Object.Destroy(updateTracker))
                 .Run();
         }
 
-        private IEnumerator UpdateTypeNormal(UpdateType type, Func<float> getDeltaTime)
-            => UpdateTypeInternal(type, (time) => CreateAnimation(time).SetUpdateType(type), getDeltaTime);
+        [UnityTest]
+        public IEnumerator UpdateTypeNormal([ValueSource(nameof(updateTypes))] UpdateType type)
+            => UpdateTypeInternal(type, time => CreateAnimation(time).SetUpdateType(type), () => GetDeltaTime(type));
 
         [UnityTest]
-        public IEnumerator UpdateType_Update()
-            => UpdateTypeNormal(UpdateType.Update, () => Time.deltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_SmoothUpdate()
-            => UpdateTypeNormal(UpdateType.SmoothUpdate, () => Time.smoothDeltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_LateUpdate()
-            => UpdateTypeNormal(UpdateType.LateUpdate, () => Time.deltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_SmoothLateUpdate()
-            => UpdateTypeNormal(UpdateType.SmoothLateUpdate, () => Time.smoothDeltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_FixedUpdate()
-            => UpdateTypeNormal(UpdateType.FixedUpdate, () => Time.fixedDeltaTime);
-
-        private IEnumerator UpdateTypeOptions(UpdateType type, Func<float> getDeltaTime)
+        public IEnumerator UpdateTypeOptions([ValueSource(nameof(updateTypes))] UpdateType type)
             => UpdateTypeInternal(type,
-                (time) => CreateAnimation(time, (TAnimationOptions)new TAnimationOptions().SetUpdateType(type)),
-                getDeltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_OptionsUpdate()
-            => UpdateTypeOptions(UpdateType.Update, () => Time.deltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_OptionsSmoothUpdate()
-            => UpdateTypeOptions(UpdateType.SmoothUpdate, () => Time.smoothDeltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_OptionsLateUpdate()
-            => UpdateTypeOptions(UpdateType.LateUpdate, () => Time.deltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_OptionsSmoothLateUpdate()
-            => UpdateTypeOptions(UpdateType.SmoothLateUpdate, () => Time.smoothDeltaTime);
-
-        [UnityTest]
-        public IEnumerator UpdateType_OptionsFixedUpdate()
-            => UpdateTypeOptions(UpdateType.FixedUpdate, () => Time.fixedDeltaTime);
+                time => CreateAnimation(time, (TAnimationOptions)new TAnimationOptions().SetUpdateType(type)),
+                () => GetDeltaTime(type));
 
         #endregion
 
@@ -210,7 +198,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         [Test]
         public void LoopCount_Invalid(
-            [ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.loopCountValues))] int loopCount)
+            [ValueSource(typeof(AbstractAnimationTestsValues), nameof(AbstractAnimationTestsValues.loopCountValues))]
+            int loopCount)
         {
             Action act = () => CreateAnimation(TestTime).SetLoopCount(loopCount);
             act.Should().Throw<ArgumentException>();

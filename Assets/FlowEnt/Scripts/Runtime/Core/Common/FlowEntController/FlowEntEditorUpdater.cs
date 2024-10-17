@@ -32,6 +32,7 @@ namespace FriedSynapse.FlowEnt
                 lateDeltaTime = editorDeltaTime,
                 lateSmoothDeltaTime = editorDeltaTime,
                 fixedDeltaTime = editorDeltaTime,
+                guiDeltaTime = editorDeltaTime,
             };
 
         private void Update()
@@ -43,6 +44,7 @@ namespace FriedSynapse.FlowEnt
                 controller.Update(editorDeltaTime, editorDeltaTime);
                 controller.LateUpdate(editorDeltaTime, editorDeltaTime);
                 controller.FixedUpdate(editorDeltaTime);
+                controller.OnGui(editorDeltaTime);
                 controller.CustomUpdate(editorDeltaTime);
             }
             catch (Exception ex)

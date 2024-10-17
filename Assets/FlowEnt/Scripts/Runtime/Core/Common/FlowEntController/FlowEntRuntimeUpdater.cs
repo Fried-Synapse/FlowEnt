@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
@@ -8,7 +9,7 @@ namespace FriedSynapse.FlowEnt
     public class FlowEntRuntimeUpdater : MonoBehaviour, IFlowEntUpdater
     {
         private FlowEntController controller;
-
+        
         void IFlowEntUpdater.SetController(FlowEntController controller)
         {
             this.controller = controller;
@@ -22,6 +23,7 @@ namespace FriedSynapse.FlowEnt
                 lateDeltaTime = Time.deltaTime,
                 lateSmoothDeltaTime = Time.smoothDeltaTime,
                 fixedDeltaTime = Time.fixedDeltaTime,
+                guiDeltaTime = FlowEntTime.guiDeltaTime,
             };
 
         private void Awake()
@@ -42,6 +44,13 @@ namespace FriedSynapse.FlowEnt
         private void FixedUpdate()
         {
             controller.FixedUpdate(Time.fixedDeltaTime);
+        }
+
+        private void OnGUI()
+        {
+            FlowEntTime.guiDeltaTime = Time.realtimeSinceStartup - FlowEntTime.guiTime;
+            controller.OnGui(FlowEntTime.guiDeltaTime);
+            FlowEntTime.guiTime = Time.realtimeSinceStartup;
         }
 
         private void OnDestroy()

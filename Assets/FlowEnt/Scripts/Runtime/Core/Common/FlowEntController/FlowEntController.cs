@@ -10,6 +10,7 @@ namespace FriedSynapse.FlowEnt
         public float lateDeltaTime;
         public float lateSmoothDeltaTime;
         public float fixedDeltaTime;
+        public float guiDeltaTime;
     }
     internal interface IFlowEntUpdater
     {
@@ -80,12 +81,13 @@ namespace FriedSynapse.FlowEnt
 
         #region Members
 
-        internal readonly UpdatablesFastList updatables = new();
-        internal readonly UpdatablesFastList smoothUpdatables = new();
-        internal readonly UpdatablesFastList lateUpdatables = new();
-        internal readonly UpdatablesFastList smoothLateUpdatables = new();
-        internal readonly UpdatablesFastList fixedUpdatables = new();
-        internal readonly UpdatablesFastList customUpdatables = new();
+        private readonly UpdatablesFastList updatables = new();
+        private readonly UpdatablesFastList smoothUpdatables = new();
+        private readonly UpdatablesFastList lateUpdatables = new();
+        private readonly UpdatablesFastList smoothLateUpdatables = new();
+        private readonly UpdatablesFastList fixedUpdatables = new();
+        private readonly UpdatablesFastList guiUpdatables = new();
+        private readonly UpdatablesFastList customUpdatables = new();
 
         private static float elapsedTime;
         private float timeScale = 1f;
@@ -145,6 +147,15 @@ namespace FriedSynapse.FlowEnt
             }
             Update(fixedUpdatables, deltaTime * timeScale);
         }
+        
+        internal void OnGui(float deltaTime)
+        {
+            if (playState != PlayState.Playing)
+            {
+                return;
+            }
+            Update(guiUpdatables, deltaTime * timeScale);
+        }
 
         public void CustomUpdate(float deltaTime)
         {
@@ -155,7 +166,7 @@ namespace FriedSynapse.FlowEnt
             Update(customUpdatables, deltaTime * timeScale);
         }
 
-        internal static void Update(UpdatablesFastList updatables, float scaledDeltaTime)
+        private static void Update(UpdatablesFastList updatables, float scaledDeltaTime)
         {
             elapsedTime += scaledDeltaTime;
             AbstractUpdatable index = updatables.anchor.next;
@@ -205,6 +216,9 @@ namespace FriedSynapse.FlowEnt
                 case UpdateType.FixedUpdate:
                     fixedUpdatables.Add(updatable);
                     break;
+                case UpdateType.GuiUpdate:
+                    guiUpdatables.Add(updatable);
+                    break;
                 case UpdateType.Custom:
                     customUpdatables.Add(updatable);
                     break;
@@ -229,6 +243,9 @@ namespace FriedSynapse.FlowEnt
                     break;
                 case UpdateType.FixedUpdate:
                     fixedUpdatables.Remove(updatable);
+                    break;
+                case UpdateType.GuiUpdate:
+                    guiUpdatables.Remove(updatable);
                     break;
                 case UpdateType.Custom:
                     customUpdatables.Remove(updatable);
@@ -267,6 +284,7 @@ namespace FriedSynapse.FlowEnt
             Stop(lateUpdatables, triggerOnCompleted);
             Stop(smoothLateUpdatables, triggerOnCompleted);
             Stop(fixedUpdatables, triggerOnCompleted);
+            Stop(guiUpdatables, triggerOnCompleted);
             Stop(customUpdatables, triggerOnCompleted);
         }
 
@@ -300,6 +318,7 @@ namespace FriedSynapse.FlowEnt
             Update(lateUpdatables, deltaTimes.lateDeltaTime * scaledFrameCount);
             Update(smoothLateUpdatables, deltaTimes.lateSmoothDeltaTime * scaledFrameCount);
             Update(fixedUpdatables, deltaTimes.fixedDeltaTime * scaledFrameCount);
+            Update(guiUpdatables, deltaTimes.fixedDeltaTime * scaledFrameCount);
             Update(customUpdatables, deltaTimes.fixedDeltaTime * scaledFrameCount);
         }
 
@@ -312,6 +331,7 @@ namespace FriedSynapse.FlowEnt
             Update(lateUpdatables, scaledDeltaTime);
             Update(smoothLateUpdatables, scaledDeltaTime);
             Update(fixedUpdatables, scaledDeltaTime);
+            Update(guiUpdatables, scaledDeltaTime);
             Update(customUpdatables, scaledDeltaTime);
         }
 
