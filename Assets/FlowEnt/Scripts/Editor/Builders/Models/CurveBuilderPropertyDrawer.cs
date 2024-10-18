@@ -37,7 +37,7 @@ namespace FriedSynapse.FlowEnt.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             label = EditorGUI.BeginProperty(position, label, property);
-            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded,
+            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRectForLine(position, 0), property.isExpanded,
                 label, true);
 
             if (!property.isExpanded)

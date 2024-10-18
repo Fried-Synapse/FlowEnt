@@ -22,9 +22,12 @@ namespace FriedSynapse.FlowEnt.Editor
             } while (copy.NextVisible(false));
         }
 
-        internal static Rect GetRect(Rect position, int index)
+        internal static Rect GetRectForLine(Rect position, int index)
             => new(position.x, position.y + (index * FlowEntConstants.SpacedSingleLineHeight), position.width, EditorGUIUtility.singleLineHeight);
 
+        internal static Rect GetRectIndented(Rect position, int indent = 12)
+            => new(position.x + indent, position.y, position.width - indent, position.height);
+        
         internal static void PropertyField(ref Rect position, SerializedProperty property, GUIContent label = null)
         {
             position.height = EditorGUI.GetPropertyHeight(property);
@@ -43,7 +46,7 @@ namespace FriedSynapse.FlowEnt.Editor
         internal static void PropertyFieldIsEnabled(Rect position, SerializedProperty property)
         {
             Rect isEnabledPosition = position;
-            isEnabledPosition.x += 16f;
+            isEnabledPosition.x += 2f;
             isEnabledPosition.width = EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(isEnabledPosition, property.FindPropertyRelative("isEnabled"), GUIContent.none);
         }

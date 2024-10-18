@@ -26,7 +26,7 @@ namespace FriedSynapse.FlowEnt.Editor
             for (int i = 0; i < Properties.Count; i++)
             {
                 FieldsEnum prop = Properties[i];
-                Rect propertyPosition = FlowEntEditorGUILayout.GetRect(position, i + 1);
+                Rect propertyPosition = FlowEntEditorGUILayout.GetRectForLine(position, i + 1);
                 switch (prop)
                 {
                     case FieldsEnum.loopCount:

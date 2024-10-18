@@ -10,6 +10,7 @@ namespace FriedSynapse.FlowEnt
         public float unscaledDeltaTime;
         public float fixedDeltaTime;
     }
+
     internal interface IFlowEntUpdater
     {
         internal void SetController(FlowEntController controller);
@@ -33,6 +34,7 @@ namespace FriedSynapse.FlowEnt
         private static IFlowEntUpdater updater;
         internal static IFlowEntUpdater Updater => updater;
         private static FlowEntController instance;
+
         public static FlowEntController Instance
         {
             get
@@ -64,6 +66,7 @@ namespace FriedSynapse.FlowEnt
                         updater.SetController(instance);
                     }
                 }
+
                 return instance;
             }
         }
@@ -103,6 +106,7 @@ namespace FriedSynapse.FlowEnt
                 {
                     throw new ArgumentException("Value cannot be less than 0.");
                 }
+
                 timeScale = value;
             }
         }
@@ -124,6 +128,7 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
+
             Update(updatables, deltaTime * timeScale);
             Update(smoothUpdatables, smoothDeltaTime * timeScale);
             Update(unscaledUpdatables, unscaledDeltaTime * timeScale);
@@ -135,6 +140,7 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
+
             Update(lateUpdatables, deltaTime * timeScale);
             Update(smoothLateUpdatables, smoothDeltaTime * timeScale);
             Update(unscaledLateUpdatables, unscaledDeltaTime * timeScale);
@@ -146,6 +152,7 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
+
             Update(fixedUpdatables, deltaTime * timeScale);
         }
 
@@ -155,6 +162,7 @@ namespace FriedSynapse.FlowEnt
             {
                 return;
             }
+
             Update(customUpdatables, deltaTime * timeScale);
         }
 
@@ -169,7 +177,7 @@ namespace FriedSynapse.FlowEnt
                 try
                 {
 #endif
-                index.UpdateInternal(scaledDeltaTime);
+                    index.UpdateInternal(scaledDeltaTime);
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
                 }
                 catch (Exception ex)
