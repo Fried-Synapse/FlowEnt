@@ -4,13 +4,13 @@ The inspector tool is a great resource to help you with debugging by allowing yo
 
 In order to open it just go to Tools > FlowEnt > Inspector. You shall now see a new window.
 
-![Window](~/resources/tools/inspector/window.png)
+![Window](~/resources/advanced/tools/inspector/window.png)
 
 On the top of the window there are some controls that can be used to control the *whole* animation engine.
 Bellow a list of animations, that will be filled once animations are started.
 This tool works both in play mode and in edit mode as well.
 
-![Window with items](~/resources/tools/inspector/window-with-items.png)
+![Window with items](~/resources/advanced/tools/inspector/window-with-items.png)
 
 Using the demo scene as an example, after a few second of playing, information about ongoing animations can seen
 
@@ -48,13 +48,13 @@ IControllable.TimeScale
 
 Clicking on the info button for the character flow the following window can be seen. 
 
-![Info](~/resources/tools/inspector/info.png)
+![Info](~/resources/advanced/tools/inspector/info.png)
 
 In case you don't have debug enabled the following message will be displayed
 >  <font color="#8bbce8">"Stack trace only available when debugging enabled. Please enable it in settings."</font>
 
 This setting can be enabled from FlowEnt Settings. Once it's enabled the inspector will display the full stack trace as seen in the following image. 
 
-![Info with stack](~/resources/tools/inspector/info-stack.png)
+![Info with stack](~/resources/advanced/tools/inspector/info-stack.png)
 
 The controls can be used to manipulate this specific image while inspecting it.
