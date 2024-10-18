@@ -31,3 +31,4 @@
 - name: Tips & Tricks
   items:
   - href: advanced/tips/true-start_auto-start.md
+- href: advanced/settings.md
