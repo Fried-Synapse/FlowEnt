@@ -14,9 +14,9 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         {
             public override AbstractTweenMotion Build()
                 => new MoveVectorMotion(item, value);
-            
+
 #if UNITY_EDITOR
-            private protected override (Vector3 Start, Vector3 End) GizmoLine 
+            private protected override (Vector3 Start, Vector3 End) GizmoLine
                 => (item.position, item.position + value);
 #endif
         }
@@ -26,9 +26,9 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         {
             public override AbstractTweenMotion Build()
                 => new MoveVectorMotion(item, From, to);
-            
+
 #if UNITY_EDITOR
-            private protected override (Vector3 Start, Vector3 End) GizmoLine 
+            private protected override (Vector3 Start, Vector3 End) GizmoLine
                 => (From ?? item.position, to);
 #endif
         }
@@ -42,6 +42,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         }
 
         protected override Vector3 GetFrom() => item.position;
-        protected override void SetValue(Vector3 value) => item.position = value;
+
+        protected override void SetValue(Vector3 value) => item.MovePosition(value);
     }
 }

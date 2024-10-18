@@ -32,6 +32,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         }
 
         protected override Vector3 GetFrom() => item.rotation.eulerAngles;
-        protected override void SetValue(Vector3 value) => item.rotation = Quaternion.Euler(value);
+        protected override void SetValue(Vector3 value) => item.MoveRotation(Quaternion.Euler(value));
     }
 }

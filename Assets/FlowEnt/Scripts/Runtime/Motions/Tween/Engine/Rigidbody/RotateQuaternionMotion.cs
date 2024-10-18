@@ -32,6 +32,6 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         }
 
         protected override Quaternion GetFrom() => item.rotation;
-        protected override void SetValue(Quaternion value) => item.rotation = value;
+        protected override void SetValue(Quaternion value) => item.MoveRotation(value);
     }
 }

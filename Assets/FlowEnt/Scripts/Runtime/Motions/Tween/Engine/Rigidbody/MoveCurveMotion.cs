@@ -22,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
 
         public override void OnUpdate(float t)
         {
-            item.position = curve.GetPoint(t);
+            item.MovePosition(curve.GetPoint(t));
         }
     }
 }
