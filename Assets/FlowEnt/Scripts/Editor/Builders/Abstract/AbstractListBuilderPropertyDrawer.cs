@@ -48,7 +48,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
+            Rect headerPosition = FlowEntEditorGUILayout.GetRectForLine(position, 0);
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, GetLabel(property, label), EditorStyles.foldoutHeader);
 
             DrawMenu(headerPosition, property);
@@ -58,7 +58,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 return;
             }
 
-            position = FlowEntEditorGUILayout.GetRect(position, 1);
+            position = FlowEntEditorGUILayout.GetRectForLine(position, 1);
             Draw(ref position, property);
             DrawList(position, property);
         }

@@ -22,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Editor
             } while (copy.NextVisible(false));
         }
 
-        internal static Rect GetRect(Rect position, int index)
+        internal static Rect GetRectForLine(Rect position, int index)
             => new(position.x, position.y + (index * FlowEntConstants.SpacedSingleLineHeight), position.width, EditorGUIUtility.singleLineHeight);
 
         internal static Rect GetRectIndented(Rect position, int indent = 12)

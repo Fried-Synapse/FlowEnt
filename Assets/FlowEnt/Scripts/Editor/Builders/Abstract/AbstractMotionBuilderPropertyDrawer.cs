@@ -33,7 +33,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
+            Rect headerPosition = FlowEntEditorGUILayout.GetRectForLine(position, 0);
             IMotionBuilder motionBuilder = property.GetValue<IMotionBuilder>();
             Type motionBuilderType = motionBuilder.GetType();
 
