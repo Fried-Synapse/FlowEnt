@@ -57,8 +57,7 @@ namespace FriedSynapse.FlowEnt.Editor
             }
 
             label.text = name;
-            property.isExpanded =
-                EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded, label);
+            property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label);
 
             DrawMenu(headerPosition, property);
 

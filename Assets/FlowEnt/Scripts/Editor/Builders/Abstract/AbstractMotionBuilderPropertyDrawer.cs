@@ -43,8 +43,6 @@ namespace FriedSynapse.FlowEnt.Editor
 
             //HACK: EditorGUI.Foldout doesn't know how to do overflows so we just draw the label separately
             Rect labelPosition = headerPosition;
-            labelPosition.x += EditorGUIUtility.singleLineHeight;
-            labelPosition.width -= EditorGUIUtility.singleLineHeight;
             string name = MotionNames.GetNames(motionBuilderType, motionBuilder).Preferred;
             label.text = name.PadLeft(name.Length + 6);
             EditorGUI.LabelField(labelPosition, label);

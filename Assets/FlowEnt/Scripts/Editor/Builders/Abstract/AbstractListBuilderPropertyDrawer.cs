@@ -48,10 +48,9 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            property.isExpanded = EditorGUI.Foldout(FlowEntEditorGUILayout.GetRect(position, 0), property.isExpanded,
-                GetLabel(property, label), EditorStyles.foldoutHeader);
-
             Rect headerPosition = FlowEntEditorGUILayout.GetRect(position, 0);
+            property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, GetLabel(property, label), EditorStyles.foldoutHeader);
+
             DrawMenu(headerPosition, property);
 
             if (!property.isExpanded)
@@ -63,7 +62,7 @@ namespace FriedSynapse.FlowEnt.Editor
             Draw(ref position, property);
             DrawList(position, property);
         }
-        
+
         private void DrawMenu(Rect position, SerializedProperty property)
         {
             Rect menuPosition = position;
@@ -104,10 +103,10 @@ namespace FriedSynapse.FlowEnt.Editor
             list.elementHeightCallback = getElementHeight;
             list.onAddDropdownCallback = OnAdd;
             list.DoList(position);
-            
+
             void drawElement(Rect rect, int index, bool isActive, bool isFocused)
             {
-                EditorGUI.PropertyField(rect, listProperty.GetArrayElementAtIndex(index), true);
+                EditorGUI.PropertyField(FlowEntEditorGUILayout.GetRectIndented(rect, 8), listProperty.GetArrayElementAtIndex(index), true);
             }
 
             float getElementHeight(int index)
