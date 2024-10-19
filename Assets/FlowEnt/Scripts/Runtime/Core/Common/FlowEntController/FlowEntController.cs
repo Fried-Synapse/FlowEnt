@@ -182,12 +182,16 @@ namespace FriedSynapse.FlowEnt
                 }
                 catch (Exception ex)
                 {
+                    string updatableInfo = $"{index}{(string.IsNullOrEmpty(index.hierarchy) ? "" : $"[{index.hierarchy}]")}";
+
                     FlowEntDebug.LogError(
                         $"<color={FlowEntInternalConstants.Red}><b>Exception on update</b></color>\n" +
-                        $"<color={FlowEntInternalConstants.Orange}><b>Origin of animation that generated the exception</b></color>:\n" +
+                        $"<color={FlowEntInternalConstants.Grey}><b>Origin of animation that generated the exception</b></color>:\n" +
+                        $"<color={FlowEntInternalConstants.Grey}>{updatableInfo}</color>\n\n" +
                         $"<color={FlowEntInternalConstants.Orange}>{index.stackTrace}</color>\n\n" +
                         $"<b>Exception</b>:\n{ex}");
                 }
+
 #endif
                 index = index.next;
             }
