@@ -6,7 +6,6 @@ namespace FriedSynapse.FlowEnt
     [Serializable]
     public class TweenBuilder : AbstractAnimationBuilder<Tween>, IGizmoDrawer
     {
-#pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]
         private TweenOptionsBuilder options = new();
 
@@ -21,10 +20,12 @@ namespace FriedSynapse.FlowEnt
         private TweenMotionsBuilder motions = new();
 
         public TweenMotionsBuilder Motions => motions;
-#pragma warning restore RCS1169, RCS1085, IDE0044
 
         public override Tween Build()
             => new Tween(Options.Build())
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
+                .SetHierarchy<Tween>(hierarchy)
+#endif
                 .SetEvents(Events.Build())
                 .Apply(Motions.Build());
 

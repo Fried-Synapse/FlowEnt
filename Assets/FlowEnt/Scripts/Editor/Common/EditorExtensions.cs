@@ -5,6 +5,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -248,6 +249,23 @@ namespace FriedSynapse.FlowEnt.Editor
             {
                 menu.AddItem(content, isOn, callback);
             }
+        }
+
+        internal static string GetHierarchy(this SerializedProperty property)
+        {
+            GameObject gameObject = ((Component)property.serializedObject.targetObject).gameObject;
+            string hierarchy = gameObject.name;
+            Transform parent = gameObject.transform.parent;
+
+            while (parent != null)
+            {
+                hierarchy = $"{parent.name}/{hierarchy}";
+                parent = parent.parent;
+            }
+
+            hierarchy = $"[{gameObject.scene.name}]/{hierarchy}";
+
+            return hierarchy;
         }
     }
 }

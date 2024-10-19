@@ -13,7 +13,6 @@ namespace FriedSynapse.FlowEnt
             AnimationCurve,
         }
 
-#pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField, Min(TweenOptions.MinTime)]
         private float time = TweenOptions.DefaultTime;
         public float Time => time;
@@ -33,8 +32,6 @@ namespace FriedSynapse.FlowEnt
         [SerializeField]
         private LoopType loopType;
         public LoopType LoopType => loopType;
-
-#pragma warning restore RCS1169, RCS1085, IDE0044
 
         public override TweenOptions Build()
         {

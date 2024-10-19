@@ -6,7 +6,6 @@ namespace FriedSynapse.FlowEnt
     [Serializable]
     public class EchoBuilder : AbstractAnimationBuilder<Echo>, IGizmoDrawer
     {
-#pragma warning disable RCS1169, RCS1085, IDE0044
         [SerializeField]
         private EchoOptionsBuilder options = new();
 
@@ -21,10 +20,12 @@ namespace FriedSynapse.FlowEnt
         private EchoMotionsBuilder motions = new();
 
         public EchoMotionsBuilder Motions => motions;
-#pragma warning restore RCS1169, RCS1085, IDE0044
 
         public override Echo Build()
             => new Echo(Options.Build())
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
+                .SetHierarchy<Echo>(hierarchy)
+#endif
                 .SetEvents(Events.Build())
                 .Apply(Motions.Build());
         

@@ -42,6 +42,8 @@ namespace FriedSynapse.FlowEnt.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            property.FindPropertyRelative("hierarchy").stringValue = property.GetHierarchy();
+            
             Rect headerPosition = FlowEntEditorGUILayout.GetRectForLine(position, 0);
             TAnimationBuilder animation = property.GetValue<TAnimationBuilder>();
             SerializedProperty parentProperty = property.GetParentArray();

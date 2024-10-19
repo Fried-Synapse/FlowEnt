@@ -17,6 +17,9 @@ namespace FriedSynapse.FlowEnt
 
         public bool IsEnabled => isEnabled;
 
+        [SerializeField]
+        private protected string hierarchy;
+
         AbstractAnimation IAbstractAnimationBuilder.Build()
             => Build();
     }

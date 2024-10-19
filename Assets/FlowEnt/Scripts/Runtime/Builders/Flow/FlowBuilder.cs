@@ -55,6 +55,9 @@ namespace FriedSynapse.FlowEnt
         public override Flow Build()
         {
             Flow flow = new Flow(Options.Build())
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
+                .SetHierarchy<Flow>(hierarchy)
+#endif
                 .SetEvents(Events.Build());
             foreach (QueueList.Queue queue in Queues.Items)
             {
