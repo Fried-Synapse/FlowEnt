@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: Test in ${{ matrix.testMode }} 📝
+    name: 🧪 Test in ${{ matrix.testMode }} 
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -37,11 +37,11 @@ jobs:
         with:
           testMode: ${{ matrix.testMode }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
+          checkName: 🧪 Test results for ${{ matrix.testMode }}  
 
       - name: Upload Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Test results for ${{ matrix.testMode }}
+          name: 🧪 Test results for ${{ matrix.testMode }}
           path: ${{ steps.testsRunner.outputs.artifactsPath }}
