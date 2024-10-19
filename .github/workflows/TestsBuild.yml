@@ -35,4 +35,4 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          customParameters: ${{ matrix.compilationSymbol != 'No Symbol' && '-define:${{ matrix.compilationSymbol }}' || '' }}
+          customParameters: ${{ matrix.compilationSymbol != 'No Symbol' && format('-define:{0}', matrix.compilationSymbol) || '' }}
