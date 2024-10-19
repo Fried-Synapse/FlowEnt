@@ -759,24 +759,24 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: 
-    EmbeddedLinux: 
-    GameCoreScarlett: 
-    GameCoreXboxOne: 
-    LinuxHeadlessSimulation: 
+    Android: FlowEnt_Debug_Editor
+    EmbeddedLinux: FlowEnt_Debug_Editor
+    GameCoreScarlett: FlowEnt_Debug_Editor
+    GameCoreXboxOne: FlowEnt_Debug_Editor
+    LinuxHeadlessSimulation: FlowEnt_Debug_Editor
     Lumin: 
-    Nintendo Switch: 
-    PS4: 
-    PS5: 
-    QNX: 
-    Stadia: 
-    Standalone: 
-    VisionOS: 
-    WebGL: 
-    Windows Store Apps: 
-    XboxOne: 
-    iPhone: 
-    tvOS: 
+    Nintendo Switch: FlowEnt_Debug_Editor
+    PS4: FlowEnt_Debug_Editor
+    PS5: FlowEnt_Debug_Editor
+    QNX: FlowEnt_Debug_Editor
+    Stadia: FlowEnt_Debug_Editor
+    Standalone: FlowEnt_Debug_Editor
+    VisionOS: FlowEnt_Debug_Editor
+    WebGL: FlowEnt_Debug_Editor
+    Windows Store Apps: FlowEnt_Debug_Editor
+    XboxOne: FlowEnt_Debug_Editor
+    iPhone: FlowEnt_Debug_Editor
+    tvOS: FlowEnt_Debug_Editor
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
