@@ -27,7 +27,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
         internal static Rect GetRectIndented(Rect position, int indent = 12)
             => new(position.x + indent, position.y, position.width - indent, position.height);
-        
+
         internal static void PropertyField(ref Rect position, SerializedProperty property, GUIContent label = null)
         {
             position.height = EditorGUI.GetPropertyHeight(property);

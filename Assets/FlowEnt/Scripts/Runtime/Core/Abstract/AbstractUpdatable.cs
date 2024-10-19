@@ -25,27 +25,19 @@ namespace FriedSynapse.FlowEnt
             ++lastId;
             this.updateController = updateController;
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
-            const string flowEntNamespace = "  at FriedSynapse.FlowEnt.";
-            const string stackTraceNamespace = "  at System.Environment.get_StackTrace";
-            const string flowEntDemoNamespace = "  at FriedSynapse.FlowEnt.Demo";
-            string[] lines = Environment.StackTrace.Split('\n');
-            System.Collections.Generic.List<string> trimmedLines = new System.Collections.Generic.List<string>();
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrEmpty(line) ||
-                    line.StartsWith(stackTraceNamespace) ||
-                    (line.StartsWith(flowEntNamespace) && !line.StartsWith(flowEntDemoNamespace)))
-                {
-                    continue;
-                }
-                trimmedLines.Add(line);
-            }
-            stackTrace = string.Join("\n", trimmedLines);
+            stackTrace = FlowEntDebug.GetStackTrace();
 #endif
         }
 
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
         internal string stackTrace;
+        internal string hierarchy;
+        internal T SetHierarchy<T>(string hierarchy)
+            where T : AbstractUpdatable
+        {
+            this.hierarchy = hierarchy;
+            return (T)this;
+        }
 #endif
 
         //HACK for having a constructor that does nothing, to instantiate quicker when needed
@@ -123,7 +115,6 @@ namespace FriedSynapse.FlowEnt
 
     internal class UpdatableAnchor : AbstractUpdatable
     {
-
         public UpdatableAnchor() : base(0)
         {
         }

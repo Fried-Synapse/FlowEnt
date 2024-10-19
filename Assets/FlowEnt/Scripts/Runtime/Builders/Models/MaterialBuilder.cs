@@ -63,7 +63,9 @@ namespace FriedSynapse.FlowEnt
             _ => null
         };
 
+#if UNITY_EDITOR
         List<Object> IHasUndoableObjects.GetUndoableObjects() => new() { Build() };
+#endif
     }
 
     [Serializable]

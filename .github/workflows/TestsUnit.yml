@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: Test in ${{ matrix.testMode }} 📝
+    name: 🧪 Test in ${{ matrix.testMode }} 
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -22,9 +22,10 @@ jobs:
           key: Library
           restore-keys: Library-
 
-      - name: Add FLOWENT_GITHUB_RUN symbol to csc.rsp
+      - name: Add compilation symbols to csc.rsp
         run: |
-          echo "-define:FLOWENT_GITHUB_RUN" >> ./Assets/csc.rsp
+          echo "-define:FlowEnt_GitHub_Run" >> ./Assets/csc.rsp
+          echo "-define:FlowEnt_Debug_Editor" >> ./Assets/csc.rsp
 
       - name: Run Tests
         uses: game-ci/unity-test-runner@v4
@@ -36,11 +37,11 @@ jobs:
         with:
           testMode: ${{ matrix.testMode }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
+          checkName: 🧪 Test results for ${{ matrix.testMode }}  
 
       - name: Upload Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Test results for ${{ matrix.testMode }}
+          name: 🧪 Test results for ${{ matrix.testMode }}
           path: ${{ steps.testsRunner.outputs.artifactsPath }}

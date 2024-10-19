@@ -182,11 +182,7 @@ namespace FriedSynapse.FlowEnt
                 }
                 catch (Exception ex)
                 {
-                    FlowEntDebug.LogError(
-                        $"<color={FlowEntInternalConstants.Red}><b>Exception on update</b></color>\n" +
-                        $"<color={FlowEntInternalConstants.Orange}><b>Origin of animation that generated the exception</b></color>:\n" +
-                        $"<color={FlowEntInternalConstants.Orange}>{index.stackTrace}</color>\n\n" +
-                        $"<b>Exception</b>:\n{ex}");
+                    FlowEntDebug.LogException(index, ex);
                 }
 #endif
                 index = index.next;

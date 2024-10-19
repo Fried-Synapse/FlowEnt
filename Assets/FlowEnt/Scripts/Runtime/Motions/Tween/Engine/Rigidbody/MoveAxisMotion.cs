@@ -33,7 +33,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         }
 
         protected override Vector3 Target { get => item.position; set => item.position = value; }
-        
+
         protected override Vector3 GetFrom() => item.position;
     }
 }

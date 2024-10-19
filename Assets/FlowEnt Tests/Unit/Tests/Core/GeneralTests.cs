@@ -128,7 +128,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     }
                 }).Start())
                 .AssertTime(TestTime)
-                .Assert(() => LogAssert.Expect(LogType.Error, new Regex("Origin of animation that generated the exception")))
+                .Assert(() => LogAssert.Expect(LogType.Error, new Regex(@"(?=.*\[FlowEnt\])(?=.*Update Exception)(?=.*on Animation)")))
                 .Run();
         }
 #endif

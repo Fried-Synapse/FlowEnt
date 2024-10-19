@@ -4,24 +4,28 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: Test build for ${{ matrix.targetPlatform }} 📝
+    name: 🔨 Test build for ${{ matrix.targetPlatform }} with ${{ matrix.compilationSymbol }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         targetPlatform:
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - iOS # Build an iOS player.
-          - Android # Build an Android .apk standalone app.
+          - StandaloneWindows64 
+          - iOS
+          - Android
+        compilationSymbol:
+          - 'No Symbol'
+          - FlowEnt_Debug_Editor 
+          - FlowEnt_Debug
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Cache Ligrary
+      - name: Cache Library
         uses: actions/cache@v3
         with:
           path: FlowEnt/Library
-          key: Library-${{ matrix.targetPlatform }}
+          key: Library-${{ matrix.targetPlatform }}-${{ matrix.compilationSymbol }}
           restore-keys: Library-
 
       - uses: game-ci/unity-builder@v4
@@ -30,4 +34,5 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: ${{ matrix.targetPlatform }}     
+          targetPlatform: ${{ matrix.targetPlatform }}
+          customParameters: ${{ matrix.compilationSymbol != 'No Symbol' && format('-define:{0}', matrix.compilationSymbol) || '' }}
