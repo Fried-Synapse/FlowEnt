@@ -5,6 +5,8 @@ namespace FriedSynapse.FlowEnt
 {
     public interface IHasUndoableObjects
     {
+#if UNITY_EDITOR
         public List<Object> GetUndoableObjects();
+#endif
     }
 }
