@@ -28,15 +28,11 @@ jobs:
           key: Library-${{ matrix.targetPlatform }}-${{ matrix.compilationSymbol }}
           restore-keys: Library-
 
-      - name: Add compilation symbols to csc.rsp
-        if: matrix.compilationSymbol != 'No Symbol'
-        run: |
-          echo "-define:${{ matrix.compilationSymbol }}" >> ./Assets/csc.rsp
-
       - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: ${{ matrix.targetPlatform }}     
+          targetPlatform: ${{ matrix.targetPlatform }}
+          customParameters: ${{ matrix.compilationSymbol != 'No Symbol' && '-define:${{ matrix.compilationSymbol }}' || '' }}
