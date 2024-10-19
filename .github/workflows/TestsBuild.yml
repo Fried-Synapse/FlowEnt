@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: Test build for ${{ matrix.targetPlatform }} 📝
+    name: Test build for ${{ matrix.targetPlatform }} with ${{ matrix.compilationSymbol }}📝
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -13,8 +13,8 @@ jobs:
           - StandaloneWindows64 
           - iOS
           - Android
-        compilationSymbols:
-          - FlowEnt_None
+        compilationSymbol:
+          - 'No Symbol'
           - FlowEnt_Debug_Editor 
           - FlowEnt_Debug
     steps:
@@ -29,9 +29,9 @@ jobs:
           restore-keys: Library-
 
       - name: Add compilation symbols to csc.rsp
-        if: ${{ success() }}
+        if: matrix.compilationSymbol != 'No Symbol'
         run: |
-          echo "-define:${{ matrix.compilationSymbols }}" >> ./Assets/csc.rsp
+          echo "-define:${{ matrix.compilationSymbol }}" >> ./Assets/csc.rsp
 
       - uses: game-ci/unity-builder@v4
         env:
