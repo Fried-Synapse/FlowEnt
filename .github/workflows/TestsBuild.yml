@@ -25,7 +25,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: FlowEnt/Library
-          key: Library-${{ matrix.targetPlatform }}
+          key: Library-${{ matrix.targetPlatform }}-${{ matrix.compilationSymbol }}
           restore-keys: Library-
 
       - name: Add compilation symbols to csc.rsp
