@@ -29,6 +29,7 @@ namespace FriedSynapse.FlowEnt
         public static void LogError(object message)
             => Debug.LogError($"<b><color={FlowEntInternalConstants.FlowEnt}>[FlowEnt]</color></b> {message}");
 
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
         internal static void LogException(AbstractUpdatable abstractUpdatable, Exception exception)
         {
             string info = string.Empty;
@@ -47,6 +48,7 @@ namespace FriedSynapse.FlowEnt
                 $"{info}" +
                 $"<color={FlowEntInternalConstants.Orange}><b>Exception</b></color>:\n{exception}");
         }
+#endif
 
         internal static string GetStackTrace()
         {
