@@ -10,19 +10,28 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - iOS # Build an iOS player.
-          - Android # Build an Android .apk standalone app.
+          - StandaloneWindows64 
+          - iOS
+          - Android
+        compilationSymbols:
+          - FlowEnt_None
+          - FlowEnt_Debug_Editor 
+          - FlowEnt_Debug
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Cache Ligrary
+      - name: Cache Library
         uses: actions/cache@v3
         with:
           path: FlowEnt/Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
+
+      - name: Add compilation symbols to csc.rsp
+        if: ${{ success() }}
+        run: |
+          echo "-define:${{ matrix.compilationSymbols }}" >> ./Assets/csc.rsp
 
       - uses: game-ci/unity-builder@v4
         env:

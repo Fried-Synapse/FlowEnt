@@ -22,7 +22,7 @@ jobs:
           key: Library
           restore-keys: Library-
 
-      - name: Add FLOWENT_GITHUB_RUN symbol to csc.rsp
+      - name: Add compilation symbols to csc.rsp
         run: |
           echo "-define:FlowEnt_GitHub_Run" >> ./Assets/csc.rsp
           echo "-define:FlowEnt_Debug_Editor" >> ./Assets/csc.rsp
