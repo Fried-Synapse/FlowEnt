@@ -1,0 +1,50 @@
+name: "Release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      versionUpdatePart:
+        description: 'Select version update type'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: UpdateVersion
+        id: updateVersion
+        uses: Fried-Synapse/StoreGate/Step/UpdateVersion@v1
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          type: ${{ github.event.inputs.versionUpdatePart }}
+
+      - name: Create Package
+        id: createPackage
+        uses: Fried-Synapse/StoreGate/Step/CreateUnityPackage@v1
+        env:
+          UNITY_VERSION: "ubuntu-2022.3.39f1-android-3"
+          UNITY_LICENCE: ${{ secrets.UNITY_LICENCE }}
+          UNITY_USERNAME: ${{ secrets.UNITY_USERNAME }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          assetsPaths: Assets/FlowEnt
+          packageName: FlowEnt.v${{ steps.updateVersion.outputs.version }}
+
+      - name: Release GitHub
+        uses: Fried-Synapse/StoreGate/Step/ReleaseGitHub@v1
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          version: ${{ steps.updateVersion.outputs.version }}
+          name: FlowEnt.v${{ steps.updateVersion.outputs.version }}.unitypackage
+          file: ${{ steps.createPackage.outputs.packagePath }}
