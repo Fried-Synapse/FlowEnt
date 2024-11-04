@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   publish:
+    name: Release - Docs (Version: ${{ github.event.release.tag_name }})
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

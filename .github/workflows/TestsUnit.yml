@@ -31,8 +31,8 @@ jobs:
         uses: game-ci/unity-test-runner@v4
         id: testsRunner
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}    
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENCE }}    
+          UNITY_EMAIL: ${{ secrets.UNITY_USERNAME }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           testMode: ${{ matrix.testMode }}
