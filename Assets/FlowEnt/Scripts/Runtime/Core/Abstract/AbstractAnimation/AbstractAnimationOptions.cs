@@ -169,6 +169,14 @@ namespace FriedSynapse.FlowEnt
             DelayUntil = callback;
             return this;
         }
+        
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetWaitFor
+        public AbstractAnimationOptions SetWaitFor(params AbstractAnimation[] animations)
+        {
+            SetDelayUntil(AbstractAnimation.GetWaitForCallback(animations));
+            return this;
+        }
 
         /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetLoopCount

@@ -75,6 +75,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetWaitFor
+        public new Flow SetWaitFor(params AbstractAnimation[] animations)
+        {
+            base.SetWaitFor(animations);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetLoopCount
         public new Flow SetLoopCount(int? loopCount)
         {

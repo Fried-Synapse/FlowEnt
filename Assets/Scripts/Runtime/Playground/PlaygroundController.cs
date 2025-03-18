@@ -76,8 +76,15 @@ namespace FriedSynapse.FlowEnt.Builder
 
         private async void Start()
         {
-            await Task.Yield();
-            Tween.Build().Start();
+            try
+            {
+                await Task.Yield();
+                Tween.Build().SetDelay(1).Start();
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception);
+            }
         }
 
         public void ResetMob()

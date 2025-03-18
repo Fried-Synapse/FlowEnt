@@ -3,7 +3,9 @@
     "rootNamespace": "FriedSynapse.FlowEnt.Builder.Editor",
     "references": [
         "FriedSynapse.FlowEnt.Builder",
-        "FriedSynapse.FlowEnt"
+        "FriedSynapse.FlowEnt",
+        "DOTween.Modules",
+        "FriedSynapse.Quickit"
     ],
     "includePlatforms": [
         "Editor"

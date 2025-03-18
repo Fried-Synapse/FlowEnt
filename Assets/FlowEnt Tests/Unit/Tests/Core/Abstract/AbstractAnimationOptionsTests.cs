@@ -488,6 +488,24 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
         #endregion
 
+        #region Wait For
+
+        [UnityTest]
+        public IEnumerator WaitFor()
+        {
+            AbstractAnimation animation = null;
+
+            yield return CreateTester()
+                .Arrange(() => animation = CreateAnimation(HalfTestTime).Start())
+                .Act(() => CreateAnimation(HalfTestTime)
+                    .SetWaitFor(animation)
+                    .Start())
+                .AssertTime(TestTime)
+                .Run();
+        }
+        
+        #endregion
+        
         [UnityTest]
         public IEnumerator DelayBothSequence()
         {
