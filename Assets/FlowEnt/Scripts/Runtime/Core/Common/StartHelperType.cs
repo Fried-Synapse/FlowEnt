@@ -9,5 +9,6 @@ namespace FriedSynapse.FlowEnt
         SkipFrames = 1 << 0,
         Delay = 1 << 1,
         DelayUntil = 1 << 2,
+        AnimationWaiter = 1 << 3,
     }
 }

@@ -98,6 +98,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetWaitFor
+        public new EchoOptions SetWaitFor(params AbstractAnimation[] animations)
+        {
+            base.SetWaitFor(animations);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetTimeScale
         public new EchoOptions SetTimeScale(float timeScale)
         {

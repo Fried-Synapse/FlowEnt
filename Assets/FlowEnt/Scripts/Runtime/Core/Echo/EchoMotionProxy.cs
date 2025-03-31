@@ -247,6 +247,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetWaitFor
+        public EchoMotionProxy<TItem> SetWaitFor(params AbstractAnimation[] animations)
+        {
+            Echo.SetWaitFor(animations);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetLoopCount
         public EchoMotionProxy<TItem> SetLoopCount(int? loopCount)
         {

@@ -151,6 +151,28 @@ namespace FriedSynapse.FlowEnt
             return this;
         }
 
+        internal static Func<bool> GetWaitForCallback(AbstractAnimation[] animations)
+            => () =>
+            {
+                for (var i = 0; i < animations.Length; i++)
+                {
+                    if (animations[i].PlayState != PlayState.Finished)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            };
+
+        /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetDelayUntil
+        public AbstractAnimation SetWaitFor(params AbstractAnimation[] animations)
+        {
+            SetDelayUntil(GetWaitForCallback(animations));
+            return this;
+        }
+
         /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetLoopCount
         public AbstractAnimation SetLoopCount(int? loopCount)

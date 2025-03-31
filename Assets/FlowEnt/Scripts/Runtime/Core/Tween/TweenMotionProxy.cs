@@ -249,6 +249,14 @@ namespace FriedSynapse.FlowEnt
         }
 
         /// <inheritdoc />
+        /// \copydoc IFluentAnimationOptionable.SetWaitFor
+        public new TweenMotionProxy<TItem> SetWaitFor(params AbstractAnimation[] animations)
+        {
+            Tween.SetWaitFor(animations);
+            return this;
+        }
+
+        /// <inheritdoc />
         /// \copydoc IFluentTweenOptionable.SetTime
         public TweenMotionProxy<TItem> SetTime(float time)
         {

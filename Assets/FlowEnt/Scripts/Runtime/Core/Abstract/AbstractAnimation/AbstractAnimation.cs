@@ -175,6 +175,12 @@ namespace FriedSynapse.FlowEnt
                 return true;
             }
 
+            if ((startHelperType & StartHelperType.AnimationWaiter) != StartHelperType.None && delayUntil != null)
+            {
+                StartDelayUntil();
+                return true;
+            }
+
             return false;
         }
 
