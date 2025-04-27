@@ -78,9 +78,8 @@ namespace FriedSynapse.FlowEnt.Builder
         {
             try
             {
-                //await Task.Yield();
-                var x = Flow.Build().Start();
-                new Tween(1).OnCompleted(() => Destroy(Green.gameObject)).Start();
+                await Task.Yield();
+                Tween.Build().SetDelay(1).Start();
             }
             catch (Exception exception)
             {
