@@ -1,12 +1,20 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using FriedSynapse.FlowEnt.Motions.Abstract;
+using UnityEngine;
 
 namespace FriedSynapse.FlowEnt
 {
+    internal interface ICancellableAnimation
+    {
+        internal bool ShouldCancel { get; }
+    }
+
     /// <summary>
     /// Provides animation specific behaviour
     /// </summary>
-    public abstract partial class AbstractAnimation : AbstractUpdatable, IFluentControllable<AbstractAnimation>
+    public abstract partial class AbstractAnimation : AbstractUpdatable, IFluentControllable<AbstractAnimation>, ICancellableAnimation
     {
         /// <inheritdoc cref="AbstractUpdatable()"/>
         protected AbstractAnimation()
@@ -25,6 +33,9 @@ namespace FriedSynapse.FlowEnt
         /// THe amount of scaled time unconsumed by this animation from the last frame.
         /// </summary>
         public float? Overdraft { get => overdraft; internal set => overdraft = value; }
+
+        bool ICancellableAnimation.ShouldCancel => ShouldCancel();
+        private protected abstract bool ShouldCancel();
 
         #endregion
 

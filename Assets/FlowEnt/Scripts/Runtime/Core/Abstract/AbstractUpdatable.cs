@@ -60,6 +60,7 @@ namespace FriedSynapse.FlowEnt
         /// </summary>
         public string Name { get; set; }
 
+
         internal UpdateType updateType;
 
         internal IUpdateController updateController;
@@ -118,7 +119,7 @@ namespace FriedSynapse.FlowEnt
         public UpdatableAnchor() : base(0)
         {
         }
-
+        
         internal override void StartInternal(float deltaTime)
         {
             throw new InvalidOperationException(FlowEntInternalConstants.InvalidImplementation);

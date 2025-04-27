@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Motions.Tween.Abstract;
 
 namespace FriedSynapse.FlowEnt
@@ -11,7 +12,7 @@ namespace FriedSynapse.FlowEnt
     /// A tween is a simple interpolation from 0 to 1 which has several options and events attached.
     /// For more information please go to https://flowent.friedsynapse.com/tween
     /// </summary>
-    public sealed partial class Tween : AbstractAnimation,
+    public sealed partial class Tween : AbstractMotionAnimation<AbstractTweenMotion>,
         IFluentControllable<Tween>
     {
         private enum LoopDirection
@@ -50,7 +51,6 @@ namespace FriedSynapse.FlowEnt
             this.time = time;
         }
 
-        private readonly List<AbstractTweenMotion> motions = new(1);
         private int? remainingLoops;
         private float remainingTime;
         private LoopDirection loopDirection;
@@ -246,22 +246,19 @@ namespace FriedSynapse.FlowEnt
 
         #region Motions
 
-        /// <summary>
-        /// Applies all the motions to the current tween.
-        /// </summary>
-        /// <param name="motions"></param>
-        public Tween Apply(params AbstractTweenMotion[] motions)
+        /// <inheritdoc cref="AbstractMotionAnimation{TMotion}.Apply(TMotion[])" />
+        /// \copydoc AbstractMotionAnimation.Apply
+        public new Tween Apply(params AbstractTweenMotion[] motions)
         {
-            this.motions.AddRange(motions);
+            base.Apply(motions);
             return this;
         }
 
-        /// <inheritdoc cref="Apply(AbstractTweenMotion[])"/>
-        /// \copydoc Tween.Apply
-        /// <param name="motions"></param>
-        public Tween Apply(IEnumerable<AbstractTweenMotion> motions)
+        /// <inheritdoc cref="AbstractMotionAnimation{TMotion}.Apply(IEnumerable{TMotion})" />
+        /// \copydoc AbstractMotionAnimation.Apply
+        public new Tween Apply(IEnumerable<AbstractTweenMotion> motions)
         {
-            this.motions.AddRange(motions);
+            base.Apply(motions);
             return this;
         }
 

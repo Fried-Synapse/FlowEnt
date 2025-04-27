@@ -35,7 +35,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Internal Members
 
-        private readonly UpdatablesFastList updatables = new ();
+        private readonly UpdatablesFastList updatables = new();
         private readonly List<AbstractUpdatableWrapper> updatableWrappersQueue = new(2);
         private AbstractUpdatableWrapper lastQueuedUpdatableWrapper;
 
@@ -168,6 +168,22 @@ namespace FriedSynapse.FlowEnt
             }
 
             onUpdated?.Invoke(scaledDeltaTime);
+        }
+
+        private protected override bool ShouldCancel()
+        {
+            AbstractUpdatable index = updatables.anchor.next;
+            while (index != null)
+            {
+                if (index is ICancellableAnimation cancellableAnimation && cancellableAnimation.ShouldCancel)
+                {
+                    return true;
+                }
+
+                index = index.next;
+            }
+
+            return false;
         }
 
         internal override void UpdateInternal(float deltaTime)
