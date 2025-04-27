@@ -250,31 +250,31 @@ namespace FriedSynapse.FlowEnt
         /// <summary>
         /// Creates a scope for the object so you can add motions designed specifically for that object.
         /// </summary>
-        /// <param name="element"></param>
+        /// <param name="item"></param>
         /// <typeparam name="TItem"></typeparam>
-        public EchoMotionProxy<TItem> For<TItem>(TItem element)
+        public EchoMotionProxy<TItem> For<TItem>(TItem item)
         {
-            return new EchoMotionProxy<TItem>(this, element);
+            return new EchoMotionProxy<TItem>(this, item);
         }
 
         /// <summary>
         /// Creates a scope for the object so you can add motions designed specifically for that array of objects.
         /// </summary>
-        /// <param name="elements"></param>
+        /// <param name="items"></param>
         /// <typeparam name="TItem"></typeparam>
-        public EchoMotionProxyArray<TItem> For<TItem>(params TItem[] elements)
+        public EchoMotionProxyArray<TItem> For<TItem>(params TItem[] items)
         {
-            return new EchoMotionProxyArray<TItem>(this, elements);
+            return new EchoMotionProxyArray<TItem>(this, items);
         }
 
         /// <summary>
         /// Creates a scope for the object so you can add motions designed specifically for that enumeration of objects.
         /// </summary>
-        /// <param name="elements"></param>
+        /// <param name="items"></param>
         /// <typeparam name="TItem"></typeparam>
-        public EchoMotionProxyArray<TItem> ForAll<TItem>(IEnumerable<TItem> elements)
+        public EchoMotionProxyArray<TItem> ForAll<TItem>(IEnumerable<TItem> items)
         {
-            return new EchoMotionProxyArray<TItem>(this, elements.ToArray());
+            return new EchoMotionProxyArray<TItem>(this, items.ToArray());
         }
 
         #endregion

@@ -55,18 +55,18 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="Tween.For{TItem}(TItem[])"/>
         /// \copydoc Tween.For
-        public TweenMotionProxyArray<TItem2> For<TItem2>(params TItem2[] elements)
+        public TweenMotionProxyArray<TItem2> For<TItem2>(params TItem2[] items)
             where TItem2 : class
         {
-            return new TweenMotionProxyArray<TItem2>(Tween, elements);
+            return new TweenMotionProxyArray<TItem2>(Tween, items);
         }
 
         /// <inheritdoc cref="Tween.ForAll{TItem}(IEnumerable{TItem})"/>
         /// \copydoc Tween.ForAll
-        public TweenMotionProxyArray<TItem2> ForAll<TItem2>(IEnumerable<TItem2> elements)
+        public TweenMotionProxyArray<TItem2> ForAll<TItem2>(IEnumerable<TItem2> items)
             where TItem2 : class
         {
-            return new TweenMotionProxyArray<TItem2>(Tween, elements.ToArray());
+            return new TweenMotionProxyArray<TItem2>(Tween, items.ToArray());
         }
 
         #endregion
@@ -250,7 +250,7 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc />
         /// \copydoc IFluentAnimationOptionable.SetWaitFor
-        public new TweenMotionProxy<TItem> SetWaitFor(params AbstractAnimation[] animations)
+        public TweenMotionProxy<TItem> SetWaitFor(params AbstractAnimation[] animations)
         {
             Tween.SetWaitFor(animations);
             return this;
