@@ -10,7 +10,9 @@ namespace FriedSynapse.FlowEnt
         where TMotion : IMotion
     {
         private protected readonly FastList<TMotion> motions = new(1);
-        //private readonly FastList<Object> objects = new(1);
+#if FlowEnt_AutoCancel
+        private readonly FastList<Object> objects = new(1);
+#endif
 
         #region Motions
 
@@ -20,7 +22,13 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motion"></param>
         public AbstractMotionAnimation<TMotion> Apply(TMotion motion)
         {
-            //RegisterObjects(motions.OfType<IObjectMotion>());
+#if FlowEnt_AutoCancel
+            if (motion is IObjectMotion objectMotion)
+            {
+                RegisterObject(objectMotion);
+            }
+#endif
+
             motions.Add(motion);
             return this;
         }
@@ -30,39 +38,51 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motions"></param>
         public AbstractMotionAnimation<TMotion> Apply(IEnumerable<TMotion> motions)
         {
-            //RegisterObjects(motions.OfType<IObjectMotion>());
+#if FlowEnt_AutoCancel
+            RegisterObjects(motions.OfType<IObjectMotion>());
+#endif
             this.motions.AddRange(motions);
             return this;
         }
-        
+
         #endregion
 
         #region AutoCancel
 
         private protected override bool ShouldCancel()
         {
-            // foreach (Object obj in objects)
-            // {
-            //     if (obj == null)
-            //     {
-            //         return true;
-            //     }
-            // }
+#if FlowEnt_AutoCancel
+            for (int i = 0; i < objects.Count; i++)
+            {
+                if (objects[i] == null)
+                {
+                    return true;
+                }
+            }
+#endif
 
             return false;
         }
 
-        private protected void RegisterObjects(IEnumerable<IObjectMotion> motions)
+#if FlowEnt_AutoCancel
+        private void RegisterObject(IObjectMotion motion)
         {
-            // foreach (IObjectMotion motion in motions)
-            // {
-            //     Object obj = motion.Object;
-            //     if (obj != null)
-            //     {
-            //         objects.Add(obj);
-            //     }
-            // }
+            Object obj = motion.Object;
+            if (obj != null)
+            {
+                objects.Add(obj);
+            }
         }
+
+        private void RegisterObjects(IEnumerable<IObjectMotion> motions)
+        {
+            foreach (IObjectMotion motion in motions)
+            {
+                RegisterObject(motion);
+            }
+        }
+
+#endif
 
         #endregion
     }

@@ -8,17 +8,16 @@ namespace FriedSynapse.FlowEnt
     {
         private T[] items;
         private int size;
-        public int Count => size;
+        internal int Count => size;
 
-        public T this[int index] { get => items[index]; set => items[index] = value; }
+        internal T this[int index] { get => items[index]; set => items[index] = value; }
 
-        public FastList(int capacity)
+        internal FastList(int capacity)
         {
             items = new T[capacity];
-            size = 0;
         }
 
-        public void Add(T item)
+        internal void Add(T item)
         {
             if (size >= items.Length)
             {
@@ -28,7 +27,7 @@ namespace FriedSynapse.FlowEnt
             items[size++] = item;
         }
 
-        public void AddRange(IEnumerable<T> items)
+        internal void AddRange(IEnumerable<T> items)
         {
             foreach (T item in items)
             {
@@ -42,7 +41,7 @@ namespace FriedSynapse.FlowEnt
             Array.Resize(ref items, newCapacity);
         }
 
-        public IEnumerator<T> GetEnumerator()
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             for (int i = 0; i < size; i++)
             {
@@ -50,6 +49,6 @@ namespace FriedSynapse.FlowEnt
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable<T>)this).GetEnumerator();
     }
 }

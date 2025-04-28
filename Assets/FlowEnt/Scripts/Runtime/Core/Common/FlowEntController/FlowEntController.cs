@@ -177,14 +177,17 @@ namespace FriedSynapse.FlowEnt
                 try
                 {
 #endif
-                // if (index is ICancellableAnimation cancellableAnimation && cancellableAnimation.ShouldCancel)
-                // {
-                //     index.Stop();
-                // }
-                // else
-                {
-                    index.UpdateInternal(scaledDeltaTime);
-                }
+                
+#if FlowEnt_AutoCancel
+                    if (index is ICancellableAnimation cancellableAnimation && cancellableAnimation.ShouldCancel)
+                    {
+                        index.Stop();
+                    }
+                    else
+#endif
+                    {
+                        index.UpdateInternal(scaledDeltaTime);
+                    }
 #if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
                 }
                 catch (Exception ex)
