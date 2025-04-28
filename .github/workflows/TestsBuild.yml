@@ -15,6 +15,7 @@ jobs:
           - Android
         compilationSymbol:
           - 'No Symbol'
+          - FlowEnt_AutoCancel
           - FlowEnt_Debug_Editor 
           - FlowEnt_Debug
     steps:

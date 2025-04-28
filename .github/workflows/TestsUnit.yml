@@ -11,6 +11,9 @@ jobs:
       matrix:
         testMode:
           - playmode
+        testFilter:
+          - Performance
+          - Runtime
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,12 +39,13 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           testMode: ${{ matrix.testMode }}
+          customParameters: -testFilter ${{ matrix.testFilter }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: 🧪 Test results for ${{ matrix.testMode }}  
+          checkName: 🧪 Test results for ${{ matrix.testMode }} - ${{ matrix.testFilter }}
 
       - name: Upload Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: 🧪 Test results for ${{ matrix.testMode }}
+          name: 🧪 Test results for ${{ matrix.testMode }} - ${{ matrix.testFilter }}
           path: ${{ steps.testsRunner.outputs.artifactsPath }}
