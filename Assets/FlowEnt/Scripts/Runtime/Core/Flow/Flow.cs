@@ -35,7 +35,7 @@ namespace FriedSynapse.FlowEnt
 
         #region Internal Members
 
-        private readonly UpdatablesFastList updatables = new();
+        private readonly UpdatablesFastLinkedList updatables = new();
         private readonly List<AbstractUpdatableWrapper> updatableWrappersQueue = new(2);
         private AbstractUpdatableWrapper lastQueuedUpdatableWrapper;
 

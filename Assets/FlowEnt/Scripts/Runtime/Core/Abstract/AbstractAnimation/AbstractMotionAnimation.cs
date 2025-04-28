@@ -9,19 +9,19 @@ namespace FriedSynapse.FlowEnt
     public abstract class AbstractMotionAnimation<TMotion> : AbstractAnimation
         where TMotion : IMotion
     {
-        private protected readonly List<TMotion> motions = new(1);
-        private readonly List<Object> objects = new(1);
+        private protected readonly FastList<TMotion> motions = new(1);
+        //private readonly FastList<Object> objects = new(1);
 
         #region Motions
 
         /// <summary>
-        /// Applies all the motions to the current tween.
+        /// Applies the motion to the current animation.
         /// </summary>
-        /// <param name="motions"></param>
-        public AbstractMotionAnimation<TMotion> Apply(params TMotion[] motions)
+        /// <param name="motion"></param>
+        public AbstractMotionAnimation<TMotion> Apply(TMotion motion)
         {
-            RegisterObjects(motions.OfType<IObjectMotion>());
-            this.motions.AddRange(motions);
+            //RegisterObjects(motions.OfType<IObjectMotion>());
+            motions.Add(motion);
             return this;
         }
 
@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt
         /// <param name="motions"></param>
         public AbstractMotionAnimation<TMotion> Apply(IEnumerable<TMotion> motions)
         {
-            RegisterObjects(motions.OfType<IObjectMotion>());
+            //RegisterObjects(motions.OfType<IObjectMotion>());
             this.motions.AddRange(motions);
             return this;
         }
@@ -41,27 +41,27 @@ namespace FriedSynapse.FlowEnt
 
         private protected override bool ShouldCancel()
         {
-            foreach (Object obj in objects)
-            {
-                if (obj == null)
-                {
-                    return true;
-                }
-            }
+            // foreach (Object obj in objects)
+            // {
+            //     if (obj == null)
+            //     {
+            //         return true;
+            //     }
+            // }
 
             return false;
         }
 
         private protected void RegisterObjects(IEnumerable<IObjectMotion> motions)
         {
-            foreach (IObjectMotion motion in motions)
-            {
-                Object obj = motion.Object;
-                if (obj != null)
-                {
-                    objects.Add(obj);
-                }
-            }
+            // foreach (IObjectMotion motion in motions)
+            // {
+            //     Object obj = motion.Object;
+            //     if (obj != null)
+            //     {
+            //         objects.Add(obj);
+            //     }
+            // }
         }
 
         #endregion

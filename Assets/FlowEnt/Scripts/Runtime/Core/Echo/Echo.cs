@@ -229,11 +229,11 @@ namespace FriedSynapse.FlowEnt
 
         #region Motions
 
-        /// <inheritdoc cref="AbstractMotionAnimation{TMotion}.Apply(TMotion[])" />
+        /// <inheritdoc cref="AbstractMotionAnimation{TMotion}.Apply(TMotion)" />
         /// \copydoc AbstractMotionAnimation.Apply
-        public new Echo Apply(params AbstractEchoMotion[] motions)
+        public new Echo Apply(AbstractEchoMotion motion)
         {
-            base.Apply(motions);
+            base.Apply(motion);
             return this;
         }
 

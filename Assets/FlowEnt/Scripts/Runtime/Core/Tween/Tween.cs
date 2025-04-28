@@ -246,11 +246,11 @@ namespace FriedSynapse.FlowEnt
 
         #region Motions
 
-        /// <inheritdoc cref="AbstractMotionAnimation{TMotion}.Apply(TMotion[])" />
+        /// <inheritdoc cref="AbstractMotionAnimation{TMotion}.Apply(TMotion)" />
         /// \copydoc AbstractMotionAnimation.Apply
-        public new Tween Apply(params AbstractTweenMotion[] motions)
+        public new Tween Apply( AbstractTweenMotion motion)
         {
-            base.Apply(motions);
+            base.Apply(motion);
             return this;
         }
 

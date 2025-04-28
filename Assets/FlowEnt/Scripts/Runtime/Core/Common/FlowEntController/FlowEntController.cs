@@ -82,14 +82,14 @@ namespace FriedSynapse.FlowEnt
 
         #region Members
 
-        private readonly UpdatablesFastList updatables = new();
-        private readonly UpdatablesFastList smoothUpdatables = new();
-        private readonly UpdatablesFastList unscaledUpdatables = new();
-        private readonly UpdatablesFastList lateUpdatables = new();
-        private readonly UpdatablesFastList smoothLateUpdatables = new();
-        private readonly UpdatablesFastList unscaledLateUpdatables = new();
-        private readonly UpdatablesFastList fixedUpdatables = new();
-        private readonly UpdatablesFastList customUpdatables = new();
+        private readonly UpdatablesFastLinkedList updatables = new();
+        private readonly UpdatablesFastLinkedList smoothUpdatables = new();
+        private readonly UpdatablesFastLinkedList unscaledUpdatables = new();
+        private readonly UpdatablesFastLinkedList lateUpdatables = new();
+        private readonly UpdatablesFastLinkedList smoothLateUpdatables = new();
+        private readonly UpdatablesFastLinkedList unscaledLateUpdatables = new();
+        private readonly UpdatablesFastLinkedList fixedUpdatables = new();
+        private readonly UpdatablesFastLinkedList customUpdatables = new();
 
         private static float elapsedTime;
         private float timeScale = 1f;
@@ -166,7 +166,7 @@ namespace FriedSynapse.FlowEnt
             Update(customUpdatables, deltaTime * timeScale);
         }
 
-        private static void Update(UpdatablesFastList updatables, float scaledDeltaTime)
+        private static void Update(UpdatablesFastLinkedList updatables, float scaledDeltaTime)
         {
             elapsedTime += scaledDeltaTime;
             AbstractUpdatable index = updatables.anchor.next;
@@ -177,11 +177,11 @@ namespace FriedSynapse.FlowEnt
                 try
                 {
 #endif
-                if (index is ICancellableAnimation cancellableAnimation && cancellableAnimation.ShouldCancel)
-                {
-                    index.Stop();
-                }
-                else
+                // if (index is ICancellableAnimation cancellableAnimation && cancellableAnimation.ShouldCancel)
+                // {
+                //     index.Stop();
+                // }
+                // else
                 {
                     index.UpdateInternal(scaledDeltaTime);
                 }
@@ -298,7 +298,7 @@ namespace FriedSynapse.FlowEnt
             Stop(customUpdatables, triggerOnCompleted);
         }
 
-        private static void Stop(UpdatablesFastList updatables, bool triggerOnCompleted)
+        private static void Stop(UpdatablesFastLinkedList updatables, bool triggerOnCompleted)
         {
             AbstractUpdatable index = updatables.anchor.next;
 

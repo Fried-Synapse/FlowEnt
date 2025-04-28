@@ -6,7 +6,7 @@ namespace FriedSynapse.FlowEnt
     /// <summary>
     /// Provides common options for behaviours that require frame update.
     /// </summary>
-    public abstract class AbstractUpdatable : FastListItem<AbstractUpdatable>
+    public abstract class AbstractUpdatable : FastLinkedListNode<AbstractUpdatable>
     {
         /// <summary>
         /// Creates a new instance using <see cref="FlowEntController"/>.
