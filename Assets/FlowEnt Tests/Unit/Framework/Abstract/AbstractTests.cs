@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit
 {
-    [Category("Runtime")]
+    [Category("FlowEnt_Runtime")]
     public abstract class AbstractTests
     {
         public const float TestTime = 0.3f;

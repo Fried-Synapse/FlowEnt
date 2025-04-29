@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: 🧪 Test in ${{ matrix.testMode }} 
+    name: 🧪 Test in ${{ matrix.testMode }} - ${{ matrix.testFilter }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -12,8 +12,9 @@ jobs:
         testMode:
           - playmode
         testFilter:
-          - Performance
-          - Runtime
+          - FlowEnt_Performance
+          - FlowEnt_Runtime
+          - FlowEnt_AutoCancel
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,8 +28,10 @@ jobs:
 
       - name: Add compilation symbols to csc.rsp
         run: |
-          echo "-define:FlowEnt_GitHub_Run" >> ./Assets/csc.rsp
           echo "-define:FlowEnt_Debug_Editor" >> ./Assets/csc.rsp
+          if [[ "${{ matrix.testFilter }}" == "FlowEnt_AutoCancel" ]]; then
+            echo "-define:FlowEnt_AutoCancel" >> ./Assets/csc.rsp
+          fi
 
       - name: Run Tests
         uses: game-ci/unity-test-runner@v4

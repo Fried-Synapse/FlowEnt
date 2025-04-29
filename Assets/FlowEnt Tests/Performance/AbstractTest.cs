@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Tests.Performance
 {
-    [Category("Performance")]
+    [Category("FlowEnt_Performance")]
     public abstract class AbstractTest
     {
         protected const float TestLength = 1f;
