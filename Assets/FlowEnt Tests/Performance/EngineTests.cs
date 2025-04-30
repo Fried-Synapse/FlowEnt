@@ -16,7 +16,6 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
         protected override string ObjectCreationName => "Object Creation";
         protected override string AnimationCreationName => "Animation Creation";
         protected override string UsageName => "Usage";
-
 #if FlowEnt_GitHub_Run
         private static readonly (int, float)[] emptyTweenParams = { (64000, 120f), (128000, 55f), (256000, 25f) };
 #else

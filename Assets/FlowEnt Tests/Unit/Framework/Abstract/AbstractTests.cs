@@ -7,6 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit
 {
+    [Category("Runtime")]
     public abstract class AbstractTests
     {
         public const float TestTime = 0.3f;
@@ -18,7 +19,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         protected const float QuarterTestTime = TestTime / 4f;
         protected const float ThreeQuartersTestTime = TestTime * 3f / 4f;
 
-        public List<GameObject> GameObjects { get; set; } = new List<GameObject>();
+        public List<GameObject> GameObjects { get; set; } = new();
         public GameObject GameObject => GameObjects[0];
 
         public abstract void CreateObjects(int count);

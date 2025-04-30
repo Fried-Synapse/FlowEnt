@@ -1,82 +1,58 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace FriedSynapse.FlowEnt
 {
-    public class FastListItem<T>
-        where T : FastListItem<T>
+    public interface IFastList : IEnumerable
     {
-        internal T previous;
-        internal T next;
     }
 
-    internal class FastList<T, TAnchor>
-        where T : FastListItem<T>
-        where TAnchor : T, new()
+    internal class FastList<T> : IEnumerable<T>, IFastList
     {
-        internal FastList()
-        {
-            last = anchor;
-        }
+        private T[] items;
+        private int size;
+        internal int Count => size;
 
-        public readonly TAnchor anchor = new();
-        private T last;
+        internal T this[int index] { get => items[index]; set => items[index] = value; }
+
+        internal FastList(int capacity)
+        {
+            items = new T[capacity];
+        }
 
         internal void Add(T item)
         {
-            item.previous = last;
-            //HACK it's faster to reset the next in here than on remove
-            if (item.next != null)
+            if (size >= items.Length)
             {
-                item.next = null;
+                Grow();
             }
-            last.next = item;
-            last = item;
+
+            items[size++] = item;
         }
-        internal void Remove(T item)
+
+        internal void AddRange(IEnumerable<T> items)
         {
-            T previous = item.previous;
-            if (last == item)
+            foreach (T item in items)
             {
-                last = previous;
-            }
-
-            //HACK we're not removing the first item ever, so no need to check if the prev item is null.
-            item.previous.next = item.next;
-
-            if (item.next != null)
-            {
-                item.next.previous = previous;
+                Add(item);
             }
         }
 
-        internal void Replace(T original, T replacement)
+        private void Grow()
         {
-            original.previous.next = replacement;
-            if (original.next != null)
-            {
-                original.next.previous = replacement;
-            }
-            replacement.next = original.next;
-            replacement.previous = original.previous;
+            int newCapacity = size * 2;
+            Array.Resize(ref items, newCapacity);
         }
 
-        internal void Clear()
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
-            anchor.next = null;
-            last = anchor;
-        }
-
-        internal List<T> ToList()
-        {
-            T index = anchor.next;
-            List<T> result = new();
-            while (index != null)
+            for (int i = 0; i < size; i++)
             {
-                result.Add(index);
-                index = index.next;
+                yield return items[i];
             }
-
-            return result;
         }
+
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable<T>)this).GetEnumerator();
     }
 }

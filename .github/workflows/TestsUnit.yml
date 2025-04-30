@@ -4,28 +4,26 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: 🧪 Test in ${{ matrix.testMode }} 
+    name: 🧪 Test - Unit - ${{ matrix.testCategory }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        testMode:
-          - playmode
+        testCategory:
+          - Performance
+          - Runtime
+          - AutoCancel
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Cache Ligrary
-        uses: actions/cache@v3
-        with:
-          path: FlowEnt/Library
-          key: Library
-          restore-keys: Library-
 
       - name: Add compilation symbols to csc.rsp
         run: |
           echo "-define:FlowEnt_GitHub_Run" >> ./Assets/csc.rsp
           echo "-define:FlowEnt_Debug_Editor" >> ./Assets/csc.rsp
+          if [[ "${{ matrix.testCategory }}" == "AutoCancel" ]]; then
+            echo "-define:FlowEnt_AutoCancel" >> ./Assets/csc.rsp
+          fi
 
       - name: Run Tests
         uses: game-ci/unity-test-runner@v4
@@ -35,13 +33,14 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_USERNAME }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          testMode: ${{ matrix.testMode }}
+          testMode: playmode
+          customParameters: -testCategory ${{ matrix.testCategory }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: 🧪 Test results for ${{ matrix.testMode }}  
+          checkName: 🧪 Test results for ${{ matrix.testCategory }}
 
       - name: Upload Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: 🧪 Test results for ${{ matrix.testMode }}
+          name: 🧪 Test results for ${{ matrix.testCategory }}
           path: ${{ steps.testsRunner.outputs.artifactsPath }}

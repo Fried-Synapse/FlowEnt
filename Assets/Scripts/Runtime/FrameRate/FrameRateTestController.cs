@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 namespace FriedSynapse.FlowEnt.Builder
@@ -43,6 +44,10 @@ namespace FriedSynapse.FlowEnt.Builder
 
         private async void Start()
         {
+#if FlowEnt_Debug || (UNITY_EDITOR && FlowEnt_Debug_Editor)
+            throw new Exception("Disable FlowEnt Debugging for tests");
+#endif
+
             Transform frameRateAnchorInstance = Instantiate(frameRateAnchor);
             frameRateAnchorInstance.parent = transform;
             frameRateAnchorInstance.position = Vector3.zero;
@@ -51,7 +56,7 @@ namespace FriedSynapse.FlowEnt.Builder
 
             List<AbstractFrameRateTest> tests = GetTests();
 
-            string csv = string.Empty;
+            string csv = "Name, Amount, Warmup, FPS\n";
 
             await RunTestAsync(tests[0], 1);
 
@@ -63,8 +68,8 @@ namespace FriedSynapse.FlowEnt.Builder
                 fps /= count;
 
                 Debug.Log($"{tests[i].TestName} - {tests[i].TestAmount} count" +
-                    $"\nWarmup: {warmup:0.0} ms" +
-                    $"\nFramerate: {fps:0.0} fps");
+                          $"\nWarmup: {warmup:0.0} ms" +
+                          $"\nFramerate: {fps:0.0} fps");
 
                 csv += $"{tests[i].TestName}, {tests[i].TestAmount}, {warmup}, {fps}\n";
             }
@@ -103,6 +108,7 @@ namespace FriedSynapse.FlowEnt.Builder
                 warmup += test.WarmupTime;
                 fps += test.FrameRate;
             }
+
             test.Unload();
 
             return (warmup, fps);
@@ -120,6 +126,7 @@ namespace FriedSynapse.FlowEnt.Builder
             _ = k8 + k16 + k32 + k64 + k128 + k256;
 
             List<AbstractFrameRateTest> result = new();
+
             void addTest(TestType testType, AbstractFrameRateTest test)
             {
                 if ((tests & testType) == testType)

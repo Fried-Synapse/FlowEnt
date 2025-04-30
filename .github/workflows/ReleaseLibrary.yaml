@@ -15,6 +15,7 @@ on:
 
 jobs:
   release:
+    name: 🚀 Release - Library
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

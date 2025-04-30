@@ -53,18 +53,18 @@ namespace FriedSynapse.FlowEnt
 
         /// <inheritdoc cref="Echo.For{TItem}(TItem[])"/>
         /// \copydoc Echo.For
-        public EchoMotionProxyArray<TItem2> For<TItem2>(params TItem2[] elements)
+        public EchoMotionProxyArray<TItem2> For<TItem2>(params TItem2[] items)
             where TItem2 : class
         {
-            return new EchoMotionProxyArray<TItem2>(Echo, elements);
+            return new EchoMotionProxyArray<TItem2>(Echo, items);
         }
 
         /// <inheritdoc cref="Echo.ForAll{TItem}(IEnumerable{TItem})"/>
         /// \copydoc Echo.ForAll
-        public EchoMotionProxyArray<TItem2> ForAll<TItem2>(IEnumerable<TItem2> elements)
+        public EchoMotionProxyArray<TItem2> ForAll<TItem2>(IEnumerable<TItem2> items)
             where TItem2 : class
         {
-            return new EchoMotionProxyArray<TItem2>(Echo, elements.ToArray());
+            return new EchoMotionProxyArray<TItem2>(Echo, items.ToArray());
         }
 
         #endregion

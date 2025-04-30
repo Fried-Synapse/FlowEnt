@@ -1,4 +1,6 @@
 using System;
+using FriedSynapse.FlowEnt.Motions.Abstract;
+using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
 {
@@ -7,18 +9,30 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
     /// </summary>
     public abstract class AbstractEchoMotion : IEchoMotion
     {
-        public virtual void OnStart() { }
+        public virtual void OnStart()
+        {
+        }
+
         public abstract void OnUpdate(float deltaTime);
-        public virtual void OnLoopStart() { }
-        public virtual void OnLoopComplete() { }
-        public virtual void OnComplete() { }
+
+        public virtual void OnLoopStart()
+        {
+        }
+
+        public virtual void OnLoopComplete()
+        {
+        }
+
+        public virtual void OnComplete()
+        {
+        }
     }
 
     /// <summary>
     /// Generic Abstract Motion
     /// </summary>
     /// <typeparam name="TItem">Generic Type for the motion. There is a read only property of type &lt;T&gt; called item that can be used and it's required on the constructor.</typeparam>
-    public abstract class AbstractEchoMotion<TItem> : AbstractEchoMotion
+    public abstract class AbstractEchoMotion<TItem> : AbstractEchoMotion, IObjectMotion
     {
         [Serializable]
         public abstract class AbstractBuilder : AbstractEchoMotionBuilder<TItem>
@@ -32,5 +46,6 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Abstract
 
         protected readonly TItem item;
         public TItem Item => item;
+        Object IObjectMotion.Object => item as Object;
     }
 }

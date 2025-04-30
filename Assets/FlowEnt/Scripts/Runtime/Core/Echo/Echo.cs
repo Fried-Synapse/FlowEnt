@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using FriedSynapse.FlowEnt.Motions.Abstract;
 using FriedSynapse.FlowEnt.Motions.Echo.Abstract;
+using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt
 {
@@ -11,7 +13,7 @@ namespace FriedSynapse.FlowEnt
     /// An echo is a simple update loop that provides a delta time and other settings for custom animation
     /// For more information please go to https://flowent.friedsynapse.com/echo
     /// </summary>
-    public sealed partial class Echo : AbstractAnimation,
+    public sealed partial class Echo : AbstractMotionAnimation<AbstractEchoMotion>,
         IFluentControllable<Echo>
     {
         /// <summary>
@@ -44,7 +46,6 @@ namespace FriedSynapse.FlowEnt
             AutoStart = autoStart;
         }
 
-        private readonly List<AbstractEchoMotion> motions = new(1);
         private int? remainingLoops;
 
         #region Seek
@@ -228,53 +229,50 @@ namespace FriedSynapse.FlowEnt
 
         #region Motions
 
-        /// <summary>
-        /// Applies all the motions to the current echo.
-        /// </summary>
-        /// <param name="motions"></param>
-        public Echo Apply(params AbstractEchoMotion[] motions)
+        /// <inheritdoc cref="AbstractMotionAnimation{TMotion}.Apply(TMotion)" />
+        /// \copydoc AbstractMotionAnimation.Apply
+        public new Echo Apply(AbstractEchoMotion motion)
         {
-            this.motions.AddRange(motions);
+            base.Apply(motion);
             return this;
         }
 
-        /// <inheritdoc cref="Apply(AbstractEchoMotion[])"/>
-        /// \copydoc Echo.Apply
-        /// <param name="motions"></param>
-        public Echo Apply(IEnumerable<AbstractEchoMotion> motions)
+        /// <inheritdoc cref="AbstractMotionAnimation{TMotion}.Apply(IEnumerable{TMotion})" />
+        /// \copydoc AbstractMotionAnimation.Apply
+        public new Echo Apply(IEnumerable<AbstractEchoMotion> motions)
         {
-            this.motions.AddRange(motions);
+            base.Apply(motions);
             return this;
         }
-
+        
         /// <summary>
         /// Creates a scope for the object so you can add motions designed specifically for that object.
         /// </summary>
-        /// <param name="element"></param>
+        /// <param name="item"></param>
         /// <typeparam name="TItem"></typeparam>
-        public EchoMotionProxy<TItem> For<TItem>(TItem element)
+        public EchoMotionProxy<TItem> For<TItem>(TItem item)
         {
-            return new EchoMotionProxy<TItem>(this, element);
+            return new EchoMotionProxy<TItem>(this, item);
         }
 
         /// <summary>
         /// Creates a scope for the object so you can add motions designed specifically for that array of objects.
         /// </summary>
-        /// <param name="elements"></param>
+        /// <param name="items"></param>
         /// <typeparam name="TItem"></typeparam>
-        public EchoMotionProxyArray<TItem> For<TItem>(params TItem[] elements)
+        public EchoMotionProxyArray<TItem> For<TItem>(params TItem[] items)
         {
-            return new EchoMotionProxyArray<TItem>(this, elements);
+            return new EchoMotionProxyArray<TItem>(this, items);
         }
 
         /// <summary>
         /// Creates a scope for the object so you can add motions designed specifically for that enumeration of objects.
         /// </summary>
-        /// <param name="elements"></param>
+        /// <param name="items"></param>
         /// <typeparam name="TItem"></typeparam>
-        public EchoMotionProxyArray<TItem> ForAll<TItem>(IEnumerable<TItem> elements)
+        public EchoMotionProxyArray<TItem> ForAll<TItem>(IEnumerable<TItem> items)
         {
-            return new EchoMotionProxyArray<TItem>(this, elements.ToArray());
+            return new EchoMotionProxyArray<TItem>(this, items.ToArray());
         }
 
         #endregion
