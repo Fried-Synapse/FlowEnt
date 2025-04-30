@@ -17,13 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Cache Library
-        uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library
-          restore-keys: Library-
-
       - name: Add compilation symbols to csc.rsp
         run: |
           echo "-define:FlowEnt_GitHub_Run" >> ./Assets/csc.rsp
