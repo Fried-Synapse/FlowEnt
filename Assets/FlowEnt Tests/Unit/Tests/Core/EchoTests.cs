@@ -24,7 +24,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 })
                 .Assert(() =>
                 {
-                    List<AbstractEchoMotion> motions = echo.GetFieldValue<IList>("motions").Cast<AbstractEchoMotion>().ToList();
+                    List<AbstractEchoMotion> motions = echo.GetFieldValue<IFastList>("motions").Cast<AbstractEchoMotion>().ToList();
                     motions.Should().HaveCount(2);
                     motions[0].Should().BeOfType<MoveVectorMotion>();
                     motions[1].Should().BeOfType<DebugMotion>();

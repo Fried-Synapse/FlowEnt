@@ -4,7 +4,11 @@ using System.Collections.Generic;
 
 namespace FriedSynapse.FlowEnt
 {
-    internal class FastList<T> : IEnumerable<T>
+    public interface IFastList : IEnumerable
+    {
+    }
+
+    internal class FastList<T> : IEnumerable<T>, IFastList
     {
         private T[] items;
         private int size;

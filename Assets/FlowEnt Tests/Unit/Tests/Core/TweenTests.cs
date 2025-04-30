@@ -22,7 +22,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .Act(() => { tween = Variables.Tween.Build(); })
                 .Assert(() =>
                 {
-                    List<AbstractTweenMotion> motions = tween.GetFieldValue<IList>("motions").Cast<AbstractTweenMotion>().ToList();
+                    List<AbstractTweenMotion> motions = tween.GetFieldValue<IFastList>("motions").Cast<AbstractTweenMotion>().ToList();
                     motions.Should().HaveCount(2);
                     motions[0].Should().BeOfType<MoveVectorMotion>();
                     motions[1].Should().BeOfType<DebugMotion>();
