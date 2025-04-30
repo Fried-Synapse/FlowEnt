@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 {
-    [Category("FlowEnt_AutoCancel")]
+    [Category("AutoCancel")]
     public class AutoCancelTests : AbstractEngineTests
     {
         private const int Timeout = (int)(DoubleTestTime * 1000);

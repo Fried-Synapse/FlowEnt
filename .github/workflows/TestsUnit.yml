@@ -4,17 +4,15 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: 🧪 Test in ${{ matrix.testMode }} - ${{ matrix.testFilter }}
+    name: 🧪 Test for ${{ matrix.testCategory }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        testMode:
-          - playmode
-        testFilter:
-          - FlowEnt_Performance
-          - FlowEnt_Runtime
-          - FlowEnt_AutoCancel
+        testCategory:
+          - Performance
+          - Runtime
+          - AutoCancel
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,7 +27,7 @@ jobs:
       - name: Add compilation symbols to csc.rsp
         run: |
           echo "-define:FlowEnt_Debug_Editor" >> ./Assets/csc.rsp
-          if [[ "${{ matrix.testFilter }}" == "FlowEnt_AutoCancel" ]]; then
+          if [[ "${{ matrix.testCategory }}" == "AutoCancel" ]]; then
             echo "-define:FlowEnt_AutoCancel" >> ./Assets/csc.rsp
           fi
 
@@ -41,14 +39,14 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_USERNAME }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          testMode: ${{ matrix.testMode }}
-          customParameters: -testFilter ${{ matrix.testFilter }}
+          testMode: playmode
+          customParameters: -testCategory ${{ matrix.testCategory }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: 🧪 Test results for ${{ matrix.testMode }} - ${{ matrix.testFilter }}
+          checkName: 🧪 Test results for ${{ matrix.testCategory }}
 
       - name: Upload Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: 🧪 Test results for ${{ matrix.testMode }} - ${{ matrix.testFilter }}
+          name: 🧪 Test results for ${{ matrix.testCategory }}
           path: ${{ steps.testsRunner.outputs.artifactsPath }}
