@@ -1,4 +1,4 @@
-#if !FlowEnt_AutoCancel
+#if FlowEnt_AutoCancel
 using System;
 using System.Collections;
 using NUnit.Framework;
