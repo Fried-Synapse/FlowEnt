@@ -119,7 +119,7 @@ namespace FriedSynapse.FlowEnt
         public UpdatableAnchor() : base(0)
         {
         }
-        
+
         internal override void StartInternal(float deltaTime)
         {
             throw new InvalidOperationException(FlowEntInternalConstants.InvalidImplementation);

@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: 🔨 Test build for ${{ matrix.targetPlatform }} with ${{ matrix.compilationSymbol }}
+    name: 🔨 Test - Build - for ${{ matrix.targetPlatform }} with ${{ matrix.compilationSymbol }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -25,7 +25,7 @@ jobs:
       - name: Cache Library
         uses: actions/cache@v3
         with:
-          path: FlowEnt/Library
+          path: Library
           key: Library-${{ matrix.targetPlatform }}-${{ matrix.compilationSymbol }}
           restore-keys: Library-
 

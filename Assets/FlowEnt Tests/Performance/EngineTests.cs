@@ -4,6 +4,11 @@ using Unity.PerformanceTesting;
 using UnityEngine.TestTools;
 using UnityEngine;
 
+//NOTE
+//Lost 5fps when updating to Unity 2022 when running on github(https://github.com/Fried-Synapse/FlowEnt/pull/167)
+//EmptyTween((128000, 60)) => EmptyTween((128000, 57.5))
+//EmptyTween((256000, 30)) => EmptyTween((256000, 27.5))
+
 namespace FriedSynapse.FlowEnt.Tests.Performance
 {
     public class EngineTests : AbstractTest
@@ -11,8 +16,11 @@ namespace FriedSynapse.FlowEnt.Tests.Performance
         protected override string ObjectCreationName => "Object Creation";
         protected override string AnimationCreationName => "Animation Creation";
         protected override string UsageName => "Usage";
-
+#if FlowEnt_GitHub_Run
+        private static readonly (int, float)[] emptyTweenParams = { (64000, 120f), (128000, 57.5f), (256000, 27.5f) };
+#else
         private static readonly (int, float)[] emptyTweenParams = { (64000, 120f), (128000, 60f), (256000, 30f) };
+#endif
         
         [UnityTest, Performance]
         public IEnumerator EmptyTween([ValueSource(nameof(emptyTweenParams))] (int Count, float Fps) data)

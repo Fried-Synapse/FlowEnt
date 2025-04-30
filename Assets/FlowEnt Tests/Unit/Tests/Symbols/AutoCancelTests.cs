@@ -1,4 +1,4 @@
-#if FlowEnt_AutoCancel
+#if !FlowEnt_AutoCancel
 using System;
 using System.Collections;
 using NUnit.Framework;
@@ -25,6 +25,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         public IEnumerator AutoCancelEcho()
         {
             yield return AutoCancel(go => new Echo().For(go.transform).Move(Vector3.one));
+        }
+
+        [UnityTest]
+        [Timeout(Timeout)]
+        public IEnumerator AutoCancelFlow()
+        {
+            yield return AutoCancel(go => new Flow().Queue(new Tween(DoubleTestTime).For(go.transform).Move(Vector3.one)));
         }
 
         private IEnumerator AutoCancel(Func<GameObject, AbstractAnimation> getAnimation)

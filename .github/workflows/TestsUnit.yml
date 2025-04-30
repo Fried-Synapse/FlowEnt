@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: 🧪 Test for ${{ matrix.testCategory }}
+    name: 🧪 Test - Unit - ${{ matrix.testCategory }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -17,15 +17,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Cache Ligrary
+      - name: Cache Library
         uses: actions/cache@v3
         with:
-          path: FlowEnt/Library
+          path: Library
           key: Library
           restore-keys: Library-
 
       - name: Add compilation symbols to csc.rsp
         run: |
+          echo "-define:FlowEnt_GitHub_Run" >> ./Assets/csc.rsp
           echo "-define:FlowEnt_Debug_Editor" >> ./Assets/csc.rsp
           if [[ "${{ matrix.testCategory }}" == "AutoCancel" ]]; then
             echo "-define:FlowEnt_AutoCancel" >> ./Assets/csc.rsp
@@ -34,7 +35,6 @@ jobs:
       - name: Run Tests
         uses: game-ci/unity-test-runner@v4
         id: testsRunner
-        continue-on-error: true
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENCE }}    
           UNITY_EMAIL: ${{ secrets.UNITY_USERNAME }}
