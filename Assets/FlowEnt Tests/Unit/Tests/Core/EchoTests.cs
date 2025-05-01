@@ -17,16 +17,16 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         public IEnumerator Builder()
         {
             Echo echo = default;
+            
             yield return CreateTester()
-                .Act(() =>
-                {
-                    echo = Variables.Echo.Build();
-                })
+                .Arrange(() => ((MoveVectorMotion.Builder)Variables.Echo.Motions.Items[0]).Item = GameObject.transform)
+                .Act(() => echo = Variables.Echo.Build())
                 .Assert(() =>
                 {
                     List<AbstractEchoMotion> motions = echo.GetFieldValue<IFastList>("motions").Cast<AbstractEchoMotion>().ToList();
                     motions.Should().HaveCount(2);
                     motions[0].Should().BeOfType<MoveVectorMotion>();
+                    ((MoveVectorMotion)motions[0]).Item.Should().Be(GameObject.transform);
                     motions[1].Should().BeOfType<DebugMotion>();
                 })
                 .Run();

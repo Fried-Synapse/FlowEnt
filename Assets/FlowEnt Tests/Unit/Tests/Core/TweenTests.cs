@@ -19,12 +19,14 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             Tween tween = default;
 
             yield return CreateTester()
-                .Act(() => { tween = Variables.Tween.Build(); })
+                .Arrange(() => ((MoveVectorMotion.ValueBuilder)Variables.Tween.Motions.Items[0]).Item = GameObject.transform)
+                .Act(() => tween = Variables.Tween.Build())
                 .Assert(() =>
                 {
                     List<AbstractTweenMotion> motions = tween.GetFieldValue<IFastList>("motions").Cast<AbstractTweenMotion>().ToList();
                     motions.Should().HaveCount(2);
                     motions[0].Should().BeOfType<MoveVectorMotion>();
+                    ((MoveVectorMotion)motions[0]).Item.Should().Be(GameObject.transform);
                     motions[1].Should().BeOfType<DebugMotion>();
                 })
                 .Run();
