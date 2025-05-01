@@ -53,10 +53,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                         .SetTime(HalfTestTime)
                         .Start();
                     tween2 = new Tween()
-                        .SetTime(HalfTestTime * 2)
+                        .SetTime(TestTime)
                         .Start();
-                    Task.Delay((int)(HalfTestTime * 1000)).ContinueWith(_ => FlowEntController.Instance.Pause());
-                    Task.Delay((int)(HalfTestTime * 2000)).ContinueWith(_ => FlowEntController.Instance.Resume());
+                    Task.Delay((int)(QuarterTestTime * 1000)).ContinueWith(_ => FlowEntController.Instance.Pause());
+                    Task.Delay((int)(HalfTestTime * 1000)).ContinueWith(_ => FlowEntController.Instance.Resume());
                     return tween1;
                 })
                 .AssertTime(ThreeQuartersTestTime)
@@ -73,19 +73,19 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         {
             const int tweensCount = 10;
             const int expectedCompletedTweens = 0;
-            int comletedTweens = 0;
+            int completedTweens = 0;
 
             yield return CreateTester()
                 .Act(() =>
                 {
                     for (int i = 0; i < tweensCount; i++)
                     {
-                        new Tween(TestTime).OnCompleted(() => comletedTweens++).Start();
+                        new Tween(TestTime).OnCompleted(() => completedTweens++).Start();
                     }
                     return new Tween(HalfTestTime).OnCompleted(() => FlowEntController.Instance.Stop()).Start();
                 })
                 .AssertTime(HalfTestTime)
-                .Assert(() => comletedTweens.Should().Be(expectedCompletedTweens))
+                .Assert(() => completedTweens.Should().Be(expectedCompletedTweens))
                 .Run();
         }
 

@@ -67,6 +67,8 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
             List<float> values = new();
             UpdateTracker updateTracker = default;
             float initialTimeScale = Time.timeScale;
+            float initialFixedDeltaTime = Time.fixedDeltaTime;
+            const float testFixedDeltaTime = 0.01f;
 
             yield return CreateTester()
                 .Arrange(() =>
@@ -74,9 +76,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     updateTracker = GameObject.AddComponent<UpdateTracker>();
                     switch (type)
                     {
-                        case UpdateType.UnscaledUpdate:
-                        case UpdateType.UnscaledLateUpdate:
+                        case UpdateType.UnscaledUpdate
+                            or UpdateType.UnscaledLateUpdate:
                             Time.timeScale = 0;
+                            break;
+                        case UpdateType.FixedUpdate:
+                            Time.fixedDeltaTime = testFixedDeltaTime;
                             break;
                     }
                 })
@@ -87,9 +92,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 {
                     switch (type)
                     {
-                        case UpdateType.UnscaledUpdate:
-                        case UpdateType.UnscaledLateUpdate:
+                        case UpdateType.UnscaledUpdate
+                            or UpdateType.UnscaledLateUpdate:
                             Time.timeScale.Should().Be(0);
+                            break;
+                        case UpdateType.FixedUpdate:
+                            Time.fixedDeltaTime.Should().Be(testFixedDeltaTime);
                             break;
                     }
 
@@ -101,9 +109,12 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                     Object.Destroy(updateTracker);
                     switch (type)
                     {
-                        case UpdateType.UnscaledUpdate:
-                        case UpdateType.UnscaledLateUpdate:
+                        case UpdateType.UnscaledUpdate
+                            or UpdateType.UnscaledLateUpdate:
                             Time.timeScale = initialTimeScale;
+                            break;
+                        case UpdateType.FixedUpdate:
+                            Time.fixedDeltaTime = initialFixedDeltaTime;
                             break;
                     }
                 })
@@ -503,9 +514,9 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                 .AssertTime(TestTime)
                 .Run();
         }
-        
+
         #endregion
-        
+
         [UnityTest]
         public IEnumerator DelayBothSequence()
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 
 namespace FriedSynapse.FlowEnt
@@ -7,11 +8,23 @@ namespace FriedSynapse.FlowEnt
     /// </summary>
     public class TaskFlowAwaiter : AbstractFlowAwaiter
     {
-        public TaskFlowAwaiter(Task task)
+        public TaskFlowAwaiter(Func<Task> getTask)
         {
-            this.task = task;
+            this.getTask = getTask;
         }
-        private readonly Task task;
+
+        private Task task;
+        private Func<Task> getTask;
+
+        internal override void StartInternal(float deltaTime = 0)
+        {
+            if (getTask != null)
+            {
+                task = getTask();
+            }
+
+            base.StartInternal(deltaTime);
+        }
 
         protected override bool ShouldWait(float deltaTime) => !(task.IsCompleted || task.IsCanceled || task.IsFaulted);
     }

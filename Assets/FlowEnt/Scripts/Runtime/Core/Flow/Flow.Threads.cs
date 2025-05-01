@@ -114,11 +114,11 @@ namespace FriedSynapse.FlowEnt
             => QueueAwaiter(new CallbackFlowAwaiter(waitCondition));
 
         /// <summary>
-        /// Queues a task as an awaiter in the current sequence.
+        /// Queues a callback that retrieves a task as an awaiter in the current sequence.
         /// </summary>
-        /// <param name="task"></param>
-        public Flow QueueAwaiter(Task task)
-            => QueueAwaiter(new TaskFlowAwaiter(task));
+        /// <param name="getTask"></param>
+        public Flow QueueAwaiter(Func<Task> getTask)
+            => QueueAwaiter(new TaskFlowAwaiter(getTask));
 
         #endregion
 
