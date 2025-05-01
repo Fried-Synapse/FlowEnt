@@ -30,7 +30,7 @@ namespace FriedSynapse.FlowEnt
         private protected float? overdraft;
 
         /// <summary>
-        /// THe amount of scaled time unconsumed by this animation from the last frame.
+        /// The amount of scaled time unconsumed by this animation from the last frame.
         /// </summary>
         public float? Overdraft { get => overdraft; internal set => overdraft = value; }
 

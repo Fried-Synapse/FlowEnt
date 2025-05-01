@@ -24,7 +24,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         private int ActDelay { get; set; }
         private Func<AbstractAnimation> ActCallback { get; set; }
         private Func<IEnumerator> CustomWaiterCallback { get; set; }
-        private int AssertDelay { get; set; }
         private Action AssertCallback { get; set; }
         private Action AbrogateCallback { get; set; }
         protected AbstractAnimation ControlAnimation { get; set; }
@@ -33,7 +32,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public AnimationTester Arrange(Action callback)
         {
-            ArrangeCallback = callback;
+            ArrangeCallback += callback;
             return this;
         }
 
@@ -45,13 +44,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public AnimationTester Act(Func<AbstractAnimation> callback)
         {
-            ActCallback = callback;
+            ActCallback += callback;
             return this;
         }
 
         public AnimationTester Act(Action callback)
         {
-            ActCallback = () =>
+            ActCallback += () =>
             {
                 callback();
                 return null;
@@ -61,13 +60,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public AnimationTester SetCustomWaiter(Func<IEnumerator> callback)
         {
-            CustomWaiterCallback = callback;
-            return this;
-        }
-
-        public AnimationTester SetAssertDelay(int assertDelay)
-        {
-            AssertDelay = assertDelay;
+            CustomWaiterCallback += callback;
             return this;
         }
 
@@ -85,27 +78,27 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public AnimationTester AssertTime(Func<float> getTime)
         {
-            AssertTime((stopwatch) => stopwatch.Seconds.Should()
+            AssertTime(stopwatch => stopwatch.Seconds.Should()
                 .BeApproximatelyTime(getTime() + (ControlAnimation?.Overdraft ?? 0)));
             return this;
         }
 
         public AnimationTester Assert(Action callback)
         {
-            AssertCallback = callback;
+            AssertCallback += callback;
             return this;
         }
 
         public AnimationTester Assert<TAnimation>(Action<TAnimation> callback)
             where TAnimation : AbstractAnimation
         {
-            AssertCallback = () => callback.Invoke((TAnimation)ControlAnimation);
+            AssertCallback += () => callback.Invoke((TAnimation)ControlAnimation);
             return this;
         }
 
         public AnimationTester Abrogate(Action callback)
         {
-            AbrogateCallback = callback;
+            AbrogateCallback += callback;
             return this;
         }
 
@@ -163,11 +156,6 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
             {
                 Debug.LogWarning(
                     $"Test went to overtime. Reason: {overtimeReason}. Time: {Stopwatch.Seconds}");
-            }
-
-            if (ActDelay > 0)
-            {
-                yield return WaitForFrames(AssertDelay);
             }
 
             AssertCallback?.Invoke();
