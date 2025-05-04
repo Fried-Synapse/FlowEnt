@@ -17,10 +17,10 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
         public IEnumerator Builder()
         {
             Echo echo = default;
-            
+
             yield return CreateTester()
                 .Arrange(() => ((MoveVectorMotion.Builder)Variables.Echo.Motions.Items[0]).Item = GameObject.transform)
-                .Act(() => echo = Variables.Echo.Build())
+                .Act(() => { echo = Variables.Echo.Build(); })
                 .Assert(() =>
                 {
                     List<AbstractEchoMotion> motions = echo.GetFieldValue<IFastList>("motions").Cast<AbstractEchoMotion>().ToList();

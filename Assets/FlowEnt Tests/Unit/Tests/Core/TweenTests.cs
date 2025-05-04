@@ -20,7 +20,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
 
             yield return CreateTester()
                 .Arrange(() => ((MoveVectorMotion.ValueBuilder)Variables.Tween.Motions.Items[0]).Item = GameObject.transform)
-                .Act(() => tween = Variables.Tween.Build())
+                .Act(() => { tween = Variables.Tween.Build(); })
                 .Assert(() =>
                 {
                     List<AbstractTweenMotion> motions = tween.GetFieldValue<IFastList>("motions").Cast<AbstractTweenMotion>().ToList();
