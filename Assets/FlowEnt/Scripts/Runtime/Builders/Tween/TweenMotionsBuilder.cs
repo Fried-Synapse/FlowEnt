@@ -16,7 +16,7 @@ namespace FriedSynapse.FlowEnt
         [SerializeField, AutoAssignButtonMotionField]
         protected TItem item;
 
-        public TItem Item => item;
+        public TItem Item { get => item; set => item = value; }
     }
 
     [Serializable]

@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: 🧪 Test - Unit - ${{ matrix.testCategory }}
+    name: "🧪 Test - Unit - ${{ matrix.testCategory }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -43,11 +43,11 @@ jobs:
           testMode: playmode
           customParameters: -testCategory ${{ matrix.testCategory }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: 🧪 Test results for ${{ matrix.testCategory }}
+          checkName: "🧪 Test - Unit - ${{ matrix.testCategory }} - Results"
 
       - name: Upload Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: 🧪 Test results for ${{ matrix.testCategory }}
+          name: "🧪 Test - Unit - ${{ matrix.testCategory }} - Results"
           path: ${{ steps.testsRunner.outputs.artifactsPath }}

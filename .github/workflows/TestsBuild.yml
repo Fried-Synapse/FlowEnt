@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: 🔨 Test - Build - ${{ matrix.targetPlatform }} | ${{ matrix.compilationSymbol }}
+    name: "🔨 Test - Build - ${{ matrix.targetPlatform }} | ${{ matrix.compilationSymbol }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
