@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   testRunner:
-    name: 🧪 Test - Unit - ${{ matrix.testCategory }}
+    name: "🧪 Test - Unit - ${{ matrix.testCategory }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
