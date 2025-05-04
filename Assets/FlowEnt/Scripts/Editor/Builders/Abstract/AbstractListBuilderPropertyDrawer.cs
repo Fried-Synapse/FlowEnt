@@ -106,7 +106,7 @@ namespace FriedSynapse.FlowEnt.Editor
 
             void drawElement(Rect rect, int index, bool isActive, bool isFocused)
             {
-                EditorGUI.PropertyField(FlowEntEditorGUILayout.GetRectIndented(rect, 8), listProperty.GetArrayElementAtIndex(index), true);
+                EditorGUI.PropertyField(rect, listProperty.GetArrayElementAtIndex(index), true);
             }
 
             float getElementHeight(int index)

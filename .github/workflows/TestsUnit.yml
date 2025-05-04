@@ -43,7 +43,7 @@ jobs:
           testMode: playmode
           customParameters: -testCategory ${{ matrix.testCategory }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: Tests - Unit
+          checkName: "🧪 Test - Unit - ${{ matrix.testCategory }} - Results"
 
       - name: Upload Results
         if: always()

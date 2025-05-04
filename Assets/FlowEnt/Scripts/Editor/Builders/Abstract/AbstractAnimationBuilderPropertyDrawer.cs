@@ -52,12 +52,16 @@ namespace FriedSynapse.FlowEnt.Editor
                    $"[{animation.GetType().Name.Replace("Builder", "")}" +
                    $"{(string.IsNullOrEmpty(name) ? "" : $" - {name}")}]";
 
+            int padding = 4;
             if (parentProperty != null)
             {
-                FlowEntEditorGUILayout.PropertyFieldIsEnabled(headerPosition, property);
-                name = name.PadLeft(name.Length + 6);
+                Rect isEnabledPosition = headerPosition;
+                isEnabledPosition.x += FlowEntConstants.PaddingFix;
+                FlowEntEditorGUILayout.PropertyFieldIsEnabled(isEnabledPosition, property);
+                padding += 5;
             }
 
+            name = name.PadLeft(name.Length + padding);
             label.text = name;
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, label);
 

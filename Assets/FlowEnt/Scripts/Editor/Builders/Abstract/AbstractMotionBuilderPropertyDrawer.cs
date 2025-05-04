@@ -39,13 +39,14 @@ namespace FriedSynapse.FlowEnt.Editor
 
             property.isExpanded = EditorGUI.Foldout(headerPosition, property.isExpanded, new GUIContent());
 
-            FlowEntEditorGUILayout.PropertyFieldIsEnabled(headerPosition, property);
+            Rect isEnabledPosition = headerPosition;
+            isEnabledPosition.x += FlowEntConstants.PaddingFix;
+            FlowEntEditorGUILayout.PropertyFieldIsEnabled(isEnabledPosition, property);
 
             //HACK: EditorGUI.Foldout doesn't know how to do overflows so we just draw the label separately
-            Rect labelPosition = headerPosition;
             string name = MotionNames.GetNames(motionBuilderType, motionBuilder).Preferred;
-            label.text = name.PadLeft(name.Length + 6);
-            EditorGUI.LabelField(labelPosition, label);
+            label.text = name.PadLeft(name.Length + 10);
+            EditorGUI.LabelField(headerPosition, label);
 
             DrawMenu(headerPosition, property);
 
