@@ -63,7 +63,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         where TVariables : AbstractVariables
     {
         private TVariables variables;
-        protected TVariables Variables => variables ??= Object.FindObjectOfType<TVariables>();
+        protected TVariables Variables => variables ??= Object.FindFirstObjectByType<TVariables>();
 
         protected override void OnTeardown()
         {

@@ -51,3 +51,11 @@ jobs:
         with:
           name: "🧪 Test - Unit - ${{ matrix.testCategory }} - Results"
           path: ${{ steps.testsRunner.outputs.artifactsPath }}
+
+      - name: Publish Results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: "🧪 Test - Unit - ${{ matrix.testCategory }} - Results"
+          path: ${{ steps.testsRunner.outputs.artifactsPath }}/*.xml
+          reporter: nunit

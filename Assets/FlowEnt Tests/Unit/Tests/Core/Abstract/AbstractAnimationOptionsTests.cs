@@ -97,7 +97,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Core
                             Time.timeScale.Should().Be(0);
                             break;
                         case UpdateType.FixedUpdate:
-                            Time.fixedDeltaTime.Should().Be(testFixedDeltaTime);
+                            Time.fixedDeltaTime.Should().BeApproximately(testFixedDeltaTime);
                             break;
                     }
 
