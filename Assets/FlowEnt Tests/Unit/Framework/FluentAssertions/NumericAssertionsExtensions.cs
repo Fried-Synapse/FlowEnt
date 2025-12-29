@@ -8,7 +8,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
         public const float Epsilon = 0.0001f;
         private const float TimeEpsilon = 0.01f;
 
-        public static AndConstraint<NumericAssertions<float>> BeApproximatelyFloat(
+        public static AndConstraint<NumericAssertions<float>> BeApproximately(
             this NumericAssertions<float> assertions,
             float expectedValue, string because = "", params object[] becauseArgs)
         {

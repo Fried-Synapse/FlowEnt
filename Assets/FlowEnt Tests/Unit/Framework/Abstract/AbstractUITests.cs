@@ -13,7 +13,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit
 
         public override void CreateObjects(int count)
         {
-            Canvas canvas = Object.FindObjectOfType<Canvas>();
+            Canvas canvas = Object.FindFirstObjectByType<Canvas>();
             for (int i = 0; i < count; i++)
             {
                 GameObject gameObject = new GameObject();
