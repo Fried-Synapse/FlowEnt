@@ -644,7 +644,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(ArrangeForVelocity)
                 .Act(() => Component.Tween(TestTime).Velocity(value).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Component.velocity.Should().BeApproximately(value, VelocityErrorMargin))
+                .Assert(() => Component.linearVelocity.Should().BeApproximately(value, VelocityErrorMargin))
                 .Run();
         }
 
@@ -657,7 +657,7 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
                 .Arrange(ArrangeForVelocity)
                 .Act(() => Component.Tween(TestTime).VelocityTo(to).Start())
                 .AssertTime(TestTime)
-                .Assert(() => Component.velocity.Should().BeApproximately(to, VelocityErrorMargin))
+                .Assert(() => Component.linearVelocity.Should().BeApproximately(to, VelocityErrorMargin))
                 .Run();
         }
 
@@ -671,13 +671,13 @@ namespace FriedSynapse.FlowEnt.Tests.Unit.Motions
             yield return CreateTester()
                 .Arrange(ArrangeForVelocity)
                 .Act(() => Component.Tween(TestTime).VelocityTo(from, to)
-                    .OnUpdated(_ => startingFrom ??= Component.velocity)
+                    .OnUpdated(_ => startingFrom ??= Component.linearVelocity)
                     .Start())
                 .AssertTime(TestTime)
                 .Assert(() =>
                 {
                     startingFrom.Should().Be(from);
-                    Component.velocity.Should().BeApproximately(to, VelocityErrorMargin);
+                    Component.linearVelocity.Should().BeApproximately(to, VelocityErrorMargin);
                 })
                 .Run();
         }

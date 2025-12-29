@@ -31,7 +31,7 @@ namespace FriedSynapse.FlowEnt.Motions.Echo.Rigidbodies
 
         public override void OnUpdate(float deltaTime)
         {
-            if (Input.GetButtonDown("Jump") && item.velocity.y == 0f)
+            if (Input.GetButtonDown("Jump") && item.linearVelocity.y == 0f)
             {
                 item.AddForce(Vector3.up * jumpForce * Physics.gravity.y, ForceMode.Force);
             }

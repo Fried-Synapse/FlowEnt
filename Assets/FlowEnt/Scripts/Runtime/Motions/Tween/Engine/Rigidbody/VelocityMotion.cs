@@ -31,7 +31,7 @@ namespace FriedSynapse.FlowEnt.Motions.Tween.Rigidbodies
         {
         }
 
-        protected override Vector3 GetFrom() => item.velocity;
-        protected override void SetValue(Vector3 value) => item.velocity = value;
+        protected override Vector3 GetFrom() => item.linearVelocity;
+        protected override void SetValue(Vector3 value) => item.linearVelocity = value;
     }
 }
