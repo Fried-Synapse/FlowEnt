@@ -13,7 +13,10 @@
       "dest": "scripting",
       "allowCompilationErrors": true,
       "namespaceLayout": "nested",
-      "EnumSortOrder": "declaringOrder"
+      "EnumSortOrder": "declaringOrder",
+      "properties": {
+        "TargetFramework": "net8.0"
+      }
     }
   ],
   "build": {
