@@ -89,7 +89,3 @@ crashlytics-build.properties
 
 # Test Scenes
 /[Aa]ssets/InitTestScene*
-
-# DocFX
-/Docs/_site
-/Docs/scripting

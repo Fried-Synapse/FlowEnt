@@ -5,7 +5,8 @@
         {
           "src": "..",
           "files": [
-            "Assets/FlowEnt/Scripts/**/*.cs"
+            "FlowEnt/Runtime/**/*.cs",
+            "FlowEnt/Editor/**/*.cs"
           ]
         }
       ],
