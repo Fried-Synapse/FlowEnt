@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
@@ -74,13 +75,13 @@ namespace FriedSynapse.FlowEnt.Editor
 
         private static List<string> GetSymbols(BuildTargetGroup targetGroup)
         {
-            PlayerSettings.GetScriptingDefineSymbolsForGroup(targetGroup, out string[] symbols);
+            PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(targetGroup), out string[] symbols);
             return symbols.ToList();
         }
 
         private static void SetSymbols(BuildTargetGroup targetGroup, List<string> symbols)
         {
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(targetGroup, symbols.ToArray());
+            PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(targetGroup), symbols.ToArray());
         }
     }
 }

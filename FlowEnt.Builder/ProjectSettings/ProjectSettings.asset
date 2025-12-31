@@ -785,9 +785,11 @@ PlayerSettings:
     EmbeddedLinux: 
     GameCoreScarlett: 
     GameCoreXboxOne: 
+    Kepler: 
     LinuxHeadlessSimulation: 
     Lumin: 
     Nintendo Switch: 
+    Nintendo Switch 2: 
     PS4: 
     PS5: 
     QNX: 

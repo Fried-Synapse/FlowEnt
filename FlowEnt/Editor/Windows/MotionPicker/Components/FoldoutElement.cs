@@ -3,18 +3,9 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    public class FoldoutScrollable : Foldout
+    [UxmlElement]
+    public partial class FoldoutScrollable : Foldout
     {
-        [Preserve]
-        public new class UxmlFactory : UxmlFactory<FoldoutScrollable, UxmlTraits>
-        {
-        }
-
-        [Preserve]
-        public new class UxmlTraits : Foldout.UxmlTraits
-        {
-        }
-
         private ScrollView ScrollView { get; }
 
         public FoldoutScrollable()

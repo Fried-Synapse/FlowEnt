@@ -5,26 +5,9 @@ using UnityEngine.UIElements;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
-    internal class FriedSlider : VisualElement
+    [UxmlElement]
+    internal partial class FriedSlider : VisualElement
     {
-        [Preserve]
-        public new class UxmlFactory : UxmlFactory<FriedSlider, UxmlTraits> { }
-        [Preserve]
-        public new class UxmlTraits : VisualElement.UxmlTraits
-        {
-            private readonly UxmlFloatAttributeDescription minValue = new() { name = "minValue", };
-            private readonly UxmlFloatAttributeDescription maxValue = new() { name = "maxValue", defaultValue = 1 };
-            private readonly UxmlFloatAttributeDescription value = new() { name = "value", defaultValue = 0 };
-
-            public override void Init(VisualElement visualElement, IUxmlAttributes bag, CreationContext context)
-            {
-                base.Init(visualElement, bag, context);
-                FriedSlider slider = visualElement as FriedSlider;
-                slider.MinValue = minValue.GetValueFromBag(bag, context);
-                slider.MaxValue = maxValue.GetValueFromBag(bag, context);
-                slider.Value = value.GetValueFromBag(bag, context);
-            }
-        }
         public class EventData
         {
             public EventData(float oldValue, float newValue)
@@ -51,7 +34,8 @@ namespace FriedSynapse.FlowEnt.Editor
         protected TextField ValueText { get; }
 
         protected float minValue;
-        internal float MinValue
+        [UxmlAttribute("minValue")]
+        public float MinValue
         {
             get => minValue;
             set
@@ -61,8 +45,9 @@ namespace FriedSynapse.FlowEnt.Editor
             }
         }
 
-        protected float maxValue;
-        internal float MaxValue
+        protected float maxValue = 1;
+        [UxmlAttribute("maxValue")]
+        public float MaxValue
         {
             get => maxValue;
             set
@@ -73,7 +58,8 @@ namespace FriedSynapse.FlowEnt.Editor
         }
 
         protected float value;
-        internal float Value
+        [UxmlAttribute("value")]
+        public float Value
         {
             get => value;
             set => SetValue(value);

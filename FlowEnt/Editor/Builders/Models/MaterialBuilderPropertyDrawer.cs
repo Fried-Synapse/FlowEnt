@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using ShaderPropertyType = UnityEditor.ShaderUtil.ShaderPropertyType;
+using UnityEngine.Rendering;
 
 namespace FriedSynapse.FlowEnt.Editor
 {
@@ -99,7 +99,7 @@ namespace FriedSynapse.FlowEnt.Editor
                 MaterialBuilderWithProperty<Color> => new[] { ShaderPropertyType.Color },
                 MaterialBuilderWithProperty<Vector2> => new[] { ShaderPropertyType.Vector },
                 MaterialBuilderWithProperty<Vector4> => new[] { ShaderPropertyType.Vector },
-                MaterialBuilderWithProperty<Texture> => new[] { ShaderPropertyType.TexEnv },
+                MaterialBuilderWithProperty<Texture> => new[] { ShaderPropertyType.Texture },
                 MaterialBuilderWithProperty => (ShaderPropertyType[])Enum.GetValues(typeof(ShaderPropertyType)),
                 _ => throw new ArgumentOutOfRangeException()
             };
@@ -114,12 +114,12 @@ namespace FriedSynapse.FlowEnt.Editor
                 return false;
             }
 
-            int propertyCount = ShaderUtil.GetPropertyCount(material.shader);
+            int propertyCount = material.shader.GetPropertyCount();
 
             for (int i = 0; i < propertyCount; i++)
             {
-                string propertyName = ShaderUtil.GetPropertyName(material.shader, i);
-                ShaderPropertyType propertyType = ShaderUtil.GetPropertyType(material.shader, i);
+                string propertyName = material.shader.GetPropertyName(i);
+                ShaderPropertyType propertyType = material.shader.GetPropertyType(i);
                 if (allowedPropertyType.Contains(propertyType))
                 {
                     properties.Add(propertyName);
