@@ -42,11 +42,11 @@ jobs:
           assetsPaths: FlowEnt
           packageName: FlowEnt.v${{ steps.updateVersion.outputs.version }}
 
-      - name: Release GitHub
-        uses: Fried-Synapse/StoreGate/Step/ReleaseGitHub@v1
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          version: ${{ steps.updateVersion.outputs.version }}
-          name: FlowEnt.v${{ steps.updateVersion.outputs.version }}.unitypackage
-          file: ${{ steps.createPackage.outputs.packagePath }}
+      # - name: Release GitHub
+      #   uses: Fried-Synapse/StoreGate/Step/ReleaseGitHub@v1
+      #   env:
+      #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      #   with:
+      #     version: ${{ steps.updateVersion.outputs.version }}
+      #     name: FlowEnt.v${{ steps.updateVersion.outputs.version }}.unitypackage
+      #     file: ${{ steps.createPackage.outputs.packagePath }}
