@@ -33,13 +33,12 @@ jobs:
         id: createPackage
         uses: Fried-Synapse/StoreGate/Step/CreateUnityPackage@v1
         env:
-          UNITY_VERSION: "6000.3.2f1"
           UNITY_LICENCE: ${{ secrets.UNITY_LICENCE }}
           UNITY_USERNAME: ${{ secrets.UNITY_USERNAME }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           projectPath: FlowEnt.Builder
-          assetsPaths: FlowEnt
+          assetsPaths: ../FlowEnt
           packageName: FlowEnt.v${{ steps.updateVersion.outputs.version }}
 
       # - name: Release GitHub
