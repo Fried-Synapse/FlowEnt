@@ -7,6 +7,12 @@
       "dependencies": {},
       "hash": "ac405b32a618bf9d9880e4fc1b63c5e45036c72c"
     },
+    "com.friedsynapse.flowent": {
+      "version": "file:../../FlowEnt/",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
