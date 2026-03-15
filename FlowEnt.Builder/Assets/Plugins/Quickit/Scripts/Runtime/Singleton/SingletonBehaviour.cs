@@ -69,7 +69,7 @@ namespace FriedSynapse.Quickit
     {
         public TInstance CreateInstance()
         {
-            TInstance instance = Object.FindObjectOfType<TInstance>(true);
+            TInstance instance = Object.FindFirstObjectByType<TInstance>(FindObjectsInactive.Include);
 
             if (instance == null)
             {
