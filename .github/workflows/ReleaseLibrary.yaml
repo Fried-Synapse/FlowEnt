@@ -33,19 +33,19 @@ jobs:
         id: createPackage
         uses: Fried-Synapse/StoreGate/Step/CreateUnityPackage@v1
         env:
-          UNITY_VERSION: "ubuntu-2022.3.39f1-android-3"
           UNITY_LICENCE: ${{ secrets.UNITY_LICENCE }}
           UNITY_USERNAME: ${{ secrets.UNITY_USERNAME }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          assetsPaths: Assets/FlowEnt
+          projectPath: FlowEnt.Builder
+          assetsPaths: ../FlowEnt
           packageName: FlowEnt.v${{ steps.updateVersion.outputs.version }}
 
-      - name: Release GitHub
-        uses: Fried-Synapse/StoreGate/Step/ReleaseGitHub@v1
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          version: ${{ steps.updateVersion.outputs.version }}
-          name: FlowEnt.v${{ steps.updateVersion.outputs.version }}.unitypackage
-          file: ${{ steps.createPackage.outputs.packagePath }}
+      # - name: Release GitHub
+      #   uses: Fried-Synapse/StoreGate/Step/ReleaseGitHub@v1
+      #   env:
+      #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      #   with:
+      #     version: ${{ steps.updateVersion.outputs.version }}
+      #     name: FlowEnt.v${{ steps.updateVersion.outputs.version }}.unitypackage
+      #     file: ${{ steps.createPackage.outputs.packagePath }}

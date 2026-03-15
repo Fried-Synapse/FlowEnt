@@ -19,18 +19,19 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+      
     - name: Dotnet Setup
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.x
 
     - run: dotnet tool update -g docfx
-    - run: docfx Docs/docfx.json
+    - run: docfx FlowEnt.Docs/docfx.json
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: 'Docs/_site'
+        path: 'FlowEnt.Docs/_site'
 
     - name: Deploy to GitHub Pages
       id: deployment

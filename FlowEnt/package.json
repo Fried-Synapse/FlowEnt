@@ -1,0 +1,14 @@
+{
+  "name": "com.friedsynapse.flowent",
+  "version": "2.9.0",
+  "displayName": "FlowEnt",
+  "description": "FlowEnt is a library set to change the paradigm on how scripting animations work, and how a developer interacts with them, by separating the tweening options from the motions of the animation.",
+
+  "author": {
+    "name": "Fried Synapse",
+    "url": "https://www.friedsynapse.com"
+  },
+
+  "documentationUrl": "https://flowent.friedsynapse.com",
+  "licensesUrl": "https://github.com/FriedSynapse/FlowEnt/blob/main/LICENSE"
+}
