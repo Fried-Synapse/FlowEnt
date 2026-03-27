@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FriedSynapse.FlowEnt.Motions.Echo.CharacterControllers
 {
     /// <summary>
-    /// Moves the charater using the inputs.
+    /// Moves the character using the inputs.
     /// </summary>
     public class MoveByInputMotion : AbstractFloatSpeedMotion<CharacterController>
     {
